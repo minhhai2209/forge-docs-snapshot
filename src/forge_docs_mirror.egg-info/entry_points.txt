@@ -1,0 +1,2 @@
+[console_scripts]
+forge-docs-mirror = forge_docs_mirror.cli:main

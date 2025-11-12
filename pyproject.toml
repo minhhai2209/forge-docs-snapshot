@@ -1,0 +1,22 @@
+[project]
+name = "forge-docs-mirror"
+version = "0.1.0"
+description = "CLI to mirror Atlassian Forge documentation for offline reference"
+readme = "README.md"
+authors = [
+  { name = "Hai", email = "minhhai2209@gmail.com" }
+]
+requires-python = ">=3.11"
+dependencies = [
+  "beautifulsoup4>=4.12.0",
+  "markdownify>=0.11.6",
+  "playwright>=1.48.0",
+  "readability-lxml>=0.8.1"
+]
+
+[project.scripts]
+forge-docs-mirror = "forge_docs_mirror.cli:main"
+
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"

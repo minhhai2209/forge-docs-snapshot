@@ -1,0 +1,11 @@
+LICENSE
+README.md
+pyproject.toml
+src/forge_docs_mirror/__init__.py
+src/forge_docs_mirror/cli.py
+src/forge_docs_mirror.egg-info/PKG-INFO
+src/forge_docs_mirror.egg-info/SOURCES.txt
+src/forge_docs_mirror.egg-info/dependency_links.txt
+src/forge_docs_mirror.egg-info/entry_points.txt
+src/forge_docs_mirror.egg-info/requires.txt
+src/forge_docs_mirror.egg-info/top_level.txt

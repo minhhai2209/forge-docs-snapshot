@@ -1,0 +1,33 @@
+{
+  "root_url": "https://developer.atlassian.com/platform/forge",
+  "generated_at": "2025-11-12T14:28:29.792306+00:00",
+  "totals": {
+    "markdown_pages": 574,
+    "pdf_assets": 1
+  },
+  "crawl_runs": [
+    {
+      "type": "full",
+      "completed_at": "2025-11-12T08:52:46.148289+00:00",
+      "downloaded_pages": 1146,
+      "discovered_urls": 1152,
+      "skipped_pages": 6,
+      "duration_seconds": 4313.01,
+      "notes": "Original full crawl (wait_until=networkidle, delay=0.25). Command timed out but data saved locally."
+    },
+    {
+      "type": "top-up",
+      "completed_at": "2025-11-12T14:28:29.792426+00:00",
+      "targeted_urls": [
+        "https://developer.atlassian.com/platform/forge/extend-atlassian-products-with-a-forge-rovo-agent",
+        "https://developer.atlassian.com/platform/forge/build-a-hello-world-rovo-agent",
+        "https://developer.atlassian.com/platform/forge/build-a-jira-issue-analyst-rovo-agent",
+        "https://developer.atlassian.com/platform/forge/profiling-node-js-app-code-tunnel"
+      ],
+      "wait_until": "load",
+      "delay_seconds": 0,
+      "notes": "Used --seed-url for each path plus manual download of Forge-Data-Processing-Addendum.pdf"
+    }
+  ],
+  "failures": []
+}
