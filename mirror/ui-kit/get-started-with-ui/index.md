@@ -3,13 +3,12 @@
 Forge offers two ways to build user interfaces for your apps:
 
 1. [UI Kit](/platform/forge/ui-kit/) is a React-based framework that allows you to enhance Atlassian apps on Forge. By using React primitives to natively render app components within our Atlassian apps, UI Kit allows your app to use many of the same platform components, and APIs that are used by internal teams.
-
-It's important to note that UI Kit relies only on the `@forge/react` components and does not directly rely on React DOM. Therefore, functionalities dependent on standard browser DOM elements, like custom HTML, portals, and forwarding refs, may not work as expected.
-
 2. [Custom UI](/platform/forge/custom-ui/) allows you full control in building the app’s user interface. Custom UI runs
    within an iframe, providing an isolated environment for the app's interface to be displayed.
 
-Let's look at the fundamental elements of building user interfaces with Forge, namely the Atlassian app APIs and Components. We'll also explore how to declare and use '`resources`' and '`resolvers`', which are the key concepts in UI development.
+Let's look at the fundamental elements of building user interfaces with Forge, namely the [Atlassian app APIs](#atlassian-app-apis) and [components](#components). We'll also explore how to declare and use [resources](#resource) and [resolvers](#resolver), which are the key concepts in UI development.
+
+UI Kit relies only on the `@forge/react` components and does not directly rely on React DOM. Therefore, functionalities dependent on standard browser DOM elements, like custom HTML, portals, and forwarding refs, may not work as expected.
 
 ## Atlassian app APIs
 
@@ -275,3 +274,9 @@ modules:
       function: backend
 ```
 ```
+
+## Next steps
+
+Explore [example apps](/platform/forge/user-interface/#example-apps)
+and [tutorials](/platform/forge/user-interface/#tutorials) for various Atlassian apps
+to start creating apps using UI Kit.

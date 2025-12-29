@@ -1,55 +1,34 @@
-# Action (Preview)
-
-Forge’s Preview offers experimental features to selected users for testing and feedback purposes.
-These features are suitable and operationally supported for production environments.
-For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
+# Action
 
 We recommend limiting Forge custom actions to 500 for optimal performance.
 
-Both Rovo and Automation utilize the same Forge module `core:action`.
-However, the `action` can be used in different contexts depending on the app's manifest configuration.
-
-In subsequent sections, you can learn how to use the `core:action` module in your Forge app to extend the Automation platform.
-
 ## Overview
 
-Users can select your app action from the Automation component picker.
-After adding an app action to a rule, users will configure, validate, and enable it.
+The action module adds custom actions to Atlassian Automation rules. This allows you to extend Automation with app-specific functionality that can be selected, configured, and executed as part of any automation rule. Users select your action from the component picker, configure its inputs through a form you provide, and when the rule executes, your Forge function is invoked with the configured values.
 
-When the rule gets executed, your action will get executed, too.
-Automation will pass along the user’s configuration when invoking your action’s handler function.
-If you notice an invalid configuration, you can fail the action and append error messages to the Automation audit log.
+The `core:action` module is also used by Rovo. To make your action available in Automation, you must add it to an `actionProvider` module (see below).
+
+### Action lifecycle
+
+When a user adds your action to a rule, they configure it through your custom form. When the rule executes, Automation invokes your Forge function with the configured inputs. Your action can then:
+
+* Process the inputs and perform the intended operation
+* Return errors if the configuration is invalid, which stops rule execution and notifies the rule owner
+* Return successfully, allowing the rule to continue execution
 
 If your action ran successfully, control will be passed back to Automation, and the rule will continue execution.
 
 ## Manifest
 
 ```
+```
 1
 2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
+```
+
+
+
+```
 modules {}
 └─ automation:actionProvider []
    ├─ key (string) [Mandatory]
@@ -69,12 +48,24 @@ modules {}
    │     ├─ type (string) [Mandatory]
    │     ├─ required (boolean) [Mandatory]
    │     └─ description (string) [Optional]
+   ├─ outputs {} [Optional]
+   │  └─ outputName {}
+   │     ├─ description (string) [Optional]
+   │     ├─ type (string) [Mandatory]
+   │     ├─ nullable (boolean) [Mandatory]
+   ├─ outputContext {} [Optional]
+   │  └─ entityName (string) [Mandatory]
+   │  └─ outputType (string) [Mandatory]
+   │  └─ outputDomain (string) [Mandatory]
+   ├─ resolver {} [Optional]
+   │  └─ function (string) [Mandatory]
 function []
 └─ key (string) [Mandatory]
 └─ handler (string) [Mandatory]
 resources []
 └─ key (string) [Mandatory]
 └─ path (string) [Mandatory]
+```
 ```
 
 ### The actionProvider module
@@ -101,11 +92,94 @@ The `action` module allows you to configure an action.
 | --- | --- | --- | --- |
 | `key` | `string` | Yes | A key for the action, which other modules can refer to. Must be unique within the manifest. Regex: `^[a-zA-Z0-9_-]+$` |
 | `name` | `string` | Yes | A human-friendly name for the action which will be displayed in the user interface. |
-| `function` or `endpoint` | `string` | Yes | A reference to the hosted Forge function that defines the behavior of this action. If you are using [Forge remote](/platform/forge/remote/) then you can use an external API endpoint here. |
-| `actionVerb` | `string` | Yes | The verb that best represents your action: `GET`, `CREATE`, `UPDATE`, `DELETE`, `TRIGGER`. This property is only used by Rovo right now. Unfortunately, you still need to provide a value until we make it optional. |
+| `function` or `endpoint` | `string` | Yes | A reference to the Forge function that defines the behavior of this action. If you are using [Forge remote](/platform/forge/remote/) then you can use an external API endpoint here. |
+| `actionVerb` | `string` | Yes | The verb that best represents your action: `GET`, `CREATE`, `UPDATE`, `DELETE`, `TRIGGER`. |
 | `description` | `string` | Yes | Textual representation of the component's configuration state. |
 | `config` | [config](/platform/forge/manifest-reference/modules/automation-action/#the-config-property) | Yes | Form to provide additional context during action invocation. |
 | `inputs` | [inputs](/platform/forge/manifest-reference/modules/automation-action/#the-inputs-property) | Yes | The inputs for this action. |
+| `outputs` | [outputs](/platform/forge/manifest-reference/modules/automation-action/#the-outputs-property) | No | The outputs for this action. |
+| `outputContext` | [outputContext](/platform/forge/manifest-reference/modules/automation-action/#the-outputcontext-property) | No | The output context for this action. |
+| `resolver` | [resolver](/platform/forge/manifest-reference/modules/automation-action/#the-resolver-property) | No | The resolver for this action. |
+
+### Example module
+
+#### Using a Forge app with output
+
+```
+```
+1
+2
+```
+
+
+
+```
+modules:
+  automation:actionProvider:
+    - key: action-provider-module-key
+      actions:
+        - add-comment-ui-kit
+  action:
+    - key: add-comment-ui-kit
+      name: Add Comment on an Issue (UI Kit) - Event Test
+      function: addCommentToIssue
+      description: adds comment on an issue.
+      config:
+        resource: main-resource
+        render: native
+      inputs:
+        projectKey:
+          title: Project Key
+          type: string
+          description: Jira project key
+          required: true
+        issueKey:
+          title: Issue Id
+          type: string
+          description: The issue id for the Jira issue id where a comments needs to be added
+          required: true
+        comment:
+          title: Comment
+          type: string
+          description: The comment that needs to be added to the issue
+          required: true
+      actionVerb: CREATE
+      resolver:
+        function: automation-resolver
+      outputs:
+        message:
+          description: The message that was created
+          type: string
+          nullable: false
+      outputContext:
+        entityName: comment
+        outputType: OBJECT
+        outputDomain: jira
+  function:
+    - key: addCommentToIssue
+      handler: index.addComment
+    - key: automation-resolver
+      handler: resolver.handler
+app:
+  runtime:
+    name: nodejs24.x
+  id: ari:cloud:ecosystem::app/1ac1c9df-ed96-4b89-b874-256479040a5a
+resources:
+  - key: main-resource
+    path: src/frontend/fui.tsx
+  - key: main-resource-custom-ui
+    path: static/automation-actions-app/build
+permissions:
+  scopes:
+    - write:jira-work
+    - read:jira-work
+  content:
+    styles:
+      - "unsafe-inline"
+    scripts:
+      - "unsafe-inline"
+```
+```
 
 ### The `config` property
 
@@ -117,7 +191,7 @@ The `config` property allows you to choose between UI Kit and Custom UI.
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| `resource` | `string` | Required if using [Custom UI](/platform/forge/extend-ui-with-custom-options/#custom-ui) or the latest version of [UI Kit](/platform/forge/ui-kit/) | A reference to the static resources entry that your context menu app wants to display. See resources |
+| `resource` | `string` | Required if using the latest version of [UI Kit](/platform/forge/ui-kit/) or [Custom UI](/platform/forge/extend-ui-with-custom-options/#custom-ui) | A reference to the static resources entry that your context menu app wants to display. See resources |
 | `render` | `native` | Yes for [UI Kit](/platform/forge/ui-kit/components/) | Indicates the module uses [UI Kit](/platform/forge/ui-kit/components/). |
 
 ### The `inputs` property
@@ -133,6 +207,39 @@ Each input must have a unique user-defined name, referred to as `inputName`, whi
 | `required` | `string` | Yes | True if the input is required. |
 | `description` | `string` | No | A short description of your action. |
 
+### The `outputs` property
+
+If your action when invoked, can return an output then each of those outputs can be configured via the `outputs` property.
+
+Each output must have a unique user-defined name, referred to as `outputName`, which acts as a parent container for the following properties: `description`, `type`, and `nullable`.
+
+| Property | Type | Required | Description |
+| --- | --- | --- | --- |
+|
+| `description` | `string` | No | A short description of your output. |
+| `type` | `string` | Yes | The data type of the output: `string`, `integer`, `number`, or `boolean`. |
+| `nullable` | `boolean` | Yes | True if it is nullable. |
+
+### The `outputContext` property
+
+If your action on execution returns any `output`, then we need to provide a few more details around the output with the `outputContext` property.
+
+We use the data from this property mainly for smart value processing.
+
+This property is mandatory to be provided if you have any defined outputs.
+
+Each outputContext must have the following properties: `entityName`, `outputType`, and `outputDomain`.
+
+| Property | Type | Required | Description |
+| --- | --- | --- | --- |
+| `entityName` | `string` | Yes | The name of the operation which you wish to make with the returned output. Can only be alphanumeric characters and not exceeding 12 characters in length. |
+| `outputType` | `string` | Yes | The type of output being returned. Supported output types are `OBJECT` or `LIST`. |
+| `outputDomain` | `string` | Yes | The domain on which the output entity would operate on. Can only be lower case alphabets not exceeding 12 characters in length. Use of `-` separator allowed if you wish to have multiple words. |
+
+### The `resolver` property
+
+You can refer to this page [resolver](/platform/forge/runtime-reference/forge-resolver/#forge-resolver) for more details.
+
 ### Scopes
 
 Automation action module doesn't require any additional scopes to be added to the manifest.
@@ -142,7 +249,7 @@ See [Add scopes to call an Atlassian REST API](/platform/forge/add-scopes-to-cal
 
 ### Example modules
 
-#### Using a hosted Forge function
+#### Using a Forge function
 
 ```
 ```
@@ -232,14 +339,14 @@ remote:
 
 ## Action configuration
 
-Users will be able to configure your action after they have added it to a rule.
+Users can configure your action after they have added it to a rule.
 They do that by providing inputs via a configuration form.
 
 That configuration form is built by you, using either UI Kit or Custom UI.
 
 We recommend choosing UI Kit due to its simplicity and efficiency in capturing user inputs.
 
-![configuration-example](https://dac-static.atlassian.com/platform/forge/images/automation/action-configuration-example.png?_v=1.5800.1617)
+![configuration-example](https://dac-static.atlassian.com/platform/forge/images/automation/action-configuration-example.png?_v=1.5800.1739)
 
 For a great user experience, it is important for the configuration form to interact properly with Automation.
 There are two areas to take care of:
@@ -257,8 +364,8 @@ Configuration state can be maintained in multiple ways prior to saving the rule:
 * A user submits the configuration form with the `Next` button
 * An app has `onChange` or `onBlur` handlers implemented per input in the configuration form that will call `view.submit(payload)` on each such event triggered.
 
-* When the initial configuration form loads, its state will be considered pristine and the `Next` button will be disabled. To enable the `Next` button, `onChange` and `onBlur` handlers are required to pass the state of the inputs, which will mark the configuration form state as dirty and enable the `Next` button
-* Navigating away from the action configuration by clicking the `Back` button won’t maintain the state, it is designed to undo the dirty state of the form
+* The configuration form loads in a pristine state with the `Next` button disabled. This prevents users from saving incomplete or unchanged configurations. To enable the `Next` button, implement `onChange` or `onBlur` handlers that call `view.submit()` to pass the input state, which marks the form as dirty.
+* Clicking the `Back` button does not maintain the form state. This is intentional—the `Back` button is designed to discard unsaved changes and reset the form to its pristine state.
 
 #### Maintaining state example in UI Kit
 
@@ -343,7 +450,7 @@ The code must be either bundled into your Forge app or served from an external C
 To be able to submit the configuration form with the native `Next` button - a subscription to an event is required, where the event listener callback should call the `view.submit`.
 
 The event is called `AUTOMATION_ACTION_SUBMIT`.
-It will notify your app that a configuration form was submitted.
+It will notifies your app that a configuration form was submitted.
 This event is only available for Custom UI modules.
 
 ```
@@ -609,6 +716,22 @@ Then set the value of the input field to the smart value, e.g. `“{{version.nam
 
 When Automation executes your action, it will pass on the resolved value.
 
+#### Smart values output with Forge apps
+
+We can now leverage smart value processing with Forge apps, this allows us to use the output of the defined forge actions within our rule builder, to create more dynamic automation rules.
+
+Kindly refer [outputs](/platform/forge/manifest-reference/modules/automation-action/#the-outputs-property) and [outputContext](/platform/forge/manifest-reference/modules/automation-action/#the-outputcontext-property) sections to thoroughly understand how to define outputs for forge actions.
+
+Below section gives a glimpse of what to expect when working with forge actions and smart values.
+
+Defining a rule with a forge action that has defined outputs mentioned in the example here: [Forge Action](/platform/forge/manifest-reference/modules/automation-action/#using-a-forge-app-with-output)
+
+![automation-action-configuration](https://dac-static.atlassian.com/platform/forge/images/automation/automation-action-smart-value-configuration.png?_v=1.5800.1739)
+
+We can now select the smart value operator which is created by combining details from the `outputContext` property of the action. This operator can than be used in the subsequent rule executions.
+
+![automation-action-smart-value-operator](https://dac-static.atlassian.com/platform/forge/images/automation/automation-action-smart-value-operator.png?_v=1.5800.1739)
+
 ## Action execution
 
 When Automation executes your action, it invokes the referenced Forge function (or remote endpoint if you are using Forge remote).
@@ -670,11 +793,6 @@ Note that configuring a connection for an action is not sufficient on its own.
 
 The user associated with the connection must also have an app consent entry in their [Connected apps](https://id.atlassian.com/manage-profile/apps) to ensure reliable action execution when `asUser()` is used.
 
-### A note on return values
-
-At this point, your action won’t be able to contribute any data back to Automation.
-Return values from your handler function will be ignored, unless you return a special errors object (see section below).
-
 ### Communicating errors
 
 If the user hasn’t provided valid inputs to your action, you can return a list of error messages.
@@ -717,7 +835,7 @@ If the app defines multiple actions, they will have the same icon.
 
 An app icon can be configured in the Developer console:
 
-![app-icon](https://dac-static.atlassian.com/platform/forge/images/automation/action-configuration-icon.png?_v=1.5800.1617)
+![app-icon](https://dac-static.atlassian.com/platform/forge/images/automation/action-configuration-icon.png?_v=1.5800.1739)
 
 ## Design guidelines
 

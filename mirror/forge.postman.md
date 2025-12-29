@@ -1,7 +1,7 @@
 ```
 {
   "info": {
-    "_postman_id": "2d628a34-62fd-4fdb-95ac-c1805d70b5ed",
+    "_postman_id": "b9325682-019c-4e27-96eb-868a21c6f1be",
     "name": "Key-Value Store/Custom Entity Store REST API",
     "description": "Forge provides hosted storage capabilities for storing your app's data:\n- **Key-Value Store** - stores data as key-value pairs\n- **Custom Entity Store** - stores data within custom data structures (entities)\nBoth capabilities have resources that can be used natively, or accessed by remote resources via REST API. For more information about both capabilities,\nsee [storage-api](https://developer.atlassian.com/platform/forge/runtime-reference/storage-api/).",
     "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
@@ -370,6 +370,45 @@
               }
             ],
             "description": "Lets you perform a series of Key-Value Store and/or Custom Entity Store operations that must all succeed or fail together. This method supports 3 types of operations:\n- create or update data\n- delete data\n- check whether a specific Custom Entity condition is true",
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Batch",
+      "description": "The Batch API allows you to perform multiple operations on key-value pairs and/or custom entities in a single request.\nThis can improve performance by reducing the number of network calls.\n",
+      "item": [
+        {
+          "name": "Batch set key-value pairs",
+          "request": {
+            "url": {
+              "protocol": "{{protocol}}",
+              "host": "{{host}}",
+              "path": "{{basePath}}v1/batch/set",
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "header": [
+              {
+                "description": "",
+                "disabled": false,
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "description": "",
+                "disabled": false,
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "description": "Sets multiple Key-Value Store and/or Custom Entity Store values in a single operation. \nReturns a type ```BatchResponse``` which contains ```successfulKeys``` and ```failedKeys```.",
             "body": {
               "mode": "raw",
               "raw": ""

@@ -103,6 +103,10 @@ kvs.set('example-key', 'Hello world');
 
 Gets a value by key. If the key doesn't exist, the API returns undefined.
 
+This method also supports an optional `options` parameter that lets you request the following metadata for the key:
+
+Both fields will return a Unix timestamp.
+
 ### Method signature
 
 ```
@@ -114,7 +118,16 @@ Gets a value by key. If the key doesn't exist, the API returns undefined.
 
 
 ```
-kvs.get(key: string): Promise<array | boolean | number | object | string>;
+export enum MetadataField {
+  CREATED_AT = 'CREATED_AT',
+  UPDATED_AT = 'UPDATED_AT'
+}
+
+export interface GetOptions {
+  metadataFields?: MetadataField[];
+}
+
+kvs.get(key: string, options?: GetOptions): Promise<array | boolean | number | object | string>;
 ```
 ```
 
@@ -132,7 +145,46 @@ Gets the value associated with the key `example-key`.
 
 ```
 // Read the value for key `example-key`
-await kvs.get('example-key');
+await kvs.get('example-key'); // returns 'Hello world'
+```
+```
+
+You can also request the key's relevant metadata by including `metadataFields` in the `options` parameter:
+
+```
+```
+1
+2
+```
+
+
+
+```
+import { kvs, MetadataField } from '@forge/kvs';                                                      
+
+await kvs.get('example-key', {
+  metadataFields: [MetadataField.CREATED_AT, MetadataField.UPDATED_AT]
+});
+```
+```
+
+This will return an object containing the `key`, `value`, and the requested metadata, for example:
+
+```
+```
+1
+2
+```
+
+
+
+```
+{ 
+  key: 'example-key', 
+  value: 'example-value', 
+  createdAt: 1753750184233, 
+  updatedAt: 1753750200296
+}
 ```
 ```
 

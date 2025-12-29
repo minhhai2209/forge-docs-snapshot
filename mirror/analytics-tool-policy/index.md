@@ -77,7 +77,7 @@ The `analytics` egress category is only allowed for the following pre-approved d
 | `*.userpilot.io` | [UserPilot](https://docs.userpilot.com/) |
 | `in.accoil.com` | [Accoil](https://developer.accoil.com/) |
 | `*.plausible.io` | [Plausible](https://plausible.io/) |
-| `*.googleapis.com`, `*.googleapis.com`, `*.googletagmanager.com` | [Google Tag Manager](https://tagmanager.google.com/#/home) |
+| `*.googletagmanager.com` | [Google Tag Manager](https://tagmanager.google.com/#/home) |
 | `*.ingest.sentry.io`, `*.ingest.us.sentry.io`, `*.sentry-cdn.com` | [Sentry](https://sentry.io/) |
 | `*.hotjar.io`, `*.hotjar.com` | [HotJar](https://www.hotjar.com/) |
 | `*.cdn.segment.com`, `cdn.segment.com`, `*.api.segment.io` | [Segment](https://segment.com/) |

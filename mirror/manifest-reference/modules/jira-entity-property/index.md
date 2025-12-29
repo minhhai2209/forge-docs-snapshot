@@ -21,7 +21,7 @@ Defines an entity property to be indexed by Jira. An entity property value is a 
 | --- | --- | --- | --- |
 | `path` | `string` | Yes | The path to the JSON data to index. The path is the key of a flattened JSON object with '.' as the delimiter.  For example, for the JSON `{"label": {"color": "red", "text":"connect"}}` the valid path referencing `color` is `label.color`.  The path may refer to an array type. In this case, the 'type' field should be the type of the elements in the array. See the specification for indexing 'blockedIssues' in the [example](#example). |
 | `type` | `string` | Yes | The type of the referenced value:   * `number`, which indexes as a number and allows for range ordering and searching on the field. * `text`, which tokenizes the value before indexing and allows for searching for words. * `string`, which is indexed as is and allows searching for the exact phrase only. * `user`, which indexes as a user and allows for user-based searching. The expected value is an Atlassian account ID string. * `date`, which is indexed as a date and allows date range searching and ordering.   The expected date format is `[YYYY]-[MM]-[DD]`.   The expected date time format is `[YYYY]-[MM]-[DD]T[hh]:[mm]:[ss][TZ]`   where `[TZ]` is an offset from UTC of `+/-[hh]:[mm]` or `Z` for no offset.   For example: `2021-05-15`, `2021-05-15T13:44:11+02:00`, `2021-05-15T13:44:11Z` |
-| `searchAlias` | `string` |  | The name used for this property in JQL. |
+| `searchAlias` | `string` |  | The name used for this property in JQL. **Note:** Cannot contain dots ('.'). |
 
 ## Example
 

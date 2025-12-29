@@ -1,6 +1,6 @@
 # Realtime events API (Preview)
 
-Forge Realtime is now available as a a Preview capability. Preview capabilities are deemed stable; however, they remain under active development and may be subject to shorter deprecation windows. Preview capabilities are suitable for early adopters in production environments.
+Forge Realtime is now available as Preview capability. Preview capabilities are deemed stable; however, they remain under active development and may be subject to shorter deprecation windows. Preview capabilities are suitable for early adopters in production environments.
 
 We release preview features so partners and developers can study, test, and integrate them prior to General Availability (GA). For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#preview).
 
@@ -108,9 +108,8 @@ import { publish } from '@forge/realtime';
 
 const resolver = new Resolver();
 
-resolver.define("publishRealtimeEvent", ({ payload, context }) => {
+resolver.define("publishRealtimeEvent", ({ payload }) => {
   const channel = 'my-example-channel';
-  const payload = { foo: 'foo', bar: 'bar' };
   publish(channel, payload);
   return {
     example: `Published event with payload: ${JSON.stringify(payload)}`
@@ -205,7 +204,7 @@ import { publish, signRealtimeToken } from '@forge/realtime';
 const resolver = new Resolver();
 const TOKEN_EXPIRY_BUFFER = 5000; // 5 seconds
 
-resolver.define('publishEvent', ({ payload, context }) => {
+resolver.define('publishEvent', () => {
   const customClaims = {
     allowedUsers: ['accountId-1', 'accountId-2'],
   };

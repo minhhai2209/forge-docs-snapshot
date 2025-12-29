@@ -119,6 +119,10 @@ kvs.entity("employee").set('example-key', {
 
 Gets a custom entity value by key. If the key doesn't exist, the API returns `undefined`.
 
+This method also supports an optional `options` parameter that lets you request the following metadata for the key:
+
+Both fields will return a Unix timestamp.
+
 ### Method signature
 
 ```
@@ -130,7 +134,16 @@ Gets a custom entity value by key. If the key doesn't exist, the API returns `un
 
 
 ```
-kvs.entity(entityName: string).get(key: string): Promise<object>;
+export enum MetadataField {
+  CREATED_AT = 'CREATED_AT',
+  UPDATED_AT = 'UPDATED_AT'
+}
+
+export interface GetOptions {
+  metadataFields?: MetadataField[];
+}
+
+kvs.entity(entityName: string).get(key: string, options?: GetOptions): Promise<object>;
 ```
 ```
 
@@ -149,6 +162,73 @@ Gets the value associated with the key `example-key`.
 ```
 // Read the value for key `example-key`
 await kvs.entity("employee").get('example-key');
+```
+```
+
+This will return all attributes related to the key:
+
+```
+```
+1
+2
+```
+
+
+
+```
+{
+  surname:"Davis",
+  age: 30,
+  employmentyear: 2022,
+  gender: "male",
+  nationality: "Australian"
+}
+```
+```
+
+You can also request the key's relevant metadata by including `metadataFields` in the `options` parameter:
+
+```
+```
+1
+2
+```
+
+
+
+```
+import { kvs, MetadataField } from '@forge/kvs';
+
+// Read the value for key `example-key`
+await kvs.entity("employee").get('example-key', {
+  metadataFields: [MetadataField.CREATED_AT, MetadataField.UPDATED_AT]
+});
+```
+```
+
+This will return the key's attributes with the requested metadata:
+
+```
+```
+1
+2
+```
+
+
+
+```
+{
+  key: 'example-key',
+  value: {
+    surname:"Davis",
+    age: 30,
+    employmentyear: 2022,
+    gender: "male",
+    nationality: "Australian"
+    },
+  createdAt: 1753750184233,
+  updatedAt: 1753750200296
+}
 ```
 ```
 

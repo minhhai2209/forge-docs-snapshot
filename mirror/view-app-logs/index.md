@@ -14,7 +14,7 @@ To view app logs:
 
 The screen shows logs for all sites that users have granted you access to.
 
-![A list of logs and the associated filters](https://dac-static.atlassian.com/platform/forge/images/logs-screen-new.svg?_v=1.5800.1617)
+![A list of logs and the associated filters](https://dac-static.atlassian.com/platform/forge/images/logs-screen-new.svg?_v=1.5800.1739)
 
 A maximum of 20 log events are displayed by default. To view more log events, select **Load more logs**
 at the bottom of the page.

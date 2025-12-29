@@ -6,7 +6,7 @@ The `title`, `icon`, and `tooltip` of the module render together as a list item.
 
 On apps that use Custom UI, module content is displayed inside a [special Forge iframe](/platform/forge/custom-ui/iframe/) which has the [sandbox](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#sandbox) attribute configured. This means that HTML links (for example, `<a href="https://domain.tld/path">...</a>`) in this iframe won't be clickable. To make them clickable, use the [router.navigate](/platform/forge/custom-ui-bridge/router/#navigate) API from the `@forge/bridge` package.
 
-![Example of a Content byline item](https://dac-static.atlassian.com/platform/forge/images/content-byline-item-demo.gif?_v=1.5800.1617)
+![Example of a Content byline item](https://dac-static.atlassian.com/platform/forge/images/content-byline-item-demo.gif?_v=1.5800.1739)
 
 ## Properties
 
@@ -16,7 +16,8 @@ On apps that use Custom UI, module content is displayed inside a [special Forge 
 | `resource` | `string` | If using [Custom UI](/platform/forge/custom-ui/) or modern versions of [UI Kit](/platform/forge/ui-kit/) | The key of a static `resources` entry that your module will display. See [resources](/platform/forge/manifest-reference/resources) for more details. |
 | `render` | `'native'` | If using modern versions of [UI Kit](/platform/forge/ui-kit/components/) | Indicates the module uses [UI Kit](/platform/forge/ui-kit/components/). |
 | `resolver` | `{ function: string }` or `{ endpoint: string }` |  | Set the `function` property if you are using a hosted `function` module for your resolver.  Set the `endpoint` property if you are using [Forge Remote](/platform/forge/forge-remote-overview) to integrate with a remote back end. |
-| `viewportSize` | `'small'`, `'medium'` or `'large'` |  | The [display size](/platform/forge/manifest-reference/resources) of `resource`. Can only be set if the module is using the `resource` property. Remove this property to enable automatic resizing of the module. |
+| `viewportSize` | `'small'`, `'medium'`, `'large'` or `'fullscreen'` |  | The [display size](/platform/forge/manifest-reference/resources) of `resource`. Can only be set if the module is using the `resource` property. Remove this property to enable automatic resizing of the module. |
+| `viewportContainer` | `'popup'` or `'modal'` |  | The display type of the content byline item. Defaults to popup if no option provided |
 | `title` | `string` or `i18n object` | Yes | The title of the content byline item, which is displayed as a list item.  The `i18n object` allows for translation. See [i18n object](#i18n-object). |
 | `icon` | `string` |  | The icon displayed next to the `title`.   For Custom UI and UI Kit apps, the `icon` property accepts a relative path from a declared resource. Alternatively, you can also use an absolute URL to a self-hosted icon. See [Icons](/platform/forge/custom-ui/#icons) for more information.  If no icon is provided, or if there's an issue preventing the icon from loading, a generic app icon will be displayed. |
 | `tooltip` | `string` or `i18n object` |  | The tooltip of the content byline item, which is displayed on hover.  The `i18n object` allows for translation. See [i18n object](#i18n-object). |

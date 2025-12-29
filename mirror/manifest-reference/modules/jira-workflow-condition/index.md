@@ -216,6 +216,36 @@ The new workflow editor supports this module in the same way. You can use same C
 If you want to detect whether the new editor is being used, check for whether the key `extension.isNewEditor` is `true` in the object returned from the [`view.getContext` function](/platform/forge/custom-ui-bridge/view/#getcontext). This key will be unset in the old workflow editor.
 
 The context will also include the workflow ID and project ID for team-managed workflows in the new editor.
+Workflow name and an additional field to describe the current transition's details under `transitionContext` will also be included in the context.
+
+An example of `transitionContext`:
+
+```
+```
+1
+2
+```
+
+
+
+```
+{
+  "id": "10", // transition id, can be outdated if the transition hasn't been saved yet
+  "from": {
+    "id": "400", // can be null if the status hasn't been saved yet
+    "name": "Building",
+    "statusCategory": "IN_PROGRESS",
+    "description": "The issue is being actively worked on."
+  },
+  "to": {
+    "id": "401", // can be null if the status hasn't been saved yet
+    "name": "Build Broken",
+    "statusCategory": "IN_PROGRESS",
+    "description": "The source code committed for this issue has possibly broken the build."
+  }
+}
+```
+```
 
 The maximum length of configuration saved via the new editor is limited to 32KB.
 

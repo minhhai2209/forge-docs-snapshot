@@ -11,7 +11,7 @@ The following flows are ready for testing as part of this Preview:
 
 **Important considerations:**
 
-* **Customer release (GA)** is planned for end of January 2025.
+* **Customer release (GA)** is planned for end of January 2026.
 * **Until GA:** We recommend keeping Marketplace apps **private** as customer-facing changes are not yet available (admins currently only see the required app in the consent screen when installing).
 
 For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
@@ -44,7 +44,10 @@ To add support for additional Atlassian apps to your existing app, it must meet 
   required, your app must be uninstalled from Confluence before Jira can be declared in the manifest as
   the required Atlassian app.
 * **The app must only be compatible with eligible Atlassian apps.** During Preview, the eligible
-  Atlassian apps are Jira, Confluence, and Compass.
+  Atlassian apps are Jira, Confluence, and Compass. Only Jira or Confluence can be the required Atlassian app;
+  Compass can only be configured as an optional Atlassian app.
+* **If listed on Marketplace, the app must be a paid app.** Forge apps that are compatible with
+  multiple Atlassian apps can only be listed as paid apps; free listings are not supported.
 
 ## Versioning and permissions changes
 

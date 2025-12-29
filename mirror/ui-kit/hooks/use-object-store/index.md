@@ -9,6 +9,10 @@ By signing up for this Early Access Program (“EAP”), you acknowledge that us
 
 For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
 
+# Supported Apps
+
+This component is supported in Jira and Confluence modules during EAP.
+
 The `useObjectStore` hook lets you perform file management operations and track the state of each objects. This hook provides a way for your
 app's frontend to interact with the [Forge Object Store](/platform/forge/storage-reference/object-store/) through the the
 [objectStore bridge API](/platform/forge/custom-ui-bridge/objectStore/).
@@ -16,7 +20,13 @@ app's frontend to interact with the [Forge Object Store](/platform/forge/storage
 The following diagram shows how the hook integrates the backend resolver with the
 [File picker](/platform/forge/ui-kit/components/file-picker/) and [File card](/platform/forge/ui-kit/components/file-card/):
 
-![Diagram of how the hook interacts with the resolver and File components](https://dac-static.atlassian.com/platform/forge/ui-kit/images/hook/useObjectStore.png?_v=1.5800.1617)
+![Diagram of how the hook interacts with the resolver and File components](https://dac-static.atlassian.com/platform/forge/ui-kit/images/hook/useObjectStore.png?_v=1.5800.1739)
+
+[Example app
+
+We published a sample app to demonstrate the basics of implementing object storage features in
+a Forge app. This sample app uses the Forge Object Store as its backend and available Forge UI components
+for its frontend. Refer to the app's README for additional guidance on exploring and testing the code.](https://bitbucket.org/atlassian/forge-ui-object-store-example-app/src/main/)
 
 ## Before you begin
 
@@ -27,7 +37,7 @@ Make sure you have the following:
 * The latest version of UI Kit (`^11.7.0`). To update your version, navigate to the app's top-level
   directory, and run `npm install @forge/react@latest --save` on the command line.
 
-### Usage
+## Usage
 
 To add the `useObjectStore` hook to your app:
 
@@ -154,7 +164,7 @@ ForgeReconciler.render(
 ```
 ```
 
-### Function signature
+## Function signature
 
 ```
 ```
@@ -235,12 +245,12 @@ interface DownloadResult {
 ```
 ```
 
-### Arguments
+## Arguments
 
 * **props** (optional): Configuration object for the hook.
   * **defaultValues** (optional): An array of `ObjectState` objects to initialize the hook with. These represent objects that already exist or have been previously uploaded.
 
-### Returns
+## Returns
 
 The hook returns an object with the following properties:
 

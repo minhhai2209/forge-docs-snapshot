@@ -29,6 +29,15 @@ You need to keep your app’s login details handy. This is the
 
 While this tutorial is largely focused on Bitbucket Cloud pipelines, we also provide general guidance for GitHub users.
 
+While we use the following command for simplicity in our guide `npm install --global @forge/cli`, we recommend that you
+**pin the CLI major version** in your CI/CD pipeline to avoid breaking changes interfering with your pipelines.
+
+Example: `npm install --global @forge/cli@12`
+
+Pinning the CLI major version ensures that your pipeline only installs the latest minor upgrades within the specified
+semantic version range, such as `12.x` in the above example. This protects your pipeline from any breaking changes
+introduced by later major versions.
+
 ## Step 1: Create a pipeline from scratch
 
 GitHub uses Actions to define CI/CD workflows (similar to how Bitbucket uses Pipelines). Refer to the
@@ -66,7 +75,7 @@ GitHub uses Actions to define CI/CD workflows (similar to how Bitbucket uses Pip
 With a pipeline configuration added to your repository, you can now enable pipelines. Go to
 **Repository settings > Pipelines > Settings** to do so:
 
-![Enable Pipelines for your repository](https://dac-static.atlassian.com/platform/forge/images/cicd-enable-pipelines.png?_v=1.5800.1617)
+![Enable Pipelines for your repository](https://dac-static.atlassian.com/platform/forge/images/cicd-enable-pipelines.png?_v=1.5800.1739)
 
 For more detailed information about pipelines, refer to the
 [Bitbucket Cloud documentation](https://support.atlassian.com/bitbucket-cloud/docs/build-test-and-deploy-with-pipelines/).
@@ -106,7 +115,7 @@ you store your login email and Atlassian API token through the environment varia
 In CI/CD environments, you can store these variables as secrets for your builds. In your Bitbucket Cloud repository,
 you can define these variables in **Repository settings > Pipelines > Repository variables**.
 
-![Define your Forge login details through repository variables](https://dac-static.atlassian.com/platform/forge/images/cicd-define-login-variables.png?_v=1.5800.1617)
+![Define your Forge login details through repository variables](https://dac-static.atlassian.com/platform/forge/images/cicd-define-login-variables.png?_v=1.5800.1739)
 
 When you define `FORGE_API_TOKEN`, make sure to tick **Secured**. This will ensure that your token won’t show up on build logs.
 
@@ -187,12 +196,12 @@ Add a new step for deploying the app to your production environment:
 After you’ve added both pipeline configurations, commit the change. This will immediately run your pipeline.
 To view its progress through your Bitbucket Cloud repository, go to **Pipelines**:
 
-![View pipeline progress](https://dac-static.atlassian.com/platform/forge/images/cicd-pipeline-init-run.png?_v=1.5800.1617)
+![View pipeline progress](https://dac-static.atlassian.com/platform/forge/images/cicd-pipeline-init-run.png?_v=1.5800.1739)
 
 Once the pipeline **Status** is **Successful**, select it to view its details. Notice that the **Deploy to Production**
 step didn’t run:
 
-![Manually deploy to production](https://dac-static.atlassian.com/platform/forge/images/cicd-manual-step.png?_v=1.5800.1617)
+![Manually deploy to production](https://dac-static.atlassian.com/platform/forge/images/cicd-manual-step.png?_v=1.5800.1739)
 
 This is because the `Deploy to Production` step uses the `trigger: manual` option. To manually run the step, click **Deploy**.
 Manual triggers help your team control changes to production while also automating all deployments to `staging`.

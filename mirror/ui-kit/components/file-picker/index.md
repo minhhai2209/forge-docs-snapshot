@@ -9,6 +9,10 @@ By signing up for this Early Access Program (“EAP”), you acknowledge that us
 
 For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
 
+# Supported Apps
+
+This component is supported in Jira and Confluence modules during EAP.
+
 To add the `FilePicker` component to your app:
 
 ```
@@ -22,6 +26,12 @@ The file picker allows the user to select files stored locally.
 
 You can use the [file card](/platform/forge/ui-kit/components/file-card/) component to display selected files (along with
 information about each file and upload progress).
+
+[Example app
+
+We published a sample app to demonstrate the basics of implementing object storage features in
+a Forge app. This sample app uses the Forge Object Store as its backend and available Forge UI components
+for its frontend. Refer to the app's README for additional guidance on exploring and testing the code.](https://bitbucket.org/atlassian/forge-ui-object-store-example-app/src/main/)
 
 ## Props
 
@@ -55,7 +65,7 @@ type SerializedFile = {
 ```
 ```
 
-![Example image of file picker](https://dac-static.atlassian.com/platform/forge/ui-kit/images/file-picker/file-picker.png?_v=1.5800.1617)
+![Example image of file picker](https://dac-static.atlassian.com/platform/forge/ui-kit/images/file-picker/file-picker.png?_v=1.5800.1739)
 
 ```
 ```
@@ -83,7 +93,7 @@ export const FilePickerExample = () => {
 
 Use `label` to display text above the file picker input zone, helping users identify the purpose of the field. Use `description` to provide additional helper text (for example, allowed file types or size limits).
 
-![Example image of file picker with additional elements](https://dac-static.atlassian.com/platform/forge/ui-kit/images/file-picker/file-picker-with-elements.png?_v=1.5800.1617)
+![Example image of file picker with additional elements](https://dac-static.atlassian.com/platform/forge/ui-kit/images/file-picker/file-picker-with-elements.png?_v=1.5800.1739)
 
 ```
 ```

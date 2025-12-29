@@ -28,7 +28,7 @@ Repeat the `npm install` command for any other Forge packages your app uses.
 
 ### Declare runtime version
 
-The `runtime` section of the `manifest.yml` file features a `name` property that lets you specify what runtime to use. To specify the native Node.js runtime, set `name` to `nodejs22.x`:
+The `runtime` section of the `manifest.yml` file features a `name` property that lets you specify what runtime to use. To specify the native Node.js runtime, set `name` to `nodejs24.x`:
 
 ```
 1
@@ -36,7 +36,7 @@ The `runtime` section of the `manifest.yml` file features a `name` property that
 3
 app:
   runtime:
-    name: nodejs22.x
+    name: nodejs24.x
 ```
 
 Adding the `runtime.name` property to the manifest file will not trigger a major upgrade. As such, deploying this change alone to production will automatically install it on all sites.
@@ -54,7 +54,7 @@ The Forge runtime allows your app to run directly on a secure VM environment. Yo
 At invocation time, Forge calls a context function. Each module receives different [request parameters](/platform/forge/function-reference/arguments/) based on
 the module type.
 
-![A code editor showing the invocation context](https://dac-static.atlassian.com/platform/forge/images/invocation-context.png?_v=1.5800.1617)
+![A code editor showing the invocation context](https://dac-static.atlassian.com/platform/forge/images/invocation-context.png?_v=1.5800.1739)
 
 You can also explicitly request a Forge function’s context details (for example, the
 [environments and versions](/platform/forge/environments-and-versions/) an app is executing in). See

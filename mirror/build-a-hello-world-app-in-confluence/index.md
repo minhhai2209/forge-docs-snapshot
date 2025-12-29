@@ -135,7 +135,7 @@ resources:
     path: src/frontend/index.jsx
 app:
   runtime:
-    name: nodejs22.x
+    name: nodejs24.x
     memoryMB: 256
     architecture: arm64
   id: '<your app id>'
@@ -173,7 +173,7 @@ With your app installed, it’s time to see the app on a page.
 
 Your hello world app is now installed into your development site. The app should display on the page like the image below.
 
-![The app displayed in a Confluence page](https://dac-static.atlassian.com/platform/forge/images/forge-getting-started-initial-state.png?_v=1.5800.1617)
+![The app displayed in a Confluence page](https://dac-static.atlassian.com/platform/forge/images/forge-getting-started-initial-state.png?_v=1.5800.1739)
 
 While your app is deployed to either a development or staging environment, `(development)` or
 `(staging)` will appear in your app title. This suffix is removed once you've
@@ -246,7 +246,7 @@ For important caveats on how `forge tunnel` works, see
 
 In the next tutorial, you'll learn how to make API calls to Confluence using Forge. This tutorial uses the `forge tunnel`, so make sure you are familiar with using this command.
 
-[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.1617)](/platform/forge/call-a-confluence-api)
+[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.1739)](/platform/forge/call-a-confluence-api)
 
 ## Developing for Atlassian Government Cloud
 

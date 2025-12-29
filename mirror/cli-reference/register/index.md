@@ -16,10 +16,8 @@ Usage: forge register [options] [name]
 ```
 1
 2
-3
---verbose                                      enable verbose mode
--s, --developer-space-id <Developer Space id>  specify the Developer Space id to use
--h, --help                                     display help for command
+--verbose   enable verbose mode
+-h, --help  display help for command
 ```
 
 ## Operation

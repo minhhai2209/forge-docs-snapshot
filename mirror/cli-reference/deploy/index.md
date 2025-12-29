@@ -26,8 +26,8 @@ Usage: forge deploy [options] [command]
 --verbose                        enable verbose mode
 -f, --no-verify                  disable pre-deployment checks
 -v, --major-version [version]    specify a major version to update (Preview)
--t, --tag <tag>                  (Preview) specify a build tag to deploy
-                                 (from forge build)
+-t, --tag <tag>                  specify a build tag to deploy (from
+                                 forge build)
 -e, --environment [environment]  specify the environment (see your default
                                  environment by running forge settings list)
 --non-interactive                run the command without input prompts

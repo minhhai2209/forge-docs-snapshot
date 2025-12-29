@@ -5,18 +5,23 @@ The `webtrigger` module invokes a function as the result of an HTTP request.
 Within your app, you can programatically obtain the URL to call the web trigger using the
 [web trigger runtime API](/platform/forge/runtime-reference/web-trigger-api).
 
-To manually obtain a web trigger URL for development purposes, perform the following steps:
+To manually obtain a web trigger URL, perform the following steps:
 
 1. Get the web trigger URL by running:
 
-   1. Select the installation for the corresponding site, Atlassian app, and Forge environment.
+   ```
+   1
+   forge webtrigger create
+   ```
+
+   1. Select the installation for the corresponding site and Atlassian app installation.
    2. Select the web trigger function that you want the URL for. The options come from the manifest.
 
    You'll be provided with a URL that you can use to invoke the web trigger. See
    [webtrigger](/platform/forge/cli-reference/webtrigger/) for more information about
-   the `forge webtrigger` command.
+   the `forge webtrigger create` command.
 
-   By default, the URLs provided by `forge webtrigger` have no built-in authentication. As such, anyone can use the URL (and, by extension, invoke its related function) without providing an authentication token. You should keep these URLs secure.
+   By default, the URLs provided by `forge webtrigger create` have no built-in authentication. As such, anyone can use the URL (and, by extension, invoke its related function) without providing an authentication token. You should keep these URLs secure.
 
    Alternatively, you can also implement authentication inside the trigger itself. For example, you can add a check for an `Authorization` header in the request and validate any provided token.
 

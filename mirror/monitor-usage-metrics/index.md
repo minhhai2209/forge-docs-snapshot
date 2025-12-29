@@ -16,18 +16,18 @@ Select your profile icon and toggle **Display local timezone** to convert the da
 
 4. To see a detailed breakdown of usage, select **View Details** for the specific resource you're interested in. You can use the date filter to customize the view, with the default setting showing data for the current calendar month.
 
-![Metrics screen](https://dac-static.atlassian.com/platform/forge/snippets/images/usage-metrics-costs-screen.png?_v=1.5800.1617)
+![Metrics screen](https://dac-static.atlassian.com/platform/forge/snippets/images/usage-metrics-costs-screen.png?_v=1.5800.1739)
 
-## View top site consumption
+## View site‑level resource usage for your app
 
-To view a breakdown of up to the top 20 installation sites for your app:
+To view a breakdown of all installation sites for your app with non-zero resource usage:
 
 1. Access the [developer console](https://developer.atlassian.com/console/myapps).
 2. Select the Forge app that you want to view metrics for.
 3. Select **Usage and costs** in the left menu, and then select the resource you want to view.
-4. Select **Site breakdown** to view a list of up to the top 20 sites with the highest consumption of a particular resource.
+4. Select **Site breakdown** to view a list of sites with non-zero consumption of a particular resource.
 
-![Metrics screen](https://dac-static.atlassian.com/platform/forge/snippets/images/usage-metrics-top-sites-light.png?_v=1.5800.1617)
+![Metrics screen](https://dac-static.atlassian.com/platform/forge/images/site_breakdown.png?_v=1.5800.1739)
 
 ## Compute Usage
 
@@ -175,7 +175,3 @@ Use these filters to refine your metrics:
 You can also bookmark the URL on your browser to access usage metrics based on specific filtering criteria for quick access. This is useful for repeated checks of the same metrics, saving time and effort in reapplying preferred filters.
 
 ## Limitations
-
-* Usage metrics are available for the last 60 days.
-* Site breakdown is available for up to the top 20 installations for the current month.
-* Site filters will display sites that have had at least one invocation within the past 31 days.

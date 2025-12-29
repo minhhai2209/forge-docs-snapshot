@@ -66,10 +66,10 @@ All long-running functions must be invoked by an [async event consumer](/platfor
 modules:
   consumer:
     - key: queue-consumer-key
+      # Name of the queue for which this consumer will be invoked
       queue: queue-consumer-name
-      resolver:
-        function: generate-report
-        method: generate-report-event-listener
+      # Function to be called with payload
+      function: generate-report
   function:
     - key: generate-report
       handler: generateReport.handler
@@ -80,12 +80,12 @@ modules:
 ### Notes
 
 * The function `generateReport.handler` will be invoked by the queue each time an event is pushed to it.
-* The consumer uses a [resolver](/platform/forge/runtime-reference/forge-resolver/#forge-resolver) which has function value `generate-report` and method value `generate-report-event-listener`. The function value must match the key under the `function` module. The method value must be defined on the resolver object in `generateReport.js` for the consumer to invoke it. This will be visible in the following section.
+* The consumer module uses a [function](https://developer.atlassian.com/platform/forge/function-reference/index/) which has function value `generate-report` and method value `generate-report-event-listener`. The function value must match the key under the `function` module. The function must be defined in `generateReport.js` for the consumer to invoke it. This will be visible in the following section.
 
 ## Step 3: Implement the long-running function
 
 **Create a new long-running function**:
-In the `src` directory, create a new file called `generateReport.js`. This is where the resolver and the long-running function is defined. The below long-running function will take 5 seconds to execute, however it can take up to 900 seconds until it gets timed out:
+In the `src` directory, create a new file called `generateReport.js`. This is where the long-running function is defined. The below long-running function will take 5 seconds to execute, however it can take up to 900 seconds until it gets timed out:
 
 ```
 ```
@@ -96,23 +96,19 @@ In the `src` directory, create a new file called `generateReport.js`. This is wh
 
 
 ```
-import Resolver from '@forge/resolver';
-import api, { route } from '@forge/api';
+import { AsyncEvent } from '@forge/events';
 
-const resolver = new Resolver();
-
-resolver.define('generate-report-event-listener', async ({ payload, context }) => {
+export const handler = async (event, context) => {
     try {
-        // This resolver function can take up to 900 seconds to complete
-        console.log("The resolver has been invoked");
-        const ret = await processGenerate(payload);
-        console.log(`The resolver returned with: ${JSON.stringify(ret)}`);
+        console.log("The handler has been invoked");
+        const ret = await processGenerate(event);
+        console.log(`The handler returned with: ${JSON.stringify(ret)}`);
         return ret;
     } catch (error) {
         console.error('Error in generate-report-event-listener:', error);
         throw error;
     }
-});
+};
 
 export const processGenerate = async (event) => {
     const { projectKey } = event;
@@ -192,9 +188,6 @@ const performCalculations = (issues) => {
         reportGeneratedAt: new Date().toISOString()
     };
 };
-
-// This variable is referenced to in the manifest
-export const handler = resolver.getDefinitions();
 ```
 ```
 
@@ -265,13 +258,11 @@ There are many ways to invoke a function which will push events to the consumer 
 
 
    ```
-   modules:
+   modules:    
      consumer:
        - key: queue-consumer-key
          queue: queue-consumer-name
-         resolver:
-           function: generate-report
-           method: generate-report-event-listener
+         function: generate-report
      trigger:
        - key: invoke-lrf-when-jira-issue-updated
          function: push-to-queue
@@ -300,7 +291,7 @@ There are many ways to invoke a function which will push events to the consumer 
 
 
    ```
-   npm install @forge/resolver @forge/events @forge/api
+   npm install @forge/events
    ```
    ```
 2. **Deploy your Forge app:**
@@ -328,8 +319,8 @@ INFO    14:30:01.146  ...  Pushing an event to the queue for project: DEMO
 INFO    14:30:01.589  ...  Queued job queue-consumer-name#...
 
 invocation: ... generateReport.handler
-INFO    14:30:02.506  ...  The resolver has been invoked
-INFO    14:30:04.508  ...  The resolver returned with: {"statusCode":200,"body":{"totalIssues":25,"statusBreakdown":{"Done":10,"In Progress":8,"To Do":7},"totalStoryPoints":42,"averageStoryPoints":3.5,"reportGeneratedAt":"2025-01-11T14:30:04.508Z"}}
+INFO    14:30:02.506  ...  The handler has been invoked
+INFO    14:30:04.508  ...  The handler returned with: {"statusCode":200,"body":{"totalIssues":25,"statusBreakdown":{"Done":10,"In Progress":8,"To Do":7},"totalStoryPoints":42,"averageStoryPoints":3.5,"reportGeneratedAt":"2025-01-11T14:30:04.508Z"}}
 ```
 ```
 

@@ -19,7 +19,7 @@ from the quick insert menu of the editor. The `macro` module is implemented by a
 
 On apps that use Custom UI, module content is displayed inside a [special Forge iframe](/platform/forge/custom-ui/iframe/) which has the [sandbox](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#sandbox) attribute configured. This means that HTML links (for example, `<a href="https://domain.tld/path">...</a>`) in this iframe won't be clickable. To make them clickable, use the [router.navigate](/platform/forge/custom-ui-bridge/router/#navigate) API from the `@forge/bridge` package.
 
-![Example of a macro](https://dac-static.atlassian.com/platform/forge/snippets/images/macro-example.png?_v=1.5800.1617)
+![Example of a macro](https://dac-static.atlassian.com/platform/forge/snippets/images/macro-example.png?_v=1.5800.1739)
 
 ## Manifest structure
 
@@ -43,6 +43,7 @@ modules {}
    ├─ icon (string) [Optional]
    ├─ categories (string[]) [Optional]
    ├─ description (string | i18n) [Optional]
+   ├─ hidden (boolean) [Optional]
    └─ config (boolean | {} | config object) [Optional]
      ├─ title (string | i18n) [Optional]
      ├─ resource (string) [Mandatory]
@@ -74,6 +75,7 @@ resources []
 | `icon` | `string` |  | The icon displayed next to the `title`.   For Custom UI and UI Kit apps, the `icon` property accepts a relative path from a declared resource. Alternatively, you can also use an absolute URL to a self-hosted icon. See [Icons](/platform/forge/custom-ui/#icons) for more information.  If no icon is provided, or if there's an issue preventing the icon from loading, a generic app icon will be displayed. |
 | `categories` | `string[]` |  | The categories of the macro. In Confluence, this is used for categorisation in the macro browser.    * `formatting` * `confluence-content` * `media` * `visuals` * `navigation` * `external-content` * `communication` * `reporting` * `admin` * `development` |
 | `description` | `string` or `i18n object` |  | The description of the macro. In Confluence, this is displayed in the editor.  The `i18n object` allows for translation. See [i18n object](#i18n-object). |
+| `hidden` | `boolean` |  | Defaults to `false`. When set to `true`, hides the macro from the quick insert menu and macro browser in Confluence. This prevents users from inserting new instances of the macro through these interfaces.  Existing macros on pages continue to render normally, even when this property is set to `true`. |
 | `config` | `boolean`, `{ function: string }`, `{ openOnInsert: boolean }` or `config object` |  | Set `config` to `true` if you are using [classic macro configuration](/platform/forge/add-configuration-to-a-macro/) without needing `openOnInsert`.  Set `config` with the `openOnInsert` property if you are using [classic macro configuration](/platform/forge/add-configuration-to-a-macro/) and need the `openOnInsert` feature. `openOnInsert` defaults to false.  Set `config` to the [config object](/platform/forge/manifest-reference/modules/macro/#config-object) if you are using a [custom macro configuration](/platform/forge/add-custom-configuration-to-a-macro/). |
 | `config.title` | `string` or `i18n object` |  | A title for the config. |
 | `config.resource` | `string` | Required if using [Custom UI](/platform/forge/custom-ui/) or the latest version of [UI Kit.](/platform/forge/ui-kit/) | A reference to the static `resources` entry that your context menu app wants to display. See [resources](/platform/forge/manifest-reference/resources) for more details. |
@@ -112,6 +114,7 @@ resources []
 | `config` | `object` | The configuration parameters saved in this macro. |
 | `macro.body` | [ADF document](/cloud/jira/platform/apis/document/structure/) | The rich text body of the macro. Available for `layout: bodied` macros only. |
 | `autoConvertLink` | `string` | The link pasted by a user that has matched an AutoConvert app. |
+| `template.id` | `string` | A string that represents the unique identifier of the template. This value is only available when the macro is in a saved template. |
 
 ## Macro autoconvert
 

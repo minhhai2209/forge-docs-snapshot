@@ -38,19 +38,11 @@ The following headers are added to requests to your remote.
 | `x-b3-spanid` | Yes | The SpanId is 64 or 128-bit in length and indicates the position of the current operation in the trace tree. The value should not be interpreted: it may or may not be derived from the value of the TraceId. |
 | `authorization` | Yes | The [Forge Invocation Token (FIT)](#the-forge-invocation-token--fit-) is passed as a bearer token. |
 | `x-forge-oauth-system` | No | The app system token. This is used to [call Atlassian app REST APIs](/platform/forge/apis-reference/product-rest-api-reference) from your remote backend. This header is included only if `endpoint.auth.appSystemToken` or `remote.auth.appSystemToken` is true in the app's manifest. |
-| `x-forge-oauth-user` | No | The app's user token. This is used to [call Atlassian app REST APIs](/platform/forge/apis-reference/product-rest-api-reference) from your remote backend on behalf of a user. This header is included only if `endpoint.auth.appUserToken` or `remote.auth.appSystemToken` is true in the app's manifest. |
+| `x-forge-oauth-user` | No | The app's user token. This is used to [call Atlassian app REST APIs](/platform/forge/apis-reference/product-rest-api-reference) from your remote backend on behalf of a user. This header is included only if your app manifest has the following configured:  * `endpoint.auth.appUserToken` or `remote.auth.appSystemToken` is `true`. * At lease one user scope required by your app is defined (for example, `read:confluence-content.summary` for Confluence apps). |
 
 # OAuth tokens must be treated as opaque
 
 OAuth tokens provided for FRC (and JWT claims within) need to be treated as Opaque and do not form part of any Published API specification. If your remote requires access to properties such as the cloudId, it can retrieve them by parsing the [Forge Invocation Token (FIT)](#the-forge-invocation-token--fit-).
-
-### Token expiry
-
-Both the `x-forge-oauth-system` and `x-forge-oauth-user` tokens are encoded in JWT. The `exp` claim in their payload represents the [expiration time](https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.4).
-
-* We recommend adding a [lifecycle events](/platform/forge/events-reference/life-cycle/#installation) trigger for the installation and upgrade events to ensure that your app starts off with a token available.
-* If your app needs to ensure the access token is periodically refreshed, consider utilizing a [scheduled trigger](/platform/forge/remote/scheduled-triggers/). There is no endpoint for proactively refreshing the access token.
-* As there is no lifecycle event sent upon app uninstallation yet ([FRGE-1246](https://ecosystem.atlassian.net/browse/FRGE-1246)), Atlassian app APIs returning 4xx can indicate the app is no longer installed on the tenant. You can infer the app was uninstalled if it stopped receiving a scheduled trigger.
 
 As an example:
 

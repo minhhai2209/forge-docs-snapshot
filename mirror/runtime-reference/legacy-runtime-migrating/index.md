@@ -149,7 +149,7 @@ app:
 ```
 
 Once you’re ready to migrate your app to the [latest runtime version](/platform/forge/runtime-reference/),
-set `name` to `nodejs22.x` then re-deploy your app:
+set `name` to `nodejs24.x` then re-deploy your app:
 
 ```
 ```
@@ -163,7 +163,7 @@ set `name` to `nodejs22.x` then re-deploy your app:
 app:
   id: "ari:cloud:ecosystem::app/406d303d-0393-4ec4-ad7c-1435be94583a"
   runtime:
-    name: nodejs22.x
+    name: nodejs24.x
 ```
 ```
 

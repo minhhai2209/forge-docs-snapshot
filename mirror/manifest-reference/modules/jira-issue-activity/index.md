@@ -9,7 +9,7 @@ but not the old issue view.
 For more information, see the
 [IssueActivity](/platform/forge/ui-kit-components/jira/issue-activity/) component documentation.
 
-![Example of an Issue activity](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-activity-module-demo.gif?_v=1.5800.1617)
+![Example of an Issue activity](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-activity-module-demo.gif?_v=1.5800.1739)
 
 ## Manifest example
 
@@ -88,7 +88,7 @@ Use the [useProductContext](/platform/forge/ui-kit/hooks/use-product-context/) h
 
 ## Events
 
-Apps can receive frontend events, [emitted by the product](/platform/forge/events-reference/product_events/), that will notify your app when an issue has been changed. These events are triggered when an issue is updated or commented on, and is only available for Jira issue view modules.
+Apps can receive frontend events that will notify your app when an issue has been changed. These events are triggered when an issue is updated or commented on, and are only available for Jira issue view modules.
 
 ```
 ```
@@ -138,7 +138,5 @@ However, if you have multiple issue view modules in your app, you should use the
 
 ### Limitations
 
-* UI Kit 1 apps don’t have an event system in place and so aren’t supported.
 * There is a delay between the moment the issue is modified and when the event is emitted. It might take up to a few seconds.
-* We can’t guarantee that all issue change events will be received by Jira. Therefore, the issue view may sometimes remain stale.
 * When the issue is modified by the user who is currently viewing it, it will not be refreshed. This is because we assume the change was made by that same user and there is no need for an update.

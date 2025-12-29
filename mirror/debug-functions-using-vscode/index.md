@@ -29,13 +29,13 @@ Forge project. Detailed VS Code instructions are available
 1. Open your Forge app project in VS Code, then open the
    **Run and Debug** view from the activity sidebar.
 
-   ![Image of the Run and Debug icon view from the activity sidebar](https://dac-static.atlassian.com/platform/forge/images/debug-functions-tutorial/run-and-debug-ui.png?_v=1.5800.1617)
+   ![Image of the Run and Debug icon view from the activity sidebar](https://dac-static.atlassian.com/platform/forge/images/debug-functions-tutorial/run-and-debug-ui.png?_v=1.5800.1739)
 2. Click on **create a launch.json file**.
 
-   ![Image of where to create a launch.json file in Run and Debug icon view](https://dac-static.atlassian.com/platform/forge/images/debug-functions-tutorial/create-launch-file.png?_v=1.5800.1617)
+   ![Image of where to create a launch.json file in Run and Debug icon view](https://dac-static.atlassian.com/platform/forge/images/debug-functions-tutorial/create-launch-file.png?_v=1.5800.1739)
 3. Select **Node.js** as your debug environment. This will create a `launch.json` file in a `.vscode` folder in your base directory.
 
-   ![Image of selecting Node.js as debug environment](https://dac-static.atlassian.com/platform/forge/images/debug-functions-tutorial/select-node-environment.png?_v=1.5800.1617)
+   ![Image of selecting Node.js as debug environment](https://dac-static.atlassian.com/platform/forge/images/debug-functions-tutorial/select-node-environment.png?_v=1.5800.1739)
 4. Replace the contents of the launch.json with the following example:
 
    You can change the `port` to whichever port you'd prefer to use but you must include `"sourceMaps": true`.
@@ -110,17 +110,17 @@ Start debugging your Forge app by starting the [Forge tunnel](/platform/forge/tu
    ```
 3. Click on the play button in the **Run and Debug** panel to start debugging.
 
-   ![Image of play icon in Run and Debug panel](https://dac-static.atlassian.com/platform/forge/images/debug-functions-tutorial/play-run-debug.png?_v=1.5800.1617)
+   ![Image of play icon in Run and Debug panel](https://dac-static.atlassian.com/platform/forge/images/debug-functions-tutorial/play-run-debug.png?_v=1.5800.1739)
 
 ## Add a breakpoint
 
 1. Add a breakpoint to a line of code where you want the execution to pause. This will allow you to check things like variables and application state.
 
-   ![Image of adding a breakpoint on a line of code](https://dac-static.atlassian.com/platform/forge/images/debug-functions-tutorial/add-breakpoint-line.png?_v=1.5800.1617)
+   ![Image of adding a breakpoint on a line of code](https://dac-static.atlassian.com/platform/forge/images/debug-functions-tutorial/add-breakpoint-line.png?_v=1.5800.1739)
 2. Refresh the page where your Forge app is rendered so that the function is invoked. It will now pause at the breakpoint.
 
-   ![Image of adding a breakpoint on a line of code](https://dac-static.atlassian.com/platform/forge/images/debug-functions-tutorial/breakpoint-pause.png?_v=1.5800.1617)
+   ![Image of adding a breakpoint on a line of code](https://dac-static.atlassian.com/platform/forge/images/debug-functions-tutorial/breakpoint-pause.png?_v=1.5800.1739)
 3. Here you can check the values of different variables like the `context` object:
 
-   ![Image of checking context object for values at breakpoint](https://dac-static.atlassian.com/platform/forge/images/debug-functions-tutorial/context-check-values.png?_v=1.5800.1617)
+   ![Image of checking context object for values at breakpoint](https://dac-static.atlassian.com/platform/forge/images/debug-functions-tutorial/context-check-values.png?_v=1.5800.1739)
 4. Continue stepping through the function when ready.

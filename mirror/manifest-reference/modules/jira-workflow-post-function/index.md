@@ -17,7 +17,7 @@ Post functions carry out any additional processing required after a Jira workflo
 * updating an issue's fields
 * adding a comment to an issue
 
-A function must be declared in the manifest and configured for a given post function module. It is then invoked after
+A function or endpoint must be declared in the manifest and configured for a given post function module. It is then invoked after
 every transition to which the post function has been added, with the [post function event](/platform/forge/events-reference/jira/#run-post-function-event) as an
 argument.
 If multiple post functions are added to a transition, the execution order is not guaranteed.
@@ -25,9 +25,9 @@ If multiple post functions are added to a transition, the execution order is not
 ## Lambda function
 
 Whenever an issue is transitioned and an app-registered Forge workflow post function is assigned to the transition,
-the function declared in the manifest is executed.
+the function or endpoint declared in the manifest is executed.
 
-A function must be declared in the manifest and configured for a given post function. It is then invoked after every
+A function or endpoint must be declared in the manifest and configured for a given post function. It is then invoked after every
 transition to which the post function has been added. When the function is invoked, an argument is passed to it with the
 following information about the transition.
 
@@ -38,6 +38,7 @@ a retry for a function invocation by returning an `InvocationError` object, defi
 ### Payload
 
 The payload is the same payload included in [post function event](/platform/forge/events-reference/jira/#run-post-function-event).
+For endpoint handlers, the `context` field is not included in the payload; instead, context information is provided via the `authorization` header (forge invocation token).
 Due to the data sent to the function from Jira, it is necessary to include OAuth scopes in the app manifest: `read:jira-work` and `manage:jira-configuration`.
 
 ## Fetching additional data
@@ -237,6 +238,36 @@ The new workflow editor supports this module in the same way. You can use same C
 If you want to detect whether the new editor is being used, check for whether the key `extension.isNewEditor` is `true` in the object returned from the [`view.getContext` function](/platform/forge/custom-ui-bridge/view/#getcontext). This key will be unset in the old workflow editor.
 
 The context will also include the workflow ID and project ID for team-managed workflows in the new editor.
+Workflow name and an additional field to describe the current transition's details under `transitionContext` will also be included in the context.
+
+An example of `transitionContext`:
+
+```
+```
+1
+2
+```
+
+
+
+```
+{
+  "id": "10", // transition id, can be outdated if the transition hasn't been saved yet
+  "from": {
+    "id": "400", // can be null if the status hasn't been saved yet
+    "name": "Building",
+    "statusCategory": "IN_PROGRESS",
+    "description": "The issue is being actively worked on."
+  },
+  "to": {
+    "id": "401", // can be null if the status hasn't been saved yet
+    "name": "Build Broken",
+    "statusCategory": "IN_PROGRESS",
+    "description": "The source code committed for this issue has possibly broken the build."
+  }
+}
+```
+```
 
 The maximum length of configuration saved via the new editor is limited to 32KB.
 
@@ -267,6 +298,7 @@ const projectId = context.extension.scopedProjectId;
 | `description` | `string` or `i18n object` | Yes | The description of the post function displayed when adding the post function to a transition.  The `i18n object` allows for translation. See [i18n object](#i18n-object). |
 |
 | `function` | `string` | Required if using [triggers](/platform/forge/manifest-reference/modules/trigger/). | A reference to the function module that defines the module. |
+| `endpoint` | `string` | Required if no `function` is specified. | A reference to the `endpoint` that specifies the remote backend that receives the event if you're using [Forge Remote](/platform/forge/remote) to integrate with a remote backend. |
 | `projectTypes` | `'company-managed'|'team-managed'[]` | No | Specifies which project types can use this workflow rule.  Options:     * `'company-managed'`: Available only in company-managed projects * `'team-managed'`: Available only in team-managed projects * `['company-managed', 'team-managed']`: Available in both project types   By default, workflow rules are enabled only for company-managed projects (i.e. `['company-managed']`) |
 | `configurationDescription` | `{ expression: string }` | No | Provides a dynamic summary of the rule's configuration, shown in the workflow editor.  Set this property to an object with an `expression` field containing a Jira expression that returns a string.  The expression can reference the `config` context variable.  If not set, or if the expression returns `null` or an empty string, the static description property is used instead. |
 | `create` | `{ resource: string }` | No | A reference to the static `resources` entry that allows you to configure the post function on creation. See [Resources](/platform/forge/manifest-reference/resources) for more details. |

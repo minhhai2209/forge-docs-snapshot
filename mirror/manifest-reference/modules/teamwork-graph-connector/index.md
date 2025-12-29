@@ -6,14 +6,14 @@ EAPs are offered to selected users for testing and feedback purposes. We are cur
 a select group of EAP participants to get their apps production-ready and available for publishing on Marketplace.
 
 You must be part of the Forge connector EAP to use this module and the
-[Connector SDK](/platform/teamwork-graph/connector-sdk/overview/). You can express interest in
+[Connector SDK](/platform/teamwork-graph/connector-reference/overview/). You can express interest in
 joining this EAP through [this form](https://ecosystem.atlassian.net/servicedesk/customer/portal/1040/group/3496/create/18836).
 
 The `graph:connector` module allows your app to import data from external tools into Atlassian's Teamwork Graph.
 Once the data is integrated into the Graph, it becomes accessible across various Atlassian experiences, including
 Search, Rovo Chat, Rovo Agents, and Atlassian Analytics.
 
-This module works in conjunction with the [Teamwork Graph connector SDK](/platform/teamwork-graph/connector-sdk/overview/).
+This module works in conjunction with the [Teamwork Graph connector SDK](/platform/teamwork-graph/connector-reference/overview/).
 To install, run:
 
 ```
@@ -164,12 +164,12 @@ The Connected apps screen can be accessed within Atlassian Administration by nav
 After selecting the app, all available Teamwork Graph connectors will be shown
 in the **Connections** tab.
 
-![Connections tab within Marketplace app showing one Teamwork Graph connector that has not yet been configured](https://dac-static.atlassian.com/platform/forge/images/teamwork-graph/teamwork-graph-connector-not-configured.svg?_v=1.5800.1617)
+![Connections tab within Marketplace app showing one Teamwork Graph connector that has not yet been configured](https://dac-static.atlassian.com/platform/forge/images/teamwork-graph/teamwork-graph-connector-not-configured.svg?_v=1.5800.1739)
 
 Admins must configure the connector before it can start providing data to Teamwork Graph. To
 do this, the admin will click the **Connect** button, which opens a configuration modal.
 
-![Basic modal for configuring Teamwork Graph connector](https://dac-static.atlassian.com/platform/forge/images/teamwork-graph/teamwork-graph-connector-modal.svg?_v=1.5800.1617)
+![Basic modal for configuring Teamwork Graph connector](https://dac-static.atlassian.com/platform/forge/images/teamwork-graph/teamwork-graph-connector-modal.svg?_v=1.5800.1739)
 
 ### Configuration details
 

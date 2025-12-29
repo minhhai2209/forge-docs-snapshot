@@ -88,16 +88,14 @@ https://<your-site>.atlassian.net/forge-apps/a/<app-id>/e/<forge-environment-id>
 
 **Where to find each value:**
 
-* **`<your-site>`**: Your Confluence site name
+* **`<your-site>`**: Your site name
 * **`<app-id>`**: The UUID from your `app.id` in `manifest.yml` (if in ARI format like `ari:cloud:ecosystem::app/UUID`, use only the UUID section)
 * **`<forge-environment-id>`**: The UUID of the environment that the app is installed on.
-  Not required for accessing apps installed on production.
-  If omitting, you will need to omit the `/e/<forge-environment-id>` section entirely.
-  For apps installed on other environments, run `forge environments list` to find the UUID of the desired environment.
-* **`<route-prefix>`**: Defined in your manifest under `confluence:fullPage` → `routePrefix`
+  Run `forge environments list` to find the UUID of the desired environment.
+* **`<route-prefix>`**: Defined in your manifest under `routePrefix`
 * **`<app-route>`**: Optional - if your app code contains routing, it will appear under the `<app-route>` section of the URL.
 
-**Example (with environment ID):**
+**Example:**
 
 ```
 ```
@@ -111,24 +109,3 @@ https://<your-site>.atlassian.net/forge-apps/a/<app-id>/e/<forge-environment-id>
 https://example.atlassian.net/forge-apps/a/21e590df-79e6-40dd-9ee4-ba2c7b678f26/e/9f699e8b-33f1-4fa7-bd48-c5fdc44fa4c2/r/ui-kit
 ```
 ```
-
-**Example (production, without environment ID):**
-
-```
-```
-1
-2
-```
-
-
-
-```
-https://example.atlassian.net/forge-apps/a/21e590df-79e6-40dd-9ee4-ba2c7b678f26/r/ui-kit
-```
-```
-
-## Example
-
-[Dashboard app
-
-This tutorial demonstrates how to build a full-page Forge app for Confluence with a dashboard featuring interactive bar charts, period selection buttons, and Confluence API integration. Includes both UI Kit and Custom UI implementations.](/platform/forge/build-a-dashboard-app-with-the-full-page-module/)

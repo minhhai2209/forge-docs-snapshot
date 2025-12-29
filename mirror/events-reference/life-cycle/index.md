@@ -137,6 +137,7 @@ An event with the name `avi:forge:upgraded:app` is sent when an installed app on
 | upgraderAccountId? | `string` | [Optional] The ID of the user who upgraded the Forge app.     In Jira and Confluence apps, use the Get user operation of [Jira](https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-users/#api-rest-api-3-user-get) or [Confluence](https://developer.atlassian.com/cloud/confluence/rest/v1/api-group-users/#api-wiki-rest-api-user-get) REST APIs to retrieve user information.     In Bitbucket apps, use [requestGraph](/platform/forge/apis-reference/fetch-api-product.requestgraph) and [user query](/platform/atlassian-graphql-api/graphql/#identity_user) to retrieve user information. |
 | app | `App` | An object describing the Forge app. |
 | environment? | `Environment` | [Optional] An object containing the Forge app's environment id. |
+| permissions | `Permissions` | [Optional] An object containing the scopes and external egress permissions that the app has access to. |
 
 ### Type reference
 
@@ -158,6 +159,19 @@ interface App {
 
 interface Environment {
   id: string;
+}
+
+interface Permissions {
+  scopes?: string[];
+  external?: {
+      fetch?: {
+          client?: string[];
+          backend?: string[];
+      }
+      images?: string[];
+      /* Plus all the other external permission types from the manifest */
+      /* See: https://developer.atlassian.com/platform/forge/manifest-reference/permissions/#external-permissions */
+  }
 }
 ```
 ```

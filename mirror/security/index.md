@@ -10,7 +10,7 @@ Atlassian customers and admins only install apps they can trust. A key part of b
 
 ## Security considerations
 
-It's important to consider building a Forge app that is [secure by design](https://blog.developer.atlassian.com/secure-by-design-tips-and-benefits-for-app-developers/). This means your app's infrastructure is ready to handle the security needs of your target customer.
+It's important to consider building a Forge app that is [secure by design](https://www.atlassian.com/blog/it-teams/secure-by-design-tips-and-benefits-for-app-developers). This means your app's infrastructure is ready to handle the security needs of your target customer.
 
 When your app is secure by design, it will:
 
@@ -54,7 +54,7 @@ from the environment in which they execute. By running apps in isolated environm
 
 To understand how this works in detail, see the diagram and notes on the Forge app environment below:
 
-![Forge app environment diagram](https://dac-static.atlassian.com/platform/forge/images/forge-app-environment-diagram.svg?_v=1.5800.1617)
+![Forge app environment diagram](https://dac-static.atlassian.com/platform/forge/images/forge-app-environment-diagram.svg?_v=1.5800.1739)
 
 * App bundle: The app bundle is the packaged app code.
 * Forge runtime: Forge apps run in AWS as lambdas. [AWS Lambda](https://aws.amazon.com/lambda/features/)

@@ -75,7 +75,7 @@ The following flows are ready for testing as part of this Preview:
 
 **Important considerations:**
 
-* **Customer release (GA)** is planned for end of January 2025.
+* **Customer release (GA)** is planned for end of January 2026.
 * **Until GA:** We recommend keeping Marketplace apps **private** as customer-facing changes are not yet available (admins currently only see the required app in the consent screen when installing).
 * **Migrating existing apps:** See our [migration guidelines](/platform/forge/migrating-a-forge-app-to-support-multiple-atlassian-apps/) for best practices.
 
@@ -190,6 +190,13 @@ app:
 ```
 ```
 
+### Limitations and considerations
+
+Forge apps that are compatible with multiple Atlassian apps are subject to the following constraints:
+
+* They can only be listed on Marketplace as paid apps; free listings are not supported.
+* Of the supported Atlassian apps, only Jira or Confluence can be set as the required Atlassian app; Compass can only be added as an optional app.
+
 ### Tutorials
 
 To learn how to build an Forge app that is compatible with multiple Atlassian apps, or to change
@@ -200,6 +207,7 @@ the compatibility of an existing app, check out these tutorials:
 | Question | Answer |
 | --- | --- |
 | Once I have added support for more Atlassian apps, can I change my app back to only support one Atlassian app? | This is possible if the app has no existing installations. |
+| Do customers need to have the required Atlassian app to install my app? | Yes. Customers must install your app in the required Atlassian app first. If they don't have the required Atlassian app, they won't be able to install your app. |
 | Can I change the required Atlassian app? | You can only change or remove the required Atlassian app if the app has no existing installations. |
 | Is adding or removing a required Atlassian app a major version change? | No. Any changes to the required Atlassian app is a minor version change unless elevated permissions or egress are added. |
 | Can I have more than one required Atlassian app? | No. You can only have one required Atlassian app, which is defined in the `manifest.yml` file. |

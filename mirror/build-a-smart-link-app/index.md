@@ -4,7 +4,7 @@ In this tutorial, you'll learn how to build a Forge app that generates custom [S
 cover the fundamentals of app setup and generate an example Smart Link. Note, that this tutorial does not cover
 integration with external systems.
 
-![](https://dac-static.atlassian.com/platform/forge/snippets/images/graph/screenshot.png?_v=1.5800.1617)
+![](https://dac-static.atlassian.com/platform/forge/snippets/images/graph/screenshot.png?_v=1.5800.1739)
 
 ## Before you begin
 
@@ -100,7 +100,7 @@ modules:
       handler: index.run
 app:
   runtime:
-    name: nodejs22.x
+    name: nodejs24.x
     memoryMB: 256
     architecture: arm64
   id: <your app id>

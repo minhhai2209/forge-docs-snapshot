@@ -235,7 +235,7 @@ The `fetch` section has the following configurations:
 | Configuration | Description |
 | --- | --- |
 | `backend` | The `fetch.backend` list declares which external domains your Forge functions can talk to. This applies to both Custom UI resolvers and any other Forge functions. |
-| `client` | The `fetch.client` list declares which external sources are allowed for an app's `connect-src` policy. |
+| `client` | The `fetch.client` list declares which external sources are allowed for an app's `connect-src` policy. Additionally, links included in the `fetch.client` list do not display the external link warning popup when opened with [router.navigate](/platform/forge/custom-ui-bridge/router/#navigate). |
 
 There are two ways to declare an external URL for your fetch back end:
 
@@ -258,10 +258,10 @@ allows access to any URL on that domain.
 
 ```
 permissions:
-external:
-  fetch:
-    backend:
-      - "*.example-dev.com"
+  external:
+    fetch:
+      backend:
+        - "*.example-dev.com"
 ```
 ```
 
@@ -275,10 +275,10 @@ external:
 
 ```
 permissions:
-external:
-  fetch:
-    client:
-      - "*.example-dev.com"
+  external:
+    fetch:
+      client:
+        - "*.example-dev.com"
 ```
 ```
 
@@ -294,12 +294,12 @@ external:
 
 ```
 permissions:
-external:
-  fetch:
-    backend:
-      - address: "*.example-dev.com"
-        category: analytics
-        inScopeEUD: false
+  external:
+    fetch:
+      backend:
+        - address: "*.example-dev.com"
+          category: analytics
+          inScopeEUD: false
 ```
 ```
 
@@ -313,12 +313,12 @@ external:
 
 ```
 permissions:
-external:
-  fetch:
-    client:
-      - address: "*.example-dev.com"
-        category: analytics
-        inScopeEUD: false
+  external:
+    fetch:
+      client:
+        - address: "*.example-dev.com"
+          category: analytics
+          inScopeEUD: false
 ```
 ```
 
@@ -342,10 +342,10 @@ to its *key* in your `fetch.backend` or `fetch.client` list.
 
 ```
 permissions:
-external:
-  fetch:
-    backend:
-      - remote: remote-backend
+  external:
+    fetch:
+      backend:
+        - remote: remote-backend
 remotes:
   - key: remote-backend
     baseUrl: "https://example-dev.io"

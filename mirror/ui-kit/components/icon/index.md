@@ -26,9 +26,9 @@ An icon is a visual representation of a command, device, directory, or common ac
 | `glyph` | `"attachment" | "image" | "office-building" | "stopwatch" | ...` | Yes | Name of the icon to be rendered. |
 | `label` | `string` | Yes | Text used to describe what the icon is in context. A label is needed when there is no pairing visible text next to the icon. An empty string marks the icon as presentation only. |
 | `color` | `string` | No | Color of the icon. Inherits the current font color by default. |
-| `primaryColor` | `string` | No | The `primaryColor` prop has been [deprecated](link%20to%20changelog) and will be removed on December 22, 2025. Please use the `color` prop instead. |
-| `secondaryColor` | `string` | No | The `secondaryColor` prop has been [deprecated](link%20to%20changelog) and will be removed on December 22, 2025. Please use the [Box](/platform/forge/ui-kit/components/box) component with `backgroundColor` instead. |
-| `size` | `"small" | "medium"` | No | The `"large"` size has been [deprecated](link%20to%20changelog) and will be removed on December 22, 2025.  There are two icon sizes – `small` (16px) and `medium` (24px). This pixel size refers to the canvas the icon sits on, not the size of the icon shape itself. |
+| `primaryColor` | `string` | No | The `primaryColor` prop has been [deprecated](https://developer.atlassian.com/changelog/#CHANGE-2647) and will be removed on December 22, 2025. Please use the `color` prop instead. |
+| `secondaryColor` | `string` | No | The `secondaryColor` prop has been [deprecated](https://developer.atlassian.com/changelog/#CHANGE-2647) and will be removed on December 22, 2025. Please use the [Box](/platform/forge/ui-kit/components/box) component with `backgroundColor` instead. |
+| `size` | `"small" | "medium"` | No | The `"large"` size has been [deprecated](https://developer.atlassian.com/changelog/#CHANGE-2647) and will be removed on December 22, 2025.  There are two icon sizes – `small` (16px) and `medium` (24px). This pixel size refers to the canvas the icon sits on, not the size of the icon shape itself. |
 
 ## Examples
 
@@ -38,7 +38,7 @@ Valid icons can be found in the [Atlassian Design System Icon Library](https://a
 
 Extract the `core` segment of the icon's import to get the valid icon name to pass into `glyph`. For example, the icon name for `icon/core/thumbs-up` is `thumbs-up`.
 
-![Example image of default icon](https://dac-static.atlassian.com/platform/forge/ui-kit/images/icon/icon-default.png?_v=1.5800.1617)
+![Example image of default icon](https://dac-static.atlassian.com/platform/forge/ui-kit/images/icon/icon-default.png?_v=1.5800.1739)
 
 ```
 ```
@@ -68,7 +68,7 @@ If an icon doesn’t have an existing text label or accessible text, provide a c
 
 If an icon is associated with a button or element that has a text label, you don't need to provide alternative text. The `label` of the button or element clarifies the icon's meaning.
 
-![Example image of icon with label](https://dac-static.atlassian.com/platform/forge/ui-kit/images/icon/icon-label.png?_v=1.5800.1617)
+![Example image of icon with label](https://dac-static.atlassian.com/platform/forge/ui-kit/images/icon/icon-label.png?_v=1.5800.1739)
 
 ```
 ```
@@ -129,7 +129,7 @@ The color of the icon can be declared using the `color` property. The icon's col
 
 Allowed `color` values include any design token with the prefix `color.` found under [Atlassian Design System design tokens](https://atlassian.design/components/tokens/all-tokens).
 
-![Example image of color icon](https://dac-static.atlassian.com/platform/forge/ui-kit/images/icon/icon-color.png?_v=1.5800.1617)
+![Example image of color icon](https://dac-static.atlassian.com/platform/forge/ui-kit/images/icon/icon-color.png?_v=1.5800.1739)
 
 ```
 ```
@@ -158,7 +158,7 @@ The `large` size is now [deprecated](https://developer.atlassian.com/changelog/#
 
 #### Small
 
-![Example image of small icon](https://dac-static.atlassian.com/platform/forge/ui-kit/images/icon/icon-sizing-small.png?_v=1.5800.1617)
+![Example image of small icon](https://dac-static.atlassian.com/platform/forge/ui-kit/images/icon/icon-sizing-small.png?_v=1.5800.1739)
 
 ```
 ```
@@ -179,7 +179,7 @@ const IconSmall = () => {
 
 #### Medium (default)
 
-![Example image of medium icon](https://dac-static.atlassian.com/platform/forge/ui-kit/images/icon/icon-sizing-medium.png?_v=1.5800.1617)
+![Example image of medium icon](https://dac-static.atlassian.com/platform/forge/ui-kit/images/icon/icon-sizing-medium.png?_v=1.5800.1739)
 
 ```
 ```

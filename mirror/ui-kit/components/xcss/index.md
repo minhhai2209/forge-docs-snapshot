@@ -20,7 +20,7 @@ XCSS is a styling API that utilizes [Atlassian Design Tokens](https://atlassian.
 
 ### Supported components
 
-XCSS support is currently available on the [Box](/platform/forge/ui-kit/components/box/) component.
+XCSS support is currently available on the [Box](/platform/forge/ui-kit/components/box/) and [Pressable](/platform/forge/ui-kit/components/pressable/) components.
 
 ### Supported properties
 
@@ -54,31 +54,31 @@ and referring to [accessibility guidelines](https://atlassian.design/foundations
 
 | Name | Type | Allowed values | Description |
 | --- | --- | --- | --- |
-| `borderRadius` | string | `'border.radius'` | Set border radius of an element's side e.g. bottom-left corner. |
-| `borderBottomLeftRadius` | string | `'border.radius'` | Set border radius of an element's bottom-left corner. |
-| `borderBottomRightRadius` | string | `'border.radius'` | Set border radius of an element's bottom-right corner. |
-| `borderTopLeftRadius` | string | `'border.radius'` | Set border radius of an element's top-left corner. |
-| `borderTopRightRadius` | string | `'border.radius'` | Set border radius of an element's top-right corner. |
-| `borderEndEndRadius` | string | `'border.radius'` | Set a logical border radius on an element, which maps to a physical border radius that depends on the element's writing-mode, direction, and text-orientation. |
-| `borderEndStartRadius` | string | `'border.radius'` | Set a logical border radius on an element, which maps to a physical border radius depending on the element's writing-mode, direction, and text-orientation. |
-| `borderStartEndRadius` | string | `'border.radius'` | Set a logical border radius on an element, which maps to a physical border radius depending on the element's writing-mode, direction, and text-orientation. |
-| `borderStartStartRadius` | string | `'border.radius'` | Set a logical border radius on an element, which maps to a physical border radius that depends on the element's writing-mode, direction, and text-orientation. |
+| `borderRadius` | string | [Border radius tokens](https://atlassian.design/components/tokens/all-tokens#radius) | Set border radius of an element's side e.g. bottom-left corner. |
+| `borderBottomLeftRadius` | string | [Border radius tokens](https://atlassian.design/components/tokens/all-tokens#radius) | Set border radius of an element's bottom-left corner. |
+| `borderBottomRightRadius` | string | [Border radius tokens](https://atlassian.design/components/tokens/all-tokens#radius) | Set border radius of an element's bottom-right corner. |
+| `borderTopLeftRadius` | string | [Border radius tokens](https://atlassian.design/components/tokens/all-tokens#radius) | Set border radius of an element's top-left corner. |
+| `borderTopRightRadius` | string | [Border radius tokens](https://atlassian.design/components/tokens/all-tokens#radius) | Set border radius of an element's top-right corner. |
+| `borderEndEndRadius` | string | [Border radius tokens](https://atlassian.design/components/tokens/all-tokens#radius) | Set a logical border radius on an element, which maps to a physical border radius that depends on the element's writing-mode, direction, and text-orientation. |
+| `borderEndStartRadius` | string | [Border radius tokens](https://atlassian.design/components/tokens/all-tokens#radius) | Set a logical border radius on an element, which maps to a physical border radius depending on the element's writing-mode, direction, and text-orientation. |
+| `borderStartEndRadius` | string | [Border radius tokens](https://atlassian.design/components/tokens/all-tokens#radius) | Set a logical border radius on an element, which maps to a physical border radius depending on the element's writing-mode, direction, and text-orientation. |
+| `borderStartStartRadius` | string | [Border radius tokens](https://atlassian.design/components/tokens/all-tokens#radius) | Set a logical border radius on an element, which maps to a physical border radius that depends on the element's writing-mode, direction, and text-orientation. |
 
 #### Border width
 
 | Name | Type | Allowed values | Description |
 | --- | --- | --- | --- |
-| `borderWidth` | string | `'border.width'` | Set the width of an element's border. |
-| `borderBlockWidth` | string | `'border.width'` | Set the width of the logical block borders of an element, which maps to a physical border width depending on the element's writing mode, directionality, and text orientation. |
-| `borderBlockEndWidth` | string | `'border.width'` | Set the width of the logical block-end border of an element, which maps to a physical border width depending on the element's writing mode, directionality, and text orientation. |
-| `borderBlockStartWidth` | string | `'border.width'` | Set the width of the logical block-start border of an element, which maps to a physical border width depending on the element's writing mode, directionality, and text orientation. |
-| `borderBottomWidth` | string | `'border.width'` | Set the width of the bottom border of an element. |
-| `borderInlineWidth` | string | `'border.width'` | Set the width of the logical inline borders of an element, which maps to a physical border width depending on the element's writing mode, directionality, and text orientation. |
-| `borderInlineEndWidth` | string | `'border.width'` | Set the width of the logical inline-end border of an element, which maps to a physical border width depending on the element's writing mode, directionality, and text orientation. |
-| `borderInlineStartWidth` | string | `'border.width'` | Set the width of the logical inline-start border of an element, which maps to a physical border width depending on the element's writing mode, directionality, and text orientation. |
-| `borderLeftWidth` | string | `'border.width'` | Set the width of the left border of an element. |
-| `borderRightWidth` | string | `'border.width'` | Set the width of the right border of an element. |
-| `borderTopWidth` | string | `'border.width'` | Set the width of the top border of an element. |
+| `borderWidth` | string | [Border width tokens](https://atlassian.design/components/tokens/all-tokens#border-width) | Set the width of an element's border. |
+| `borderBlockWidth` | string | [Border width tokens](https://atlassian.design/components/tokens/all-tokens#border-width) | Set the width of the logical block borders of an element, which maps to a physical border width depending on the element's writing mode, directionality, and text orientation. |
+| `borderBlockEndWidth` | string | [Border width tokens](https://atlassian.design/components/tokens/all-tokens#border-width) | Set the width of the logical block-end border of an element, which maps to a physical border width depending on the element's writing mode, directionality, and text orientation. |
+| `borderBlockStartWidth` | string | [Border width tokens](https://atlassian.design/components/tokens/all-tokens#border-width) | Set the width of the logical block-start border of an element, which maps to a physical border width depending on the element's writing mode, directionality, and text orientation. |
+| `borderBottomWidth` | string | [Border width tokens](https://atlassian.design/components/tokens/all-tokens#border-width) | Set the width of the bottom border of an element. |
+| `borderInlineWidth` | string | [Border width tokens](https://atlassian.design/components/tokens/all-tokens#border-width) | Set the width of the logical inline borders of an element, which maps to a physical border width depending on the element's writing mode, directionality, and text orientation. |
+| `borderInlineEndWidth` | string | [Border width tokens](https://atlassian.design/components/tokens/all-tokens#border-width) | Set the width of the logical inline-end border of an element, which maps to a physical border width depending on the element's writing mode, directionality, and text orientation. |
+| `borderInlineStartWidth` | string | [Border width tokens](https://atlassian.design/components/tokens/all-tokens#border-width) | Set the width of the logical inline-start border of an element, which maps to a physical border width depending on the element's writing mode, directionality, and text orientation. |
+| `borderLeftWidth` | string | [Border width tokens](https://atlassian.design/components/tokens/all-tokens#border-width) | Set the width of the left border of an element. |
+| `borderRightWidth` | string | [Border width tokens](https://atlassian.design/components/tokens/all-tokens#border-width) | Set the width of the right border of an element. |
+| `borderTopWidth` | string | [Border width tokens](https://atlassian.design/components/tokens/all-tokens#border-width) | Set the width of the top border of an element. |
 
 #### Border style
 
@@ -172,7 +172,7 @@ and referring to [accessibility guidelines](https://atlassian.design/foundations
 
 XCSS can pull together different types of interactions and UI in a safer, more composable way.
 
-![Example of using basic xcss on box component](https://dac-static.atlassian.com/platform/forge/ui-kit/images/xcss/xcss-basic.png?_v=1.5800.1617)
+![Example of using basic xcss on box component](https://dac-static.atlassian.com/platform/forge/ui-kit/images/xcss/xcss-basic.png?_v=1.5800.1739)
 
 ```
 ```
@@ -197,7 +197,7 @@ const cardStyle = xcss({
   borderColor: "color.border.discovery",
   borderWidth: "border.width",
   borderStyle: "solid",
-  borderRadius: "border.radius",
+  borderRadius: "radius.small",
   width: "240px",
 });
 
@@ -218,7 +218,7 @@ export const Basic = () => (
 
 To enable interactivity, use familiar selectors like `:hover`.
 
-![Example of using xcss with hover on box component](https://dac-static.atlassian.com/platform/forge/ui-kit/images/xcss/xcss-interactivity.png?_v=1.5800.1617)
+![Example of using xcss with hover on box component](https://dac-static.atlassian.com/platform/forge/ui-kit/images/xcss/xcss-interactivity.png?_v=1.5800.1739)
 
 ```
 ```
@@ -244,7 +244,7 @@ const cardStyle = xcss({
   borderColor: "color.border",
   borderWidth: "border.width",
   borderStyle: "solid",
-  borderRadius: "border.radius",
+  borderRadius: "radius.small",
   ":hover": {
     backgroundColor: "elevation.surface.hovered",
   },

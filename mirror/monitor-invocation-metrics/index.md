@@ -14,16 +14,9 @@ The image below shows invocation metrics, as well as all sites that your Forge a
 installed on, and where there has been at least one invocation in the [selected time period](#filters).
 If there hasn't been any invocation, the charts won't show any data.
 
-![Metrics screen](https://dac-static.atlassian.com/platform/forge/images/metrics-screen.svg?_v=1.5800.1617)
+![Metrics screen](https://dac-static.atlassian.com/platform/forge/images/metrics-screen.svg?_v=1.5800.1739)
 
 ## Invocation metrics
-
-A new, customizable alerting experience for Forge is being offered as part of an [Early Access Program](/platform/forge/whats-coming/#eap)
-(EAP). As part of this EAP, app admins can create customized alerts to monitor invocation count,
-invocation errors, and invocation success rate.
-
-To learn more, see [Alerts (EAP)](/platform/forge/alerts/). To sign up to test this new feature as part of
-the EAP, see the [Forge improved alerting EAP form](https://ecosystem.atlassian.net/servicedesk/customer/portal/38/group/136/create/18390).
 
 The following metrics are available for all `function` invocations.
 
@@ -63,7 +56,7 @@ the **More actions (**⋯**)** menu on the chart and **View details**.
 
 The following screen appears, showing site-specific information about your app's invocation errors.
 
-![Invocation errors detailed view](https://dac-static.atlassian.com/platform/forge/images/invocation-errors-detailed-view.svg?_v=1.5800.1617)
+![Invocation errors detailed view](https://dac-static.atlassian.com/platform/forge/images/invocation-errors-detailed-view.svg?_v=1.5800.1739)
 
 In this view, you can search, filter, and sort the data to identify errors across specific sites
 and installations. You can also group the chart by version and error type, by selecting
@@ -80,7 +73,7 @@ the **More actions (⋯)** menu on the chart and **View details**.
 
 The following screen appears, showing function-specific information about your app's invocation time.
 
-![Invocation time detailed view](https://dac-static.atlassian.com/platform/forge/images/invocation-time-detailed-view.svg?_v=1.5800.1617)
+![Invocation time detailed view](https://dac-static.atlassian.com/platform/forge/images/invocation-time-detailed-view.svg?_v=1.5800.1739)
 
 In this view, you can search, filter, and group the data to see invocation time across
 specific functions, environments, and time periods.

@@ -446,7 +446,10 @@ Example
 ### Run post function event
 
 A post function event is sent each time the transition with configured [Forge workflow post function](/platform/forge/manifest-reference/modules/jira-workflow-post-function) is performed.
-It is used to invoke the Forge function defined in the `jira:workflowPostFunction` module.
+It is used to invoke either:
+
+* A **Forge function** defined in the `jira:workflowPostFunction` module (using `function` property)
+* An **external endpoint** defined in the `jira:workflowPostFunction` module (using `endpoint` property)
 
 OAuth 2.0 scopes required:
 
@@ -471,8 +474,9 @@ Example
 | changelog | `Changelog` | A list of changes that occurred on the transition. |
 | comment | `Comment` | An object containing the comment ID if the comment has been added on the transition. |
 | configuration | `any` | A JSON object of the post function configuration. |
-| context | `Context` | A JSON object of the event context. |
+| context | `Context` | A JSON object of the event context. **Note:** Only available for function handlers. For endpoint handlers, context is provided via the `authorization` header (forge invocation token). |
 | retryContext | `RetryOptions` | A JSON object of the retry context if a retry occurred. |
+| postFunction | `PostFunction` | A JSON object containing the post function details (for example, ID). |
 
 ## Project version events
 

@@ -52,7 +52,7 @@ See [@atlaskit/renderer](https://atlaskit.atlassian.com/packages/editor/renderer
 
 This demonstrates how a simple ADF document is rendered.
 
-![Example image of a rendered valid basic ADF document](https://dac-static.atlassian.com/platform/forge/ui-kit/images/adfRenderer/adfRenderer-basic.png?_v=1.5800.1617)
+![Example image of a rendered valid basic ADF document](https://dac-static.atlassian.com/platform/forge/ui-kit/images/adfRenderer/adfRenderer-basic.png?_v=1.5800.1739)
 
 ```
 ```
@@ -91,7 +91,7 @@ export const AdfRendererBasicExample = () => {
 
 This demonstrates how unsupported content might render by default, without any explicit replacement logic defined.
 
-![Example image of a rendered valid ADF document with unsupported content](https://dac-static.atlassian.com/platform/forge/ui-kit/images/adfRenderer/adfRenderer-unsupported-content-basic.png?_v=1.5800.1617)
+![Example image of a rendered valid ADF document with unsupported content](https://dac-static.atlassian.com/platform/forge/ui-kit/images/adfRenderer/adfRenderer-unsupported-content-basic.png?_v=1.5800.1739)
 
 ```
 ```
@@ -134,7 +134,7 @@ export const AdfRendererUnsupportedExample = () => {
 
 This demonstrates a simple replacement function that just replaces unsupported content with a paragraph.
 
-![Example image of a rendered valid ADF document with unsupported content replaced](https://dac-static.atlassian.com/platform/forge/ui-kit/images/adfRenderer/adfRenderer-unsupported-content-replaced-basic.png?_v=1.5800.1617)
+![Example image of a rendered valid ADF document with unsupported content replaced](https://dac-static.atlassian.com/platform/forge/ui-kit/images/adfRenderer/adfRenderer-unsupported-content-replaced-basic.png?_v=1.5800.1739)
 
 ```
 ```
@@ -194,7 +194,7 @@ export const AdfRendererUnsupportedContentExample = () => {
 
 This demonstrates a more complex replacement function that either replaces content, removes it, and or leaves it as-is, depending on the node type.
 
-![Example image of a rendered valid ADF document with unsupported content replaced](https://dac-static.atlassian.com/platform/forge/ui-kit/images/adfRenderer/adfRenderer-unsupported-content-replaced-complex.png?_v=1.5800.1617)
+![Example image of a rendered valid ADF document with unsupported content replaced](https://dac-static.atlassian.com/platform/forge/ui-kit/images/adfRenderer/adfRenderer-unsupported-content-replaced-complex.png?_v=1.5800.1739)
 
 ```
 ```

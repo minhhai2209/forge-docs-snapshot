@@ -2,7 +2,7 @@
 
 ## Description
 
-(Preview) build and upload your app
+build and upload your app
 
 ## Usage
 
@@ -21,7 +21,7 @@ Usage: forge build [options] [command]
 5
 --verbose          enable verbose mode
 -f, --no-verify    disable pre-build checks
--t, --tag <tag>    (Preview) specify a custom build tag for build
+-t, --tag <tag>    specify a custom build tag for build
 --non-interactive  run the command without input prompts
 -h, --help         display help for command
 ```
@@ -30,7 +30,7 @@ Usage: forge build [options] [command]
 
 ```
 1
-list [options]     (Preview) list builds for your app
+list [options]     list builds for your app
 ```
 
 ## Operations

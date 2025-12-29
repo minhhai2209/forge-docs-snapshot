@@ -23,7 +23,7 @@ Usage: forge uninstall [options]
 7
 --verbose                        enable verbose mode
 -s, --site [site]                site URL (example.atlassian.net)
--p, --product [context]          context (Jira, Confluence, Compass,
+-p, --product [Atlassian app]    Atlassian app (Jira, Confluence, Compass,
                                  Bitbucket)
 -e, --environment [environment]  specify the environment (see your default
                                  environment by running forge settings list)

@@ -67,7 +67,7 @@ There are two types of web triggers, `static` and `dynamic`, that you can specif
 
 ### Generating a URL
 
-There are two ways to generate a webtrigger URL. If you are an administrator of an installation, you can run `forge webtrigger` via the CLI [webtrigger command](/platform/forge/cli-reference/webtrigger/). Alternatively, you can programatically generate webtrigger URLs via the [SDK](/platform/forge/runtime-reference/web-trigger-api/).
+There are two ways to generate a webtrigger URL. If you are an administrator of an installation, you can run `forge webtrigger create` via the CLI [webtrigger command](/platform/forge/cli-reference/webtrigger/). Alternatively, you can programatically generate webtrigger URLs via the [SDK](/platform/forge/runtime-reference/web-trigger-api/).
 
 ## Request
 
@@ -100,9 +100,7 @@ The following example shows a request to `/x1/XUBR5WnG2Hk2V52APDdGaRSDm/hello/wo
   "method": "POST",
   "headers": {
     "Accept": ["*/*"],
-    "Postman-Token": ["5249865e-4106-447d-aa17-52df5e57c2b9"],
     "accept-encoding": ["gzip, deflate"],
-    "User-Agent": ["PostmanRuntime/7.13.0"],
     "content-length": ["71"],
     "Connection": ["keep-alive"],
     "Host": ["localhost:8080"],
@@ -143,9 +141,7 @@ The following example shows a request to `/x1/XUBR5WnG2Hk2V52APDdGaRSDm?apples=g
   "method": "POST",
   "headers": {
     "Accept": ["*/*"],
-    "Postman-Token": ["5249865e-4106-447d-aa17-52df5e57c2b9"],
     "accept-encoding": ["gzip, deflate"],
-    "User-Agent": ["PostmanRuntime/7.13.0"],
     "content-length": ["71"],
     "Connection": ["keep-alive"],
     "Host": ["localhost:8080"],

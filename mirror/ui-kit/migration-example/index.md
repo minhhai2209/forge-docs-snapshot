@@ -324,7 +324,7 @@ resources:
 app:
   id: "ari:cloud:ecosystem::app/764f9c2d-fac3-493f-b9fe-aabda3c639a2"
   runtime:
-    name: nodejs22.x
+    name: nodejs24.x
 permissions:
   scopes:
     - "read:jira-work"

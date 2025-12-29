@@ -1,5 +1,8 @@
-# Common modules
+# Forge modules
 
-When you visit any website, it may store or retrieve information on your browser, mostly in the form of cookies. This information might be about you, your preferences or your device and is mostly used to make the site work as you expect it to. The information does not usually directly identify you, but it can give you a more personalized web experience. Because we respect your right to privacy, you can choose not to allow some types of cookies. Click on the different category headings to find out more and change our default settings. However, blocking some types of cookies may impact your experience of the site and the services we are able to offer.
+Forge Dynamic Modules is now available as part of Forge’s Early Access Program (EAP).
+To start testing this, sign up [here](https://ecosystem.atlassian.net/servicedesk/customer/portal/3595).
 
-[More information](https://www.atlassian.com/legal/cookies)
+EAP features and APIs are unsupported, and subject to change without notice. Apps that use dynamic modules should not be deployed to `production` environments.
+
+All dynamic modules created during EAP will not be carried over to Preview. For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).

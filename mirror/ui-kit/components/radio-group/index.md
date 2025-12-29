@@ -31,7 +31,7 @@ A radio group presents a list of options where only one choice can be selected.
 
 The default form of a radio group.
 
-![Example image of a radio group](https://dac-static.atlassian.com/platform/forge/ui-kit/images/radio-group/radio-group-default.png?_v=1.5800.1617)
+![Example image of a radio group](https://dac-static.atlassian.com/platform/forge/ui-kit/images/radio-group/radio-group-default.png?_v=1.5800.1739)
 
 ```
 ```
@@ -64,7 +64,7 @@ const RadioGroupDefaultExample = () => {
 
 `isDisabled` can be used to disable the entire radio group.
 
-![Example image of a disabled radio group](https://dac-static.atlassian.com/platform/forge/ui-kit/images/radio-group/radio-group-disabled.png?_v=1.5800.1617)
+![Example image of a disabled radio group](https://dac-static.atlassian.com/platform/forge/ui-kit/images/radio-group/radio-group-disabled.png?_v=1.5800.1739)
 
 ```
 ```
@@ -95,7 +95,7 @@ const RadioGroupDisabledExample = () => {
 
 For required fields, always add `RequiredAsterisk` component next to the label. Use the `ErrorMessage` or `ValidationMessage` components for displaying a validation message.
 
-![Example image of a required radio group in a Form](https://dac-static.atlassian.com/platform/forge/ui-kit/images/radio-group/radio-group-required.png?_v=1.5800.1617)
+![Example image of a required radio group in a Form](https://dac-static.atlassian.com/platform/forge/ui-kit/images/radio-group/radio-group-required.png?_v=1.5800.1739)
 
 ```
 ```

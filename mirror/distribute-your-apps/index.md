@@ -36,7 +36,7 @@ When your user visits the link, an installation screen appears, similar to the o
 It displays information about your app, including the permissions your app is requesting.
 From here, your user can choose a site and an Atlassian app to install your app onto.
 
-![User installation screen](https://dac-static.atlassian.com/platform/forge/images/user-installation-screen.png?_v=1.5800.1617)
+![User installation screen](https://dac-static.atlassian.com/platform/forge/images/user-installation-screen.png?_v=1.5800.1739)
 
 ## Restrict installation links
 
@@ -96,9 +96,7 @@ Currently, [major version updates](/platform/forge/versions/#major-version-upgra
 
 * The app must remain within the same environment.
 * The target version must be greater than the source version.
-* The new major version must not introduce new scopes or egress permissions. The following changes are eligible for bulk upgrades:
-  * Removal of scopes
-  * Addition of the `sql` [module](/platform/forge/manifest-reference/modules/sql/)
+* The new major version must not introduce new scopes or egress permissions that represent an escalation of privilege. The following changes are eligible for bulk upgrades:
 * The new major version’s licensing information must remain unchanged.
 
 ### Limitations of the bulk upgrade feature

@@ -12,7 +12,7 @@ in a modal dialog. A user triggers the action from an entry in the more actions 
 
 The final app looks like the following:
 
-![Confluence page showing a modal dialog with macros used in this page.](https://dac-static.atlassian.com/platform/forge/images/content-action-macro-count.gif?_v=1.5800.1617)
+![Confluence page showing a modal dialog with macros used in this page.](https://dac-static.atlassian.com/platform/forge/images/content-action-macro-count.gif?_v=1.5800.1739)
 
 ## Before you begin
 
@@ -127,7 +127,7 @@ resources:
     path: src/frontend/index.jsx
 app:
   runtime:
-    name: nodejs22.x
+    name: nodejs24.x
     memoryMB: 256
     architecture: arm64
   id: '<your-app-id>'
@@ -162,7 +162,7 @@ You'll see the *Macro Count* entry from the app.
 
 When you select the menu item you will see, the following modal.
 
-![Confluence page showing a modal dialog with the default content from the macro count template](https://dac-static.atlassian.com/platform/forge/images/content-action-macro-count-initial.png?_v=1.5800.1617)
+![Confluence page showing a modal dialog with the default content from the macro count template](https://dac-static.atlassian.com/platform/forge/images/content-action-macro-count-initial.png?_v=1.5800.1739)
 
 ## Implement the front end
 

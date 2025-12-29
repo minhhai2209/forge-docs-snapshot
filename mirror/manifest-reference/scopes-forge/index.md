@@ -10,7 +10,6 @@ are authenticated using OAuth 2.0.
 | `storage:app` | Enables the [App storage API](/platform/forge/runtime-reference/storage-api/). |
 | `report:personal-data` | Enables the [User privacy API](/platform/forge/user-privacy-guidelines/). |
 | `read:chat:rovo` | Enables [actions](/platform/forge/manifest-reference/modules/rovo-action/) from your Forge app to be used by agents [created by customers](https://support.atlassian.com/rovo/docs/create-and-edit-agents/). |
-| `read:app-global-channel:realtime` | Enables usage of `subscribeGlobal()` calls in the [Realtime API](platform/forge/realtime/). For more information see [Authorizing Realtime channels](platform/forge/realtime/authorizing-realtime-channels/#using-global-channels) |
 
 ## Atlassian app scopes
 

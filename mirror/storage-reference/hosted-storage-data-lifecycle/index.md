@@ -13,7 +13,7 @@ Each stage affects how data is managed and stored by Atlassian. Below is an over
 | Creation / Deployment | When a developer creates or deploys an app, no storage is set up at these stages. The system defines the app and makes it ready for use, but it does not create or store any data until a customer installs it on a site. |
 | Installation | When a customer installs the app, the system provisions storage in the site's Atlassian app partition to manage the app's data for that specific site. |
 | Upgrade | If new features require storage, the system provisions additional storage in the site’s Atlassian app partition during an app upgrade to meet new storage needs without affecting existing site data. |
-| Uninstallation | When a customer uninstalls the app, the system soft deletes the data, meaning it can be recovered for up to 30 days. |
+| Uninstallation | When a customer uninstalls the app, they will either retain access for 60 days following the end of the billing or trial period, or remove the app immediately, forfeiting any remaining time. |
 | Deletion | To delete an app, customers or Atlassian support must first uninstall all installations. The system then deletes data, following the same uninstallation retention period as described above. |
 
 ## Data retention and deletion events

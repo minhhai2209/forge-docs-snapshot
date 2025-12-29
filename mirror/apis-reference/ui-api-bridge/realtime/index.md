@@ -1,6 +1,6 @@
 # realtime (Preview)
 
-Forge Realtime is now available as a a Preview capability. Preview capabilities are deemed stable; however, they remain under active development and may be subject to shorter deprecation windows. Preview capabilities are suitable for early adopters in production environments.
+Forge Realtime is now available as Preview capability. Preview capabilities are deemed stable; however, they remain under active development and may be subject to shorter deprecation windows. Preview capabilities are suitable for early adopters in production environments.
 
 We release preview features so partners and developers can study, test, and integrate them prior to General Availability (GA). For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#preview).
 
@@ -116,25 +116,6 @@ const App = () => {
 ## subscribeGlobal
 
 The `subscribeGlobal()` function allows you to subscribe to a global channel and call a provided callback function when any event is published to the channel. This includes events published from both the frontend and from resolvers.
-
-To use `subscribeGlobal()`, you must first edit your manifest to include the Realtime [read:app-global-channel:realtime scope](platform/forge/manifest-reference/scopes-forge/), for example:
-
-```
-```
-1
-2
-```
-
-
-
-```
-app:
-  ...
-permissions:
-  scopes:
-    - read:app-global-channel:realtime
-```
-```
 
 Global channels are not secured by the Atlassian app context that the user has permissions for.
 

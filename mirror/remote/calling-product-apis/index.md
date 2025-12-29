@@ -35,6 +35,41 @@ Both of these tokens are encoded in JWT. The [`exp`](https://datatracker.ietf.or
 
 Once you've got your token, you can use it in backend requests to Atlassian app APIs.
 
+### Getting the API Base URL
+
+The `apiBaseUrl` is provided in the FIT token under the `app.apiBaseUrl` claim. This is the base URL where all Atlassian app API requests should be routed.
+
+To use it:
+
+1. Parse the FIT token (received in the `Authorization` header of requests to your remote)
+2. Extract the `app.apiBaseUrl` field from the token's claims
+3. Use this value as the base URL when calling Atlassian app APIs
+
+Example FIT token claim:
+
+```
+```
+1
+2
+```
+
+
+
+```
+{
+  "app": {
+    "apiBaseUrl": "https://api.atlassian.com/ex/confluence/4c822e2f-510f-48b9-b8d0-8419d0932949",
+    "installationId": "ari:cloud:ecosystem::installation/...",
+    "id": "ari:cloud:ecosystem::app/..."
+  }
+}
+```
+```
+
+**Important:** The `apiBaseUrl` is NOT the same as your site URL (e.g., `yoursite.atlassian.net`). Always use the `apiBaseUrl` from the FIT token.
+
+For details on the FIT token structure and validation, see [Forge Invocation Token (FIT)](/platform/forge/remote/essentials/#the-forge-invocation-token--fit-).
+
 ### Node.js example
 
 This example uses the `fetch` function from the `node-fetch` module to request data from the Confluence API:
@@ -68,7 +103,7 @@ to retrieve an app token stored in a request from the Forge platform.
 
 ### Java example
 
-This example uses a GET request to call from a Confluence Content API:
+This example uses a GET request to call the Confluence Content API:
 
 ```
 ```
@@ -79,7 +114,7 @@ This example uses a GET request to call from a Confluence Content API:
 
 
 ```
-public ResponseEntity<String> getContent(final String token, String baseUrl) {
+public ResponseEntity<String> getContent(final String token, String apiBaseUrl) {
 
     final HttpHeaders headers = new HttpHeaders();
     headers.setBearerAuth(token);
@@ -87,7 +122,7 @@ public ResponseEntity<String> getContent(final String token, String baseUrl) {
     final HttpEntity<String> entity = new HttpEntity<>(null, headers);
 
     final ResponseEntity<String> response =
-            restTemplate.exchange(baseUrl + "/wiki/rest/api/content",
+            restTemplate.exchange(apiBaseUrl + "/wiki/rest/api/content",
                     HttpMethod.GET, entity, String.class);
 
     logger.info("Response statusCode={}", response.getStatusCode());

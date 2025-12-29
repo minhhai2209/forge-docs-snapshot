@@ -2,7 +2,7 @@
 
 You can call your remote backend from your frontend (Custom UI and UI Kit) via a resolver. The diagram below illustrates the data flow.
 
-![Forge Remote diagram describing the flow of data and auth between Forge and remote application](https://dac-static.atlassian.com/platform/forge/images/remote/remote-calling-backend-from-frontend.png?_v=1.5800.1617)
+![Forge Remote diagram describing the flow of data and auth between Forge and remote application](https://dac-static.atlassian.com/platform/forge/images/remote/remote-calling-backend-from-frontend.png?_v=1.5800.1739)
 
 ## Getting started
 
@@ -82,7 +82,7 @@ You will need to verify the requests received by your remote came from Atlassian
 
 ## Calling your remote from a Forge frontend
 
-To call your remote from a Forge frontend, you can use the [invokeRemote](/platform/forge/apis-reference/ui-api-bridge/invokeRemote) method from the `@forge/bridge` package. This function allows you to make HTTP requests to your remote backend.
+To call your remote from a Forge frontend, you can use the [invokeRemote](/platform/forge/apis-reference/ui-api-bridge/invokeRemote) or the [requestRemote](/platform/forge/apis-reference/ui-api-bridge/requestRemote) API from the `@forge/bridge` package. These APIs allows you to make HTTP requests to your remote backend.
 
 For example, a `GET` request to a remote endpoint could look like this:
 

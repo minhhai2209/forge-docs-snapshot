@@ -1,12 +1,4 @@
-# Pressable (Preview)
-
-This section describes a Forge *preview* feature. Preview features are deemed stable;
-however, they remain under active development and may be subject to shorter deprecation
-windows. Preview features are suitable for early adopters in production environments.
-
-We release preview features so partners and developers can study, test, and integrate
-them prior to General Availability (GA). For more information,
-see [Forge release phases: EAP, Preview, and GA](/platform/forge/whats-coming/#preview).
+# Pressable
 
 To add the `Pressable` component to your app:
 
@@ -38,13 +30,11 @@ A pressable is a primitive for building custom buttons.
 
 ## Examples
 
-## Examples
-
 ### Default
 
 Pressable is unstyled by default, aside from basic focus styles.
 
-![Example image of an unstyled pressable](https://dac-static.atlassian.com/platform/forge/ui-kit/images/pressable/pressable-default.png?_v=1.5800.1617)
+![Example image of an unstyled pressable](https://dac-static.atlassian.com/platform/forge/ui-kit/images/pressable/pressable-default.png?_v=1.5800.1739)
 
 ```
 ```
@@ -73,7 +63,7 @@ Pressable can be styled using [XCSS](/platform/forge/ui-kit/components/xcss).
 
 Ensure that the styling indicates the interaction state using `:hover` and `:active` pseudo-classes.
 
-![Example image of a styled pressable](https://dac-static.atlassian.com/platform/forge/ui-kit/images/pressable/pressable-basic-styling.png?_v=1.5800.1617)
+![Example image of a styled pressable](https://dac-static.atlassian.com/platform/forge/ui-kit/images/pressable/pressable-basic-styling.png?_v=1.5800.1739)
 
 ```
 ```
@@ -120,7 +110,7 @@ export const PressableExample = () => {
 
 Use a combination of XCSS and other primitives for more complex designs.
 
-![Example image of a styled pressable](https://dac-static.atlassian.com/platform/forge/ui-kit/images/pressable/pressable-advanced-styling.png?_v=1.5800.1617)
+![Example image of a styled pressable](https://dac-static.atlassian.com/platform/forge/ui-kit/images/pressable/pressable-advanced-styling.png?_v=1.5800.1739)
 
 ```
 ```

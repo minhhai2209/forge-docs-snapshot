@@ -285,4 +285,4 @@ permissions:
 
 The additional scope is needed because customer-built agents may access data that your app can't otherwise reach. This data can be provided as input to your action through a Rovo chat.
 
-![Example of adding a Forge action](https://dac-static.atlassian.com/platform/forge/images/rovo/customer-add-action.png?_v=1.5800.1617)
+![Example of adding a Forge action](https://dac-static.atlassian.com/platform/forge/images/rovo/customer-add-action.png?_v=1.5800.1739)

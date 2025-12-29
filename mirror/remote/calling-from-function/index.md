@@ -2,7 +2,7 @@
 
 You can call your remote backend from your Forge functions. The diagram below illustrates the data flow.
 
-![Forge Remote diagram describing the flow of data and auth between Forge and remote application](https://dac-static.atlassian.com/platform/forge/images/remote/remote-calling-backend-from-frontend.png?_v=1.5800.1617)
+![Forge Remote diagram describing the flow of data and auth between Forge and remote application](https://dac-static.atlassian.com/platform/forge/images/remote/remote-calling-backend-from-frontend.png?_v=1.5800.1739)
 
 Note: If you are calling your remote backend from a frontend function in a Forge app, see [Calling a remote backend from a Forge frontend](/platform/forge/remote/calling-from-frontend) instead.
 
@@ -15,23 +15,14 @@ To call your remote backend from a function you need to define a [remote](/platf
 Here's an example of how to set up your manifest:
 
 ```
+```
 1
 2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
+```
+
+
+
+```
 modules:
   trigger:
     - key: update-issue
@@ -49,6 +40,7 @@ remotes:
     auth:
       appSystemToken:
         enabled: true
+```
 ```
 
 ## Calling your remote from a function

@@ -1,14 +1,6 @@
-# Chromeless editor (EAP)
+# Chromeless editor
 
-Editor components are now available as an Early Access Program (EAP). To start testing these components, sign up using this [form](https://ecosystem.atlassian.net/servicedesk/customer/portal/1040/group/3496/create/18885).
-
-Editor components are currently only available in Confluence and Jira modules.
-
-Forge’s EAP offers experimental features to selected users for testing and feedback purposes.
-These features are unsupported and not recommended for use in production environments. They
-are also subject to change without notice.
-
-For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
+This component is currently only available in Confluence and Jira modules.
 
 To add the `ChromelessEditor` component to your app:
 
@@ -51,7 +43,7 @@ You can use the `features` prop to enable or disable specific editor features. B
 
 The default appearance of the `ChromelessEditor` component is a blank editor with no toolbar or features. It accepts a subset of the `CommentEditor` props and has the same capabilities, but does not include any of the default UI features like, the toolbar or action buttons.
 
-![Example image of a blank editor](https://dac-static.atlassian.com/platform/forge/ui-kit/images/editor/chromeless-editor.png?_v=1.5800.1617)
+![Example image of a blank editor](https://dac-static.atlassian.com/platform/forge/ui-kit/images/editor/chromeless-editor.png?_v=1.5800.1739)
 
 ```
 ```

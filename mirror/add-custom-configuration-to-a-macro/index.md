@@ -131,7 +131,7 @@ resources:
     path: src/frontend/config.jsx
 app:
   runtime:
-    name: nodejs20.x
+    name: nodejs24.x
   id: ari:cloud:ecosystem::app/YOUR_APP_ID
 ```
 ```

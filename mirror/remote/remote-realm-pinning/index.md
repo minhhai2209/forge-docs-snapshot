@@ -54,18 +54,20 @@ To manage data residency for remotes in Forge:
 
 Forge currently supports several regions for realm pinning to meet data residency requirements.
 
-* Global: In-scope data is hosted within realms determined by Atlassian: data may be moved between realms as needed.
-* EU: In-scope data is hosted within the Dublin AWS regions.
-* US: In-scope data is hosted within the US East and US West AWS regions.
-* AU: In-scope data is hosted within the Sydney AWS region.
-* DE: In-scope data is hosted within the Frankfurt AWS region.
-* SG: In-scope data is hosted within the Singapore AWS region
-* CA: In-scope data is hosted within the Canada AWS region
-* IN: In-scope data is hosted within the Mumbai AWS region
-* KR: In-scope data is hosted within the Seoul AWS region
-* JP: In-scope data is hosted within the Tokyo AWS region
-* GB: In-scope data is hosted within the London AWS region
-* CH: In-scope data is hosted within the Zurich AWS region
+| Location | AWS regions |
+| --- | --- |
+| Global | In-scope data is hosted within realms determined by Atlassian: data may be moved between realms as needed. |
+| Australia | In-scope data is hosted within the Australia (Sydney) region. |
+| Canada | In-scope data is hosted within the Canada (Central) region. |
+| EU | In-scope data is hosted within the Europe (Frankfurt) and Europe (Dublin) regions. |
+| Germany | In-scope data is hosted within the Europe (Frankfurt) region. |
+| India | In-scope data is hosted within the Asia Pacific (Mumbai) regions.  **Note**: India is not assigned as the default data residency location, even for organizations based in India. You can manually set data residency to India through the Atlassian Administration interface. |
+| Japan | In-scope data is hosted within the Asia Pacific (Tokyo) region. |
+| Singapore | In-scope data is hosted within the Asia Pacific (Singapore) region. |
+| South Korea | In-scope data is hosted within the Asia Pacific (Seoul) region. |
+| Switzerland | In-scope data is hosted within the Europe (Zurich) region. |
+| United Kingdom | In-scope data is hosted within the Europe (London) region. |
+| USA | In-scope data is hosted within the US East (North Virginia) and US West (Oregon) regions. |
 
 ## Realm migration for Forge Remote
 

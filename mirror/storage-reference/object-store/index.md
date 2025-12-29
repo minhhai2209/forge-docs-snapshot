@@ -10,6 +10,12 @@ The Forge Object Store is a hosted storage solution that let you manage large it
 
 The Forge Object Store integrates tightly with the Forge platform, enabling secure and reliable file management.
 
+[Example app
+
+We published a sample app to demonstrate the basics of implementing object storage features in
+a Forge app. This sample app uses the Forge Object Store as its backend and available Forge UI components
+for its frontend. Refer to the app's README for additional guidance on exploring and testing the code.](https://bitbucket.org/atlassian/forge-ui-object-store-example-app/src/main/)
+
 ## Limitations
 
 The Forge Object Store has the following limitations during the EAP:
@@ -18,8 +24,7 @@ The Forge Object Store has the following limitations during the EAP:
 * **Time-to-Live (TTL):** Objects have a default TTL of 90 days. Custom TTLs can be set but must be greater than 1 second and can't exceed 90 days. This limitation will only be in effect for the EAP.
 
   **All objects will be deleted at the end of the EAP.** Atlassian will provide notice before the end of the EAP to ensure you have time to download any stored data.
-* **Accessing objects in UI:** Direct object upload and download links for UI components are not supported and must be managed through Forge functions. File uploads or downloads in UI Kit must be handled through a [Frame](/platform/forge/ui-kit/components/frame/) component, which acts as a container for a Custom UI application.
-* **Pre-signed URLs:** Pre-signed URLs are only available in the UI Kit [Frame](/platform/forge/ui-kit/components/frame/) component or Custom UI. Support for resolver/Lambda is in progress and will be available soon.
+* **Accessing objects in UI:** You must use the available object store [frontend components](/platform/forge/storage-reference/object-store/#frontend-components) when building interfaces for object download/uploads.
 * **Production deployments:** The EAP is only for testing purposes and deployment to production will not be available.
 
 ## Partitioning

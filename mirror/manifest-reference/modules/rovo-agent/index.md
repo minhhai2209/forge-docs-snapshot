@@ -156,26 +156,30 @@ You can retrieve risks from the risk register, create new risks and update exist
 
 ## Agent interaction points
 
+### Programmatic access via Forge bridge
+
+Using the [Forge bridge rovo API](/platform/forge/apis-reference/ui-api-bridge/rovo/), you can initiate a conversation in the Rovo chat sidebar with your Forge Rovo agent.
+
 ### Chat side panel (Confluence and Jira)
 
 Accessed by clicking the **Chat** button in the top navigation bar
 
-![Example of a chat button](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-chat-side.png?_v=1.5800.1617)
+![Example of a chat button](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-chat-side.png?_v=1.5800.1739)
 
 Accessed using the /ai command in the editor
 
-![Example of a chat button](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-ai-toolbar.png?_v=1.5800.1617)
+![Example of a chat button](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-ai-toolbar.png?_v=1.5800.1739)
 
 Accessed using the /ai command in the Jira issues editor
 
-![Example of a chat button](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-ai-toolbar-jira.png?_v=1.5800.1617)
+![Example of a chat button](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-ai-toolbar-jira.png?_v=1.5800.1739)
 
 ### Automation (Confluence and Jira)
 
 You can add Agents to Automation rules. This will invoke the Agent to act asynchronously in response to Atlassian app events or schedules.
 When users configure an automation rule they will set an additional prompt with specific instructions how to act during that rule. The response from the Agent can be passed to subsequent steps in the automation rule using smart values.
 
-![Example of a chat button](https://dac-static.atlassian.com/platform/forge/images/rovo/automations.png?_v=1.5800.1617)
+![Example of a chat button](https://dac-static.atlassian.com/platform/forge/images/rovo/automations.png?_v=1.5800.1739)
 
 ## Writing effective prompts
 

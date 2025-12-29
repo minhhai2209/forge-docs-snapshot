@@ -44,7 +44,7 @@ resources:
     path: src/frontend/index.jsx
 app:
   runtime:
-    name: nodejs22.x
+    name: nodejs24.x
   id: ari:cloud:ecosystem::app/22a5950e-2b5a-4cb0-8fc0-cf9a6cc64b33
   licensing:
     enabled: true

@@ -42,7 +42,7 @@ stored in the repository, then the repository level `bitbucket:dynamicPipelinesP
 the workspace level `bitbucket:dynamicPipelinesProvider`. This ensures that policies and rules put
 in place “higher” in the hierarchy are able to take precedence over ones implemented “lower” in the hierarchy.
 
-![Dynamic Pipeline execution hierarchy](https://dac-static.atlassian.com/platform/forge/images/bitbucket-dynamic-pipelines-provider-execution-hierarchy.png?_v=1.5800.1617)
+![Dynamic Pipeline execution hierarchy](https://dac-static.atlassian.com/platform/forge/images/bitbucket-dynamic-pipelines-provider-execution-hierarchy.png?_v=1.5800.1739)
 
 * initial workflow is read from the static `bitbucket-pipelines.yml` file.
 * if [shared workflow](https://support.atlassian.com/bitbucket-cloud/docs/share-pipelines-configurations/)
@@ -123,7 +123,7 @@ in such case.
 This scenario is triggered, for example, when user opens the **Run pipeline** dialog in the UI and
 selects a branch.
 
-![The list of pipeline definitions in the Run pipeline dialog](https://dac-static.atlassian.com/platform/forge/images/bitbucket-dynamic-pipelines-provider-run-pipeline-dialog.png?_v=1.5800.1617)
+![The list of pipeline definitions in the Run pipeline dialog](https://dac-static.atlassian.com/platform/forge/images/bitbucket-dynamic-pipelines-provider-run-pipeline-dialog.png?_v=1.5800.1739)
 
 The Dynamic Pipelines provider is expected to return all pipeline definitions applicable for the
 provided context. From this set of results, the user can then select a definition to run.
@@ -1197,7 +1197,7 @@ and display a “failed” pipeline run.
 
 If provided, the error message will be shown to the user in the UI on the pipeline result screen.
 
-![The custom error message returned by the Dynamic Pipelines provider](https://dac-static.atlassian.com/platform/forge/images/bitbucket-dynamic-pipelines-provider-error-message.png?_v=1.5800.1617)
+![The custom error message returned by the Dynamic Pipelines provider](https://dac-static.atlassian.com/platform/forge/images/bitbucket-dynamic-pipelines-provider-error-message.png?_v=1.5800.1739)
 
 | Parameter | Type | Description |
 | --- | --- | --- |

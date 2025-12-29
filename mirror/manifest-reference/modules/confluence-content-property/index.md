@@ -118,7 +118,7 @@ modules:
 ```
 ```
 
-Now, indexed data is available to search in JQL, as in this example:
+Now, indexed data is available to search in CQL, as in this example:
 
 ```
 ```

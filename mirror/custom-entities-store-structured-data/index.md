@@ -140,7 +140,7 @@ See [Indexes](/platform/forge/runtime-reference/custom-entities/#indexes) for mo
 
    If the indexes were created successfully, this command should display the following:
 
-   ![custom-entities-indexes-table-successful-command](https://dac-static.atlassian.com/platform/forge/images/custom-entities-indexes.png?_v=1.5800.1617)
+   ![custom-entities-indexes-table-successful-command](https://dac-static.atlassian.com/platform/forge/images/custom-entities-indexes.png?_v=1.5800.1739)
 3. Install your app by running:
 4. Select your Atlassian app using the arrow keys and press the enter key.
 5. Enter the URL for your development site. For example, *example.atlassian.net*. [View a list of your active sites at Atlassian administration](https://admin.atlassian.com/).
@@ -263,7 +263,7 @@ The `create-user.js` file features a function named `createUser` which makes a c
 
 To use the web trigger in this tutorial you'll need some kind of client like `curl` to make `POST` requests.
 
-1. Find the URL by using `forge webtrigger`
+1. Find the URL by using `forge webtrigger create`
 2. Choose the relevant site
 3. The web trigger will have the name `user-management-via-entities-webtrigger-create-user`
 4. Send a `POST` request to this URL with a payload that matches the `validateInput` function

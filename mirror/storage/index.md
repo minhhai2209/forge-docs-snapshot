@@ -1,28 +1,67 @@
 # Storage
 
-Forge apps can store, retrieve, and delete data in Atlassian's cloud, either through
-Forge hosted storage or through each Atlassian app.
+Forge provides three options for storing app data: Forge-hosted storage, Atlassian app REST APIs (for example, Jira or Confluence), and remote storage that you manage. Use these options to persist and retrieve data securely, at the scale your app needs.
 
-## Forge hosted storage
+## Forge Hosted Storage
 
-Forge provides several options for persistent hosted storage. Each option provide data residency features that allow admins to control
-where app data is hosted (see [Data residency](/platform/forge/data-residency/) for more information).
+Store your app data with Forge Storage so you can focus on solving customer problems instead of managing infrastructure.
 
-See [Storage overview](/platform/forge/runtime-reference/storage-api/) for more information about these options.
+### Start building your storage
 
-### Data recovery for apps with hosted storage
+Consider data shape and size limits when selecting the storage option that best fits your use case.
 
-When a customer reinstalls an app that uses Forge hosted storage, data from the previous installation is not automatically restored. Forge hosted storage retains data for 28 days after uninstallation.
+| API | Overview | Ideal for |
+| --- | --- | --- |
+| [Key-Value Store](/platform/forge/runtime-reference/storage-api-basic/) | Simple storage for key/value pairs | User preferences, app configuration, simple data storage |
+| [Custom entities store](/platform/forge/storage-reference/storage-api-custom-entities/) | Structured data storage with custom entities and query capabilities | Complex data structures, queryable data, relationships between entities |
+| [SQL](/platform/forge/storage-reference/sql/) | Fully managed relational database | Complex data models, relationships, transactions, advanced queries |
+| [Object Store (EAP)](/platform/forge/storage-reference/object-store/) | Large file and media storage | Binary data, files, media, large objects |
 
-To recover this data for a customer, app developers must:
+See [platform quotas and limits](/platform/forge/platform-quotas-and-limits/) and [storage options](/platform/forge/runtime-reference/storage-api/) for more details.
 
-To submit a recovery request, raise a bug ticket on [Developer Support](https://developer.atlassian.com/support). Use **Re-linking reinstallation data** as the summary, and include the following in your request:
+### Example code
 
-* Customer details
-* Site ID
-* Installation ID
+Explore these code examples to see how to perform common storage operations with each Forge storage option.
 
-See [Data lifecycle for Forge-hosted storage](/platform/forge/storage-reference/hosted-storage-data-lifecycle/) for related details.
+Key-Value Store
+
+Custom Entity Store
+
+SQL
+
+Object Store (EAP)
+
+```
+```
+1
+2
+```
+
+
+
+```
+import { kvs } from '@forge/kvs';
+
+// Store user preferences
+export async function saveUserPreferences(userId, preferences) {
+  await kvs.set(`user:${userId}:preferences`, preferences);
+}
+
+// Retrieve user preferences
+export async function getUserPreferences(userId) {
+  return await kvs.get(`user:${userId}:preferences`);
+}
+
+// Delete user preferences
+export async function deleteUserPreferences(userId) {
+  await kvs.delete(`user:${userId}:preferences`);
+}
+```
+```
+
+### Tutorials
+
+Explore what's possible by use cases for various Atlassian products using Forge Hosted Storage by:
 
 ## Atlassian app REST APIs
 
@@ -37,4 +76,6 @@ Go to [this page](/platform/forge/runs-on-atlassian/) to know more about the Run
 
 Forge also lets you integrate your app with services hosted on other platforms. This allows Forge apps to
 store data remotely on self-hosted databases or third-party storage services. For more information about
-integrating with remote services, see [Forge Remote](/platform/forge/remote/).
+integrating with remote services, see [Forge Remote](/platform/forge/remote/) and [Accessing Forge storage from a remote via REST API](/platform/forge/remote/accessing-storage/).
+
+## Get help

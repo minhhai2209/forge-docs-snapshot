@@ -60,9 +60,7 @@ Each logging statement has the following structure:
 * Invocation ID
 * Logging message
 
-  Logs are only available when a `console.log` statement is made from:
-
-  Logging made from your front-end ([UI Kit](/platform/forge/ui-kit/components/)) will not be available through the `forge logs` command, and can only be accessed using browser's developer console.
+Only `console.log` statements from backend Forge functions are available in logs. Logging from your frontend (UI Kit JSX files and Custom UI pages) can only be accessed using your browser's developer console.
 
 #### Options for the forge logs command
 
@@ -209,7 +207,7 @@ SyntaxError: /Users/alui/src/forge/hello-world-app/src/index.jsx: Unexpected tok
 **Runtime errors:** Returned for general runtime errors. For example, calling a method that does not
 exist or is not a method. These errors are shown in the app UI. A stack trace is included with the
 error message. For example:
-![Runtime error example](https://dac-static.atlassian.com/platform/forge/images/error-runtime.png?_v=1.5800.1617)
+![Runtime error example](https://dac-static.atlassian.com/platform/forge/images/error-runtime.png?_v=1.5800.1739)
 
 ## Related pages
 

@@ -63,8 +63,8 @@ dependencies from external repositories, which will fail if you are required to 
 the `node-gyp` installation may fail because it tries to build itself from the source, but the right build tools are
 not installed in your local development environment.
 
-In this scenario, you should instead install the pre-built `node-gyp` dependencies for your operating system as
-described in the node-gyp [instructions](https://github.com/nodejs/node-gyp?tab=readme-ov-file#installation).
+In this scenario, you should instead install the build `node-gyp` dependencies for your operating system as
+described in the [node-gyp instructions](https://github.com/nodejs/node-gyp?tab=readme-ov-file#installation).
 
 After you’ve completed this pre-installation, you should try to [install the Forge CLI](/platform/forge/getting-started/#install-the-forge-cli) again.
 

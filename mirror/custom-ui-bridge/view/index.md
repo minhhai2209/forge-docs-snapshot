@@ -134,9 +134,6 @@ const context = await view.getContext();
 ```
 ```
 
-* Not all of the values in the `context` data are guaranteed to be secure, unalterable, and valid to be used for authorization. See
-  [App context security](/platform/forge/app-context-security/) for more information.
-
 ## createHistory
 
 The `createHistory` method enables your UI Kit and Custom UI app to manipulate the current page URL for routing
@@ -178,7 +175,9 @@ function createHistory(): Promise<{
   go(n: number): void;
   goBack(): void;
   goForward(): void;
-  listen(listener: (location: LocationDescriptor, action: Action) => void): UnlistenCallback;
+  listen(
+    listener: (location: LocationDescriptor, action: Action) => void
+  ): UnlistenCallback;
 }>;
 ```
 ```
@@ -290,6 +289,28 @@ function enable(): Promise<void>;
 import { view } from "@forge/bridge";
 
 await view.theme.enable();
+```
+```
+
+```
+```
+1
+2
+```
+
+
+
+```
+// Example usage in a React app
+// Make sure to call enable() before the app is mounted for tokens to be available before the first render
+view.theme.enable().then(() => {
+  ReactDOM.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>,
+    document.getElementById("root")
+  );
+});
 ```
 ```
 

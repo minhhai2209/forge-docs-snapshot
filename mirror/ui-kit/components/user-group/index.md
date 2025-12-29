@@ -26,7 +26,7 @@ appearing as lozenges with the names of the users when used within this context.
 
 A simple group of seven users using the `UserGroup` component.
 
-![Example image of a rendered group of seven Atlassian users](https://dac-static.atlassian.com/platform/forge/images/ui-kit-2/user-group.png?_v=1.5800.1617)
+![Example image of a rendered group of seven Atlassian users](https://dac-static.atlassian.com/platform/forge/images/ui-kit-2/user-group.png?_v=1.5800.1739)
 
 ```
 1
@@ -61,7 +61,7 @@ const App = () => {
 
 ### Inline
 
-![Example image of a rendered inline group of three Atlassian users within a Text component](https://dac-static.atlassian.com/platform/forge/images/ui-kit-2/user-group-inline.png?_v=1.5800.1617)
+![Example image of a rendered inline group of three Atlassian users within a Text component](https://dac-static.atlassian.com/platform/forge/images/ui-kit-2/user-group-inline.png?_v=1.5800.1739)
 
 ```
 ```

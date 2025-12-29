@@ -1,13 +1,11 @@
 # uiModifications
 
-To consume the UI Modifications (UIM) API, your app needs to import the `@forge/jira-bridge` package:
+To consume the UI modifications (UIM) API, your app needs to import the `@forge/jira-bridge` package:
 
 ```
 1
 import { uiModificationsApi } from '@forge/jira-bridge';
 ```
-
-This API is strictly related to the [Jira UI modifications module](/platform/forge/manifest-reference/modules/jira-ui-modifications/)
 
 ## Initialization
 
@@ -20,22 +18,39 @@ onInit(<initCallback>, <registerFieldsCallback>): void
 
 ### onInit method description
 
-`initCallback` is where apps can query field/screen tab data and request modifications. `registerFieldsCallback` is used to specify which fields will be changed by `initCallback`. The information returned by `registerFieldsCallback` is used to display a loading indicator next to the relevant fields until `initCallback` finishes. There is no need to register screen tabs in order to modify them.
+The `onInit` method takes two callback functions:
 
-Both callback functions are called every time:
+* `initCallback`: where your app queries field or screen tab data and requests modifications.
+* `registerFieldsCallback`: where your app specifies which fields will be changed by `initCallback`.
 
-* the *Global issue create* (GIC), *Issue view* or *Issue transition* is opened from a supported entry point
-* the `project` or `issueType` (from context) changes
-* GIC only: an issue is created with the `create another issue` checkbox enabled
+The values returned by `registerFieldsCallback` are used to:
 
-The `initCallback` function will receive one object as an argument. This object contains the following attributes:
+* Show a loading indicator next to the relevant fields while `initCallback` runs.
+* Enforce which fields can be modified inside `initCallback`.
 
-* `api` - the API used to find and modify fields and/or screen tabs
-* `uiModifications` - an array of UIM entities registered for a given context
+There is no need to register screen tabs in order to modify them.
 
-The `registerFieldsCallback` function will receive an object containing:
+The callback functions are invoked whenever one of the following events occurs.
 
-* `uiModifications` - an array of UIM entities registered for a given context
+#### For Jira
+
+* A *Global issue create* (GIC), *Issue view*, or *Issue transition* is opened from a supported entry point.
+* The `project` or `issueType` in the context changes.
+* (GIC only) An issue is created with the *Create another issue* checkbox enabled.
+
+#### For Jira Service Management
+
+* The *Request create portal* is opened.
+* The `portal` or `requestType` in the context changes.
+
+The `initCallback` function receives a single object argument with the following attributes:
+
+* `api` – the API used to find and modify fields and/or screen tabs.
+* `uiModifications` – an array of UIM entities registered for the given context.
+
+The `registerFieldsCallback` function receives an object containing:
+
+* `uiModifications` – an array of UIM entities registered for the given context.
 
 ```
 ```
@@ -95,11 +110,7 @@ uiModificationsApi.onInit(({ api }) => {
 If a `Promise` is returned from the callback, all of the modifications will be postponed until the `Promise` resolves.
 This may be useful in a scenario when the app needs to perform an async operation before it requests a change.
 
-# Warning
-
 UIM blocks any changes requested for fields within `initCallback` for any field IDs not in the array returned from `registerFieldsCallback`.
-
-# Warning
 
 If the `initCallback` doesn’t return a `Promise` which resolves after all field and tab modification requests are made, then field and tab modifications requested asynchronously will be ignored.
 
@@ -122,24 +133,33 @@ onChange(<changeCallback>, <registerFieldsCallback>): void
 
 ### onChange method description
 
-`changeCallback` is where apps can query field/screen tab data and request modifications. `registerFieldsCallback` is used to specify which fields will be changed by `changeCallback`. The information returned by `registerFieldsCallback` is used to display a loading indicator next to the relevant fields until `changeCallback` finishes. There is no need to register screen tabs in order to modify them.
+The `onChange` method also takes two callback functions:
 
-Both callback functions are called every time:
+* `changeCallback`: where your app queries field or screen tab data and requests modifications in response to user input.
+* `registerFieldsCallback`: where your app specifies which fields will be changed by `changeCallback`.
 
-* the `blur` field event is triggered by one of the supported text fields, which are `summary` and `description`
-* the `change` field event is triggered by any other supported field (for select-type fields when the user picks an option; for Issue view when the user commits a value)
+The values returned by `registerFieldsCallback` are used to:
 
-The `changeCallback` function will receive one object as an argument.
-This object contains the following attributes:
+* Show a loading indicator next to the relevant fields while `changeCallback` runs.
+* Enforce which fields can be modified inside `changeCallback`.
 
-* `api` - the API used to find and modify fields and/or screen tabs
-* `change` - an object with the `current` attribute containing the object exposing the `FieldAPI` of the field which triggered the change event
-* `uiModifications` - an array of UIM entities registered for a given context
+There is no need to register screen tabs in order to modify them.
 
-The `registerFieldsCallback` function will receive an object containing:
+Both callback functions are called whenever:
 
-* `change` - an object with the `current` attribute containing the object exposing the `FieldAPI` of the field which triggered the change event
-* `uiModifications` - an array of UIM entities registered for a given context
+* The `blur` field event is triggered by one of the supported text fields (`summary` or `description`).
+* The `change` field event is triggered by any other supported field (for example, when a user picks an option in a select-type field, or commits a value in Issue view).
+
+The `changeCallback` function receives a single object argument with the following attributes:
+
+* `api` – the API used to find and modify fields and/or screen tabs.
+* `change` – an object with the `current` attribute containing the `FieldAPI` of the field that triggered the change event.
+* `uiModifications` – an array of UIM entities registered for the given context.
+
+The `registerFieldsCallback` function receives an object containing:
+
+* `change` – an object with the `current` attribute containing the `FieldAPI` of the field that triggered the change event.
+* `uiModifications` – an array of UIM entities registered for the given context.
 
 ```
 ```
@@ -201,11 +221,7 @@ uiModificationsApi.onChange(({ api }) => {
 
 If a `Promise` is returned from the `callback`, all of the modifications will be postponed until the `Promise` resolves. This may be useful in a scenario when the app needs to perform an async operation before it requests a change.
 
-# Warning
-
 UIM blocks any changes requested for fields within `changeCallback` for any field IDs not in the array returned from `registerFieldsCallback`.
-
-# Warning
 
 If the `changeCallback` doesn’t return a `Promise` which resolves after all field modification requests are made, then field modifications requested asynchronously will be ignored.
 
@@ -230,9 +246,9 @@ onError(<errorCallback>): void
 
 An `errorCallback` is where apps can process information about the errors that happened during the execution of UI modifications. The callback function is called when:
 
-* a `validation error` occurs, which means data passed to one of the [FieldAPI](/platform/forge/apis-reference/jira-api-bridge/uiModifications/#common-fieldapi) or [ScreenTabAPI](/platform/forge/apis-reference/jira-api-bridge/uiModifications/#common-screentabapi) methods was invalid
-* a `conflict error` occurs, which means multiple apps attempted to call the same [FieldAPI](/platform/forge/apis-reference/jira-api-bridge/uiModifications/#common-fieldapi) or [ScreenTabAPI](/platform/forge/apis-reference/jira-api-bridge/uiModifications/#common-screentabapi) method on the same field or tab
-* an `unregistered field` occurs, which means an app attempted to call the [FieldAPI](/platform/forge/apis-reference/jira-api-bridge/uiModifications/#common-fieldapi) with a field ID that’s not registered in the `registerFieldsCallback`
+* A `validation error` occurs, which means data passed to one of the [FieldAPI](/platform/forge/apis-reference/jira-api-bridge/uiModifications/#common-fieldapi) or [ScreenTabAPI](/platform/forge/apis-reference/jira-api-bridge/uiModifications/#common-screentabapi) methods was invalid.
+* A `conflict error` occurs, which means multiple apps attempted to call the same [FieldAPI](/platform/forge/apis-reference/jira-api-bridge/uiModifications/#common-fieldapi) or [ScreenTabAPI](/platform/forge/apis-reference/jira-api-bridge/uiModifications/#common-screentabapi) method on the same field or tab.
+* An `unregistered field` occurs, which means an app attempted to call the [FieldAPI](/platform/forge/apis-reference/jira-api-bridge/uiModifications/#common-fieldapi) with a field ID that’s not registered in the `registerFieldsCallback`.
 
 The `errorCallback` function will receive one object as an argument.
 This object contains the following attributes:
@@ -372,15 +388,14 @@ getFieldById<fieldType>(<fieldId>): FieldAPI | undefined
 
 ### getFieldById method description
 
-Uses the generic: `fieldType` (string) - the **type** of the field that the app wants to work on.
+The `getFieldById` method lets your app access a specific field on the current view. It:
 
-Accepts one argument: `fieldId` (string) - the ID of the field which the app wants to work on.
+* Uses a generic type parameter: `fieldType` (string) – the **type** of the field that the app wants to work on.
+* Accepts one argument: `fieldId` (string) – the ID of the field that the app wants to work on.
+* Returns a `FieldAPI` object if the field exists on the supported view.
+* Returns `undefined` if the field doesn't exist or isn’t supported by UIM.
 
-Returns the FieldAPI object if the field exists on the supported view.
-
-Returns `undefined` if the field doesn't exist or isn’t supported by UIM.
-
-Example of usage with regular field:
+Example usage with regular field:
 
 ```
 ```
@@ -400,7 +415,7 @@ uiModificationsApi.onInit(({ api }) => {
 ```
 ```
 
-Example of usage with custom field:
+Example usage with custom field:
 
 ```
 ```
@@ -439,9 +454,9 @@ getFields(): FieldAPI[]
 
 ### getFields method description
 
-Returns an array of FieldAPI objects with all supported fields available on a current view form.
+Returns an array of `FieldAPI` objects with all supported fields available on a current view form.
 
-Example of usage:
+Example usage:
 
 ```
 ```
@@ -466,9 +481,13 @@ uiModificationsApi.onInit(({ api }) => {
 
 # Support for custom fields
 
+Jira
+
+Jira Service Management
+
 ### Global issue create
 
-### Issue view (preview)
+### Issue view (Preview)
 
 This section describes a Forge *preview* feature. Preview features are deemed stable;
 however, they remain under active development and may be subject to shorter deprecation
@@ -478,7 +497,7 @@ We release preview features so partners and developers can study, test, and inte
 them prior to General Availability (GA). For more information,
 see [Forge release phases: EAP, Preview, and GA](/platform/forge/whats-coming/#preview).
 
-### Issue transition (preview)
+### Issue transition (Preview)
 
 This section describes a Forge *preview* feature. Preview features are deemed stable;
 however, they remain under active development and may be subject to shorter deprecation
@@ -489,8 +508,6 @@ them prior to General Availability (GA). For more information,
 see [Forge release phases: EAP, Preview, and GA](/platform/forge/whats-coming/#preview).
 
 ## Common FieldAPI
-
-# Warning
 
 The changes requested by setters in this API aren't applied immediately.
 They're batched and only applied after the execution of the `onInit` or `onChange` callback ends.
@@ -521,7 +538,7 @@ setName(value: string): FieldAPI
 
 Changes the field's name.
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/set-name.png?_v=1.5800.1617)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/set-name.png?_v=1.5800.1739)
 
 Example:
 
@@ -559,7 +576,7 @@ setDescription(value: string): FieldAPI
 
 Changes the field's description.
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/set-description.png?_v=1.5800.1617)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/set-description.png?_v=1.5800.1739)
 
 Example:
 
@@ -682,8 +699,6 @@ field.setReadOnly(true);
 ```
 ```
 
-# Empty read-only fields on the Issue view
-
 On the Issue view, fields that don't have a value are automatically hidden when set to read-only. This is the default behavior when the user doesn't have permission to edit.
 
 ### isReadOnly
@@ -801,8 +816,6 @@ type: `issuetype`
 
 #### setValue signature
 
-# Warning
-
 The execution of the `setValue` method will initiate a UIM context change in **Global issue create** (GIC).
 Issue type is a part of the UIM invocation context. Changing the issue type with `setValue` changes that context.
 
@@ -858,7 +871,7 @@ getValue(): IssueTypeField
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-issue-type.png?_v=1.5800.1617)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-issue-type.png?_v=1.5800.1739)
 
 ### priority
 
@@ -915,15 +928,70 @@ getValue(): PriorityField
 
 #### Reference screenshot
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-priority.png?_v=1.5800.1617)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-priority.png?_v=1.5800.1739)
+
+### project picker
+
+type: `com.atlassian.jira.plugin.system.customfieldtypes:project`
+
+#### setValue signature
+
+Use `null` to unset the value.
+
+```
+```
+1
+2
+```
+
+
+
+```
+setValue(id: string | null): FieldAPI
+```
+```
+
+#### getValue signature
+
+```
+```
+1
+2
+```
+
+
+
+```
+getValue(): ProjectPickerField
+```
+```
+
+#### Project Picker field shape
+
+```
+```
+1
+2
+```
+
+
+
+```
+{ 
+  projectId: string,   // '10002'
+} | null
+```
+```
+
+#### Reference screenshot
+
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-project.png?_v=1.5800.1739)
 
 ### Resolution
 
 type: `resolution`
 
 #### setValue signature
-
-# Special values
 
 Use `null` to unset the value.
 
@@ -975,7 +1043,7 @@ getValue(): ResolutionField
 
 #### Reference screenshot
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-resolution.png?_v=1.5800.1617)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-resolution.png?_v=1.5800.1739)
 
 ### summary
 
@@ -1015,7 +1083,7 @@ getValue(): SummaryField
 
 #### Reference screenshot
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-summary.png?_v=1.5800.1617)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-summary.png?_v=1.5800.1739)
 
 ### assignee
 
@@ -1076,15 +1144,13 @@ This means that all calls to `setValue` for user-based fields performed in a sin
 
 #### Reference screenshot
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-assignee.png?_v=1.5800.1617)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-assignee.png?_v=1.5800.1739)
 
 ### reporter
 
 type: `reporter`
 
 #### setValue signature
-
-# Special values
 
 Use `null` to unset the value.
 
@@ -1139,7 +1205,7 @@ This means that all calls to `setValue` for user-based fields performed in a sin
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-reporter.png?_v=1.5800.1617)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-reporter.png?_v=1.5800.1739)
 
 ### labels
 
@@ -1179,13 +1245,11 @@ getValue(): LabelsField
 
 #### Reference screenshot
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-labels.png?_v=1.5800.1617)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-labels.png?_v=1.5800.1739)
 
 ### description
 
 type: `description`
-
-# Warning
 
 The `description` field can be configured using either the rich-text "Wiki style renderer" (current default) or plain-text "Default style renderer". Each renderer requires a different value type, and apps will need to match the type they receive from `getValue` in any calls to `setValue`.
 For more information on how to configure field renderers, please refer to <https://support.atlassian.com/jira-cloud-administration/docs/configure-renderers/>
@@ -1264,16 +1328,14 @@ type ADF = {
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-description.png?_v=1.5800.1617)
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-description-plain-text.png?_v=1.5800.1617)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-description.png?_v=1.5800.1739)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-description-plain-text.png?_v=1.5800.1739)
 
 ### components
 
 type: `components`
 
 #### setValue signature
-
-# Special values
 
 Use `[]` to unset the value.
 
@@ -1332,15 +1394,13 @@ getValue(): ComponentsField
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-components.png?_v=1.5800.1617)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-components.png?_v=1.5800.1739)
 
 ### fix versions
 
 type: `fixVersions`
 
 #### setValue signature
-
-# Special values
 
 Use `[]` to unset the value.
 
@@ -1405,15 +1465,13 @@ This means that each supported field has its own limit of 100 IDs.
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-fix-versions.png?_v=1.5800.1617)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-fix-versions.png?_v=1.5800.1739)
 
 ### affects versions
 
 type: `versions`
 
 #### setValue signature
-
-# Special values
 
 Use `[]` to unset the value.
 
@@ -1478,15 +1536,13 @@ This means that each field of this type has its own limit of 100 IDs.
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-affects-versions.png?_v=1.5800.1617)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-affects-versions.png?_v=1.5800.1739)
 
 ### single select
 
 type: `com.atlassian.jira.plugin.system.customfieldtypes:select`
 
 #### setValue signature
-
-# Special values
 
 Use `null` to unset the value.
 
@@ -1538,15 +1594,13 @@ null | {
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-select.png?_v=1.5800.1617)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-select.png?_v=1.5800.1739)
 
 ### multi select
 
 type: `com.atlassian.jira.plugin.system.customfieldtypes:multiselect`
 
 #### setValue signature
-
-# Special values
 
 Use `[]` to unset the value.
 
@@ -1611,15 +1665,13 @@ This means that each supported field has its own limit of 100 IDs.
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-multi-select.png?_v=1.5800.1617)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-multi-select.png?_v=1.5800.1739)
 
 ### Cascading select
 
 type: `com.atlassian.jira.plugin.system.customfieldtypes:cascadingselect`
 
 #### setValue signature
-
-# Special values
 
 Use `null` to unset the value.
 
@@ -1674,15 +1726,13 @@ null | {
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-cascading-select.png?_v=1.5800.1617)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-cascading-select.png?_v=1.5800.1739)
 
 ### checkboxes
 
 type: `com.atlassian.jira.plugin.system.customfieldtypes:multicheckboxes`
 
 #### setValue signature
-
-# Special values
 
 Use `[]` to unset the value.
 
@@ -1747,15 +1797,13 @@ This means that each supported field has its own limit of 100 IDs.
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-multi-check-boxes.png?_v=1.5800.1617)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-multi-check-boxes.png?_v=1.5800.1739)
 
 ### radio buttons
 
 type: `com.atlassian.jira.plugin.system.customfieldtypes:radiobuttons`
 
 #### setValue signature
-
-# Special values
 
 Use `null` to unset the value.
 
@@ -1807,7 +1855,7 @@ null | {
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/radio-buttons.png?_v=1.5800.1617)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/radio-buttons.png?_v=1.5800.1739)
 
 ### paragraph
 
@@ -1867,8 +1915,8 @@ type ADF = {
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-paragraph.png?_v=1.5800.1617)
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-paragraph-plain-text.png?_v=1.5800.1617)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-paragraph.png?_v=1.5800.1739)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-paragraph-plain-text.png?_v=1.5800.1739)
 
 ### text field
 
@@ -1908,15 +1956,13 @@ string // Plain-text editor
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-text.png?_v=1.5800.1617)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-text.png?_v=1.5800.1739)
 
 ### user picker
 
 type: `com.atlassian.jira.plugin.system.customfieldtypes:userpicker`
 
 #### setValue signature
-
-# Special values
 
 Use `null` to unset the value.
 
@@ -1973,15 +2019,13 @@ This means that all calls to `setValue` for user-based fields performed in a sin
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-user-picker.png?_v=1.5800.1617)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-user-picker.png?_v=1.5800.1739)
 
 ### multi user picker
 
 type: `com.atlassian.jira.plugin.system.customfieldtypes:multiuserpicker`
 
 #### setValue signature
-
-# Special values
 
 Use `[]` to unset the value.
 
@@ -2044,19 +2088,17 @@ This means that all calls to `setValue` for user-based fields performed in a sin
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-multi-user-picker.png?_v=1.5800.1617)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-multi-user-picker.png?_v=1.5800.1739)
 
 ### people
 
 type: `com.atlassian.jira.plugin.system.customfieldtypes:people`
 
-# Warning
+This field is available in a [team-managed](https://support.atlassian.com/jira-software-cloud/docs/work-in-jira-software-cloud-team-managed-projects/) project only.
 
 The `people` field can be configured using either the single or multiple value field. In the case of a single value configuration, only the first value from the array provided via the `setValue` will be displayed in the field.
 
 #### setValue signature
-
-# Special values
 
 Use `[]` to unset the value.
 
@@ -2119,7 +2161,7 @@ This means that all calls to `setValue` for user-based fields performed in a sin
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-people-picker.png?_v=1.5800.1617)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-people-picker.png?_v=1.5800.1739)
 
 ### url
 
@@ -2146,7 +2188,7 @@ setValue(url: string): FieldAPI
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-url.png?_v=1.5800.1617)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-url.png?_v=1.5800.1739)
 
 ### date picker
 
@@ -2154,11 +2196,7 @@ type: `com.atlassian.jira.plugin.system.customfieldtypes:datepicker`
 
 #### setValue signature
 
-# Special values
-
 Use `null` to unset the value.
-
-# Warning
 
 The provided string must be in the `yyyy-MM-dd` date format.
 
@@ -2194,7 +2232,7 @@ getValue(): DatePickerField
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-date-picker.png?_v=1.5800.1617)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-date-picker.png?_v=1.5800.1739)
 
 ### date time picker
 
@@ -2202,11 +2240,7 @@ type: `com.atlassian.jira.plugin.system.customfieldtypes:datetime`
 
 #### setValue signature
 
-# Special values
-
 Use `null` to unset the value.
-
-# Warning
 
 The provided string must be in the `YYYY-MM-DDThh:mmTZD` date format.
 
@@ -2242,7 +2276,7 @@ getValue(): DatePickerField
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-date-time.png?_v=1.5800.1617)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-date-time.png?_v=1.5800.1739)
 
 ### due date
 
@@ -2250,11 +2284,7 @@ type: `duedate`
 
 #### setValue signature
 
-# Special values
-
 Use `null` to unset the value.
-
-# Warning
 
 The provided string must be in the `yyyy-MM-dd` date format.
 
@@ -2290,7 +2320,7 @@ getValue(): DatePickerField
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-due-date.png?_v=1.5800.1617)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-due-date.png?_v=1.5800.1739)
 
 ### target start
 
@@ -2298,11 +2328,7 @@ type: `com.atlassian.jpo:jpo-custom-field-baseline-start`
 
 #### setValue signature
 
-# Special values
-
 Use `null` to unset the value.
-
-# Warning
 
 The provided string must be in the `yyyy-MM-dd` date format.
 
@@ -2338,7 +2364,7 @@ getValue(): DatePickerField
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-target-start.png?_v=1.5800.1617)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-target-start.png?_v=1.5800.1739)
 
 ### target end
 
@@ -2346,11 +2372,7 @@ type: `com.atlassian.jpo:jpo-custom-field-baseline-end`
 
 #### setValue signature
 
-# Special values
-
 Use `null` to unset the value.
-
-# Warning
 
 The provided string must be in the `yyyy-MM-dd` date format.
 
@@ -2386,15 +2408,13 @@ getValue(): DatePickerField
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-target-end.png?_v=1.5800.1617)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-target-end.png?_v=1.5800.1739)
 
 ### number
 
 type: `com.atlassian.jira.plugin.system.customfieldtypes:float`
 
 #### setValue signature
-
-# Special values
 
 Use `null` to unset the value.
 
@@ -2430,7 +2450,7 @@ getValue(): NumberField
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-number.png?_v=1.5800.1617)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-number.png?_v=1.5800.1739)
 
 ### parent
 
@@ -2486,7 +2506,7 @@ getValue(): ParentField
 
 #### Reference screenshot
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-parent.png?_v=1.5800.1617)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-parent.png?_v=1.5800.1739)
 
 ### status
 
@@ -2494,11 +2514,7 @@ type: `status`
 
 #### setValue signature
 
-# Transition screen
-
 The screen will appear if configured for the used transition ID.
-
-# Warning
 
 The get value method returns the ID and name of the current status. You should pass the transition ID to the set value method.
 
@@ -2550,7 +2566,7 @@ getValue(): StatusField | null
 
 #### Reference screenshot
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-status.png?_v=1.5800.1617)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-status.png?_v=1.5800.1739)
 
 ### original estimate
 
@@ -2558,9 +2574,9 @@ type: `timeoriginalestimate`
 
 #### setValue signature
 
-# Special values
-
 Use `null` to unset the value.
+
+The input should be an integer greater than 0, representing the estimated time in minutes. See [What are time estimations?](https://support.atlassian.com/jira-software-cloud/docs/what-are-time-estimates-days-hours-minutes/)
 
 ```
 ```
@@ -2594,7 +2610,7 @@ getValue(): OriginalEstimateField
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-original-estimate.png?_v=1.5800.1617)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-original-estimate.png?_v=1.5800.1739)
 
 ## Querying screen tabs
 
@@ -2615,13 +2631,13 @@ getScreenTabById(<tabId>): ScreenTabAPI | undefined
 
 ### getScreenTabById method description
 
-Accepts one argument: `tabId` (string) - the identifier of the screen tab which the app wants to work on.
+The `getScreenTabById` method lets your app access a specific screen tab on the current view. ßIt:
 
-Returns the ScreenTabAPI object if the tab exists on the GIC or Issue View.
+* Accepts one argument: `tabId` (string) – the identifier of the screen tab that the app wants to work on.
+* Returns a `ScreenTabAPI` object if the tab exists on Global issue create (GIC) or Issue view.
+* Returns `undefined` if the screen tab doesn't exist or isn’t supported by UIM.
 
-Returns `undefined` if the screen tab doesn't exist.
-
-Example of usage with a regular screen tab:
+Example usage with a regular screen tab:
 
 ```
 ```
@@ -2660,9 +2676,9 @@ getScreenTabs(): ScreenTabAPI[]
 
 ### getScreenTabs method description
 
-Returns an array of ScreenTabAPI objects with all screen tabs mounted on the current view.
+Returns an array of `ScreenTabAPI` objects with all screen tabs mounted on the current view.
 
-Example of usage:
+Example usage:
 
 ```
 ```
@@ -2685,8 +2701,6 @@ uiModificationsApi.onInit(({ api }) => {
 ```
 
 ## Common ScreenTabAPI
-
-# Warning
 
 The changes requested by setters in this API aren't applied immediately.
 They’re batched and only applied after the execution of the `onInit` or `onChange` callback ends.

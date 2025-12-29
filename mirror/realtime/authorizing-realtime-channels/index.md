@@ -1,6 +1,6 @@
 # Authorizing Realtime channels
 
-Forge Realtime is now available as a a Preview capability. Preview capabilities are deemed stable; however, they remain under active development and may be subject to shorter deprecation windows. Preview capabilities are suitable for early adopters in production environments.
+Forge Realtime is now available as Preview capability. Preview capabilities are deemed stable; however, they remain under active development and may be subject to shorter deprecation windows. Preview capabilities are suitable for early adopters in production environments.
 
 We release preview features so partners and developers can study, test, and integrate them prior to General Availability (GA). For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#preview).
 
@@ -16,7 +16,7 @@ The default context for a channel will be the Atlassian app context of the modul
 
 We recommend using the default `publish()` and `subscribe()` methods if you don't need to send messages between Atlassian app contexts.
 
-![Atlassian app context as default channel context](https://dac-static.atlassian.com/platform/forge/images/realtime/realtime-atlassian-app-context-publish.png?_v=1.5800.1617)
+![Atlassian app context as default channel context](https://dac-static.atlassian.com/platform/forge/images/realtime/realtime-atlassian-app-context-publish.png?_v=1.5800.1739)
 
 #### Example
 
@@ -156,7 +156,7 @@ The properties in `contextOverrides` must match exactly in the `subscribe()` and
 a subscriber with overrides `[Jira.Project]` will not receive messages from a publisher with overrides `[Jira.Project, Jira.Issue]`, even
 though they have overlapping properties.
 
-![Atlassian app context with overrides as channel context](https://dac-static.atlassian.com/platform/forge/images/realtime/realtime-context-overrides-publish.png?_v=1.5800.1617)
+![Atlassian app context with overrides as channel context](https://dac-static.atlassian.com/platform/forge/images/realtime/realtime-context-overrides-publish.png?_v=1.5800.1739)
 
 ### Using global channels
 
@@ -171,7 +171,7 @@ If an app is publishing messages to a global channel with `publishGlobal()`, the
 
 It is your responsibility to ensure you are scoping your channels appropriately, and only using global channels if absolutely necessary. Using channel tokens to enforce Atlassian app permissions is also encouraged when using global channels.
 
-![Global channels with no channel context](https://dac-static.atlassian.com/platform/forge/images/realtime/realtime-global-publish.png?_v=1.5800.1617)
+![Global channels with no channel context](https://dac-static.atlassian.com/platform/forge/images/realtime/realtime-global-publish.png?_v=1.5800.1739)
 
 #### Example
 
@@ -213,27 +213,6 @@ const App = () => {
 ```
 ```
 
-**Manifest**
-
-Apps that use global channels must include the [read:app-global-channel:realtime scope](platform/forge/manifest-reference/scopes-forge/).
-
-```
-```
-1
-2
-```
-
-
-
-```
-app:
-  ...
-permissions:
-  scopes:
-    - read:app-global-channel:realtime
-```
-```
-
 ## Custom channel context with Realtime tokens
 
 In addition to the Atlassian app context, you can also include your own set of custom claims to secure a channel by signing your own Realtime token
@@ -243,7 +222,7 @@ The custom claims will be added on top of the Atlassian app context that already
 the channel is secured by the Atlassian app context (or a subset if `contextOverrides` is provided) and your token's claims. If using the `subscribeGlobal`
 and `publishGlobal` methods, the channel is only secured by the token.
 
-![Atlassian app context with Realtime token as channel context](https://dac-static.atlassian.com/platform/forge/images/realtime/realtime-token-publish.png?_v=1.5800.1617)
+![Atlassian app context with Realtime token as channel context](https://dac-static.atlassian.com/platform/forge/images/realtime/realtime-token-publish.png?_v=1.5800.1739)
 
 #### Example
 

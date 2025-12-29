@@ -4,9 +4,11 @@ The `jira:projectSettingsPage` module adds an item to the project settings sideb
 
 This module can be used in Jira and Jira Service Management.
 
+The page URL is constructed in the following format: `/jira/software/projects/{projectKey}/settings/apps/{appId}/{envId}`
+
 When adding this to your app, use it as a top-level component.
 
-![Example of an project settings page](https://dac-static.atlassian.com/platform/forge/snippets/images/project-settings-page.jpg?_v=1.5800.1617)
+![Example of an project settings page](https://dac-static.atlassian.com/platform/forge/snippets/images/project-settings-page.jpg?_v=1.5800.1739)
 
 ## Subpages
 
@@ -19,19 +21,19 @@ The sidebar will only change the project settings page URL, you will need to [ha
 
 This feature works only with Custom UI.
 
-![Example of a subpage](https://dac-static.atlassian.com/platform/forge/snippets/images/project-settings-subpage.jpg?_v=1.5800.1617)
+![Example of a subpage](https://dac-static.atlassian.com/platform/forge/snippets/images/project-settings-subpage.jpg?_v=1.5800.1739)
 
 ## Manifest example
 
 ```
+```
 1
 2
-3
-4
-5
-6
-7
-8
+```
+
+
+
+```
 modules:
   jira:projectSettingsPage:
     - key: hello-world-project-settings-page
@@ -40,6 +42,7 @@ modules:
         function: resolver
       render: native
       title: Hello World
+```
 ```
 
 ## Properties

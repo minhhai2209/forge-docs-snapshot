@@ -53,12 +53,6 @@ a Forge app to complete the automation.
 
 #### Using the Forge Action module
 
-The Forge Action module is now available in Preview. It opens yet another way
-to extend automation rules within Atlassian apps.
-
-See [Forge Automation modules](/platform/forge/manifest-reference/modules/automation-action/)
-for more details.
-
 In this pattern, you can define your own automation actions using the
 Forge [Action](/platform/forge/manifest-reference/modules/automation-action/) module.
 These actions appear as components in the Automation Platform rule builder. This allows users

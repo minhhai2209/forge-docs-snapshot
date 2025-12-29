@@ -1,14 +1,10 @@
 # Part 1: Build an app compatible with Confluence and Jira
 
-This functionality is available through Forge's Early Access Program (EAP). To start building
-Forge apps that are compatible with multiple Atlassian apps, you must be part of the EAP.
-[Sign up to join the EAP](https://ecosystem.atlassian.net/servicedesk/customer/portal/1040/group/3496/create/18660).
+The ability to build Forge apps that are compatible with multiple Atlassian apps is available as a Forge Preview feature.
 
-EAPs are offered to selected users for testing and feedback purposes. APIs and features under EAP
-are unsupported and subject to change without notice. This functionality must not be used in customer
-production environments.
+Preview features are deemed stable; however, they remain under active development and may be subject to shorter deprecation windows. Preview features are suitable for early adopters in production environments.
 
-For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
+We release preview features so partners and developers can study, test, and integrate them prior to General Availability (GA). For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
 
 This tutorial will walk you through creating an app that is compatible with Confluence and Jira.
 This app uses the [Confluence macro](/platform/forge/manifest-reference/modules/macro/) and
@@ -20,19 +16,20 @@ For more information on building Forge apps that are compatible with multiple At
 
 There are four parts to the tutorial:
 
-1. This page: describes creating, deploying, and installing a hello world app that defines Confluence
+1. **Part 1 – This page:** describes creating, deploying, and installing a hello world app that defines Confluence
    as the required Atlassian app.
-2. [Call a Confluence API:](/platform/forge/call-a-confluence-api-in-a-confluence-jira-app) describes
+2. **Part 2 – [Call a Confluence API](/platform/forge/call-a-confluence-api-in-a-confluence-jira-app):** describes
    how to make API calls to the Confluence REST API.
-3. [Add support for Jira as an optional Atlassian app:](/platform/forge/add-support-for-jira-as-an-optional-Atlassian-app)
+3. **Part 3 – [Add support for Jira as an optional Atlassian app](/platform/forge/add-support-for-jira-as-an-optional-atlassian-app):**
    describes how to add Jira as an optional Atlassian app, including adding a Jira module and making API calls to the Jira REST API.
-4. [Change the frontend with UI Kit:](/platform/forge/change-the-frontend-with-ui-kit-for-a-confluence-jira-app/)
+4. **Part 4 – [Change the frontend with UI Kit](/platform/forge/change-the-frontend-with-ui-kit-for-a-confluence-jira-app):**
    describes how to use UI Kit components.
 
-We recommend you work through all four parts to get a good understanding of how to develop Forge apps
-that are compatible with multiple Atlassian apps.
+This is part 1 of 4 in this tutorial series. We recommend you work through all four parts, in order, to get a good understanding of how to develop Forge apps that are compatible with multiple Atlassian apps.
 
 ## Before you begin
+
+If you're completely new to Forge, the [Getting started with Forge](/platform/forge/getting-started/) tutorial walks you through setting up your development environment and using the Forge CLI from your terminal (for example, macOS Terminal, Windows Command Prompt, or PowerShell).
 
 Complete [Getting started](/platform/forge/getting-started/) before working through
 this tutorial.
@@ -63,7 +60,7 @@ The limits on the numbers of users you can create are as follows:
 
 You will need to ensure you are using the latest `@forge/cli` version.
 
-To install, run:
+To install the Forge CLI globally, open your terminal (for example, macOS Terminal, Windows Command Prompt, or a Linux shell) on your local machine and run:
 
 ```
 ```
@@ -249,7 +246,7 @@ With your app installed, it’s time to see the app on a page.
 
 Your hello world app is now installed into your development site. The app should display on the page like the image below.
 
-![The app displayed in a Confluence page](https://dac-static.atlassian.com/platform/forge/images/forge-getting-started-initial-state.png?_v=1.5800.1617)
+![The app displayed in a Confluence page](https://dac-static.atlassian.com/platform/forge/images/forge-getting-started-initial-state.png?_v=1.5800.1739)
 
 While your app is deployed to either a development or staging environment, `(development)` or
 `(staging)` will appear in your app title. This suffix is removed once you've
@@ -320,9 +317,11 @@ For important caveats on how `forge tunnel` works, see
 
 ## Next step
 
-In the next tutorial, you'll learn how to make API calls to Confluence using Forge. This tutorial uses the `forge tunnel`, so make sure you are familiar with using this command.
+Next, continue to **Part 2 – [Call a Confluence API](/platform/forge/call-a-confluence-api-in-a-confluence-jira-app)**, where you'll learn how to make API calls to Confluence using Forge. This tutorial uses the `forge tunnel`, so make sure you are familiar with using this command.
 
-[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.1617)](/platform/forge/call-a-confluence-api-in-a-confluence-jira-app)
+If you want to skip to adding Jira as a compatible context, you can go to **Part 3 – [Add support for Jira as an optional Atlassian app](/platform/forge/add-support-for-jira-as-an-optional-atlassian-app)**.
+
+[![Button: Next – Part 2, Call a Confluence API](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.1739)](/platform/forge/call-a-confluence-api-in-a-confluence-jira-app)
 
 ## Developing for Atlassian Government Cloud
 

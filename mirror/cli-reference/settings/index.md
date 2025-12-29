@@ -28,5 +28,5 @@ Usage: forge settings [options] [command]
 3
 help [command]                            display help for command
 list [options]                            list Forge CLI settings
-set [options] <setting> <boolean|string>  update Forge CLI setting (choices: usage-analytics, default-environment)
+set [options] <setting> <boolean|string>  update Forge CLI setting (choices: usage-analytics, default-environment, seasonal-effects)
 ```

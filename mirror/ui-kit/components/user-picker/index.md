@@ -30,7 +30,7 @@ A dropdown field that allows users to search and select users from a list.
 
 A field for selecting a user.
 
-![Example image of rendered User picker](https://dac-static.atlassian.com/platform/forge/ui-kit/images/user-picker/user-picker-single.png?_v=1.5800.1617)
+![Example image of rendered User picker](https://dac-static.atlassian.com/platform/forge/ui-kit/images/user-picker/user-picker-single.png?_v=1.5800.1739)
 
 ```
 ```
@@ -78,7 +78,7 @@ The returned object from `onChange` contains the Atlassian account ID and variou
 
 Multiple users can be selected when the `isMulti` prop is applied.
 
-![Example image of rendered User picker](https://dac-static.atlassian.com/platform/forge/ui-kit/images/user-picker/user-picker-multi.png?_v=1.5800.1617)
+![Example image of rendered User picker](https://dac-static.atlassian.com/platform/forge/ui-kit/images/user-picker/user-picker-multi.png?_v=1.5800.1739)
 
 ```
 ```

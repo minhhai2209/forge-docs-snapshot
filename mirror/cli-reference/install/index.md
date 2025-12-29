@@ -36,16 +36,14 @@ Usage: forge install [options] [command]
 20
 21
 22
-23
 --verbose                          enable verbose mode
 -e, --environment [environment]    specify the environment (see your default
-                                   environment by running forge settings
-                                   list)
+                                   environment by running forge settings list)
 -s, --site [site]                  site URL (example.atlassian.net)
--p, --product [context]            context (Jira, Confluence, Compass,
+-p, --product [Atlassian app]      Atlassian app (Jira, Confluence, Compass,
                                    Bitbucket)
---upgrade                          upgrade an existing installation (default:
-                                   false)
+--upgrade [target]                 upgrade an existing installation (allowed
+                                   values: all (default), code)
 --confirm-scopes                   skip confirmation of scopes for the app
                                    before installing or upgrading the app
                                    (default: false)
