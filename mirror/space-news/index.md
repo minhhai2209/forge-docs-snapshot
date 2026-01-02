@@ -10,10 +10,10 @@ This tutorial describes how to create a Forge app with two modules, where an adm
 news content using `spaceSettings` module, and make the news content available using `contentBylineItem`.
 
 The final `spaceSettings` module looks like the following:
-![Space settings shows Space news app](https://dac-static.atlassian.com/platform/forge/images/space-news-settings.png?_v=1.5800.1739)
+![Space settings shows Space news app](https://dac-static.atlassian.com/platform/forge/images/space-news-settings.png?_v=1.5800.1741)
 
 The final `contentBylineItem` module looks like the following:
-![Content byline item shows Space news app](https://dac-static.atlassian.com/platform/forge/images/space-news-byline.png?_v=1.5800.1739)
+![Content byline item shows Space news app](https://dac-static.atlassian.com/platform/forge/images/space-news-byline.png?_v=1.5800.1741)
 
 ## Before you begin
 

@@ -4,7 +4,7 @@ The `bitbucket:repoSettingsMenuPage` module adds an item in the `FORGE APPS` sec
 
 The page URL is constructed in the form of: `/{workspaceSlug}/{repositorySlug}/admin/forge/{forgeAppId}/{forgeEnvironmentKey}/{forgeAppModuleKey}`
 
-![Example of a repository settings menu page](https://dac-static.atlassian.com/platform/forge/images/bitbucket-repo-settings-menu.png?_v=1.5800.1739)
+![Example of a repository settings menu page](https://dac-static.atlassian.com/platform/forge/images/bitbucket-repo-settings-menu.png?_v=1.5800.1741)
 
 ## Properties
 

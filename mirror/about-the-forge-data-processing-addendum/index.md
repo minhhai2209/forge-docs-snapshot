@@ -1,6 +1,6 @@
 # About the Forge Data Processing Addendum
 
-The [Forge Data Processing Addendum (Forge DPA)](https://dac-static.atlassian.com/platform/forge/resources/Forge-Data-Processing-Addendum.pdf?_v=1.5800.1739) is incorporated by reference in the [Forge Terms](/platform/forge/developer-terms/), which all Forge developers must comply with in order to use the Forge platform.
+The [Forge Data Processing Addendum (Forge DPA)](https://dac-static.atlassian.com/platform/forge/resources/Forge-Data-Processing-Addendum.pdf?_v=1.5800.1741) is incorporated by reference in the [Forge Terms](/platform/forge/developer-terms/), which all Forge developers must comply with in order to use the Forge platform.
 
 # How to accept the Forge Terms and the Forge DPA
 

@@ -366,7 +366,7 @@ permissions:
       client:
         - "*.atlassian.net" # Embedded content can call back to Atlassian sites
     images:
-      - "*" # Required for images in the converted HTML
+      - address: "*" # Required for images in the converted HTML
     styles:
       # Rendering embedded content when converted to HTML with expand
       - "*.atl-paas.net"

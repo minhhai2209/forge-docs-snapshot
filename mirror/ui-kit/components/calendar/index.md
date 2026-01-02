@@ -44,7 +44,7 @@ An interactive calendar for date selection experiences.
 
 The calendar component provides a way to render dates for selection or presentation purposes.
 
-![Example image of a calendar with default calendar view](https://dac-static.atlassian.com/platform/forge/ui-kit/images/calendar/calendar-default.png?_v=1.5800.1739)
+![Example image of a calendar with default calendar view](https://dac-static.atlassian.com/platform/forge/ui-kit/images/calendar/calendar-default.png?_v=1.5800.1741)
 
 ```
 ```
@@ -72,7 +72,7 @@ const CalendarExample = () => {
 
 Calendar provides a `disabled` prop that accepts an array of arbitrary dates to disable. Only disable dates where the reason for disabling dates is clear. For example, a calendar selection for booking appointments, where only the days that have available options are enabled.
 
-![Example image of a calendar with calendar with disabled dates](https://dac-static.atlassian.com/platform/forge/ui-kit/images/calendar/calendar-disabled.png?_v=1.5800.1739)
+![Example image of a calendar with calendar with disabled dates](https://dac-static.atlassian.com/platform/forge/ui-kit/images/calendar/calendar-disabled.png?_v=1.5800.1741)
 
 ```
 ```
@@ -106,7 +106,7 @@ const CalendarDisabledExample = () => {
 
 To disable all dates before or after a certain date, use `minDate` or `maxDate`. These props disable all dates before or after a specific day respectively. Use a `minDate` and a `maxDate` together to create a range of days to choose from. The minimum and maximum dates are non inclusive, only the previous and next dates outside of these values will be disabled.
 
-![Example image of a calendar with calendar with disabled ranges](https://dac-static.atlassian.com/platform/forge/ui-kit/images/calendar/calendar-disabled-ranges.png?_v=1.5800.1739)
+![Example image of a calendar with calendar with disabled ranges](https://dac-static.atlassian.com/platform/forge/ui-kit/images/calendar/calendar-disabled-ranges.png?_v=1.5800.1741)
 
 ```
 ```
@@ -134,7 +134,7 @@ const CalendarDisabledRangeExample = () => {
 
 Use the `locale` prop to update the calendar language and formatting for different locales. You may also want to pair `locale` with the `weekStartDay` prop to change the day of the week the calendar starts with.
 
-![Example image of a calendar with calendar with localization](https://dac-static.atlassian.com/platform/forge/ui-kit/images/calendar/calendar-localization.png?_v=1.5800.1739)
+![Example image of a calendar with calendar with localization](https://dac-static.atlassian.com/platform/forge/ui-kit/images/calendar/calendar-localization.png?_v=1.5800.1741)
 
 ```
 ```

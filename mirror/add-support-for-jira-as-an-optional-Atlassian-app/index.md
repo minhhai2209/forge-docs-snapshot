@@ -315,7 +315,7 @@ install it in other Atlassian apps.
 1. Create a new Jira issue.
 2. In the issue panel of that issue, select the Apps button and select your app from the list.
 
-   ![Image of Cross-Context App in Jira](https://dac-static.atlassian.com/platform/forge/images/forge-getting-started-xpa-jira-initial-state.png?_v=1.5800.1739)
+   ![Image of Cross-Context App in Jira](https://dac-static.atlassian.com/platform/forge/images/forge-getting-started-xpa-jira-initial-state.png?_v=1.5800.1741)
 3. Add a comment to the Jira issue. For example, a comment with *Hello from the comments*.
 4. Refresh the Jira issue view.
 5. Check the output of the app in your browser's developer console. The number of comments on the issue displays as follows:
@@ -354,5 +354,5 @@ add the required scope to your `manifest.yml` file (in this case, `read:jira-wor
 In the next tutorial, you'll learn how to make changes to your app's frontend using the
 [UI Kit components](/platform/forge/ui-kit/components/) of Forge.
 
-[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.1739)](/platform/forge/call-a-confluence-api-in-a-confluence-jira-app/)
-[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.1739)](/platform/forge/change-the-frontend-with-ui-kit-for-a-confluence-jira-app/)
+[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.1741)](/platform/forge/call-a-confluence-api-in-a-confluence-jira-app/)
+[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.1741)](/platform/forge/change-the-frontend-with-ui-kit-for-a-confluence-jira-app/)

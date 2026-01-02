@@ -309,7 +309,7 @@ fetchLogs(startDate, endDate, cursor);
 To use the App logs API and ingest logs into observability tools, we recommend fetching logs in
 OTLP format from the API, and having the following components in your infrastructure:
 
-![Partner Server View](https://dac-static.atlassian.com/platform/forge/images/partner-server-arch-logs.svg?_v=1.5800.1739)
+![Partner Server View](https://dac-static.atlassian.com/platform/forge/images/partner-server-arch-logs.svg?_v=1.5800.1741)
 
 ### CronJob service
 

@@ -38,7 +38,7 @@ To register a custom metric:
 3. Enter a name and description for your metric. For example, `jira-actions-success`.
 4. Select **Register**.
 
-![Custom metrics registration](https://dac-static.atlassian.com/platform/forge/images/custom-metrics-registration.png?_v=1.5800.1739)
+![Custom metrics registration](https://dac-static.atlassian.com/platform/forge/images/custom-metrics-registration.png?_v=1.5800.1741)
 
 After a custom metric is registered, it may take up to 15 minutes before the metric is ingested into the system.
 
@@ -103,7 +103,7 @@ Before proceeding further, ensure you have [registered](#register-a-custom-metri
 4. Deploy your app using the Forge CLI by running:
 5. View the instrumented custom metric in the developer console.
 
-   ![View custom metrics](https://dac-static.atlassian.com/platform/forge/images/view-custom-metrics.png?_v=1.5800.1739)
+   ![View custom metrics](https://dac-static.atlassian.com/platform/forge/images/view-custom-metrics.png?_v=1.5800.1741)
 
 ## Delete a custom metric
 
@@ -115,7 +115,7 @@ To delete a custom metric:
 2. Select **Delete** in the menu.
 3. Select **Delete** in the confirmation dialog to confirm.
 
-![Custom metrics unregistration](https://dac-static.atlassian.com/platform/forge/images/custom-metrics-unregistration.png?_v=1.5800.1739)
+![Custom metrics unregistration](https://dac-static.atlassian.com/platform/forge/images/custom-metrics-unregistration.png?_v=1.5800.1741)
 
 ### Filters
 

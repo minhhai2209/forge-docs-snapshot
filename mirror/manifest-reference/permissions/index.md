@@ -481,7 +481,7 @@ header for all modules using Custom UI:
 permissions:
   external:
     images:
-      - "https://www.example-dev.com/image.png"
+      - address: https://www.example-dev.com/image.png
 ```
 ```
 

@@ -13,7 +13,7 @@ Runs on Atlassian addresses the following requirements from customers:
 
 The Forge CLI provides a programmatic way to verify the above requirements.
 
-![Runs on Atlassian page on app listing page](https://dac-static.atlassian.com/platform/forge/images/app-listing.svg?_v=1.5800.1739)
+![Runs on Atlassian page on app listing page](https://dac-static.atlassian.com/platform/forge/images/app-listing.svg?_v=1.5800.1741)
 
 See [Runs on Atlassian](/platform/forge/runs-on-atlassian/) for more details.
 
@@ -81,7 +81,7 @@ permissions:
       backend:
         - 'https://backend.example.com.com'
     images:
-      - '*.atlassian.com' # non-analytics egress
+      - address: *.atlassian.com' # non-analytics egress
 ```
 ```
 

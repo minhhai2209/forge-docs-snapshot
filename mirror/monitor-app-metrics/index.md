@@ -14,7 +14,7 @@ To view app metrics:
 The screen below shows invocation metrics, as well as all sites that your Forge app is currently
 installed on, and where there has been at least one invocation in the last 14 days.
 
-![Metrics screen](https://dac-static.atlassian.com/platform/forge/images/metrics-screen.svg?_v=1.5800.1739)
+![Metrics screen](https://dac-static.atlassian.com/platform/forge/images/metrics-screen.svg?_v=1.5800.1741)
 
 ## Developing for Atlassian Government Cloud
 

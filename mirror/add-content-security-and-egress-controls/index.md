@@ -33,7 +33,7 @@ The following table outlines the different types of external resources your app 
 | Fonts | External sources allowed for an app's font-src policy. | ``` permissions:   external:     fonts:       - 'https://www.example-dev.com/fonts.css' ``` |
 | Styles | External styles allowed for an app's style-src policy. | ``` permissions:   external:     styles:       - 'https://www.example-dev.com/stylesheet.css' ``` |
 | Frames | External sources allowed for an app's frame-src policy. | ``` permissions:   external:     frames:       - 'https://www.example-dev.com/embed/page' ``` |
-| Images | External sources allowed for an app's img-src policy. | ``` permissions:   external:     images:       - 'https://www.example-dev.com/image.png' ``` |
+| Images | External sources allowed for an app's img-src policy. | ``` permissions:   external:     images:       - address: https://www.example-dev.com/image.png ``` |
 | Media | External sources allowed for an app's media-src policy. | ``` permissions:   external:     media:       - 'https://www.example-dev.com/video.mp4' ``` |
 | Scripts | External sources allowed for an app's script-src policy. | ``` permissions:   external:     scripts:       - 'https://www.example-dev.com/script.js' ``` |
 
@@ -97,7 +97,7 @@ section below for more details.
          - 'unsafe-inline'
      external:
        images:
-         - '*.giphy.com'
+         - address: *.giphy.com
    ```
    ```
 3. In the `index.html` file of your Custom UI app, you can now leverage the new configuration:
