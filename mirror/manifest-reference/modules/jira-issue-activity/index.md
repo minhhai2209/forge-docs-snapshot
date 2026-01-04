@@ -14,14 +14,14 @@ For more information, see the
 ## Manifest example
 
 ```
+```
 1
 2
-3
-4
-5
-6
-7
-8
+```
+
+
+
+```
 modules:
   jira:issueActivity:
     - key: hello-world-issue-activity
@@ -30,6 +30,7 @@ modules:
         function: resolver
       render: native
       title: Hello World!
+```
 ```
 
 ## Properties
