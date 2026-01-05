@@ -27,7 +27,7 @@ import { DonutChart } from '@forge/react';
 
 Data can be one of two formats, an array of arrays or an array of objects. Both examples below will produce the same donut chart:
 
-![Example image of a rendered donut chart](https://dac-static.atlassian.com/platform/forge/ui-kit/images/donut-chart/donut-chart-data.png?_v=1.5800.1741)
+![Example image of a rendered donut chart](https://dac-static.atlassian.com/platform/forge/ui-kit/images/donut-chart/donut-chart-data.png?_v=1.5800.1742)
 
 ### 1. Array of arrays
 

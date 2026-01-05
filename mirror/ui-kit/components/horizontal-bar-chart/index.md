@@ -24,7 +24,7 @@ import { HorizontalBarChart } from '@forge/react';
 
 Data can be one of two formats, an array of arrays or an array of objects. Both examples below will produce the same horizontal bar chart:
 
-![Example image of a rendered grouped horizontal bar chart](https://dac-static.atlassian.com/platform/forge/ui-kit/images/horizontal-bar-chart/grouped-data-horizontal-bar-chart-example.png?_v=1.5800.1741)
+![Example image of a rendered grouped horizontal bar chart](https://dac-static.atlassian.com/platform/forge/ui-kit/images/horizontal-bar-chart/grouped-data-horizontal-bar-chart-example.png?_v=1.5800.1742)
 
 ### 1. Array of arrays
 

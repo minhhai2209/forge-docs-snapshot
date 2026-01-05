@@ -13,7 +13,7 @@ import { useProductContext } from "@forge/react";
 
 Here is an example of an app that displays all its context information with `useProductContext`.
 
-![The app display on a Confluence page](https://dac-static.atlassian.com/platform/forge/images/ui-kit-2/hooks-examples/useproductcontext.png?_v=1.5800.1741)
+![The app display on a Confluence page](https://dac-static.atlassian.com/platform/forge/images/ui-kit-2/hooks-examples/useproductcontext.png?_v=1.5800.1742)
 
 ```
 1

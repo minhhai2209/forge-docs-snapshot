@@ -30,19 +30,19 @@ The app is composed of three components:
 
 Display view that shows the selected work item(s) on the Jira work item screen. It uses the `jira:customFieldType` Forge module to read the field value and render key details, such as work item key and summary, leveraging Jira REST APIs and UI Kit components for a native Jira look and feel.
 
-![Work item view](https://dac-static.atlassian.com/platform/forge/images/work-item-view.svg?_v=1.5800.1741)
+![Work item view](https://dac-static.atlassian.com/platform/forge/images/work-item-view.svg?_v=1.5800.1742)
 
 ### Work item edit
 
 Interactive view used when the user searches for and selects a work item. It powers the type-ahead work item picker: as the user types, it shows the work items that match the configured JQL so users can quickly search and select the right work item.
 
-![Work item edit](https://dac-static.atlassian.com/platform/forge/images/work-item-edit.svg?_v=1.5800.1741)
+![Work item edit](https://dac-static.atlassian.com/platform/forge/images/work-item-edit.svg?_v=1.5800.1742)
 
 ### Context configuration
 
 Admin configuration view for the `jira:customFieldType`. Jira admins can define a JQL filter per context to control which work items are available in the picker. The app provides the UI to enter, validate, and store the configuration as part of the context configuration.
 
-![Context configuration](https://dac-static.atlassian.com/platform/forge/images/field-context-configuration.svg?_v=1.5800.1741)
+![Context configuration](https://dac-static.atlassian.com/platform/forge/images/field-context-configuration.svg?_v=1.5800.1742)
 
 ---
 

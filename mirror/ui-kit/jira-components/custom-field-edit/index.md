@@ -37,7 +37,7 @@ A `CustomFieldEdit` is a wrapper component that provides inline edit features fo
 
 #### Text field
 
-![Example image of an Custom field edit with text field](https://dac-static.atlassian.com/platform/forge/ui-kit/images/jira/custom-field-edit/custom-field-edit-textfield.png?_v=1.5800.1741)
+![Example image of an Custom field edit with text field](https://dac-static.atlassian.com/platform/forge/ui-kit/images/jira/custom-field-edit/custom-field-edit-textfield.png?_v=1.5800.1742)
 
 ```
 ```
@@ -75,7 +75,7 @@ const Edit = () => {
 
 #### Select
 
-![Example image of an Custom field edit with select](https://dac-static.atlassian.com/platform/forge/ui-kit/images/jira/custom-field-edit/custom-field-edit-select.png?_v=1.5800.1741)
+![Example image of an Custom field edit with select](https://dac-static.atlassian.com/platform/forge/ui-kit/images/jira/custom-field-edit/custom-field-edit-select.png?_v=1.5800.1742)
 
 ```
 ```
@@ -120,7 +120,7 @@ const Edit = () => {
 
 #### Multiple components
 
-![Example image of an Custom field edit with select open](https://dac-static.atlassian.com/platform/forge/ui-kit/images/jira/custom-field-edit/custom-field-edit-multiple-components-select.png?_v=1.5800.1741)
+![Example image of an Custom field edit with select open](https://dac-static.atlassian.com/platform/forge/ui-kit/images/jira/custom-field-edit/custom-field-edit-multiple-components-select.png?_v=1.5800.1742)
 
 ```
 ```
@@ -178,7 +178,7 @@ const Edit = () => {
 
 On the Issue view, contextual action buttons are rendered next to each field by default. These are a checkmark (confirm edit) and a cross (cancel edit). You can use `hideActionButtons` to hide them, but we don’t recommend doing so if you want to maintain consistency with the overall Jira experience.
 
-![Example image of an Custom field edit with no action buttons](https://dac-static.atlassian.com/platform/forge/ui-kit/images/jira/custom-field-edit/custom-field-edit-no-action-buttons.png?_v=1.5800.1741)
+![Example image of an Custom field edit with no action buttons](https://dac-static.atlassian.com/platform/forge/ui-kit/images/jira/custom-field-edit/custom-field-edit-no-action-buttons.png?_v=1.5800.1742)
 
 ```
 ```

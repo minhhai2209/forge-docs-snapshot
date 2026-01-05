@@ -9,11 +9,11 @@ Unlicensed user access: This module supports interaction with customer accounts 
 
 When adding this to your app, use it as a top-level component.
 
-![Example of a Portal request view action button](https://dac-static.atlassian.com/platform/forge/snippets/images/portal-request-view-action-location.png?_v=1.5800.1741)
+![Example of a Portal request view action button](https://dac-static.atlassian.com/platform/forge/snippets/images/portal-request-view-action-location.png?_v=1.5800.1742)
 
 This is an example of the triggered modal dialog:
 
-![Example of a Portal request view with the above sample code](https://dac-static.atlassian.com/platform/forge/snippets/images/portal-request-view-action-demo.png?_v=1.5800.1741)
+![Example of a Portal request view with the above sample code](https://dac-static.atlassian.com/platform/forge/snippets/images/portal-request-view-action-demo.png?_v=1.5800.1742)
 
 ## Properties
 

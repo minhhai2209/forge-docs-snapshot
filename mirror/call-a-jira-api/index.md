@@ -193,5 +193,5 @@ When you save the `index.jsx` file, the tunnel output in the developer console m
 In the next tutorial, you'll learn how to make changes to your app's frontend using the
 [UI Kit components](/platform/forge/ui-kit/components/) of Forge.
 
-[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.1741)](/platform/forge/build-a-hello-world-app-in-jira/)
-[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.1741)](/platform/forge/change-the-jira-frontend-with-the-ui-kit/)
+[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.1742)](/platform/forge/build-a-hello-world-app-in-jira/)
+[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.1742)](/platform/forge/change-the-jira-frontend-with-the-ui-kit/)

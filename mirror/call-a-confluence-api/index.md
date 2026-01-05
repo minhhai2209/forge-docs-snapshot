@@ -167,7 +167,7 @@ For information about how Atlassian collects and handles your data, read our
 2. Refresh the Confluence page that contains your macro.
 3. Check the developer console in your browser. The number of comments on the page displays as follows:
 
-![The message displayed in the browser console](https://dac-static.atlassian.com/platform/forge/images/console-log-successful.png?_v=1.5800.1741)
+![The message displayed in the browser console](https://dac-static.atlassian.com/platform/forge/images/console-log-successful.png?_v=1.5800.1742)
 
 The `requestConfluence` method inherits the Atlassian app permissions of the user that is interacting with the app. This can cause different API responses between different users in the same app.
 
@@ -217,5 +217,5 @@ You'll have to manually add the required scope permission into your `manifest.ym
 In the next tutorial, you'll learn how to make changes to your app's frontend using the
 [UI Kit components](/platform/forge/ui-kit/components/) of Forge.
 
-[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.1741)](/platform/forge/build-a-hello-world-app-in-confluence/)
-[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.1741)](/platform/forge/change-the-confluence-frontend-with-the-ui-kit)
+[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.1742)](/platform/forge/build-a-hello-world-app-in-confluence/)
+[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.1742)](/platform/forge/change-the-confluence-frontend-with-the-ui-kit)

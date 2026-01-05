@@ -27,17 +27,43 @@ import { useConfig } from "@forge/react";
 
 Here is an example of accessing configuration for a Forge macro. Note that you'll need to [add configuration to the Confluence macro module](/platform/forge/add-configuration-to-a-macro-with-ui-kit-2/#add-configuration-to-the-confluence-macro-module) in order to configure the displayed values.
 
-![The app display on a Confluence page](https://dac-static.atlassian.com/platform/forge/images/ui-kit-2/hooks-examples/useconfig.png?_v=1.5800.1741)
+![The app display on a Confluence page](https://dac-static.atlassian.com/platform/forge/images/ui-kit-2/hooks-examples/useconfig.png?_v=1.5800.1742)
 
-```
 ```
 1
 2
-```
-
-
-
-```
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
 import React from 'react';
 import ForgeReconciler, { Heading, Text, Textfield, useConfig } from '@forge/react';
 
@@ -72,7 +98,6 @@ ForgeReconciler.render(
 
 // Adding the Config function to the ForgeReconciler to allow for configuration changes
 ForgeReconciler.addConfig(<Config />);
-```
 ```
 
 ### Function Signature
