@@ -12,6 +12,7 @@ import { LineChart } from '@forge/react';
 | Name | Type | Required | Description |
 | --- | --- | --- | --- |
 | `colorAccessor` | `number` | `string` | No | Accessor to define the color grouping. |
+| `colorPalette` | `string[]` | `{ key: string; value: string }[]` | No | Custom color palette for the chart. Can be an array of color strings (e.g., `['#0052CC', '#FF5630']`) or an array of objects with `key` and `value` properties to map specific data categories to colors (e.g., `[{ key: 'category1', value: '#0052CC' }]`). |
 | `data` | `unknown[]` | Yes | Data can be one of two formats:    1. An [array of arrays](#1--array-of-arrays). 2. An [array of objects](#2--array-of-objects). |
 | `height` | `number` | No | The static height of the chart in pixels. Defaults to `400`. |
 | `subtitle` | `string` | No | A string value that represents the subtitle of the chart. This appears below the title. |
@@ -24,7 +25,7 @@ import { LineChart } from '@forge/react';
 
 Data can be one of two formats, an array of arrays or an array of objects. Both examples below will produce the same line chart:
 
-![Example image of a rendered series line bar chart](https://dac-static.atlassian.com/platform/forge/ui-kit/images/line-chart/multiple-line-chart-example.png?_v=1.5800.1742)
+![Example image of a rendered series line bar chart](https://dac-static.atlassian.com/platform/forge/ui-kit/images/line-chart/multiple-line-chart-example.png?_v=1.5800.1771)
 
 ### 1. Array of arrays
 

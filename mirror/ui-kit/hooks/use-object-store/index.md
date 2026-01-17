@@ -9,9 +9,9 @@ By signing up for this Early Access Program (“EAP”), you acknowledge that us
 
 For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
 
-# Supported Apps
+# Supported Modules
 
-This component is supported in Jira and Confluence modules during EAP.
+This is supported in Bitbucket, Confluence, Jira, and Jira Service Management modules during EAP.
 
 The `useObjectStore` hook lets you perform file management operations and track the state of each objects. This hook provides a way for your
 app's frontend to interact with the [Forge Object Store](/platform/forge/storage-reference/object-store/) through the the
@@ -20,7 +20,7 @@ app's frontend to interact with the [Forge Object Store](/platform/forge/storage
 The following diagram shows how the hook integrates the backend resolver with the
 [File picker](/platform/forge/ui-kit/components/file-picker/) and [File card](/platform/forge/ui-kit/components/file-card/):
 
-![Diagram of how the hook interacts with the resolver and File components](https://dac-static.atlassian.com/platform/forge/ui-kit/images/hook/useObjectStore.png?_v=1.5800.1742)
+![Diagram of how the hook interacts with the resolver and File components](https://dac-static.atlassian.com/platform/forge/ui-kit/images/hook/useObjectStore.png?_v=1.5800.1771)
 
 [Example app
 

@@ -28,7 +28,7 @@ A `Tooltip` is a floating, non-actionable label used to explain a user interface
 
 The default form of a tooltip.
 
-![Example image of a tooltip](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tooltip/tooltip-default.png?_v=1.5800.1742)
+![Example image of a tooltip](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tooltip/tooltip-default.png?_v=1.5800.1771)
 
 ```
 ```
@@ -57,7 +57,7 @@ Use the `position` prop to set a preferred position (`auto`, `top`, `right`, `le
 
 Using a position of `auto` will place the tooltip on the side with the most space available.
 
-![Example image of a tooltip with different positions set](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tooltip/tooltip-position.png?_v=1.5800.1742)
+![Example image of a tooltip with different positions set](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tooltip/tooltip-position.png?_v=1.5800.1771)
 
 ```
 ```
@@ -82,7 +82,7 @@ const TooltipPositionExample = () => {
 
 If set to `mouse`, the tooltip will display next to the mouse pointer. Use `mousePosition` if you want to customise where the tooltip shows in relation to the mouse.
 
-![Example image of a tooltip using mouse position](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tooltip/tooltip-mouse-position.png?_v=1.5800.1742)
+![Example image of a tooltip using mouse position](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tooltip/tooltip-mouse-position.png?_v=1.5800.1771)
 
 ```
 ```

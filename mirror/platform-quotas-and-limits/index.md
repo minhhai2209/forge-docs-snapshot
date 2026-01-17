@@ -46,6 +46,12 @@ Defines constraints for Forge SQL databases, including total storage capacity, t
 
 For more information, see [Forge SQL limits](/platform/forge/limits-sql/).
 
+### Forge Object Store
+
+Describes installation-specific limits for throughput and object sizes, which help ensure fair use and reliable performance.
+
+For more information, see [Forge Object Store](/platform/forge/limits-object-store/).
+
 ### Web Trigger
 
 Sets rate limits for Web trigger operations (get, create, delete) per minute, app, environment, and context. Exceeding these thresholds results in temporary request denials until usage normalizes.

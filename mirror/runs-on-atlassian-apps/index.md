@@ -8,12 +8,13 @@ Runs on Atlassian addresses the following requirements from customers:
 
 1. Apps exclusively use Atlassian-hosted compute and storage.
 2. Apps support data residency that matches data residency provided by the host Atlassian app.
-3. Customers are in control of data egress, such as analytics and logs, and can fully block
-   data egress at any time.
+3. Customers can control external data egress (for example, analytics and logs) via admin controls.
 
 The Forge CLI provides a programmatic way to verify the above requirements.
 
-![Runs on Atlassian page on app listing page](https://dac-static.atlassian.com/platform/forge/images/app-listing.svg?_v=1.5800.1742)
+While controls that limit external data egress are in place, these controls do not prevent misuse of access granted to the app during installation or abuse of the app runtime. The boundaries of tenant safety and data handling are defined in the [Shared responsibility model](/platform/forge/shared-responsibility-model/#tenant-safety).
+
+![Runs on Atlassian page on app listing page](https://dac-static.atlassian.com/platform/forge/images/app-listing.svg?_v=1.5800.1771)
 
 See [Runs on Atlassian](/platform/forge/runs-on-atlassian/) for more details.
 

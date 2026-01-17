@@ -246,7 +246,7 @@ With your app installed, it’s time to see the app on a page.
 
 Your hello world app is now installed into your development site. The app should display on the page like the image below.
 
-![The app displayed in a Confluence page](https://dac-static.atlassian.com/platform/forge/images/forge-getting-started-initial-state.png?_v=1.5800.1742)
+![The app displayed in a Confluence page](https://dac-static.atlassian.com/platform/forge/images/forge-getting-started-initial-state.png?_v=1.5800.1771)
 
 While your app is deployed to either a development or staging environment, `(development)` or
 `(staging)` will appear in your app title. This suffix is removed once you've
@@ -321,7 +321,7 @@ Next, continue to **Part 2 – [Call a Confluence API](/platform/forge/call-a-co
 
 If you want to skip to adding Jira as a compatible context, you can go to **Part 3 – [Add support for Jira as an optional Atlassian app](/platform/forge/add-support-for-jira-as-an-optional-atlassian-app)**.
 
-[![Button: Next – Part 2, Call a Confluence API](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.1742)](/platform/forge/call-a-confluence-api-in-a-confluence-jira-app)
+[![Button: Next – Part 2, Call a Confluence API](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.1771)](/platform/forge/call-a-confluence-api-in-a-confluence-jira-app)
 
 ## Developing for Atlassian Government Cloud
 

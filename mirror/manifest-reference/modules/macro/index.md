@@ -19,7 +19,7 @@ from the quick insert menu of the editor. The `macro` module is implemented by a
 
 On apps that use Custom UI, module content is displayed inside a [special Forge iframe](/platform/forge/custom-ui/iframe/) which has the [sandbox](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#sandbox) attribute configured. This means that HTML links (for example, `<a href="https://domain.tld/path">...</a>`) in this iframe won't be clickable. To make them clickable, use the [router.navigate](/platform/forge/custom-ui-bridge/router/#navigate) API from the `@forge/bridge` package.
 
-![Example of a macro](https://dac-static.atlassian.com/platform/forge/snippets/images/macro-example.png?_v=1.5800.1742)
+![Example of a macro](https://dac-static.atlassian.com/platform/forge/snippets/images/macro-example.png?_v=1.5800.1771)
 
 ## Manifest structure
 
@@ -42,6 +42,7 @@ modules {}
    ├─ title (string | i18n) [Mandatory]
    ├─ icon (string) [Optional]
    ├─ categories (string[]) [Optional]
+   ├─ unlicesedAccess (List<string>) [Optional]
    ├─ description (string | i18n) [Optional]
    ├─ hidden (boolean) [Optional]
    └─ config (boolean | {} | config object) [Optional]
@@ -88,6 +89,7 @@ resources []
 | `autoConvert.matchers` | `[matcher, ...]` | Yes, if using `autoConvert` | The list of patterns that define what URLs should be matched. |
 | `autoConvert.matchers.pattern` | `string` | Yes, if using `autoConvert` | A string that defines a specific URL pattern to be matched, using wildcards for variable parts of the URL, such as unique IDs.  * Use multiple wildcards to match multiple sub-paths. Do not include all sub-paths with a single wildcard. * Ensure URLs do not contain whitespace unless it is URL encoded. * Wildcards cannot be used in place of a protocol. Custom URL Schemes are supported See [examples](#matching-custom-url-schemes) * Maximum length of the pattern is 1024 characters. |
 | `emitsReadyEvent` | boolean | No | Defaults to `false`. An optional configuration to notify Confluence that the macro will send a `emitReadyEvent` when it has completed loading and is ready for export or further processing. This should be used with `view.emitReadyEvent()`. See the [view bridge function](/platform/forge/apis-reference/ui-api-bridge/view/#emitreadyevent) for more information. |
+| `unlicensedAccess` | List<string> |  | A list of unlicensed user types that can access this module. Valid values are: `unlicensed` (Guests Users), and `anonymous`. For more information, see [Access to Forge apps for unlicensed Confluence users](/platform/forge/access-to-forge-apps-for-unlicensed-jsm-users/#confluence-forge-modules). |
 
 ### i18n object
 

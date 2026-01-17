@@ -326,6 +326,36 @@ Using a wildcard for a `backend` or `client` (for example, `*.example-dev`) does
 the parent domain. If you need to support both, you need to explicitly add the parent domain
 as a second entry.
 
+**Data residency eligibility for PINNED status:** If you want your app to be eligible for `PINNED` status for data residency purposes, any address declared in `fetch.backend` or `fetch.client` must match an address in a remote declaration. The match must be an exact string match (wildcards are not evaluated). Alternatively, you can set `inScopeEUD: false` on the fetch entry to maintain eligibility. See [Data residency eligibility](/platform/forge/data-residency/#eligibility) for more information.
+
+###### Example: Direct listing with matching remote for PINNED status
+
+To maintain eligibility for `PINNED` status when using direct listing, ensure the address in your fetch declaration exactly matches a `baseUrl` in your remotes section:
+
+```
+```
+1
+2
+```
+
+
+
+```
+permissions:
+  external:
+    fetch:
+      backend:
+        - "https://api.example.com"
+remotes:
+  - key: api-backend
+    baseUrl: "https://api.example.com"
+    operations:
+      - fetch
+```
+```
+
+In this example, `"https://api.example.com"` in `fetch.backend` exactly matches the `baseUrl` in the remote declaration, which helps maintain eligibility for `PINNED` status.
+
 #### As a remote back end
 
 This involves declaring the URLs in a separate `remotes` section, where you can explicitly define
@@ -355,8 +385,8 @@ remotes:
 ```
 
 The `fetch` setting in the operations property defines the purpose of the remote back end.
-You’ll need to do this if you want your app to be eligible for `PINNED` status for data residency
-purposes. See [Data residency eligibility](/platform/forge/runtime-egress-permissions/#dare-eligibility)
+Since the fetch entry references a remote by key, the address automatically matches a remote declaration,
+which helps maintain eligibility for `PINNED` status for data residency purposes. See [Data residency eligibility](/platform/forge/data-residency/#eligibility)
 for more information.
 
 Calls made to any domain that is not defined in the `manifest.yml` file of your app will be

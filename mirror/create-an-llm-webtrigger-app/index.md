@@ -29,10 +29,17 @@ Before you begin, ensure you have the following:
 Use the Forge CLI to create your app. In this example, we’ll name it `llm-webtrigger-app`:
 
 ```
+```
 1
 2
+```
+
+
+
+```
 # First, authenticate with Forge if you haven’t already:
 forge login
+```
 ```
 
 ```

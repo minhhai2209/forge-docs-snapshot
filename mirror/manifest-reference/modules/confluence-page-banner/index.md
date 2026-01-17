@@ -6,7 +6,7 @@ can be used to display information, notifications, or other content relevant to 
 Confluence page banner is supported on Confluence pages, live docs, and spaces. It is not supported on whiteboards,
 databases, smart links, or pages that are embedded within another Confluence page.
 
-![Example of a Confluence page banner](https://dac-static.atlassian.com/platform/forge/snippets/images/confluence-page-banner.png?_v=1.5800.1742)
+![Example of a Confluence page banner](https://dac-static.atlassian.com/platform/forge/snippets/images/confluence-page-banner.png?_v=1.5800.1771)
 
 ## Manifest structure
 
@@ -22,6 +22,7 @@ databases, smart links, or pages that are embedded within another Confluence pag
 9
 10
 11
+12
 modules {}
 └─ confluence:pageBanner []
    ├─ key (string) [Mandatory]
@@ -29,6 +30,7 @@ modules {}
    ├─ render (string) [Optional]
    ├─ resolver {} [Optional]
    └─ displayConditions {} [Optional]
+   └─ unlicesedAccess (string[]) [Optional]
 
 resources []
 ├─ key (string) [Mandatory]
@@ -44,6 +46,7 @@ resources []
 | `render` | `'native'` | Yes for UI Kit. | Indicates the module uses UI Kit. |
 | `resolver` | `{ function: string }` or `{ endpoint: string }` | No | Set the `function` property if you are using a hosted `function` module for your resolver.  Set the `endpoint` property if you are using [Forge remote](/platform/forge/forge-remote-overview) to integrate with a remote back end. |
 | `displayConditions` | `object` | No | The object that defines whether or not a page banner is displayed. See [display conditions](/platform/forge/manifest-reference/display-conditions). |
+| `unlicensedAccess` | List<string> |  | A list of unlicensed user types that can access this module. Valid values are: `unlicensed` (Guests Users), and `anonymous`. For more information, see [Access to Forge apps for unlicensed Confluence users](/platform/forge/access-to-forge-apps-for-unlicensed-jsm-users/#confluence-forge-modules). |
 
 ## Extension context
 

@@ -164,7 +164,7 @@ With your app installed, it’s time to see the app on your project's queues sec
 2. In the left navigation of your project, open queues and select the app from the `Apps` section.
    Your app should display like the example below.
 
-![A Jira Service Management queue page displaying the hello world forge app](https://dac-static.atlassian.com/platform/forge/images/forge-getting-started-jira-service-management-initial-state.png?_v=1.5800.1742)
+![A Jira Service Management queue page displaying the hello world forge app](https://dac-static.atlassian.com/platform/forge/images/forge-getting-started-jira-service-management-initial-state.png?_v=1.5800.1771)
 
 3. To view new changes in your app, run `forge deploy` again, or run `forge tunnel`.
    This is explained fully in the next section.
@@ -241,7 +241,7 @@ For important caveats on how `forge tunnel` works, see
 In the next tutorial, you'll learn how to make API calls to Jira Service Management using Forge. This tutorial
 uses the `forge tunnel`, so make sure you are familiar with using this command.
 
-[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.1742)](/platform/forge/call-a-jira-service-management-api/)
+[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.1771)](/platform/forge/call-a-jira-service-management-api/)
 
 ## Developing for Atlassian Government Cloud
 

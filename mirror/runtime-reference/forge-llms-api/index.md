@@ -244,15 +244,18 @@ We plan to launch with support for three Claude variants: Sonnet, Opus, and Haik
 
 ### Supported models
 
-| Model ID | Variants | Family |
-| --- | --- | --- |
-| `claude-3-5-haiku-20241022` | Haiku | Claude |
-| `claude-3-7-sonnet-20250219` | Sonnet | Claude |
-| `claude-opus-4-20250514` | Opus | Claude |
-| `claude-sonnet-4-20250514` | Sonnet | Claude |
-| `claude-sonnet-4-5-20250929` | Sonnet | Claude |
-| `claude-haiku-4-5-20251001` | Haiku | Claude |
-| `claude-opus-4-1-20250805` | Opus | Claude |
+| Model ID | Variants | Family | Status | EOL |
+| --- | --- | --- | --- | --- |
+| `claude-3-5-haiku-20241022` | Haiku | Claude | `ACTIVE` |  |
+| `claude-haiku-4-5-20251001` | Haiku | Claude | `ACTIVE` |  |
+| `claude-3-7-sonnet-20250219` | Sonnet | Claude | `ACTIVE` |  |
+| `claude-sonnet-4-20250514` | Sonnet | Claude | `ACTIVE` |  |
+| `claude-sonnet-4-5-20250929` | Sonnet | Claude | `ACTIVE` |  |
+| `claude-opus-4-20250514` | Opus | Claude | `DEPRECATED` | February 2026 |
+| `claude-opus-4-1-20250805` | Opus | Claude | `ACTIVE` |  |
+| `claude-opus-4-5-20251101` | Opus | Claude | `ACTIVE` |  |
+
+As AI models evolve quickly, check regularly for deprecated status and associated EOL dates so your apps do not break.
 
 ### Claude - Opus
 

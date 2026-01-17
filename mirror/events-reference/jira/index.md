@@ -72,6 +72,7 @@ Example
 | issue | `Issue` | The issue the event is related to. |
 | atlassianId? | `string` | [Optional] The ID of the user that has caused the event. |
 | associatedUsers? | `AssociatedUsers` | [Optional] An object containing an array of one user, with the user being the one who created the issue. |
+| clonedFrom? | `ClonedFrom` | [Optional] Information about the original issue if this issue was created by cloning another issue. Contains the ID and key of the source issue. |
 
 ### Issue updated
 

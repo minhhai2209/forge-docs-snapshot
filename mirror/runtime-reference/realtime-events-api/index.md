@@ -130,6 +130,12 @@ Although the APIs for `publish` and `publishGlobal` are identical, the `publishG
 
 As a result, events sent by the `publish` API can only be received by subscriptions created using the `subscribe` @forge/bridge API, and `publishGlobal` events can only be received by subscriptions created using the `subscribeGlobal` bridge API.
 
+### Limitations
+
+When choosing between `publish` and `publishGlobal`, keep in mind these limitations:
+
+* The `publish` API is only supported for functions invoked from the app frontend. This is **not** currently available for async events and web triggers. Use `publishGlobal` instead, alongside the [`realtimeToken`](/platform/forge/realtime/authorizing-realtime-channels/#custom-channel-context-with-realtime-tokens) API to apply additional restrictions.
+
 ## Using the `token` argument to secure channel context
 
 The `token` argument allows for more fine-grained control over the permissions scopes of your realtime events. See [Authorizing Realtime channels](/platform/forge/realtime/authorizing-realtime-channels/) for more information on how to manage authorization within your app.

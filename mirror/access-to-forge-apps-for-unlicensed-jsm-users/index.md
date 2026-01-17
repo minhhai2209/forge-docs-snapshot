@@ -32,6 +32,18 @@ And for the following Jira modules rendered on Jira Service Management portal:
 Note that full-page Jira modules (for example, `jira:globalPage` and `jiraServiceManagement:queuePage`) do **not** support unlicensed or anonymous access.
 To support `customer` (licensed), `unlicensed`, or `anonymous` users, use Jira Service Management portal modules such as `portalFooter`, `portalHeader`, or `portalSubheader`.
 
+### Confluence Forge Modules
+
+Confluence has two unlicensed user
+types, reflecting different levels of the user’s relationship with the site:
+
+| Guest user | Description |
+| --- | --- |
+| `unlicensed` | Users with an Atlassian account who have limited access to a single Confluence space. Guests are authenticated but don't consume a paid license. |
+| `anonymous` | A user who is not logged in to an Atlassian account. |
+
+Unlicensed access is currently supported for the following Confluence modules:
+
 ### Supported functionality
 
 #### Authenticated Atlassian app API calls

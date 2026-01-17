@@ -12,7 +12,7 @@ triggered by granular, merge check specific, pull request focused [events](#trig
 Another key difference is that the `bitbucket:mergeCheck` module must return a [response payload](#response-payload)
 that indicates whether the check has passed or failed.
 
-![Example of a bitbucket:mergeCheck in a pull request](https://dac-static.atlassian.com/platform/forge/images/bitbucket-merge-check-pr.png?_v=1.5800.1742)
+![Example of a bitbucket:mergeCheck in a pull request](https://dac-static.atlassian.com/platform/forge/images/bitbucket-merge-check-pr.png?_v=1.5800.1771)
 
 Each module will be treated as its own **check** and have **independent results**. A check must pass for a
 pull request to be merged if it is configured to be **Required** in either the **Workspace**, **Project**
@@ -29,7 +29,7 @@ Once a Forge app with a `bitbucket:mergeCheck` module has been installed into a 
 **workspace admin** must [enable](https://support.atlassian.com/bitbucket-cloud/docs/set-up-and-use-custom-merge-checks/)
 the `Custom merge checks` feature in the workspace settings before they can be configured.
 
-![Enable the custom merge check feature in your workspace settings](https://dac-static.atlassian.com/platform/forge/images/bitbucket-merge-check-workspace-settings.png?_v=1.5800.1742)
+![Enable the custom merge check feature in your workspace settings](https://dac-static.atlassian.com/platform/forge/images/bitbucket-merge-check-workspace-settings.png?_v=1.5800.1771)
 
 After this, the check can be enabled by an appropriate admin at either the **repository**, **project** or **workspace**
 level. The admin is also able to specify the PR target branch pattern that the check should be run against and whether
@@ -243,7 +243,7 @@ Note that the user can individually rerun failed checks.
 
 ### Merge check results in the Bitbucket UI
 
-![Example of a bitbucket:mergeCheck in a pull request, annotated with identifiers](https://dac-static.atlassian.com/platform/forge/images/bitbucket-merge-check-details.png?_v=1.5800.1742)
+![Example of a bitbucket:mergeCheck in a pull request, annotated with identifiers](https://dac-static.atlassian.com/platform/forge/images/bitbucket-merge-check-details.png?_v=1.5800.1771)
 
 1. **Merge check result:** derived from response payload `success` field.
 2. **Merge check name:** derived from the module `name` field.

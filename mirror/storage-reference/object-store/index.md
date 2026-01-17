@@ -18,14 +18,35 @@ for its frontend. Refer to the app's README for additional guidance on exploring
 
 ## Limitations
 
-The Forge Object Store has the following limitations during the EAP:
+The Forge Object Store is subject to following limitations:
 
-* **Storage limits:** Objects can be up to 50 MB each, with a total storage cap of 1 GB across all objects.
-* **Time-to-Live (TTL):** Objects have a default TTL of 90 days. Custom TTLs can be set but must be greater than 1 second and can't exceed 90 days. This limitation will only be in effect for the EAP.
+### EAP limitations
 
-  **All objects will be deleted at the end of the EAP.** Atlassian will provide notice before the end of the EAP to ensure you have time to download any stored data.
-* **Accessing objects in UI:** You must use the available object store [frontend components](/platform/forge/storage-reference/object-store/#frontend-components) when building interfaces for object download/uploads.
-* **Production deployments:** The EAP is only for testing purposes and deployment to production will not be available.
+The Forge Object Store EAP is only available for testing purposes; apps using this feature can't be deployed to production.
+In addition, objects stored during EAP will have a time-to-live (TTL) of 90 days.
+
+**All stored objects will be deleted at the end of the EAP.** Atlassian will provide notice before the end of the EAP to ensure you have time to download any stored
+data.
+
+### Rate limits per installation
+
+If the following rate limits are exceeded, Forge will return a `TOO_MANY_REQUESTS` error.
+
+| Parameter | Limit |
+| --- | --- |
+| Object Store requests per second | 5000 |
+| Pre-signed URL requests per second | 1000 |
+
+### Operation limits
+
+When building interfaces for object download/uploads, you must use the available
+[frontend components](/platform/forge/storage-reference/object-store/#frontend-components)
+
+| Parameter | Limit |
+| --- | --- |
+| Storage limits | Objects size can be up to 1 GB each. |
+| Payload limits | The maximum payload size for all operations is 10 kB. |
+| Pre-signed URL validity | Pre-signed URLs are valid for a maximum of 1 hr. |
 
 ## Partitioning
 

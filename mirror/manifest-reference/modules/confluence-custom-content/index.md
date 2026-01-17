@@ -56,6 +56,7 @@ On apps that use Custom UI, module content is displayed inside a [special Forge 
 | `indexing` | `boolean` |  | Defines whether this content type is indexed and displayed in search results. |
 | `preventDuplicateTitle` | `boolean` |  | Defines whether Confluence should prevent content with duplicate titles from being created in the same space or container. |
 | `migratedFromConnect` | `boolean` |  | When set to `true`, new content for this module will use the Connect type format (`ac:[ADDON_KEY]:[MODULE_KEY]`) instead of the Forge format (`forge:[APP_ID]:[ENVIRONMENT_ID]:[MODULE_KEY]`). This ensures compatibility with existing custom content when migrating from Connect to Forge. See [Migrate custom content from Connect to Forge](/platform/adopting-forge-from-connect/migrate-custom-content/) for more details. |
+| `unlicensedAccess` | List<string> |  | A list of unlicensed user types that can access this module. Valid values are: `unlicensed` (Guests Users), and `anonymous`. For more information, see [Access to Forge apps for unlicensed Confluence users](/platform/forge/access-to-forge-apps-for-unlicensed-jsm-users/#confluence-forge-modules). |
 
 ### i18n object
 

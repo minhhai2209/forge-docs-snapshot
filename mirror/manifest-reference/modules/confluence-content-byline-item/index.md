@@ -6,7 +6,7 @@ The `title`, `icon`, and `tooltip` of the module render together as a list item.
 
 On apps that use Custom UI, module content is displayed inside a [special Forge iframe](/platform/forge/custom-ui/iframe/) which has the [sandbox](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#sandbox) attribute configured. This means that HTML links (for example, `<a href="https://domain.tld/path">...</a>`) in this iframe won't be clickable. To make them clickable, use the [router.navigate](/platform/forge/custom-ui-bridge/router/#navigate) API from the `@forge/bridge` package.
 
-![Example of a Content byline item](https://dac-static.atlassian.com/platform/forge/images/content-byline-item-demo.gif?_v=1.5800.1742)
+![Example of a Content byline item](https://dac-static.atlassian.com/platform/forge/images/content-byline-item-demo.gif?_v=1.5800.1771)
 
 ## Properties
 
@@ -26,6 +26,7 @@ On apps that use Custom UI, module content is displayed inside a [special Forge 
 | `dynamicProperties` | `{ function: string }` |  | Contains a `function` property, which references the `function` module that defines the [configuration](/platform/forge/manifest-reference/resources) of `resource`. See [Dynamic properties](#dynamic-properties) for more details. |
 | `contentPropertyKey` | `string` |  | The key of the [content property](/cloud/confluence/rest/v2/api-group-content-properties/#api-group-content-properties), which stores the `title`, `icon`, and `tooltip` byline properties. When this key is provided, the byline module renders using the values from the content property instead of executing the [dynamicProperties](#dynamic-properties) function. We strongly recommend making this key unique, like a UUID. See the [Content Properties to store byline properties](#content-properties-to-store-byline-properties) for more details. |
 | `keyboardShortcut` | `object` |  | The object that defines a keyboard shortcut to trigger this module. See [keyboard shortcuts](/platform/forge/manifest-reference/keyboard-shortcuts). |
+| `unlicensedAccess` | List<string> |  | A list of unlicensed user types that can access this module. Valid values are: `unlicensed` (Guests Users), and `anonymous`. For more information, see [Access to Forge apps for unlicensed Confluence users](/platform/forge/access-to-forge-apps-for-unlicensed-jsm-users/#confluence-forge-modules). |
 
 ### i18n object
 

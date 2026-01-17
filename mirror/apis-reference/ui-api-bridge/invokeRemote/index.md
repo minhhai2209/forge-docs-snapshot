@@ -47,9 +47,10 @@ function invokeRemote(
 A `Promise` that resolves with the data returned from the invoked endpoint:
 
 * The `content-type` header must be `application/json`.
-* The HTTP status code from the response will not be available in the `Promise`.
+* The HTTP status code from the response is available in the `Promise`.
 * For successful responses, headers will be available in the `headers` properties.
-* For non-JSON or non-2xx status code responses, the `Promise` will reject and a corresponding error message will be returned.
+* Non-2xx status codes do not cause the `Promise` to reject. Only 401 responses reject the promise.
+* If a remote returns a non-2xx response without a body, this will result in an error from `invokeRemote`.
 
 Further information about the Forge Remote invocation contract can be found [here](/platform/forge/forge-remote-invocation-contract).
 

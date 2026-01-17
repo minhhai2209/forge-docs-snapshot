@@ -33,7 +33,7 @@ A checkbox is an input control that allows a user to select one or more options 
 
 The default checkbox input includes a selected and unselected state.
 
-![Example image of a checkbox](https://dac-static.atlassian.com/platform/forge/ui-kit/images/checkbox/checkbox-default.png?_v=1.5800.1742)
+![Example image of a checkbox](https://dac-static.atlassian.com/platform/forge/ui-kit/images/checkbox/checkbox-default.png?_v=1.5800.1771)
 
 ```
 ```
@@ -61,7 +61,7 @@ const CheckboxDefaultExample = () => {
 
 In a `controlled` checkbox, the checked state is managed by the React component. Set `isChecked` to select the checkbox and use the `onChange` handler to change the value.
 
-![Example image of a controlled checkbox](https://dac-static.atlassian.com/platform/forge/ui-kit/images/checkbox/checkbox-controlled.png?_v=1.5800.1742)
+![Example image of a controlled checkbox](https://dac-static.atlassian.com/platform/forge/ui-kit/images/checkbox/checkbox-controlled.png?_v=1.5800.1771)
 
 ```
 ```
@@ -96,7 +96,7 @@ const CheckboxControlledExample = () => {
 
 Use `isRequired` to make the checkbox required.
 
-![Example image of a required checkbox](https://dac-static.atlassian.com/platform/forge/ui-kit/images/checkbox/checkbox-required.png?_v=1.5800.1742)
+![Example image of a required checkbox](https://dac-static.atlassian.com/platform/forge/ui-kit/images/checkbox/checkbox-required.png?_v=1.5800.1771)
 
 ```
 ```
@@ -126,7 +126,7 @@ const CheckboxRequiredExample = () => {
 
 Use `isIndeterminate` to show partially checked states.
 
-![Example image of an indeterminate checkbox](https://dac-static.atlassian.com/platform/forge/ui-kit/images/checkbox/checkbox-indeterminate.png?_v=1.5800.1742)
+![Example image of an indeterminate checkbox](https://dac-static.atlassian.com/platform/forge/ui-kit/images/checkbox/checkbox-indeterminate.png?_v=1.5800.1771)
 
 ```
 ```
@@ -162,7 +162,7 @@ const CheckboxIndeterminateCheckbox = () => {
 
 Use `isDisabled` to disable a checkbox when another action has to be completed before the checkbox is usable.
 
-![Example image of a disabled checkbox](https://dac-static.atlassian.com/platform/forge/ui-kit/images/checkbox/checkbox-disabled.png?_v=1.5800.1742)
+![Example image of a disabled checkbox](https://dac-static.atlassian.com/platform/forge/ui-kit/images/checkbox/checkbox-disabled.png?_v=1.5800.1771)
 
 ```
 ```
@@ -190,7 +190,7 @@ const CheckboxDisabledExample = () => {
 
 Use `isInvalid` when a user fails to select a required checkbox.
 
-![Example image of a invalid checkbox](https://dac-static.atlassian.com/platform/forge/ui-kit/images/checkbox/checkbox-invalid.png?_v=1.5800.1742)
+![Example image of a invalid checkbox](https://dac-static.atlassian.com/platform/forge/ui-kit/images/checkbox/checkbox-invalid.png?_v=1.5800.1771)
 
 ```
 ```
@@ -222,7 +222,7 @@ const CheckboxInvalidExample = () => {
 
 ### Checkbox group with label
 
-![Example image of checkbox group](https://dac-static.atlassian.com/platform/forge/ui-kit/images/checkbox/checkbox-example-withgrouplabel.png?_v=1.5800.1742)
+![Example image of checkbox group](https://dac-static.atlassian.com/platform/forge/ui-kit/images/checkbox/checkbox-example-withgrouplabel.png?_v=1.5800.1771)
 
 ```
 ```

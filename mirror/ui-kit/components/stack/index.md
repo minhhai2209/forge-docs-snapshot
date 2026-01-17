@@ -55,7 +55,7 @@ const ExampleBox=  () => {
 
 Use a stack component to efficiently lay-out a group of elements vertically.
 
-![Example image of a rendered stack basic](https://dac-static.atlassian.com/platform/forge/ui-kit/images/stack/stack-basic.png?_v=1.5800.1742)
+![Example image of a rendered stack basic](https://dac-static.atlassian.com/platform/forge/ui-kit/images/stack/stack-basic.png?_v=1.5800.1771)
 
 ```
 ```
@@ -82,7 +82,7 @@ const StackBasicExample = () => {
 
 Control spacing between items with the `space` prop.
 
-![Example image of a rendered stack space](https://dac-static.atlassian.com/platform/forge/ui-kit/images/stack/stack-space.png?_v=1.5800.1742)
+![Example image of a rendered stack space](https://dac-static.atlassian.com/platform/forge/ui-kit/images/stack/stack-space.png?_v=1.5800.1771)
 
 ```
 ```
@@ -111,7 +111,7 @@ const StackSpaceExample = () => {
 
 Control the alignment of items using the `alignBlock` props which control alignment in the vertical axis.
 
-![Example image of a rendered primary stack block alignment](https://dac-static.atlassian.com/platform/forge/ui-kit/images/stack/stack-align-block.png?_v=1.5800.1742)
+![Example image of a rendered primary stack block alignment](https://dac-static.atlassian.com/platform/forge/ui-kit/images/stack/stack-align-block.png?_v=1.5800.1771)
 
 ```
 ```
@@ -176,7 +176,7 @@ const StackEndBlock = () => {
 
 Control the alignment of items using the `alignInline` props which control alignment in the horizontal axis.
 
-![Example image of a rendered stack inline alignment](https://dac-static.atlassian.com/platform/forge/ui-kit/images/stack/stack-align-inline.png?_v=1.5800.1742)
+![Example image of a rendered stack inline alignment](https://dac-static.atlassian.com/platform/forge/ui-kit/images/stack/stack-align-inline.png?_v=1.5800.1771)
 
 ```
 ```
@@ -238,7 +238,7 @@ export const StackEndInline = () => {
 
 Use the `spread` prop to set elements to stay together, spaced at the given value (default behavior) or spread equally in the space available.
 
-![Example image of a rendered added spread](https://dac-static.atlassian.com/platform/forge/ui-kit/images/stack/stack-spread.png?_v=1.5800.1742)
+![Example image of a rendered added spread](https://dac-static.atlassian.com/platform/forge/ui-kit/images/stack/stack-spread.png?_v=1.5800.1771)
 
 ```
 ```
@@ -271,7 +271,7 @@ By default a `Stack` will have its width influenced by the context where it appe
 * `hug` (default) to use space only as required by its children, or
 * `fill` to take all space provided by the parent element.
 
-![Example image of a rendered stack width control](https://dac-static.atlassian.com/platform/forge/ui-kit/images/stack/stack-grow.png?_v=1.5800.1742)
+![Example image of a rendered stack width control](https://dac-static.atlassian.com/platform/forge/ui-kit/images/stack/stack-grow.png?_v=1.5800.1771)
 
 ```
 ```
