@@ -31,6 +31,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -e .
 
+      - name: Install Playwright browser
+        run: |
+          python -m playwright install --with-deps chromium
+
       - name: Run mirror
         run: |
           mkdir -p mirror

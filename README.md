@@ -55,7 +55,7 @@ reference without hitting the live docs.
 ## GitHub Action mirror
 - Workflow file: `.github/workflows/mirror.yml` (Forge Docs Mirror).
 - Schedule: daily cron at `0 18 * * *` plus manual `workflow_dispatch`.
-- Steps: checkout → setup Python 3.12 → `pip install -e .` → run `forge-docs-mirror`.
+- Steps: checkout → setup Python 3.12 → `pip install -e .` → `playwright install chromium` → run `forge-docs-mirror`.
 - Output: writes into `mirror/` and commits/pushes changes back to `main` when dirty.
 - Concurrency: `forge-docs-mirror` group with `cancel-in-progress: false` to avoid overlap.
 
