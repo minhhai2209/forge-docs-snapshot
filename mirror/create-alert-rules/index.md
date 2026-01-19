@@ -40,7 +40,7 @@ To begin creating an alert rule:
 
 In this step, you will select the metric and filters that define the source of the alert.
 
-![Create alert rule - select alert source screen](https://dac-static.atlassian.com/platform/forge/images/alerts/new_alert-alert_source.svg?_v=1.5800.1777)
+![Create alert rule - select alert source screen](https://dac-static.atlassian.com/platform/forge/images/alerts/new_alert-alert_source.svg?_v=1.5800.1779)
 
 ### Select source metric
 
@@ -77,7 +77,7 @@ with alerts based on historical data. Adjust the time period, thresholds, and al
 the chart and estimation banner to find the right balance between staying informed and managing alert
 volume.
 
-![Create alert rule - configure conditions screen](https://dac-static.atlassian.com/platform/forge/images/alerts/new_alert-conditions.svg?_v=1.5800.1777)
+![Create alert rule - configure conditions screen](https://dac-static.atlassian.com/platform/forge/images/alerts/new_alert-conditions.svg?_v=1.5800.1779)
 
 ### Select time period
 
@@ -131,7 +131,7 @@ In this step, you will specify who should be notified when the alert is triggere
 be notified by email when the alert is opened, when the alert changes severities, and when the alert
 is closed.
 
-![Create alert rule - add responders screen](https://dac-static.atlassian.com/platform/forge/images/alerts/new_alert-responders.svg?_v=1.5800.1777)
+![Create alert rule - add responders screen](https://dac-static.atlassian.com/platform/forge/images/alerts/new_alert-responders.svg?_v=1.5800.1779)
 
 ### Add responders
 
@@ -146,7 +146,7 @@ Once you’ve added the responders, you’re ready to finalize the alert rule in
 In this final step, you will provide additional details about the alert to help your team
 identify and manage it effectively.
 
-![Create alert rule - specify alert details screen](https://dac-static.atlassian.com/platform/forge/images/alerts/new_alert-alert_details.svg?_v=1.5800.1777)
+![Create alert rule - specify alert details screen](https://dac-static.atlassian.com/platform/forge/images/alerts/new_alert-alert_details.svg?_v=1.5800.1779)
 
 ### Enter alert name
 

@@ -207,7 +207,7 @@ SyntaxError: /Users/alui/src/forge/hello-world-app/src/index.jsx: Unexpected tok
 **Runtime errors:** Returned for general runtime errors. For example, calling a method that does not
 exist or is not a method. These errors are shown in the app UI. A stack trace is included with the
 error message. For example:
-![Runtime error example](https://dac-static.atlassian.com/platform/forge/images/error-runtime.png?_v=1.5800.1777)
+![Runtime error example](https://dac-static.atlassian.com/platform/forge/images/error-runtime.png?_v=1.5800.1779)
 
 ## Related pages
 

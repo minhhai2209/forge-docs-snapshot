@@ -24,7 +24,7 @@ An unordered (bulleted) or ordered (numbered) list.
 
 An unordered list is rendered with bullets.
 
-![Example image of an unordered list](https://dac-static.atlassian.com/platform/forge/ui-kit/images/list/list-unordered.png?_v=1.5800.1777)
+![Example image of an unordered list](https://dac-static.atlassian.com/platform/forge/ui-kit/images/list/list-unordered.png?_v=1.5800.1779)
 
 ```
 ```
@@ -53,7 +53,7 @@ const App = () => {
 
 A nested unordered list. Bullet styles rotate in the following order when nested: Disc, Circle, Square.
 
-![Example image of an nested unordered list](https://dac-static.atlassian.com/platform/forge/ui-kit/images/list/list-unordered-nested.png?_v=1.5800.1777)
+![Example image of an nested unordered list](https://dac-static.atlassian.com/platform/forge/ui-kit/images/list/list-unordered-nested.png?_v=1.5800.1779)
 
 ```
 ```
@@ -107,7 +107,7 @@ const App = () => {
 
 An ordered (numbered) list
 
-![Example image of an ordered list](https://dac-static.atlassian.com/platform/forge/ui-kit/images/list/list-ordered.png?_v=1.5800.1777)
+![Example image of an ordered list](https://dac-static.atlassian.com/platform/forge/ui-kit/images/list/list-ordered.png?_v=1.5800.1779)
 
 ```
 ```
@@ -136,7 +136,7 @@ const App = () => {
 
 A nested ordered list. Bullet styles rotate in the following order when nested: Decimal, Lower-Alpha, Lower-Roman.
 
-![Example image of an nested ordered list](https://dac-static.atlassian.com/platform/forge/ui-kit/images/list/list-ordered-nested.png?_v=1.5800.1777)
+![Example image of an nested ordered list](https://dac-static.atlassian.com/platform/forge/ui-kit/images/list/list-ordered-nested.png?_v=1.5800.1779)
 
 ```
 ```
@@ -190,7 +190,7 @@ const App = () => {
 
 A nested list with a mix of unordered and ordered lists, which maintains the aforementioned bullet style pattern at each nest level regardless of list type.
 
-![Example image of an nested mixed list](https://dac-static.atlassian.com/platform/forge/ui-kit/images/list/list-mixed-nested.png?_v=1.5800.1777)
+![Example image of an nested mixed list](https://dac-static.atlassian.com/platform/forge/ui-kit/images/list/list-mixed-nested.png?_v=1.5800.1779)
 
 ```
 ```
