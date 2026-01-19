@@ -166,7 +166,7 @@ resources:
 | `displayConditions` | `object` |  | The object that defines whether or not the field is displayed on the issue view or global issue create (GIC) (other views or REST APIs are not affected). See [display conditions](#display-conditions). |
 | `searchSuggestions.expression` | `string` | Requires either `function` or `expression`. Only one of the two properties must be present. | A [Jira expression](/cloud/jira/platform/jira-expressions/) that provides value suggestions in advanced search. See [search suggestions](#search-suggestions) for more details. |
 | `searchSuggestions.function` | `string` | Requires either `function` or `expression`. Only one of the two properties must be present. | A reference to the `function` module that provides value suggestions in advanced search. See [search suggestions](#search-suggestions) for more details. |
-| `unlicensedAccess` | List<string> |  | A list of unlicensed user types that can access this module. Valid values are: `unlicensed`, `customer`, and `anonymous`. For more information, see [Access to Forge apps for unlicensed Jira Service Management users](/platform/forge/access-to-forge-apps-for-unlicensed-jsm-users). |
+| `unlicensedAccess` | List<string> |  | A list of unlicensed user types that can access this module. Valid values are: `unlicensed`, `customer`, and `anonymous`. For more information, see [Access to Forge apps for unlicensed users](/platform/forge/access-to-forge-apps-for-unlicensed-users). |
 
 ## Rendering
 
@@ -499,7 +499,7 @@ const Edit = () => {
 ```
 
 Outcome:
-![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.1771)
+![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.1777)
 
 ##### Updated files
 
@@ -575,7 +575,7 @@ const Edit = () => {
 ```
 
 Outcome:
-![Updated experience to inline edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-inline.png?_v=1.5800.1771)
+![Updated experience to inline edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-inline.png?_v=1.5800.1777)
 
 
 How to edit custom fields in the modal (for more complex UI)
@@ -688,7 +688,7 @@ const Edit = () => {
 ```
 
 Outcome:
-![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.1771)
+![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.1777)
 
 ##### Updated files
 
@@ -798,7 +798,7 @@ ForgeReconciler.render(
 ```
 
 Outcome:
-![Updated experience to modal edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-new-modal.png?_v=1.5800.1771)
+![Updated experience to modal edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-new-modal.png?_v=1.5800.1777)
 
 ### Issue creation and issue transition dialog
 

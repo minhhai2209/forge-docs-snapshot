@@ -37,7 +37,7 @@ macro:
 ## Step 2: Extract the macro body
 
 The macro body is the content that the user enters in the editor. This can be retrieved from the context provided by
-[useProductContext()](/platform/forge/ui-kit-hooks-reference/#useproductcontext) or
+[useProductContext()](/platform/forge/ui-kit/hooks/use-product-context/) or
 [view.getContext()](/platform/forge/apis-reference/ui-api-bridge/view/#getcontext).
 
 In a UI Kit app, we can use `useProductContext()` to extract the macro body.
@@ -51,14 +51,14 @@ In a UI Kit app, we can use `useProductContext()` to extract the macro body.
 
 
 ```
-import React from 'react';
-import ForgeReconciler, { useProductContext } from '@forge/react';
+import React from "react";
+import ForgeReconciler, { useProductContext } from "@forge/react";
 
 const App = () => {
   const context = useProductContext();
   const macroBody = context?.extension?.macro?.body;
   // ...
-}
+};
 
 ForgeReconciler.render(
   <React.StrictMode>
@@ -70,20 +70,27 @@ ForgeReconciler.render(
 
 ## Step 3: Render rich body content
 
-The ADF body can be rendered in two ways; using the renderer components, or by rendering the raw HTML.
+The ADF body can be rendered in two ways:
+
+1. using the renderer components ([AdfRenderer](/platform/forge/ui-kit/components/adf-renderer/) for UI Kit and [view.createAdfRendererIframeProps](/platform/forge/apis-reference/ui-api-bridge/view/#createadfrendereriframeprops--eap-) for Custom UI)
+2. by rendering the raw HTML
 
 ### Comparison between using renderer components or HTML export
 
-The following content types are supported by the HTML export, but not supported by the ADF renderer component:
-
-The following content types are not supported at all by the HTML export or the ADF renderer component:
-
-See detailed documentation for the [AdfRenderer](/platform/forge/ui-kit/components/adf-renderer/).
+See detailed documentation for the [AdfRenderer](/platform/forge/ui-kit/components/adf-renderer/) and [view.createAdfRendererIframeProps](/platform/forge/apis-reference/ui-api-bridge/view/#createadfrendereriframeprops--eap-).
 
 ### Using renderer components
 
-For UI Kit, you can use the `AdfRenderer` component, while for Custom UI, you can use the `ReactRenderer` component.
-Both the `AdfRenderer` and `ReactRenderer` component require the prop `document`, which is an ADF document with the following structure:
+Using the `AdfRenderer` component and the `createAdfRendererIframeProps` method to render embedded Forge macros in an ADF body is now available as an Early Access Program (EAP). To start testing this feature, sign up using this [form](https://ecosystem.atlassian.net/servicedesk/customer/portal/1040/group/3496/create/18979).
+
+By signing up for this Early Access Program (“EAP”), you acknowledge that use of the Forge embedded macros is governed by the Atlassian Developer Terms. Forge embedded macros are considered “Early Access Materials”, as set forth in Section 12 of the Atlassian Developer Terms and is subject to applicable terms, conditions, and disclaimers.
+
+APIs and features under EAP are unsupported and subject to change without notice. APIs and features under EAP are not recommended for use in production environments.
+
+For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
+
+For UI Kit, you can use the `AdfRenderer` component, while for Custom UI, you can use `view.createAdfRendererIframeProps`.
+Both the `AdfRenderer` component and `view.createAdfRendererIframeProps` require the `document` prop, which is an ADF document with the following structure:
 
 ```
 ```
@@ -104,8 +111,7 @@ Both the `AdfRenderer` and `ReactRenderer` component require the prop `document`
 ```
 ```
 
-We can pass the macro body that we extracted [previously](#step-2--extract-the-macro-body) into the `document`
-prop of `AdfRenderer` and `ReactRenderer` components for UI Kit and Custom UI respectively.
+We can pass the macro body that we extracted [previously](#step-2--extract-the-macro-body) into the `document` prop (for UI Kit), while `view.createAdfRendererIframeProps` will need the whole `context` object which contains the macro body.
 
 To render in UI Kit, you can use the `AdfRenderer` component from [@forge/react](https://www.npmjs.com/package/@forge/react).
 
@@ -122,8 +128,8 @@ import { AdfRenderer } from "@forge/react";
 
 const App = () => {
   // ...
-  return macroBody && <AdfRenderer document={macroBody} />
-}
+  return macroBody && <AdfRenderer document={macroBody} />;
+};
 ```
 ```
 
@@ -194,11 +200,7 @@ const macroBody = context?.extension?.macro?.body;
 const contentId = context?.extension?.content?.id;
 
 if (macroBody) {
-  const asyncId = await convertMacroBody(
-    "styled_view",
-    macroBody,
-    contentId
-  );
+  const asyncId = await convertMacroBody("styled_view", macroBody, contentId);
 }
 ```
 ```
@@ -242,7 +244,6 @@ async function fetchConvertedMacroBody(id) {
   // Keep polling until completed
   return fetchConvertedMacroBody(id);
 }
-
 
 const htmlBody = await fetchConvertedMacroBody(asyncId);
 ```
@@ -292,12 +293,12 @@ function will be called each time the parent component provides HTML, which we w
 import { events } from "@forge/bridge";
 
 events.on("PROPS", ({ html }) => {
-// Create a fragment, allowing any embedded content scripts to be executed when appended
-const documentFragment = document
-  .createRange()
-  .createContextualFragment(html);
-document.body.innerHTML = "";
-document.body.appendChild(documentFragment);
+  // Create a fragment, allowing any embedded content scripts to be executed when appended
+  const documentFragment = document
+    .createRange()
+    .createContextualFragment(html);
+  document.body.innerHTML = "";
+  document.body.appendChild(documentFragment);
 });
 ```
 ```
@@ -314,16 +315,17 @@ The following code uses [createFrame](/platform/forge/ui-kit/components/frame/#u
 
 
 ```
+import React, { useEffect } from "react";
 import { events } from "@forge/bridge";
-import { Frame } from "@forge/react"
+import { Frame } from "@forge/react";
 
 const App = () => {
   useEffect(() => {
     events.emit("PROPS", { html: htmlBody });
   }, [htmlBody]);
 
-  return <Frame resource="html-frame" />
-}
+  return <Frame resource="html-frame" />;
+};
 ```
 ```
 
@@ -404,7 +406,7 @@ See the full `adfExport` tutorial [here](/platform/forge/change-the-confluence-f
 
 
 ```
-import { doc, p } from '@atlaskit/adf-utils/builders';
+import { doc, p } from "@atlaskit/adf-utils/builders";
 
 export function adfExport(payload) {
   const macroBody = payload.extensionPayload.macro.body;
@@ -412,7 +414,7 @@ export function adfExport(payload) {
   return doc(
     p("This is my export function. Here's the macro content:"),
     ...macroBody.content
-  )
+  );
 }
 ```
 ```

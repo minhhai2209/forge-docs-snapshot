@@ -764,7 +764,7 @@ const Edit = () => {
 ```
 
 Outcome:
-![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.1771)
+![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.1777)
 
 ##### Updated files
 
@@ -840,7 +840,7 @@ const Edit = () => {
 ```
 
 Outcome:
-![Updated experience to inline edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-inline.png?_v=1.5800.1771)
+![Updated experience to inline edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-inline.png?_v=1.5800.1777)
 
 
 How to edit custom fields in the modal (for more complex UI)
@@ -953,7 +953,7 @@ const Edit = () => {
 ```
 
 Outcome:
-![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.1771)
+![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.1777)
 
 ##### Updated files
 
@@ -1063,7 +1063,7 @@ ForgeReconciler.render(
 ```
 
 Outcome:
-![Updated experience to modal edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-new-modal.png?_v=1.5800.1771)
+![Updated experience to modal edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-new-modal.png?_v=1.5800.1777)
 
 ### Issue creation and issue transition dialog
 
@@ -1682,7 +1682,7 @@ creating a ticket in the [Forge Jira project](https://ecosystem.atlassian.net/ji
 | `contextConfig.resource` | `string` |  | A reference to the static `resources` entry that your configuration entry point wants to display. See [Resources](/platform/forge/manifest-reference/resources) for more details. To submit the view, use the [submit API](/platform/forge/apis-reference/ui-api-bridge/view/#submit). |
 | `contextConfig.render` | `'native'` |  | Indicates if your configuration entry point should display as UI Kit. |
 | `contextConfig.layout` | UI Kit: Custom UI:  * `native` * `blank` * `basic (deprecated)`  (default: `native`) |  | The layout of the page that defines whether a page is rendered with default controls (native), lays out the entire viewport with a margin on the left and breadcrumbs (basic for UI Kit), or is left blank allowing for full customization (blank for Custom UI). |
-| `unlicensedAccess` | List<string> |  | A list of unlicensed user types that can access this module. Valid values are: `unlicensed`, `customer`, and `anonymous`. For more information, see [Access to Forge apps for unlicensed Jira Service Management users](/platform/forge/access-to-forge-apps-for-unlicensed-jsm-users). |
+| `unlicensedAccess` | List<string> |  | A list of unlicensed user types that can access this module. Valid values are: `unlicensed`, `customer`, and `anonymous`. For more information, see [Access to Forge apps for unlicensed users](/platform/forge/access-to-forge-apps-for-unlicensed-users). |
 
 ### i18n object
 

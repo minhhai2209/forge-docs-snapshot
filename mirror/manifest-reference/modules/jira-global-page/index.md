@@ -6,7 +6,7 @@ The page URL is constructed in the following format: `/jira/apps/{appId}/{envId}
 
 When adding this to your app, use it as a top-level component.
 
-![Example of a global page](https://dac-static.atlassian.com/platform/forge/snippets/images/global-page.jpg?_v=1.5800.1771)
+![Example of a global page](https://dac-static.atlassian.com/platform/forge/snippets/images/global-page.jpg?_v=1.5800.1777)
 
 You can only register a single `jira:globalPage` module per app. If you define more than one `jira:globalPage` entry in your manifest, deployment will fail.
 
@@ -22,14 +22,14 @@ The sidebar will only change the global page URL, you will need to [handle route
 ## Manifest example
 
 ```
+```
 1
 2
-3
-4
-5
-6
-7
-8
+```
+
+
+
+```
 modules:
   jira:globalPage:
     - key: hello-world-global-page
@@ -38,6 +38,7 @@ modules:
         function: resolver
       render: native
       title: Hello World!
+```
 ```
 
 ## Properties

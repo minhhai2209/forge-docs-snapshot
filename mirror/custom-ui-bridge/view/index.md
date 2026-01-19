@@ -405,3 +405,147 @@ const MyMacro = () => {
 export default MyMacro;
 ```
 ```
+
+## createAdfRendererIframeProps (EAP)
+
+The `createAdfRendererIframeProps` method is now available as an Early Access Program (EAP). To start testing this feature, sign up using this [form](https://ecosystem.atlassian.net/servicedesk/customer/portal/1040/group/3496/create/18979).
+
+By signing up for this Early Access Program (“EAP”), you acknowledge that use of the Forge embedded macros is governed by the Atlassian Developer Terms. Forge embedded macros are considered “Early Access Materials”, as set forth in Section 12 of the Atlassian Developer Terms and is subject to applicable terms, conditions, and disclaimers.
+
+APIs and features under EAP are unsupported and subject to change without notice. APIs and features under EAP are not recommended for use in production environments.
+
+For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
+
+Use `createAdfRendererIframeProps` when building a Custom UI bodied macro that needs to display its rich text body content, including embedded Forge apps. This function generates the properties needed for an iframe element to render the ADF document type content of a Custom UI bodied macro.
+
+### Prerequisites
+
+### Function signature
+
+```
+```
+1
+2
+```
+
+
+
+```
+interface FullContext {
+  accountId?: string;
+  cloudId?: string;
+  workspaceId?: string;
+  extension: ExtensionData;
+  environmentId: string;
+  environmentType: EnvironmentType;
+  license?: LicenseDetails;
+  localId: string;
+}
+
+function createAdfRendererIframeProps(
+  context: FullContext,
+  iframeId?: string
+): Promise<{
+  id: string;
+  src: string;
+  onLoad: () => void;
+}>;
+```
+```
+
+#### Arguments
+
+* **context**: Contextual information for your Custom UI app taken from the [getContext](/platform/forge/apis-reference/ui-api-bridge/view/#getcontext) method or the [useProductContext](/platform/forge/ui-kit/hooks/use-product-context/#useproductcontext) hook. The ADF document is extracted from `context.extension.macro.body`.
+* **iframeId**: You can optionally pass an iframe id. Otherwise, an iframe id will be created by default.
+
+#### Returns
+
+Returns an object with the following properties:
+
+* **id**: id of the adf renderer wrapper iframe. The value of `id` will be the same as `iframeId` if `iframeId` was provided as an argument.
+* **src**: src of the adf renderer wrapper iframe.
+* **onLoad**: the onLoad function of the adf renderer wrapper iframe which will send the ADF document contents to the iframe once the iframe has initialised.
+
+### Example
+
+![Example rendered Custom UI bodied macro contents](https://dac-static.atlassian.com/platform/forge/apis-reference/ui-api-bridge/images/view/view-createAdfRendererIframeProps-custom-ui-bodied-macro.svg?_v=1.5800.1777)
+
+```
+```
+1
+2
+```
+
+
+
+```
+import { view } from "@forge/bridge";
+
+function App() {
+  // Get the contents of the bodied macro
+  const [context, setContext] = useState(null);
+  const [iframe, setIframe] = useState(null);
+
+  useEffect(() => {
+    view.getContext().then(setContext);
+  }, []);
+
+  useEffect(() => {
+    if (!context) return;
+    // Generate properties for embedded content wrapper
+    // Pass in the embedded contents to the function
+    // macroBody - any Valid ADF document can be passed in.
+    view.createAdfRendererIframeProps(context).then(({ id, src, onLoad }) =>
+      // Required iframe props
+      // id - id of the iframe so the wrapper knows where to send the embedded macro contents
+      // src - src of the embedded content renderer
+      // onLoad - sends embedded macro contents once iframe has initialised
+      // You can apply any styling you like to the iframe
+      setIframe(<iframe id={id} src={src} onLoad={onLoad} />)
+    );
+  }, [context]);
+  return (
+    <div>
+      <h1>Embedded content</h1>
+      {/* Render the embedded content where you want in your app */}
+      {iframe || "Loading embedded content..."}
+    </div>
+  );
+}
+export default App;
+```
+```
+
+You can split up the ADF document object inside `context.extension.macro.body` and use `view.createAdfRendererIframeProps` more than once in your Custom UI bodied macro app. However this will affect performance as an additional iframe will be created.
+
+### Limitations
+
+* **Confluence live pages**: This method is not supported in Confluence live pages (also known as whiteboards or live docs).
+* **Connect macros**: Macros built with Atlassian Connect cannot be embedded.
+* **Modals**: Modals in Custom UI embedded macros are not supported.
+
+### Supported bridge methods
+
+| Bridge methods | Supported in Forge embedded macros |
+| --- | --- |
+| events | yes |
+| i18n | yes |
+| invoke | yes |
+| invokeRemote | yes |
+| modal | no |
+| objectStore (EAP) | no |
+| realtime (Preview) | no |
+| requestBitbucket | N/A |
+| requestConfluence | yes |
+| requestJira | yes |
+| requestRemote | no |
+| router | yes |
+| rovo (Preview) | yes |
+| showFlag | yes |
+| view | yes |
+| getEditorContent | no |
+| getMacroContent | no |
+| updateMacroContent | no |
+| updateBylineProperties | no |
+| Jira bridge APIs | N/A |
+| Dashboard bridge APIs | N/A |

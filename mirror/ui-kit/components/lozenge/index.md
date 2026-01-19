@@ -26,7 +26,7 @@ A lozenge is a visual indicator used to highlight an item's status for quick rec
 
 Use default lozenges for a general status. For example: "to do", "unavailable", "minor", or "not started".
 
-![Example image of a default lozenge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/lozenge/lozenge-default.png?_v=1.5800.1771)
+![Example image of a default lozenge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/lozenge/lozenge-default.png?_v=1.5800.1777)
 
 ```
 ```
@@ -50,7 +50,7 @@ const LozengeDefaultExample = () => (
 
 Use `success` lozenges to represent a constructive status. For example: "available", "completed", "approved", "resolved", or "added".
 
-![Example image of a success lozenge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/lozenge/lozenge-success.png?_v=1.5800.1771)
+![Example image of a success lozenge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/lozenge/lozenge-success.png?_v=1.5800.1777)
 
 ```
 ```
@@ -76,7 +76,7 @@ const LozengeSuccessExample = () => (
 
 Use `removed` lozenges to represent a critical or problematic status. For example: "error", "declined", "deleted", or "failed".
 
-![Example image of a removed lozenge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/lozenge/lozenge-removed.png?_v=1.5800.1771)
+![Example image of a removed lozenge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/lozenge/lozenge-removed.png?_v=1.5800.1777)
 
 ```
 ```
@@ -102,7 +102,7 @@ const LozengeRemovedExample = () => (
 
 Use `inprogress` lozenges to represent an in progress or current status. For example: "in progress", "open", or "modified".
 
-![Example image of a in progress lozenge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/lozenge/lozenge-in-progress.png?_v=1.5800.1771)
+![Example image of a in progress lozenge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/lozenge/lozenge-in-progress.png?_v=1.5800.1777)
 
 ```
 ```
@@ -128,7 +128,7 @@ const LozengeInProgressExample = () => (
 
 Use `new` lozenges to represent a new status. For example: "new", "created", or "help".
 
-![Example image of a new lozenge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/lozenge/lozenge-new.png?_v=1.5800.1771)
+![Example image of a new lozenge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/lozenge/lozenge-new.png?_v=1.5800.1777)
 
 ```
 ```
@@ -154,7 +154,7 @@ const LozengeNewExample = () => (
 
 Use `moved` lozenges to represent a status for items that have changed and require attention. For example: "busy", "blocked", "missing", or "warning".
 
-![Example image of a moved lozenge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/lozenge/lozenge-moved.png?_v=1.5800.1771)
+![Example image of a moved lozenge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/lozenge/lozenge-moved.png?_v=1.5800.1777)
 
 ```
 ```
@@ -182,7 +182,7 @@ When the text in the lozenge exceeds the maximum width, it will be truncated wit
 
 Avoid truncation wherever possible by using shorter text in lozenges. The truncated text is not focusable or accessible.
 
-![Example image of a default lozenge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/lozenge/lozenge-max-width.png?_v=1.5800.1771)
+![Example image of a default lozenge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/lozenge/lozenge-max-width.png?_v=1.5800.1777)
 
 ```
 ```

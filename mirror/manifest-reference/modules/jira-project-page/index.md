@@ -10,9 +10,9 @@ This module can be used in Jira and Jira Service Management.
 
 When adding this to your app, use it as a top-level component.
 
-![Example of a project page](https://dac-static.atlassian.com/platform/forge/snippets/images/project-page.jpg?_v=1.5800.1771)
+![Example of a project page](https://dac-static.atlassian.com/platform/forge/snippets/images/project-page.jpg?_v=1.5800.1777)
 
-![Example of a project page - JSM](https://dac-static.atlassian.com/platform/forge/snippets/images/project-page-jsm.jpg?_v=1.5800.1771)
+![Example of a project page - JSM](https://dac-static.atlassian.com/platform/forge/snippets/images/project-page-jsm.jpg?_v=1.5800.1777)
 
 ## Subpages
 

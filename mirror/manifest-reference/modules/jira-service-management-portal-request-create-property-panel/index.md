@@ -6,7 +6,7 @@ information on Jira entity properties, see [Jira entity properties](/platform/fo
 
 This module can be used in Jira Service Management.
 
-![Example of a Portal request create property panel](https://dac-static.atlassian.com/platform/forge/images/portal-request-create-property-panel-demo.png?_v=1.5800.1771)
+![Example of a Portal request create property panel](https://dac-static.atlassian.com/platform/forge/images/portal-request-create-property-panel-demo.png?_v=1.5800.1777)
 
 ## Portal Request Create Property Panel Lifecycle
 
@@ -20,7 +20,7 @@ The form data from the Forge portal request create property panel can be saved t
 | --- | --- | --- | --- |
 | `fields` | List of `field` object | Yes | This is a list of all the field objects present in the Forge portal request create property panel form. |
 | `isValid` | `boolean` | yes | The value will be `true` if all the fields in the Forge portal request create property panel form are valid and `false` otherwise. |
-| `unlicensedAccess` | List<string> |  | A list of unlicensed user types that can access this module. Valid values are: `unlicensed`, `customer`, and `anonymous`. For more information, see [Access to Forge apps for unlicensed Jira Service Management users](/platform/forge/access-to-forge-apps-for-unlicensed-jsm-users). |
+| `unlicensedAccess` | List<string> |  | A list of unlicensed user types that can access this module. Valid values are: `unlicensed`, `customer`, and `anonymous`. For more information, see [Access to Forge apps for unlicensed users](/platform/forge/access-to-forge-apps-for-unlicensed-users). |
 
 ### Field Object schema
 
