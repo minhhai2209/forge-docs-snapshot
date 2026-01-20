@@ -6,7 +6,7 @@ The page URL is constructed in the following format: `/jira/apps/{appId}/{envId}
 
 When adding this to your app, use it as a top-level component.
 
-![Example of a global page](https://dac-static.atlassian.com/platform/forge/snippets/images/global-page.jpg?_v=1.5800.1783)
+![Example of a global page](https://dac-static.atlassian.com/platform/forge/snippets/images/global-page.jpg?_v=1.5800.1785)
 
 You can only register a single `jira:globalPage` module per app. If you define more than one `jira:globalPage` entry in your manifest, deployment will fail.
 

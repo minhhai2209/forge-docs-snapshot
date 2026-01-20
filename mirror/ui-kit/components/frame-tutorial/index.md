@@ -4,7 +4,7 @@ The app in this example showcases a logo designer and renders a preview of the d
 
 The result will look like this:
 
-![Logo Designer app](https://dac-static.atlassian.com/platform/forge/ui-kit/images/frame/frame-tutorial.gif?_v=1.5800.1783)
+![Logo Designer app](https://dac-static.atlassian.com/platform/forge/ui-kit/images/frame/frame-tutorial.gif?_v=1.5800.1785)
 
 This example illustrates the following:
 
@@ -716,7 +716,7 @@ Now, we are ready to include the Logo Display Frame Component into the main UI K
 
 You can use the [Events API](/platform/forge/custom-ui-bridge/events) on `@forge/bridge` to communicate between the UI Kit (main app) and the Frame component. The communication mechanism is utilised in this example to enable the logo design controls (logo picker, radius slider, and so on) to modify the logo preview component within the `Frame` component.
 
-![Example image of a logo designer app using Frame component](https://dac-static.atlassian.com/platform/forge/ui-kit/images/frame/frame-logo-designer.png?_v=1.5800.1783)
+![Example image of a logo designer app using Frame component](https://dac-static.atlassian.com/platform/forge/ui-kit/images/frame/frame-logo-designer.png?_v=1.5800.1785)
 
 1. Create the React hooks to abstract the underlying communication implementation. Copy the following `hooks.js` implementation into both UI Kit and Frame component sides:
 

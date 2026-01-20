@@ -95,7 +95,7 @@ to be fully evaluated on each invocation. For this reason, you should consider l
 The following image highlights a sample snapshot context. Note that the invocation method is not run at this
 point in time.
 
-![A code editor showing the constants declared in the snapshot context](https://dac-static.atlassian.com/platform/forge/images/snapshot-context.png?_v=1.5800.1783)
+![A code editor showing the constants declared in the snapshot context](https://dac-static.atlassian.com/platform/forge/images/snapshot-context.png?_v=1.5800.1785)
 
 The `snapshots` flag is available under the `runtime` object with a default value of `true`.
 

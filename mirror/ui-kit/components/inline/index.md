@@ -58,7 +58,7 @@ const ExampleBox = () => {
 
 Use an inline component to configure the layout of a group of elements horizontally. Use the given props to configure display behavior using design tokens, as shown in the more complex examples below.
 
-![Example image of a rendered basic inline](https://dac-static.atlassian.com/platform/forge/ui-kit/images/inline/inline-basic.png?_v=1.5800.1783)
+![Example image of a rendered basic inline](https://dac-static.atlassian.com/platform/forge/ui-kit/images/inline/inline-basic.png?_v=1.5800.1785)
 
 ```
 ```
@@ -85,7 +85,7 @@ const InlineExample = () => {
 
 Control the spacing between items with the `space` prop.
 
-![Example image of a rendered inline space](https://dac-static.atlassian.com/platform/forge/ui-kit/images/inline/inline-space.png?_v=1.5800.1783)
+![Example image of a rendered inline space](https://dac-static.atlassian.com/platform/forge/ui-kit/images/inline/inline-space.png?_v=1.5800.1785)
 
 ```
 ```
@@ -112,7 +112,7 @@ const InlineSpaceExample = () => {
 
 When content is set to wrap, the `space` prop applies equal spacing between rows. For a different space value between rows use the `rowSpace` prop.
 
-![Example image of a rendered inline row space](https://dac-static.atlassian.com/platform/forge/ui-kit/images/inline/inline-row-space.png?_v=1.5800.1783)
+![Example image of a rendered inline row space](https://dac-static.atlassian.com/platform/forge/ui-kit/images/inline/inline-row-space.png?_v=1.5800.1785)
 
 ```
 ```
@@ -144,7 +144,7 @@ const InlineRowSpaceExample = () => {
 
 To control the alignment of items you can use the `alignBlock` props which control alignment in the vertical axis respectively.
 
-![Example image of a rendered block alignment](https://dac-static.atlassian.com/platform/forge/ui-kit/images/inline/inline-align-block.png?_v=1.5800.1783)
+![Example image of a rendered block alignment](https://dac-static.atlassian.com/platform/forge/ui-kit/images/inline/inline-align-block.png?_v=1.5800.1785)
 
 ```
 ```
@@ -228,7 +228,7 @@ const InlineStretchBlock = () => {
 
 To control the alignment of items you can use the `alignInline` props which control alignment in the horizontal axis.
 
-![Example image of a rendered inline inline alignment](https://dac-static.atlassian.com/platform/forge/ui-kit/images/inline/inline-align-inline.png?_v=1.5800.1783)
+![Example image of a rendered inline inline alignment](https://dac-static.atlassian.com/platform/forge/ui-kit/images/inline/inline-align-inline.png?_v=1.5800.1785)
 
 ```
 ```
@@ -275,7 +275,7 @@ const InlineEndInline = () => {
 
 Elements can be set to stay together, spaced at the given value (default behavior) or spread equally in the space available.
 
-![Example image of a rendered inline spread](https://dac-static.atlassian.com/platform/forge/ui-kit/images/inline/inline-spread.png?_v=1.5800.1783)
+![Example image of a rendered inline spread](https://dac-static.atlassian.com/platform/forge/ui-kit/images/inline/inline-spread.png?_v=1.5800.1785)
 
 ```
 ```
@@ -302,7 +302,7 @@ const InlineSpreadExample = () => {
 
 When the number of items goes beyond the available space, use `shouldWrap` to create new rows of content.
 
-![Example image of a rendered inline wrap](https://dac-static.atlassian.com/platform/forge/ui-kit/images/inline/inline-wrap.png?_v=1.5800.1783)
+![Example image of a rendered inline wrap](https://dac-static.atlassian.com/platform/forge/ui-kit/images/inline/inline-wrap.png?_v=1.5800.1785)
 
 ```
 ```
@@ -334,7 +334,7 @@ const InlineWrapExample = () => {
 
 For logically related elements it's possible to specify a `separator` character value.
 
-![Example image of a rendered inline separator](https://dac-static.atlassian.com/platform/forge/ui-kit/images/inline/inline-separator.png?_v=1.5800.1783)
+![Example image of a rendered inline separator](https://dac-static.atlassian.com/platform/forge/ui-kit/images/inline/inline-separator.png?_v=1.5800.1785)
 
 ```
 ```
@@ -366,7 +366,7 @@ By default an `Inline` will have its width influenced by the context where it ap
 * `hug` (default) to use space only as required by its children, or
 * `fill` to take all space provided by the parent element.
 
-![Example image of inline with grow property](https://dac-static.atlassian.com/platform/forge/ui-kit/images/inline/inline-grow.png?_v=1.5800.1783)
+![Example image of inline with grow property](https://dac-static.atlassian.com/platform/forge/ui-kit/images/inline/inline-grow.png?_v=1.5800.1785)
 
 ```
 ```

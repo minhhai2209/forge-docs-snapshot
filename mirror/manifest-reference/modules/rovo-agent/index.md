@@ -164,22 +164,22 @@ Using the [Forge bridge rovo API](/platform/forge/apis-reference/ui-api-bridge/r
 
 Accessed by clicking the **Chat** button in the top navigation bar
 
-![Example of a chat button](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-chat-side.png?_v=1.5800.1783)
+![Example of a chat button](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-chat-side.png?_v=1.5800.1785)
 
 Accessed using the /ai command in the editor
 
-![Example of a chat button](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-ai-toolbar.png?_v=1.5800.1783)
+![Example of a chat button](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-ai-toolbar.png?_v=1.5800.1785)
 
 Accessed using the /ai command in the Jira issues editor
 
-![Example of a chat button](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-ai-toolbar-jira.png?_v=1.5800.1783)
+![Example of a chat button](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-ai-toolbar-jira.png?_v=1.5800.1785)
 
 ### Automation (Confluence and Jira)
 
 You can add Agents to Automation rules. This will invoke the Agent to act asynchronously in response to Atlassian app events or schedules.
 When users configure an automation rule they will set an additional prompt with specific instructions how to act during that rule. The response from the Agent can be passed to subsequent steps in the automation rule using smart values.
 
-![Example of a chat button](https://dac-static.atlassian.com/platform/forge/images/rovo/automations.png?_v=1.5800.1783)
+![Example of a chat button](https://dac-static.atlassian.com/platform/forge/images/rovo/automations.png?_v=1.5800.1785)
 
 ## Writing effective prompts
 
