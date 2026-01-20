@@ -46,6 +46,7 @@ Please refer to the [request](/platform/forge/runtime-reference/forge-llms-api/#
 
 
 ```
+list() => Promise<ModelListResponse>
 chat(Prompt) => Promise<LlmResponse>
 stream(Prompt) => Promise<StreamResponse>
 ```
@@ -227,6 +228,13 @@ interface LlmResponse {
 interface StreamResponse extends AsyncIterable<LlmResponse> {
   close(): Promise<void> | undefined;
 }
+
+interface ModelListResponse {
+  models: {
+    model: string;
+    status: "active" | "deprecated";
+  }[];
+}
 ```
 ```
 
@@ -243,6 +251,8 @@ The following request validation rules apply to specific models:
 We plan to launch with support for three Claude variants: Sonnet, Opus, and Haiku. You choose the model per request, allowing you to balance latency, capability, and cost for each use case.
 
 ### Supported models
+
+You can use the `list` method from the SDK to dynamically fetch the list of supported models and their respective status.
 
 | Model ID | Variants | Family | Status | EOL |
 | --- | --- | --- | --- | --- |

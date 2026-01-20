@@ -416,7 +416,7 @@ APIs and features under EAP are unsupported and subject to change without notice
 
 For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
 
-Use `createAdfRendererIframeProps` when building a Custom UI bodied macro that needs to display its rich text body content, including embedded Forge apps. This function generates the properties needed for an iframe element to render the ADF document type content of a Custom UI bodied macro.
+Use `createAdfRendererIframeProps` when building a Custom UI bodied macro that needs to display its rich-text body content, including embedded Forge apps. This function generates the properties needed for an iframe element to render the ADF document type content of a Custom UI bodied macro.
 
 ### Prerequisites
 
@@ -468,7 +468,7 @@ Returns an object with the following properties:
 
 ### Example
 
-![Example rendered Custom UI bodied macro contents](https://dac-static.atlassian.com/platform/forge/apis-reference/ui-api-bridge/images/view/view-createAdfRendererIframeProps-custom-ui-bodied-macro.svg?_v=1.5800.1779)
+![Example rendered Custom UI bodied macro contents](https://dac-static.atlassian.com/platform/forge/apis-reference/ui-api-bridge/images/view/view-createAdfRendererIframeProps-custom-ui-bodied-macro.svg?_v=1.5800.1783)
 
 ```
 ```
@@ -532,7 +532,7 @@ You can split up the ADF document object inside `context.extension.macro.body` a
 | i18n | yes |
 | invoke | yes |
 | invokeRemote | yes |
-| modal | no |
+| modal | yes |
 | objectStore (EAP) | no |
 | realtime (Preview) | no |
 | requestBitbucket | N/A |
@@ -546,6 +546,6 @@ You can split up the ADF document object inside `context.extension.macro.body` a
 | getEditorContent | no |
 | getMacroContent | no |
 | updateMacroContent | no |
-| updateBylineProperties | no |
+| updateBylineProperties | yes |
 | Jira bridge APIs | N/A |
 | Dashboard bridge APIs | N/A |

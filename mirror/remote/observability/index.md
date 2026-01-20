@@ -8,13 +8,13 @@ Metrics on remote invocations and errors encountered are available in the [devel
 
 The `Remote` error type shows the count of remote invocation errors.
 
-![Developer console invocation errors graph showing remote invocation errors](https://dac-static.atlassian.com/platform/forge/images/remote-dev-console-invocation-errors.png?_v=1.5800.1779)
+![Developer console invocation errors graph showing remote invocation errors](https://dac-static.atlassian.com/platform/forge/images/remote-dev-console-invocation-errors.png?_v=1.5800.1783)
 
 ## Logs
 
 Remote invocations are included in the Forge logs in the [developer console](/console/myapps/) and the [CLI](/platform/forge/cli-reference/logs/).
 
-![Developer console showing remote invocation logs](https://dac-static.atlassian.com/platform/forge/images/remote-dev-console-invocation-logs.png?_v=1.5800.1779)
+![Developer console showing remote invocation logs](https://dac-static.atlassian.com/platform/forge/images/remote-dev-console-invocation-logs.png?_v=1.5800.1783)
 
 # Exporting app logs
 

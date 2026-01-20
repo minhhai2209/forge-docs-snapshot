@@ -12,7 +12,7 @@ in a modal dialog. A user triggers the action from an entry in the more actions 
 
 The final app looks like the following:
 
-![Confluence page showing a modal dialog with macros used in this page.](https://dac-static.atlassian.com/platform/forge/images/content-action-macro-count.gif?_v=1.5800.1779)
+![Confluence page showing a modal dialog with macros used in this page.](https://dac-static.atlassian.com/platform/forge/images/content-action-macro-count.gif?_v=1.5800.1783)
 
 ## Before you begin
 
@@ -162,7 +162,7 @@ You'll see the *Macro Count* entry from the app.
 
 When you select the menu item you will see, the following modal.
 
-![Confluence page showing a modal dialog with the default content from the macro count template](https://dac-static.atlassian.com/platform/forge/images/content-action-macro-count-initial.png?_v=1.5800.1779)
+![Confluence page showing a modal dialog with the default content from the macro count template](https://dac-static.atlassian.com/platform/forge/images/content-action-macro-count-initial.png?_v=1.5800.1783)
 
 ## Implement the front end
 

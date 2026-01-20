@@ -48,11 +48,11 @@ In addition, you’ll also need to install version `9.2.0` (or higher) of the [F
    ```
 3. With your Forge app open in ItelliJ click on **Current File** and **Edit Configurations**.
 
-   ![Image of edit configuration in IntelliJ](https://dac-static.atlassian.com/platform/forge/images/debug-functions-tutorial/edit-configuration.png?_v=1.5800.1779)
+   ![Image of edit configuration in IntelliJ](https://dac-static.atlassian.com/platform/forge/images/debug-functions-tutorial/edit-configuration.png?_v=1.5800.1783)
 4. Click on **Add new run configuration** and **Attach to Node.JS/Chrome**.
 5. Give the configuration a new name (for example, *Forge Debugger*), and make sure the port matches the port from your CLI command (for example, *9229*).
 
-   ![Image of configuration pop up panel](https://dac-static.atlassian.com/platform/forge/images/debug-functions-tutorial/config-debug-panel.png?_v=1.5800.1779)
+   ![Image of configuration pop up panel](https://dac-static.atlassian.com/platform/forge/images/debug-functions-tutorial/config-debug-panel.png?_v=1.5800.1783)
 6. Click **OK**.
 
 ## Add a breakpoint and start debugging
@@ -60,5 +60,5 @@ In addition, you’ll also need to install version `9.2.0` (or higher) of the [F
 1. Add a breakpoint to your code by clicking on a line number.
 2. Run the debugger by clicking the bug icon in the top right of the screen.
 
-   ![Image of running bug icon to debug](https://dac-static.atlassian.com/platform/forge/images/debug-functions-tutorial/debug-forge-bug-icon.png?_v=1.5800.1779)
+   ![Image of running bug icon to debug](https://dac-static.atlassian.com/platform/forge/images/debug-functions-tutorial/debug-forge-bug-icon.png?_v=1.5800.1783)
 3. Refresh your Forge app in the web browser and the code will stop executing at the breakpoint. Here you can check the value of your variables and step through your code.

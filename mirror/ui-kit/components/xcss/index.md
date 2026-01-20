@@ -172,7 +172,7 @@ and referring to [accessibility guidelines](https://atlassian.design/foundations
 
 XCSS can pull together different types of interactions and UI in a safer, more composable way.
 
-![Example of using basic xcss on box component](https://dac-static.atlassian.com/platform/forge/ui-kit/images/xcss/xcss-basic.png?_v=1.5800.1779)
+![Example of using basic xcss on box component](https://dac-static.atlassian.com/platform/forge/ui-kit/images/xcss/xcss-basic.png?_v=1.5800.1783)
 
 ```
 ```
@@ -218,7 +218,7 @@ export const Basic = () => (
 
 To enable interactivity, use familiar selectors like `:hover`.
 
-![Example of using xcss with hover on box component](https://dac-static.atlassian.com/platform/forge/ui-kit/images/xcss/xcss-interactivity.png?_v=1.5800.1779)
+![Example of using xcss with hover on box component](https://dac-static.atlassian.com/platform/forge/ui-kit/images/xcss/xcss-interactivity.png?_v=1.5800.1783)
 
 ```
 ```

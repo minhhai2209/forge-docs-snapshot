@@ -13,7 +13,7 @@ import { useProductContext } from "@forge/react";
 
 Here is an example of an app that displays all its context information with `useProductContext`.
 
-![The app display on a Confluence page](https://dac-static.atlassian.com/platform/forge/images/ui-kit-2/hooks-examples/useproductcontext.png?_v=1.5800.1779)
+![The app display on a Confluence page](https://dac-static.atlassian.com/platform/forge/images/ui-kit-2/hooks-examples/useproductcontext.png?_v=1.5800.1783)
 
 ```
 1
@@ -36,19 +36,33 @@ Here is an example of an app that displays all its context information with `use
 18
 19
 20
-import React from 'react';
-import ForgeReconciler, { Code, Heading, Text, useProductContext } from '@forge/react';
+21
+22
+23
+24
+25
+26
+27
+import React from "react";
+import ForgeReconciler, {
+  Code,
+  Heading,
+  Text,
+  useProductContext,
+} from "@forge/react";
 
 const App = () => {
   const context = useProductContext();
 
-  return (<>
-    <Heading as="h3">Product context</Heading>
-    <Text>
-      Module key from context:
-      <Code>{context?.moduleKey}</Code>
-    </Text>
-  </>);
+  return (
+    <>
+      <Heading as="h3">Product context</Heading>
+      <Text>
+        Module key from context:
+        <Code>{context?.moduleKey}</Code>
+      </Text>
+    </>
+  );
 };
 
 ForgeReconciler.render(
@@ -87,7 +101,7 @@ interface ProductContext {
     light: string;
     dark: string;
     spacing: string;
-    [key:string]: string;
+    [key: string]: string;
   };
 }
 
@@ -126,4 +140,4 @@ None.
   * **moduleKey**: The key for the module as defined in the `manifest.yml` file.
   * **siteUrl**: The URL of the site that the app is running on (e.g. <https://example.atlassian.net>).
   * **timezone**: The timezone of the user that interacted with the app.
-  * **theme.colorMode** Current color mode. Can be “light” or “dark”.
+  * **theme.colorMode** Current color mode. Can be `light` or `dark`. For accessing theme information, prefer using the [useTheme](/platform/forge/ui-kit/hooks/use-theme) hook instead, as it is reactive to theme changes in the Atlassian app.

@@ -65,7 +65,7 @@ type SerializedFile = {
 ```
 ```
 
-![Example image of file picker](https://dac-static.atlassian.com/platform/forge/ui-kit/images/file-picker/file-picker.png?_v=1.5800.1779)
+![Example image of file picker](https://dac-static.atlassian.com/platform/forge/ui-kit/images/file-picker/file-picker.png?_v=1.5800.1783)
 
 ```
 ```
@@ -93,7 +93,7 @@ export const FilePickerExample = () => {
 
 Use `label` to display text above the file picker input zone, helping users identify the purpose of the field. Use `description` to provide additional helper text (for example, allowed file types or size limits).
 
-![Example image of file picker with additional elements](https://dac-static.atlassian.com/platform/forge/ui-kit/images/file-picker/file-picker-with-elements.png?_v=1.5800.1779)
+![Example image of file picker with additional elements](https://dac-static.atlassian.com/platform/forge/ui-kit/images/file-picker/file-picker-with-elements.png?_v=1.5800.1783)
 
 ```
 ```
