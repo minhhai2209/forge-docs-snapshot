@@ -231,26 +231,26 @@ you will get an insufficient permissions error. See [set up a shared team worksp
 
 1. Enable the custom merge check feature in **Workspace settings → Workflow → Custom merge checks**
 
-   ![Enable the custom merge check feature in your workspace settings](https://dac-static.atlassian.com/platform/forge/images/bitbucket-merge-check-workspace-settings.png?_v=1.5800.1785)
+   ![Enable the custom merge check feature in your workspace settings](https://dac-static.atlassian.com/platform/forge/images/bitbucket-merge-check-workspace-settings.png?_v=1.5800.1790)
 2. Navigate to the repository within the workspace you want to enable the merge check for.
 3. Navigate to the **Repository settings → Workflow → Custom merge checks** page.
 4. Find your app in the list of merge check apps, and click the **Add Check** button.
 5. Select the *Check pull request title* check from the **Name** dropdown.
 6. Select the **Branch** you wish the check to be run against (for the sake of this tutorial, select `All branches`).
 7. If you're on a [premium plan](https://www.atlassian.com/software/bitbucket/premium), tick the *Required* checkbox
-   ![Enable the custom merge check in your repository settings](https://dac-static.atlassian.com/platform/forge/images/bitbucket-merge-check-repository-settings.png?_v=1.5800.1785)
+   ![Enable the custom merge check in your repository settings](https://dac-static.atlassian.com/platform/forge/images/bitbucket-merge-check-repository-settings.png?_v=1.5800.1790)
 8. Create a pull request in your repository with the word ‘DRAFT' in the title and attempt to merge the pull request.
    The merge check should fail. If you configured the check as
 
    * **Required:** The merge will fail and the check failure will be visible on the merge checks card on the right side bar.
 
-     ![Required custom merge check failure](https://dac-static.atlassian.com/platform/forge/images/bitbucket-merge-check-required-failure.png?_v=1.5800.1785)
+     ![Required custom merge check failure](https://dac-static.atlassian.com/platform/forge/images/bitbucket-merge-check-required-failure.png?_v=1.5800.1790)
    * **Not required:** The merge will succeed, but the check failure will be visible on the merge checks card on the right side bar.
 
-     ![Recommended custom merge check failure](https://dac-static.atlassian.com/platform/forge/images/bitbucket-merge-check-recommended-failure.png?_v=1.5800.1785)
+     ![Recommended custom merge check failure](https://dac-static.atlassian.com/platform/forge/images/bitbucket-merge-check-recommended-failure.png?_v=1.5800.1790)
 9. Create another pull request in your repository without the word ‘DRAFT' and merge the pull request. This time the merge check should pass.
 
-   ![Custom merge check success](https://dac-static.atlassian.com/platform/forge/images/bitbucket-merge-check-success.png?_v=1.5800.1785)
+   ![Custom merge check success](https://dac-static.atlassian.com/platform/forge/images/bitbucket-merge-check-success.png?_v=1.5800.1790)
 
 See [Set up custom merge checks](https://support.atlassian.com/bitbucket-cloud/docs/set-up-and-use-custom-merge-checks/) for more details.
 
@@ -267,7 +267,7 @@ Congratulations, you've built your first custom merge check. In this tutorial yo
 In the next tutorial, you'll learn how to make your custom merge check configurable
 with [UI Kit](/platform/forge/ui-kit/get-started-with-ui/) and [Forge storage](/platform/forge/runtime-reference/storage-api/).
 
-[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.1785)](/platform/forge/extend-custom-merge-checks-with-ui-kit)
+[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.1790)](/platform/forge/extend-custom-merge-checks-with-ui-kit)
 
 ## Developing for Atlassian Government Cloud
 

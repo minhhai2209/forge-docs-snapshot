@@ -26,7 +26,7 @@ A progress tracker displays the steps and progress through a journey.
 
 The default version of a progress tracker that shows all the steps and states in a journey.
 
-![Example image of a progress tracker](https://dac-static.atlassian.com/platform/forge/ui-kit/images/progress-tracker/progress-tracker-default.png?_v=1.5800.1785)
+![Example image of a progress tracker](https://dac-static.atlassian.com/platform/forge/ui-kit/images/progress-tracker/progress-tracker-default.png?_v=1.5800.1790)
 
 ```
 ```
@@ -90,7 +90,7 @@ The margin spacing in between the steps of a progress tracker. Box with width mu
 
 #### Comfortable
 
-![Example image of comfortable progress tracker](https://dac-static.atlassian.com/platform/forge/ui-kit/images/progress-tracker/progress-tracker-comfortable.png?_v=1.5800.1785)
+![Example image of comfortable progress tracker](https://dac-static.atlassian.com/platform/forge/ui-kit/images/progress-tracker/progress-tracker-comfortable.png?_v=1.5800.1790)
 
 ```
 ```
@@ -150,7 +150,7 @@ const ProgressTrackerSpacingExample = () => (
 
 #### Cosy (default)
 
-![Example image of cosy progress tracker](https://dac-static.atlassian.com/platform/forge/ui-kit/images/progress-tracker/progress-tracker-cosy.png?_v=1.5800.1785)
+![Example image of cosy progress tracker](https://dac-static.atlassian.com/platform/forge/ui-kit/images/progress-tracker/progress-tracker-cosy.png?_v=1.5800.1790)
 
 ```
 ```
@@ -171,7 +171,7 @@ const ProgressTrackerSpacingExample = () => (
 
 #### Compact
 
-![Example image of compact progress tracker](https://dac-static.atlassian.com/platform/forge/ui-kit/images/progress-tracker/progress-tracker-compact.png?_v=1.5800.1785)
+![Example image of compact progress tracker](https://dac-static.atlassian.com/platform/forge/ui-kit/images/progress-tracker/progress-tracker-compact.png?_v=1.5800.1790)
 
 ```
 ```
@@ -194,7 +194,7 @@ const ProgressTrackerSpacingExample = () => (
 
 A progress tracker that shows all steps have been completed.
 
-![Example image of compact progress tracker](https://dac-static.atlassian.com/platform/forge/ui-kit/images/progress-tracker/progress-tracker-completed.png?_v=1.5800.1785)
+![Example image of compact progress tracker](https://dac-static.atlassian.com/platform/forge/ui-kit/images/progress-tracker/progress-tracker-completed.png?_v=1.5800.1790)
 
 ```
 ```

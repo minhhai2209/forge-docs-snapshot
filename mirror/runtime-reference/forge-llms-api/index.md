@@ -21,7 +21,7 @@ The `llm` module is required to enable Forge LLMs. When you add the `llm` module
 
 ## EAP limitations
 
-During the EAP, you are blocked from deploying your app to the `production` environment and cannot list the app publicly on Marketplace.
+During the EAP, you are blocked from deploying your app to the `production` and `staging` environments. You cannot distribute your app or list it on the Atlassian Marketplace.
 
 ## Tutorials and example apps
 

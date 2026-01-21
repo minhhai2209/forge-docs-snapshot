@@ -1,9 +1,92 @@
-# Jira command palette item (preview)
+# Jira command palette item (Preview)
 
-Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
-When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our
+The `jira:command` module allows apps to add items to the [Jira command palette](https://support.atlassian.com/jira-software-cloud/docs/what-is-the-command-palette/). They can be used to navigate to app-defined pages (such as `jira:globalPage` modules) or open custom modals.
 
-[Privacy Policy](https://www.atlassian.com/legal/privacy-policy#how-we-disclose-information-we-collect)
+Command palette shortcuts are only fetched after the user opens the palette for the first time. This is to reduce the number of unnecessary requests to our internal services.
 
-.
-You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt-out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
+## Manifest example
+
+```
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+modules:
+  jira:command:
+    - key: command-to-open-global-page
+      title: Navigate to My App Global Page
+      shortcut: e e
+      icon: arrow-right
+      target:
+        page: global-page
+    - key: command-to-open-modal
+      title: Open my app's custom modal
+      shortcut: e z
+      target:
+        resource: main-resource
+        render: native
+      keywords:
+        - my search term
+        - another search term
+  jira:globalPage:
+    - key: global-page
+      resource: main-resource
+      render: native
+      title: My App Global Page
+
+resources:
+  - key: main-resource
+    path: src/frontend/fui.jsx
+```
+
+#### Notes about the manifest
+
+The file `src/frontend/fui.jsx`, in the Forge app code, implements the custom modal referenced by the `command-to-open-modal` module.
+
+Note also that the `shortcut` property is optional. If present, it provides a quick way to navigate to the wanted destination with key presses. If not, manually opening the command palette and selecting the desired item will be required each time.
+
+In case multiple shortcuts have the same sequence, there is no guarantee on which will be invoked.
+
+Lastly, the `keywords` field is also optional. This field is only used to facilitate searching for items in the command palette; those values are never surfaced to the user.
+
+#### Available icons
+
+The available icons are:
+
+* add
+* arrow-right
+* copy
+* open
+* page
+* edit
+* user-avatar
+* activity
+* settings
+* undo
+* document
+* notification-direct
+* folder
+
+You can explore the look and feel of these icons in the [icon explorer](https://atlassian.design/components/icon/icon-explorer).
