@@ -48,7 +48,7 @@ Tabs are used to organize content by grouping similar information on the same pa
 
 The default form of tabs.
 
-![Example image of rendered tabs](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tabs/tabs-default.png?_v=1.5800.1790)
+![Example image of rendered tabs](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tabs/tabs-default.png?_v=1.5800.1794)
 
 ```
 ```
@@ -94,7 +94,7 @@ const TabsDefaultExample = () => {
 
 Tabs can be used as a controlled component.
 
-![Example image of controlled tabs](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tabs/tabs-controlled.png?_v=1.5800.1790)
+![Example image of controlled tabs](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tabs/tabs-controlled.png?_v=1.5800.1794)
 
 ```
 ```
@@ -147,7 +147,7 @@ const TabsControlledExample = () => {
 
 You can wrap a tab in other presentational components. In this example we have added a `tooltip` to each tab.
 
-![Example image of tabs being wrapped](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tabs/tabs-wrapping-tab.png?_v=1.5800.1790)
+![Example image of tabs being wrapped](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tabs/tabs-wrapping-tab.png?_v=1.5800.1794)
 
 ```
 ```

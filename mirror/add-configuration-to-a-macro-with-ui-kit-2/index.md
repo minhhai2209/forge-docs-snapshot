@@ -15,7 +15,7 @@ Configuration allows you to customize what the macro displays by adjusting setti
 To access these settings, you need to go into the edit mode for the macro, as demonstrated below.
 This gives you the ability to customize the macro's output according to your preferences.
 
-![Example of configuring a Forge macro](https://dac-static.atlassian.com/platform/forge/images/macro-config-demo.gif?_v=1.5800.1790)
+![Example of configuring a Forge macro](https://dac-static.atlassian.com/platform/forge/images/macro-config-demo.gif?_v=1.5800.1794)
 
 ## Before you begin
 
@@ -567,7 +567,7 @@ You can always delete your app from the site by running the `forge uninstall` co
 ## View your app
 
 1. Edit a Confluence page in your development site.
-2. Select ![Insert icon from the toolbar](https://dac-static.atlassian.com/platform/forge/images/select_dropdown.png?_v=1.5800.1790) from the toolbar.
+2. Select ![Insert icon from the toolbar](https://dac-static.atlassian.com/platform/forge/images/select_dropdown.png?_v=1.5800.1794) from the toolbar.
 3. Find the macro by name and select it. The app is displayed on the page.
 4. Click the pencil icon to open the app's config panel on the right side of the page.
 5. Type the `Pet age`, `Pet name`, and then close the configuration page. The config values are saved automatically.

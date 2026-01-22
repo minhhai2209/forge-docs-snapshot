@@ -35,7 +35,7 @@ Some permissions are managed outside the Developer Space:
 
 * **Billing admin:**
   * The first Admin in a new Developer Space is also made the billing admin for the linked transaction account.
-  * Billing admins can view invoices, update payment methods, manage other billing admins, view all Developer Space apps, their resource usage and costs, and both billing and sold-to addresses in the [Billing Console](https://billing.atlassian.com/). For a complete list of their permissions, see [Billing permissions by role](https://support.atlassian.com/subscriptions-and-billing/docs/billing-permissions-by-role/).
+  * Billing admins can view invoices, update payment methods, manage other billing admins, view all Developer Space apps, their resource usage and costs, and both billing and sold-to addresses in the [Billing Console](https://admin.atlassian.com/billing). For a complete list of their permissions, see [Billing permissions by role](https://support.atlassian.com/subscriptions-and-billing/docs/billing-permissions-by-role/).
   * To manage apps or settings in a Developer Space, a billing admin must also be assigned a core role in the space.
 * **Marketplace admin:**
   * Managed in the [Marketplace Partner Portal](https://marketplace.atlassian.com/).

@@ -63,7 +63,7 @@ The following table outlines the roles and permissions associated with app monit
 | View contributor history |  |  |  |  |
 | View and download production logs |  |  |  |  |
 
-![](https://dac-static.atlassian.com/platform/forge/images/dev-console-role-permissions/_EditorPanelIcon_.svg?_v=1.5800.1790)
+![](https://dac-static.atlassian.com/platform/forge/images/dev-console-role-permissions/_EditorPanelIcon_.svg?_v=1.5800.1794)
 
 Granted as an advanced permission to contributors of
 
