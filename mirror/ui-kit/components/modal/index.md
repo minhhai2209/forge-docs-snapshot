@@ -17,7 +17,7 @@ import {
   ModalBody,
   ModalTransition,
   ModalTitle,
-  ModalFooter,
+  ModalFooter, 
   ModalHeader,
 } from "@forge/react";
 ```
@@ -31,10 +31,18 @@ A modal dialog displays content that requires user interaction, in a layer above
 | Name | Type | Required | Description |
 | --- | --- | --- | --- |
 | `height` | `number` | No | Height of the modal dialog. When unset the modal dialog will grow to fill the viewport and then start overflowing its contents. |
-| `width` | `"small" | "medium" | "large" | "x-large" | number` | No | Width of the modal dialog. The recommended way to specify modal width is using named size options. |
+| `width` | `"small" | "medium" | "large" | "x-large" |` ["fullscreen"](#fullscreen-eap) `| number` | No | Width of the modal dialog. The recommended way to specify modal width is using named size options. |
 | `onClose` | `(e: KeyboardOrMouseEvent) => void` | No | Callback function called when the modal dialog is requesting to be closed. |
 | `shouldScrollInViewport` | `boolean` | No | Will set the scroll boundary to the viewport. If set to false, the scroll boundary is set to the modal dialog body. |
 | `label` | `string` | No | The label of the modal dialog that is announced to users of assistive technology. This should only be used if there is no modal title being associated to your modal. |
+| `title` | `string` or `i18n object` | No | The title of the modal. When provided, a [modal header](#header) will be rendered with the title and a close button.  The `i18n object` allows for translation. See [i18n object](#i18n-object). |
+| `icon` | `string` | No | The URL of the icon that displays next to the title. When provided, a [modal header](#header) will be rendered with the icon, title and a close button. |
+
+`fullscreen` viewport sizing is now available for Confluence and Jira as part of our Early Access Program (EAP). This allows your UI Kit Modal to fill the entire viewport. You can also provide a `title` and an `icon` to display in the header. To start testing, [sign up here](https://ecosystem.atlassian.net/servicedesk/customer/portal/1040/group/3496/create/18983). To use these features, run `npm install --save @forge/react@11.11.0-next.1` in your terminal.
+
+By signing up for this Early Access Program (“EAP”), you acknowledge that use of the Forge Full Page Modals is governed by the [Atlassian Developer Terms](https://developer.atlassian.com/platform/marketplace/atlassian-developer-terms/). The Forge Full Page Modals are considered “Early Access Materials”, as set forth in Section 10 of the Atlassian Developer Terms and is subject to applicable terms, conditions, and disclaimers.
+
+For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
 
 ### Body
 
@@ -70,7 +78,7 @@ A modal dialog displays content that requires user interaction, in a layer above
 
 The default form of a modal dialog.
 
-![Example image of a rendered default modal](https://dac-static.atlassian.com/platform/forge/ui-kit/images/modal/modal-dialog-default.png?_v=1.5800.1794)
+![Example image of a rendered default modal](https://dac-static.atlassian.com/platform/forge/ui-kit/images/modal/modal-dialog-default.png?_v=1.5800.1798)
 
 ```
 ```
@@ -128,7 +136,7 @@ const ModalDefaultExample = () => {
 
 A modal dialog is available in two other variations. The appearance needs to be set on both the modal title and the primary button. Warning modals appear in anticipation of a significant change. If the warning comes before an action, clearly communicate what will happen if the user proceeds, also provide an alternative or an opt-out where possible.
 
-![Example image of a rendered modal warning appearance](https://dac-static.atlassian.com/platform/forge/ui-kit/images/modal/modal-dialog-warning.png?_v=1.5800.1794)
+![Example image of a rendered modal warning appearance](https://dac-static.atlassian.com/platform/forge/ui-kit/images/modal/modal-dialog-warning.png?_v=1.5800.1798)
 
 ```
 ```
@@ -183,7 +191,7 @@ const ModalWarningAppearanceExample = () => {
 
 Use danger modals to inform people that something potentially destructive will happen if they continue. Explain the problem and provide a next step or an alternative.
 
-![Example image of a rendered modal danger appearance](https://dac-static.atlassian.com/platform/forge/ui-kit/images/modal/modal-dialog-danger.png?_v=1.5800.1794)
+![Example image of a rendered modal danger appearance](https://dac-static.atlassian.com/platform/forge/ui-kit/images/modal/modal-dialog-danger.png?_v=1.5800.1798)
 
 ```
 ```
@@ -246,7 +254,7 @@ There are multiple ways to specify the width of a modal. We recommend using name
 * If you provide a number instead, the width is set to that number of pixels.
 * If you provide a string including pixels or a percentage, the width will be directly applied as a style.
 
-![Example image of a rendered modal with small width](https://dac-static.atlassian.com/platform/forge/ui-kit/images/modal/modal-dialog-width-small.png?_v=1.5800.1794)
+![Example image of a rendered modal with small width](https://dac-static.atlassian.com/platform/forge/ui-kit/images/modal/modal-dialog-width-small.png?_v=1.5800.1798)
 
 ```
 ```
@@ -298,7 +306,7 @@ While you can set the width of the modal, the content determines the height of t
 
 You can configure the scroll behavior of modals so that scrolling happens inside the modal body instead of the viewport by setting the `shouldScrollInViewport` prop to `false`.
 
-![Example image of a rendered modal scrolling behaviour](https://dac-static.atlassian.com/platform/forge/ui-kit/images/modal/modal-dialog-scrolling-behaviour.png?_v=1.5800.1794)
+![Example image of a rendered modal scrolling behaviour](https://dac-static.atlassian.com/platform/forge/ui-kit/images/modal/modal-dialog-scrolling-behaviour.png?_v=1.5800.1798)
 
 ```
 ```
@@ -391,7 +399,7 @@ const ModalScrollingBehaviourExample = () => {
 
 These internal components can be wrapped in a `form` element to support having buttons of type `submit` in the footer.
 
-![Example image of a rendered modal form](https://dac-static.atlassian.com/platform/forge/ui-kit/images/modal/modal-dialog-form.png?_v=1.5800.1794)
+![Example image of a rendered modal form](https://dac-static.atlassian.com/platform/forge/ui-kit/images/modal/modal-dialog-form.png?_v=1.5800.1798)
 
 ```
 ```
@@ -469,7 +477,7 @@ const ModalFormExample = () => {
 
 Modal header accepts any valid Forge Element as children, so you can use modal title in conjunction with other elements in the top right.
 
-![Example image of a rendered modal header](https://dac-static.atlassian.com/platform/forge/ui-kit/images/modal/modal-dialog-header.png?_v=1.5800.1794)
+![Example image of a rendered modal header](https://dac-static.atlassian.com/platform/forge/ui-kit/images/modal/modal-dialog-header.png?_v=1.5800.1798)
 
 ```
 ```
@@ -545,7 +553,7 @@ const ModalHeaderExample = () => {
 
 Modal footer accepts any valid Forge Element as children.
 
-![Example image of a rendered modal footer](https://dac-static.atlassian.com/platform/forge/ui-kit/images/modal/modal-dialog-modal-footer.png?_v=1.5800.1794)
+![Example image of a rendered modal footer](https://dac-static.atlassian.com/platform/forge/ui-kit/images/modal/modal-dialog-modal-footer.png?_v=1.5800.1798)
 
 ```
 ```

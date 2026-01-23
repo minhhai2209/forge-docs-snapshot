@@ -19,7 +19,7 @@ from the quick insert menu of the editor. The `macro` module is implemented by a
 
 On apps that use Custom UI, module content is displayed inside a [special Forge iframe](/platform/forge/custom-ui/iframe/) which has the [sandbox](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#sandbox) attribute configured. This means that HTML links (for example, `<a href="https://domain.tld/path">...</a>`) in this iframe won't be clickable. To make them clickable, use the [router.navigate](/platform/forge/custom-ui-bridge/router/#navigate) API from the `@forge/bridge` package.
 
-![Example of a macro](https://dac-static.atlassian.com/platform/forge/snippets/images/macro-example.png?_v=1.5800.1794)
+![Example of a macro](https://dac-static.atlassian.com/platform/forge/snippets/images/macro-example.png?_v=1.5800.1798)
 
 ## Manifest structure
 
@@ -46,6 +46,7 @@ modules {}
    ├─ description (string | i18n) [Optional]
    ├─ hidden (boolean) [Optional]
    └─ config (boolean | {} | config object) [Optional]
+     ├─ icon (string) [Optional]
      ├─ title (string | i18n) [Optional]
      ├─ resource (string) [Mandatory]
      ├─ render (string) [Optional]
@@ -78,10 +79,11 @@ resources []
 | `description` | `string` or `i18n object` |  | The description of the macro. In Confluence, this is displayed in the editor.  The `i18n object` allows for translation. See [i18n object](#i18n-object). |
 | `hidden` | `boolean` |  | Defaults to `false`. When set to `true`, hides the macro from the quick insert menu and macro browser in Confluence. This prevents users from inserting new instances of the macro through these interfaces.  Existing macros on pages continue to render normally, even when this property is set to `true`. |
 | `config` | `boolean`, `{ function: string }`, `{ openOnInsert: boolean }` or `config object` |  | Set `config` to `true` if you are using [classic macro configuration](/platform/forge/add-configuration-to-a-macro/) without needing `openOnInsert`.  Set `config` with the `openOnInsert` property if you are using [classic macro configuration](/platform/forge/add-configuration-to-a-macro/) and need the `openOnInsert` feature. `openOnInsert` defaults to false.  Set `config` to the [config object](/platform/forge/manifest-reference/modules/macro/#config-object) if you are using a [custom macro configuration](/platform/forge/add-custom-configuration-to-a-macro/). |
-| `config.title` | `string` or `i18n object` |  | A title for the config. |
+| `config.icon` | `string` |  | The icon displayed next to the title in the custom config modal.   For Custom UI and UI Kit apps, the `icon` property accepts a relative path from a declared resource. Alternatively, you can also use an absolute URL to a self-hosted icon. See [Icons](/platform/forge/custom-ui/#icons) for more information.  If no icon is provided, or if there's an issue preventing the icon from loading, a generic app icon will be displayed. |
+| `config.title` | `string` or `i18n object` |  | A title for the config. If the viewport size is `fullscreen`\*, then the title rendered in the modal header will be this title. |
 | `config.resource` | `string` | Required if using [Custom UI](/platform/forge/custom-ui/) or the latest version of [UI Kit.](/platform/forge/ui-kit/) | A reference to the static `resources` entry that your context menu app wants to display. See [resources](/platform/forge/manifest-reference/resources) for more details. |
 | `config.render` | `'native'` | Yes for [UI Kit](/platform/forge/ui-kit/components/) | Indicates the module uses [UI Kit](/platform/forge/ui-kit/components/). |
-| `config.viewportSize` | `'small'`, `'medium'`, `'large'`, `'xlarge'` or `'max'` |  | The [display size](/platform/forge/manifest-reference/resources) of `resource`. Can only be set if the module is using the `resource` property. Remove this property to enable automatic resizing of the module. |
+| `config.viewportSize` | `'small'`, `'medium'`, `'large'`, `'xlarge'`, `'max'` or `'fullscreen'`\* |  | The [display size](/platform/forge/manifest-reference/resources) of `resource`. Can only be set if the module is using the `resource` property. Remove this property to enable automatic resizing of the module. |
 | `config.openOnInsert` | `boolean` |  | Defaults to `false` for classic configuration, defaults to `true` for custom configuration. An optional configuration to control if the classic configuration sidepanel or the custom configuration modal is automatically opened when first inserted. |
 | `adfExport` | `{ function: string }` |  | **For UI Kit and Custom UI use only**. Contains a `function` property, which references the `function` module that defines the export view of the macro, specified in [Atlassian document format](/cloud/jira/platform/apis/document/structure/). The specified function can consume the `exportType` directly from the function's payload in order to specify different views per export type. The `exportType` can be one of `pdf`, `word`, or `other`. See this [tutorial](/platform/forge/change-the-confluence-frontend-with-the-ui-kit/#specify-the-export-view) for more information. |
 | `layout` | `'block'`, `'inline'` or `'bodied'` |  | `'block'` type is used by default.  `'inline'` shows the element inline with existing text.   * For UI Kit apps, inline macros dynamically resize to wrap the content. * A limitation exists for Custom UI apps that prevents inline macros from dynamically resizing when the content of the macro is changed.     `'bodied'` sets the macro to have a rich text body.   * This allows users to insert and edit rich content (such as images and tables) within the macro using the Confluence editor, and allows your app to insert a body using a custom editor. * Please see the link to the tutorial [here](/platform/forge/using-rich-text-bodied-macros). |
@@ -90,6 +92,14 @@ resources []
 | `autoConvert.matchers.pattern` | `string` | Yes, if using `autoConvert` | A string that defines a specific URL pattern to be matched, using wildcards for variable parts of the URL, such as unique IDs.  * Use multiple wildcards to match multiple sub-paths. Do not include all sub-paths with a single wildcard. * Ensure URLs do not contain whitespace unless it is URL encoded. * Wildcards cannot be used in place of a protocol. Custom URL Schemes are supported See [examples](#matching-custom-url-schemes) * Maximum length of the pattern is 1024 characters. |
 | `emitsReadyEvent` | boolean | No | Defaults to `false`. An optional configuration to notify Confluence that the macro will send a `emitReadyEvent` when it has completed loading and is ready for export or further processing. This should be used with `view.emitReadyEvent()`. See the [view bridge function](/platform/forge/apis-reference/ui-api-bridge/view/#emitreadyevent) for more information. |
 | `unlicensedAccess` | List<string> |  | A list of unlicensed user types that can access this module. Valid values are: `unlicensed` (Guests Users), and `anonymous`. For more information, see [Access to Forge apps for unlicensed Confluence users](/platform/forge/access-to-forge-apps-for-unlicensed-users/#confluence-forge-modules). |
+
+\*
+
+`fullscreen` viewport sizing is now available as part of our Early Access Program (EAP). This allows your macro configuration modal to fill the entire viewport. You can also provide a `title` and an `icon` to display in the header. To start testing, [sign up here](https://ecosystem.atlassian.net/servicedesk/customer/portal/1040/group/3496/create/18983).
+
+By signing up for this Early Access Program (“EAP”), you acknowledge that use of the Forge Full Page Modals is governed by the [Atlassian Developer Terms](https://developer.atlassian.com/platform/marketplace/atlassian-developer-terms/). The Forge Full Page Modals are considered “Early Access Materials”, as set forth in Section 10 of the Atlassian Developer Terms and is subject to applicable terms, conditions, and disclaimers.
+
+For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
 
 ### i18n object
 

@@ -1,9 +1,56 @@
 # widget (EAP)
 
-Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
-When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our
+Forge's EAP offers experimental features to selected users for testing and feedback purposes.
+These features are unsupported and not recommended for use in production environments. They
+are also subject to change without notice.
+For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
 
-[Privacy Policy](https://www.atlassian.com/legal/privacy-policy#additional-disclosures-for-ca-residents)
+To participate, you can [sign up for the EAP here](https://developer.atlassian.com/platform/forge/eap-preview-ga/#early-access-program-eap).
 
-.
-You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
+**Note:** You must also opt-in to the open beta of Dashboards in Atlassian Home. See the [guide on how to opt-in](https://community.atlassian.com/forums/Atlassian-Home-articles/Home-Dashboards-available-in-open-beta/ba-p/3009544).
+
+Use the `widget` APIs for dashboard widget view operations.
+
+For module configuration and setup instructions, see [Dashboard widget](/platform/forge/manifest-reference/modules/dashboard-widget/).
+
+## Setting preview configuration
+
+Sets the preview configuration for the widget that appears when selected in the [widget list](/platform/forge/manifest-reference/modules/dashboard-widget/#widget-list). The configuration object replaces `config` in [useWidgetConfig](/platform/forge/ui-kit/hooks/use-widget-config/) when the widget is rendered as a preview.
+
+#### Usage
+
+```
+1
+2
+3
+4
+5
+6
+import { widget } from "@forge/dashboards-bridge";
+
+widget.setPreviewConfig({
+  title: "Preview Title",
+  description: "This is a preview configuration",
+});
+```
+
+**Parameters:**
+
+* **previewConfig** (WidgetConfig): The preview configuration object
+
+#### Method signature
+
+```
+```
+1
+2
+```
+
+
+
+```
+function setPreviewConfig(previewConfig: WidgetConfig): void;
+
+type WidgetConfig = Record<string, unknown>;
+```
+```

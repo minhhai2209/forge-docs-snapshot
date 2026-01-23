@@ -24,6 +24,50 @@ import { view } from "@forge/bridge";
 view.close();
 ```
 
+## onClose
+
+`view.onClose` is now available in Confluence and Jira as part of our Early Access Program (EAP). This bridge method is to be used with the macro custom config [extension point modal](/platform/forge/manifest-reference/modules/macro.md). To start testing, [sign up here](https://ecosystem.atlassian.net/servicedesk/customer/portal/1040/group/3496/create/18983).
+
+By signing up for this Early Access Program (“EAP”), you acknowledge that use of the view.onClose is governed by the [Atlassian Developer Terms](https://developer.atlassian.com/platform/marketplace/atlassian-developer-terms/). The view.onClose bridge method is considered “Early Access Materials”, as set forth in Section 10 of the Atlassian Developer Terms and is subject to applicable terms, conditions, and disclaimers.
+
+For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
+
+The `onClose` method enables you to register a callback that runs when a module-level modal is closed, such as the [macro custom config](/platform/forge/add-custom-configuration-to-a-macro.md) modal.
+
+For [@forge/bridge modal](/platform/forge/custom-ui-bridge/modal.md) and the [UI Kit Modal](/platform/forge/ui-kit/components/modal.md) component, we recommend using the inbuilt `onClose` prop instead.
+
+### Function signature
+
+```
+```
+1
+2
+```
+
+
+
+```
+function onClose(payload: () => Promise<void>): Promise<void>;
+```
+```
+
+### Example
+
+```
+```
+1
+2
+```
+
+
+
+```
+import { view } from "@forge/bridge";
+
+view.onClose(async () => save());
+```
+```
+
 ## submit
 
 The `submit` method enables you to request form submission on the
@@ -36,8 +80,16 @@ The `submit` method throws an error if the submission fails.
 ### Function signature
 
 ```
+```
 1
+2
+```
+
+
+
+```
 function submit(payload: mixed): Promise<void>;
+```
 ```
 
 Where the `payload` shape is defined by the requirements of the views.
@@ -468,7 +520,7 @@ Returns an object with the following properties:
 
 ### Example
 
-![Example rendered Custom UI bodied macro contents](https://dac-static.atlassian.com/platform/forge/apis-reference/ui-api-bridge/images/view/view-createAdfRendererIframeProps-custom-ui-bodied-macro.svg?_v=1.5800.1794)
+![Example rendered Custom UI bodied macro contents](https://dac-static.atlassian.com/platform/forge/apis-reference/ui-api-bridge/images/view/view-createAdfRendererIframeProps-custom-ui-bodied-macro.svg?_v=1.5800.1798)
 
 ```
 ```

@@ -13,7 +13,7 @@ app and display the result on a Confluence Cloud page. You’ll use the
 [GIPHY API](https://developers.giphy.com/) to display GIFs on the Confluence
 page. The result will look like this:
 
-![A gif is added to a Confluence page](https://dac-static.atlassian.com/platform/forge/images/giphy-tutorial-final-state.gif?_v=1.5800.1794)
+![A gif is added to a Confluence page](https://dac-static.atlassian.com/platform/forge/images/giphy-tutorial-final-state.gif?_v=1.5800.1798)
 
 ## Before you begin
 
@@ -49,7 +49,7 @@ The limits on the numbers of users you can create are as follows:
 
 Before we dive into the code, let's review how this app works.
 
-![A flow diagram describing how the app interacts with the GIPHY API and Confluence site](https://dac-static.atlassian.com/platform/forge/images/giphy-tutorial-flow-diagram.png?_v=1.5800.1794)
+![A flow diagram describing how the app interacts with the GIPHY API and Confluence site](https://dac-static.atlassian.com/platform/forge/images/giphy-tutorial-flow-diagram.png?_v=1.5800.1798)
 
 The flow diagram shows the app’s 3 main parts.
 
@@ -242,7 +242,7 @@ With your app installed, it’s time to see the app on a page.
 3. Find the macro app by name in the menu that appears and select it.
 4. Publish the page.
 
-![The app is inserted into a Confluence page](https://dac-static.atlassian.com/platform/forge/images/giphy-tutorial-static-app.gif?_v=1.5800.1794)
+![The app is inserted into a Confluence page](https://dac-static.atlassian.com/platform/forge/images/giphy-tutorial-static-app.gif?_v=1.5800.1798)
 
 ## Step 6: Call the GIPHY API to retrieve random images
 
