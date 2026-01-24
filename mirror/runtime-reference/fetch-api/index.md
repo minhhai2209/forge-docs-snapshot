@@ -1,17 +1,9 @@
 # Fetch API
 
-The Forge Fetch API is a partial implementation of `undici`, which fetches data from an HTTP server.
-In the most basic use, `fetch` is a simple HTTP client. See [Basic fetch client](/platform/forge/runtime-reference/fetch-api.basic/) for more information.
+Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
+When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our
 
-However, `fetch` also supports multiple options for managed authentication to remote APIs:
+[Privacy Policy](https://www.atlassian.com/legal/privacy-policy#additional-disclosures-for-ca-residents)
 
-## Atlassian app authentication
-
-You can also make requests directly to an Atlassian app's REST API through the following fetch endpoints:
-
-## External authentication
-
-The `withProvider` method enables your Forge app to communicate with an API that
-requires OAuth 2.0 tokens. Access is via the `asUser` method, in the `@forge/api` package.
-See [External authentication](/platform/forge/runtime-reference/external-fetch-api/) for
-more information.
+.
+You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
