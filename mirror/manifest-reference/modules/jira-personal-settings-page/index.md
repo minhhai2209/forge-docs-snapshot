@@ -28,14 +28,20 @@ This feature works only with Custom UI.
 ## Manifest structure
 
 ```
-```
 1
 2
-```
-
-
-
-```
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
 modules {}
 └─ jira:personalSettingsPage []
    ├─ key (string) [Mandatory]
@@ -50,7 +56,6 @@ modules {}
 resources []
 ├─ key (string) [Mandatory]
 └─ path (string) [Mandatory]
-```
 ```
 
 ## Properties

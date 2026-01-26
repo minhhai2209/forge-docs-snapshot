@@ -26,14 +26,14 @@ This feature works only with Custom UI.
 ## Manifest example
 
 ```
-```
 1
 2
-```
-
-
-
-```
+3
+4
+5
+6
+7
+8
 modules:
   jira:projectSettingsPage:
     - key: hello-world-project-settings-page
@@ -42,7 +42,6 @@ modules:
         function: resolver
       render: native
       title: Hello World
-```
 ```
 
 ## Properties
