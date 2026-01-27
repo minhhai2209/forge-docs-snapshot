@@ -78,7 +78,7 @@ installing Node.js using this method.
 After installing the Forge CLI, follow the prompts in the terminal to build a hello world app. For a complete explanation
 of each step, continue reading along with the documentation.
 
-![Hello world CLI overview](https://dac-static.atlassian.com/platform/forge/images/forge-cli-overview-without-description.png?_v=1.5800.1798)
+![Hello world CLI overview](https://dac-static.atlassian.com/platform/forge/images/forge-cli-overview-without-description.png?_v=1.5800.1800)
 
 ## Install the Forge CLI
 

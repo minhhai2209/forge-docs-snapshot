@@ -277,6 +277,4 @@ modules:
 
 ## Next steps
 
-Explore [example apps](/platform/forge/user-interface/#example-apps)
-and [tutorials](/platform/forge/user-interface/#tutorials) for various Atlassian apps
-to start creating apps using UI Kit.
+Ready to start building? Here are practical next steps to create apps using UI Kit:

@@ -379,7 +379,7 @@ five calls per minute per user is enforced.
 To consume the Atlassian GraphQL API and ingest metrics in real-time into observability tools,
 we recommend having the following components in your infrastructure:
 
-![Partner Server View](https://dac-static.atlassian.com/platform/forge/images/partner-server-arch.svg?_v=1.5800.1798)
+![Partner Server View](https://dac-static.atlassian.com/platform/forge/images/partner-server-arch.svg?_v=1.5800.1800)
 
 ### CronJob service
 

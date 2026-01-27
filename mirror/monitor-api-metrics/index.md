@@ -15,7 +15,7 @@ The image below shows API metrics, as well as all sites that your Forge app is c
 installed on, and where there has been at least one invocation in the [selected time period](#filters).
 If there hasn't been any invocation or if the app isn't using any APIs, the charts won't show any data.
 
-![Metrics screen](https://dac-static.atlassian.com/platform/forge/images/api-metrics-screen.svg?_v=1.5800.1798)
+![Metrics screen](https://dac-static.atlassian.com/platform/forge/images/api-metrics-screen.svg?_v=1.5800.1800)
 
 To view API metrics on the developer console, make sure to redeploy your app with the
 [latest version of Forge CLI](/platform/forge/cli-reference/#upgrading)
@@ -62,7 +62,7 @@ The image below provides a detailed view of the API metrics status code, with th
 selected. It shows a chart and a table that displays the URLs invoked within the
 [selected time period](#filters).
 
-![API status code detailed view request url tab](https://dac-static.atlassian.com/platform/forge/images/api-status-codes-req.svg?_v=1.5800.1798)
+![API status code detailed view request url tab](https://dac-static.atlassian.com/platform/forge/images/api-status-codes-req.svg?_v=1.5800.1800)
 
 The chart visually shows a breakdown of the volume of the most frequent client error responses against
 the selected time interval. This lets you quickly spot problematic APIs.
@@ -90,7 +90,7 @@ use [filters](#filters) to further refine the results.
 The image below highlights the API metrics status code, with the site tab selected. It provides
 information about the distribution of errors across different sites.
 
-![API status code detailed view sites tab](https://dac-static.atlassian.com/platform/forge/images/api-status-codes-sites.svg?_v=1.5800.1798)
+![API status code detailed view sites tab](https://dac-static.atlassian.com/platform/forge/images/api-status-codes-sites.svg?_v=1.5800.1800)
 
 The chart visually shows a breakdown of the error distribution across different sites.
 
@@ -131,7 +131,7 @@ may be contributing to slower response times. You can also use [filters](#filter
 The image below provides an in-depth look at the API response time chart, focusing on response times
 for different percentile brackets.
 
-![API response time detailed view screen](https://dac-static.atlassian.com/platform/forge/images/api-response-time-detailed.svg?_v=1.5800.1798)
+![API response time detailed view screen](https://dac-static.atlassian.com/platform/forge/images/api-response-time-detailed.svg?_v=1.5800.1800)
 
 The chart visually shows response times for the percentile brackets, **P50 - Median**, **P95 - 95th percentile**,
 and **P99 - 99th percentile**. This information helps in assessing the speed at which your API
