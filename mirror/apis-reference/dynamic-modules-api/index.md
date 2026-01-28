@@ -35,7 +35,7 @@ Send a `POST` request to `/forge/installation/v1/dynamic/module` to register a d
 | --- | --- | --- | --- |
 | `key` | `string` | Yes | The unique key of the target dynamic module on the installation |
 | `type` | `string` | Yes | The dynamic module being created (for example, use `trigger` to specify the [Trigger](/platform/forge/manifest-reference/modules/trigger/) module) |
-| `data` | `map` | Yes | The dynamic module's structure, but in JSON format (the `payload`s in the [Code examples](#post-example) use the [Trigger](/platform/forge/manifest-reference/modules/trigger/) module) |
+| `data` | `map` | Yes | The dynamic module's structure, but in JSON format (the `payload`s in the [Code examples](#post-example) use the [Trigger](/platform/forge/manifest-reference/modules/trigger/) module). The `key` property will be automatically copied into this payload so does not need to be provided again. |
 
 ### Code examples
 
@@ -53,7 +53,6 @@ const payload = {
   key: "unique-module-key",
   type: "trigger",
   data: {
-    key: "trigger-key",
     events: [
       "avi:jira:updated:issue"
     ],
@@ -142,7 +141,7 @@ The `dynamicModuleRequest` property requires the same properties as the [registr
 | --- | --- | --- | --- |
 | `key` | `string` | Yes | The unique key of the target dynamic module on the installation |
 | `type` | `string` | Yes | The dynamic module being created (for example, use `trigger` to specify the [Trigger](/platform/forge/manifest-reference/modules/trigger/) module) |
-| `data` | `map` | Yes | The dynamic module's structure, but in JSON format (the `payload`s in the [Code examples](#put-example) use the [Trigger](/platform/forge/manifest-reference/modules/trigger/) module) |
+| `data` | `map` | Yes | The dynamic module's structure, but in JSON format (the `payload`s in the [Code examples](#put-example) use the [Trigger](/platform/forge/manifest-reference/modules/trigger/) module). The `key` property will be automatically copied into this payload so does not need to be provided again. |
 
 ### Code examples
 
@@ -161,7 +160,6 @@ const payload = {
   key: "unique-module-key",
   type: "trigger",
   data: {
-    key: "trigger-key",
     events: [
       "avi:jira:updated:issue"
     ],
@@ -201,7 +199,7 @@ The taget dynamic module was successfully updated. The response will contain the
   "key": "unique-module-key",
   "type": "trigger",
   "data": {
-    "key": "trigger-key",
+    "key": "unique-module-key",
     "events": [
       "avi:jira:updated:issue"
     ],
@@ -320,7 +318,7 @@ Dynamic modules were successfully fetched.
   "key": "a-dynamic-module",
   "type": "trigger",
   "data": {
-    "key": "trigger-key",
+    "key": "a-dynamic-module",
     "function": "jira-updated-issue-handler",
     "events": [
       "avi:jira:updated:issue"
@@ -335,7 +333,7 @@ Dynamic modules were successfully fetched.
       "expression": "event.issue.fields?.issuetype.name == 'Bug'",
       "onError": "RECEIVE_AND_LOG"
     },
-    "key": "another-trigger-key",
+    "key": "another-dynamic-module",
     "endpoint": "some-endpoint",
     "events": [
       "avi:jira:updated:issue"
@@ -447,7 +445,7 @@ The specified dynamic module was successfully fetched.
   "key": "a-dynamic-module",
   "type": "trigger",
   "data": {
-    "key": "trigger-key",
+    "key": "a-dynamic-module",
     "events": [
       "avi:confluence:viewed:page"
     ],

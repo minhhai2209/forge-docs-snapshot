@@ -7,7 +7,7 @@ Specify remote endpoints in your app’s manifest and Forge will automatically r
 
 Given the high-volume nature of Forge events, remote invocations will have a timeout of 5 seconds. Your app needs to implement processing logic in an asynchronous fashion (for example, enqueuing events for a worker to process asynchronously). The diagram below illustrates such a solution.
 
-![Forge Remote diagram describing the flow of events and auth between Forge and remote application, with an event queue setup on the remote app](https://dac-static.atlassian.com/platform/forge/images/remote/remote-events-diagram.png?_v=1.5800.1800)
+![Forge Remote diagram describing the flow of events and auth between Forge and remote application, with an event queue setup on the remote app](https://dac-static.atlassian.com/platform/forge/images/remote/remote-events-diagram.png?_v=1.5800.1801)
 
 ## Getting started
 

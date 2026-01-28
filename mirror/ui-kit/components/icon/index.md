@@ -38,7 +38,7 @@ Valid icons can be found in the [Atlassian Design System Icon Library](https://a
 
 Extract the `core` segment of the icon's import to get the valid icon name to pass into `glyph`. For example, the icon name for `icon/core/thumbs-up` is `thumbs-up`.
 
-![Example image of default icon](https://dac-static.atlassian.com/platform/forge/ui-kit/images/icon/icon-default.png?_v=1.5800.1800)
+![Example image of default icon](https://dac-static.atlassian.com/platform/forge/ui-kit/images/icon/icon-default.png?_v=1.5800.1801)
 
 ```
 ```
@@ -68,7 +68,7 @@ If an icon doesn’t have an existing text label or accessible text, provide a c
 
 If an icon is associated with a button or element that has a text label, you don't need to provide alternative text. The `label` of the button or element clarifies the icon's meaning.
 
-![Example image of icon with label](https://dac-static.atlassian.com/platform/forge/ui-kit/images/icon/icon-label.png?_v=1.5800.1800)
+![Example image of icon with label](https://dac-static.atlassian.com/platform/forge/ui-kit/images/icon/icon-label.png?_v=1.5800.1801)
 
 ```
 ```
@@ -129,7 +129,7 @@ The color of the icon can be declared using the `color` property. The icon's col
 
 Allowed `color` values include any design token with the prefix `color.` found under [Atlassian Design System design tokens](https://atlassian.design/components/tokens/all-tokens).
 
-![Example image of color icon](https://dac-static.atlassian.com/platform/forge/ui-kit/images/icon/icon-color.png?_v=1.5800.1800)
+![Example image of color icon](https://dac-static.atlassian.com/platform/forge/ui-kit/images/icon/icon-color.png?_v=1.5800.1801)
 
 ```
 ```
@@ -158,7 +158,7 @@ The `large` size is now [deprecated](https://developer.atlassian.com/changelog/#
 
 #### Small
 
-![Example image of small icon](https://dac-static.atlassian.com/platform/forge/ui-kit/images/icon/icon-sizing-small.png?_v=1.5800.1800)
+![Example image of small icon](https://dac-static.atlassian.com/platform/forge/ui-kit/images/icon/icon-sizing-small.png?_v=1.5800.1801)
 
 ```
 ```
@@ -179,7 +179,7 @@ const IconSmall = () => {
 
 #### Medium (default)
 
-![Example image of medium icon](https://dac-static.atlassian.com/platform/forge/ui-kit/images/icon/icon-sizing-medium.png?_v=1.5800.1800)
+![Example image of medium icon](https://dac-static.atlassian.com/platform/forge/ui-kit/images/icon/icon-sizing-medium.png?_v=1.5800.1801)
 
 ```
 ```
