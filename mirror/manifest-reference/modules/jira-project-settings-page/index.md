@@ -8,7 +8,7 @@ The page URL is constructed in the following format: `/jira/software/projects/{p
 
 When adding this to your app, use it as a top-level component.
 
-![Example of an project settings page](https://dac-static.atlassian.com/platform/forge/snippets/images/project-settings-page.jpg?_v=1.5800.1801)
+![Example of an project settings page](https://dac-static.atlassian.com/platform/forge/snippets/images/project-settings-page.jpg?_v=1.5800.1805)
 
 ## Subpages
 
@@ -21,7 +21,7 @@ The sidebar will only change the project settings page URL, you will need to [ha
 
 This feature works only with Custom UI.
 
-![Example of a subpage](https://dac-static.atlassian.com/platform/forge/snippets/images/project-settings-subpage.jpg?_v=1.5800.1801)
+![Example of a subpage](https://dac-static.atlassian.com/platform/forge/snippets/images/project-settings-subpage.jpg?_v=1.5800.1805)
 
 ## Manifest example
 

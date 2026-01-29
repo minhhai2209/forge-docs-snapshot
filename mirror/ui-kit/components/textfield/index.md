@@ -47,7 +47,7 @@ A text field is an input that allows a user to write or edit text.
 
 A basic text field. Use the `Label` component to describe what the user should enter in the text field.
 
-![Example image of a rendered basic text field](https://dac-static.atlassian.com/platform/forge/ui-kit/images/textfield/text-field-basic.png?_v=1.5800.1801)
+![Example image of a rendered basic text field](https://dac-static.atlassian.com/platform/forge/ui-kit/images/textfield/text-field-basic.png?_v=1.5800.1805)
 
 ```
 ```
@@ -83,7 +83,7 @@ For required fields, always add `RequiredAsterisk` component next to the label.
 
 Use `ErrorMessage` or `ValidMessage` components to display validation-related messages.
 
-![Example image of a validation message](https://dac-static.atlassian.com/platform/forge/ui-kit/images/textfield/text-field-field-label.png?_v=1.5800.1801)
+![Example image of a validation message](https://dac-static.atlassian.com/platform/forge/ui-kit/images/textfield/text-field-field-label.png?_v=1.5800.1805)
 
 ```
 ```
@@ -135,7 +135,7 @@ export default function TextfieldValidation() {
 
 The default text field appearance.
 
-![Example image of a rendered standard appearance text field](https://dac-static.atlassian.com/platform/forge/ui-kit/images/textfield/text-field-standard.png?_v=1.5800.1801)
+![Example image of a rendered standard appearance text field](https://dac-static.atlassian.com/platform/forge/ui-kit/images/textfield/text-field-standard.png?_v=1.5800.1805)
 
 ```
 ```
@@ -161,7 +161,7 @@ export default function TextfieldAppearanceStandard() {
 
 A text field that's transparent until focused.
 
-![Example image of a rendered subtle appearance text field](https://dac-static.atlassian.com/platform/forge/ui-kit/images/textfield/text-field-subtle.png?_v=1.5800.1801)
+![Example image of a rendered subtle appearance text field](https://dac-static.atlassian.com/platform/forge/ui-kit/images/textfield/text-field-subtle.png?_v=1.5800.1805)
 
 ```
 ```
@@ -189,7 +189,7 @@ export default function TextfieldAppearanceSubtle() {
 
 A text field with compact spacing.
 
-![Example image of a rendered text field with compact spacing](https://dac-static.atlassian.com/platform/forge/ui-kit/images/textfield/text-field-spacing.png?_v=1.5800.1801)
+![Example image of a rendered text field with compact spacing](https://dac-static.atlassian.com/platform/forge/ui-kit/images/textfield/text-field-spacing.png?_v=1.5800.1805)
 
 ```
 ```
@@ -221,7 +221,7 @@ export default function TextfieldCompact() {
 
 The different states a text field can be in.
 
-![Example image of text field states](https://dac-static.atlassian.com/platform/forge/ui-kit/images/textfield/text-field-states.png?_v=1.5800.1801)
+![Example image of text field states](https://dac-static.atlassian.com/platform/forge/ui-kit/images/textfield/text-field-states.png?_v=1.5800.1805)
 
 ```
 ```
@@ -281,7 +281,7 @@ export default function TextfieldStates() {
 
 Elements can be added before and after the input.
 
-![Example image of a rendered text field with elements before and after](https://dac-static.atlassian.com/platform/forge/ui-kit/images/textfield/text-field-before-after-elements.png?_v=1.5800.1801)
+![Example image of a rendered text field with elements before and after](https://dac-static.atlassian.com/platform/forge/ui-kit/images/textfield/text-field-before-after-elements.png?_v=1.5800.1805)
 
 ```
 ```
@@ -323,7 +323,7 @@ export default function TextfieldElements() {
 
 Validation can be applied to a text field when used in a `Form` component along with the `useForm` hook.
 
-![Example image of a rendered text field in a form](https://dac-static.atlassian.com/platform/forge/ui-kit/images/textfield/text-field-form-validation.png?_v=1.5800.1801)
+![Example image of a rendered text field in a form](https://dac-static.atlassian.com/platform/forge/ui-kit/images/textfield/text-field-form-validation.png?_v=1.5800.1805)
 
 ```
 ```

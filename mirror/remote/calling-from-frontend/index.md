@@ -2,7 +2,7 @@
 
 You can call your remote backend from your frontend (Custom UI and UI Kit) via a resolver. The diagram below illustrates the data flow.
 
-![Forge Remote diagram describing the flow of data and auth between Forge and remote application](https://dac-static.atlassian.com/platform/forge/images/remote/remote-calling-backend-from-frontend.png?_v=1.5800.1801)
+![Forge Remote diagram describing the flow of data and auth between Forge and remote application](https://dac-static.atlassian.com/platform/forge/images/remote/remote-calling-backend-from-frontend.png?_v=1.5800.1805)
 
 ## Getting started
 
@@ -20,33 +20,14 @@ To define a remote endpoint for a Forge module, in your `manifest.yml`:
 Here's an example of how to setup your manifest:
 
 ```
+```
 1
 2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
+```
+
+
+
+```
 modules:
   macro:
     - key: forge-remote-app-node
@@ -74,6 +55,7 @@ permissions:
 remotes:
   - key: remote-app-node
     baseUrl: https://forge-remote-refapp-nodejs.services.atlassian.com
+```
 ```
 
 ## Verifying requests

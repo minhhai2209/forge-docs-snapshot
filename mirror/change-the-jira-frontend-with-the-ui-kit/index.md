@@ -140,7 +140,7 @@ for the other UI Kit components.
 
 The app displays the number of comments in the issue panel. Add more comments and refresh the page to count them in your app. Your issue should look like the following:
 
-![A Jira issue displaying the hello world forge app with comments counted](https://dac-static.atlassian.com/platform/forge/images/forge-getting-started-jira-final-state.png?_v=1.5800.1801)
+![A Jira issue displaying the hello world forge app with comments counted](https://dac-static.atlassian.com/platform/forge/images/forge-getting-started-jira-final-state.png?_v=1.5800.1805)
 
 ## Close the tunnel and deploy the app
 
@@ -185,4 +185,4 @@ You now know enough to develop your own Forge apps. Learn more from our
 [tutorials](/platform/forge/tutorials-and-guides/), [guides](/platform/forge/guides/),
 [example apps](/platform/forge/example-apps/) or [reference pages](/platform/forge/manifest-reference/).
 
-[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.1801)](/platform/forge/call-a-jira-api/)
+[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.1805)](/platform/forge/call-a-jira-api/)
