@@ -29,20 +29,14 @@ A simple group of seven users using the `UserGroup` component.
 ![Example image of a rendered group of seven Atlassian users](https://dac-static.atlassian.com/platform/forge/images/ui-kit-2/user-group.png?_v=1.5800.1805)
 
 ```
+```
 1
 2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
+```
+
+
+
+```
 import { UserGroup, User } from '@forge/react';
 const App = () => {
     return (
@@ -57,6 +51,7 @@ const App = () => {
         </UserGroup>
     );
 };
+```
 ```
 
 ### Inline
