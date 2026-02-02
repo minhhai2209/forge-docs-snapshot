@@ -205,8 +205,8 @@ In your manifest, add the [`apiRoute` module](/platform/forge/manifest-reference
 under `modules`. For each REST API you want to expose, specify your function, the path, and the HTTP
 method that you want to use.
 
-In this example, we use `resolver` as the function, `/getEmployeeName` as the path, and `GET` as the HTTP method for
-the call. The developer-defined scope being mapped to the `/getEmployeeName` API is
+In this example, we use `resolver` as the function, `/employeeName` as the path, and `GET` as the HTTP method for
+the call. The developer-defined scope being mapped to the `/employeeName` `GET` API is
 `read:employee:custom`. Note that we’d already registered this scope in the previous section.
 
 ```
@@ -221,7 +221,7 @@ the call. The developer-defined scope being mapped to the `/getEmployeeName` API
 modules:
   apiRoute:
     - key: employee-api-1
-      path: /getEmployeeName
+      path: /employeeName
       operation: GET
       function: handler1
       accept:
@@ -229,7 +229,7 @@ modules:
       scopes:
         - read:employee:custom
     - key: employee-api-2
-      path: /editEmployeeName
+      path: /employeeName
       operation: POST
       function: handler2
       accept:
@@ -281,7 +281,7 @@ export const handler1 = (req) => {
   return {
       "statusCode": 200,
       "customHeader": "done",
-      "body": "Received request /getEmployeeName: ${JSON.stringify(req)}"
+      "body": "Received GET request /employeeName: ${JSON.stringify(req)}"
   }
 }
 
@@ -289,11 +289,13 @@ export const handler2 = (req) => {
   return {
       "statusCode": 201,
       "customHeader": "done",
-      "body": "Received request /editEmployeeName: ${JSON.stringify(req)}"
+      "body": "Received POST request /employeeName: ${JSON.stringify(req)}"
   }
 }
 ```
 ```
+
+Note that you need to specify the `statusCode` in your response.
 
 Example `src/index.js`:
 
@@ -315,28 +317,28 @@ export { handler1, handler2 } from './resolvers';
 Navigate to the app's top-level directory and deploy your app:
 
 Deploying an app creates REST API endpoints for each `path` you defined under `apiRoute`. For
-example, for `/getEmployeeName` you’ll see endpoints like:
+example, for `/employeeName` you’ll see endpoints like:
 
 * `https://api.atlassian.com/svc/<product>/<cloud-id>/apps/<app-id>_<env-id>/getEmployeeName`
-* `https://<site-name>/gateway/api/svc/<product>/apps/<appid>_<env-id>/getEmployeeName`
+* `https://<site-name>/gateway/api/svc/<product>/apps/<app-id>_<env-id>/getEmployeeName`
 
 Both of these REST API endpoints point to the same function. The difference is that the first
 includes the cloud ID, whereas the second has the client site name. You may use whichever endpoint
 you would like.
 
-If using the first URL, you can retrieve the `cloud-id` for your site through the `GET` API
-`https://<site-name>/_edge/tenant_info`. Additionally, the `environment-id` for your Forge app can
-be obtained from the Developer Console. Note that `environment-id` is not needed if your environment
-is production.
+If using the first URL, one can retrieve the `cloud-id` for a site through the `GET` API
+`https://<site-name>/_edge/tenant_info`. Additionally, the `environment-id` for a Forge app can
+be obtained from the Developer Console. Note that both the `environment-id` and `app-id` are app-specific
+and have to be shared with the end customers.
 
 For this example, and in case of a development environment, the URLs would be:
 
 * `https://api.atlassian.com/svc/confluence/a12bc345-678d-9e1f-ghi0-1jkl112131m4/apps/zy2x11w1-0v1u-9876-ts54-3r210qponmlk_3aaa01b0-02cc-1d00-3eee-1f01g001h1i0/getEmployeeName`
-* `https://sample.atlassian.com/gateway/api/svc/confluence/apps/zy2x11w1-0v1u-9876-ts54-3r210qponmlk_3aaa01b0-02cc-1d00-3eee-1f01g001h1i0/getEmployeeName`
+* `https://sample.atlassian.net/gateway/api/svc/confluence/apps/zy2x11w1-0v1u-9876-ts54-3r210qponmlk_3aaa01b0-02cc-1d00-3eee-1f01g001h1i0/getEmployeeName`
 
 ## Step 6: Install the app
 
-Install the app on your site so the REST APIs become available using the following command:
+Install the app on a site so the REST APIs become available using the following command:
 
 ```
 ```

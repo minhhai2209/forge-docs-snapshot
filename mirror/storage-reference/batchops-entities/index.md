@@ -22,9 +22,6 @@ In addition:
 * You can send a maximum of 45 batch operations per minute.
 * A single `kvs.batchSet` operation can be a payload of 4MB, similar to transactions.
 
-We are currently working on addressing a bug that is incorrectly limiting request payloads for Transactions and Batch operations
-to 1MB instead of 4MB. See [FRGE-1916](https://ecosystem.atlassian.net/browse/FRGE-1916) for additional details.
-
 ## Error handling
 
 A batch operation will return an error and fail entirely if:

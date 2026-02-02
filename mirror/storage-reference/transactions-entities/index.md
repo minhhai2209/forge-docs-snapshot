@@ -109,9 +109,6 @@ Data stored through transactions is still subject to [Custom entities limits](/p
 | Unique keys | Each key can only be used once in a transaction. |
 | Payload | Each transaction is limited to a payload size of 4MB. |
 
-We are currently working on addressing a bug that is incorrectly limiting request payloads for Transactions and Batch operations
-to 1MB instead of 4MB. See [FRGE-1916](https://ecosystem.atlassian.net/browse/FRGE-1916) for additional details.
-
 ## Conditions
 
 You can specify conditions for each operation of a transaction. Each condition is checked and must be true; if any condition is not met, the entire transaction will fail.

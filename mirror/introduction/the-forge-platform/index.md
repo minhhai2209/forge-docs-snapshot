@@ -10,7 +10,7 @@ Forge apps are built in JavaScript; however, the environment differs a little fr
 
 Below is a diagram demonstrating the Forge platform architecture.
 
-![Forge Architecture diagram](https://dac-static.atlassian.com/platform/forge/images/introduction/forge-architecture.png?_v=1.5800.1805)
+![Forge Architecture diagram](https://dac-static.atlassian.com/platform/forge/images/introduction/forge-architecture.png?_v=1.5800.1808)
 
 ## Forge runtime
 

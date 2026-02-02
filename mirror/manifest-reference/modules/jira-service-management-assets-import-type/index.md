@@ -12,7 +12,7 @@ This module can be used in Jira Service Management.
 
 Unlicensed user access: This module does not support interaction with anonymous users, customer accounts, or unlicensed accounts.
 
-![Example of an Assets Import Type](https://dac-static.atlassian.com/platform/forge/snippets/images/assets-import-type-demo.png?_v=1.5800.1805)
+![Example of an Assets Import Type](https://dac-static.atlassian.com/platform/forge/snippets/images/assets-import-type-demo.png?_v=1.5800.1808)
 
 ## Properties
 

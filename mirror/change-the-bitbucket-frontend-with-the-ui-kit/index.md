@@ -119,4 +119,4 @@ You now know enough to develop your own Forge apps. Learn more from our
 [tutorials](/platform/forge/tutorials-and-guides/), [guides](/platform/forge/guides/),
 [example apps](/platform/forge/example-apps/) or [reference pages](/platform/forge/manifest-reference/).
 
-[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.1805)](/platform/forge/call-a-bitbucket-api/)
+[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.1808)](/platform/forge/call-a-bitbucket-api/)

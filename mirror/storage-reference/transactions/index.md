@@ -55,9 +55,6 @@ Data stored through transactions is still subject to the limits defined in [Forg
 | Unique keys | Each key can only be used once in a transaction. |
 | Payload | Each transaction is limited to a payload size of 4MB. |
 
-We are currently working on addressing a bug that is incorrectly limiting request payloads for Transactions and Batch operations
-to 1MB instead of 4MB. See [FRGE-1916](https://ecosystem.atlassian.net/browse/FRGE-1916) for additional details.
-
 ## transact.set
 
 Adds an operation to the transaction to set a JSON value with a specified key.

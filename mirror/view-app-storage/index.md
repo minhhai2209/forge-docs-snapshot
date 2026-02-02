@@ -14,7 +14,7 @@ To view app storage:
 
 The screen shows the storage usage of an app for a selected site.
 
-![Storage usage for a selected site](https://dac-static.atlassian.com/platform/forge/images/storage-screen.svg?_v=1.5800.1805)
+![Storage usage for a selected site](https://dac-static.atlassian.com/platform/forge/images/storage-screen.svg?_v=1.5800.1808)
 
 ### Storage usage
 

@@ -58,9 +58,6 @@ The KVS and Custom Entity Store also let you package multiple operations into on
 | Unique keys | Each key can only be used once in a transaction. |
 | Payload | Each transaction is limited to a payload size of 4MB. |
 
-We are currently working on addressing a bug that is incorrectly limiting request payloads for Transactions and Batch operations
-to 1MB instead of 4MB. See [FRGE-1916](https://ecosystem.atlassian.net/browse/FRGE-1916) for additional details.
-
 ## Custom Entity Store limits
 
 Custom entities (used for [complex queries](/platform/forge/runtime-reference/storage-api-query-complex/)) are subject to the following additional limits:
