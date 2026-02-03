@@ -19,19 +19,40 @@ from the quick insert menu of the editor. The `macro` module is implemented by a
 
 On apps that use Custom UI, module content is displayed inside a [special Forge iframe](/platform/forge/custom-ui/iframe/) which has the [sandbox](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#sandbox) attribute configured. This means that HTML links (for example, `<a href="https://domain.tld/path">...</a>`) in this iframe won't be clickable. To make them clickable, use the [router.navigate](/platform/forge/custom-ui-bridge/router/#navigate) API from the `@forge/bridge` package.
 
-![Example of a macro](https://dac-static.atlassian.com/platform/forge/snippets/images/macro-example.png?_v=1.5800.1808)
+![Example of a macro](https://dac-static.atlassian.com/platform/forge/snippets/images/macro-example.png?_v=1.5800.1813)
 
 ## Manifest structure
 
 ```
-```
 1
 2
-```
-
-
-
-```
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
 modules {}
 └─ macro []
    ├─ key (string) [Mandatory]
@@ -61,7 +82,6 @@ modules {}
 resources []
 ├─ key (string) [Mandatory]
 └─ path (string) [Mandatory]
-```
 ```
 
 ## Properties

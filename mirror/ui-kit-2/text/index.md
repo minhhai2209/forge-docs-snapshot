@@ -37,7 +37,7 @@ The size prop expresses the visual appearance of the text element:
 * `'medium'` is the default size in components or where space is limited, for detailed or descriptive content such as primary descriptions in flags.
 * `'small'` should be used sparingly and is for secondary level content such as fine print or semantic messaging.
 
-![Example image of rendered text component with different sizes](https://dac-static.atlassian.com/platform/forge/ui-kit/images/text/text-example-size.png?_v=1.5800.1808)
+![Example image of rendered text component with different sizes](https://dac-static.atlassian.com/platform/forge/ui-kit/images/text/text-example-size.png?_v=1.5800.1813)
 
 ```
 ```
@@ -66,7 +66,7 @@ Text uses the `color.text` [token](https://atlassian.design/components/tokens/al
 
 Text will automatically apply the correct inverse color token if placed within a [box component](../box) with a bold background color.
 
-![Example image of rendered text component in different colors](https://dac-static.atlassian.com/platform/forge/ui-kit/images/text/text-example-color.png?_v=1.5800.1808)
+![Example image of rendered text component in different colors](https://dac-static.atlassian.com/platform/forge/ui-kit/images/text/text-example-color.png?_v=1.5800.1813)
 
 ```
 ```
@@ -99,7 +99,7 @@ export const TextExampleColor = () => {
 
 The `color` prop can be used with any text color token. If Text is nested inside another Text component, color will automatically inherit from its parent.
 
-![Example image of rendered text component demonstrating color inheritance](https://dac-static.atlassian.com/platform/forge/ui-kit/images/text/text-example-color-inheritance.png?_v=1.5800.1808)
+![Example image of rendered text component demonstrating color inheritance](https://dac-static.atlassian.com/platform/forge/ui-kit/images/text/text-example-color-inheritance.png?_v=1.5800.1813)
 
 ```
 ```
@@ -136,7 +136,7 @@ Font weight defaults to regular (400) and can be set using the `weight` prop. Mo
 
 Text supports the semibold weight, however due to differences between font stacks across different operating systems, semibold text may render as bold. We recommend using regular, medium, and bold for the best results.
 
-![Example image of rendered text component in different weight levels](https://dac-static.atlassian.com/platform/forge/ui-kit/images/text/text-example-weight.png?_v=1.5800.1808)
+![Example image of rendered text component in different weight levels](https://dac-static.atlassian.com/platform/forge/ui-kit/images/text/text-example-weight.png?_v=1.5800.1813)
 
 ```
 ```
@@ -166,7 +166,7 @@ export const TextExampleWeight = () => {
 
 Text can be aligned using the `align` prop.
 
-![Example image of rendered text component in different alignments](https://dac-static.atlassian.com/platform/forge/ui-kit/images/text/text-example-align.png?_v=1.5800.1808)
+![Example image of rendered text component in different alignments](https://dac-static.atlassian.com/platform/forge/ui-kit/images/text/text-example-align.png?_v=1.5800.1813)
 
 ```
 ```
@@ -203,7 +203,7 @@ export const TextExampleAlign = () => {
 ### Rendered HTML element
 
 Text renders a HTML `<p>` element by default. Use the `as` prop to change the rendered HTML element.
-![Example image of rendered text component as different HTML elements](https://dac-static.atlassian.com/platform/forge/ui-kit/images/text/text-example-as.png?_v=1.5800.1808)
+![Example image of rendered text component as different HTML elements](https://dac-static.atlassian.com/platform/forge/ui-kit/images/text/text-example-as.png?_v=1.5800.1813)
 
 ```
 ```
@@ -235,7 +235,7 @@ Text does not apply any vertical margin or spacing. To control space between tex
 
 The available values for paragraph spacing are outlined in the [Typography foundations page](https://atlassian.design/foundations/typography-beta#body).
 
-![Example image of rendered text component, together with other components](https://dac-static.atlassian.com/platform/forge/ui-kit/images/text/text-example-arrangement.png?_v=1.5800.1808)
+![Example image of rendered text component, together with other components](https://dac-static.atlassian.com/platform/forge/ui-kit/images/text/text-example-arrangement.png?_v=1.5800.1813)
 
 ```
 ```
@@ -280,7 +280,7 @@ Truncation in Atlassian app experiences [should be avoided](https://atlassian.de
 
 However if truncation cannot be avoided, for example when displaying user-generated content, use the `maxLines` prop to indicate how text should be truncated.
 
-![Example image of rendered text component demonstrating truncation](https://dac-static.atlassian.com/platform/forge/ui-kit/images/text/text-example-maxlines.png?_v=1.5800.1808)
+![Example image of rendered text component demonstrating truncation](https://dac-static.atlassian.com/platform/forge/ui-kit/images/text/text-example-maxlines.png?_v=1.5800.1813)
 
 ```
 ```

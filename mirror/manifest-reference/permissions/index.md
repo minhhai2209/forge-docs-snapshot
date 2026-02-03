@@ -242,7 +242,7 @@ There are two ways to declare an external URL for your fetch back end:
 #### Direct listing
 
 This involves listing the domains directly in the `fetch.backend` or `fetch.client` section.
-You can define these directly as as `string` or as an `EgressPermission` object.
+You can define these directly as an `EgressPermission` object.
 You don't need to specify individual URL paths, such as `example-dev.com/path`. Adding one domain
 allows access to any URL on that domain.
 

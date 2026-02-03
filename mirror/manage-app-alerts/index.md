@@ -42,7 +42,7 @@ creating alert rules, app admins can customize the following attributes:
 
 ## Alert lifecycle
 
-![Alert lifecycle diagram](https://dac-static.atlassian.com/platform/forge/images/alerts/alert-lifecycle.svg?_v=1.5800.1808)
+![Alert lifecycle diagram](https://dac-static.atlassian.com/platform/forge/images/alerts/alert-lifecycle.svg?_v=1.5800.1813)
 
 Each time an alert is opened, a unique alert ID is generated. Throughout an alert’s lifecycle, it
 may change severities. For example, if the situation worsens, the severity may escalate from `Major`

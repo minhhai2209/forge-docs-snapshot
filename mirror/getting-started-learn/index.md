@@ -17,7 +17,7 @@ Forge apps are written in JavaScript so you'll need to be familiar with JavaScri
 ### Set up Node.js
 
 The Forge CLI requires a fully supported LTS release of
-Node.js installed; namely, versions 20.x or 22.x.
+Node.js installed; namely, versions 20.x, 22.x or 24.x.
 Follow the Node.js setup instructions specific to your operating system below:
 
 In this video, we'll walk you through installing the Atlassian Forge CLI on your Mac. Also, you'll find step-by-step written instructions on this page if you prefer to follow along at your own pace
@@ -79,7 +79,7 @@ installing Node.js using this method.
 After installing the Forge CLI, follow the prompts in the terminal to build a hello world app. For a complete explanation
 of each step, continue reading along with the documentation.
 
-![Hello world CLI overview](https://dac-static.atlassian.com/platform/forge/images/forge-cli-overview-without-description.png?_v=1.5800.1808)
+![Hello world CLI overview](https://dac-static.atlassian.com/platform/forge/images/forge-cli-overview-without-description.png?_v=1.5800.1813)
 
 ## Install the Forge CLI
 

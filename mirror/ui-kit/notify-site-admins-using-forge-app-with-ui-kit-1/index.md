@@ -1,21 +1,9 @@
 # Notify site admins using Forge app with UI Kit 1
 
-With the upcoming deprecation of UI Kit 1 it is important to contact any site admins that are using a UI Kit 1 version of your Forge app.
+Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
+When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our
 
-Even if you have upgraded your Forge app to the latest version of UI Kit, please be aware that sites using your Forge app might not be using this version. This could be the case if you released it as a major version change, site admins will have to manually update their site to use this.
+[Privacy Policy](https://www.atlassian.com/legal/privacy-policy#additional-disclosures-for-ca-residents)
 
-Alternatively, if you released this as a minor update on the latest major version, sites which have an older major version installed won't automatically receive your minor update.
-
-See the [Forge version](/platform/forge/versions/) docs for more information on how versioning works in Forge.
-
-## How do I find sites with an old version of my Forge app installed?
-
-You can see what versions of your app sites have installed via the developer console. See [view app installations](/platform/forge/view-app-installations/) for details. You can use the "version" filter and select the "out-of-date" option to find any sites that are not on the latest version.
-
-You can also run `forge install list` [see cli reference](/platform/forge/cli-reference/install-list/) to show the current installations of your Forge app. This command also includes the Installation ID.
-
-## Can I update a previous major version of my Forge app from UI Kit 1 to 2?
-
-Yes, you can use [Forge version backporting](/platform/forge/versions/#backporting) if your changes do not constitute a breaking change.
-
-Currently only apps that are paid can contact site admins see [how do I contact a customer](/platform/marketplace/sales-and-evaluations-reports/#how-do-i-contact-a-customer-) and the [licenses report](https://developer.atlassian.com/platform/marketplace/licenses/) for details on how to this.
+.
+You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.

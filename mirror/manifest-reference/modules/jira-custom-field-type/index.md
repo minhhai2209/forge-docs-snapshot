@@ -764,7 +764,7 @@ const Edit = () => {
 ```
 
 Outcome:
-![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.1808)
+![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.1813)
 
 ##### Updated files
 
@@ -840,7 +840,7 @@ const Edit = () => {
 ```
 
 Outcome:
-![Updated experience to inline edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-inline.png?_v=1.5800.1808)
+![Updated experience to inline edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-inline.png?_v=1.5800.1813)
 
 
 How to edit custom fields in the modal (for more complex UI)
@@ -953,7 +953,7 @@ const Edit = () => {
 ```
 
 Outcome:
-![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.1808)
+![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.1813)
 
 ##### Updated files
 
@@ -1063,7 +1063,7 @@ ForgeReconciler.render(
 ```
 
 Outcome:
-![Updated experience to modal edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-new-modal.png?_v=1.5800.1808)
+![Updated experience to modal edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-new-modal.png?_v=1.5800.1813)
 
 ### Issue creation and issue transition dialog
 
@@ -1784,3 +1784,208 @@ resources:
     path: src/frontend/configureProgressBar.jsx
 ```
 ```
+
+### Implementation examples
+
+The following code shows how to implement the UI Kit resources referenced in the manifest example above.
+
+#### Display view resource
+
+This resource (`src/frontend/index.jsx`) renders the progress bar in view mode on the issue:
+
+```
+```
+1
+2
+```
+
+
+
+```
+import React from 'react';
+import ForgeReconciler, { ProgressBar, Text, Stack, useProductContext } from '@forge/react';
+
+const DisplayProgressBar = () => {
+  const context = useProductContext();
+  const rawValue = context?.extension?.fieldValue;
+  // coerce and default
+  const value = Number(rawValue ?? 0);
+  const config = context?.extension?.configuration || {};
+  const minValue = Number(config?.minValue ?? 0);
+  const maxValue = Number(config?.maxValue ?? 100);
+
+  const range = maxValue - minValue;
+  let percentage = 0;
+  if (range > 0 && !Number.isNaN(value)) {
+    percentage = ((value - minValue) / range) * 100;
+  }
+  // clamp between 0 and 100
+  percentage = Math.max(0, Math.min(100, percentage));
+
+  return (
+    <Stack space="space.100">
+      <ProgressBar appearance="success" value={percentage / 100} />
+      <Text>{Math.round(percentage)}% (Value: {Number.isFinite(value) ? value : 0})</Text>
+    </Stack>
+  );
+};
+
+ForgeReconciler.render(
+  <React.StrictMode>
+    <DisplayProgressBar />
+  </React.StrictMode>
+);
+```
+```
+
+#### Edit view resource
+
+This resource (`src/frontend/editProgressBar.jsx`) provides the editing interface for the field value:
+
+```
+```
+1
+2
+```
+
+
+
+```
+import React from 'react';
+import ForgeReconciler, {
+  Form,
+  Label,
+  Textfield,
+  useForm,
+  useProductContext
+} from '@forge/react';
+import { view } from '@forge/bridge';
+
+const EditProgressBar = () => {
+  const context = useProductContext();
+  const initialRaw = context?.extension?.fieldValue;
+  const initialNumber = initialRaw == null || initialRaw === '' ? '' : String(initialRaw);
+
+  const config = context?.extension?.configuration || {};
+  const minValue = Number(config?.minValue ?? 0);
+  const maxValue = Number(config?.maxValue ?? 100);
+
+  const { handleSubmit, register, getFieldId, setValue } = useForm({
+    defaultValues: { value: initialNumber }
+  });
+
+  const onSubmit = async (data) => {
+    if (data == null) {
+      await view.submit(null);
+      return;
+    }
+    const parsed = data.value === '' ? null : Number(data.value);
+    if (parsed === null) {
+      await view.submit(null);
+      return;
+    }
+    const finalValue = Number.isFinite(parsed)
+      ? Math.max(minValue, Math.min(maxValue, parsed))
+      : minValue;
+    await view.submit(finalValue);
+  };
+
+  return (
+    <Form onSubmit={handleSubmit(onSubmit)}>
+      <Label labelFor={getFieldId('value')}>
+        Progress value (between {minValue} and {maxValue})
+      </Label>
+      <Textfield
+        id={getFieldId('value')}
+        type="number"
+        {...register('value', { required: false })}
+        placeholder={`Enter a number ${minValue} - ${maxValue}`}
+      />
+    </Form>
+  );
+};
+
+ForgeReconciler.render(
+  <React.StrictMode>
+    <EditProgressBar />
+  </React.StrictMode>
+);
+```
+```
+
+#### Context configuration resource
+
+This resource (`src/frontend/configureProgressBar.jsx`) allows Jira administrators to configure the minimum and maximum values for the custom field context:
+
+```
+```
+1
+2
+```
+
+
+
+```
+import React from 'react';
+import ForgeReconciler, {
+  Form,
+  Label,
+  Textfield,
+  useForm,
+  useProductContext,
+  Stack
+} from '@forge/react';
+import { view } from '@forge/bridge';
+
+const ConfigureProgressBar = () => {
+  const context = useProductContext();
+  const existingConfig = context?.extension?.configuration || {};
+
+  const { handleSubmit, register, getFieldId } = useForm({
+    defaultValues: {
+      minValue: existingConfig?.minValue ?? 0,
+      maxValue: existingConfig?.maxValue ?? 100
+    }
+  });
+
+  const onSubmit = async (data) => {
+    const minValue = Number(data.minValue ?? 0);
+    const maxValue = Number(data.maxValue ?? 100);
+    await view.submit({ configuration: { minValue, maxValue } });
+  };
+
+  return (
+    <Form onSubmit={handleSubmit(onSubmit)}>
+      <Stack space="space.200">
+        <Label labelFor={getFieldId('minValue')}>Minimum value</Label>
+        <Textfield
+          id={getFieldId('minValue')}
+          type="number"
+          {...register('minValue')}
+        />
+
+        <Label labelFor={getFieldId('maxValue')}>Maximum value</Label>
+        <Textfield
+          id={getFieldId('maxValue')}
+          type="number"
+          {...register('maxValue')}
+        />
+      </Stack>
+    </Form>
+  );
+};
+
+ForgeReconciler.render(
+  <React.StrictMode>
+    <ConfigureProgressBar />
+  </React.StrictMode>
+);
+```
+```
+
+#### Key implementation notes
+
+* **Display view**: Uses `useProductContext` to access the current field value and configuration, then calculates and displays the progress percentage using the `ProgressBar` component.
+* **Edit view**: Uses the `useForm` hook to handle form submission. The submitted value is validated against the configured min/max values using the validation expression in the manifest.
+* **Configuration view**: Allows administrators to set custom min/max values that are stored as context configuration and used in the formatter, validation, and parser expressions.
+* All implementations use the `useProductContext` hook to access the extension context, which provides field value, configuration, and other contextual information.

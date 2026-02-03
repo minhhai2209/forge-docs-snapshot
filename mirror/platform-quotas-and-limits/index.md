@@ -52,6 +52,12 @@ Describes installation-specific limits for throughput and object sizes, which he
 
 For more information, see [Forge Object Store](/platform/forge/limits-object-store/).
 
+### Forge LLMs
+
+Details limits for Forge LLMs such as context window size and requests per minute, helping ensure fair use and predictable costs.
+
+For more information, see [Forge LLM limits](/platform/forge/limits-llm/).
+
 ### Web Trigger
 
 Sets rate limits for Web trigger operations (get, create, delete) per minute, app, environment, and context. Exceeding these thresholds results in temporary request denials until usage normalizes.

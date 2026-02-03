@@ -1,35 +1,9 @@
-# Get help building with Forge
+# Get help
 
-Find help for building your Atlassian app with Forge.
+Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
+When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our
 
-For help, ask a question in the [Forge](https://community.developer.atlassian.com/c/forge)
-category in the Atlassian Developer Community.
+[Privacy Policy](https://www.atlassian.com/legal/privacy-policy#additional-disclosures-for-ca-residents)
 
-## Submit a ticket
-
-Visit **[Developer and Marketplace support](https://developer.atlassian.com/support)** to submit a ticket for:
-
-* Bugs and incidents
-* App migration
-* App development
-* Atlassian Marketplace
-* Extra partner resources
-
-## Give feedback
-
-Create an issue in the [Forge Jira project](https://ecosystem.atlassian.net/projects/FRGE)
-to give feedback on Forge.
-
-## Unsubscribe from Forge email lists (optional)
-
-If you unsubscribe from any Forge email list, you'll also be unsubscribed from all *tips
-and tricks* emails sent by Atlassian.
-
-Follow these steps to unsubscribe from Forge email lists.
-
-1. Open any email you received from Atlassian about Forge.
-2. Click **Unsubscribe**.
-
-## More resources
-
-Find more [developer and Partner resources](/developer-guide/help-and-feedback/).
+.
+You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
