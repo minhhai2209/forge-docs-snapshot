@@ -22,7 +22,7 @@ Avoid calling `useContentProperty` multiple times in the same app, since their o
 
 Here is an example of an app that stores information in a content property with `useContentProperty`.
 
-![The app display on a Confluence page](https://dac-static.atlassian.com/platform/forge/images/ui-kit-2/hooks-examples/usecontentproperty-concrete-value-update.png?_v=1.5800.1813)
+![The app display on a Confluence page](https://dac-static.atlassian.com/platform/forge/images/ui-kit-2/hooks-examples/usecontentproperty-concrete-value-update.png?_v=1.5800.1816)
 
 ```
 1
@@ -80,7 +80,7 @@ ForgeReconciler.render(
 Here's another example that updates the content property based on the current value stored in the
 property.
 
-![The app display on a Confluence page](https://dac-static.atlassian.com/platform/forge/images/ui-kit-2/hooks-examples/usecontentproperty-setter-function-update.png?_v=1.5800.1813)
+![The app display on a Confluence page](https://dac-static.atlassian.com/platform/forge/images/ui-kit-2/hooks-examples/usecontentproperty-setter-function-update.png?_v=1.5800.1816)
 
 ```
 ```

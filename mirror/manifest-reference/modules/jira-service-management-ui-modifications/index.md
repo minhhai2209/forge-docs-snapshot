@@ -193,7 +193,7 @@ JSM request create portal (Preview)
 | Category | Details |
 | --- | --- |
 | **Supported entry points** | * Portal Request create form |
-| **Known limitations** | * **Flash of unmodified fields** – UI modifications are loaded after the *Portal Request create view* has finished loading. For example, a field will be visible for a moment before being hidden. * UI modifications will only trigger for atlassian managed accounts, customer and anonymous account types are not supported yet. [Read more](/platform/forge/access-to-forge-apps-for-unlicensed-users/). * Embeded request create forms are not supported yet. |
+| **Known limitations** | * **Flash of unmodified fields** – UI modifications are loaded after the *Portal Request create view* has finished loading. For example, a field will be visible for a moment before being hidden. * Anonymous account types are not supported yet. [Read more](/platform/forge/access-to-forge-apps-for-unlicensed-users/). * Embeded request create forms are not supported yet. |
 
 ## Other known limitations
 
@@ -203,7 +203,7 @@ If you install and configure multiple UIM apps to run for a given combination of
 
 There may be conflicts when multiple apps attempt to modify the same field using the same [FieldAPI](/platform/forge/apis-reference/jira-api-bridge/uiModifications/#common-fieldapi) method. In such cases, app developers will receive conflict errors via the [onError](/platform/forge/apis-reference/jira-api-bridge/uiModifications/#error-handling) handler, and users will see corresponding notifications:
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/multi-app-conflict-notification.png?_v=1.5800.1813)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/multi-app-conflict-notification.png?_v=1.5800.1816)
 
 If the conflict happens, the changes applied by the app which finished running last will override changes from other apps.
 

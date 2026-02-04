@@ -52,7 +52,7 @@ for its frontend. Refer to the app's README for additional guidance on exploring
 
 The only required property of a file card is the `fileName`. The file card can provide action buttons for download and delete if `onDownload` and `onDelete` are specified.
 
-![Example image of file card](https://dac-static.atlassian.com/platform/forge/ui-kit/images/file-card/file-card.png?_v=1.5800.1813)
+![Example image of file card](https://dac-static.atlassian.com/platform/forge/ui-kit/images/file-card/file-card.png?_v=1.5800.1816)
 
 ```
 ```
@@ -73,7 +73,7 @@ export const FileCardExample = () => {
 
 Use `fileSize` to specify the size of the file in bytes. This will be displayed below the file name.
 
-![Example image of file card with file size](https://dac-static.atlassian.com/platform/forge/ui-kit/images/file-card/file-card-with-file-size.png?_v=1.5800.1813)
+![Example image of file card with file size](https://dac-static.atlassian.com/platform/forge/ui-kit/images/file-card/file-card-with-file-size.png?_v=1.5800.1816)
 
 ```
 ```
@@ -94,7 +94,7 @@ const FileCardWithFileSizeExample = () => {
 
 Use `fileType` to specify the MIME type of the file. If `fileType` is not provided, the component will try to determine this from the file name.
 
-![Example image of file card with file types](https://dac-static.atlassian.com/platform/forge/ui-kit/images/file-card/file-card-with-file-types.png?_v=1.5800.1813)
+![Example image of file card with file types](https://dac-static.atlassian.com/platform/forge/ui-kit/images/file-card/file-card-with-file-types.png?_v=1.5800.1816)
 
 ```
 ```
@@ -122,7 +122,7 @@ const FileCardWithFileTypesExample = () => {
 
 Use `error` to display a message when there is an error. This can be used to inform users of any issues with the file.
 
-![Example image of file card with error](https://dac-static.atlassian.com/platform/forge/ui-kit/images/file-card/file-card-with-error.png?_v=1.5800.1813)
+![Example image of file card with error](https://dac-static.atlassian.com/platform/forge/ui-kit/images/file-card/file-card-with-error.png?_v=1.5800.1816)
 
 ```
 ```
@@ -143,7 +143,7 @@ const FileCardWithErrorExample = () => {
 
 Use `uploadProgress` and `isUploading` to indicate upload status. This takes in a value from 0 to 1 which is used to display a progress bar.
 
-![Example image of empty state with custom heading level](https://dac-static.atlassian.com/platform/forge/ui-kit/images/file-card/file-card-with-upload-progress.png?_v=1.5800.1813)
+![Example image of empty state with custom heading level](https://dac-static.atlassian.com/platform/forge/ui-kit/images/file-card/file-card-with-upload-progress.png?_v=1.5800.1816)
 
 ```
 ```

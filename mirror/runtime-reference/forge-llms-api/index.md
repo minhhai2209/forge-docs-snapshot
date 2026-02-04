@@ -256,12 +256,9 @@ You can use the `list` method from the SDK to dynamically fetch the list of supp
 
 | Model ID | Variants | Family | Status | EOL |
 | --- | --- | --- | --- | --- |
-| `claude-3-5-haiku-20241022` | Haiku | Claude | `DEPRECATED` | February 2026 |
 | `claude-haiku-4-5-20251001` | Haiku | Claude | `ACTIVE` |  |
-| `claude-3-7-sonnet-20250219` | Sonnet | Claude | `DEPRECATED` | February 2026 |
 | `claude-sonnet-4-20250514` | Sonnet | Claude | `ACTIVE` |  |
 | `claude-sonnet-4-5-20250929` | Sonnet | Claude | `ACTIVE` |  |
-| `claude-opus-4-20250514` | Opus | Claude | `DEPRECATED` | February 2026 |
 | `claude-opus-4-1-20250805` | Opus | Claude | `ACTIVE` |  |
 | `claude-opus-4-5-20251101` | Opus | Claude | `ACTIVE` |  |
 

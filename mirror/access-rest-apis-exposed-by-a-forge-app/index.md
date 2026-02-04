@@ -34,14 +34,14 @@ To enable app REST APIs for a site:
 3. In the left-hand navigation for that site, select **Connected apps**.
 4. Find the Forge app that exposes REST APIs and click **View app details**.
 
-   ![Screenshot](https://dac-static.atlassian.com/platform/forge/images/forge-rest-apis/admin-hub-connected-apps-details.png?_v=1.5800.1813)
+   ![Screenshot](https://dac-static.atlassian.com/platform/forge/images/forge-rest-apis/admin-hub-connected-apps-details.png?_v=1.5800.1816)
 5. On the app details page, open the **Details** tab and locate the **App REST APIs** section.
    There, there is a button that you can use to enable or disable app REST APIs - you can do so at any
    time. Disabling it will immediately block API calls to this app’s REST endpoints for that site.
 
-   ![Screenshot](https://dac-static.atlassian.com/platform/forge/images/forge-rest-apis/admin-hub-connected-apps-rest-api-toggle.png?_v=1.5800.1813)
+   ![Screenshot](https://dac-static.atlassian.com/platform/forge/images/forge-rest-apis/admin-hub-connected-apps-rest-api-toggle.png?_v=1.5800.1816)
 
-   ![Screenshot](https://dac-static.atlassian.com/platform/forge/images/forge-rest-apis/admin-hub-connected-apps-enable-rest-apis.png?_v=1.5800.1813)
+   ![Screenshot](https://dac-static.atlassian.com/platform/forge/images/forge-rest-apis/admin-hub-connected-apps-enable-rest-apis.png?_v=1.5800.1816)
 
 App REST APIs on Forge are **disabled by default**.
 If the site or organization admin doesn’t enable this feature in **Connected apps**, app REST APIs
@@ -61,26 +61,26 @@ to that app’s REST APIs.
 2. Click **Create** and select **OAuth 2.0 integration**.
 3. Follow the prompts to name and create your 3LO app.
 
-   ![Screenshot](https://dac-static.atlassian.com/platform/forge/images/forge-rest-apis/dev-console-create-3lo-integration.png?_v=1.5800.1813)
+   ![Screenshot](https://dac-static.atlassian.com/platform/forge/images/forge-rest-apis/dev-console-create-3lo-integration.png?_v=1.5800.1816)
 
-   ![Screenshot](https://dac-static.atlassian.com/platform/forge/images/forge-rest-apis/dev-console-name-3lo-integration.png?_v=1.5800.1813)
+   ![Screenshot](https://dac-static.atlassian.com/platform/forge/images/forge-rest-apis/dev-console-name-3lo-integration.png?_v=1.5800.1816)
 
 ### Connect the 3LO app to the Forge app
 
 1. In your 3LO app, open the **Permissions** section.
 2. On the right side, click **Add Marketplace or custom app**.
 
-   ![Screenshot](https://dac-static.atlassian.com/platform/forge/images/forge-rest-apis/dev-console-3lo-add-forge-app-button.png?_v=1.5800.1813)
+   ![Screenshot](https://dac-static.atlassian.com/platform/forge/images/forge-rest-apis/dev-console-3lo-add-forge-app-button.png?_v=1.5800.1816)
 3. In the modal that opens, first select the **site** where the Forge app is installed.
 
-   ![Screenshot](https://dac-static.atlassian.com/platform/forge/images/forge-rest-apis/dev-console-modal-with-site.png?_v=1.5800.1813)
+   ![Screenshot](https://dac-static.atlassian.com/platform/forge/images/forge-rest-apis/dev-console-modal-with-site.png?_v=1.5800.1816)
 4. After you select the site, you’ll see a list of Forge apps installed on that site. Choose the
    Forge app (and environment) that exposes the REST APIs you want to access.
 
-   ![Screenshot](https://dac-static.atlassian.com/platform/forge/images/forge-rest-apis/dev-console-modal-with-app.png?_v=1.5800.1813)
+   ![Screenshot](https://dac-static.atlassian.com/platform/forge/images/forge-rest-apis/dev-console-modal-with-app.png?_v=1.5800.1816)
 5. Select the **scopes** that your integration needs, based on the app developer’s documentation. You must select at least one scope.
 
-   ![Screenshot](https://dac-static.atlassian.com/platform/forge/images/forge-rest-apis/dev-console-forge-app-scopes-modal.png?_v=1.5800.1813)
+   ![Screenshot](https://dac-static.atlassian.com/platform/forge/images/forge-rest-apis/dev-console-forge-app-scopes-modal.png?_v=1.5800.1816)
 
    Select only the scopes that you need in order to access the APIs.
    For example, if you only need to use the `/getEmployeeName` API, select the scope mapped to it,
@@ -88,7 +88,7 @@ to that app’s REST APIs.
 6. Select **Add**. The Forge app will then appear in the **Permissions** tab for your 3LO integration. You
    can always edit the scopes later as needed.
 
-   ![Screenshot](https://dac-static.atlassian.com/platform/forge/images/forge-rest-apis/dev-console-permissions-tab-with-forge-app.png?_v=1.5800.1813)
+   ![Screenshot](https://dac-static.atlassian.com/platform/forge/images/forge-rest-apis/dev-console-permissions-tab-with-forge-app.png?_v=1.5800.1816)
 7. In addition to these app-defined scopes, add the **Forge app product scopes** required for the
    relevant Atlassian apps (currently Jira and Confluence). For example:
 
@@ -103,9 +103,9 @@ to that app’s REST APIs.
    your 3LO app under the Forge app entry.
    This URL already includes the app-defined scopes and Atlassian app-level Forge scopes you selected.
 
-   ![Screenshot](https://dac-static.atlassian.com/platform/forge/images/forge-rest-apis/dev-console-authorization-tab.png?_v=1.5800.1813)
+   ![Screenshot](https://dac-static.atlassian.com/platform/forge/images/forge-rest-apis/dev-console-authorization-tab.png?_v=1.5800.1816)
 
-   ![Screenshot](https://dac-static.atlassian.com/platform/forge/images/forge-rest-apis/dev-console-auth-url.png?_v=1.5800.1813)
+   ![Screenshot](https://dac-static.atlassian.com/platform/forge/images/forge-rest-apis/dev-console-auth-url.png?_v=1.5800.1816)
 3. Use the authorization URL to obtain an access token. In a production setup, this flow is usually
    handled by your integration code, but you can perform it manually for testing:
 

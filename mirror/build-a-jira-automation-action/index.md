@@ -66,7 +66,7 @@ cd {your-preferred-location}
 
 **Step 1i**: Verify you see output similar to the following:
 
-![Initial Forge CLI commands](https://dac-static.atlassian.com/platform/forge/images/forge-automation-action-tutorial/forge-automation-tutorial-initial-commands.png?_v=1.5800.1813)
+![Initial Forge CLI commands](https://dac-static.atlassian.com/platform/forge/images/forge-automation-action-tutorial/forge-automation-tutorial-initial-commands.png?_v=1.5800.1816)
 
 **Step 1j**: This will have created a directory named `Requirement-Resolver` and files within it that is the initial version of your app. You could deploy and install your app as it is, but the app doesn’t do anything yet so we will make changes first. All future Forge CLI command for the app need to be done in the app’s root directory so run the command `cd Requirement-Resolver`.
 
@@ -559,15 +559,15 @@ The app’s action should now be available for use within an automation rule.
 
 **Step 7c**: Select the “Work item created” trigger.
 
-![Select the Work Item Created trigger](https://dac-static.atlassian.com/platform/forge/images/forge-automation-action-tutorial/forge-automation-tutorial-rule-work-item-created-trigger.png?_v=1.5800.1813)
+![Select the Work Item Created trigger](https://dac-static.atlassian.com/platform/forge/images/forge-automation-action-tutorial/forge-automation-tutorial-rule-work-item-created-trigger.png?_v=1.5800.1816)
 
 **Step 7d**: Add the action “Requirement Info Provider”.
 
-![Add the action Requirement Info Provider](https://dac-static.atlassian.com/platform/forge/images/forge-automation-action-tutorial/forge-automation-tutorial-rule-requirement-infor-provider.png?_v=1.5800.1813)
+![Add the action Requirement Info Provider](https://dac-static.atlassian.com/platform/forge/images/forge-automation-action-tutorial/forge-automation-tutorial-rule-requirement-infor-provider.png?_v=1.5800.1816)
 
 **Step 7e**: To configure the action, you need to enter `{{issue.key}}` into the text field so the automation engine passes the work item key to the action when it is invoked. This form is rendered by your app’s code in `src/frontend/AutomationConfig.jsx` and `src/frontend/AutomationInputsForm.jsx`.
 
-![Add the work item key](https://dac-static.atlassian.com/platform/forge/images/forge-automation-action-tutorial/forge-automation-tutorial-rule-issue-key.png?_v=1.5800.1813)
+![Add the work item key](https://dac-static.atlassian.com/platform/forge/images/forge-automation-action-tutorial/forge-automation-tutorial-rule-issue-key.png?_v=1.5800.1816)
 
 **Step 7f**: Add another step such as “Comment on work item” and enter the following into the “Comment” text field to configure the step:
 
@@ -586,7 +586,7 @@ Found requirement:
 ```
 ```
 
-![Add the comment to the rule](https://dac-static.atlassian.com/platform/forge/images/forge-automation-action-tutorial/forge-automation-tutorial-rule-add-comment.png?_v=1.5800.1813)
+![Add the comment to the rule](https://dac-static.atlassian.com/platform/forge/images/forge-automation-action-tutorial/forge-automation-tutorial-rule-add-comment.png?_v=1.5800.1816)
 
 Note that the fields `requirementId` and `requirementStatus` are defined by the outputs section in the app’s manifest, `manifest.yml` and effectively forms a contract with the rules that use the app’s action so you need to be mindful of this when changing it.
 
@@ -613,7 +613,7 @@ Found requirement:
 ```
 ```
 
-![Test the automation rule](https://dac-static.atlassian.com/platform/forge/images/forge-automation-action-tutorial/forge-automation-tutorial-test-rule.png?_v=1.5800.1813)
+![Test the automation rule](https://dac-static.atlassian.com/platform/forge/images/forge-automation-action-tutorial/forge-automation-tutorial-test-rule.png?_v=1.5800.1816)
 
 ## Wrapping up
 

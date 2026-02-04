@@ -1,9 +1,148 @@
-# Forge bridge rovo
+# rovo (Preview)
 
-Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
-When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our
+The Forge bridge `rovo` API is now available as a Preview capability. Preview capabilities are deemed stable; however, they remain under active development and may be subject to shorter deprecation windows. Preview capabilities are suitable for early adopters in production environments.
 
-[Privacy Policy](https://www.atlassian.com/legal/privacy-policy#additional-disclosures-for-ca-residents)
+We release preview features so partners and developers can study, test, and integrate them prior to General Availability (GA). For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#preview).
 
-.
-You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
+The Forge bridge `rovo` API enables your app to programmatically open the Rovo chat sidebar and initiate conversations with specific agents. Use this to provide contextual AI assistance by launching Rovo agents with pre-filled prompts based on user actions or data within your Forge app.
+
+## open
+
+The `open` method allows you to open the Rovo chat side bar and create a new conversation with the default or a specified Rovo agent.
+
+This method is currently supported in:
+
+* All Jira modules
+* All Confluence modules
+* The following Jira Service Management modules: `jiraServiceManagement:organizationPanel` and `jiraServiceManagement:queuePage`
+
+### Function signature
+
+```
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+function open(
+  openRovoPayload?:
+    | ForgeAgentPayload
+    | AtlassianAgentPayload
+    | DefaultAgentPayload
+): Promise<void>;
+
+type ForgeAgentPayload = {
+  type: "forge";
+  agentName: string;
+  agentKey: string;
+  prompt?: string;
+};
+
+type AtlassianAgentPayload = {
+  type: "atlassian";
+  agentName: string;
+  prompt?: string;
+};
+
+type DefaultAgentPayload = {
+  type: "default";
+  prompt?: string;
+};
+```
+
+### Arguments
+
+#### OpenRovoPayload
+
+* **type**: The type of the Rovo agent.
+* **agentName**: The name of the Rovo agent.
+* **agentKey**: The key of the Forge Rovo agent module.
+* **prompt**: An optional prompt to send to the new conversation.
+
+Non-Forge custom agents are currently not supported for this method.
+You can only open Forge agents that are created in the same app
+from where the method is called.
+
+### Examples
+
+#### Forge agent
+
+```
+```
+1
+2
+```
+
+
+
+```
+import { rovo } from "@forge/bridge";
+...
+await rovo.open({
+  type: "forge",
+  agentName:"My agent",
+  agentKey: "my-agent-key",
+  prompt:"Optional prompt"
+});
+```
+```
+
+#### Non-Forge agent
+
+```
+```
+1
+2
+```
+
+
+
+```
+import { rovo } from "@forge/bridge";
+...
+await rovo.open({
+  type: "atlassian",
+  agentName:"My agent",
+  prompt:"Optional prompt"
+});
+```
+```
+
+#### Default agent
+
+```
+```
+1
+2
+```
+
+
+
+```
+import { rovo } from "@forge/bridge";
+...
+await rovo.open({
+  type: "default",
+  prompt:"Optional prompt"
+});
+```
+```

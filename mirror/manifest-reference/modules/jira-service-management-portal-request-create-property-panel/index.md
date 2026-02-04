@@ -6,7 +6,7 @@ information on Jira entity properties, see [Jira entity properties](/platform/fo
 
 This module can be used in Jira Service Management.
 
-![Example of a Portal request create property panel](https://dac-static.atlassian.com/platform/forge/images/portal-request-create-property-panel-demo.png?_v=1.5800.1813)
+![Example of a Portal request create property panel](https://dac-static.atlassian.com/platform/forge/images/portal-request-create-property-panel-demo.png?_v=1.5800.1816)
 
 ## Portal Request Create Property Panel Lifecycle
 

@@ -356,7 +356,7 @@ interface Term {
 
 ## Step 5: Create the definitions table
 
-![The definition table](https://dac-static.atlassian.com/platform/forge/images/definition-macro-step-5.png?_v=1.5800.1813)
+![The definition table](https://dac-static.atlassian.com/platform/forge/images/definition-macro-step-5.png?_v=1.5800.1816)
 
 In this step, you'll add a [Dynamic Table](/platform/forge/ui-kit/components/dynamic-table/) to the definitions macro to show the list of terms side by side with a list of definitions.
 
@@ -493,7 +493,7 @@ For reference, a finished version of the `src/frontend/definition-table.jsx` fil
 
 ## Step 6: Allow a user to add a definition
 
-![The usable definition table](https://dac-static.atlassian.com/platform/forge/images/definition-macro-step-6a.png?_v=1.5800.1813)
+![The usable definition table](https://dac-static.atlassian.com/platform/forge/images/definition-macro-step-6a.png?_v=1.5800.1816)
 
 At this stage, there's still no data stored for the app. In this step, you'll add the
 ability to store a definition for a term.

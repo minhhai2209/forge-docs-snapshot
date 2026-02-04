@@ -142,6 +142,10 @@ const MyComponent = () => {
 
 The hook returns an `isLoading` boolean, but this should not be `true` for any significant amount of time.
 
+**Display conditions**
+
+You can disable or show an alternative module in the frontend if permissions are missing using display conditions. See [Display conditions: Permissions](/platform/forge/manifest-reference/display-conditions/permissions/) for more information.
+
 ### Backend SDK
 
 Install the `next` version of the `@forge/api` package:

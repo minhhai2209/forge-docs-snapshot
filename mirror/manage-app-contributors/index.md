@@ -27,7 +27,7 @@ To view the contributors of an app:
 2. Select the relevant Forge app.
 3. Select **Contributors** in the left menu.
 
-   ![Contributors list screen](https://dac-static.atlassian.com/platform/forge/images/dev-console-role-permissions/contributors_list.svg?_v=1.5800.1813)
+   ![Contributors list screen](https://dac-static.atlassian.com/platform/forge/images/dev-console-role-permissions/contributors_list.svg?_v=1.5800.1816)
 
 ## Add contributors
 
@@ -101,7 +101,7 @@ To see which contributors have been added, edited, or removed from your app:
 3. Select **Contributors** in the left menu.
 4. Select the **Activity** tab.
 
-![Contributors activity screen](https://dac-static.atlassian.com/platform/forge/images/dev-console-role-permissions/contributor_activity.svg?_v=1.5800.1813)
+![Contributors activity screen](https://dac-static.atlassian.com/platform/forge/images/dev-console-role-permissions/contributor_activity.svg?_v=1.5800.1816)
 
 The screen shows when contributors have been added, changed, removed, or changed to app owner.
 It also shows who completed the action.
@@ -121,7 +121,7 @@ To view the deployment history for your app:
 2. Select the relevant Forge app.
 3. Select **Deployments** in the left menu.
 
-![Deployments screen](https://dac-static.atlassian.com/platform/forge/images/dev-console-role-permissions/deployments-screen.svg?_v=1.5800.1813)
+![Deployments screen](https://dac-static.atlassian.com/platform/forge/images/dev-console-role-permissions/deployments-screen.svg?_v=1.5800.1816)
 
 The screen shows a list of recent deployments, across all contributors, as well as
 [environments and versions](/platform/forge/environments-and-versions/).
@@ -137,7 +137,7 @@ To view the environments for all contributors:
 2. Select the relevant Forge app.
 3. Select **Environments** in the left menu.
 
-![Environments screen](https://dac-static.atlassian.com/platform/forge/images/dev-console-role-permissions/environments-screen.svg?_v=1.5800.1813)
+![Environments screen](https://dac-static.atlassian.com/platform/forge/images/dev-console-role-permissions/environments-screen.svg?_v=1.5800.1816)
 
 To delete an environment, select **Delete** under the Actions column.
 
@@ -151,10 +151,10 @@ To transfer ownership of your app:
 4. In the **Actions** column next to your name, select **Change owner**.
 5. Follow the instructions to select a new owner.
 
-   ![Transfer app ownership modal](https://dac-static.atlassian.com/platform/forge/images/transfer-app-ownership-step2.png?_v=1.5800.1813)
+   ![Transfer app ownership modal](https://dac-static.atlassian.com/platform/forge/images/transfer-app-ownership-step2.png?_v=1.5800.1816)
 6. If you’re happy with the new owner, select **Confirm transfer**.
 
-   ![Transfer app ownership modal confirmation](https://dac-static.atlassian.com/platform/forge/images/transfer-app-ownership-step3.png?_v=1.5800.1813)
+   ![Transfer app ownership modal confirmation](https://dac-static.atlassian.com/platform/forge/images/transfer-app-ownership-step3.png?_v=1.5800.1816)
 
 * You can also transfer ownership from the **Settings** screen of the app.
 * If the app owner is deactivated or unavailable, contact
