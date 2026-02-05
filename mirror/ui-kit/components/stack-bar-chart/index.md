@@ -25,7 +25,7 @@ import { StackBarChart } from '@forge/react';
 
 Data can be one of two formats, an array of arrays or an array of objects. Both examples below will produce the same stack bar chart:
 
-![Example image of a rendered stack bar chart](https://dac-static.atlassian.com/platform/forge/ui-kit/images/stack-bar-chart/stack-bar-chart-data.png?_v=1.5800.1816)
+![Example image of a rendered stack bar chart](https://dac-static.atlassian.com/platform/forge/ui-kit/images/stack-bar-chart/stack-bar-chart-data.png?_v=1.5800.1824)
 
 ### 1. Array of arrays
 

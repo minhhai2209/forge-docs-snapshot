@@ -1,5 +1,34 @@
 # The Forge REST API
 
-When you visit any website, it may store or retrieve information on your browser, mostly in the form of cookies. This information might be about you, your preferences or your device and is mostly used to make the site work as you expect it to. The information does not usually directly identify you, but it can give you a more personalized web experience. Because we respect your right to privacy, you can choose not to allow some types of cookies. Click on the different category headings to find out more and change our default settings. However, blocking some types of cookies may impact your experience of the site and the services we are able to offer.
+POST
 
-[More information](https://www.atlassian.com/legal/cookies)
+## Set secret value by key
+
+Stores sensitive credentials in JSON format, with encryption.
+Values set with this method can only be accessed with [Get secret value by key](/platform/forge/rest/api-group-key-value-store/#api-v1-secret-get-post).
+Write conflicts are resolved using a last-write-wins strategy by default, but this can be configured via the key policy option.
+Optionally, you can specify a TTL (Time To Live) to automatically expire the data after a specified duration.
+
+Forge and OAuth2 apps cannot access this REST resource.
+
+### Request
+
+#### Request bodyapplication/json
+
+**value**
+
+oneOf [string, boolean, number, array<undefined>, object]
+
+Required
+
+**options**
+
+ExtendedSetOptions
+
+### Responses
+
+200OK
+
+Successfully set the value with metadata fields returned
+
+204No Content400Bad Request409Conflict

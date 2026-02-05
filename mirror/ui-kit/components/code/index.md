@@ -25,7 +25,7 @@ Formatted code can appear in a variety of contexts, increasing the legibility an
 
 Use inline code when you wish to highlight a short code snippet from the surrounding default text, such as when referencing variable names.
 
-![Example image of inline code](https://dac-static.atlassian.com/platform/forge/ui-kit/images/code/code-inline.png?_v=1.5800.1816)
+![Example image of inline code](https://dac-static.atlassian.com/platform/forge/ui-kit/images/code/code-inline.png?_v=1.5800.1824)
 
 ```
 1

@@ -1,15 +1,5 @@
 # Part 3: Add support for Jira as an optional Atlassian app
 
-This functionality is available through Forge's Early Access Program (EAP). To start building
-Forge apps that are compatible with multiple Atlassian apps, you must be part of the EAP.
-[Sign up to join the EAP](https://ecosystem.atlassian.net/servicedesk/customer/portal/1040/group/3496/create/18660).
-
-EAPs are offered to selected users for testing and feedback purposes. APIs and features under EAP
-are unsupported and subject to change without notice. This functionality must not be used in customer
-production environments.
-
-For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
-
 Now that you have set up your app with Confluence as the required Atlassian app, you can add support
 for optional Atlassian apps to your app. In this case, we will be adding a Jira module and calling a Jira API.
 
@@ -44,14 +34,14 @@ enable the app to display 'Hello world' on the Jira issue view page.
 Copy the below code and paste it in the `modules` section of the `manifest.yml` file:
 
 ```
-```
 1
 2
-```
-
-
-
-```
+3
+4
+5
+6
+7
+8
   jira:issuePanel:
     - key: hello-world-hello-world-issue-panel
       resource: main
@@ -60,7 +50,6 @@ Copy the below code and paste it in the `modules` section of the `manifest.yml` 
       render: native
       title: <your app name>
       icon: https://developer.atlassian.com/platform/forge/images/icons/issue-panel-icon.svg
-```
 ```
 
 Your `manifest.yml` should now look like this:
@@ -315,7 +304,7 @@ install it in other Atlassian apps.
 1. Create a new Jira issue.
 2. In the issue panel of that issue, select the Apps button and select your app from the list.
 
-   ![Image of Cross-Context App in Jira](https://dac-static.atlassian.com/platform/forge/images/forge-getting-started-xpa-jira-initial-state.png?_v=1.5800.1816)
+   ![Image of Cross-Context App in Jira](https://dac-static.atlassian.com/platform/forge/images/forge-getting-started-xpa-jira-initial-state.png?_v=1.5800.1824)
 3. Add a comment to the Jira issue. For example, a comment with *Hello from the comments*.
 4. Refresh the Jira issue view.
 5. Check the output of the app in your browser's developer console. The number of comments on the issue displays as follows:
@@ -354,5 +343,5 @@ add the required scope to your `manifest.yml` file (in this case, `read:jira-wor
 In the next tutorial, you'll learn how to make changes to your app's frontend using the
 [UI Kit components](/platform/forge/ui-kit/components/) of Forge.
 
-[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.1816)](/platform/forge/call-a-confluence-api-in-a-confluence-jira-app/)
-[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.1816)](/platform/forge/change-the-frontend-with-ui-kit-for-a-confluence-jira-app/)
+[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.1824)](/platform/forge/call-a-confluence-api-in-a-confluence-jira-app/)
+[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.1824)](/platform/forge/change-the-frontend-with-ui-kit-for-a-confluence-jira-app/)

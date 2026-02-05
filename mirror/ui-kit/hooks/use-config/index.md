@@ -27,7 +27,7 @@ import { useConfig } from "@forge/react";
 
 Here is an example of accessing configuration for a Forge macro. Note that you'll need to [add configuration to the Confluence macro module](/platform/forge/add-configuration-to-a-macro-with-ui-kit-2/#add-configuration-to-the-confluence-macro-module) in order to configure the displayed values.
 
-![The app display on a Confluence page](https://dac-static.atlassian.com/platform/forge/images/ui-kit-2/hooks-examples/useconfig.png?_v=1.5800.1816)
+![The app display on a Confluence page](https://dac-static.atlassian.com/platform/forge/images/ui-kit-2/hooks-examples/useconfig.png?_v=1.5800.1824)
 
 ```
 1

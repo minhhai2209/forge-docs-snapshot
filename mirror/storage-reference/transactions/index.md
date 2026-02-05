@@ -21,7 +21,7 @@ import { kvs } from '@forge/kvs';
 
 await kvs.transact()
     // set first key with value
-    .set('key1', 'value1')
+    .set('key1', 'value1', { ttl: { unit: 'DAYS', value: 7 } })
     
     // delete second key
     .delete('key2')
@@ -59,6 +59,8 @@ Data stored through transactions is still subject to the limits defined in [Forg
 
 Adds an operation to the transaction to set a JSON value with a specified key.
 
+You can also set a *relative* time-to-live (TTL) for all keys in your transaction. See [Time-to-live](/platform/forge/runtime-reference/storage-api-basic-api/#ttl) for related details.
+
 ### Method signature
 
 ```
@@ -70,7 +72,18 @@ Adds an operation to the transaction to set a JSON value with a specified key.
 
 
 ```
-  transact.set(key: string, value: array | boolean | number | object | string): TransactionBuilder;
+type SetOptions = {
+  ttl?: {
+    unit: 'SECONDS' | 'MINUTES' | 'HOURS' | 'DAYS';
+    value: number;
+  };
+};
+
+transact.set(
+  key: string,
+  value: array | boolean | number | object | string,
+  options?: SetOptions
+): TransactionBuilder;
 ```
 ```
 

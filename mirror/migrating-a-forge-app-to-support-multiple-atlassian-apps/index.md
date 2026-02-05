@@ -1,20 +1,4 @@
-# Migrating a Forge app to support multiple Atlassian apps (Preview)
-
-The ability to build Forge apps that are compatible with multiple Atlassian apps is now available as a Forge *preview* feature. Preview features are deemed stable; however, they remain under active development and may be subject to shorter deprecation windows. Preview features are suitable for early adopters in production environments.
-
-The following flows are ready for testing as part of this Preview:
-
-* Create, deploy and install an app via the CLI
-* Distribute the app via a direct distribution link
-* View and connect/disconnect compatible Atlassian apps in Connected Apps
-* Add the app to Marketplace
-
-**Important considerations:**
-
-* **Customer release (GA)** is planned for end of January 2026.
-* **Until GA:** We recommend keeping Marketplace apps **private** as customer-facing changes are not yet available (admins currently only see the required app in the consent screen when installing).
-
-For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
+# Migrating a Forge app to support multiple Atlassian apps
 
 You can migrate an existing Forge app that supports only one Atlassian app to support multiple
 Atlassian apps. This enables your app to be installed and used across Atlassian apps within the same

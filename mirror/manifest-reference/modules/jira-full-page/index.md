@@ -27,6 +27,7 @@ such as specialised content views or internal tools that reflect your own brandi
 10
 11
 12
+13
 modules []
 └─ jira:fullPage {}
    ├─ key (string) [Mandatory]
@@ -34,7 +35,8 @@ modules []
    ├─ routePrefix (string) [Mandatory]
    ├─ render (string) [Mandatory for UI Kit only]
    ├─ resolver {} [Optional]
-   └─ title {} [Optional]
+   ├─ title {} [Optional]
+   └─ icon {} [Optional]
 
 resources []
 ├─ key (string) [Mandatory]
@@ -51,6 +53,7 @@ resources []
 | `resolver` | `{ function: string }` or `{ endpoint: string }` |  | Set the `function` property if you are using a hosted `function` module for your resolver.  Set the `endpoint` property if you are using [Forge Remote](/platform/forge/forge-remote-overview) to integrate with a remote back end. |
 | `routePrefix` | `string` | Yes | Unique route identifier for a module. This serves as the entry point for each module. Within an app, each full page module must have a distinct `routePrefix`.  *Regex:* `^[a-z0-9\\-]+$` |
 | `title` | `string` or `i18n object` | No | The title of the full page, which is displayed in the tab title.  The `i18n object` allows for translation. See [i18n object](#i18n-object). |
+| `icon` | `string` | No | The icon to represent the app in the logo and app switcher dropdown.  For Custom UI and UI Kit apps, the `icon` property accepts a relative path from a declared resource. See [Icons](/platform/forge/custom-ui/#icons) for more information.  If no icon is provided, or if there's an issue preventing the icon from loading, a generic app icon will be displayed. |
 
 ### i18n object
 

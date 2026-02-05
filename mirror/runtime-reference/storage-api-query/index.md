@@ -1,7 +1,9 @@
 # Querying key-value pairs
 
 You can use the `kvs.query` method to query data stored through the [Key-Value Store](/platform/forge/runtime-reference/storage-api-basic/)'s
-basic methods:
+basic methods.
+
+To request expiry metadata for results, pass the `EXPIRE_TIME` metadata field using `metadataFields`. When requested, the API returns an `expireTime` attribute in ISO-8601 format.
 
 ```
 1
@@ -21,7 +23,7 @@ basic methods:
 15
 import { kvs, WhereConditions } from '@forge/kvs';
 
-await kvs.query()
+await kvs.query({ metadataFields: ['EXPIRE_TIME'] })
   // Filter the response to only keys that start with the string 'value'
   .where('key', WhereConditions.beginsWith('value'))
 
@@ -49,7 +51,7 @@ However, as of [March 17, 2025](/platform/forge/changelog/#CHANGE-2399), no furt
 [KVS transactions](/platform/forge/storage-reference/transactions/) and
 [Custom Entity Store transactions](/platform/forge/storage-reference/transactions-entities/) are only available through `@forge/kvs`.
 
-We strongly recommend using `@forge/kvs`. Migrating to this package will only change the interface to your app’s data; all data stored through the legacy module will remain intact
+We strongly recommend using `@forge/kvs`. Migrating to this package will only change the interface to your app’s data; all data stored through the legacy module will remain intact.
 
 ## query.cursor
 

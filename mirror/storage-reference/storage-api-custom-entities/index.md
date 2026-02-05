@@ -108,8 +108,10 @@ In addition, the Atlassian Cloud backs up all [persistent](/platform/forge/runti
 
 ## Conflict resolution
 
-Writes to keys using `set` or `delete` use a "last write wins" conflict resolution strategy.
-Writes to individual keys are atomic - For example, the value is either updated in full or not.
+By default, Forge writes to keys using `set` or `delete` use a *last write wins* conflict resolution strategy.
+You can override this behaviour using the `keyPolicy` option.
+
+Writes to individual keys are atomic. Values are either updated in full or not at all.
 
 ## Supported values
 
@@ -221,4 +223,4 @@ However, as of [March 17, 2025](/platform/forge/changelog/#CHANGE-2399), no furt
 [KVS transactions](/platform/forge/storage-reference/transactions/) and
 [Custom Entity Store transactions](/platform/forge/storage-reference/transactions-entities/) are only available through `@forge/kvs`.
 
-We strongly recommend using `@forge/kvs`. Migrating to this package will only change the interface to your app’s data; all data stored through the legacy module will remain intact
+We strongly recommend using `@forge/kvs`. Migrating to this package will only change the interface to your app’s data; all data stored through the legacy module will remain intact.

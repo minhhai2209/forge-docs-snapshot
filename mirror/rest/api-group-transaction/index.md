@@ -26,7 +26,13 @@
 24
 25
 26
-27``curl --request POST \
+27
+28
+29
+30
+31
+32
+33``curl --request POST \
 --url 'https://api.atlassian.com/forge/storage/kvs/v1/transaction' \
 --header 'Content-Type: application/json' \
 --data '{
@@ -35,7 +41,13 @@
 "key": "<string>",
 "value": "<string>",
 "entityName": "<string>",
-"conditions": {}
+"conditions": {},
+"options": {
+"ttl": {
+"value": 38,
+"unit": "SECONDS"
+}
+}
 }
 ],
 "delete": [

@@ -6,6 +6,7 @@ POST
 
 Sets multiple Key-Value Store and/or Custom Entity Store values in a single operation.
 Returns a type `BatchResponse` which contains `successfulKeys` and `failedKeys`.
+Optionally, you can specify a TTL (Time To Live) for each item to automatically expire the data after a specified duration.
 
 Forge and OAuth2 apps cannot access this REST resource.
 

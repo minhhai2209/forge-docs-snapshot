@@ -1,11 +1,5 @@
 # Part 3: Change the front end with UI Kit
 
-#### Having trouble?
-
-Ask for help on our Developer Community
-
-[Get help](https://community.developer.atlassian.com/session/sso?return_path=%2Fnew-topic%3Fcategory_id%3D45%26tags%3Ddac-get-help%2Cforge-change-the-jira-frontend-with-the-ui-kit)
-
 This section describes how to use tools in UI Kit, including [UI Kit components](/platform/forge/ui-kit/components/).
 You'll use these components to build dynamic and interactive interfaces for your app's front end. When your app is complete, you'll learn how to continue monitoring the Forge environment using the `forge logs` command.
 
@@ -140,7 +134,7 @@ for the other UI Kit components.
 
 The app displays the number of comments in the issue panel. Add more comments and refresh the page to count them in your app. Your issue should look like the following:
 
-![A Jira issue displaying the hello world forge app with comments counted](https://dac-static.atlassian.com/platform/forge/images/forge-getting-started-jira-final-state.png?_v=1.5800.1816)
+![A Jira issue displaying the hello world forge app with comments counted](https://dac-static.atlassian.com/platform/forge/images/forge-getting-started-jira-final-state.png?_v=1.5800.1824)
 
 ## Close the tunnel and deploy the app
 
@@ -185,4 +179,4 @@ You now know enough to develop your own Forge apps. Learn more from our
 [tutorials](/platform/forge/tutorials-and-guides/), [guides](/platform/forge/guides/),
 [example apps](/platform/forge/example-apps/) or [reference pages](/platform/forge/manifest-reference/).
 
-[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.1816)](/platform/forge/call-a-jira-api/)
+[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.1824)](/platform/forge/call-a-jira-api/)

@@ -26,7 +26,7 @@ A spinner is an animated spinning icon that lets users know that content is bein
 
 The default form of the spinner.
 
-![Example image of a spinner](https://dac-static.atlassian.com/platform/forge/ui-kit/images/spinner/spinner-default.png?_v=1.5800.1816)
+![Example image of a spinner](https://dac-static.atlassian.com/platform/forge/ui-kit/images/spinner/spinner-default.png?_v=1.5800.1824)
 
 ```
 ```
@@ -45,7 +45,7 @@ const SpinnerExample = () => <Spinner label="loading" />
 
 Use the `invert` appearance when using the spinner on a dark background.
 
-![Example image of a inverted spinner](https://dac-static.atlassian.com/platform/forge/ui-kit/images/spinner/spinner-invert.png?_v=1.5800.1816)
+![Example image of a inverted spinner](https://dac-static.atlassian.com/platform/forge/ui-kit/images/spinner/spinner-invert.png?_v=1.5800.1824)
 
 ```
 ```
@@ -64,7 +64,7 @@ const SpinnerInvertExample = () => <Spinner label="loading" appearance="invert" 
 
 The spinner can be set to different sizes. `medium` is the default size and is recommended for most use cases.
 
-![Example image of spinner sizes](https://dac-static.atlassian.com/platform/forge/ui-kit/images/spinner/spinner-sizes.png?_v=1.5800.1816)
+![Example image of spinner sizes](https://dac-static.atlassian.com/platform/forge/ui-kit/images/spinner/spinner-sizes.png?_v=1.5800.1824)
 
 ```
 ```

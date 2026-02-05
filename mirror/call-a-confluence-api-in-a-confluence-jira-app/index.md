@@ -1,15 +1,5 @@
 # Part 2: Call a Confluence API
 
-This functionality is available through Forge's Early Access Program (EAP). To start building
-Forge apps that are compatible with multiple Atlassian apps, you must be part of the EAP.
-[Sign up to join the EAP](https://ecosystem.atlassian.net/servicedesk/customer/portal/1040/group/3496/create/18660).
-
-EAPs are offered to selected users for testing and feedback purposes. APIs and features under EAP
-are unsupported and subject to change without notice. This functionality must not be used in customer
-production environments.
-
-For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
-
 Using the `@forge/bridge` package, you'll learn how to make REST calls to an authenticated Confluence endpoint.
 
 ## Make an API call
@@ -29,25 +19,66 @@ use the returned array to count the number of footer comments and write it to th
 2. Go to the `src/frontend/index.jsx` file, replace it with the following code:
 
    ```
-   ```
    1
    2
-   ```
-
-
-
-   ```
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
+   14
+   15
+   16
+   17
+   18
+   19
+   20
+   21
+   22
+   23
+   24
+   25
+   26
+   27
+   28
+   29
+   30
+   31
+   32
+   33
+   34
+   35
+   36
+   37
+   38
+   39
+   40
+   41
+   42
+   43
+   44
+   45
+   46
+   47
+   48
+   49
+   50
+   51
+   52
+   53
    // Import React and Forge UI Kit components/hooks
    import React from 'react';
    import ForgeReconciler, { Text, useProductContext } from '@forge/react';
    // Import the bridge method to call Confluence REST APIs
    import { requestConfluence } from '@forge/bridge';
 
-   /**
-   * Fetches footer comments for a given Confluence page.
-   * @param {string} pageId - The ID of the Confluence page.
-   * @returns {Promise<Array>} - Resolves to an array of comment objects.
-   */
+
    const fetchCommentsForPage = async (pageId) => {
      // Call the Confluence REST API for footer comments
      const res = await requestConfluence(`/wiki/api/v2/pages/${pageId}/footer-comments`);
@@ -91,7 +122,6 @@ use the returned array to count the number of footer comments and write it to th
      </React.StrictMode>
    );
    ```
-   ```
 
    This code includes comments to help you quickly understand what each section does.
 
@@ -131,7 +161,7 @@ For information about how Atlassian collects and handles your data, read our
 2. Refresh the Confluence page that contains your macro.
 3. Check the developer console in your browser. The number of comments on the page displays as follows:
 
-![The message displayed in the browser console](https://dac-static.atlassian.com/platform/forge/images/console-log-successful.png?_v=1.5800.1816)
+![The message displayed in the browser console](https://dac-static.atlassian.com/platform/forge/images/console-log-successful.png?_v=1.5800.1824)
 
 The `requestConfluence` method inherits the Atlassian app permissions of the user that is interacting with the app. This can cause different API responses between different users in the same app.
 
@@ -180,5 +210,5 @@ You'll have to manually add the required scope permission into your `manifest.ym
 
 In the next tutorial, you'll learn how to add support for Jira as an optional Atlassian app and make calls to the Jira REST API.
 
-[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.1816)](/platform/forge/build-an-app-compatible-with-confluence-and-jira/)
-[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.1816)](/platform/forge/add-support-for-jira-as-an-optional-atlassian-app)
+[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.1824)](/platform/forge/build-an-app-compatible-with-confluence-and-jira/)
+[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.1824)](/platform/forge/add-support-for-jira-as-an-optional-atlassian-app)

@@ -4,7 +4,7 @@ This tutorial describes how to create a Forge app and install it in a Bitbucket 
 
 You'll learn about Atlassian app events, the Runtime API, and tunneling.
 
-![The final app displays on a Bitbucket workspace](https://dac-static.atlassian.com/platform/forge/images/bitbucket-triggers-tutorial-final-state.png?_v=1.5800.1816)
+![The final app displays on a Bitbucket workspace](https://dac-static.atlassian.com/platform/forge/images/bitbucket-triggers-tutorial-final-state.png?_v=1.5800.1824)
 
 ## Before you begin
 
@@ -128,7 +128,7 @@ running locally is invoked.
 5. Create a new pull request in a repo in your Bitbucket workspace.
 6. Verify `Hello World!` appears in your tunnel.
 
-![The tunnel command is displayed in the terminal](https://dac-static.atlassian.com/platform/forge/images/bitbucket-triggers-tutorial-tunnel.png?_v=1.5800.1816)
+![The tunnel command is displayed in the terminal](https://dac-static.atlassian.com/platform/forge/images/bitbucket-triggers-tutorial-tunnel.png?_v=1.5800.1824)
 
 In [Step 3](#step-3--use-a-tunnel-to-test-the-app), we demonstrated how creating a new pull request invoked the `run` method in `src/index.jsx`.
 
@@ -229,7 +229,7 @@ In this step, you’ll create a function that uses the Runtime API to add a comm
    * You receive a response message in the tunnel.
    * The pull request you created now has a comment.
 
-![The final app displays on Bitbucket workspace with Hello World comment](https://dac-static.atlassian.com/platform/forge/images/bitbucket-triggers-final-state-enlarged.png?_v=1.5800.1816)
+![The final app displays on Bitbucket workspace with Hello World comment](https://dac-static.atlassian.com/platform/forge/images/bitbucket-triggers-final-state-enlarged.png?_v=1.5800.1824)
 
 Your `index.jsx` should look like the following:
 

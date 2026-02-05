@@ -59,7 +59,7 @@ await kvs
     employmentyear: 2022,
     gender: "male",
     nationality: "Australian"
-    }, { entityName: 'employee' })
+    }, { entityName: 'employee', ttl: { unit: 'DAYS', value: 7 } })
    
    // conditionally set key with value with inline conditions
    .set('employee2', {
@@ -168,6 +168,8 @@ Each filtering method use the following signatures:
 
 Adds an operation to the transaction to set a JSON value with a specified key for a custom entity. Conditions are optional.
 
+You can also set a *relative* time-to-live (TTL) for all keys in your transaction. See [Time-to-live](/platform/forge/runtime-reference/storage-api-custom-entities/#ttl) for related details.
+
 ### Method signature
 
 ```
@@ -179,7 +181,20 @@ Adds an operation to the transaction to set a JSON value with a specified key fo
 
 
 ```
-  transact().set(key: string, value: object, options: { entityName: string, conditions?: Filter }): TransactionBuilder;
+type SetOptions = {
+  entityName: string;
+  conditions?: Filter;
+  ttl?: {
+    unit: 'SECONDS' | 'MINUTES' | 'HOURS' | 'DAYS';
+    value: number;
+  };
+};
+
+transact().set(
+  key: string,
+  value: object,
+  options: SetOptions
+): TransactionBuilder;
 ```
 ```
 
@@ -204,7 +219,7 @@ await kvs
     employmentyear: 2022,
     gender: "male",
     nationality: "Australian"
-    }, { entityName: 'employee' })
+    }, { entityName: 'employee', ttl: { unit: 'DAYS', value: 7 } })
    
    // conditionally update key with value for employee entity
    .set('employee2', {

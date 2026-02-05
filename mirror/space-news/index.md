@@ -1,19 +1,13 @@
 # Use space settings and content byline item to implement space news
 
-#### Having trouble?
-
-Ask for help on our Developer Community
-
-[Get help](https://community.developer.atlassian.com/session/sso?return_path=%2Fnew-topic%3Fcategory_id%3D45%26tags%3Ddac-get-help%2Cforge-space-news)
-
 This tutorial describes how to create a Forge app with two modules, where an admin can create
 news content using `spaceSettings` module, and make the news content available using `contentBylineItem`.
 
 The final `spaceSettings` module looks like the following:
-![Space settings shows Space news app](https://dac-static.atlassian.com/platform/forge/images/space-news-settings.png?_v=1.5800.1816)
+![Space settings shows Space news app](https://dac-static.atlassian.com/platform/forge/images/space-news-settings.png?_v=1.5800.1824)
 
 The final `contentBylineItem` module looks like the following:
-![Content byline item shows Space news app](https://dac-static.atlassian.com/platform/forge/images/space-news-byline.png?_v=1.5800.1816)
+![Content byline item shows Space news app](https://dac-static.atlassian.com/platform/forge/images/space-news-byline.png?_v=1.5800.1824)
 
 ## Before you begin
 

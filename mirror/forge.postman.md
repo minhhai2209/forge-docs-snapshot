@@ -1,7 +1,7 @@
 ```
 {
   "info": {
-    "_postman_id": "5660ac5b-c910-4a24-a6f1-9dae5bd9fd79",
+    "_postman_id": "6018d799-d9cb-4299-8cf2-7ad652894fac",
     "name": "Key-Value Store/Custom Entity Store REST API",
     "description": "Forge provides hosted storage capabilities for storing your app's data:\n- **Key-Value Store** - stores data as key-value pairs\n- **Custom Entity Store** - stores data within custom data structures (entities)\nBoth capabilities have resources that can be used natively, or accessed by remote resources via REST API. For more information about both capabilities,\nsee [storage-api](https://developer.atlassian.com/platform/forge/runtime-reference/storage-api/).",
     "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
@@ -61,9 +61,15 @@
                 "disabled": false,
                 "key": "Content-Type",
                 "value": "application/json"
+              },
+              {
+                "description": "",
+                "disabled": false,
+                "key": "Accept",
+                "value": "application/json"
               }
             ],
-            "description": "Stores a JSON value with a specified key. Forge resolves write conflicts using a last-write-wins strategy.",
+            "description": "Stores a JSON value with a specified key. Forge resolves write conflicts using a last-write-wins strategy by default, but this can be configured via the key policy option.\nOptionally, you can specify a TTL (Time To Live) to automatically expire the data after a specified duration.",
             "body": {
               "mode": "raw",
               "raw": ""
@@ -181,9 +187,15 @@
                 "disabled": false,
                 "key": "Content-Type",
                 "value": "application/json"
+              },
+              {
+                "description": "",
+                "disabled": false,
+                "key": "Accept",
+                "value": "application/json"
               }
             ],
-            "description": "Store sensitive credentials in JSON format, with encryption. Values set with this method can only be accessed with [Get secret value by key](/platform/forge/rest/api-group-key-value-store/#api-v1-secret-get-post). Write conflicts are resolved using a last-write-wins strategy.",
+            "description": "Stores sensitive credentials in JSON format, with encryption. \nValues set with this method can only be accessed with [Get secret value by key](/platform/forge/rest/api-group-key-value-store/#api-v1-secret-get-post). \nWrite conflicts are resolved using a last-write-wins strategy by default, but this can be configured via the key policy option.\nOptionally, you can specify a TTL (Time To Live) to automatically expire the data after a specified duration.",
             "body": {
               "mode": "raw",
               "raw": ""
@@ -274,9 +286,15 @@
                 "disabled": false,
                 "key": "Content-Type",
                 "value": "application/json"
+              },
+              {
+                "description": "",
+                "disabled": false,
+                "key": "Accept",
+                "value": "application/json"
               }
             ],
-            "description": "Stores a JSON value with a specified key, for the selected entity.",
+            "description": "Stores a JSON value with a specified key, for the selected entity.\nOptionally, you can specify a TTL (Time To Live) to automatically expire the data after a specified duration.",
             "body": {
               "mode": "raw",
               "raw": ""
@@ -369,7 +387,7 @@
                 "value": "application/json"
               }
             ],
-            "description": "Lets you perform a series of Key-Value Store and/or Custom Entity Store operations that must all succeed or fail together. This method supports 3 types of operations:\n- create or update data\n- delete data\n- check whether a specific Custom Entity condition is true",
+            "description": "Lets you perform a series of Key-Value Store and/or Custom Entity Store operations that must all succeed or fail together. This method supports 3 types of operations:\n- create or update data\n- delete data\n- check whether a specific Custom Entity condition is true\n(optionally with TTL for automatic expiration)",
             "body": {
               "mode": "raw",
               "raw": ""
@@ -408,7 +426,7 @@
                 "value": "application/json"
               }
             ],
-            "description": "Sets multiple Key-Value Store and/or Custom Entity Store values in a single operation. \nReturns a type ```BatchResponse``` which contains ```successfulKeys``` and ```failedKeys```.",
+            "description": "Sets multiple Key-Value Store and/or Custom Entity Store values in a single operation. \nReturns a type ```BatchResponse``` which contains ```successfulKeys``` and ```failedKeys```.\nOptionally, you can specify a TTL (Time To Live) for each item to automatically expire the data after a specified duration.",
             "body": {
               "mode": "raw",
               "raw": ""

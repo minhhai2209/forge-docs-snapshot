@@ -62,24 +62,7 @@ app:
 To learn how to build an Forge app that is compatible with only one Atlassian app, check out these
 tutorials:
 
-## Multiple-app compatibility (Preview)
-
-The ability to build Forge apps that are compatible with multiple Atlassian apps is now available as a Forge *preview* feature. Preview features are deemed stable; however, they remain under active development and may be subject to shorter deprecation windows. Preview features are suitable for early adopters in production environments.
-
-The following flows are ready for testing as part of this Preview:
-
-* Create, deploy and install an app via the CLI
-* Distribute the app via a direct distribution link
-* View and connect/disconnect compatible Atlassian apps in Connected Apps
-* Add the app to Marketplace
-
-**Important considerations:**
-
-* **Customer release (GA)** is planned for end of January 2026.
-* **Until GA:** We recommend keeping Marketplace apps **private** as customer-facing changes are not yet available (admins currently only see the required app in the consent screen when installing).
-* **Migrating existing apps:** See our [migration guidelines](/platform/forge/migrating-a-forge-app-to-support-multiple-atlassian-apps/) for best practices.
-
-For more information, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
+## Multiple-app compatibility
 
 If your Forge app is designed to work with more than one Atlassian app, you must declare
 compatibility in your app’s `manifest.yml` file. This allows your app to be installed and used

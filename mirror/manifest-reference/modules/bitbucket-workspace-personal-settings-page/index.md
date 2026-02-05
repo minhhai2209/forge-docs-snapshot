@@ -7,7 +7,7 @@ You can use [UI Kit](/platform/forge/ui-kit/) or [Custom UI](/platform/forge/cus
 
 The page URL is constructed in the form of: `/{workspaceSlug}/workspace/personal-settings/forge/{forgeAppId}/{forgeEnvironmentKey}/{forgeAppModuleKey}`
 
-![Example of a workspace personal settings page](https://dac-static.atlassian.com/platform/forge/images/bitbucket-workspace-personal-settings-page.png?_v=1.5800.1816)
+![Example of a workspace personal settings page](https://dac-static.atlassian.com/platform/forge/images/bitbucket-workspace-personal-settings-page.png?_v=1.5800.1824)
 
 ## Properties
 

@@ -35,19 +35,19 @@ Let’s apply what we have learned from [Debug Forge functions using VS Code](/p
 
 1. Start profiling by clicking on the **Call Stack** view. Hover over the session you want to debug, and select the **Take Performance Profile** icon (see screenshot for reference).
 
-   ![Take performance icon in the VS Code call stack view](https://dac-static.atlassian.com/platform/forge/images/call-stack-vscode.png?_v=1.5800.1816)
+   ![Take performance icon in the VS Code call stack view](https://dac-static.atlassian.com/platform/forge/images/call-stack-vscode.png?_v=1.5800.1824)
 2. Select the profiling you want to conduct. It can be a CPU profile, heap profile, or heap snapshot. See [Types of profiles](https://code.visualstudio.com/docs/nodejs/profiling#_types-of-profiles) for more details.
 
-   ![VS Code dropdown of different profile types](https://dac-static.atlassian.com/platform/forge/images/profiling-vscode.png?_v=1.5800.1816)
+   ![VS Code dropdown of different profile types](https://dac-static.atlassian.com/platform/forge/images/profiling-vscode.png?_v=1.5800.1824)
 3. If you select **CPU Profile** or **Heap Profile**, you will need to select how long the profiling is:
 
-   ![VS Code dropdown of how long to run CPU or Heap profile](https://dac-static.atlassian.com/platform/forge/images/profiling-duration-vscode.png?_v=1.5800.1816)
+   ![VS Code dropdown of how long to run CPU or Heap profile](https://dac-static.atlassian.com/platform/forge/images/profiling-duration-vscode.png?_v=1.5800.1824)
 
 ## View profiling results
 
 1. Examine the profiling result. Once the profiling is completed, it will be generated at the top-level of the app code directly as the last 2 files in the screenshot.
 
-   ![VS Code generates profile results](https://dac-static.atlassian.com/platform/forge/images/view-profiling-vscode.png?_v=1.5800.1816)
+   ![VS Code generates profile results](https://dac-static.atlassian.com/platform/forge/images/view-profiling-vscode.png?_v=1.5800.1824)
 
 ## Developing for Atlassian Government Cloud
 

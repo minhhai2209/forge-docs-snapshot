@@ -1,11 +1,5 @@
 # Part 2: Call a Confluence API
 
-#### Having trouble?
-
-Ask for help on our Developer Community
-
-[Get help](https://community.developer.atlassian.com/session/sso?return_path=%2Fnew-topic%3Fcategory_id%3D45%26tags%3Ddac-get-help%2Cforge-call-a-confluence-api)
-
 Using the `@forge/bridge` package, you'll learn how to make REST calls to an authenticated Confluence endpoint.
 
 ## Make an API call
@@ -167,7 +161,7 @@ For information about how Atlassian collects and handles your data, read our
 2. Refresh the Confluence page that contains your macro.
 3. Check the developer console in your browser. The number of comments on the page displays as follows:
 
-![The message displayed in the browser console](https://dac-static.atlassian.com/platform/forge/images/console-log-successful.png?_v=1.5800.1816)
+![The message displayed in the browser console](https://dac-static.atlassian.com/platform/forge/images/console-log-successful.png?_v=1.5800.1824)
 
 The `requestConfluence` method inherits the Atlassian app permissions of the user that is interacting with the app. This can cause different API responses between different users in the same app.
 
@@ -217,5 +211,5 @@ You'll have to manually add the required scope permission into your `manifest.ym
 In the next tutorial, you'll learn how to make changes to your app's frontend using the
 [UI Kit components](/platform/forge/ui-kit/components/) of Forge.
 
-[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.1816)](/platform/forge/build-a-hello-world-app-in-confluence/)
-[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.1816)](/platform/forge/change-the-confluence-frontend-with-the-ui-kit)
+[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.1824)](/platform/forge/build-a-hello-world-app-in-confluence/)
+[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.1824)](/platform/forge/change-the-confluence-frontend-with-the-ui-kit)

@@ -45,7 +45,7 @@ However, as of [March 17, 2025](/platform/forge/changelog/#CHANGE-2399), no furt
 [KVS transactions](/platform/forge/storage-reference/transactions/) and
 [Custom Entity Store transactions](/platform/forge/storage-reference/transactions-entities/) are only available through `@forge/kvs`.
 
-We strongly recommend using `@forge/kvs`. Migrating to this package will only change the interface to your app’s data; all data stored through the legacy module will remain intact
+We strongly recommend using `@forge/kvs`. Migrating to this package will only change the interface to your app’s data; all data stored through the legacy module will remain intact.
 
 ## Limitations
 
@@ -65,7 +65,67 @@ match its field will result in an error (for example, when you try to set a `str
 
 ## entity().set
 
-Stores a JSON value with a specified key, for the selected entity.
+Stores a JSON value with a specified key, for the selected entity. You can customise the key conflict and response behaviour using the Set Options available.
+
+### entity().set options
+
+You can use `SetOptions` type to specify the following options to your write requests:
+
+#### Time-to-live (TTL)
+
+You can configure a *relative* time-to-live (TTL) when storing data. TTL applies an *expiry* to a value, starting from the time it
+is written.
+
+To set a TTL, provide the following option:
+
+```
+```
+1
+2
+```
+
+
+
+```
+{
+  "ttl": {
+    "unit": "SECONDS" | "MINUTES" | "HOURS" | "DAYS";
+    "value": number;
+  }
+}
+```
+```
+
+When specifying a TTL, keep in mind the following:
+
+* **Maximum TTL**: The maximum supported TTL is *1 year* from the time the expiry is set.
+* **Expired data deletion is asynchronous**: Expired data is not removed immediately upon expiry. Deletion may take up to 48 hours.
+
+  During this window, read operations may still return expired results. If your app requires strict expiry semantics, request `EXPIRE_TIME` metadata and ignore values where `expireTime` is in the past.
+* **Expiry metadata is not returned by default**: Expiry time is returned as metadata *only* when explicitly requested.
+
+  To receive the computed expiry timestamp, request the `EXPIRE_TIME` metadata field. When requested, the API returns an `expireTime` attribute in ISO-8601 format.
+
+#### Change write conflict strategy
+
+When writing data (using either [kvs.set](/platform/forge/runtime-reference/storage-api-basic-api/#kvs-set),
+[kvs.setsecret](/platform/forge/runtime-reference/storage-api-secret/#kvs-setsecret), or
+[kvs.entity().set](/platform/forge/runtime-reference/storage-api-custom-entities/#entity---set)), Forge resolves write conflicts
+using a *last-write-wins* strategy by default.
+
+You can control this behaviour through the `keyPolicy` option, which supports two properties:
+
+* `FAIL_IF_EXISTS`: if the key already exists, don't overwrite it.
+* `OVERRIDE`: always write data, regardless of whether it already exists or not. This is identical to the default strategy, which is last-write-wins.
+
+Specify whether a write request should also return metadata. Use the following options for this:
+
+* `returnValue`: when data overwrites are allowed (that is, the `keyPolicy: 'FAIL_IF_EXISTS'` [property](#write-conflict) is *not* set), specify whether the response should also return the value that was written (`LATEST`)
+  or overwritten (`PREVIOUS`).
+* `returnMetadataFields`: lets you specify what metadata to return. This option supports the following values:
+  * `CREATED_AT`
+  * `UPDATED_AT`
+  * `EXPIRE_TIME`
 
 ### Method signature
 
@@ -78,7 +138,23 @@ Stores a JSON value with a specified key, for the selected entity.
 
 
 ```
-kvs.entity(entityName: string).set(key: string, value: object): Promise<void>;
+type SetOptions = {
+  ttl?: {
+    unit: 'SECONDS' | 'MINUTES' | 'HOURS' | 'DAYS';
+    value: number;
+  };
+  keyPolicy?: 'OVERRIDE' | 'FAIL_IF_EXISTS';
+  // If returnValue is provided, keyPolicy must be 'OVERRIDE'
+  returnValue?: 'PREVIOUS' | 'LATEST';
+  // If returnMetadataFields is provided, keyPolicy must be 'OVERRIDE' and returnValue must be provided
+  returnMetadataFields?: MetadataField[];
+};
+
+kvs.entity(entityName: string).set(
+  key: string,
+  value: object,
+  options?: SetOptions
+): Promise<void>;
 ```
 ```
 
@@ -92,7 +168,7 @@ A key should:
 * not be empty
 * not contain only blank space(s)
 
-### Example
+### Examples
 
 Sets the key `example-key` for an entity named `employee`.
 
@@ -105,12 +181,139 @@ Sets the key `example-key` for an entity named `employee`.
 
 
 ```
-kvs.entity("employee").set('example-key', {
-    surname:"Davis",
+kvs.entity('employee').set('example-key', {
+    surname: "Davis",
     age: 30,
     employmentyear: 2022,
     gender: "male",
     nationality: "Australian"
+});
+```
+```
+
+#### Set a TTL
+
+You can also set a *relative* [time-to-live (TTL)](#ttl) for the entity value:
+
+```
+```
+1
+2
+```
+
+
+
+```
+await kvs.entity('employee').set('example-key', {
+  surname: 'Davis',
+  age: 30,
+  employmentyear: 2022,
+  gender: 'male',
+  nationality: 'Australian'
+}, {
+  ttl: {
+    unit: 'DAYS',
+    value: 7,
+  },
+});
+```
+```
+
+#### Change write conflict strategy
+
+Use the `keyPolicy` [property](#write-conflict) to specify how to handle write conflicts:
+
+```
+```
+1
+2
+```
+
+
+
+```
+await kvs.entity('employee').set('example-key', {
+  surname: 'Davis',
+  age: 30,
+  employmentyear: 2022,
+  gender: 'male',
+  nationality: 'Australian'
+}, {
+  // override the value if key already exists
+  keyPolicy: 'OVERRIDE',
+});
+
+await kvs.entity('employee').set('example-key', {
+  surname: 'Davis',
+  age: 30,
+  employmentyear: 2022,
+  gender: 'male',
+  nationality: 'Australian'
+}, {
+  // fail the set request if key already exists
+  keyPolicy: 'FAIL_IF_EXISTS',
+});
+```
+```
+
+#### Return value when overwriting
+
+Use `returnValue` to return the written or overwritten value with the `entity().set` request response. This only works if
+`keyPolicy` is undefined or set to `OVERRIDE`.
+
+```
+```
+1
+2
+```
+
+
+
+```
+await kvs.entity('employee').set('example-key', {
+  surname: 'Davis',
+  age: 30,
+  employmentyear: 2022,
+  gender: 'male',
+  nationality: 'Australian'
+}, {
+  // returns the latest value (i.e. the one just set)
+  returnValue: 'LATEST',
+});
+
+await kvs.entity('employee').set('example-key', {
+  surname: 'Davis',
+  age: 30,
+  employmentyear: 2022,
+  gender: 'male',
+  nationality: 'Australian'
+}, {
+  // returns the previous value (i.e. the value overriden)
+  returnValue: 'PREVIOUS',
+});
+```
+```
+
+You can also request the key's relevant metadata by including `metadataFields` in the `options` parameter, similar to [entity().get](#entityget):
+
+```
+```
+1
+2
+```
+
+
+
+```
+await kvs.entity('employee').set('example-key', {
+  surname: 'Davis',
+  age: 30,
+  employmentyear: 2022,
+  gender: 'male',
+  nationality: 'Australian'
+}, {
+  returnValue: 'LATEST',
+  metadataFields: [MetadataField.CREATED_AT, MetadataField.UPDATED_AT, MetadataField.EXPIRE_TIME]
 });
 ```
 ```
@@ -121,7 +324,11 @@ Gets a custom entity value by key. If the key doesn't exist, the API returns `un
 
 This method also supports an optional `options` parameter that lets you request the following metadata for the key:
 
-Both fields will return a Unix timestamp.
+* `CREATED_AT`
+* `UPDATED_AT`
+* `EXPIRE_TIME`
+
+The first two fields will return a Unix timestamp, however, `EXPIRE_TIME` will return a string in ISO-8601 format representing when the node expires.
 
 ### Method signature
 
@@ -136,7 +343,8 @@ Both fields will return a Unix timestamp.
 ```
 export enum MetadataField {
   CREATED_AT = 'CREATED_AT',
-  UPDATED_AT = 'UPDATED_AT'
+  UPDATED_AT = 'UPDATED_AT',
+  EXPIRE_TIME = 'EXPIRE_TIME'
 }
 
 export interface GetOptions {
@@ -161,7 +369,7 @@ Gets the value associated with the key `example-key`.
 
 ```
 // Read the value for key `example-key`
-await kvs.entity("employee").get('example-key');
+await kvs.entity('employee').get('example-key');
 ```
 ```
 
@@ -177,11 +385,11 @@ This will return all attributes related to the key:
 
 ```
 {
-  surname:"Davis",
-  age: 30,
-  employmentyear: 2022,
-  gender: "male",
-  nationality: "Australian"
+  "surname": "Davis",
+  "age": 30,
+  "employmentyear": 2022,
+  "gender": "male",
+  "nationality": "Australian"
 }
 ```
 ```
@@ -200,8 +408,8 @@ You can also request the key's relevant metadata by including `metadataFields` i
 import { kvs, MetadataField } from '@forge/kvs';
 
 // Read the value for key `example-key`
-await kvs.entity("employee").get('example-key', {
-  metadataFields: [MetadataField.CREATED_AT, MetadataField.UPDATED_AT]
+await kvs.entity('employee').get('example-key', {
+  metadataFields: [MetadataField.CREATED_AT, MetadataField.UPDATED_AT, MetadataField.EXPIRE_TIME]
 });
 ```
 ```
@@ -218,16 +426,17 @@ This will return the key's attributes with the requested metadata:
 
 ```
 {
-  key: 'example-key',
-  value: {
-    surname:"Davis",
-    age: 30,
-    employmentyear: 2022,
-    gender: "male",
-    nationality: "Australian"
-    },
-  createdAt: 1753750184233,
-  updatedAt: 1753750200296
+  "key": "example-key",
+  "value": {
+    "surname": "Davis",
+    "age": 30,
+    "employmentyear": 2022,
+    "gender": "male",
+    "nationality": "Australian"
+  },
+  "createdAt": 1753750184233,
+  "updatedAt": 1753750200296,
+  "expireTime": "2026-01-15T16:12:19.000Z"
 }
 ```
 ```
@@ -278,3 +487,7 @@ await kvs.entity('employee').delete('example-key');
 
 Allows you to build complex queries against data in the Custom Entity Store. See
 [Querying the Custom Entity Store](/platform/forge/runtime-reference/storage-api-query-complex/) for detailed information.
+
+To return expiry metadata for results, pass the `EXPIRE_TIME` metadata field.
+
+When requested, the API returns an `expireTime` attribute in ISO-8601 format.

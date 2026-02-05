@@ -6,7 +6,7 @@ You can use the [UI Kit](/platform/forge/ui-kit/) or [Custom UI](/platform/forge
 
 The page URL is constructed in the form of: `/{workspaceSlug}/workspace/settings/forge/{forgeAppId}/{forgeEnvironmentKey}/{forgeAppModuleKey}`
 
-![Example of a workspace settings menu page](https://dac-static.atlassian.com/platform/forge/images/bitbucket-workspace-settings-menu.png?_v=1.5800.1816)
+![Example of a workspace settings menu page](https://dac-static.atlassian.com/platform/forge/images/bitbucket-workspace-settings-menu.png?_v=1.5800.1824)
 
 ## Properties
 

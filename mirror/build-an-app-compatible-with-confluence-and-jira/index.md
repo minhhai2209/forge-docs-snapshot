@@ -1,11 +1,5 @@
 # Part 1: Build an app compatible with Confluence and Jira
 
-The ability to build Forge apps that are compatible with multiple Atlassian apps is available as a Forge Preview feature.
-
-Preview features are deemed stable; however, they remain under active development and may be subject to shorter deprecation windows. Preview features are suitable for early adopters in production environments.
-
-We release preview features so partners and developers can study, test, and integrate them prior to General Availability (GA). For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
-
 This tutorial will walk you through creating an app that is compatible with Confluence and Jira.
 This app uses the [Confluence macro](/platform/forge/manifest-reference/modules/macro/) and
 [Jira issue panel](/platform/forge/manifest-reference/modules/jira-issue-panel/) modules,
@@ -246,7 +240,7 @@ With your app installed, it’s time to see the app on a page.
 
 Your hello world app is now installed into your development site. The app should display on the page like the image below.
 
-![The app displayed in a Confluence page](https://dac-static.atlassian.com/platform/forge/images/forge-getting-started-initial-state.png?_v=1.5800.1816)
+![The app displayed in a Confluence page](https://dac-static.atlassian.com/platform/forge/images/forge-getting-started-initial-state.png?_v=1.5800.1824)
 
 While your app is deployed to either a development or staging environment, `(development)` or
 `(staging)` will appear in your app title. This suffix is removed once you've
@@ -321,7 +315,7 @@ Next, continue to **Part 2 – [Call a Confluence API](/platform/forge/call-a-co
 
 If you want to skip to adding Jira as a compatible context, you can go to **Part 3 – [Add support for Jira as an optional Atlassian app](/platform/forge/add-support-for-jira-as-an-optional-atlassian-app)**.
 
-[![Button: Next – Part 2, Call a Confluence API](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.1816)](/platform/forge/call-a-confluence-api-in-a-confluence-jira-app)
+[![Button: Next – Part 2, Call a Confluence API](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.1824)](/platform/forge/call-a-confluence-api-in-a-confluence-jira-app)
 
 ## Developing for Atlassian Government Cloud
 

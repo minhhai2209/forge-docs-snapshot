@@ -4,7 +4,7 @@ The `bitbucket:projectSettingsMenuPage` module adds an item in the `FORGE APPS` 
 
 The page URL is constructed in the form of: `/{workspaceSlug}/projects/{projectKey}/settings/forge/{forgeAppId}/{forgeEnvironmentKey}/{forgeAppModuleKey}`
 
-![Example of a project settings menu page](https://dac-static.atlassian.com/platform/forge/images/bitbucket-project-settings-menu-page.png?_v=1.5800.1816)
+![Example of a project settings menu page](https://dac-static.atlassian.com/platform/forge/images/bitbucket-project-settings-menu-page.png?_v=1.5800.1824)
 
 ## Properties
 

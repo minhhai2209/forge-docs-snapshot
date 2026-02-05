@@ -20,7 +20,12 @@
 18
 19
 20
-21``curl --request POST \
+21
+22
+23
+24
+25
+26``curl --request POST \
 --url 'https://api.atlassian.com/forge/storage/kvs/v1/entity/query' \
 --header 'Accept: application/json' \
 --header 'Content-Type: application/json' \
@@ -39,5 +44,10 @@
 "filters": {},
 "sort": "ASC",
 "cursor": "<string>",
-"limit": 2154
+"limit": 2154,
+"options": {
+"metadataFields": [
+"CREATED_AT"
+]
+}
 }'`

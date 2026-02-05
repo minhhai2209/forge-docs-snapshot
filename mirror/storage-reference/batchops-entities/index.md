@@ -38,6 +38,8 @@ in one operation. You can execute a mix of both types of request in the same bat
 This method will return a `BatchResponse` that contain an array of
 operatioons succeeded (`successfulKeys`) and failed (`failedKeys`).
 
+You can also set a *relative* time-to-live (TTL) for all keys in your batched operation. See [Time-to-live](/platform/forge/runtime-reference/storage-api-basic-api/#ttl) for related details.
+
 ### Method signature
 
 ```
@@ -52,10 +54,18 @@ operatioons succeeded (`successfulKeys`) and failed (`failedKeys`).
 kvs.batchSet(items: BatchSetItem[]): Promise<BatchResponse>;
 
 // Definition of what needs to be stored
+type SetOptions = {
+  ttl?: {
+    unit: 'SECONDS' | 'MINUTES' | 'HOURS' | 'DAYS';
+    value: number;
+  };
+};
+
 interface BatchSetItem {
   entityName?: string; // If not provided it becomes a KVS request
   key: string;
   value: string | number | boolean | Record<string, any> | any[];
+  options?: SetOptions;
 }
 
 interface BatchResponse {
@@ -102,7 +112,13 @@ await kvs.batchSet([
       gender: "male",
       nationality: "Australian"
      },
-     entityName: "employee"
+     entityName: "employee",
+     options: {
+       ttl: {
+         unit: 'DAYS',
+         value: 7,
+       },
+     },
    }, 
    { 
     key: "untypedobject",

@@ -51,7 +51,7 @@ However, as of [March 17, 2025](/platform/forge/changelog/#CHANGE-2399), no furt
 [KVS transactions](/platform/forge/storage-reference/transactions/) and
 [Custom Entity Store transactions](/platform/forge/storage-reference/transactions-entities/) are only available through `@forge/kvs`.
 
-We strongly recommend using `@forge/kvs`. Migrating to this package will only change the interface to your app’s data; all data stored through the legacy module will remain intact
+We strongly recommend using `@forge/kvs`. Migrating to this package will only change the interface to your app’s data; all data stored through the legacy module will remain intact.
 
 ## Basic methods
 
