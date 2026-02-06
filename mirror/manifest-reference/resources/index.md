@@ -19,12 +19,18 @@ you want to display in your app.
 ### Example
 
 ```
+```
 1
 2
-3
+```
+
+
+
+```
 resources: # list below the static resources entries for your UI Kit app
   - key: my-resource-1
     path: relative/path/to/resource/index.jsx
+```
 ```
 
 ```

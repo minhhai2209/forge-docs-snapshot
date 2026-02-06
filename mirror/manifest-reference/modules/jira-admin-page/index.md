@@ -9,7 +9,7 @@ The page URL is constructed in the following format: `/jira/settings/apps/{appId
 
 When adding this to your app, use it as a top-level component.
 
-![Example of an admin page](https://dac-static.atlassian.com/platform/forge/snippets/images/admin-page.jpg?_v=1.5800.1824)
+![Example of an admin page](https://dac-static.atlassian.com/platform/forge/snippets/images/admin-page.jpg?_v=1.5800.1827)
 
 To organize your Jira admin space and simplify the app management, create [Configure](#configure-page) and [Get started](#get-started-page) pages.
 
@@ -23,7 +23,7 @@ To create this page, use the `useAsConfig` property.
 
 When it’s set to `true`, it creates a Configure button that leads to this page from the app's entry in **Manage Apps**.
 
-![Example of a configure button in Manage Apps](https://dac-static.atlassian.com/platform/forge/snippets/images/configure-button-manage-apps.png?_v=1.5800.1824)
+![Example of a configure button in Manage Apps](https://dac-static.atlassian.com/platform/forge/snippets/images/configure-button-manage-apps.png?_v=1.5800.1827)
 
 The `jira:adminPage` entry with the `useAsConfig` property won't be displayed on the sidebar.
 
@@ -39,7 +39,7 @@ To create this page, use the `useAsGetStarted` property.
 
 When it’s set to `true`, it creates a Get started button that leads to this page from the app's entry in **Manage Apps**.
 
-![Example of a get started button in Manage Apps](https://dac-static.atlassian.com/platform/forge/snippets/images/get-started-button-manage-apps.png?_v=1.5800.1824)
+![Example of a get started button in Manage Apps](https://dac-static.atlassian.com/platform/forge/snippets/images/get-started-button-manage-apps.png?_v=1.5800.1827)
 
 The `jira:adminPage` entry with the `useAsGetStarted` property won’t be displayed on the sidebar.
 
@@ -52,7 +52,7 @@ However, you can register multiple pages using the `pages` and `sections` proper
 
 Use `pages` to add individual pages to the sidebar and `sections` to group pages.
 
-![Example of an admin page](https://dac-static.atlassian.com/platform/forge/snippets/images/subpages-admin.jpg?_v=1.5800.1824)
+![Example of an admin page](https://dac-static.atlassian.com/platform/forge/snippets/images/subpages-admin.jpg?_v=1.5800.1827)
 
 The sidebar will only change the admin page URL, you'll need to
 [handle routes inside your Custom UI app](/platform/forge/add-routing-to-a-full-page-app/)

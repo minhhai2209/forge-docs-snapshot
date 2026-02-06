@@ -459,5 +459,5 @@ ForgeReconciler.render(
 In the next tutorial, you'll learn how to make changes to your app's frontend using the
 [UI Kit components](/platform/forge/ui-kit/components/) of Forge.
 
-[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.1824)](/platform/forge/build-a-hello-world-app-in-bitbucket/)
-[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.1824)](/platform/forge/change-the-bitbucket-frontend-with-the-ui-kit)
+[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.1827)](/platform/forge/build-a-hello-world-app-in-bitbucket/)
+[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.1827)](/platform/forge/change-the-bitbucket-frontend-with-the-ui-kit)

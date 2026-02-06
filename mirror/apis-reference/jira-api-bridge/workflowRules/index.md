@@ -35,19 +35,14 @@ return an `undefined` value from this callback.
 ### Function signature
 
 ```
-```
 1
 2
-```
-
-
-
-```
+3
+4
 type OnConfigureResponse = string;
 type OnConfigureFn = () => Promise<OnConfigureResponse> | OnConfigureResponse;
 
 function onConfigure(onConfigureFn: OnConfigureFn): Promise<void>;
-```
 ```
 
 ### Example

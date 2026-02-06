@@ -43,7 +43,7 @@ You can use the `features` prop to enable or disable specific editor features. B
 
 The default appearance of the `ChromelessEditor` component is a blank editor with no toolbar or features. It accepts a subset of the `CommentEditor` props and has the same capabilities, but does not include any of the default UI features like, the toolbar or action buttons.
 
-![Example image of a blank editor](https://dac-static.atlassian.com/platform/forge/ui-kit/images/editor/chromeless-editor.png?_v=1.5800.1824)
+![Example image of a blank editor](https://dac-static.atlassian.com/platform/forge/ui-kit/images/editor/chromeless-editor.png?_v=1.5800.1827)
 
 ```
 ```

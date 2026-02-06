@@ -15,19 +15,6 @@ You can also update your app’s database schema by adding new DDL operations ov
 
 The `sql` package provides the necessary methods for interacting with Forge SQL. To start using Forge SQL’s capabilities, you’ll need to install it in your project:
 
-```
-```
-1
-2
-```
-
-
-
-```
-npm install @forge/sql
-```
-```
-
 You can use the `migrationRunner` SDK to execute DDL operations. To import it:
 
 ```

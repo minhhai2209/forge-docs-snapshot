@@ -37,20 +37,16 @@ For example, to allow calls to the third-party website `ingest.sentry.io`, use t
 following configuration:
 
 ```
-```
 1
 2
-```
-
-
-
-```
+3
+4
+5
 permissions:
   external:
     fetch:
       backend:
         - '*.ingest.sentry.io'
-```
 ```
 
 ###### Example as an object

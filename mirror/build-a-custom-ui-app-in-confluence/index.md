@@ -1,5 +1,11 @@
 # Build a Custom UI app in Confluence
 
+#### Having trouble?
+
+Ask for help on our Developer Community
+
+[Get help](https://community.developer.atlassian.com/session/sso?return_path=%2Fnew-topic%3Fcategory_id%3D45%26tags%3Ddac-get-help%2Cforge-build-a-custom-ui-app-in-confluence)
+
 Tunneling with Custom UI apps is only supported on Chrome and Firefox browsers.
 
 This tutorial walks you through creating a Forge app that displays Custom UI content on a
@@ -203,7 +209,7 @@ With your app installed, it’s time to see the app on a page.
 
 The app should display on the page with the content of your Custom UI, like the image below.
 
-![A Confluence page byline item displaying a Custom UI forge app](https://dac-static.atlassian.com/platform/forge/images/forge-getting-started-confluence-custom-ui.png?_v=1.5800.1824)
+![A Confluence page byline item displaying a Custom UI forge app](https://dac-static.atlassian.com/platform/forge/images/forge-getting-started-confluence-custom-ui.png?_v=1.5800.1827)
 
 While your app is deployed to either a development or staging environment, `(DEVELOPMENT)` or
 `(STAGING)` will appear in your app title. This suffix is removed once you've

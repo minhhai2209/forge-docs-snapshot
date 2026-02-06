@@ -39,14 +39,18 @@ jira:issuePanel:
 In the example below, the display conditions for the Jira issue panel module are slightly more complex.
 
 ```
-```
 1
 2
-```
-
-
-
-```
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 jira:issuePanel:
 - key: hello-world-panel
   function: issue-panel-function
@@ -59,7 +63,6 @@ jira:issuePanel:
         projectKey: TEST
         not:
           issueType: Epic
-```
 ```
 
 In this example, the Jira issue panel module will only be rendered if the following conditions are met:

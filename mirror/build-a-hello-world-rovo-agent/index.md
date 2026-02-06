@@ -175,20 +175,20 @@ With your app installed, it is time to chat with your new Agent.
 
 1. Access Rovo chat by clicking **Chat** on the top menu within the Atlassian app where you have installed your Forge app.
 2. In the Chat side panel, click the Agent selector and go to Browse Agents.
-   ![example of browsing rovo agent from the list](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-agent-browse.png?_v=1.5800.1824)
+   ![example of browsing rovo agent from the list](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-agent-browse.png?_v=1.5800.1827)
 3. Find the `Hello world` Agent and click **Enable**.
 4. Now use the Agent selector to select the **Hello world agent**.
-   ![example of Agent hello world app](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-agent-app.png?_v=1.5800.1824)
+   ![example of Agent hello world app](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-agent-app.png?_v=1.5800.1827)
 5. Chat with the Agent and invoke your action. Ask the Agent to log a message for you
    or use the conversation starter, **Log a message to Forge logs**.
      
    Agent has now successfully logged a message to Forge logs via your Forge function.
-   ![example of Rovo agent chat window](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-agent-chat.png?_v=1.5800.1824)
+   ![example of Rovo agent chat window](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-agent-chat.png?_v=1.5800.1827)
 6. Navigate to the app's top-level directory to check the logs by running:
 
 You should see a Forge log with your message:
 
-![example of Rovo agent creating a log](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-agent-log.png?_v=1.5800.1824)
+![example of Rovo agent creating a log](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-agent-log.png?_v=1.5800.1827)
 
 ## Change the behavior of your agent
 
@@ -198,7 +198,7 @@ The main way to change the behavior of your Agent is by modifying the `prompt` i
    `After you successfully log a message, respond with a positive affirmation`
 2. Deploy your Forge app:
 3. Test your Agent again. Notice the change in tone:
-   ![example of Agent chat after changing the prompt](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-agent-prompt.png?_v=1.5800.1824)
+   ![example of Agent chat after changing the prompt](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-agent-prompt.png?_v=1.5800.1827)
 
 ## Change the behavior of your action
 
@@ -288,12 +288,12 @@ export function messageLogger (payload) {
 4. Deploy your app:
 5. Test your Agent again:
 
-   ![example of Agent chat after changing the action](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-agent-action.png?_v=1.5800.1824)
+   ![example of Agent chat after changing the action](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-agent-action.png?_v=1.5800.1827)
 6. Check the Forge logs to verify that the action was successfully executed:
 
    You should see Forge logs with your messages:
 
-   ![example of Agent chat after changing the action](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-agent-log-confluence.png?_v=1.5800.1824)
+   ![example of Agent chat after changing the action](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-agent-log-confluence.png?_v=1.5800.1827)
 
 ## Developing for Atlassian Government Cloud
 

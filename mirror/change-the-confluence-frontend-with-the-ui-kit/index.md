@@ -1,5 +1,11 @@
 # Part 3: Change the front end with UI Kit
 
+#### Having trouble?
+
+Ask for help on our Developer Community
+
+[Get help](https://community.developer.atlassian.com/session/sso?return_path=%2Fnew-topic%3Fcategory_id%3D45%26tags%3Ddac-get-help%2Cforge-change-the-confluence-frontend-with-the-ui-kit)
+
 This section describes how to use tools in UI Kit, including [UI Kit components](/platform/forge/ui-kit/components/).
 You'll use these components to build dynamic and interactive interfaces for your app's front end. When your app is complete, you'll learn how to continue monitoring the Forge environment using the `forge logs` command.
 
@@ -86,7 +92,7 @@ ForgeReconciler.render(
 Your app should display the number of comments on the page. You can add more top-level comments to
 the page and refresh the page to see your app update. Your page should look like the following:
 
-![The final app displays on a Confluence page](https://dac-static.atlassian.com/platform/forge/images/display-confluence-macro.png?_v=1.5800.1824)
+![The final app displays on a Confluence page](https://dac-static.atlassian.com/platform/forge/images/display-confluence-macro.png?_v=1.5800.1827)
 
 ## Specify the export view
 
@@ -267,4 +273,4 @@ You now know enough to develop your own Forge apps. Learn more from our
 [tutorials](/platform/forge/tutorials-and-guides/), [guides](/platform/forge/guides/),
 [example apps](/platform/forge/example-apps/) or [reference pages](/platform/forge/manifest-reference/).
 
-[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.1824)](/platform/forge/call-a-confluence-api/)
+[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.1827)](/platform/forge/call-a-confluence-api/)

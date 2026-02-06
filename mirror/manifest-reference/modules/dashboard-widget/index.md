@@ -16,7 +16,7 @@ The dashboard widget module allows you to create interactive widgets that can be
 * Communicate with [background scripts](/platform/forge/manifest-reference/modules/dashboard-background-script/)
 * Be configured by users through edit modes
 
-![Dashboard widget example](https://dac-static.atlassian.com/platform/forge/images/modules/dashboard-widget-example.png?_v=1.5800.1824)
+![Dashboard widget example](https://dac-static.atlassian.com/platform/forge/images/modules/dashboard-widget-example.png?_v=1.5800.1827)
 
 *Example of a dashboard widget displaying custom content*
 
@@ -33,13 +33,13 @@ You can create a dashboard widget app with the following steps:
 
 When users install your widget to their site, they'll see your widget in the widget list:
 
-![Widget list interface](https://dac-static.atlassian.com/platform/forge/images/modules/dashboard-widget-list.png?_v=1.5800.1824)
+![Widget list interface](https://dac-static.atlassian.com/platform/forge/images/modules/dashboard-widget-list.png?_v=1.5800.1827)
 
 *Widget selection interface showing available dashboard widgets on the right, and on the left showing the **preview** of the selected dashboard widget*
 
 Users can configure your widget through the edit interface:
 
-![Widget edit mode](https://dac-static.atlassian.com/platform/forge/images/modules/dashboard-widget-edit-mode.png?_v=1.5800.1824)
+![Widget edit mode](https://dac-static.atlassian.com/platform/forge/images/modules/dashboard-widget-edit-mode.png?_v=1.5800.1827)
 
 *Widget configuration interface allowing users to customize widgets*
 

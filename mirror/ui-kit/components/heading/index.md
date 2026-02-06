@@ -27,7 +27,7 @@ A heading is a typography component used to display text in different sizes and 
 
 Use a Heading component for all page titles and subheadings to introduce content. Headings are sized to contrast with content, increase visual hierarchy, and help readers easily understand the structure of content.
 
-![Example image of headings and their levels](https://dac-static.atlassian.com/platform/forge/ui-kit/images/heading/heading-basic.png?_v=1.5800.1824)
+![Example image of headings and their levels](https://dac-static.atlassian.com/platform/forge/ui-kit/images/heading/heading-basic.png?_v=1.5800.1827)
 
 ```
 ```
@@ -62,7 +62,7 @@ The `size` provided automatically maps to specific HTML heading elements. xxlarg
 
 This mapping can be overridden using the `as` prop.
 
-![Example image of heading with custom html](https://dac-static.atlassian.com/platform/forge/ui-kit/images/heading/heading-mapping-to-html.png?_v=1.5800.1824)
+![Example image of heading with custom html](https://dac-static.atlassian.com/platform/forge/ui-kit/images/heading/heading-mapping-to-html.png?_v=1.5800.1827)
 
 ```
 ```
@@ -93,7 +93,7 @@ Heading uses the `color.text` token which automatically switches colors to be le
 
 Heading will automatically apply the correct inverse color token if placed within a box component with a bold background color.
 
-![Example image of heading with inverse color](https://dac-static.atlassian.com/platform/forge/ui-kit/images/heading/heading-inverse.png?_v=1.5800.1824)
+![Example image of heading with inverse color](https://dac-static.atlassian.com/platform/forge/ui-kit/images/heading/heading-inverse.png?_v=1.5800.1827)
 
 ```
 ```
@@ -126,7 +126,7 @@ const HeadingInverseExample = () => {
 
 To invert the heading color manually when not using a box component, use the color prop to apply either `color.text.inverse` or `color.text.warning.inverse` depending on the surface. Beyond this, heading color cannot be customised.
 
-![Example image of heading with manual inverse color](https://dac-static.atlassian.com/platform/forge/ui-kit/images/heading/heading-inverse-2.png?_v=1.5800.1824)
+![Example image of heading with manual inverse color](https://dac-static.atlassian.com/platform/forge/ui-kit/images/heading/heading-inverse-2.png?_v=1.5800.1827)
 
 ```
 ```
