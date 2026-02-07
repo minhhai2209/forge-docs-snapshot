@@ -1,11 +1,5 @@
 # Create a GIPHY app using the UI Kit on Confluence
 
-#### Having trouble?
-
-Ask for help on our Developer Community
-
-[Get help](https://community.developer.atlassian.com/session/sso?return_path=%2Fnew-topic%3Fcategory_id%3D45%26tags%3Ddac-get-help%2Cforge-create-a-giphy-app-using-the-ui-kit)
-
 ## Create a GIPHY app using the UI kit on Confluence
 
 This tutorial describes how to make API calls to an external API from your Forge

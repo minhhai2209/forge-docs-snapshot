@@ -1,11 +1,5 @@
 # Prepare to build your first Forge app
 
-#### Having trouble?
-
-Ask for help on our Developer Community
-
-[Get help](https://community.developer.atlassian.com/session/sso?return_path=%2Fnew-topic%3Fcategory_id%3D45%26tags%3Ddac-get-help%2Cforge-getting-started)
-
 Welcome to developing with the Forge platform for Atlassian cloud apps. Work through
 the steps below to set up your development environment. To get started using Forge,
 you’ll install the CLI, log in with an Atlassian API token, and create an Atlassian
