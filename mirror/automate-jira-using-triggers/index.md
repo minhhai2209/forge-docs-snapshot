@@ -1,5 +1,11 @@
 # Automate Jira using triggers
 
+#### Having trouble?
+
+Ask for help on our Developer Community
+
+[Get help](https://community.developer.atlassian.com/session/sso?return_path=%2Fnew-topic%3Fcategory_id%3D45%26tags%3Ddac-get-help%2Cforge-automate-jira-using-triggers)
+
 This tutorial describes how to create a Forge app and install it in a Jira Cloud site. The app
 responds to issue created events in Jira and adds a comment to the created issue.
 

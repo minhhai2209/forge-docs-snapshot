@@ -1,11 +1,5 @@
 # Use space settings and content byline item to implement space news
 
-#### Having trouble?
-
-Ask for help on our Developer Community
-
-[Get help](https://community.developer.atlassian.com/session/sso?return_path=%2Fnew-topic%3Fcategory_id%3D45%26tags%3Ddac-get-help%2Cforge-space-news)
-
 This tutorial describes how to create a Forge app with two modules, where an admin can create
 news content using `spaceSettings` module, and make the news content available using `contentBylineItem`.
 

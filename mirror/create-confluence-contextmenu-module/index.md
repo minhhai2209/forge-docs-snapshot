@@ -1,5 +1,11 @@
 # Use highlighted text in a Confluence Forge app
 
+#### Having trouble?
+
+Ask for help on our Developer Community
+
+[Get help](https://community.developer.atlassian.com/session/sso?return_path=%2Fnew-topic%3Fcategory_id%3D45%26tags%3Ddac-get-help%2Cforge-create-confluence-contextmenu-module)
+
 This tutorial describes how to make a Forge app that uses highlighted text from a Confluence page.
 You might use this technique in a dictionary app, a custom glossary, or any app that requires users
 to highlight text on a page.

@@ -1,11 +1,5 @@
 # Build a Custom UI app in Jira
 
-#### Having trouble?
-
-Ask for help on our Developer Community
-
-[Get help](https://community.developer.atlassian.com/session/sso?return_path=%2Fnew-topic%3Fcategory_id%3D45%26tags%3Ddac-get-help%2Cforge-build-a-custom-ui-app-in-jira)
-
 Tunneling with Custom UI apps is only supported on Chrome and Firefox browsers.
 
 This tutorial walks you through creating a Forge app that displays Custom UI content in a Jira issue.
