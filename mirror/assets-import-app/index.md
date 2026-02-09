@@ -6,7 +6,7 @@ It also contains the triggers that are activated on the deletion, starting, and 
 
 The final app looks like the following:
 
-![Assets Import Type Selection Screen.](https://dac-static.atlassian.com/platform/forge/images/assets-import-type-selection.png?_v=1.5800.1827)
+![Assets Import Type Selection Screen.](https://dac-static.atlassian.com/platform/forge/images/assets-import-type-selection.png?_v=1.5800.1834)
 
 ## Before you begin
 
@@ -171,7 +171,7 @@ Navigate to `src/resolvers/index.jsx`. These are pieces of code you can implemen
    ```
    ```
 
-   ![Deleting an Assets App Type Import Structure.](https://dac-static.atlassian.com/platform/forge/images/assets-delete-import.png?_v=1.5800.1827)
+   ![Deleting an Assets App Type Import Structure.](https://dac-static.atlassian.com/platform/forge/images/assets-delete-import.png?_v=1.5800.1834)
 2. startImport - Triggers on the start of an import
 
    ```
@@ -193,7 +193,7 @@ Navigate to `src/resolvers/index.jsx`. These are pieces of code you can implemen
    ```
    ```
 
-   ![Starting an Assets App Type Import.](https://dac-static.atlassian.com/platform/forge/images/assets-start-import.png?_v=1.5800.1827)
+   ![Starting an Assets App Type Import.](https://dac-static.atlassian.com/platform/forge/images/assets-start-import.png?_v=1.5800.1834)
 3. stopImport - Triggers on the cancellation of an import
 
    ```
@@ -215,7 +215,7 @@ Navigate to `src/resolvers/index.jsx`. These are pieces of code you can implemen
    ```
    ```
 
-   ![Stopping an Assets App Type Import.](https://dac-static.atlassian.com/platform/forge/images/assets-stop-import.png?_v=1.5800.1827)
+   ![Stopping an Assets App Type Import.](https://dac-static.atlassian.com/platform/forge/images/assets-stop-import.png?_v=1.5800.1834)
 4. importStatus - Triggers to display the status of the import on the Imports UI
 
    ```
@@ -237,9 +237,9 @@ Navigate to `src/resolvers/index.jsx`. These are pieces of code you can implemen
    ```
    ```
 
-   ![Showing progress on an Assets App Type Import.](https://dac-static.atlassian.com/platform/forge/images/assets-progress-import-not-configured.png?_v=1.5800.1827)
+   ![Showing progress on an Assets App Type Import.](https://dac-static.atlassian.com/platform/forge/images/assets-progress-import-not-configured.png?_v=1.5800.1834)
 
-   ![Showing progress on an Assets App Type Import.](https://dac-static.atlassian.com/platform/forge/images/assets-progress-import-ready.png?_v=1.5800.1827)
+   ![Showing progress on an Assets App Type Import.](https://dac-static.atlassian.com/platform/forge/images/assets-progress-import-ready.png?_v=1.5800.1834)
 
 There are two status enums that can be returned.
 
@@ -364,7 +364,7 @@ Assets.
 We have included an example of how to use Forge's Async Events API to import 3rd party data into Assets by setting up a
 controller and worker queue for data ingestion.
 
-![Forge Template Async Events API example](https://dac-static.atlassian.com/platform/forge/images/assets-import-async-events-api-example.png?_v=1.5800.1827)
+![Forge Template Async Events API example](https://dac-static.atlassian.com/platform/forge/images/assets-import-async-events-api-example.png?_v=1.5800.1834)
 
 From the diagram above:
 

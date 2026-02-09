@@ -1,15 +1,9 @@
 # Check whether Jira issues are assigned using a workflow validator
 
-#### Having trouble?
-
-Ask for help on our Developer Community
-
-[Get help](https://community.developer.atlassian.com/session/sso?return_path=%2Fnew-topic%3Fcategory_id%3D45%26tags%3Ddac-get-help%2Cforge-check-jira-issues-assigned-using-workflow-validator)
-
 This tutorial describes how to create a Forge app that checks Jira issues are assigned when the
 issue transitions. You'll do this using a Jira workflow validator.
 
-![Jira board showing a notification message "The issue must have an assignee before transitioning."](https://dac-static.atlassian.com/platform/forge/images/jira-validator-block-transition.png?_v=1.5800.1827)
+![Jira board showing a notification message "The issue must have an assignee before transitioning."](https://dac-static.atlassian.com/platform/forge/images/jira-validator-block-transition.png?_v=1.5800.1834)
 
 If you prefer learning by looking at code, see the [Open Pull Requests Validator]
 (<https://bitbucket.org/atlassian/forge-open-pull-requests-validator/>) example app for a more complex
@@ -244,7 +238,7 @@ Start using the app by adding it as a validator in the workflow of a Jira Softwa
 1. Open [Advanced workflow
    configuration](https://confluence.atlassian.com/adminjiracloud/advanced-workflow-configuration-776636620.html#Advancedworkflowconfiguration-validators) and follow the instructions to add a
    validator. Select the validator that matches the `name` you defined in the manifest (1).
-   ![The add validator to transition screen showing the Forge app is selected from a list](https://dac-static.atlassian.com/platform/forge/images/jira-add-validator.png?_v=1.5800.1827)
+   ![The add validator to transition screen showing the Forge app is selected from a list](https://dac-static.atlassian.com/platform/forge/images/jira-add-validator.png?_v=1.5800.1834)
 2. Publish the workflow updates.
 
 ## View your app
@@ -258,7 +252,7 @@ With your app installed and in your workflow, see it in action.
 
 You'll see the following error message display.
 
-![Jira board showing a notification message "The issue must have an assignee before transitioning."](https://dac-static.atlassian.com/platform/forge/images/jira-validator-block-transition.png?_v=1.5800.1827)
+![Jira board showing a notification message "The issue must have an assignee before transitioning."](https://dac-static.atlassian.com/platform/forge/images/jira-validator-block-transition.png?_v=1.5800.1834)
 
 The location of the error depends on how you transition the issue. For example, when you transition
 the issue using the controls on the issue view, the error displays on the issue view.

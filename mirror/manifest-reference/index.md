@@ -24,6 +24,7 @@ app:
 | `providers` |  | Authentication providers used by the app.  See [Providers](/platform/forge/manifest-reference/providers/) to learn more. |
 | `remotes` |  | A list of remote services required by the app (along with additional options for declaring egress details for [data residency](/platform/forge/data-residency/)).  See [Remotes](/platform/forge/manifest-reference/remotes/) to learn more. |
 | `resources` |  | A list of the resources used by the app.  See [Resources](/platform/forge/manifest-reference/resources/) to learn more. |
+| `services` (EAP) |  | Containerised services used by the app.  See [Services](/platform/forge/manifest-reference/services/) to learn more. |
 | `environment` |  | A list of *environment variables* to be parsed by the Forge CLI for entire or partial field values.  After specifying a variable in `environment`, you can declare it in any field by enclosing it in `${` and `}`.  See [Environment](/platform/forge/manifest-reference/environment/) to learn more. |
 | `translations` |  | A list of translation resources supported by the app, including the fallback configurations for when a desired translation is not available.  See [Translations](/platform/forge/manifest-reference/translations/) to learn more. |
 

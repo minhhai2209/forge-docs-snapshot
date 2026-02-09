@@ -5,7 +5,7 @@ These features are unsupported and not recommended for use in production environ
 are also subject to change without notice.
 For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
 
-To participate, you can [sign up for the EAP here](https://developer.atlassian.com/platform/forge/eap-preview-ga/#early-access-program-eap).
+To participate, you can [sign up for the EAP here](https://docs.google.com/forms/d/e/1FAIpQLSfl_TpJ7o160vlOMhvU07u4XfKSnTnMpzi_4Q8d7-ieNhD1vQ/viewform?usp=sharing&ouid=100849039189157529928p).
 
 **Note:** You must also opt-in to the open beta of Dashboards in Atlassian Home. See the [guide on how to opt-in](https://community.atlassian.com/forums/Atlassian-Home-articles/Home-Dashboards-available-in-open-beta/ba-p/3009544).
 
@@ -16,7 +16,7 @@ The dashboard widget module allows you to create interactive widgets that can be
 * Communicate with [background scripts](/platform/forge/manifest-reference/modules/dashboard-background-script/)
 * Be configured by users through edit modes
 
-![Dashboard widget example](https://dac-static.atlassian.com/platform/forge/images/modules/dashboard-widget-example.png?_v=1.5800.1827)
+![Dashboard widget example](https://dac-static.atlassian.com/platform/forge/images/modules/dashboard-widget-example.png?_v=1.5800.1834)
 
 *Example of a dashboard widget displaying custom content*
 
@@ -33,13 +33,13 @@ You can create a dashboard widget app with the following steps:
 
 When users install your widget to their site, they'll see your widget in the widget list:
 
-![Widget list interface](https://dac-static.atlassian.com/platform/forge/images/modules/dashboard-widget-list.png?_v=1.5800.1827)
+![Widget list interface](https://dac-static.atlassian.com/platform/forge/images/modules/dashboard-widget-list.png?_v=1.5800.1834)
 
 *Widget selection interface showing available dashboard widgets on the right, and on the left showing the **preview** of the selected dashboard widget*
 
 Users can configure your widget through the edit interface:
 
-![Widget edit mode](https://dac-static.atlassian.com/platform/forge/images/modules/dashboard-widget-edit-mode.png?_v=1.5800.1827)
+![Widget edit mode](https://dac-static.atlassian.com/platform/forge/images/modules/dashboard-widget-edit-mode.png?_v=1.5800.1834)
 
 *Widget configuration interface allowing users to customize widgets*
 

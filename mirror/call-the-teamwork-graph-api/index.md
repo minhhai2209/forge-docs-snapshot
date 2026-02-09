@@ -9,7 +9,7 @@ and are subject to change without notice.
 the Teamwork Graph API require the `read:graph:jira`or `read:graph:confluence` scope, which provides access to Teamwork Graph
 data across your entire organization. While apps still respect end-user permissions, this scope may
 grant access to sensitive information. For safety, only install these apps in organizations with test
-data. Do not install apps using this API in organizations with production data while this feature is in EAP.
+data unless you have an [approved path to production](/platform/teamwork-graph/limitations-and-considerations/#path-to-production-for-teamwork-graph-api-apps).
 
 Additionally, this EAP has significant limitations. To review the full list of limitations, see
 [Limitations and considerations](/platform/teamwork-graph/limitations-and-considerations/#teamwork-graph-api--eap-).
