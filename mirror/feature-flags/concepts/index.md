@@ -409,7 +409,7 @@ If the predefined attributes don't meet your needs, you can use custom attribute
 
 Here's a quick demonstration of how to create custom attributes in the Developer Console:
 
-![Creating custom attributes](https://dac-static.atlassian.com/platform/forge/images/feature-flags/create-custom-attributes.gif?_v=1.5800.1834)
+![Creating custom attributes](https://dac-static.atlassian.com/platform/forge/images/feature-flags/create-custom-attributes.gif?_v=1.5800.1837)
 
 Simple Reference
 

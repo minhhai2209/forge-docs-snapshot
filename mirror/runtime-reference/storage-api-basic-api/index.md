@@ -259,7 +259,7 @@ You can also request the key's relevant metadata by including `metadataFields` i
 
 
 ```
-import { kvs, MetadataField } from '@forge/kvs';                                                      
+import { kvs, MetadataField } from '@forge/kvs';
 
 await kvs.set('example-key', {
   returnValue: 'LATEST',

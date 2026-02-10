@@ -34,7 +34,7 @@ A pressable is a primitive for building custom buttons.
 
 Pressable is unstyled by default, aside from basic focus styles.
 
-![Example image of an unstyled pressable](https://dac-static.atlassian.com/platform/forge/ui-kit/images/pressable/pressable-default.png?_v=1.5800.1834)
+![Example image of an unstyled pressable](https://dac-static.atlassian.com/platform/forge/ui-kit/images/pressable/pressable-default.png?_v=1.5800.1837)
 
 ```
 ```
@@ -63,7 +63,7 @@ Pressable can be styled using [XCSS](/platform/forge/ui-kit/components/xcss).
 
 Ensure that the styling indicates the interaction state using `:hover` and `:active` pseudo-classes.
 
-![Example image of a styled pressable](https://dac-static.atlassian.com/platform/forge/ui-kit/images/pressable/pressable-basic-styling.png?_v=1.5800.1834)
+![Example image of a styled pressable](https://dac-static.atlassian.com/platform/forge/ui-kit/images/pressable/pressable-basic-styling.png?_v=1.5800.1837)
 
 ```
 ```
@@ -110,7 +110,7 @@ export const PressableExample = () => {
 
 Use a combination of XCSS and other primitives for more complex designs.
 
-![Example image of a styled pressable](https://dac-static.atlassian.com/platform/forge/ui-kit/images/pressable/pressable-advanced-styling.png?_v=1.5800.1834)
+![Example image of a styled pressable](https://dac-static.atlassian.com/platform/forge/ui-kit/images/pressable/pressable-advanced-styling.png?_v=1.5800.1837)
 
 ```
 ```

@@ -40,7 +40,7 @@ A popup displays brief content in an overlay.
 
 This is the simplest form of a popup. The popup opens from a trigger element.
 
-![Example image of popup](https://dac-static.atlassian.com/platform/forge/ui-kit/images/popup/popup-default.png?_v=1.5800.1834)
+![Example image of popup](https://dac-static.atlassian.com/platform/forge/ui-kit/images/popup/popup-default.png?_v=1.5800.1837)
 
 ```
 ```
@@ -87,7 +87,7 @@ const PopupExample = () => {
 Use the `placement` prop to set a preferred position (`auto`, `top`, `right`, `left`, or `bottom`). The popup will move automatically if it's near the edge of the screen.
 
 Using the auto placement will place the popup on the side with the most space available.
-![Example image of popup with placements](https://dac-static.atlassian.com/platform/forge/ui-kit/images/popup/popup-placement.png?_v=1.5800.1834)
+![Example image of popup with placements](https://dac-static.atlassian.com/platform/forge/ui-kit/images/popup/popup-placement.png?_v=1.5800.1837)
 
 All available `placement` values: `"auto" | "auto-start" | "auto-end" | "top" | "bottom" | "right" | "left" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end"`
 
@@ -95,7 +95,7 @@ All available `placement` values: `"auto" | "auto-start" | "auto-end" | "top" | 
 
 You can use popups multiple times on the same page.
 
-![Example image of multiple popup](https://dac-static.atlassian.com/platform/forge/ui-kit/images/popup/popup-multiple.png?_v=1.5800.1834)
+![Example image of multiple popup](https://dac-static.atlassian.com/platform/forge/ui-kit/images/popup/popup-multiple.png?_v=1.5800.1837)
 
 ```
 ```
@@ -149,7 +149,7 @@ const PopupMultipleExample = () => (
 
 Use the `role` prop to set a role for the popup content. We do not forbid passing any of the aria roles, but we strongly recommend using only `menu` or `dialog`. When the `role="dialog"` property is passed, one of the following properties must also be added: `label` or `titleId`.
 
-![Example image of popup with role](https://dac-static.atlassian.com/platform/forge/ui-kit/images/popup/popup-role.png?_v=1.5800.1834)
+![Example image of popup with role](https://dac-static.atlassian.com/platform/forge/ui-kit/images/popup/popup-role.png?_v=1.5800.1837)
 
 ```
 ```
@@ -195,7 +195,7 @@ const PopupRoleExample = () => {
 ### Full width
 
 Use `shouldFitContainer` to fit the popup width to its parent's width. When set to `true`, the trigger and popup elements will be wrapped in a div with position: `relative`. The popup will be rendered as a sibling to the trigger element, and will be full width.
-![Example image of full width popup](https://dac-static.atlassian.com/platform/forge/ui-kit/images/popup/popup-full-width.png?_v=1.5800.1834)
+![Example image of full width popup](https://dac-static.atlassian.com/platform/forge/ui-kit/images/popup/popup-full-width.png?_v=1.5800.1837)
 
 ```
 ```

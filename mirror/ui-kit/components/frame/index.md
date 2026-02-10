@@ -8,39 +8,32 @@ To add the `Frame` component to your app:
 
 ```
 1
-import { Frame } from '@forge/react';
+import { Frame } from "@forge/react";
 ```
 
 ### Props
 
 The `Frame` component has the following properties that need to be considered:
 
-| Name | Type | Required | Usage | Description |
-| --- | --- | --- | --- | --- |
-| `resource` | `string` | Yes | Frame component | This is the key of the resource to be loaded in the `Frame`. The resource must be defined in the app’s `manifest.yml` file. If the resource key is missing or cannot be located in the `manifest.yml`, a `Not Found` message will appear within the `Frame` component.   For more information on defining a resource, see [here](/platform/forge/extend-ui-with-custom-options/#resources). |
+| Name | Type | Required | Description |
+| --- | --- | --- | --- |
+| `resource` | `string` | Yes | This is the key of the resource to be loaded in the `Frame`. The resource must be defined in the app’s `manifest.yml` file. If the resource key is missing or cannot be located in the `manifest.yml`, a `Not Found` message will appear within the `Frame` component.   For more information on defining a resource, see [here](/platform/forge/extend-ui-with-custom-options/#resources). |
+| `height` | `string` | No | Sets the height of the `Frame` component. By default, the `Frame` component will resize according to the size of its contents. When `height` is set, the automatic resizing of the `Frame` component is disabled. Accepted units are `px` and `%`. |
+| `width` | `string` | No | Sets the width of the `Frame` component. By default, the `Frame` component will resize according to the size of its contents. When `width` is set, the automatic resizing of the `Frame` component is disabled. Accepted units are `px` and `%`. |
 
 ### Example
 
 ```
+```
 1
 2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-import React from 'react';
-import ForgeReconciler, { Text, Frame } from '@forge/react';
+```
+
+
+
+```
+import React from "react";
+import ForgeReconciler, { Text, Frame } from "@forge/react";
 
 const App = () => {
   return (
@@ -56,6 +49,7 @@ ForgeReconciler.render(
     <App />
   </React.StrictMode>
 );
+```
 ```
 
 ## Get started
@@ -78,7 +72,7 @@ For example, to allow inline CSS in your app, use the following configuration:
 permissions:
   content:
     styles:
-      - 'unsafe-inline'
+      - "unsafe-inline"
 ```
 ```
 
@@ -96,7 +90,7 @@ Here’s an another example for allowing scripts from specific sources using a s
 permissions:
   external:
     scripts:
-      - 'https://www.example-dev.com/script.js'
+      - "https://www.example-dev.com/script.js"
 ```
 ```
 

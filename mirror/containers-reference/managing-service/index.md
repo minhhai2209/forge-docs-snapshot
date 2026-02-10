@@ -28,7 +28,7 @@ Your appâ€™s containerised service lifecycle begins when you upload the serviceâ
 
 The following diagram provides a high-level view of the container lifecycle:
 
-![Forge Containers lifecycle overview](https://dac-static.atlassian.com/platform/forge/images/containers-lifecycle-overview.png?_v=1.5800.1834)
+![Forge Containers lifecycle overview](https://dac-static.atlassian.com/platform/forge/images/containers-lifecycle-overview.png?_v=1.5800.1837)
 
 This lifecycle involves the following major phases:
 
@@ -61,7 +61,7 @@ it to execute all container runtime commands:
 ```
 RUN useradd -u 1000 -r -s /bin/false appuser
 [...]
-USER useradd
+USER appuser
 ```
 ```
 
