@@ -2577,3 +2577,48 @@ This is an example of an event triggered when a Content-to-Space relationship is
 }
 ```
 ```
+
+## Search
+
+Forge apps can subscribe to the following search events:
+
+* Performed: `avi:confluence:performed:search`
+
+Search events are triggered after Confluence search results are returned for the search query.
+
+Search events require the following OAuth scopes:
+
+### Payload
+
+| Name | Type | Description |
+| --- | --- | --- |
+| eventType | `string` | The event name, such as `avi:confluence:performed:search`. |
+| eventCreatedDate | `string` | Date and time of the event in ISO 8601 format. |
+| atlassianId | `string` | The ID of the user that caused the event. Absent if the event was triggered by an anonymous user. |
+| query | `string` | The search query string. |
+| accountType | `string` | The type of account of the User who performed the search. |
+| results | `integer` | The number of search results returned. |
+
+### Example
+
+This is an example of an event triggered when a user performs a Confluence search:
+
+```
+```
+1
+2
+```
+
+
+
+```
+{
+  "eventType": "avi:confluence:performed:search",
+  "eventCreatedDate": "2021-01-20T06:29:21.907Z",
+  "atlassianId": "4ad9aa0c52dc1b420a791d12",
+  "query": "test search",
+  "accountType": "atlassian",
+  "results": 2
+}
+```
+```

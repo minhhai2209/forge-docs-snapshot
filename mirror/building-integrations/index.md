@@ -8,7 +8,7 @@ Discover the capabilities and benefits of building custom integrations that stre
 
 To integrate an third-party system with one or more Atlassian apps such as Jira, a Forge app can be created that acts as a bridge. The Forge app allows the third-party system to invoke Atlassian APIs and it also allows the third-party system to receive events from Atlassian apps.
 
-![Forge integration bridge architecture](https://dac-static.atlassian.com/platform/forge/images/integrations/forge-bridge-architecture.png?_v=1.5800.1837)
+![Forge integration bridge architecture](https://dac-static.atlassian.com/platform/forge/images/integrations/forge-bridge-architecture.png?_v=1.5800.1840)
 
 ### Invoke Atlassian APIs from an external system
 
@@ -19,7 +19,7 @@ A third-party system can invoke Atlassian app APIs in order to:
 
 The Forge [web trigger](/platform/forge/events-reference/web-trigger/) capability allows an app to receive API calls from a third-party system. After receiving a request, the Forge app can then invoke an Atlassian app API using the [Atlassian app fetch API](/platform/forge/apis-reference/product-rest-api-reference/#atlassian-app-fetch-api).
 
-![Web trigger integration flow](https://dac-static.atlassian.com/platform/forge/images/integrations/web-trigger-flow.png?_v=1.5800.1837)
+![Web trigger integration flow](https://dac-static.atlassian.com/platform/forge/images/integrations/web-trigger-flow.png?_v=1.5800.1840)
 
 **Next step**: Review the [Forge integration tutorial's](/platform/forge/build-a-feedback-integration-app/) explanation of implementing a webtrigger to allow an external web application to utilise Jira to implement capabilities.
 
@@ -31,7 +31,7 @@ For more complex event-driven workflows and automation patterns, see [Automation
 
 It's important to authenticate web trigger requests. A simple way to achieve this is by requiring requests be sent with a header that includes a key that is private to your app and the client invoking the web trigger.
 
-![Event trigger integration flow](https://dac-static.atlassian.com/platform/forge/images/integrations/event-trigger-flow.png?_v=1.5800.1837)
+![Event trigger integration flow](https://dac-static.atlassian.com/platform/forge/images/integrations/event-trigger-flow.png?_v=1.5800.1840)
 
 **Next step**: Review how the [Forge integration tutorial](/platform/forge/build-a-feedback-integration-app) explains how to listen to Jira work item events in order to relay feedback captured directly in Jira to the Feedback web app. For details, see the section below about the Forge Feedback example app.
 
@@ -39,7 +39,7 @@ It's important to authenticate web trigger requests. A simple way to achieve thi
 
 Forge has a feature named *Remotes* whereby functionality can be more directly implemented in third-party systems. For example, in the case of receiving Atlassian app events, the Forge app can specify that the third-party system can directly receive events. The Forge app can also specify that the event should convey a token that allows the third-party system to invoke Atlassian APIs in response to the event. Forge Remotes is a powerful way to integrate third-party systems with Atlassian apps. Forge Remotes is typically used when an external system such as a SaaS application has already been established, or if the system needs to utilise technologies such as programming languages, libraries, specialty databases or infrastructure that is unrealistic to implement in Forge.
 
-![Forge Remotes architecture](https://dac-static.atlassian.com/platform/forge/images/integrations/forge-remotes-architecture.png?_v=1.5800.1837)
+![Forge Remotes architecture](https://dac-static.atlassian.com/platform/forge/images/integrations/forge-remotes-architecture.png?_v=1.5800.1840)
 
 **Next step**: Review the [Forge Remotes documentation](/platform/forge/remote/).
 
@@ -63,7 +63,7 @@ There are many other ways to surface data in Atlassian apps using various [Forge
 
 The [Forge integration tutorial](/platform/forge/build-a-feedback-integration-app) shows how to use Forge to integrate a web app with Jira. In this example, the integration exchanges feedback between a web app and Jira, but you can apply the same pattern to many types of data.
 
-![Forge Feedback integration example](https://dac-static.atlassian.com/platform/forge/images/integrations/forge-feedback-example.png?_v=1.5800.1837)
+![Forge Feedback integration example](https://dac-static.atlassian.com/platform/forge/images/integrations/forge-feedback-example.png?_v=1.5800.1840)
 
 The feedback integration could be useful for a web app that a company uses to manage training. For example, the training web app could let students provide feedback about training sessions, stored in a Jira space, to take advantage of Jira’s workflow capabilities. Teachers can also capture feedback directly in the Jira project and the training web app will reflect this feedback in its system. The Forge Feedback app provides a two-way bridge between the training web app and Jira.
 

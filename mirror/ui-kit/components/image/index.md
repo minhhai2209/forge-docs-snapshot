@@ -51,7 +51,7 @@ permissions:
 The image `size` property is relative to the container.
 Here's an example with different image `size` props, to help illustrate how to use the image component in an app.
 
-![Examples of different image sizes that include xsmall, small, medium, large, xlarge to optimize images for different devices](https://dac-static.atlassian.com/platform/forge/images/ui-kit-2/image-sizes.png?_v=1.5800.1837)
+![Examples of different image sizes that include xsmall, small, medium, large, xlarge to optimize images for different devices](https://dac-static.atlassian.com/platform/forge/images/ui-kit-2/image-sizes.png?_v=1.5800.1840)
 
 If using percentage values for `width` and `height`, the image size will also be relative to the container, whereas
 using pixel values for `width` and `height` will change the size of the image to the pixel values provided.
@@ -81,7 +81,7 @@ export const App = () => (
 ```
 ```
 
-![black and white cat sitting on a bamboo chair, smirking as if to say, "This room is my fluffy kingdom"](https://dac-static.atlassian.com/platform/forge/images/ui-kit-2/image-default.png?_v=1.5800.1837)
+![black and white cat sitting on a bamboo chair, smirking as if to say, "This room is my fluffy kingdom"](https://dac-static.atlassian.com/platform/forge/images/ui-kit-2/image-default.png?_v=1.5800.1840)
 
 ### Static image
 
@@ -106,7 +106,7 @@ export const App = () => (
 ```
 ```
 
-![black and white cat sitting on a bamboo chair, smirking as if to say, "This room is my fluffy kingdom"](https://dac-static.atlassian.com/platform/forge/images/ui-kit-2/image-default.png?_v=1.5800.1837)
+![black and white cat sitting on a bamboo chair, smirking as if to say, "This room is my fluffy kingdom"](https://dac-static.atlassian.com/platform/forge/images/ui-kit-2/image-default.png?_v=1.5800.1840)
 
 ### GIF
 
@@ -131,7 +131,7 @@ export const App = () => (
 ```
 ```
 
-![Example of an animated GIF depicting Homer Simpson retreating into bushes, referencing the popular 'Homer Simpson disappearing' meme](https://dac-static.atlassian.com/platform/forge/images/homer.gif?_v=1.5800.1837)
+![Example of an animated GIF depicting Homer Simpson retreating into bushes, referencing the popular 'Homer Simpson disappearing' meme](https://dac-static.atlassian.com/platform/forge/images/homer.gif?_v=1.5800.1840)
 
 ## Accessibility considerations
 

@@ -6,15 +6,15 @@ We release preview features so partners and developers can study, test, and inte
 
 The Forge bridge `rovo` API enables your app to programmatically open the Rovo chat sidebar and initiate conversations with specific agents. Use this to provide contextual AI assistance by launching Rovo agents with pre-filled prompts based on user actions or data within your Forge app.
 
-## open
-
-The `open` method allows you to open the Rovo chat side bar and create a new conversation with the default or a specified Rovo agent.
-
-This method is currently supported in:
+The `rovo` APIs are currently supported in:
 
 * All Jira modules
 * All Confluence modules
 * The following Jira Service Management modules: `jiraServiceManagement:organizationPanel` and `jiraServiceManagement:queuePage`
+
+## open
+
+The `open` method allows you to open the Rovo chat sidebar and create a new conversation with the default or a specified Rovo agent.
 
 ### Function signature
 
@@ -47,7 +47,7 @@ function open(
   openRovoPayload?:
     | ForgeAgentPayload
     | AtlassianAgentPayload
-    | DefaultAgentPayload
+    | DefaultAgentPayload,
 ): Promise<void>;
 
 type ForgeAgentPayload = {
