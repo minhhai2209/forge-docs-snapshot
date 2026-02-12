@@ -12,7 +12,7 @@ The `jira:personalSettingsPage` module adds an item to the user's profile menu i
 
 The page URL is constructed in the following format: `/jira/settings/personal/apps/{appId}/{envId}`
 
-![Example of a personal settings page](https://dac-static.atlassian.com/platform/forge/snippets/images/personal-settings-page.png?_v=1.5800.1840)
+![Example of a personal settings page](https://dac-static.atlassian.com/platform/forge/snippets/images/personal-settings-page.png?_v=1.5800.1846)
 
 ## Subpages
 

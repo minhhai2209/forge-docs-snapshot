@@ -6,7 +6,7 @@ can be used to display information, notifications, or other content relevant to 
 Confluence page banner is supported on Confluence pages, live docs, and spaces. It is not supported on whiteboards,
 databases, smart links, or pages that are embedded within another Confluence page.
 
-![Example of a Confluence page banner](https://dac-static.atlassian.com/platform/forge/snippets/images/confluence-page-banner.png?_v=1.5800.1840)
+![Example of a Confluence page banner](https://dac-static.atlassian.com/platform/forge/snippets/images/confluence-page-banner.png?_v=1.5800.1846)
 
 ## Manifest structure
 

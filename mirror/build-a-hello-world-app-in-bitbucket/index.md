@@ -164,7 +164,7 @@ With your app installed, it’s time to see the app on a repository.
 2. Navigate to the source page in the repository. Your app should appear in the bottom of the
    **Repository details** pane on the right:
 
-![The app displayed in a Bitbucket repository](https://dac-static.atlassian.com/platform/forge/images/forge-view-bitbucket-app.png?_v=1.5800.1840)
+![The app displayed in a Bitbucket repository](https://dac-static.atlassian.com/platform/forge/images/forge-view-bitbucket-app.png?_v=1.5800.1846)
 
 1. To view new changes in your app, run `forge deploy` again, or run `forge tunnel`.
    This is explained fully in the next section.
@@ -241,7 +241,7 @@ For important caveats on how `forge tunnel` works, see
 In the next tutorial, you'll learn how to make API calls to Bitbucket using Forge. This tutorial
 uses the `forge tunnel`, so make sure you are familiar with using this command.
 
-[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.1840)](/platform/forge/call-a-bitbucket-api)
+[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.1846)](/platform/forge/call-a-bitbucket-api)
 
 ## Developing for Atlassian Government Cloud
 

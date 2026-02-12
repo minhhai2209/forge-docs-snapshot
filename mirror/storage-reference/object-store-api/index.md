@@ -43,13 +43,19 @@ If the following rate limits are exceeded, Forge will return a `TOO_MANY_REQUEST
 ### Operation limits
 
 When building interfaces for object download/uploads, you must use the available
-[frontend components](/platform/forge/storage-reference/object-store/#frontend-components)
+[frontend components](/platform/forge/storage-reference/object-store/#frontend-components).
 
 | Parameter | Limit |
 | --- | --- |
-| Storage limits | Objects size can be up to 1 GB each. |
-| Payload limits | The maximum payload size for all operations is 10 kB. |
-| Pre-signed URL validity | Pre-signed URLs are valid for a maximum of 1 hr. |
+| Maximum object size | 1 GB |
+| Maximum request payload size | 10 kB |
+| Pre-signed URL validity | 1 hour |
+
+The maximum object size applies to objects uploaded through any [frontend component](/platform/forge/storage-reference/object-store/#frontend-components) used in conjunction with the Forge Object Store (for example, the `useObjectStore`
+[UI Kit hook](/platform/forge/ui-kit/hooks/use-object-store/)).
+
+Meanwhile, the maximum request payload size only applies to the actual [Forge Object Store request](/platform/forge/storage-reference/object-store-api/).
+This request should only contain the object's name and other relevant metadata (not the object itself).
 
 Retrieve the metadata for objects stored in the Forge-hosted object store using the `get` method.
 

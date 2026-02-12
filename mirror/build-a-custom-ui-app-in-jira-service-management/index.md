@@ -202,7 +202,7 @@ With your app installed, it’s time to see the app in the Queues section.
 
 The app should display on the page with the content of your Custom UI, like the image below.
 
-![A Jira Service Management Queue page displaying a Custom UI forge app](https://dac-static.atlassian.com/platform/forge/images/forge-getting-started-jira-service-management-custome-ui.png?_v=1.5800.1840)
+![A Jira Service Management Queue page displaying a Custom UI forge app](https://dac-static.atlassian.com/platform/forge/images/forge-getting-started-jira-service-management-custome-ui.png?_v=1.5800.1846)
 
 While your app is deployed to either a development or staging environment, `(DEVELOPMENT)` or
 `(STAGING)` will appear in your app title.

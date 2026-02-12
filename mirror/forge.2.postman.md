@@ -1,7 +1,7 @@
 ```
 {
   "info": {
-    "_postman_id": "19f044c3-b7aa-4c90-8e85-7f2655715adb",
+    "_postman_id": "ae0befc9-9aae-4caf-8cd2-f7e01abf7588",
     "name": "Forge Containers API",
     "description": "The Forge Containers Public API\n\n**Important:** The API base URL should be read from the `FORGE_EGRESS_PROXY_URL` environment variable.\nThe localhost URL in the servers section is for documentation purposes only.\n",
     "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
@@ -845,9 +845,15 @@
                 "disabled": false,
                 "key": "Content-Type",
                 "value": "application/json"
+              },
+              {
+                "description": "",
+                "disabled": false,
+                "key": "Accept",
+                "value": "application/json"
               }
             ],
-            "description": "Stores a JSON value with a specified key. Forge resolves write conflicts using a last-write-wins strategy.",
+            "description": "Stores a JSON value with a specified key. Forge resolves write conflicts using a last-write-wins strategy by default, but this can be configured via the key policy option.\nOptionally, you can specify a TTL (Time To Live) to automatically expire the data after a specified duration.",
             "auth": {
               "type": "bearer",
               "bearer": {
@@ -979,7 +985,7 @@
                 "value": "application/json"
               }
             ],
-            "description": "Sets multiple Key-Value Store and/or Custom Entity Store values in a single operation. \nReturns a type ```BatchResponse``` which contains ```successfulKeys``` and ```failedKeys```.",
+            "description": "Sets multiple Key-Value Store and/or Custom Entity Store values in a single operation. \nReturns a type ```BatchResponse``` which contains ```successfulKeys``` and ```failedKeys```.\nOptionally, you can specify a TTL (Time To Live) for each item to automatically expire the data after a specified duration.",
             "auth": {
               "type": "bearer",
               "bearer": {
@@ -1063,9 +1069,15 @@
                 "disabled": false,
                 "key": "Content-Type",
                 "value": "application/json"
+              },
+              {
+                "description": "",
+                "disabled": false,
+                "key": "Accept",
+                "value": "application/json"
               }
             ],
-            "description": "Store sensitive credentials in JSON format, with encryption. Values set with this method can only be accessed with [Get secret value by key](/platform/forge/rest/api-group-key-value-store/#api-v1-secret-get-post). Write conflicts are resolved using a last-write-wins strategy.",
+            "description": "Stores sensitive credentials in JSON format, with encryption. \nValues set with this method can only be accessed with [Get secret value by key](/platform/forge/rest/api-group-key-value-store/#api-v1-secret-get-post). \nWrite conflicts are resolved using a last-write-wins strategy by default, but this can be configured via the key policy option.\nOptionally, you can specify a TTL (Time To Live) to automatically expire the data after a specified duration.",
             "auth": {
               "type": "bearer",
               "bearer": {
@@ -1189,9 +1201,15 @@
                 "disabled": false,
                 "key": "Content-Type",
                 "value": "application/json"
+              },
+              {
+                "description": "",
+                "disabled": false,
+                "key": "Accept",
+                "value": "application/json"
               }
             ],
-            "description": "Stores a JSON value with a specified key, for the selected entity.",
+            "description": "Stores a JSON value with a specified key, for the selected entity.\nOptionally, you can specify a TTL (Time To Live) to automatically expire the data after a specified duration.",
             "auth": {
               "type": "bearer",
               "bearer": {
@@ -1317,7 +1335,7 @@
                 "value": "application/json"
               }
             ],
-            "description": "Lets you perform a series of Key-Value Store and/or Custom Entity Store operations that must all succeed or fail together. This method supports 3 types of operations:\n- create or update data\n- delete data\n- check whether a specific Custom Entity condition is true",
+            "description": "Lets you perform a series of Key-Value Store and/or Custom Entity Store operations that must all succeed or fail together. This method supports 3 types of operations:\n- create or update data\n- delete data\n- check whether a specific Custom Entity condition is true\n(optionally with TTL for automatic expiration)",
             "auth": {
               "type": "bearer",
               "bearer": {

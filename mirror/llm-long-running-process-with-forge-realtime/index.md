@@ -366,6 +366,7 @@ See [Important security and technical requirements](#important-security-and-tech
 * **No events received:** Ensure channel names match exactly (case-sensitive) and that both subscriber and publisher use the same custom claims when signing tokens.
 * **Context error in async functions:** If you see errors about missing context in queue consumers, triggers, or scheduled functions, ensure you're using `subscribeGlobal()` and `publishGlobal()` instead of `subscribe()` and `publish()`.
 * **Debugging:** Use [Forge tunnel](/platform/forge/cli-reference/tunnel/) for logs.
+* **Streams concluding with incomplete responses:** Consider incorporating retries when streams conclude with messages missing, see [Handling streaming errors](/platform/forge/runtime-reference/forge-llms-api/#handling-streaming-errors).
 
 ## Conclusion
 
