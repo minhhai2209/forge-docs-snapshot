@@ -51,7 +51,7 @@ You can also scan the latency of the 50th percentile, 95th percentile, and 99th 
 
 On the **Query execution time** page's **Site breakdown** section, each listed site includes a link to its *Slow queries* page. Forge SQL tracks queries that take longer than 500ms to resolve (on average), and this page displays the 10 slowest ones.
 
-![Slow queries](https://dac-static.atlassian.com/platform/forge/images/monitor-sql-slowqueries.png?_v=1.5800.1846)
+![Slow queries](https://dac-static.atlassian.com/platform/forge/images/monitor-sql-slowqueries.png?_v=1.5800.1849)
 
 For a CSV export of *all* queries' average time to resolve, click the **Download** button.
 
@@ -103,13 +103,13 @@ The **Schema details** page contains three sections: [Database size](#database-s
 
 This section contains database size and metadata for the selected installation.
 
-![Database size](https://dac-static.atlassian.com/platform/forge/images/monitor-sql-database-size.png?_v=1.5800.1846)
+![Database size](https://dac-static.atlassian.com/platform/forge/images/monitor-sql-database-size.png?_v=1.5800.1849)
 
 ### Successful migration events
 
 This section lists all the DDL operations that Forge SQL was able to successfully execute on the site's database. The **Migration event** column shows a timestamp of each execution.
 
-![Successful migration events](https://dac-static.atlassian.com/platform/forge/images/monitor-sql-successful-events.png?_v=1.5800.1846)
+![Successful migration events](https://dac-static.atlassian.com/platform/forge/images/monitor-sql-successful-events.png?_v=1.5800.1849)
 
 The **Migration identifier** column displays the ID that Forge SQL automatically assigns to each Data Definition Language (DDL) operation in your `migrationRunner.enqueue` invocation. This ID is simply the number matching their place in your invocation. For example, consider the following `migrationRunner.enqueue` invocation:
 
@@ -141,7 +141,7 @@ Based on this, Forge SQL will assign the following `Migration identifier` to eac
 
 This section lets you view each table in the current database schema (including details about each table's respective fields).
 
-![Schema viewer](https://dac-static.atlassian.com/platform/forge/images/monitor-sql-schemaviewer.png?_v=1.5800.1846)
+![Schema viewer](https://dac-static.atlassian.com/platform/forge/images/monitor-sql-schemaviewer.png?_v=1.5800.1849)
 
 #### Table data tab
 
@@ -150,7 +150,7 @@ a selected table. This tab is only visible when accessing the development, custo
 environment of your
 [cloud developer site](/platform/forge/build-a-hello-world-app-in-jira/#set-up-a-cloud-developer-site).
 
-![Schema viewer](https://dac-static.atlassian.com/platform/forge/images/monitor-sql-schemaviewer-tabledata.png?_v=1.5800.1846)
+![Schema viewer](https://dac-static.atlassian.com/platform/forge/images/monitor-sql-schemaviewer-tabledata.png?_v=1.5800.1849)
 
 #### Hidden fields
 

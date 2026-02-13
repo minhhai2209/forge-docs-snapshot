@@ -74,7 +74,7 @@ const SelectAppearanceDefault= () => {
 
 A select that's transparent until interaction or error.
 
-![Example image of select component with subtle appearance](https://dac-static.atlassian.com/platform/forge/ui-kit/images/select/select-subtle.png?_v=1.5800.1846)
+![Example image of select component with subtle appearance](https://dac-static.atlassian.com/platform/forge/ui-kit/images/select/select-subtle.png?_v=1.5800.1849)
 
 ```
 ```
@@ -107,7 +107,7 @@ Always use a label component for each field and associate the label to the field
 
 For required fields, always add the `RequiredAsterisk` component next to the label.
 
-![Example image of select component with a label](https://dac-static.atlassian.com/platform/forge/ui-kit/images/select/select-field-label.png?_v=1.5800.1846)
+![Example image of select component with a label](https://dac-static.atlassian.com/platform/forge/ui-kit/images/select/select-field-label.png?_v=1.5800.1849)
 
 ```
 ```
@@ -141,7 +141,7 @@ const SelectFieldLabel = () => {
 
 A select with compact spacing.
 
-![Example image of select component with compact spacing](https://dac-static.atlassian.com/platform/forge/ui-kit/images/select/select-compact.png?_v=1.5800.1846)
+![Example image of select component with compact spacing](https://dac-static.atlassian.com/platform/forge/ui-kit/images/select/select-compact.png?_v=1.5800.1849)
 
 ```
 ```
@@ -168,7 +168,7 @@ const SelectCompactSpacing = () => {
 
 A select can be in different states such as disabled or invalid.
 
-![Example image of select component with different states](https://dac-static.atlassian.com/platform/forge/ui-kit/images/select/select-states.png?_v=1.5800.1846)
+![Example image of select component with different states](https://dac-static.atlassian.com/platform/forge/ui-kit/images/select/select-states.png?_v=1.5800.1849)
 
 ```
 ```
@@ -202,7 +202,7 @@ const SelectStates = () => {
 
 Allows the user to select a single item from a dropdown list of options.
 
-![Example image of single select component](https://dac-static.atlassian.com/platform/forge/ui-kit/images/select/select-single-select.png?_v=1.5800.1846)
+![Example image of single select component](https://dac-static.atlassian.com/platform/forge/ui-kit/images/select/select-single-select.png?_v=1.5800.1849)
 
 ```
 ```
@@ -239,7 +239,7 @@ const SelectSingleExample = () => (
 
 Setting `isClearable` to true lets users clear their selection using the `Backspace` or `Delete` key.
 
-![Example image of clearable select component](https://dac-static.atlassian.com/platform/forge/ui-kit/images/select/select-single-select-clearable.png?_v=1.5800.1846)
+![Example image of clearable select component](https://dac-static.atlassian.com/platform/forge/ui-kit/images/select/select-single-select-clearable.png?_v=1.5800.1849)
 
 ```
 ```
@@ -277,7 +277,7 @@ const SelectSingleClearable = () => (
 
 Allows the user to select multiple items from a dropdown list of options.
 
-![Example image of multi select component](https://dac-static.atlassian.com/platform/forge/ui-kit/images/select/select-multi-select.png?_v=1.5800.1846)
+![Example image of multi select component](https://dac-static.atlassian.com/platform/forge/ui-kit/images/select/select-multi-select.png?_v=1.5800.1849)
 
 ```
 ```
@@ -316,7 +316,7 @@ const SelectMultiExample = () => (
 
 Related options can be grouped together in both a single and multi select.
 
-![Example image of grouped options select component](https://dac-static.atlassian.com/platform/forge/ui-kit/images/select/select-grouped-options.png?_v=1.5800.1846)
+![Example image of grouped options select component](https://dac-static.atlassian.com/platform/forge/ui-kit/images/select/select-grouped-options.png?_v=1.5800.1849)
 
 ```
 ```

@@ -28,7 +28,7 @@ A progress bar communicates the status of a system process.
 
 The default appearance of a progress bar.
 
-![Example image of a progress bar with default appearance](https://dac-static.atlassian.com/platform/forge/ui-kit/images/progress-bar/progress-bar-default.png?_v=1.5800.1846)
+![Example image of a progress bar with default appearance](https://dac-static.atlassian.com/platform/forge/ui-kit/images/progress-bar/progress-bar-default.png?_v=1.5800.1849)
 
 ```
 ```
@@ -47,7 +47,7 @@ const ProgressBarDefaultExample = () => {
 
 #### Inverse
 
-![Example image of a progress bar with inverse appearance](https://dac-static.atlassian.com/platform/forge/ui-kit/images/progress-bar/progress-bar-inverse.png?_v=1.5800.1846)
+![Example image of a progress bar with inverse appearance](https://dac-static.atlassian.com/platform/forge/ui-kit/images/progress-bar/progress-bar-inverse.png?_v=1.5800.1849)
 
 ```
 ```
@@ -76,7 +76,7 @@ const ProgressBarInverseExample = () => {
 
 Success indicates the completion of a process.
 
-![Example image of a progress bar with success appearance](https://dac-static.atlassian.com/platform/forge/ui-kit/images/progress-bar/progress-bar-success.png?_v=1.5800.1846)
+![Example image of a progress bar with success appearance](https://dac-static.atlassian.com/platform/forge/ui-kit/images/progress-bar/progress-bar-success.png?_v=1.5800.1849)
 
 ```
 ```
@@ -103,7 +103,7 @@ const ProgressBarSuccessExample = () => {
 
 `Indeterminate` progress bars display movement along the container until the process is finished.
 
-![Example image of a progress bar with indeterminate appearance](https://dac-static.atlassian.com/platform/forge/ui-kit/images/progress-bar/progress-bar-indeterminate.png?_v=1.5800.1846)
+![Example image of a progress bar with indeterminate appearance](https://dac-static.atlassian.com/platform/forge/ui-kit/images/progress-bar/progress-bar-indeterminate.png?_v=1.5800.1849)
 
 ```
 ```

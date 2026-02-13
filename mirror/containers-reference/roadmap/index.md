@@ -1,9 +1,45 @@
-# Containers roadmap
+# Forge Containers roadmap (EAP)
 
-Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
-When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our
+Forge Containers are now available through Forge's Early Access Program (EAP). To start testing this feature,
+submit your app's ID to our team [through this link](https://ecosystem.atlassian.net/servicedesk/customer/portal/1040/create/18884).
 
-[Privacy Policy](https://www.atlassian.com/legal/privacy-policy#additional-disclosures-for-ca-residents)
+EAPs are offered to selected users for testing and feedback purposes. APIs and features under EAP
+are unsupported and subject to change without notice. APIs and features under EAP are not recommended
+for use in production environments.
 
-.
-You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
+For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
+
+The current EAP release has a deliberately reduced scope and limited functionality. Its purpose is to create a usable containers environment where we can incrementally deliver new functionality and get your immediate feedback.
+
+This release may not currently satisfy all your requirements. Going forward, we will be working with you to collect your feedback and evolve Forge Containers to meet your needs.
+
+With this release, you can test and assess how to deploy a containerised service in Forge Containers. Service scaling, routing, deployment, and configuration options will be limited in this release, but we will be improving this over time.
+
+Currently, Forge Containers has the following limitations:
+
+## Integration limitations
+
+* Forge Containers have not yet been fully tested against every single Forge module that supports an `endpoint` module as its implementation. Some rough edges may exist.
+* Documentation for reading/writing from Forge Object Store (EAP) is not yet available.
+* Apps can't process an async event within a container and provide a result back to the queue (async events processed by a container currently use a ‘fire and forget’ mechanism, and can't retry or assess success/failure of the event processing).
+* Containers can’t call the REST APIs of Bitbucket Cloud and Compass.
+
+## Deployment limitations
+
+* You can only build and run Forge Container services on Forge’s `development` and custom [environments](https://developer.atlassian.com/platform/forge/environments-and-versions/#environments).
+* An app can only have *one* containerised service, which can only have *one* defined container.
+* To deploy a a change to a container image, you'll need to run `forge deploy`.
+
+## Lifecycle limitations
+
+* Service instances are not automatically recycled. Therefore, while Forge Containers is under active development, you may be periodically required to re-deploy your container services (using `forge deploy`) to pick up breaking changes to platform components. This will be communicated via Slack and Confluence blogs when required.
+* Service instances cannot be deleted. As such, deploying your app after editing your `services.key` in the manifest will fail, as apps are limited to only one containerised service during EAP.
+
+## Resource and scaling limitations
+
+* An app’s service can only have *one* instance, and cannot scale.
+* A service can have a maximum of 1000m CPU and 2048 Mi of memory allocated.
+
+## Observability limitations
+
+CPU and memory usage tracking in the Developer Console are not yet available.

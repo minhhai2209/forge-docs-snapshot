@@ -194,7 +194,7 @@ import { ValidMessage } from '@forge/react';
 
 A form is a group of related fields. You can customize the fields with components such as text field, range field, and checkbox field. You can also pass in default values. Submitting the form calls a callback function. To manage state, validation and submissions, use the component together with the provided [useForm](/platform/forge/ui-kit/hooks/use-form/) hook.
 
-![Example image of a form](https://dac-static.atlassian.com/platform/forge/ui-kit/images/form/form-default.png?_v=1.5800.1846)
+![Example image of a form](https://dac-static.atlassian.com/platform/forge/ui-kit/images/form/form-default.png?_v=1.5800.1849)
 
 ```
 ```
@@ -270,7 +270,7 @@ Use a form footer to set the content at the end of the form. This is used for a 
 
 This is positioned after the last field in the form. It can also be fixed to the bottom of viewport for longer forms.
 
-![Example image of form layout components](https://dac-static.atlassian.com/platform/forge/ui-kit/images/form/form-layout.png?_v=1.5800.1846)
+![Example image of form layout components](https://dac-static.atlassian.com/platform/forge/ui-kit/images/form/form-layout.png?_v=1.5800.1849)
 
 ```
 ```
@@ -376,7 +376,7 @@ Always use a label component for each field and associate the label to the field
 
 For required fields, always add the `RequiredAsterisk` component next to the label.
 
-![Example image of form label and helper message](https://dac-static.atlassian.com/platform/forge/ui-kit/images/form/form-label.png?_v=1.5800.1846)
+![Example image of form label and helper message](https://dac-static.atlassian.com/platform/forge/ui-kit/images/form/form-label.png?_v=1.5800.1849)
 
 ```
 ```
@@ -411,7 +411,7 @@ When validating text fields in real-time, messaging can be updated to provide th
 
 Validate a field’s value using the validation properties supplied by the [register](/platform/forge/ui-kit/hooks/use-form/#register) from `useForm` function.
 
-![Example image of form with validation messages](https://dac-static.atlassian.com/platform/forge/ui-kit/images/form/form-validation-messages.png?_v=1.5800.1846)
+![Example image of form with validation messages](https://dac-static.atlassian.com/platform/forge/ui-kit/images/form/form-validation-messages.png?_v=1.5800.1849)
 
 ```
 ```
@@ -516,7 +516,7 @@ On submission, the current state gets passed onto the `onSubmit` handler. This s
 
 The `onSubmit` handler can return synchronously or return a promise that resolves to the result. Note that the promise should resolve with the error, rather than reject with the error.
 
-![Example image of form with submission validation](https://dac-static.atlassian.com/platform/forge/ui-kit/images/form/form-submission-validation.png?_v=1.5800.1846)
+![Example image of form with submission validation](https://dac-static.atlassian.com/platform/forge/ui-kit/images/form/form-submission-validation.png?_v=1.5800.1849)
 
 ```
 ```
@@ -634,7 +634,7 @@ export const SubmissionValidationExample = () => {
 
 When using Form in a modal, use the [Modal layout](/platform/forge/ui-kit/components/modal/#modal-body-props) components instead of the Form layout components.
 
-![Example image of form in a modal](https://dac-static.atlassian.com/platform/forge/ui-kit/images/form/form-modal.png?_v=1.5800.1846)
+![Example image of form in a modal](https://dac-static.atlassian.com/platform/forge/ui-kit/images/form/form-modal.png?_v=1.5800.1849)
 
 ```
 ```
@@ -717,7 +717,7 @@ export const FormModalExample = () => {
 
 Example of a form with all possible input components.
 
-![Example image of form with all field components](https://dac-static.atlassian.com/platform/forge/ui-kit/images/form/form-all-fields.png?_v=1.5800.1846)
+![Example image of form with all field components](https://dac-static.atlassian.com/platform/forge/ui-kit/images/form/form-all-fields.png?_v=1.5800.1849)
 
 ```
 ```

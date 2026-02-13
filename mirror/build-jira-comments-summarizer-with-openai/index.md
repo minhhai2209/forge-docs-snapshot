@@ -46,14 +46,14 @@ The limits on the numbers of users you can create are as follows:
 To view a summary of an issue's Jira comments, the user clicks the **Summarizer** button on an issue page.
 The app displays an issue panel containing a summary of all the comments for the issue.
 
-![Jira summarizer app in action](https://dac-static.atlassian.com/platform/forge/images/forge-openai-app-demo.gif?_v=1.5800.1846)
+![Jira summarizer app in action](https://dac-static.atlassian.com/platform/forge/images/forge-openai-app-demo.gif?_v=1.5800.1849)
 
 You can find the source code for this demo here:
 [atlassian/forge-ai-jira-comment-summarizer](https://bitbucket.org/atlassian/forge-ai-jira-comment-summarizer/src/master/).
 
 ### How does the app work?
 
-![Jira summarizer high level diagram](https://dac-static.atlassian.com/platform/forge/images/forge-openai-app-diagram.png?_v=1.5800.1846)
+![Jira summarizer high level diagram](https://dac-static.atlassian.com/platform/forge/images/forge-openai-app-diagram.png?_v=1.5800.1849)
 
 Following the numbered points in the diagram:
 
@@ -82,7 +82,7 @@ Once your development environment is set up, follow these steps to create an ini
 Depending on your Jira site, you may see the name of your app in the menu, as pictured below,
 or you may see only its icon.
 
-![Jira summarizer app in action](https://dac-static.atlassian.com/platform/forge/images/forge-openai-app-demo.gif?_v=1.5800.1846)
+![Jira summarizer app in action](https://dac-static.atlassian.com/platform/forge/images/forge-openai-app-demo.gif?_v=1.5800.1849)
 
 You can read an explanation of each code block below it.
 

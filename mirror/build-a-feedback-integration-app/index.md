@@ -18,7 +18,7 @@ The first step involves creating a Forge app from a template that provides simil
 6. Select *webtrigger* template.
 7. Verify you see output similar to the following:
 
-![CLI output after creating webtrigger template app](https://dac-static.atlassian.com/platform/forge/images/remote/cli-feedback-integration-tutorial.png?_v=1.5800.1846)
+![CLI output after creating webtrigger template app](https://dac-static.atlassian.com/platform/forge/images/remote/cli-feedback-integration-tutorial.png?_v=1.5800.1849)
 
 This will have created a directory named *FeedbackIntegration* and files within it that is the initial version of your app.
 
@@ -307,14 +307,14 @@ The following steps include multiple code edits. The final app code is listed af
 1. Create a new space (formerly known as project) in your Jira development site, where your feedback work items will be created.
 2. Add a new work type to the Jira space that will be used to represent feedback.
 
-   ![Create work item type in Jira](https://dac-static.atlassian.com/platform/forge/images/remote/create-work-type-tutorial.png?_v=1.5800.1846)
+   ![Create work item type in Jira](https://dac-static.atlassian.com/platform/forge/images/remote/create-work-type-tutorial.png?_v=1.5800.1849)
 3. Record the Jira space identifier and key by visiting `https://your-site.atlassian.net/rest/api/3/project` and finding the feedback project. This will allow you to capture the details on the Jira space and work item type that was created.
 
-   ![Find the Jira space identifier in feedback project](https://dac-static.atlassian.com/platform/forge/images/remote/jira-space-identifier-tutorial-work-item.png?_v=1.5800.1846)
+   ![Find the Jira space identifier in feedback project](https://dac-static.atlassian.com/platform/forge/images/remote/jira-space-identifier-tutorial-work-item.png?_v=1.5800.1849)
 4. Use the Jira space identifier to find the identifier of the feedback work item type by visiting:
    `https://your-site.atlassian.net/rest/api/3/issuetype/project?projectId=your-work-item-type-id`.
 
-   ![Find the Jira space identifier and key](https://dac-static.atlassian.com/platform/forge/images/remote/jira-space-identifier-tutorial.png?_v=1.5800.1846)
+   ![Find the Jira space identifier and key](https://dac-static.atlassian.com/platform/forge/images/remote/jira-space-identifier-tutorial.png?_v=1.5800.1849)
 5. Add three constants at the top of `src/index.js` for the identifiers retrieved in the previous steps:
 
    ```
@@ -427,7 +427,7 @@ The following steps include multiple code edits. The final app code is listed af
    ```
 10. Add code to invoke the Jira API and create the feedback work item. Go to the the [Jira Cloud platform REST API](/cloud/jira/platform/rest/v3/api-group-issues/#api-rest-api-3-issue-post), select the Forge code snippet tab, and copy the example code. Edit the code as needed for your use case. For more information, see the the [Jira Cloud platform REST API](/cloud/jira/platform/rest/v3).
 
-    ![Discover the Jira cloud rest API](https://dac-static.atlassian.com/platform/forge/images/remote/jira-cloud-rest-api-tutorial.png?_v=1.5800.1846)
+    ![Discover the Jira cloud rest API](https://dac-static.atlassian.com/platform/forge/images/remote/jira-cloud-rest-api-tutorial.png?_v=1.5800.1849)
 
     If you haven’t copied the code snippet yet, the following steps will provide detailed instructions for the required edits.
 11. Start by adding a new function named `buildCreateIssueBodyData`:
@@ -798,7 +798,7 @@ const buildMethodNotAllowedOutput = (rnd) => ({
 
 At this point, you would have built a Forge app that enables your web application to submit feedback to Jira by making a simple REST API call to the app’s web trigger.
 
-![Diagram on web app sending information to Forge](https://dac-static.atlassian.com/platform/forge/images/remote/web-app-forge-jira-tutorial.png?_v=1.5800.1846)
+![Diagram on web app sending information to Forge](https://dac-static.atlassian.com/platform/forge/images/remote/web-app-forge-jira-tutorial.png?_v=1.5800.1849)
 
 While your web application could call the Jira REST API directly, this would require using OAuth 2.0 (which is more complex) or personal access tokens (which attribute all actions to a single user). Using a Forge app provides more flexibility and allows you to extend functionality, such as adding user interfaces to view or manage feedback.
 
@@ -1017,7 +1017,7 @@ You can also check your web application’s observability tools to verify that t
 
 Now, the Forge app provides the ability to send work item change events to the web application as depicted by the arrows from Jira to the Forge app to the web application. This may be important if the web application needs to present user interfaces summarising or detailing the open feedback.
 
-![Diagram on web app sending and receiving information to Forge](https://dac-static.atlassian.com/platform/forge/images/remote/web-app-forge-jira-tutorial-send.png?_v=1.5800.1846)
+![Diagram on web app sending and receiving information to Forge](https://dac-static.atlassian.com/platform/forge/images/remote/web-app-forge-jira-tutorial-send.png?_v=1.5800.1849)
 
 ## Next steps
 

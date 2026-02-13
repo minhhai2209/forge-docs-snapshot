@@ -140,7 +140,7 @@ See [Indexes](/platform/forge/runtime-reference/custom-entities/#indexes) for mo
 
    If the indexes were created successfully, this command should display the following:
 
-   ![custom-entities-indexes-table-successful-command](https://dac-static.atlassian.com/platform/forge/images/custom-entities-indexes.png?_v=1.5800.1846)
+   ![custom-entities-indexes-table-successful-command](https://dac-static.atlassian.com/platform/forge/images/custom-entities-indexes.png?_v=1.5800.1849)
 3. Install your app by running:
 4. Select your Atlassian app using the arrow keys and press the enter key.
 5. Enter the URL for your development site. For example, *example.atlassian.net*. [View a list of your active sites at Atlassian administration](https://admin.atlassian.com/).

@@ -6,7 +6,7 @@ The page URL is constructed in the following format: `/jira/apps/{appId}/{envId}
 
 When adding this to your app, use it as a top-level component.
 
-![Example of a global page](https://dac-static.atlassian.com/platform/forge/snippets/images/global-page.jpg?_v=1.5800.1846)
+![Example of a global page](https://dac-static.atlassian.com/platform/forge/snippets/images/global-page.jpg?_v=1.5800.1849)
 
 You can only register a single `jira:globalPage` module per app. If you define more than one `jira:globalPage` entry in your manifest, deployment will fail.
 
@@ -22,14 +22,14 @@ The sidebar will only change the global page URL, you will need to [handle route
 ## Manifest example
 
 ```
+```
 1
 2
-3
-4
-5
-6
-7
-8
+```
+
+
+
+```
 modules:
   jira:globalPage:
     - key: hello-world-global-page
@@ -38,6 +38,7 @@ modules:
         function: resolver
       render: native
       title: Hello World!
+```
 ```
 
 ## Properties
@@ -49,7 +50,6 @@ modules:
 | `render` | `'native'` | If using modern versions of [UI Kit](/platform/forge/ui-kit/components/) | Indicates the module uses [UI Kit](/platform/forge/ui-kit/components/). |
 | `resolver` | `{ function: string }` or `{ endpoint: string }` |  | Set the `function` property if you are using a hosted `function` module for your resolver.  Set the `endpoint` property if you are using [Forge Remote](/platform/forge/forge-remote-overview) to integrate with a remote back end. |
 | `title` | `string` or `i18n object` | Yes | The title of the global page, which is displayed at the top of the page.  The `i18n object` allows for translation. See [i18n object](#i18n-object). |
-| `icon` | `string` |  | The URL of the icon that displays next to the title. Relative URL's aren't supported. A generic app icon is displayed if no URL is provided. |
 | `layout` | UI Kit: Custom UI:  * `native` * `blank` * `basic (deprecated)`  (default: `native`) |  | The layout of the global page that defines whether a page is rendered with default controls (native), lays out the entire viewport with a margin on the left and breadcrumbs (basic for UI Kit), or is left blank allowing for full customization (blank for Custom UI). |
 | `pages` | `Page[]` | You can only specify `pages` or `sections` but not both. | The list of subpages to render on the sidebar. |
 | `sections` | `Section[]` | The list of sections to render on the sidebar. |

@@ -28,7 +28,7 @@ Your appâ€™s containerised service lifecycle begins when you upload the serviceâ
 
 The following diagram provides a high-level view of the container lifecycle:
 
-![Forge Containers lifecycle overview](https://dac-static.atlassian.com/platform/forge/images/containers-lifecycle-overview.png?_v=1.5800.1846)
+![Forge Containers lifecycle overview](https://dac-static.atlassian.com/platform/forge/images/containers-lifecycle-overview.png?_v=1.5800.1849)
 
 This lifecycle involves the following major phases:
 

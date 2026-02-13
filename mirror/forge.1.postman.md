@@ -1,7 +1,7 @@
 ```
 {
   "info": {
-    "_postman_id": "cd7fe866-81ff-46d9-91b9-36e34ccdd0aa",
+    "_postman_id": "1a38f761-0d1d-41fb-b737-34181022bb39",
     "name": "Key-Value Store/Custom Entity Store REST API",
     "description": "Forge provides hosted storage capabilities for storing your app's data:\n- **Key-Value Store** - stores data as key-value pairs\n- **Custom Entity Store** - stores data within custom data structures (entities)\nBoth capabilities have resources that can be used natively, or accessed by remote resources via REST API. For more information about both capabilities,\nsee [storage-api](https://developer.atlassian.com/platform/forge/runtime-reference/storage-api/).",
     "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"

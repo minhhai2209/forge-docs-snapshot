@@ -1,8 +1,8 @@
 # Accessing Forge storage from a remote via REST API
 
 You can configure a remote back end to store data on Forge’s
-[Key-Value Store (KVS)](/platform/forge/rest/api-group-key-value-store/) or
-[Custom Entity Store](/platform/forge/rest/api-group-custom-entity-store/) via REST API.
+[Key-Value Store (KVS)](/platform/forge/rest/v2/pi-group-key-value-store/) or
+[Custom Entity Store](/platform/forge/rest/v2/api-group-custom-entity-store/) via REST API.
 
 ## Prerequisites
 

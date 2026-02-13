@@ -1,7 +1,7 @@
 ```
 {
   "info": {
-    "_postman_id": "ae0befc9-9aae-4caf-8cd2-f7e01abf7588",
+    "_postman_id": "3b816c08-ee8b-4467-85a6-37de1f0d692f",
     "name": "Forge Containers API",
     "description": "The Forge Containers Public API\n\n**Important:** The API base URL should be read from the `FORGE_EGRESS_PROXY_URL` environment variable.\nThe localhost URL in the servers section is for documentation purposes only.\n",
     "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
@@ -939,7 +939,7 @@
                 "value": "application/json"
               }
             ],
-            "description": "Retrieve key-value pairs matching the provided list of criteria. This method does not return secret values set by [Set secret value](/platform/forge/rest/api-group-key-value-store/#api-v1-secret-set-post).",
+            "description": "Retrieve key-value pairs matching the provided list of criteria. This method does not return secret values set by [Set secret value](/platform/forge/rest/v1/api-group-key-value-store/#api-v1-secret-set-post).",
             "auth": {
               "type": "bearer",
               "bearer": {
@@ -1031,7 +1031,7 @@
                 "value": "application/json"
               }
             ],
-            "description": "Gets a value by key, which was stored using [Set secret value by key](/platform/forge/rest/api-group-key-value-store/#api-v1-secret-set-post). The value is decrypted before being returned.",
+            "description": "Gets a value by key, which was stored using [Set secret value by key](/platform/forge/rest/v1/api-group-key-value-store/#api-v1-secret-set-post). The value is decrypted before being returned.",
             "auth": {
               "type": "bearer",
               "bearer": {
@@ -1077,7 +1077,7 @@
                 "value": "application/json"
               }
             ],
-            "description": "Stores sensitive credentials in JSON format, with encryption. \nValues set with this method can only be accessed with [Get secret value by key](/platform/forge/rest/api-group-key-value-store/#api-v1-secret-get-post). \nWrite conflicts are resolved using a last-write-wins strategy by default, but this can be configured via the key policy option.\nOptionally, you can specify a TTL (Time To Live) to automatically expire the data after a specified duration.",
+            "description": "Stores sensitive credentials in JSON format, with encryption. \nValues set with this method can only be accessed with [Get secret value by key](/platform/forge/rest/v1/api-group-key-value-store/#api-v1-secret-get-post). \nWrite conflicts are resolved using a last-write-wins strategy by default, but this can be configured via the key policy option.\nOptionally, you can specify a TTL (Time To Live) to automatically expire the data after a specified duration.",
             "auth": {
               "type": "bearer",
               "bearer": {
