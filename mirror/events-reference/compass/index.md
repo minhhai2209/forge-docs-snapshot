@@ -1,59 +1,9 @@
 # Compass events
 
-Forge apps can subscribe to Compass events for:
+Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
+When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our
 
-Your Forge app must have permission from the
-site admin to access the data it provides within the event payload.
-The OAuth scope required for each event is documented below.
+[Privacy Policy](https://www.atlassian.com/legal/privacy-policy#additional-disclosures-for-ca-residents)
 
-## Component Links
-
-Forge apps can subscribe to these events on a component:
-
-* Link created: `avi:compass:created:component_link`
-* Link updated: `avi:compass:updated:component_link`
-* Link deleted: `avi:compass:deleted:component_link`
-
-All component events require the OAuth scope `read:component:compass`.
-
-All component events share the same payload format.
-
-### Payload
-
-| Name | Type | Description |
-| --- | --- | --- |
-| eventType | `string` | The event name such as `avi:compass:created:component_link`. |
-| component | `Component` | The component that had a link change |
-
-### Type reference
-
-```
-1
-2
-3
-interface Component {
-  id: string;
-}
-```
-
-### Example
-
-This is an example payload.
-
-```
-```
-1
-2
-```
-
-
-
-```
-{
-  "eventType": "avi:compass:created:component_link",
-  "component": {
-    "id": "ari:cloud:compass:00000000-0000-0000-0000-000000000000:component/00000000-0000-0000-0000-000000000000/00000000-0000-0000-0000-000000000000"
-  }
-}
-```
-```
+.
+You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
