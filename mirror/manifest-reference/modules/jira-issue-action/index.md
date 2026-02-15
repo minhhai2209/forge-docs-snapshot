@@ -17,14 +17,14 @@ This is an example of the triggered modal dialog:
 ## Manifest example
 
 ```
+```
 1
 2
-3
-4
-5
-6
-7
-8
+```
+
+
+
+```
 modules:
   jira:issueAction:
     - key: hello-world-issue-action
@@ -33,6 +33,7 @@ modules:
         function: resolver
       render: native
       title: Hello World
+```
 ```
 
 ## Properties
