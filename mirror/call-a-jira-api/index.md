@@ -1,5 +1,11 @@
 # Part 2: Call a Jira API
 
+#### Having trouble?
+
+Ask for help on our Developer Community
+
+[Get help](https://community.developer.atlassian.com/session/sso?return_path=%2Fnew-topic%3Fcategory_id%3D45%26tags%3Dforge-call-a-jira-api)
+
 Using the `@forge/bridge` package, you'll learn how to make REST calls to an authenticated Jira endpoint.
 
 ## Make an API call
@@ -187,5 +193,5 @@ When you save the `index.jsx` file, the tunnel output in the developer console m
 In the next tutorial, you'll learn how to make changes to your app's frontend using the
 [UI Kit components](/platform/forge/ui-kit/components/) of Forge.
 
-[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.1849)](/platform/forge/build-a-hello-world-app-in-jira/)
-[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.1849)](/platform/forge/change-the-jira-frontend-with-the-ui-kit/)
+[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.1851)](/platform/forge/build-a-hello-world-app-in-jira/)
+[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.1851)](/platform/forge/change-the-jira-frontend-with-the-ui-kit/)

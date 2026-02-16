@@ -1,5 +1,11 @@
 # Part 1: Build a Confluence hello world app
 
+#### Having trouble?
+
+Ask for help on our Developer Community
+
+[Get help](https://community.developer.atlassian.com/session/sso?return_path=%2Fnew-topic%3Fcategory_id%3D45%26tags%3Dforge-build-a-hello-world-app-in-confluence)
+
 This tutorial will walk you through creating a sample Forge app for Confluence.
 There are three parts to the tutorial:
 
@@ -167,7 +173,7 @@ With your app installed, it’s time to see the app on a page.
 
 Your hello world app is now installed into your development site. The app should display on the page like the image below.
 
-![The app displayed in a Confluence page](https://dac-static.atlassian.com/platform/forge/images/forge-getting-started-initial-state.png?_v=1.5800.1849)
+![The app displayed in a Confluence page](https://dac-static.atlassian.com/platform/forge/images/forge-getting-started-initial-state.png?_v=1.5800.1851)
 
 While your app is deployed to either a development or staging environment, `(development)` or
 `(staging)` will appear in your app title. This suffix is removed once you've
@@ -240,7 +246,7 @@ For important caveats on how `forge tunnel` works, see
 
 In the next tutorial, you'll learn how to make API calls to Confluence using Forge. This tutorial uses the `forge tunnel`, so make sure you are familiar with using this command.
 
-[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.1849)](/platform/forge/call-a-confluence-api)
+[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.1851)](/platform/forge/call-a-confluence-api)
 
 ## Developing for Atlassian Government Cloud
 

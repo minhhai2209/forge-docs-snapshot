@@ -373,7 +373,7 @@ That configuration form is built by you, using either UI Kit or Custom UI.
 
 We recommend choosing UI Kit due to its simplicity and efficiency in capturing user inputs.
 
-![configuration-example](https://dac-static.atlassian.com/platform/forge/images/automation/action-configuration-example.png?_v=1.5800.1849)
+![configuration-example](https://dac-static.atlassian.com/platform/forge/images/automation/action-configuration-example.png?_v=1.5800.1851)
 
 For a great user experience, it is important for the configuration form to interact properly with Automation.
 There are two areas to take care of:
@@ -756,11 +756,11 @@ Kindly refer [outputs](/platform/forge/manifest-reference/modules/automation-act
 Below section gives a glimpse of what to expect when working with Forge actions and smart values.
 Defining a rule with a Forge action that has defined outputs mentioned in the example here: [Forge Action](/platform/forge/manifest-reference/modules/automation-action/#using-a-forge-app-with-output)
 
-![automation-action-configuration](https://dac-static.atlassian.com/platform/forge/images/automation/automation-action-smart-value-configuration.png?_v=1.5800.1849)
+![automation-action-configuration](https://dac-static.atlassian.com/platform/forge/images/automation/automation-action-smart-value-configuration.png?_v=1.5800.1851)
 
 We can now select the smart value operator which is created as explained above. This operator can than be used in the subsequent rule executions.
 
-![automation-action-smart-value-operator](https://dac-static.atlassian.com/platform/forge/images/automation/automation-action-smart-value-operator.png?_v=1.5800.1849)
+![automation-action-smart-value-operator](https://dac-static.atlassian.com/platform/forge/images/automation/automation-action-smart-value-operator.png?_v=1.5800.1851)
 
 ## Action execution
 
@@ -865,7 +865,7 @@ If the app defines multiple actions, they will have the same icon.
 
 An app icon can be configured in the Developer console:
 
-![app-icon](https://dac-static.atlassian.com/platform/forge/images/automation/action-configuration-icon.png?_v=1.5800.1849)
+![app-icon](https://dac-static.atlassian.com/platform/forge/images/automation/action-configuration-icon.png?_v=1.5800.1851)
 
 ## Design guidelines
 

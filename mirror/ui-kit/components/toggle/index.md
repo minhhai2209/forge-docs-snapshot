@@ -33,7 +33,7 @@ A toggle is used to view or switch between enabled or disabled states.
 
 The default form of a toggle.
 
-![Example image of a rendered default toggle](https://dac-static.atlassian.com/platform/forge/ui-kit/images/toggle/toggle-default.png?_v=1.5800.1849)
+![Example image of a rendered default toggle](https://dac-static.atlassian.com/platform/forge/ui-kit/images/toggle/toggle-default.png?_v=1.5800.1851)
 
 ```
 ```
@@ -60,7 +60,7 @@ export default function ToggleExample() {
 
 Manage the checked state of the input by providing the `isChecked` prop. This requires an `onChange` handler to control the state value that you pass into the `isChecked` prop.
 
-![Example image of a rendered controlled toggle](https://dac-static.atlassian.com/platform/forge/ui-kit/images/toggle/toggle-controlled.png?_v=1.5800.1849)
+![Example image of a rendered controlled toggle](https://dac-static.atlassian.com/platform/forge/ui-kit/images/toggle/toggle-controlled.png?_v=1.5800.1851)
 
 ```
 ```
@@ -97,7 +97,7 @@ export default function ToggleControlledExample() {
 
 When a selection has already been made outside of the current context that negates the need for the toggle, you can use the disabled state.
 
-![Example image of a disabled toggle](https://dac-static.atlassian.com/platform/forge/ui-kit/images/toggle/toggle-disabled.png?_v=1.5800.1849)
+![Example image of a disabled toggle](https://dac-static.atlassian.com/platform/forge/ui-kit/images/toggle/toggle-disabled.png?_v=1.5800.1851)
 
 ```
 ```
@@ -120,7 +120,7 @@ export default function ToggleDisabledExample() {
 
 To call attention to a specific action, use a large toggle.
 
-![Example image of a large toggle](https://dac-static.atlassian.com/platform/forge/ui-kit/images/toggle/toggle-size.png?_v=1.5800.1849)
+![Example image of a large toggle](https://dac-static.atlassian.com/platform/forge/ui-kit/images/toggle/toggle-size.png?_v=1.5800.1851)
 
 ```
 ```
@@ -143,7 +143,7 @@ export default function ToggleLargeExample() {
 
 Always use the `label` prop when there isn't a visible label that you can pair the toggle with.
 
-![Example image of a toggle with a hidden label](https://dac-static.atlassian.com/platform/forge/ui-kit/images/toggle/toggle-hidden-label.png?_v=1.5800.1849)
+![Example image of a toggle with a hidden label](https://dac-static.atlassian.com/platform/forge/ui-kit/images/toggle/toggle-hidden-label.png?_v=1.5800.1851)
 
 ```
 ```

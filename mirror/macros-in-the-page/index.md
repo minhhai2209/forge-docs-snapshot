@@ -1,12 +1,18 @@
 # Use content actions to count the macros in a Confluence page
 
+#### Having trouble?
+
+Ask for help on our Developer Community
+
+[Get help](https://community.developer.atlassian.com/session/sso?return_path=%2Fnew-topic%3Fcategory_id%3D45%26tags%3Dforge-macros-in-the-page)
+
 This tutorial describes how to create a Forge app that displays the number of macros in a Confluence
 page. The app retrieves the body of the page, counts the number of macros, then displays the result
 in a modal dialog. A user triggers the action from an entry in the more actions (...) menu.
 
 The final app looks like the following:
 
-![Confluence page showing a modal dialog with macros used in this page.](https://dac-static.atlassian.com/platform/forge/images/content-action-macro-count.gif?_v=1.5800.1849)
+![Confluence page showing a modal dialog with macros used in this page.](https://dac-static.atlassian.com/platform/forge/images/content-action-macro-count.gif?_v=1.5800.1851)
 
 ## Before you begin
 
@@ -156,7 +162,7 @@ You'll see the *Macro Count* entry from the app.
 
 When you select the menu item you will see, the following modal.
 
-![Confluence page showing a modal dialog with the default content from the macro count template](https://dac-static.atlassian.com/platform/forge/images/content-action-macro-count-initial.png?_v=1.5800.1849)
+![Confluence page showing a modal dialog with the default content from the macro count template](https://dac-static.atlassian.com/platform/forge/images/content-action-macro-count-initial.png?_v=1.5800.1851)
 
 ## Implement the front end
 

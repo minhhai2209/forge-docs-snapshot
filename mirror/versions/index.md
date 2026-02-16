@@ -29,13 +29,13 @@ will initially have a version of `1.1` (major version `1`, minor version `1`).
 There are different ways to see what version of your app is installed on each site, in each environment:
 
 * The `forge install list` [command](/platform/forge/cli-reference/install-list/) will display the major version installed on each site:
-  ![forge install list](https://dac-static.atlassian.com/platform/forge/images/app-version/cli.png?_v=1.5800.1849)
+  ![forge install list](https://dac-static.atlassian.com/platform/forge/images/app-version/cli.png?_v=1.5800.1851)
 * In the [developer console](https://developer.atlassian.com/console/myapps/), your app's **Installations** page (under **MONITOR**) will display the major and minor version. The first segment of the version is the major version
   number. All sites on the same major version will also be on the same minor version:
-  ![Developer Console > MONITOR > Installations](https://dac-static.atlassian.com/platform/forge/images/app-version/dev-cons-install.png?_v=1.5800.1849)
+  ![Developer Console > MONITOR > Installations](https://dac-static.atlassian.com/platform/forge/images/app-version/dev-cons-install.png?_v=1.5800.1851)
 * In the [developer console](https://developer.atlassian.com/console/myapps/), your app's
   **Deployments** page (under **BUILD**) will show who performed each deployment (**Contributor**), and when. It’ll also show which major version each deployment targeted within an environment:
-  ![Developer Console > BUILD > Deployments](https://dac-static.atlassian.com/platform/forge/images/app-version/dev-cons-deploy.png?_v=1.5800.1849)
+  ![Developer Console > BUILD > Deployments](https://dac-static.atlassian.com/platform/forge/images/app-version/dev-cons-deploy.png?_v=1.5800.1851)
 
 Each site’s admin can also see and upgrade their installed app’s version. See
 [Manage app upgrades](https://support.atlassian.com/security-and-access-policies/docs/manage-your-users-third-party-apps/#Manage-app-upgrades) for more details.
@@ -450,8 +450,10 @@ permissions:
 ## Backporting
 
 In some cases, a site admin can’t or won’t upgrade from an older major version of your app. You can
-still backport `minor version upgrades` to their app. When you do, Forge will automatically apply that
-minor version upgrade to all sites running the same major version.
+still backport `minor version upgrades` to their app. When you do, Forge will:
+
+* Automatically apply that minor version upgrade to all sites running the same major version.
+* Create a new [app version build number](/platform/marketplace/knowledge-base/changing-the-app-version-build-number/) for your Marketplace listing.
 
 To do this, use the `--major-version` option:
 
@@ -471,7 +473,16 @@ forge deploy --major-version [version] --verbose
 The `--verbose` option will provide you with more useful details about any deployment errors. These
 details include whether your attempted deployment would have resulted in a new major version.
 
-#### Limitations
+### Older versions can supersede new versions
+
+When you backport changes to an older major version, the resulting minor version becomes the new *default* version used for new installs.
+This is because the new version now uses a higher [app version build number](/platform/marketplace/knowledge-base/changing-the-app-version-build-number/).
+
+This also makes it possible for new customers to install older major versions of your app. To prevent this, make sure you deploy changes to the latest major versions *after* performing a backport.
+
+This is a known issue; see [MP-524](https://jira.atlassian.com/browse/MP-524) for more details.
+
+### Limitations
 
 * Any manifest file changes relating to
   [Custom Entities](/platform/forge/runtime-reference/custom-entities/)
