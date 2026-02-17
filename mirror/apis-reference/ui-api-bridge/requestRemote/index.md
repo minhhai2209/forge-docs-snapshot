@@ -41,7 +41,8 @@ function requestRemote(
 
 ### FormData support
 
-requestRemote accepts [FormData](https://developer.mozilla.org/en-US/docs/Web/API/FormData) as the request body. If you send files as part of the form, please note that you can send **only one file, and it must be named `file`**.
+`requestRemote` accepts [FormData](https://developer.mozilla.org/en-US/docs/Web/API/FormData) as the request body.
+If you send files as part of the form, note that **each file provided must start with the prefix `file`**.
 
 ```
 ```
@@ -52,15 +53,22 @@ requestRemote accepts [FormData](https://developer.mozilla.org/en-US/docs/Web/AP
 
 
 ```
-// Create a Blob with some text content
+// Create a blob with some text content
 const content = 'This is the content of the file.';
 const blob = new Blob([content], { type: 'text/plain' });
-
 // Create a File object from the Blob
-const file = new File([blob], 'testfile.txt', { type: 'text/plain' });
+const fileText = new File([blob], 'testfile.txt', { type: 'text/plain' });
+
+// Create a blob containing a base64 string of an image
+const base64image = 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAA1JREFUGFdjYGD4/x8AAwIB/8myre4AAAAASUVORK5CYII=';
+const imageBlob = new Blob([base64image], { type: 'image/png' });
+// Create a File object from the Blob
+const fileImage = new File([imageBlob], 'test.png', { type: 'image/png' });
+
 const formData = new FormData();
-// NOTE: The file must be named 'file'
-formData.append('file', file);
+// NOTE: The file must start with the prefix 'file'
+formData.append('fileText', fileText);
+formData.append('fileImage', fileImage);
 ```
 ```
 

@@ -65,7 +65,7 @@ This demonstrates how to render the contents of a UI Kit bodied macro, including
 * Your app must be a [Confluence bodied macro](/platform/forge/using-rich-text-bodied-macros/#step-3--render-rich-body-content) with [layout:bodied enabled](/platform/forge/using-rich-text-bodied-macros/#step-1--configure-the-manifest) in the macro module properties of the manifest file.
 * This approach is for **UI Kit** apps only. For Custom UI, use `view.createAdfRendererIframeProps` instead.
 
-![Screenshot showing a UI Kit bodied macro with "Hello world!" text above and below the rendered macro body content](https://dac-static.atlassian.com/platform/forge/ui-kit/images/adfRenderer/adfRenderer-ui-kit-bodied-macro.png?_v=1.5800.1851)
+![Screenshot showing a UI Kit bodied macro with "Hello world!" text above and below the rendered macro body content](https://dac-static.atlassian.com/platform/forge/ui-kit/images/adfRenderer/adfRenderer-ui-kit-bodied-macro.png?_v=1.5800.1853)
 
 ```
 ```
@@ -113,7 +113,7 @@ If the UI Kit bodied macro contains multiple Forge embedded macro apps, you can 
 
 This demonstrates how a simple ADF document is rendered.
 
-![Example image of a rendered valid basic ADF document](https://dac-static.atlassian.com/platform/forge/ui-kit/images/adfRenderer/adfRenderer-basic.png?_v=1.5800.1851)
+![Example image of a rendered valid basic ADF document](https://dac-static.atlassian.com/platform/forge/ui-kit/images/adfRenderer/adfRenderer-basic.png?_v=1.5800.1853)
 
 ```
 ```
@@ -152,7 +152,7 @@ export const AdfRendererBasicExample = () => {
 
 This demonstrates how unsupported content might render by default, without any explicit replacement logic defined.
 
-![Example image of a rendered valid ADF document with unsupported content](https://dac-static.atlassian.com/platform/forge/ui-kit/images/adfRenderer/adfRenderer-unsupported-content-basic.png?_v=1.5800.1851)
+![Example image of a rendered valid ADF document with unsupported content](https://dac-static.atlassian.com/platform/forge/ui-kit/images/adfRenderer/adfRenderer-unsupported-content-basic.png?_v=1.5800.1853)
 
 ```
 ```
@@ -195,7 +195,7 @@ export const AdfRendererUnsupportedExample = () => {
 
 This demonstrates a simple replacement function that just replaces unsupported content with a paragraph.
 
-![Example image of a rendered valid ADF document with unsupported content replaced](https://dac-static.atlassian.com/platform/forge/ui-kit/images/adfRenderer/adfRenderer-unsupported-content-replaced-basic.png?_v=1.5800.1851)
+![Example image of a rendered valid ADF document with unsupported content replaced](https://dac-static.atlassian.com/platform/forge/ui-kit/images/adfRenderer/adfRenderer-unsupported-content-replaced-basic.png?_v=1.5800.1853)
 
 ```
 ```
@@ -255,7 +255,7 @@ export const AdfRendererUnsupportedContentExample = () => {
 
 This demonstrates a more complex replacement function that either replaces content, removes it, and or leaves it as-is, depending on the node type.
 
-![Example image of a rendered valid ADF document with unsupported content replaced](https://dac-static.atlassian.com/platform/forge/ui-kit/images/adfRenderer/adfRenderer-unsupported-content-replaced-complex.png?_v=1.5800.1851)
+![Example image of a rendered valid ADF document with unsupported content replaced](https://dac-static.atlassian.com/platform/forge/ui-kit/images/adfRenderer/adfRenderer-unsupported-content-replaced-complex.png?_v=1.5800.1853)
 
 ```
 ```

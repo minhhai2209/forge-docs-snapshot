@@ -8,7 +8,7 @@ alert’s severity changes, and when an alert closes.
 
 The typical lifecycle of an alert is as follows:
 
-![Alert lifecycle diagram](https://dac-static.atlassian.com/platform/forge/images/alerts/alert-lifecycle.svg?_v=1.5800.1851)
+![Alert lifecycle diagram](https://dac-static.atlassian.com/platform/forge/images/alerts/alert-lifecycle.svg?_v=1.5800.1853)
 
 |  |  |
 | --- | --- |
@@ -46,12 +46,12 @@ To view open alerts for an app in the developer console:
 3. In the side navigation panel, select **Alerts** and then select **Open alerts**. This screen shows
    all alerts that are currently open.
 
-![Open alerts screen](https://dac-static.atlassian.com/platform/forge/images/alerts/alerts_open-alerts.svg?_v=1.5800.1851)
+![Open alerts screen](https://dac-static.atlassian.com/platform/forge/images/alerts/alerts_open-alerts.svg?_v=1.5800.1853)
 
 4. For a more detailed view of a specific open alert, including the alert activity, metrics chart,
    and alert rule details, select the specific alert.
 
-![Open alert more details screen](https://dac-static.atlassian.com/platform/forge/images/alerts/alerts_open-alert-details.svg?_v=1.5800.1851)
+![Open alert more details screen](https://dac-static.atlassian.com/platform/forge/images/alerts/alerts_open-alert-details.svg?_v=1.5800.1853)
 
 ## Closed alerts
 
@@ -66,9 +66,9 @@ To view closed alerts for an app in the developer console:
 3. In the side navigation panel, select **Alerts** and then select **Closed alerts**. This screen shows
    alerts that have been recently closed.
 
-![Closed alerts screen](https://dac-static.atlassian.com/platform/forge/images/alerts/alerts_closed-alerts.svg?_v=1.5800.1851)
+![Closed alerts screen](https://dac-static.atlassian.com/platform/forge/images/alerts/alerts_closed-alerts.svg?_v=1.5800.1853)
 
 4. For a more detailed view of a specific closed alert, including the alert activity from when
    the alert was open, metrics chart, and alert rule details, select the specific alert.
 
-![Closed alert more details screen](https://dac-static.atlassian.com/platform/forge/images/alerts/alerts_closed-alert-details.svg?_v=1.5800.1851)
+![Closed alert more details screen](https://dac-static.atlassian.com/platform/forge/images/alerts/alerts_closed-alert-details.svg?_v=1.5800.1853)

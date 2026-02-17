@@ -1,9 +1,56 @@
 # View app storage
 
-Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
-When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our
+App storage lets you view the [storage](/platform/forge/storage/) usage of a Forge app across
+development and staging environments of a site where the app is installed. Storage information
+is accessible to app admins and contributors on the developer console if an app is storing data
+using the [app storage API](/platform/forge/storage/#app-storage).
 
-[Privacy Policy](https://www.atlassian.com/legal/privacy-policy#additional-disclosures-for-ca-residents)
+To view app storage:
 
-.
-You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
+1. Access the [developer console](/console/myapps).
+2. In the left menu, select **Storage**.
+3. Select the relevant **site** where the app is installed.
+4. Select the relevant **environment**.
+
+The screen shows the storage usage of an app for a selected site.
+
+![Storage usage for a selected site](https://dac-static.atlassian.com/platform/forge/images/storage-screen.svg?_v=1.5800.1853)
+
+### Storage usage
+
+You can view both **unencrypted** and **encrypted** storage that an app is using per environment per site
+where the app is installed:
+
+* **Unencrypted storage usage**: Displays the total size of unencrypted data that the app is storing
+  for a selected site.
+* **Encrypted storage usage**: Displays the total size of encrypted data that the app is storing
+  for a selected site. Encrypted data usually takes up more space than unencrypted data since
+  each data point is encrypted separately.
+
+### Unencrypted storage data
+
+The table contains a list of the keys and values used in unencrypted storage:
+
+### Filters
+
+Use these filters to refine your storage:
+
+* **Site**: Narrows down storage usage based on the site where your app is installed,
+  for example `https://your-domain.atlassian.net`.
+
+  You can't filter by Atlassian app. For example, you can't narrow down storage usage just for Jira
+  instances on a particular site.
+* **Environment**: Narrows down the storage for a specific app environment for your Forge app.
+
+Unencrypted storage is shown for the selected environment of a selected site. To see the unencrypted
+storage usage of another site, select the site and the corresponding environment.
+
+### Limitations
+
+The storage access functionality in the developer console is an evolving feature. We're exploring
+ways to improve and overcome the following limitations:
+
+* Storage filters don't allow for multi-select.
+* Encrypted storage cannot be accessed.
+* Unencrypted storage does not show data for production environment.
+* Data and usage from custom entity store cannot be viewed in the developer console.

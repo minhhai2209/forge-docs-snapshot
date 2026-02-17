@@ -1,9 +1,15 @@
 # About the Forge Data Processing Addendum
 
-Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
-When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our
+The [Forge Data Processing Addendum (Forge DPA)](https://dac-static.atlassian.com/platform/forge/resources/Forge-Data-Processing-Addendum.pdf?_v=1.5800.1853) is incorporated by reference in the [Forge Terms](/platform/forge/developer-terms/), which all Forge developers must comply with in order to use the Forge platform.
 
-[Privacy Policy](https://www.atlassian.com/legal/privacy-policy#additional-disclosures-for-ca-residents)
+# How to accept the Forge Terms and the Forge DPA
 
-.
-You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
+A data processing addendum is a contract that outlines the rights and obligations of each party (in this case, Atlassian and Forge developers) concerning the protection of personal data.
+
+Under the Forge DPA, Atlassian predominantly acts as a processor of personal data on behalf of Forge developers in connection with the provision of the Forge platform. However, in certain circumstances, Atlassian acts as a controller of personal data (for example, to comply with applicable laws, to ensure the security of the Forge platform, and to administer Forge services, including the Forge command-line interface). For more information, refer to Section 1.2 and Annex 1(B), Part B of the [Forge DPA](https://developer.atlassian.com/platform/forge/resources/Forge-Data-Processing-Addendum.pdf).
+
+The Forge DPA also incorporates the [EU standard contractual clauses (EU SCCs)](https://ec.europa.eu/info/law/law-topic/data-protection/international-dimension-data-protection/standard-contractual-clauses-scc_en), which govern cross-border transfers of developers' (and their customers') personal data to Atlassian. The EU SCCs provide a mechanism to transfer European Economic Area (EEA) residents' data out of the EEA in a manner that is compliant with the General Data Protection Regulation (GDPR).
+
+The Forge DPA also includes certain interpretative provisions to ensure that the EU SCCs apply to transfers of UK and Switzerland residents' personal data outside of those countries.
+
+For more information, see these resources:

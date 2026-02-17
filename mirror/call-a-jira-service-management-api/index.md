@@ -175,7 +175,7 @@ ForgeReconciler.render(
 2. Refresh the JSM queue page app.
 3. Check the output of the app in your browser's developer console. The number of queues on the service desk displays as follows:
 
-![The message displayed in the browser console](https://dac-static.atlassian.com/platform/forge/images/console-log-successful-jsm.png?_v=1.5800.1851)
+![The message displayed in the browser console](https://dac-static.atlassian.com/platform/forge/images/console-log-successful-jsm.png?_v=1.5800.1853)
 
 ## Set required permissions
 
@@ -234,5 +234,5 @@ For information about how Atlassian collects and handles your data, read our
 In the next tutorial, you'll learn how to make changes to your app's frontend using the
 [UI Kit components](/platform/forge/ui-kit/components/) of Forge.
 
-[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.1851)](/platform/forge/build-a-hello-world-app-in-jira-service-management/)
-[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.1851)](/platform/forge/change-the-jira-service-management-frontend-with-the-ui-kit/)
+[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.1853)](/platform/forge/build-a-hello-world-app-in-jira-service-management/)
+[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.1853)](/platform/forge/change-the-jira-service-management-frontend-with-the-ui-kit/)

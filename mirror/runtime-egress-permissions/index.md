@@ -24,6 +24,8 @@ app's manifest.
 If you encounter any issues with a redirect that you believe should be handled by Atlassian, please reach out to
 [Atlassian support](https://ecosystem.atlassian.net/servicedesk/customer/portal/34)
 
+Redirect handling is only supported for egress requests made using the fetch client. Redirects are not followed for Forge remote requests.
+
 ## Define external domains in the manifest file
 
 By default, if your Forge app is relying on a FaaS function that calls a third-party website
@@ -37,16 +39,20 @@ For example, to allow calls to the third-party website `ingest.sentry.io`, use t
 following configuration:
 
 ```
+```
 1
 2
-3
-4
-5
+```
+
+
+
+```
 permissions:
   external:
     fetch:
       backend:
         - '*.ingest.sentry.io'
+```
 ```
 
 ###### Example as an object

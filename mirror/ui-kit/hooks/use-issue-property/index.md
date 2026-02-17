@@ -22,7 +22,7 @@ Avoid calling `useIssueProperty` multiple times in the same app, since their out
 
 Here is an example of an app that stores information in an issue property with `useIssueProperty`.
 
-![The app display on a Jira issue](https://dac-static.atlassian.com/platform/forge/images/ui-kit-2/hooks-examples/useissueproperty-concrete-value-update.png?_v=1.5800.1851)
+![The app display on a Jira issue](https://dac-static.atlassian.com/platform/forge/images/ui-kit-2/hooks-examples/useissueproperty-concrete-value-update.png?_v=1.5800.1853)
 
 ```
 1
@@ -80,7 +80,7 @@ ForgeReconciler.render(
 Here's another example that updates the issue property based on the current value stored in the
 property.
 
-![The app display on a Jira issue](https://dac-static.atlassian.com/platform/forge/images/ui-kit-2/hooks-examples/useissueproperty-setter-function-update.png?_v=1.5800.1851)
+![The app display on a Jira issue](https://dac-static.atlassian.com/platform/forge/images/ui-kit-2/hooks-examples/useissueproperty-setter-function-update.png?_v=1.5800.1853)
 
 ```
 ```
