@@ -19,6 +19,8 @@ import { Icon } from "@forge/react";
 
 An icon is a visual representation of a command, device, directory, or common action.
 
+If you want your icon to appear in a tile, you can use it in conjunction with the [Tile](/platform/forge/ui-kit/components/tile) component.
+
 ## Props
 
 | Name | Type | Required | Description |
@@ -38,7 +40,7 @@ Valid icons can be found in the [Atlassian Design System Icon Library](https://a
 
 Extract the `core` segment of the icon's import to get the valid icon name to pass into `glyph`. For example, the icon name for `icon/core/thumbs-up` is `thumbs-up`.
 
-![Example image of default icon](https://dac-static.atlassian.com/platform/forge/ui-kit/images/icon/icon-default.png?_v=1.5800.1853)
+![Example image of default icon](https://dac-static.atlassian.com/platform/forge/ui-kit/images/icon/icon-default.png?_v=1.5800.1858)
 
 ```
 ```
@@ -68,7 +70,7 @@ If an icon doesn’t have an existing text label or accessible text, provide a c
 
 If an icon is associated with a button or element that has a text label, you don't need to provide alternative text. The `label` of the button or element clarifies the icon's meaning.
 
-![Example image of icon with label](https://dac-static.atlassian.com/platform/forge/ui-kit/images/icon/icon-label.png?_v=1.5800.1853)
+![Example image of icon with label](https://dac-static.atlassian.com/platform/forge/ui-kit/images/icon/icon-label.png?_v=1.5800.1858)
 
 ```
 ```
@@ -129,7 +131,7 @@ The color of the icon can be declared using the `color` property. The icon's col
 
 Allowed `color` values include any design token with the prefix `color.` found under [Atlassian Design System design tokens](https://atlassian.design/components/tokens/all-tokens).
 
-![Example image of color icon](https://dac-static.atlassian.com/platform/forge/ui-kit/images/icon/icon-color.png?_v=1.5800.1853)
+![Example image of color icon](https://dac-static.atlassian.com/platform/forge/ui-kit/images/icon/icon-color.png?_v=1.5800.1858)
 
 ```
 ```
@@ -158,7 +160,7 @@ The `large` size is now [deprecated](https://developer.atlassian.com/changelog/#
 
 #### Small
 
-![Example image of small icon](https://dac-static.atlassian.com/platform/forge/ui-kit/images/icon/icon-sizing-small.png?_v=1.5800.1853)
+![Example image of small icon](https://dac-static.atlassian.com/platform/forge/ui-kit/images/icon/icon-sizing-small.png?_v=1.5800.1858)
 
 ```
 ```
@@ -179,7 +181,7 @@ const IconSmall = () => {
 
 #### Medium (default)
 
-![Example image of medium icon](https://dac-static.atlassian.com/platform/forge/ui-kit/images/icon/icon-sizing-medium.png?_v=1.5800.1853)
+![Example image of medium icon](https://dac-static.atlassian.com/platform/forge/ui-kit/images/icon/icon-sizing-medium.png?_v=1.5800.1858)
 
 ```
 ```
@@ -197,3 +199,38 @@ const IconMedium = () => {
 };
 ```
 ```
+
+### Icons in tiles
+
+You can display an icon in a tile using the `Icon` and [Tile](/platform/forge/ui-kit/components/tile) components.
+
+Place the `Icon` component as a child of the `Tile` component so the icon renders inside the tile.
+
+![Examples of tiles with icons](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tile/tile-with-icons.png?_v=1.5800.1858)
+
+```
+```
+1
+2
+```
+
+
+
+```
+import React from "react";
+import { Icon, Tile, Inline } from "@forge/react";
+
+export const App = () => (
+  <Inline space="space.100">
+    <Tile label="attachment" backgroundColor="white" hasBorder>
+      <Icon glyph="attachment" label="attachment" color='color.icon.accent.blue'/>
+    </Tile>
+    <Tile label="attachment" backgroundColor="color.background.accent.purple.subtle">
+      <Icon glyph="attachment" label="attachment" />
+    </Tile>
+  </Inline>
+);
+```
+```
+
+If you're looking to use Atlassian icons in tiles, use the [AtlassianTile](/platform/forge/ui-kit/components/atlassian-tile/) component instead, as it is designed to work specifically for Atlassian icons.

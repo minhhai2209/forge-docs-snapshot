@@ -238,8 +238,7 @@ ari:cloud:identity::user/712020:5fb4febcfacfd60076a1c699
 ```
 ```
 
-Each object type's documentation provides instructions for how to construct and determine ARIs for
-that type. For more details about constructing a user's ARI, see the [User](/platform/teamwork-graph/object-types-api/user/) object type documentation.
+For more information about ARIs, see this page: [Understanding ARIs](/platform/teamwork-graph/understanding-aris/)
 
 ## Step 4: Wrap Cypher in GraphQL
 
@@ -269,7 +268,7 @@ query companyName_userTeams($cypherQuery: String!, $params: CypherRequestParams)
                 id
                 data {
                   __typename
-                  ... on Team {
+                  ... on AtlassianTeam {
                     id
                     displayName
                   }
@@ -295,8 +294,10 @@ Key points about the query structure:
 * `CypherQueryResultNode` - Would be used if the Cypher query returned a single object
 * `data { ... on Team }` - Populates team objects with specific fields like `id` and `displayName`
 
-You can explore all available fields for teams in the [Team](/platform/teamwork-graph/object-types-api/team/)
+You can explore all available fields for teams in the [AtlassianTeam](/platform/teamwork-graph/api-reference/object-types/AtlassianTeam/)
 object type documentation.
+
+You can also explore other CypherQueryResult types in the [GraphQL and Cypher documentation](/platform/teamwork-graph/graphql-and-cypher/#handling-different-result-types)
 
 ### Query variables
 

@@ -48,7 +48,7 @@ When building interfaces for object download/uploads, you must use the available
 | Parameter | Limit |
 | --- | --- |
 | Maximum object size | 1 GB |
-| Maximum request payload size | 10 kB |
+| Maximum request payload size | 1 kB |
 | Pre-signed URL validity | 1 hour |
 
 The maximum object size applies to objects uploaded through any [frontend component](/platform/forge/storage-reference/object-store/#frontend-components) used in conjunction with the Forge Object Store (for example, the `useObjectStore`

@@ -17,7 +17,15 @@ import { Tile } from "@forge/react";
 
 ## Description
 
-A tile is a rounded square container for displaying assets like icons, emojis, or objects in a consistent, styled way.
+A tile is a rounded square container for displaying assets like icons, emojis, or images in a consistent, styled way.
+
+You can display an icon in a tile by using the Tile component with the [Icon](/platform/forge/ui-kit/components/icon) component.
+
+Note that Atlassian icons cannot be used with the standard Tile component. If you want an Atlassian icon in a tile, use the [Atlassian tile](/platform/forge/ui-kit/components/atlassian-tile) component instead. This keeps styling consistent for Atlassian icons and tiles.
+
+You can display an icon in a tile by using the Tile component with the [Icon](/platform/forge/ui-kit/components/icon) component.
+
+Note that Atlassian icons cannot be used with the standard Tile component. If you want an Atlassian icon in a tile, use the [Atlassian tile](/platform/forge/ui-kit/components/atlassian-tile) component instead. This keeps styling consistent for Atlassian icons and tiles.
 
 ## Props
 
@@ -35,7 +43,7 @@ A tile is a rounded square container for displaying assets like icons, emojis, o
 
 The default tile has a medium size, neutral background, and inset enabled – this is the default empty state.
 
-![Example image of default tile](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tile/tile-default.png?_v=1.5800.1853)
+![Example image of default tile](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tile/tile-default.png?_v=1.5800.1858)
 
 ```
 ```
@@ -57,7 +65,7 @@ export const App = () => <Tile label="" />; //The empty label indicates this is 
 
 Tiles come in six different sizes. The size property controls both the width and height of the tile.
 
-![Examples of different tile sizes](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tile/tile-sizes.png?_v=1.5800.1853)
+![Examples of different tile sizes](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tile/tile-sizes.png?_v=1.5800.1858)
 
 ```
 ```
@@ -88,7 +96,7 @@ export const App = () => (
 
 Tiles support a variety of background colors using the `backgroundColor` prop, which can be set to design tokens. This defaults to `color.background.neutral`.
 
-![Examples of tiles with different background colors](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tile/tile-colors.png?_v=1.5800.1853)
+![Examples of tiles with different background colors](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tile/tile-colors.png?_v=1.5800.1858)
 
 ```
 ```
@@ -122,7 +130,7 @@ export const App = () => (
 You can add a border to a tile and control whether it has internal padding (inset). Disabling inset can be used for supplying assets with backgrounds, such as third-party logos.
 Inset is enabled by default to provide appropriate spacing for assets.
 
-![Examples of tiles with border and inset variations](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tile/tile-border-insets.png?_v=1.5800.1853)
+![Examples of tiles with border and inset variations](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tile/tile-border-insets.png?_v=1.5800.1858)
 
 ```
 ```
@@ -149,6 +157,41 @@ export const App = () => (
 );
 ```
 ```
+
+### Icons in tiles
+
+You can display an icon in a tile using the [Icon](/platform/forge/ui-kit/components/icon) and `Tile` components.
+
+Place the `Icon` component as a child of the `Tile` component so the icon renders inside the tile.
+
+![Examples of tiles with icons](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tile/tile-with-icons.png?_v=1.5800.1858)
+
+```
+```
+1
+2
+```
+
+
+
+```
+import React from "react";
+import { Icon, Tile, Inline } from "@forge/react";
+
+export const App = () => (
+  <Inline space="space.100">
+    <Tile label="attachment" backgroundColor="white" hasBorder>
+      <Icon glyph="attachment" label="attachment" color='color.icon.accent.blue'/>
+    </Tile>
+    <Tile label="attachment" backgroundColor="color.background.accent.purple.subtle">
+      <Icon glyph="attachment" label="attachment" />
+    </Tile>
+  </Inline>
+);
+```
+```
+
+If you're looking to use Atlassian icons in tiles, use the [AtlassianTile](/platform/forge/ui-kit/components/atlassian-tile/) component instead, as it is designed to work specifically for Atlassian icons.
 
 ## Accessibility considerations
 

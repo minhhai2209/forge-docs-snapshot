@@ -22,7 +22,7 @@ Avoid calling `useSpaceProperty` multiple times in the same app, since their out
 
 Here is an example of an app that stores information in a space property with `useSpaceProperty`.
 
-![The app display on a Confluence page](https://dac-static.atlassian.com/platform/forge/images/ui-kit-2/hooks-examples/usespaceproperty-concrete-value-update.png?_v=1.5800.1853)
+![The app display on a Confluence page](https://dac-static.atlassian.com/platform/forge/images/ui-kit-2/hooks-examples/usespaceproperty-concrete-value-update.png?_v=1.5800.1858)
 
 ```
 1
@@ -80,7 +80,7 @@ ForgeReconciler.render(
 Here's another example that updates the space property based on the current value stored in the
 property.
 
-![The app display on a Confluence page](https://dac-static.atlassian.com/platform/forge/images/ui-kit-2/hooks-examples/usespaceproperty-setter-function-update.png?_v=1.5800.1853)
+![The app display on a Confluence page](https://dac-static.atlassian.com/platform/forge/images/ui-kit-2/hooks-examples/usespaceproperty-setter-function-update.png?_v=1.5800.1858)
 
 ```
 ```

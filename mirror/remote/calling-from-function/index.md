@@ -2,7 +2,7 @@
 
 You can call your remote backend from your Forge functions. The diagram below illustrates the data flow.
 
-![Forge Remote diagram describing the flow of data and auth between Forge and remote application](https://dac-static.atlassian.com/platform/forge/images/remote/remote-calling-backend-from-frontend.png?_v=1.5800.1853)
+![Forge Remote diagram describing the flow of data and auth between Forge and remote application](https://dac-static.atlassian.com/platform/forge/images/remote/remote-calling-backend-from-frontend.png?_v=1.5800.1858)
 
 Note: If you are calling your remote backend from a frontend function in a Forge app, see [Calling a remote backend from a Forge frontend](/platform/forge/remote/calling-from-frontend) instead.
 

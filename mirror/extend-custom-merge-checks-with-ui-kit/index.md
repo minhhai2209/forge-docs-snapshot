@@ -692,7 +692,7 @@ app:
    ```
 3. Navigate to your repository settings and open the "Check pull request title" menu item under the `FORGE APPS` section.
 
-   ![Check pull request title repository settings page](https://dac-static.atlassian.com/platform/forge/images/bitbucket-merge-check-configuration-page.png?_v=1.5800.1853)
+   ![Check pull request title repository settings page](https://dac-static.atlassian.com/platform/forge/images/bitbucket-merge-check-configuration-page.png?_v=1.5800.1858)
 4. Set the pull request title substring value. For example, *TICKET-*.
 5. Ensure the merge check is enabled via the Repository settings → Custom merge checks page if it is not already enabled.
 6. Create a pull request without the substring in the title.
@@ -704,4 +704,4 @@ app:
 
 Check out an example app, continue to one of the other tutorials, or read through the reference pages to learn more.
 
-[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.1853)](/platform/forge/build-a-pull-request-title-validator-with-custom-merge-checks/)
+[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.1858)](/platform/forge/build-a-pull-request-title-validator-with-custom-merge-checks/)
