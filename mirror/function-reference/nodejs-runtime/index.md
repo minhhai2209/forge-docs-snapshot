@@ -54,7 +54,7 @@ The Forge runtime allows your app to run directly on a secure VM environment. Yo
 At invocation time, Forge calls a context function. Each module receives different [request parameters](/platform/forge/function-reference/arguments/) based on
 the module type.
 
-![A code editor showing the invocation context](https://dac-static.atlassian.com/platform/forge/images/invocation-context.png?_v=1.5800.1858)
+![A code editor showing the invocation context](https://dac-static.atlassian.com/platform/forge/images/invocation-context.png?_v=1.5800.1863)
 
 You can also explicitly request a Forge function’s context details (for example, the
 [environments and versions](/platform/forge/environments-and-versions/) an app is executing in). See

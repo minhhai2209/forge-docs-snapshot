@@ -14,7 +14,7 @@ The image below shows invocation metrics, as well as all sites that your Forge a
 installed on, and where there has been at least one invocation in the [selected time period](#filters).
 If there hasn't been any invocation, the charts won't show any data.
 
-![Metrics screen](https://dac-static.atlassian.com/platform/forge/images/metrics-screen.svg?_v=1.5800.1858)
+![Metrics screen](https://dac-static.atlassian.com/platform/forge/images/metrics-screen.svg?_v=1.5800.1863)
 
 ## Invocation metrics
 
@@ -39,15 +39,17 @@ The following metrics are available for all `function` invocations.
     To learn more about why the exception was thrown, view your app logs
     by selecting **Logs** in the left hand menu. For more information, see
     [View app logs](/platform/forge/view-app-logs/).
-* **Invocation time**: The time it takes for each [function](/platform/forge/manifest-reference/modules/function/)
-  under the handler field in the app `manifest.yml` file to successfully complete an invocation.
-  The chart shows the distribution of invocation time as a histogram across different time buckets.
-  The time is measured from inside the AWS lambda, and doesn't include cold start, but it includes
-  the time it took for the lambda initialization phase to complete.
+* **Invocation response time**: The time it takes for an invocation to successfully complete. The charts in this section show the distribution of
+  invocation time as a histogram across different time buckets.
 
-Each metric is displayed as both a chart and a value. The value, displayed at the top of the screen, represents the overall or total value for that metric and includes any applied filters.
+The **Invocation response time** section may have one or two charts, depending on whether your app uses [Forge Containers (EAP)](/platform/forge/containers-reference/):
 
-This doesn’t include code executing in a Custom UI iframe, but includes functions invoked by `@forge/bridge`.
+* **Remote and function invocation response time**: displays the invocation time for each
+  [function](/platform/forge/manifest-reference/modules/function/) under the handler field in the app `manifest.yml` file. This invocation time is measured from inside the AWS lambda, and doesn't include cold start, but it includes the time it took for the lambda initialization phase to complete.
+* **Container invocation response time** (only if your app uses Forge Containers): displays the response time for each  
+  [container](/platform/forge/containers-reference/ref-manifest/#containers) defined in the app `manifest.yml` file.
+
+Invocation response time doesn’t include code executing in a Custom UI iframe, but includes functions invoked by `@forge/bridge`.
 
 ## Invocation errors
 
@@ -56,7 +58,7 @@ the **More actions (**⋯**)** menu on the chart and **View details**.
 
 The following screen appears, showing site-specific information about your app's invocation errors.
 
-![Invocation errors detailed view](https://dac-static.atlassian.com/platform/forge/images/invocation-errors-detailed-view.svg?_v=1.5800.1858)
+![Invocation errors detailed view](https://dac-static.atlassian.com/platform/forge/images/invocation-errors-detailed-view.svg?_v=1.5800.1863)
 
 In this view, you can search, filter, and sort the data to identify errors across specific sites
 and installations. You can also group the chart by version and error type, by selecting
@@ -73,7 +75,7 @@ the **More actions (⋯)** menu on the chart and **View details**.
 
 The following screen appears, showing function-specific information about your app's invocation time.
 
-![Invocation time detailed view](https://dac-static.atlassian.com/platform/forge/images/invocation-time-detailed-view.svg?_v=1.5800.1858)
+![Invocation time detailed view](https://dac-static.atlassian.com/platform/forge/images/invocation-time-detailed-view.svg?_v=1.5800.1863)
 
 In this view, you can search, filter, and group the data to see invocation time across
 specific functions, environments, and time periods.

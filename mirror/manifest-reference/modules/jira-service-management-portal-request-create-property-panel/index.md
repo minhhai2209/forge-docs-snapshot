@@ -6,7 +6,7 @@ information on Jira entity properties, see [Jira entity properties](/platform/fo
 
 This module can be used in Jira Service Management.
 
-![Example of a Portal request create property panel](https://dac-static.atlassian.com/platform/forge/images/portal-request-create-property-panel-demo.png?_v=1.5800.1858)
+![Example of a Portal request create property panel](https://dac-static.atlassian.com/platform/forge/images/portal-request-create-property-panel-demo.png?_v=1.5800.1863)
 
 ## Portal Request Create Property Panel Lifecycle
 
@@ -52,6 +52,7 @@ You can retrieve this data via REST using the [Jira issue property API](/cloud/j
 | `render` | `'native'` | If using modern versions of [UI Kit](/platform/forge/ui-kit/components/) | Indicates the module uses [UI Kit](/platform/forge/ui-kit/components/). |
 | `resolver` | `{ function: string }` or `{ endpoint: string }` |  | Set the `function` property if you are using a hosted `function` module for your resolver.  Set the `endpoint` property if you are using [Forge Remote](/platform/forge/forge-remote-overview) to integrate with a remote back end. |
 | `viewportSize` | `'small'`, `'medium'`, `'large'` or `'xlarge'` |  | The [display size](/platform/forge/manifest-reference/resources) of `resource`. Can only be set if the module is using the `resource` property. Remove this property to enable automatic resizing of the module. |
+| `displayConditions` | `object` |  | The object that defines whether or not a module is displayed in the UI of the app. See [display conditions](/platform/forge/manifest-reference/display-conditions). |
 
 ## Extension context
 

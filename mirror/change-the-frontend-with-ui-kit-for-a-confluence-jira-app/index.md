@@ -100,11 +100,11 @@ number of comments in the issue panel. Add more comments and refresh the page to
 
 Your Confluence page should look like the following:
 
-![A Confluence page displaying the hello world forge app with comments counted](https://dac-static.atlassian.com/platform/forge/images/display-xpa-confluence-macro.png?_v=1.5800.1858)
+![A Confluence page displaying the hello world forge app with comments counted](https://dac-static.atlassian.com/platform/forge/images/display-xpa-confluence-macro.png?_v=1.5800.1863)
 
 Your Jira issue should look like the following:
 
-![A Jira issue displaying the hello world forge app with comments counted](https://dac-static.atlassian.com/platform/forge/images/display-xpa-jira-issue-panel.png?_v=1.5800.1858)
+![A Jira issue displaying the hello world forge app with comments counted](https://dac-static.atlassian.com/platform/forge/images/display-xpa-jira-issue-panel.png?_v=1.5800.1863)
 
 ## Close the tunnel and deploy the app
 
@@ -125,4 +125,4 @@ Your logs are an important tool when debugging Forge apps. [Learn more about deb
 
 Once your app is deployed, it will appear in the [developer console](/console/myapps/).
 
-[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.1858)](/platform/forge/add-support-for-jira-as-an-optional-atlassian-app/)
+[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.1863)](/platform/forge/add-support-for-jira-as-an-optional-atlassian-app/)

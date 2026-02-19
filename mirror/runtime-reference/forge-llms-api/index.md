@@ -261,6 +261,7 @@ You can use the `list` method from the SDK to dynamically fetch the list of supp
 | `claude-sonnet-4-5-20250929` | Sonnet | Claude | `ACTIVE` |  |
 | `claude-opus-4-1-20250805` | Opus | Claude | `ACTIVE` |  |
 | `claude-opus-4-5-20251101` | Opus | Claude | `ACTIVE` |  |
+| `claude-opus-4-6` | Opus | Claude | `ACTIVE` |  |
 
 As AI models evolve quickly, check regularly for deprecated status and associated EOL dates so your apps do not break.
 

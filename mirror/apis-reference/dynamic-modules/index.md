@@ -20,7 +20,6 @@ This capability has the following limitations:
 
 * Each app installation can register a maximum of 100 dynamic modules. Attempts to exceed this limit will result in a `422 Unprocessable` error response.
 * [Remote](/platform/forge/remote/) backends can only use `asApp` calls for dynamic module operations; `asUser` calls are not allowed. This means your remote backend will only be able to call the Dynamic Modules API as a generic bot user.
-* To use dynamic trigger modules, at least *one* trigger module must be statically declared in the manifest. We plan to address this before the end of EAP.
 
 ## Available modules
 

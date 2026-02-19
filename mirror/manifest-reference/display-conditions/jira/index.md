@@ -1,4 +1,4 @@
-# Usage with Jira modules
+# Usage with Jira/JSM modules
 
 |  |  |  |
 | --- | --- | --- |

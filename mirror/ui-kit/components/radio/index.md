@@ -31,7 +31,7 @@ The default way to present a single option from a list.
 
 In most situations where you want to present a list of mutually exclusive options, you will want to use a [RadioGroup](/platform/forge/ui-kit/components/radio-group/).
 
-![Example image of a radio](https://dac-static.atlassian.com/platform/forge/ui-kit/images/radio/radio-default.png?_v=1.5800.1858)
+![Example image of a radio](https://dac-static.atlassian.com/platform/forge/ui-kit/images/radio/radio-default.png?_v=1.5800.1863)
 
 ```
 ```
@@ -60,7 +60,7 @@ const RadioDefaultExample = () => {
 
 Use `isDisabled` to disable a radio option.
 
-![Example image of a disabled radio](https://dac-static.atlassian.com/platform/forge/ui-kit/images/radio/radio-disabled.png?_v=1.5800.1858)
+![Example image of a disabled radio](https://dac-static.atlassian.com/platform/forge/ui-kit/images/radio/radio-disabled.png?_v=1.5800.1863)
 
 ```
 ```
@@ -88,7 +88,7 @@ const RadioDisabledExample = () => {
 
 Use `isInvalid` for situations where the selected field is invalid or incorrect. Remember to provide useful validation messages to help people understand how to proceed.
 
-![Example image of an invalid radio](https://dac-static.atlassian.com/platform/forge/ui-kit/images/radio/radio-invalid.png?_v=1.5800.1858)
+![Example image of an invalid radio](https://dac-static.atlassian.com/platform/forge/ui-kit/images/radio/radio-invalid.png?_v=1.5800.1863)
 
 ```
 ```

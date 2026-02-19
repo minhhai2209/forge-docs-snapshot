@@ -16,7 +16,7 @@ Select your profile icon and toggle **Display local timezone** to convert the da
 
 4. To see a detailed breakdown of usage, select **View Details** for the specific resource you're interested in. You can use the date filter to customize the view, with the default setting showing data for the current calendar month.
 
-![Metrics screen](https://dac-static.atlassian.com/platform/forge/snippets/images/usage-metrics-costs-screen.png?_v=1.5800.1858)
+![Metrics screen](https://dac-static.atlassian.com/platform/forge/snippets/images/usage-metrics-costs-screen.png?_v=1.5800.1863)
 
 ## View site‑level resource usage for your app
 
@@ -27,7 +27,7 @@ To view a breakdown of all installation sites for your app with non-zero resourc
 3. Select **Usage and costs** in the left menu, and then select the resource you want to view.
 4. Select **Site breakdown** to view a list of sites with non-zero consumption of a particular resource.
 
-![Metrics screen](https://dac-static.atlassian.com/platform/forge/images/site_breakdown.png?_v=1.5800.1858)
+![Metrics screen](https://dac-static.atlassian.com/platform/forge/images/site_breakdown.png?_v=1.5800.1863)
 
 ## Compute Usage
 

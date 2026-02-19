@@ -28,7 +28,7 @@ Your appâ€™s containerised service lifecycle begins when you upload the serviceâ
 
 The following diagram provides a high-level view of the container lifecycle:
 
-![Forge Containers lifecycle overview](https://dac-static.atlassian.com/platform/forge/images/containers-lifecycle-overview.png?_v=1.5800.1858)
+![Forge Containers lifecycle overview](https://dac-static.atlassian.com/platform/forge/images/containers-lifecycle-overview.png?_v=1.5800.1863)
 
 This lifecycle involves the following major phases:
 
@@ -222,7 +222,9 @@ You can use `forge tunnel` to test your containerised service locally before pus
 
 ## Monitor your service
 
-You can view logs for service invocations using the `forge logs --containers` command.
+You can monitor the following through the Developer Console:
+
+You can also view logs for service invocations using the `forge logs --containers` command.
 For example:
 
 ```
