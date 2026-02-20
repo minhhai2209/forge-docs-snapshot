@@ -42,4 +42,4 @@ For example, consider the following log:
 
 This line would populate the Developer Console with the following entry:
 
-![Developer Consoler sample entry for log line](https://dac-static.atlassian.com/platform/forge/images/containers-logging-invocation.png?_v=1.5800.1863)
+![Developer Consoler sample entry for log line](https://dac-static.atlassian.com/platform/forge/images/containers-logging-invocation.png?_v=1.5800.1869)

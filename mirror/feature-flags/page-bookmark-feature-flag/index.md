@@ -288,7 +288,7 @@ ForgeReconciler.render(
 
 **Key implementation details:**
 
-1. **Feature flag initialization**: Uses `ForgeFeatureFlags` SDK to check if the bookmark feature is enabled
+1. **Feature flag initialization**: Uses `FeatureFlags` SDK to check if the bookmark feature is enabled
 2. **User context**: Includes `accountId` and `installContext` for proper feature targeting
 3. **Environment awareness**: Automatically detects and uses the correct environment
 4. **Conditional rendering**: Shows educational message when feature flag is disabled, full UI when enabled
@@ -310,8 +310,9 @@ Create or update `src/resolvers/index.js` to handle bookmark operations:
 ```
 // src/resolvers/index.js
 import Resolver from '@forge/resolver';
-import { storage, getAppContext } from '@forge/api';
-import { ForgeFeatureFlags } from "@forge/feature-flags-node";
+import { getAppContext } from '@forge/api';
+import { kvs } from '@forge/kvs';
+import { FeatureFlags } from "@forge/feature-flags";
 
 const resolver = new Resolver();
 
@@ -320,7 +321,7 @@ async function isBookmarkFeatureEnabled(context) {
   try {
     const { environmentType } = getAppContext();
     
-    const featureFlags = new ForgeFeatureFlags();
+    const featureFlags = new FeatureFlags();
     await featureFlags.initialize({
       environment: environmentType?.toLowerCase() || "development" 
     });
@@ -356,19 +357,19 @@ resolver.define('toggleBookmark', async (req) => {
     return false;
   }
 
-  // Get user's bookmarks from storage
+  // Get user's bookmarks from storage (Key-Value Store from @forge/kvs)
   const storageKey = `bookmarks_${accountId}`;
-  const bookmarks = await storage.get(storageKey) || [];
+  const bookmarks = (await kvs.get(storageKey)) || [];
 
   // Toggle bookmark status
   if (bookmarks.includes(pageId)) {
     // Remove bookmark
     const updatedBookmarks = bookmarks.filter(id => id !== pageId);
-    await storage.set(storageKey, updatedBookmarks);
+    await kvs.set(storageKey, updatedBookmarks);
     return false;
   } else {
     // Add bookmark
-    await storage.set(storageKey, [...bookmarks, pageId]);
+    await kvs.set(storageKey, [...bookmarks, pageId]);
     return true;
   }
 });
@@ -387,7 +388,7 @@ resolver.define('checkBookmark', async (req) => {
 
   // Check if page is in user's bookmarks
   const storageKey = `bookmarks_${accountId}`;
-  const bookmarks = await storage.get(storageKey) || [];
+  const bookmarks = (await kvs.get(storageKey)) || [];
   return { isEnabled, bookmark : bookmarks.includes(pageId)};
 });
 
@@ -398,7 +399,7 @@ export const handler = resolver.getDefinitions();
 **Key backend features:**
 
 1. **Backend feature flag check**: Validates the feature flag on every resolver call
-2. **User-specific storage**: Each user has their own bookmark list stored as `bookmarks_${accountId}`
+2. **User-specific storage**: Each user has their own bookmark list stored as `bookmarks_${accountId}` using the [Key-Value Store](/platform/forge/runtime-reference/storage-api-basic/) from `@forge/kvs`
 3. **Toggle logic**: Adds or removes page IDs from the bookmark array
 4. **Security**: Feature flag acts as a circuit breaker - if disabled, no storage operations occur
 

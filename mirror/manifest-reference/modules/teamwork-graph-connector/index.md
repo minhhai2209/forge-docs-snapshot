@@ -164,12 +164,12 @@ The Connected apps screen can be accessed within Atlassian Administration by nav
 After selecting the app, all available Teamwork Graph connectors will be shown
 in the **Connections** tab.
 
-![Connections tab within Marketplace app showing one Teamwork Graph connector that has not yet been configured](https://dac-static.atlassian.com/platform/forge/images/teamwork-graph/teamwork-graph-connector-not-configured.svg?_v=1.5800.1863)
+![Connections tab within Marketplace app showing one Teamwork Graph connector that has not yet been configured](https://dac-static.atlassian.com/platform/forge/images/teamwork-graph/teamwork-graph-connector-not-configured.svg?_v=1.5800.1869)
 
 Admins must configure the connector before it can start providing data to Teamwork Graph. To
 do this, the admin will click the **Connect** button, which opens a configuration modal.
 
-![Basic modal for configuring Teamwork Graph connector](https://dac-static.atlassian.com/platform/forge/images/teamwork-graph/teamwork-graph-connector-modal.svg?_v=1.5800.1863)
+![Basic modal for configuring Teamwork Graph connector](https://dac-static.atlassian.com/platform/forge/images/teamwork-graph/teamwork-graph-connector-modal.svg?_v=1.5800.1869)
 
 ### Configuration details
 

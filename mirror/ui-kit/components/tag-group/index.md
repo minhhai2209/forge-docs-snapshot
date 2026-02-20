@@ -26,7 +26,7 @@ By default, a tag group lays out a collection of tags from left to right, handli
 
 In most cases, all of the tags inside of a tag group should be of the same type to provide a consistent user experience.
 
-![Example image of a tag group](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tag-group/tag-group-default.png?_v=1.5800.1863)
+![Example image of a tag group](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tag-group/tag-group-default.png?_v=1.5800.1869)
 
 ```
 ```
@@ -64,7 +64,7 @@ The alignment direction can be set to either the `start` or `end` of the tag gro
 
 Set the `alignment` prop to `start` to align the tags to the start of the tag group container.
 
-![Example image of a start aligned tag group](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tag-group/tag-group-alignment-start.png?_v=1.5800.1863)
+![Example image of a start aligned tag group](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tag-group/tag-group-alignment-start.png?_v=1.5800.1869)
 
 ```
 ```
@@ -98,7 +98,7 @@ const TagGroupStartAlignmentExample = () => {
 
 Set the`alignment` prop to `end` to align the tags to the end of the group.
 
-![Example image of an end aligned tag group](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tag-group/tag-group-alignment-end.png?_v=1.5800.1863)
+![Example image of an end aligned tag group](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tag-group/tag-group-alignment-end.png?_v=1.5800.1869)
 
 ```
 ```

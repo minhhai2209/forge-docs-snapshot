@@ -25,7 +25,7 @@ import { LineChart } from '@forge/react';
 
 Data can be one of two formats, an array of arrays or an array of objects. Both examples below will produce the same line chart:
 
-![Example image of a rendered series line bar chart](https://dac-static.atlassian.com/platform/forge/ui-kit/images/line-chart/multiple-line-chart-example.png?_v=1.5800.1863)
+![Example image of a rendered series line bar chart](https://dac-static.atlassian.com/platform/forge/ui-kit/images/line-chart/multiple-line-chart-example.png?_v=1.5800.1869)
 
 ### 1. Array of arrays
 

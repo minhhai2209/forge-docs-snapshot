@@ -25,7 +25,7 @@ You need:
 1
 2
 cd your-forge-app
-npm install @forge/feature-flags-node@latest
+npm install @forge/feature-flags@latest
 ```
 
 ## Step 1: Add feature flag code
@@ -43,12 +43,12 @@ Update your resolver code to include the feature flag SDK initialization and fla
 ```
 //src/resolvers/index.js
 import Resolver from '@forge/resolver';
-import { ForgeFeatureFlags } from "@forge/feature-flags-node";
+import { FeatureFlags } from "@forge/feature-flags";
 
 const resolver = new Resolver();
 
 resolver.define('getFlagValue', async ({ payload, context }) => {
-  const featureFlags = new ForgeFeatureFlags();
+  const featureFlags = new FeatureFlags();
   await featureFlags.initialize({
     environment: context?.environmentType?.toLowerCase() || "development" 
   });
@@ -83,7 +83,7 @@ Update your frontend code to include feature flag logic. Replace your `src/front
 // src/frontend/index.jsx
 import React, { useEffect, useState } from 'react';
 import ForgeReconciler, { Text } from '@forge/react';
-import { ForgeFeatureFlags, view } from '@forge/bridge';
+import { view } from '@forge/bridge';
 
 const App = () => {
   const [showPremium, setShowPremium] = useState(false);
@@ -127,7 +127,7 @@ ForgeReconciler.render(
 **What this code does:**
 
 * Gets `installContext` from the context
-* Initializes `ForgeFeatureFlags` with user context and environment in the resolver
+* Initializes `FeatureFlags` with user context and environment in the resolver
 * Checks the `show_premium_welcome` flag
 * Shows premium message only when flag is enabled
 

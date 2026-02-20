@@ -82,11 +82,9 @@ Please see [Permissions SDK](#permissions-sdk) to check for missing permissions 
 
 The updated code may include changes that depend on new permissions but since only the app code was upgraded, some permissions might be missing. To handle such cases, use the permissions SDK to verify if the permission exists and gracefully handle if the needed permission does not exist.
 
-The Permissions SDK is available for both frontend (`@forge/react`) and backend (`@forge/api`) code.
+The Permissions SDK is available for both frontend (`@forge/react` for UIKit, `@forge/bridge` for Custom UI) and backend (`@forge/api`) code.
 
 ### Frontend SDK
-
-Install the pre-release version of the `@forge/react` package:
 
 ```
 ```
@@ -97,7 +95,7 @@ Install the pre-release version of the `@forge/react` package:
 
 
 ```
-npm install --save @forge/react@next
+npm install --save @forge/react
 ```
 ```
 
@@ -129,6 +127,72 @@ const MyComponent = () => {
     }
   });
 
+  if (isLoading) return <Text>Loading...</Text>;
+  if (error) return <Text>Error: {error.message}</Text>;
+  if (!hasPermission) {
+    return <Text>Missing: {JSON.stringify(missingPermissions)}</Text>;
+  }
+  
+  return <Text>All permissions granted!</Text>;
+};
+```
+```
+
+The hook returns an `isLoading` boolean, but this should not be `true` for any significant amount of time.
+
+### Custom UI
+
+```
+```
+1
+2
+```
+
+
+
+```
+npm install --save @forge/bridge
+```
+```
+
+#### Check if app installation has required permissions
+
+Import the `checkPermissions` function to check permissions:
+
+```
+```
+1
+2
+```
+
+
+
+```
+import { checkPermissions } from '@forge/bridge';
+
+const App = () => {
+  const [hasPermission, setHasPermission] = useState(false);
+  const [missingPermissions, setMissingPermissions] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+  useEffect(() => {
+    checkPermissions({
+      scopes: ['read:jira-work'],
+      external: {
+        fetch: {
+          backend: ['https://example.com/something'],
+        },
+      },
+    }).then(({granted, missing}) => {
+      setHasPermission(granted);
+      setMissingPermissions(missing);
+      setIsLoading(false);
+    }).catch(err => {
+      setError(err);
+      setIsLoading(false);
+    });
+  }, []);
+
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
   if (!hasPermission) {
@@ -139,8 +203,6 @@ const MyComponent = () => {
 };
 ```
 ```
-
-The hook returns an `isLoading` boolean, but this should not be `true` for any significant amount of time.
 
 **Display conditions**
 
@@ -354,7 +416,6 @@ The following features are under development, therefore are not offered as part 
 
 ## Known issues
 
-* [Custom UI](/platform/forge/custom-ui/) cannot access Rolling Releases SDK that is provided through the `@forge/react` package, because `@forge/react` is not supported in Custom UI.
 * Forge [Remote Compute](/platform/forge/runtime-reference/invoke-remote-api/) endpoints cannot use the permissions encoded in the Forge Invocation Token (FIT).
 
 ## Tutorials and guides

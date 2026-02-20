@@ -28,7 +28,7 @@ A button group gives users access to frequently performed, related actions.
 
 A button group displays multiple buttons together.
 
-![Example image of a rendered default ButtonGroup](https://dac-static.atlassian.com/platform/forge/ui-kit/images/button-group/button-group-examples.png?_v=1.5800.1863)
+![Example image of a rendered default ButtonGroup](https://dac-static.atlassian.com/platform/forge/ui-kit/images/button-group/button-group-examples.png?_v=1.5800.1869)
 
 ```
 ```
@@ -56,7 +56,7 @@ const ButtonGroupDefaultExample = () => {
 
 The appearance to apply to all buttons.
 
-![Example image of a rendered primary ButtonGroup](https://dac-static.atlassian.com/platform/forge/ui-kit/images/button-group/button-group-appearance.png?_v=1.5800.1863)
+![Example image of a rendered primary ButtonGroup](https://dac-static.atlassian.com/platform/forge/ui-kit/images/button-group/button-group-appearance.png?_v=1.5800.1869)
 
 ```
 ```

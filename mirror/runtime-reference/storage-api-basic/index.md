@@ -24,6 +24,8 @@ await kvs.query()
 
 To safeguard sensitive data in a more secure manner, the Key-Value Store allows for storing encrypted data via the [Secret store](/platform/forge/runtime-reference/storage-api-secret).
 
+If you see examples using `startsWith` for key prefix matching, use `beginsWith` (from `WhereConditions.beginsWith()`) instead. The legacy `storage` module used `startsWith`; `@forge/kvs` uses `beginsWith`. See [Migrating to @forge/kvs from legacy storage](/platform/forge/storage-reference/kvs-migration-from-legacy/) for more migration details.
+
 ## Quotas and limits
 
 Each installation of your app is subject to the storage quotas and limits. See [Storage quotas](/platform/forge/platform-quotas-and-limits/#storage-quotas) and [Storage limits](/platform/forge/platform-quotas-and-limits/#storage-limits) for more details.

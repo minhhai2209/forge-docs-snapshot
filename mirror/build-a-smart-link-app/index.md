@@ -4,7 +4,7 @@ In this tutorial, you'll learn how to build a Forge app that generates custom [S
 cover the fundamentals of app setup and generate an example Smart Link. Note, that this tutorial does not cover
 integration with external systems.
 
-![](https://dac-static.atlassian.com/platform/forge/snippets/images/graph/screenshot.png?_v=1.5800.1863)
+![](https://dac-static.atlassian.com/platform/forge/snippets/images/graph/screenshot.png?_v=1.5800.1869)
 
 ## Before you begin
 

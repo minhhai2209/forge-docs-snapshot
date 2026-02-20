@@ -76,7 +76,7 @@ Gradual feature releases to specific percentages of users.
 
 ```
 // Initialize the feature flags SDK
-const featureFlags = new ForgeFeatureFlags();
+const featureFlags = new FeatureFlags();
 await featureFlags.initialize({
   environment: "development"
 });
@@ -116,7 +116,7 @@ Enable features for specific users or organizations.
 
 ```
 // Initialize the feature flags SDK
-const featureFlags = new ForgeFeatureFlags();
+const featureFlags = new FeatureFlags();
 await featureFlags.initialize({
   environment: "staging"
 });
@@ -157,7 +157,7 @@ Different behavior across development, staging, and production environments.
 // Example: Debug mode in development
 
 // Initialize the feature flags SDK
-const featureFlags = new ForgeFeatureFlags();
+const featureFlags = new FeatureFlags();
 await featureFlags.initialize({
   environment: "development"
 });
@@ -205,7 +205,7 @@ The **installContext** ID type targets feature flags at the **app installation l
 
 ```
 // Initialize the feature flags SDK
-const featureFlags = new ForgeFeatureFlags();
+const featureFlags = new FeatureFlags();
 await featureFlags.initialize({
   environment: "development"
 });
@@ -259,7 +259,7 @@ The **accountID** ID type targets feature flags at the **individual user level**
 
 ```
 // Initialize the feature flags SDK
-const featureFlags = new ForgeFeatureFlags();
+const featureFlags = new FeatureFlags();
 await featureFlags.initialize({
   environment: "development"
 });
@@ -309,7 +309,7 @@ Within the same installation, different users see different features:
 
 ```
 // Initialize the feature flags SDK
-const featureFlags = new ForgeFeatureFlags();
+const featureFlags = new FeatureFlags();
 await featureFlags.initialize({
   environment: "development"
 });
@@ -334,7 +334,7 @@ const result = featureFlags.checkFlag(user, 'org-wide-feature');
 
 ```
 // Initialize the feature flags SDK
-const featureFlags = new ForgeFeatureFlags();
+const featureFlags = new FeatureFlags();
 await featureFlags.initialize({
   environment: "development"
 });
@@ -384,7 +384,7 @@ Basic example using predefined values:
 
 ```
 // Initialize the feature flags SDK
-const featureFlags = new ForgeFeatureFlags();
+const featureFlags = new FeatureFlags();
 await featureFlags.initialize({
   environment: "development"
 });
@@ -409,7 +409,7 @@ If the predefined attributes don't meet your needs, you can use custom attribute
 
 Here's a quick demonstration of how to create custom attributes in the Developer Console:
 
-![Creating custom attributes](https://dac-static.atlassian.com/platform/forge/images/feature-flags/create-custom-attributes.gif?_v=1.5800.1863)
+![Creating custom attributes](https://dac-static.atlassian.com/platform/forge/images/feature-flags/create-custom-attributes.gif?_v=1.5800.1869)
 
 Simple Reference
 
@@ -427,7 +427,7 @@ Basic example showing custom attributes:
 
 ```
 // Initialize the feature flags SDK
-const featureFlags = new ForgeFeatureFlags();
+const featureFlags = new FeatureFlags();
 await featureFlags.initialize({
   environment: environmentType?.toLowerCase() || "development"
 });

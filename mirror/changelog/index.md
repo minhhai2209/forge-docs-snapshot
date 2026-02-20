@@ -1,9 +1,7 @@
 # Forge changelog
 
-We've introduced the `useTheme` hook for Forge UI Kit apps. This hook retrieves the current theme from the Atlassian app (Jira, Confluence, etc.) and reactively updates your Forge app when the theme changes.
+We've introduced two new components to UI Kit, now available in Preview: `AtlassianTile` and `AtlassianIcon`. Use these components to display Atlassian object type icons—such as stories, tasks, epics, blogs, and more—with consistent styling that aligns with the Atlassian Design System.
 
-The `useTheme` hook is now the preferred method for accessing theme information in UI Kit apps, replacing the previous approach of accessing `theme.colorMode` via `useProductContext`. Unlike `useProductContext`, the `useTheme` hook is reactive and automatically updates when the theme changes in the Atlassian app.
+Both components provide fixed color, size, and styling options for Atlassian object types. Any updates to icon or tile styling in the Atlassian Design System are automatically reflected in your app.
 
-To use this hook, import `useTheme` from `@forge/react` and call it in your component. The hook returns a theme object containing the current theme configuration.
-
-For implementation details and examples, see the [`useTheme` hook documentation](https://developer.atlassian.com/platform/forge/ui-kit/hooks/use-theme/ "https://developer.atlassian.com/platform/forge/ui-kit/hooks/use-theme/").
+For implementation details and examples, see the [Atlassian icon](https://developer.atlassian.com/platform/forge/ui-kit/components/atlassian-icon/ "https://developer.atlassian.com/platform/forge/ui-kit/components/atlassian-icon/") and [Atlassian tile](https://developer.atlassian.com/platform/forge/ui-kit/components/atlassian-tile/ "https://developer.atlassian.com/platform/forge/ui-kit/components/atlassian-tile/") component documentation.

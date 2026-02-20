@@ -7,7 +7,7 @@ On apps that use Custom UI, module content is displayed inside a [special Forge 
 
 When adding this to your app, use it as a top-level component.
 
-![Example of a Homepage feed with the above sample code](https://dac-static.atlassian.com/platform/forge/snippets/images/homepage-feed-demo.png?_v=1.5800.1863)
+![Example of a Homepage feed with the above sample code](https://dac-static.atlassian.com/platform/forge/snippets/images/homepage-feed-demo.png?_v=1.5800.1869)
 
 ## Properties
 

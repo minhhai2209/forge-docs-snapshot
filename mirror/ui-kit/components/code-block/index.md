@@ -29,7 +29,7 @@ A code block highlights an entire block of code and keeps the formatting.
 
 A code block highlights an entire block of code and keeps the formatting.
 
-![Example image of a code block with line numbers](https://dac-static.atlassian.com/platform/forge/ui-kit/images/code-block/code-block-line-numbers.png?_v=1.5800.1863)
+![Example image of a code block with line numbers](https://dac-static.atlassian.com/platform/forge/ui-kit/images/code-block/code-block-line-numbers.png?_v=1.5800.1869)
 
 ```
 ```
@@ -76,7 +76,7 @@ You can highlight lines in a code block.
 * To highlight a group of lines, input the line numbers as a range: `highlight="1-5"`.
 * To highlight multiple groups, separate the individual lines and ranges with a comma: `highlight="1-5,7,10,15-20"`.
 
-![Example image of a code block with line highlights](https://dac-static.atlassian.com/platform/forge/ui-kit/images/code-block/code-block-highlights.png?_v=1.5800.1863)
+![Example image of a code block with line highlights](https://dac-static.atlassian.com/platform/forge/ui-kit/images/code-block/code-block-highlights.png?_v=1.5800.1869)
 
 ```
 ```
@@ -120,7 +120,7 @@ const CodeBlockLineHighlightExample = () => {
 
 By default, long lines will result in a horizontal-scrolling code block. You can use the `shouldWrapLongLines` prop to make the long lines wrap instead.
 
-![Example image of a code block with default appearance](https://dac-static.atlassian.com/platform/forge/ui-kit/images/code-block/code-block-wrapping.png?_v=1.5800.1863)
+![Example image of a code block with default appearance](https://dac-static.atlassian.com/platform/forge/ui-kit/images/code-block/code-block-wrapping.png?_v=1.5800.1869)
 
 ```
 ```
@@ -165,7 +165,7 @@ const CodeBlockShouldWrapLongLinesExample = () => {
 
 Line numbers can be hidden by setting the `showLineNumbers` prop to `false`.
 
-![Example image of a code block with no line numbers](https://dac-static.atlassian.com/platform/forge/ui-kit/images/code-block/code-block-line-numbers.png?_v=1.5800.1863)
+![Example image of a code block with no line numbers](https://dac-static.atlassian.com/platform/forge/ui-kit/images/code-block/code-block-line-numbers.png?_v=1.5800.1869)
 
 ```
 ```

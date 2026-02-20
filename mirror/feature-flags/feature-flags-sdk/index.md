@@ -13,7 +13,7 @@ The Feature flags SDK in Forge is the in-code tool that developers use to flag t
 
 ## SDK overview
 
-The server-side SDK (`@forge/feature-flags-node`) is designed for Forge runtime and Forge resolvers.
+The server-side SDK (`@forge/feature-flags`) is designed for Forge runtime and Forge resolvers.
 
 **Key characteristics:**
 
@@ -38,7 +38,7 @@ Install the server SDK using npm:
 
 
 ```
-npm install @forge/feature-flags-node@latest
+npm install @forge/feature-flags@latest
 ```
 ```
 
@@ -112,7 +112,7 @@ A user object with identifiers is required for `checkFlag`. Always pass the `acc
 
 ```
 import { getAppContext } from "@forge/api";
-import { ForgeFeatureFlags } from "@forge/feature-flags-node";
+import { FeatureFlags } from "@forge/feature-flags";
 
 export const handler = async (payload, context) => {
   // Get app context values
@@ -146,7 +146,7 @@ export const handler = async (payload, context) => {
   }
 
   // Initialize the feature flags SDK
-  const featureFlags = new ForgeFeatureFlags();
+  const featureFlags = new FeatureFlags();
   await featureFlags.initialize({
     environment: environmentType?.toLowerCase() || "development" 
   });

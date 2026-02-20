@@ -1,6 +1,6 @@
 # Migrating to @forge/kvs from legacy storage module
 
-This page provides guidance on updating any functions that still use the `@forge/api` package's `storage` module to use the new `@forge/kvs` package instead.
+This page provides guidance on updating any functions that still use the `@forge/api` package's `storage` module to use the new `@forge/kvs` package instead. If you're building a new app, use the `@forge/kvs` package from the start; see the [Storage overview](/platform/forge/runtime-reference/storage-api/) for the recommended package and capabilities.
 
 Apps that call the KVS or Custom Entity Store from a remote previously did so via GraphQL. We strongly recommend that you migrate those integrations
 to the REST API instead. See [Accessing Forge storage from a remote via REST API](/platform/forge/remote/accessing-storage/) for more detailed information.
@@ -29,7 +29,7 @@ The `kvs` module of the `@forge/kvs` package provides access to all builders to 
 
 ### Replace startsWith filter with beginsWith
 
-The `query.where` [operation]((/platform/forge/runtime-reference/storage-api-query/#query-where)) now uses the `beginsWith` filter instead of `startsWith`.
+The `query.where` [operation](/platform/forge/runtime-reference/storage-api-query/#query-where) now uses the `beginsWith` filter instead of `startsWith`.
 
 **Before**
 
@@ -175,5 +175,11 @@ export const FilterConditions = {
 };
 ```
 ```
+
+## Common mistakes
+
+If you use `@forge/kvs` but copy code from older examples or the legacy API, watch for these issues:
+
+* **`startsWith` does not exist in `@forge/kvs`** — The legacy `storage` module used `startsWith` for key prefix matching in queries. In `@forge/kvs`, the correct method is `beginsWith` (from `WhereConditions.beginsWith()`). Using `startsWith` will cause errors.
 
 ## References

@@ -585,11 +585,11 @@ ForgeReconciler.addConfig(<Config />);
 
 ## Resolvers
 
-The `@forge/api` package cannot be used in frontend code, so some API calls in UI Kit 1 need to be moved into a [resolver](/platform/forge/runtime-reference/forge-resolver/). For example, to call the Storage API, a function is defined in the resolver to call the API, and the frontend invokes the resolver with the `invoke` function on `@forge/bridge`.
+The `@forge/api` package cannot be used in frontend code, so some API calls in UI Kit 1 need to be moved into a [resolver](/platform/forge/runtime-reference/forge-resolver/).
 
-This tutorial uses the legacy `storage` module from the `@forge/api` package.
-When using the Key-Value Store and Custom Entity Store capabilities, we recommend that you use the `kvs` module from the `@forge/kvs` package instead
-(as all future updates will be added to that package).
+For example, to call the [Key-Value Store](/platform/forge/runtime-reference/storage-api-basic/), define a function in the resolver that uses the `kvs` module from the `@forge/kvs` package, and have the frontend invoke the resolver with the `invoke` function on `@forge/bridge`.
+
+Use `@forge/kvs` for key-value storage instead of the legacy `storage` module from `@forge/api`.
 
 **src/resolvers/index.js**
 
@@ -602,14 +602,13 @@ When using the Key-Value Store and Custom Entity Store capabilities, we recommen
 
 
 ```
-import { storage, startsWith } from '@forge/api';
+import { kvs } from '@forge/kvs';
 import Resolver from '@forge/resolver';
 
 const resolver = new Resolver();
 
 resolver.define('getExampleValue', async ({ payload, context }) => {
-  return await storage.get('example-key');
-
+  return await kvs.get('example-key');
 });
 
 export const handler = resolver.getDefinitions();
