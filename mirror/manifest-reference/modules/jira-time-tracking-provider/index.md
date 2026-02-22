@@ -1,9 +1,73 @@
-# Time tracking provider
+# Time tracking provider (Preview)
 
-Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
-When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our
+This section describes a Forge *preview* feature. Preview features are deemed stable;
+however, they remain under active development and may be subject to shorter deprecation
+windows. Preview features are suitable for early adopters in production environments.
 
-[Privacy Policy](https://www.atlassian.com/legal/privacy-policy#how-we-disclose-information-we-collect)
+We release preview features so partners and developers can study, test, and integrate
+them prior to General Availability (GA). For more information,
+see [Forge release phases: EAP, Preview, and GA](/platform/forge/whats-coming/#preview).
 
-.
-You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt-out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
+The `jira:timeTrackingProvider` module allows an app to replace Jira's native time tracking components with ones defined by the app.
+After installing this module, the new time tracking provider will be available as an option on [Jira's time tracking administration page](https://support.atlassian.com/jira-cloud-administration/docs/configure-time-tracking/#Change-the-time-tracking-provider).
+
+When an app is selected as the "time tracking provider" for Jira, the following native Jira time tracking UI elements will be hidden and
+the app will be able to provide standard modules to implement custom versions of these features:
+
+| Native component | Forge module |
+| --- | --- |
+| `Log work` button | `jira:issueAction` |
+| `Work log` issue tab panel | `jira:issueActivity` |
+
+Additionally, the native "Log work" action via the time tracking issue field will be disabled. Instead, the field displays and allows entering the time remaining.
+
+## Display conditions
+
+Two conditions related to time tracking providers are available:
+
+| Display condition | Description |
+| --- | --- |
+| `jiraTimeTrackingProviderEnabled` | The condition is evaluated to `true` if the currently selected time tracking provider is Jira's native time tracking implementation. |
+| `timeTrackingProviderEnabled` | The condition is evaluated to `true` if the currently selected time tracking provider matches the one defined in the condition parameters. |
+
+Refer to the [display conditions](/platform/forge/manifest-reference/display-conditions/jira/#time-tracking-conditions) documentation for more information.
+
+## Administration page
+
+An app may provide an administration page that will be shown to the user if that app is selected as the active time tracking provider.
+The page should be defined with an [Admin Page](/platform/forge/manifest-reference/modules/jira-admin-page/) module in the app's manifest.
+It will be accessible from the System tab on the Administration page in Jira.
+
+## Properties
+
+| Property | Type | Required | Description |
+| --- | --- | --- | --- |
+| `key` | `string` | Yes | A key for the module, which other modules can refer to. Must be unique within the manifest.  *Regex:* `^[a-zA-Z0-9_-]+$` |
+| `name` | `string` | Yes | The name of the time tracking provider. |
+| `adminPage` | `string` | No | If provided, this needs to reference an existing `adminPage` module defined within the app's manifest.  Jira will link the referenced `adminPage` module as the configuration page of this Time tracking provider module. |
+
+## Example
+
+#### Manifest
+
+```
+```
+1
+2
+```
+
+
+
+```
+modules:
+  jira:timeTrackingProvider:
+    - key: time-tracking-provider
+      name: Forge time tracking provider
+      adminPage: admin-page-key
+  jira:adminPage:
+    - key: admin-page-key
+      function: main-configure-page
+      title: Configure page example
+      useAsConfig: true
+```
+```
