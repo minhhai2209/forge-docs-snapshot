@@ -1,43 +1,9 @@
 # Link
 
-To add the `Link` component to your app:
+Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
+When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our
 
-```
-1
-import { Link } from '@forge/react';
-```
+[Privacy Policy](https://www.atlassian.com/legal/privacy-policy#additional-disclosures-for-ca-residents)
 
-## Description
-
-A component that displays a link. Use this component for inline links.
-
-## Props
-
-| Name | Type | Required | Description |
-| --- | --- | --- | --- |
-| `href` | `string` | Yes | The prop `href` behaves like a HTML `href`. You should include `http(s)://` for full URLs. Relative paths, such as `/wiki`, are also supported. |
-| `children` | `string` | Yes | The text to display for the link. |
-| `openNewTab` | `boolean` | No | Whether or not the link should open in a new tab. Defaults to `false`. |
-
-## Examples
-
-A link component that will open the `https://atlassian.com` website in a new tab when clicked.
-
-![Example image of rendered link](https://dac-static.atlassian.com/platform/forge/ui-kit/images/link/link-default.png?_v=1.5800.1869)
-
-```
-1
-2
-3
-4
-5
-6
-7
-const LinkExample = () => {
-  return (
-    <Text>
-      <Link href="https://atlassian.com">Log in</Link> to view this content
-    </Text>
-  );
-}
-```
+.
+You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.

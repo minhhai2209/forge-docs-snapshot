@@ -43,7 +43,7 @@ Note that Atlassian icons cannot be used with the standard Tile component. If yo
 
 The default tile has a medium size, neutral background, and inset enabled – this is the default empty state.
 
-![Example image of default tile](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tile/tile-default.png?_v=1.5800.1869)
+![Example image of default tile](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tile/tile-default.png?_v=1.5800.1875)
 
 ```
 ```
@@ -65,7 +65,7 @@ export const App = () => <Tile label="" />; //The empty label indicates this is 
 
 Tiles come in six different sizes. The size property controls both the width and height of the tile.
 
-![Examples of different tile sizes](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tile/tile-sizes.png?_v=1.5800.1869)
+![Examples of different tile sizes](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tile/tile-sizes.png?_v=1.5800.1875)
 
 ```
 ```
@@ -96,7 +96,7 @@ export const App = () => (
 
 Tiles support a variety of background colors using the `backgroundColor` prop, which can be set to design tokens. This defaults to `color.background.neutral`.
 
-![Examples of tiles with different background colors](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tile/tile-colors.png?_v=1.5800.1869)
+![Examples of tiles with different background colors](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tile/tile-colors.png?_v=1.5800.1875)
 
 ```
 ```
@@ -130,7 +130,7 @@ export const App = () => (
 You can add a border to a tile and control whether it has internal padding (inset). Disabling inset can be used for supplying assets with backgrounds, such as third-party logos.
 Inset is enabled by default to provide appropriate spacing for assets.
 
-![Examples of tiles with border and inset variations](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tile/tile-border-insets.png?_v=1.5800.1869)
+![Examples of tiles with border and inset variations](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tile/tile-border-insets.png?_v=1.5800.1875)
 
 ```
 ```
@@ -164,7 +164,7 @@ You can display an icon in a tile using the [Icon](/platform/forge/ui-kit/compon
 
 Place the `Icon` component as a child of the `Tile` component so the icon renders inside the tile.
 
-![Examples of tiles with icons](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tile/tile-with-icons.png?_v=1.5800.1869)
+![Examples of tiles with icons](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tile/tile-with-icons.png?_v=1.5800.1875)
 
 ```
 ```

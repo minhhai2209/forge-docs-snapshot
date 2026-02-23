@@ -6,7 +6,7 @@ The `title`, `icon`, and `tooltip` of the module render together as a list item.
 
 On apps that use Custom UI, module content is displayed inside a [special Forge iframe](/platform/forge/custom-ui/iframe/) which has the [sandbox](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#sandbox) attribute configured. This means that HTML links (for example, `<a href="https://domain.tld/path">...</a>`) in this iframe won't be clickable. To make them clickable, use the [router.navigate](/platform/forge/custom-ui-bridge/router/#navigate) API from the `@forge/bridge` package.
 
-![Example of a Content byline item](https://dac-static.atlassian.com/platform/forge/images/content-byline-item-demo.gif?_v=1.5800.1869)
+![Example of a Content byline item](https://dac-static.atlassian.com/platform/forge/images/content-byline-item-demo.gif?_v=1.5800.1875)
 
 ## Properties
 

@@ -166,11 +166,12 @@ npx -y mcp-remote@0.1.13 https://mcp.atlassian.com/v1/forge/mcp
 
 When working with AI coding agents, it’s important to explicitly instruct them to use the Forge-related tools provided by the MCP server. This ensures their work is based on the most up-to-date Forge knowledge, as some agents may not use these tools unless prompted and might otherwise attempt to build your app without referencing the latest documentation or guidance.
 
-1. Prompt your agent: “Create a Confluence macro that shows a pie chart of Jira issues by status. Use the Forge MCP tools to ensure your solution is based on the latest Forge documentation.”
-2. Agent plans the task: Calls the `forge-howto` guide for a high-level context.
-3. Agent gathers details: Uses guides like `ui-kit-guide`, `forge-modules-list`, and `app-manifest-guide` as needed.
-4. Agent queries documentation: Searches for specific components or API usage using `search-forge-docs` or `query-cloud-platform-knowledge-fragments`.
-5. You build and test: Use the Forge CLI to lint, deploy, and install your app. The agent can help troubleshoot errors by querying the MCP server for relevant documentation.
+1. Create your app with the Forge CLI — Use the CLI to scaffold, tunnel, bundle, and deploy your app. The MCP server does not create or run apps for you. Once you have an app (or a codebase you're exploring), employ your AI coding agent with the Forge MCP server.
+2. Prompt your agent: “Create a Confluence macro that shows a pie chart of Jira issues by status. Use the Forge MCP tools to ensure your solution is based on the latest Forge documentation.”
+3. Agent plans the task: Calls the `forge-development-guide` guide for a high-level context.
+4. Agent gathers details: Uses guides like `forge-ui-kit-developer-guide`, `forge-modules-list`, and `forge-app-manifest-guide` as needed.
+5. Agent queries documentation: Searches for specific components or API usage using `search-forge-docs`.
+6. You build and test: Use the Forge CLI to lint, deploy, and install your app. The agent can help troubleshoot errors by querying the MCP server for relevant documentation.
 
 ## Security and access
 
