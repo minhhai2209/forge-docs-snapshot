@@ -29,7 +29,7 @@ A Checkbox group is a list of options where one or more choices can be selected.
 
 The default form of a Checkbox group.
 
-![Example image of a Checkbox group](https://dac-static.atlassian.com/platform/forge/ui-kit/images/checkbox-group/checkbox-group-default.png?_v=1.5800.1875)
+![Example image of a Checkbox group](https://dac-static.atlassian.com/platform/forge/ui-kit/images/checkbox-group/checkbox-group-default.png?_v=1.5800.1877)
 
 ```
 ```
@@ -57,7 +57,7 @@ const CheckboxGroupDefaultExample = () => {
 
 For required fields, use the `ErrorMessage` or `ValidMessage` components for displaying a validation message.
 
-![Example image of a required Checkbox group in a Form](https://dac-static.atlassian.com/platform/forge/ui-kit/images/checkbox-group/checkbox-group-with-form.png?_v=1.5800.1875)
+![Example image of a required Checkbox group in a Form](https://dac-static.atlassian.com/platform/forge/ui-kit/images/checkbox-group/checkbox-group-with-form.png?_v=1.5800.1877)
 
 ```
 ```
@@ -126,7 +126,7 @@ const CheckboxGroupRequiredExample = () => {
 
 `isDisabled` can be used to disable the entire Checkbox group.
 
-![Example image of a disabled Checkbox group](https://dac-static.atlassian.com/platform/forge/ui-kit/images/checkbox-group/checkbox-group-disabled.png?_v=1.5800.1875)
+![Example image of a disabled Checkbox group](https://dac-static.atlassian.com/platform/forge/ui-kit/images/checkbox-group/checkbox-group-disabled.png?_v=1.5800.1877)
 
 ```
 ```
@@ -156,7 +156,7 @@ const CheckboxGroupisDisabledExample = () => {
 
 In a `controlled` checkbox, the checked state is managed by the React component. Set `value` to select the checkbox(es) and use the`onChange` handler to change the value.
 
-![Example image of a controlled Checkbox group](https://dac-static.atlassian.com/platform/forge/ui-kit/images/checkbox-group/checkbox-group-controlled.png?_v=1.5800.1875)
+![Example image of a controlled Checkbox group](https://dac-static.atlassian.com/platform/forge/ui-kit/images/checkbox-group/checkbox-group-controlled.png?_v=1.5800.1877)
 
 ```
 ```

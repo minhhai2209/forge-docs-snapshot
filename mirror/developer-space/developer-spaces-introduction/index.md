@@ -7,7 +7,7 @@ This page explains Developer Spaces, why they matter, how they fit into your For
 
 ## What is a Developer Space?
 
-![Developer Space Home](https://dac-static.atlassian.com/platform/forge/images/developer_space_home.png?_v=1.5800.1875)
+![Developer Space Home](https://dac-static.atlassian.com/platform/forge/images/developer_space_home.png?_v=1.5800.1877)
 A Developer Space is a container for your Forge apps, members, and access to billing. Every new Forge app must be created in a Developer Space, and existing private apps must be linked to one. Think of it as your team’s home base for app development, where you organize, collaborate, and manage all the essentials in one place.
 
 **Key benefits of using a Developer Space:**

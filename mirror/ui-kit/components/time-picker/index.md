@@ -46,8 +46,8 @@ A time picker allows the user to select a specific time.
 ### Default
 
 By default, the time field is used to select a time from the select menu.
-![Example image of default time picker](https://dac-static.atlassian.com/platform/forge/ui-kit/images/time-picker/time-picker-default.png?_v=1.5800.1875)
-![Example image of default time picker opened](https://dac-static.atlassian.com/platform/forge/ui-kit/images/time-picker/time-picker-default-opened.png?_v=1.5800.1875)
+![Example image of default time picker](https://dac-static.atlassian.com/platform/forge/ui-kit/images/time-picker/time-picker-default.png?_v=1.5800.1877)
+![Example image of default time picker opened](https://dac-static.atlassian.com/platform/forge/ui-kit/images/time-picker/time-picker-default-opened.png?_v=1.5800.1877)
 
 ```
 ```
@@ -77,7 +77,7 @@ const TimePickerDefaultExample = () => {
 
 When using the time picker with the form component, include a label and helper text. For more information, see the [form](/platform/forge/ui-kit/components/form) component.
 
-![Example image of time picker in a form](https://dac-static.atlassian.com/platform/forge/ui-kit/images/time-picker/time-picker-form.png?_v=1.5800.1875)
+![Example image of time picker in a form](https://dac-static.atlassian.com/platform/forge/ui-kit/images/time-picker/time-picker-form.png?_v=1.5800.1877)
 
 ```
 ```
@@ -143,8 +143,8 @@ For example, helper text becomes an error message when the input content doesn't
 
 Keep helper text as short as possible. For complex information, provide a link to more information in a new browser tab. Use the [messaging guidelines](https://atlassian.design/content/messaging-guidelines) for more help.
 
-![Example image of invalid time picker in a form](https://dac-static.atlassian.com/platform/forge/ui-kit/images/time-picker/time-picker-invalid.png?_v=1.5800.1875)
-![Example image of valid time picker in a form](https://dac-static.atlassian.com/platform/forge/ui-kit/images/time-picker/time-picker-valid.png?_v=1.5800.1875)
+![Example image of invalid time picker in a form](https://dac-static.atlassian.com/platform/forge/ui-kit/images/time-picker/time-picker-invalid.png?_v=1.5800.1877)
+![Example image of valid time picker in a form](https://dac-static.atlassian.com/platform/forge/ui-kit/images/time-picker/time-picker-valid.png?_v=1.5800.1877)
 
 ```
 ```
@@ -209,7 +209,7 @@ const TimePickerFormValidationExample = () => {
 
 Use `locale` to display times in a format which is appropriate to users.
 
-![Example image of time picker with locale](https://dac-static.atlassian.com/platform/forge/ui-kit/images/time-picker/time-picker-locale.png?_v=1.5800.1875)
+![Example image of time picker with locale](https://dac-static.atlassian.com/platform/forge/ui-kit/images/time-picker/time-picker-locale.png?_v=1.5800.1877)
 
 ```
 ```
@@ -255,7 +255,7 @@ Where possible use locale for time formatting, instead of a custom format.
 
 Time formats should be informed by the user’s locale and the use case.
 
-![Example image of time picker with custom time format](https://dac-static.atlassian.com/platform/forge/ui-kit/images/time-picker/time-picker-formats.png?_v=1.5800.1875)
+![Example image of time picker with custom time format](https://dac-static.atlassian.com/platform/forge/ui-kit/images/time-picker/time-picker-formats.png?_v=1.5800.1877)
 
 ```
 ```
@@ -287,7 +287,7 @@ const TimePickerCustomTimeFormat = () => {
 
 This allows the time field to be edited via keyboard prompts.
 
-![Example image of default time picker](https://dac-static.atlassian.com/platform/forge/ui-kit/images/time-picker/time-picker-editable.png?_v=1.5800.1875)
+![Example image of default time picker](https://dac-static.atlassian.com/platform/forge/ui-kit/images/time-picker/time-picker-editable.png?_v=1.5800.1877)
 
 ```
 ```

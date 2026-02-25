@@ -90,6 +90,7 @@ Example
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:jira:updated:issue`. |
+| jiraEventTypeName? | `string` | [Optional] Subtype of the update (for example, `issue_resolved`, `issue_moved`, `issue_generic`). Only present for [Issue updated](#issue-updated) and [Issue created](#issue-created) events. |
 | issue | `Issue` | The issue the event relates to. |
 | atlassianId? | `string` | [Optional] The ID of the user that has caused the event. |
 | changelog | `Changelog` | A list of changes that have occurred in the update. The `to` and `from` fields display the previous and new values for each changed field respectively, or `null` when a field was empty or is being cleared. |
