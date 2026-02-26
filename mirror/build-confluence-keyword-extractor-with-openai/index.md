@@ -42,7 +42,7 @@ The limits on the numbers of users you can create are as follows:
 
 ### Demo of the finished app
 
-![Animation showing the Confluence keyword extractor app in action](https://dac-static.atlassian.com/platform/forge/images/confluence-keyword-extractor-demo.gif?_v=1.5800.1877)
+![Animation showing the Confluence keyword extractor app in action](https://dac-static.atlassian.com/platform/forge/images/confluence-keyword-extractor-demo.gif?_v=1.5800.1881)
 
 The GIF above is an example of how the app will work. When a user clicks Keyword extractor
 in the three dots menu, the extracted keywords will be added to the page as Confluence labels.
@@ -51,7 +51,7 @@ You can find the source code for this demo [here](https://bitbucket.org/atlassia
 
 ### How does the app work?
 
-![Confluence keyword extractor high level diagram](https://dac-static.atlassian.com/platform/forge/images/confluence-keyword-extractor-diagram.png?_v=1.5800.1877)
+![Confluence keyword extractor high level diagram](https://dac-static.atlassian.com/platform/forge/images/confluence-keyword-extractor-diagram.png?_v=1.5800.1881)
 
 A high-level outline of how the app works is:
 
@@ -79,7 +79,7 @@ Assuming your development environment is set up, you can get right to it. Follow
    *keyword-extractor(DEVELOPMENT)*. This is part of the behavior of the
    [ContentAction](/platform/forge/manifest-reference/modules/confluence-content-action/) module.
 
-![Confluence keyword extractor in three dots menu](https://dac-static.atlassian.com/platform/forge/images/confluence-keyword-extractor-menu.png?_v=1.5800.1877)
+![Confluence keyword extractor in three dots menu](https://dac-static.atlassian.com/platform/forge/images/confluence-keyword-extractor-menu.png?_v=1.5800.1881)
 
 ## Step 2: Get all the content of a Confluence page via REST API
 

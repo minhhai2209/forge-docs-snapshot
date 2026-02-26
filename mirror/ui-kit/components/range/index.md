@@ -30,7 +30,7 @@ A range lets users choose an approximate value on a slider.
 
 The default form of a range.
 
-![Example image of range](https://dac-static.atlassian.com/platform/forge/ui-kit/images/range/range-default.png?_v=1.5800.1877)
+![Example image of range](https://dac-static.atlassian.com/platform/forge/ui-kit/images/range/range-default.png?_v=1.5800.1881)
 
 ```
 ```
@@ -53,7 +53,7 @@ const RangeExample = () => {
 
 In a `controlled` range, the state is managed by the React component. Use the `onChange` handler to set the value.
 
-![Example image of a controlled range](https://dac-static.atlassian.com/platform/forge/ui-kit/images/range/range-controlled.png?_v=1.5800.1877)
+![Example image of a controlled range](https://dac-static.atlassian.com/platform/forge/ui-kit/images/range/range-controlled.png?_v=1.5800.1881)
 
 ```
 ```
@@ -88,7 +88,7 @@ Set `isDisabled` to disable a range when another action has to be completed befo
 
 Avoid using disabled UI where possible. This can cause accessibility problems because disabled UI does not give enough information about what went wrong and how to proceed.
 
-![Example image of a disabled range](https://dac-static.atlassian.com/platform/forge/ui-kit/images/range/range-disabled.png?_v=1.5800.1877)
+![Example image of a disabled range](https://dac-static.atlassian.com/platform/forge/ui-kit/images/range/range-disabled.png?_v=1.5800.1881)
 
 ```
 ```
@@ -111,7 +111,7 @@ const RangeDisabledExample = () => {
 
 A range can be used within a Form to collect user input.
 
-![Example image of range in a form](https://dac-static.atlassian.com/platform/forge/ui-kit/images/range/range-form.png?_v=1.5800.1877)
+![Example image of range in a form](https://dac-static.atlassian.com/platform/forge/ui-kit/images/range/range-form.png?_v=1.5800.1881)
 
 ```
 ```

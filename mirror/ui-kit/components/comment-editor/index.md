@@ -45,7 +45,7 @@ The following features are available:
 
 ### Default appearance
 
-![Example image of comment editor](https://dac-static.atlassian.com/platform/forge/ui-kit/images/editor/editor-default.png?_v=1.5800.1877)
+![Example image of comment editor](https://dac-static.atlassian.com/platform/forge/ui-kit/images/editor/editor-default.png?_v=1.5800.1881)
 
 ```
 ```
@@ -67,7 +67,7 @@ export const CommentEditorExample = () => {
 By default, all editor features are enabled. To enable certain features and disable the
 rest, you must pass in the `features` object with the specific features you want to enable.
 
-![Example image of comment editor with custom features](https://dac-static.atlassian.com/platform/forge/ui-kit/images/editor/editor-custom.png?_v=1.5800.1877)
+![Example image of comment editor with custom features](https://dac-static.atlassian.com/platform/forge/ui-kit/images/editor/editor-custom.png?_v=1.5800.1881)
 
 ```
 ```
@@ -97,7 +97,7 @@ export const CommentEditorWithToggledFeaturesExample = () => {
 
 The `onSave` prop will render a Save button for the user to interact with. Upon clicking, the value can be stored in state. `onCancel` will render a Cancel button that fires a callback.
 
-![Example image of comment editor with save and cancel buttons](https://dac-static.atlassian.com/platform/forge/ui-kit/images/editor/editor-with-action-buttons.png?_v=1.5800.1877)
+![Example image of comment editor with save and cancel buttons](https://dac-static.atlassian.com/platform/forge/ui-kit/images/editor/editor-with-action-buttons.png?_v=1.5800.1881)
 
 ```
 ```
@@ -131,7 +131,7 @@ const CommentEditorWithActionButtons = () => {
 
 To access the input value of the editor while it's being edited, `onChange` can be used.
 
-![Example image of comment editor using onchange](https://dac-static.atlassian.com/platform/forge/ui-kit/images/editor/editor-actions-on-change.png?_v=1.5800.1877)
+![Example image of comment editor using onchange](https://dac-static.atlassian.com/platform/forge/ui-kit/images/editor/editor-actions-on-change.png?_v=1.5800.1881)
 
 ```
 ```
@@ -167,7 +167,7 @@ const CommentEditorWithActionButtons = () => {
 
 To set a default value in the editor, pass in the `defaultValue` prop. This will be the initial content within the editor.
 
-![Example image of comment editor with default value](https://dac-static.atlassian.com/platform/forge/ui-kit/images/editor/editor-default-value.png?_v=1.5800.1877)
+![Example image of comment editor with default value](https://dac-static.atlassian.com/platform/forge/ui-kit/images/editor/editor-default-value.png?_v=1.5800.1881)
 
 ```
 ```
@@ -237,7 +237,7 @@ const CommentEditorWithDefaultValue = () => {
 
 To disable the editor, pass in the `isDisabled` prop. This will disable all interactions with the editor.
 
-![Example image of comment editor disabled](https://dac-static.atlassian.com/platform/forge/ui-kit/images/editor/editor-disabled.png?_v=1.5800.1877)
+![Example image of comment editor disabled](https://dac-static.atlassian.com/platform/forge/ui-kit/images/editor/editor-disabled.png?_v=1.5800.1881)
 
 ```
 ```
@@ -262,8 +262,8 @@ const CommentEditorDisabled = () => {
 
 The `CommentEditor` can be used together with the `AdfRenderer` component to display the content of a submitted value in a read-only format. This is useful for displaying the content of the editor after it has been saved.
 
-![Example image of comment editor with adf renderer](https://dac-static.atlassian.com/platform/forge/ui-kit/images/editor/editor-full-example-1.png?_v=1.5800.1877)
-![Example image of comment editor with adf renderer](https://dac-static.atlassian.com/platform/forge/ui-kit/images/editor/editor-full-example-2.png?_v=1.5800.1877)
+![Example image of comment editor with adf renderer](https://dac-static.atlassian.com/platform/forge/ui-kit/images/editor/editor-full-example-1.png?_v=1.5800.1881)
+![Example image of comment editor with adf renderer](https://dac-static.atlassian.com/platform/forge/ui-kit/images/editor/editor-full-example-2.png?_v=1.5800.1881)
 
 ```
 ```

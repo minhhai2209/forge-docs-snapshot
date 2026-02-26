@@ -1,6 +1,6 @@
 # Guidelines for action components
 
-![Action components overview showing automation rules](https://dac-static.atlassian.com/platform/forge/images/action-components/Actions.png?_v=1.5800.1877)
+![Action components overview showing automation rules](https://dac-static.atlassian.com/platform/forge/images/action-components/Actions.png?_v=1.5800.1881)
 
 Actions are the 'doers' of an automation rule. They allow users to perform tasks automatically. Examples of actions can include:
 
@@ -16,43 +16,43 @@ If you're looking to contribute actions to Atlassian Automation, use the followi
 
 Action icons visually represent what the action does, helping users to quickly identify and understand its functionality. As such, action icons should clarify the action's intent.
 
-![Examples of action icons in automation rules](https://dac-static.atlassian.com/platform/forge/images/action-components/action-icons.png?_v=1.5800.1877)
+![Examples of action icons in automation rules](https://dac-static.atlassian.com/platform/forge/images/action-components/action-icons.png?_v=1.5800.1881)
 
 ### Visual specifications
 
 **Third-party actions are gray.** To differentiate third-party actions from host actions, use the token `colour/background/accent/blue/subtlest`.
 
-![Example of pixelated PNG icon usage](https://dac-static.atlassian.com/platform/forge/images/action-components/png-icon-dont.png?_v=1.5800.1877)
+![Example of pixelated PNG icon usage](https://dac-static.atlassian.com/platform/forge/images/action-components/png-icon-dont.png?_v=1.5800.1881)
 
 **DO**
 use an updated icon, with our official colour token as the background
 
-![Example of action icon with correct background color](https://dac-static.atlassian.com/platform/forge/images/action-components/icon-correct-background-do.png?_v=1.5800.1877)
+![Example of action icon with correct background color](https://dac-static.atlassian.com/platform/forge/images/action-components/icon-correct-background-do.png?_v=1.5800.1881)
 
 **DON'T**
 use background colours that differ from our recommended token
 
-![Third-party action icons with correct gray background token](https://dac-static.atlassian.com/platform/forge/images/action-components/third-party-icons-correct.png?_v=1.5800.1877)
+![Third-party action icons with correct gray background token](https://dac-static.atlassian.com/platform/forge/images/action-components/third-party-icons-correct.png?_v=1.5800.1881)
 
 ### What icon do I use?
 
-![Example of crisp SVG icon usage](https://dac-static.atlassian.com/platform/forge/images/action-components/svg-icon-do.png?_v=1.5800.1877)
+![Example of crisp SVG icon usage](https://dac-static.atlassian.com/platform/forge/images/action-components/svg-icon-do.png?_v=1.5800.1881)
 
 1. **Use the official product icon for third party product-related actions.** Using the official product icon ensures users can immediately recognise the third-party service your action integrates with.
 2. **Source the logo directly from the product's official site.** This is important for both legal and user experience reasons, as it signals to users that the integration is legitimate and current. For example, you can find GitHub's official logos at <https://github.com/logos>.
 3. **Use logomarks as SVG elements.** SVGs ensure icons are crisp and scalable at any size, maintain visual consistency across different displays.
 
-![Example of action icon with incorrect background colors](https://dac-static.atlassian.com/platform/forge/images/action-components/icon-incorrect-background-dont.png?_v=1.5800.1877)
+![Example of action icon with incorrect background colors](https://dac-static.atlassian.com/platform/forge/images/action-components/icon-incorrect-background-dont.png?_v=1.5800.1881)
 
 **DO**
 use the most updated product icon as an SVG file.
 
-![Example of action icon with correct background color](https://dac-static.atlassian.com/platform/forge/images/action-components/icon-correct-background-do.png?_v=1.5800.1877)
+![Example of action icon with correct background color](https://dac-static.atlassian.com/platform/forge/images/action-components/icon-correct-background-do.png?_v=1.5800.1881)
 
 **DON'T**
 use an unofficial product icon as a rasterised PNG file.
 
-![Comparison of icon file formats](https://dac-static.atlassian.com/platform/forge/images/action-components/icon-formats-comparison.png?_v=1.5800.1877)
+![Comparison of icon file formats](https://dac-static.atlassian.com/platform/forge/images/action-components/icon-formats-comparison.png?_v=1.5800.1881)
 
 ---
 
@@ -60,7 +60,7 @@ use an unofficial product icon as a rasterised PNG file.
 
 The **action name** provides a concise summary of what the action will do. It lives in both the rule body and the configuration panel.
 
-![Example of clean, flat configuration panel using ADS components](https://dac-static.atlassian.com/platform/forge/images/action-components/input-elements-flat-surface-do.png?_v=1.5800.1877)
+![Example of clean, flat configuration panel using ADS components](https://dac-static.atlassian.com/platform/forge/images/action-components/input-elements-flat-surface-do.png?_v=1.5800.1881)
 
 ### Naming conventions
 
@@ -71,12 +71,12 @@ The **action name** provides a concise summary of what the action will do. It li
 **DO**
 follow the advised format.
 
-![Example of wordy description with generic CTAs](https://dac-static.atlassian.com/platform/forge/images/action-components/description-config-panel-dont.png?_v=1.5800.1877)
+![Example of wordy description with generic CTAs](https://dac-static.atlassian.com/platform/forge/images/action-components/description-config-panel-dont.png?_v=1.5800.1881)
 
 **DON'T**
 deviate from the recommended naming convention
 
-![Example of clear, concise description in configuration panel](https://dac-static.atlassian.com/platform/forge/images/action-components/description-config-panel-do.png?_v=1.5800.1877)
+![Example of clear, concise description in configuration panel](https://dac-static.atlassian.com/platform/forge/images/action-components/description-config-panel-do.png?_v=1.5800.1881)
 
 ---
 
@@ -95,12 +95,12 @@ The **action description** offers more detail to the action name, explaining exa
 **DO**
 keep descriptions brief to 1-2 lines, using the advised format.
 
-![Example of well-written action description in rule body](https://dac-static.atlassian.com/platform/forge/images/action-components/description-rule-body-do.png?_v=1.5800.1877)
+![Example of well-written action description in rule body](https://dac-static.atlassian.com/platform/forge/images/action-components/description-rule-body-do.png?_v=1.5800.1881)
 
 **DON'T**
 use playful language like 'Let's'. Reserve it for more suitable materials like marketing.
 
-![Example of poorly written action description with casual language](https://dac-static.atlassian.com/platform/forge/images/action-components/description-rule-body-dont.png?_v=1.5800.1877)
+![Example of poorly written action description with casual language](https://dac-static.atlassian.com/platform/forge/images/action-components/description-rule-body-dont.png?_v=1.5800.1881)
 
 ### Descriptions in the configuration panel
 
@@ -112,12 +112,12 @@ use playful language like 'Let's'. Reserve it for more suitable materials like m
 **DO**
 keep descriptions brief under 3–4 lines and aligned with the rule body.
 
-![Example of correctly formatted action name](https://dac-static.atlassian.com/platform/forge/images/action-components/action-name-correct-do.png?_v=1.5800.1877)
+![Example of correctly formatted action name](https://dac-static.atlassian.com/platform/forge/images/action-components/action-name-correct-do.png?_v=1.5800.1881)
 
 **DON'T**
 use filler words and generic CTAs like 'Learn more.' Use clear labels as outlined in these [standards](https://hello.atlassian.net/wiki/spaces/CDSTD/pages/3382219403).
 
-![Example of incorrectly formatted action name](https://dac-static.atlassian.com/platform/forge/images/action-components/action-name-incorrect-dont.png?_v=1.5800.1877)
+![Example of incorrectly formatted action name](https://dac-static.atlassian.com/platform/forge/images/action-components/action-name-incorrect-dont.png?_v=1.5800.1881)
 
 ---
 
@@ -125,7 +125,7 @@ use filler words and generic CTAs like 'Learn more.' Use clear labels as outline
 
 Input methods let users make choices when configuring an action in Automation. Knowing how to design and choose input methods helps make the process clearer and more efficient for users when they use the action you've built.
 
-![Overview of input elements in configuration panel](https://dac-static.atlassian.com/platform/forge/images/action-components/input-elements-overview.png?_v=1.5800.1877)
+![Overview of input elements in configuration panel](https://dac-static.atlassian.com/platform/forge/images/action-components/input-elements-overview.png?_v=1.5800.1881)
 
 ### Common mistakes to avoid
 
@@ -143,12 +143,12 @@ Stick to Atlassian Design System (ADS) [input components](https://atlassian.desi
 **DO**
 use our design components in a single flat surface where all configuration options are visible.
 
-![Example of correctly formatted action name](https://dac-static.atlassian.com/platform/forge/images/action-components/action-names-location.png?_v=1.5800.1877)
+![Example of correctly formatted action name](https://dac-static.atlassian.com/platform/forge/images/action-components/action-names-location.png?_v=1.5800.1881)
 
 **DON'T**
 embed rich media such as PDFs, or use components that don't belong to our design system.
 
-![Example of configuration panel with embedded rich media and non-ADS components](https://dac-static.atlassian.com/platform/forge/images/action-components/action-components-header.png?_v=1.5800.1877)
+![Example of configuration panel with embedded rich media and non-ADS components](https://dac-static.atlassian.com/platform/forge/images/action-components/action-components-header.png?_v=1.5800.1881)
 
 ### Choosing the right input method
 
@@ -179,12 +179,12 @@ For handling input elements when you don't know the option number in advance, su
 **DO**
 use when selecting one option from a longer list (5-6 or more options)
 
-![Example of multi-select dropdown with many options](https://dac-static.atlassian.com/platform/forge/images/action-components/input-elements-embedded-content-dont.png?_v=1.5800.1877)
+![Example of multi-select dropdown with many options](https://dac-static.atlassian.com/platform/forge/images/action-components/input-elements-embedded-content-dont.png?_v=1.5800.1881)
 
 **DON'T**
 use drop-downs to select one option from 2 options. Use radio buttons.
 
-![Example of dropdown with only 2 options (should use radio buttons)](https://dac-static.atlassian.com/platform/forge/images/action-components/single-select-do.png?_v=1.5800.1877)
+![Example of dropdown with only 2 options (should use radio buttons)](https://dac-static.atlassian.com/platform/forge/images/action-components/single-select-do.png?_v=1.5800.1881)
 
 #### Multi-select
 
@@ -193,12 +193,12 @@ use drop-downs to select one option from 2 options. Use radio buttons.
 **DO**
 use when selecting multiple options from a medium or long list.
 
-![Example of multi-select dropdown with many options](https://dac-static.atlassian.com/platform/forge/images/action-components/single-select-dont.png?_v=1.5800.1877)
+![Example of multi-select dropdown with many options](https://dac-static.atlassian.com/platform/forge/images/action-components/single-select-dont.png?_v=1.5800.1881)
 
 **DON'T**
 use checkboxes for long lists. Reserve them for 1-3 options instead.
 
-![Example of long list of checkboxes (should use multi-select)](https://dac-static.atlassian.com/platform/forge/images/action-components/multi-select-do.png?_v=1.5800.1877)
+![Example of long list of checkboxes (should use multi-select)](https://dac-static.atlassian.com/platform/forge/images/action-components/multi-select-do.png?_v=1.5800.1881)
 
 #### Radio buttons
 
@@ -209,12 +209,12 @@ use checkboxes for long lists. Reserve them for 1-3 options instead.
 **DO**
 use when selecting one option from a small, visible list of 2-3 options.
 
-![Example of radio buttons with 2-3 options](https://dac-static.atlassian.com/platform/forge/images/action-components/multi-select-dont.png?_v=1.5800.1877)
+![Example of radio buttons with 2-3 options](https://dac-static.atlassian.com/platform/forge/images/action-components/multi-select-dont.png?_v=1.5800.1881)
 
 **DON'T**
 use radio buttons for more than 3 options; use drop-downs for longer lists.
 
-![Example of too many radio buttons (should use dropdown)](https://dac-static.atlassian.com/platform/forge/images/action-components/radio-buttons-do.png?_v=1.5800.1877)
+![Example of too many radio buttons (should use dropdown)](https://dac-static.atlassian.com/platform/forge/images/action-components/radio-buttons-do.png?_v=1.5800.1881)
 
 ---
 

@@ -45,7 +45,7 @@ Either tell them to follow the same method that they used for
    Your user sees a screen like this, showing the details of your app and the controls for
    enabling or disabling access to their site's logs.
 
-   ![The admin hub app details page, showing details, and the section to enable logs](https://dac-static.atlassian.com/platform/forge/images/admin-hub-access-prod-logs-section.png?_v=1.5800.1877)
+   ![The admin hub app details page, showing details, and the section to enable logs](https://dac-static.atlassian.com/platform/forge/images/admin-hub-access-prod-logs-section.png?_v=1.5800.1881)
 
 Once your user has enabled access, you'll be able to see their logs and
 [monitor your app on their site](/platform/forge/monitor-your-apps) in the

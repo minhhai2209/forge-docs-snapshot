@@ -24,14 +24,14 @@ In the template, use the bridge in `static/hello-world/src/App.js` like this:
 8
 9
 10
-import { getEditorContent, getMacroContent, updateMacroContent, setMacroViewportHeight } from '@forge/confluence-bridge';
+import { getEditorContent, getMacroContent, updateMacro, setMacroViewportHeight } from '@forge/confluence-bridge';
 
 const editorContent = await getEditorContent();
 
 const macroContent = await getMacroContent();
 
 // Replace <updatedMacroADF> with your updated macro ADF content
-const updateMacroContentResult = await updateMacroContent(<updatedMacroADF>);
+const updateMacroContentResult = await updateMacro(<updatedMacroADF>);
 
 const setMacroViewportHeightResult = await setMacroViewportHeight('200');
 ```
@@ -42,7 +42,7 @@ Use the `updateBylineProperties()` bridge method to update the `title`, `icon`, 
 1
 2
 3
-import { updateBylineProperties } from '@forge/confluence-bridge';
+import { updateBylineProperties } from "@forge/confluence-bridge";
 
 await updateBylineProperties({ propertyKey, valueUpdate });
 ```

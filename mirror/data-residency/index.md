@@ -47,7 +47,7 @@ By default, Forge assumes an app stores in-scope End-User Data remotely if its m
 
 In addition, when an admin initiates moving their Jira or Confluence instance to a location, they'll see which apps can move at the same time. These may include Forge apps that are eligible for `PINNED` status which may move at the same time as the Atlassian app.
 
-![Eligible apps moving with the Atlassian app](https://dac-static.atlassian.com/platform/forge/images/dare-apps-list.png?_v=1.5800.1877)
+![Eligible apps moving with the Atlassian app](https://dac-static.atlassian.com/platform/forge/images/dare-apps-list.png?_v=1.5800.1881)
 
 ## In-scope End-User Data
 
@@ -78,7 +78,7 @@ more information, see
 When an admin moves their Jira or Confluence data to a location, the status of the Atlassian app
 will then appear as `PINNED` in the admin’s **Data residency** interface:
 
-![Atlassian app pinned to Europe](https://dac-static.atlassian.com/platform/forge/images/dare-pinned-product.png?_v=1.5800.1877)
+![Atlassian app pinned to Europe](https://dac-static.atlassian.com/platform/forge/images/dare-pinned-product.png?_v=1.5800.1881)
 
 The `PINNED` Atlassian app status lets admins verify that their Atlassian app's in-scope data is
 hosted on the chosen location. You can learn more about how admins pin their Atlassian app data in ​
@@ -93,7 +93,7 @@ After an admin verifies that their Atlassian app data is pinned to a location, t
 that all in-scope end-user data for an app is also pinned. Apps pinned to the same location as the Atlassian app will be
 displayed as `PINNED` in the admin's **Data residency** interface:
 
-![App pinned to same location as Atlassian app](https://dac-static.atlassian.com/platform/forge/images/dare-pinned-app.png?_v=1.5800.1877)
+![App pinned to same location as Atlassian app](https://dac-static.atlassian.com/platform/forge/images/dare-pinned-app.png?_v=1.5800.1881)
 
 The `PINNED` app status provides admins with the verification that an app's data is hosted in the
 same location as the Atlassian app.

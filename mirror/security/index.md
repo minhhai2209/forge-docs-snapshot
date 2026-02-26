@@ -54,7 +54,7 @@ from the environment in which they execute. By running apps in isolated environm
 
 To understand how this works in detail, see the diagram and notes on the Forge app environment below:
 
-![Forge app environment diagram](https://dac-static.atlassian.com/platform/forge/images/forge-app-environment-diagram.svg?_v=1.5800.1877)
+![Forge app environment diagram](https://dac-static.atlassian.com/platform/forge/images/forge-app-environment-diagram.svg?_v=1.5800.1881)
 
 * App bundle: The app bundle is the packaged app code.
 * Forge runtime: Forge apps run in AWS as lambdas. [AWS Lambda](https://aws.amazon.com/lambda/features/)

@@ -10,7 +10,7 @@ and [stack](/platform/forge/ui-kit/components/stack/) to build the user interfac
 The purpose of this tutorial is to get familiar with using
 [UI Kit components](/platform/forge/ui-kit/components/), so it is a purely frontend app.
 
-![A gif is added to a Confluence page](https://dac-static.atlassian.com/platform/forge/images/quiz-app.gif?_v=1.5800.1877)
+![A gif is added to a Confluence page](https://dac-static.atlassian.com/platform/forge/images/quiz-app.gif?_v=1.5800.1881)
 
 ## Before you begin
 
@@ -168,11 +168,11 @@ We are going to build a basic UI to layout our components. The layout of the app
 (which shows the question), an associated image, buttons to display the four multi-choice options,
 and a button to go to the next question.
 
-![A diagram of the quiz app is added to a Confluence page](https://dac-static.atlassian.com/platform/forge/images/quiz-app-diagram.png?_v=1.5800.1877)
+![A diagram of the quiz app is added to a Confluence page](https://dac-static.atlassian.com/platform/forge/images/quiz-app-diagram.png?_v=1.5800.1881)
 
 We are also going to use `Inline` and `Stack` components to layout our components:
 
-![A diagram showing the inline and stack components is added to a Confluence page](https://dac-static.atlassian.com/platform/forge/images/quiz-app-diagram-inline-stack.png?_v=1.5800.1877)
+![A diagram showing the inline and stack components is added to a Confluence page](https://dac-static.atlassian.com/platform/forge/images/quiz-app-diagram-inline-stack.png?_v=1.5800.1881)
 
 Install the latest versions of the following packages in the top-level directory of the app:
 
@@ -280,7 +280,7 @@ To view the quiz app:
 1. Go the site where your app is installed.
 2. Select the **Apps** tab on the top navigation bar and select your app to view.
 
-![The app is inserted into a Confluence page](https://dac-static.atlassian.com/platform/forge/images/quiz-app-part-1.png?_v=1.5800.1877)
+![The app is inserted into a Confluence page](https://dac-static.atlassian.com/platform/forge/images/quiz-app-part-1.png?_v=1.5800.1881)
 
 ## Step 6: Importing questions and adding states
 
@@ -417,7 +417,7 @@ that toggles whether to display the explanation.
 
 Your app should now look like this and can be playable:
 
-![A gif is added to a Confluence page](https://dac-static.atlassian.com/platform/forge/images/quiz-app-before-ending-screen.gif?_v=1.5800.1877)
+![A gif is added to a Confluence page](https://dac-static.atlassian.com/platform/forge/images/quiz-app-before-ending-screen.gif?_v=1.5800.1881)
 
 ## Step 7: Adding an ending screen
 

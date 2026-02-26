@@ -1,10 +1,10 @@
 # updateMacroContent
 
-`updateMacroContent` is an asynchronous function that allows your macro to update itself. It takes in a macro ADF parameter and returns `true` if the update succeeded and `false` if it failed. This function works only in edit modes (e.g. a Live Doc or edit mode of a Page). You can get this info from the `isEditing` property in the [extension context](/platform/forge/manifest-reference/modules/macro/#extension-context).
+`updateMacro` is an asynchronous function that allows your macro to update itself. It takes in a macro ADF parameter and returns `true` if the update succeeded and `false` if it failed. This function works only in edit modes (e.g. a Live Doc or edit mode of a Page). You can get this info from the `isEditing` property in the [extension context](/platform/forge/manifest-reference/modules/macro/#extension-context).
 
 ## Function Parameter
 
-The `updateMacroContent` function accepts the following parameter:
+The `updateMacro` function accepts the following parameter:
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -17,13 +17,13 @@ The `updateMacroContent` function accepts the following parameter:
 2
 3
 const params = {
-    data: "<stringified_macro_adf_object>"
+  data: "<stringified_macro_adf_object>",
 };
 ```
 
 ## Example
 
-This example shows how to use `updateMacroContent`.
+This example shows how to use `updateMacro`.
 
 ```
 1
@@ -51,7 +51,7 @@ This example shows how to use `updateMacroContent`.
 23
 24
 25
-import { updateMacroContent } from '@forge/confluence-bridge';
+import { updateMacro } from "@forge/confluence-bridge";
 
 const newMacroADF = {
   type: "extension",
@@ -60,12 +60,12 @@ const newMacroADF = {
     extensionType: "com.atlassian.ecosystem",
     localId: "0",
     parameters: {
-        "localId": "0",
-        "extensionId": "cool-macro",
-        "extensionTitle": "Cool macro",
-        "layout": "extension",
-        "forgeEnvironment": "DEVELOPMENT",
-        "render": "native"
+      localId: "0",
+      extensionId: "cool-macro",
+      extensionTitle: "Cool macro",
+      layout: "extension",
+      forgeEnvironment: "DEVELOPMENT",
+      render: "native",
     },
     text: "Cool macro",
   },
@@ -73,11 +73,11 @@ const newMacroADF = {
 
 const updatedMacroADF = {
   data: JSON.stringify(newMacroADF),
-}
+};
 
-const updateMacroContentResult = await updateMacroContent(updatedMacroADF); // Returns true or false
+const updateMacroContentResult = await updateMacro(updatedMacroADF); // Returns true or false
 ```
 
 ## Response Type
 
-The `updateMacroContent` function returns `true` if the update was successful and `false` otherwise.
+The `updateMacro` function returns `true` if the update was successful and `false` otherwise.

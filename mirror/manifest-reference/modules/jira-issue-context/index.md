@@ -4,7 +4,7 @@ The `jira:issueContext` module adds a collapsible panel under the other fields o
 These panels give your users a quick way to get information related to the issue from your app.
 Users can expand these panels to view app information or collapse them if they don’t need it.
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-issue-context.png?_v=1.5800.1877)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-issue-context.png?_v=1.5800.1881)
 
 This module can be used in Jira and Jira Service Management.
 It works in the
@@ -14,14 +14,16 @@ but not the old issue view.
 ## Manifest example
 
 ```
-```
 1
 2
-```
-
-
-
-```
+3
+4
+5
+6
+7
+8
+9
+10
 modules:
   jira:issueContext:
     - key: hello-world-issue-context
@@ -32,7 +34,6 @@ modules:
       title: Hello World!
       description: A hello world issue context.
       label: Hello World!
-```
 ```
 
 ## Properties

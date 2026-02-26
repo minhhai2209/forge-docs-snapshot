@@ -29,7 +29,7 @@ When an app contains a remotes declaration, Forge will (by default) assume the a
 
 By meeting these requirements, Forge will consider your app eligible for `PINNED` status in the admin's **Data residency** interface. This also means that when your app is installed on an Atlassian app with the `PINNED` status, so will your app.
 
-![App pinned to same location as Atlassian app](https://dac-static.atlassian.com/platform/forge/images/dare-pinned-app.png?_v=1.5800.1877)
+![App pinned to same location as Atlassian app](https://dac-static.atlassian.com/platform/forge/images/dare-pinned-app.png?_v=1.5800.1881)
 
 See [Data residency](/platform/forge/data-residency/) for more information about the `PINNED`
 status (for both Atlassian apps and installed apps).
