@@ -22,14 +22,14 @@ The sidebar will only change the global page URL, you will need to [handle route
 ## Manifest example
 
 ```
-```
 1
 2
-```
-
-
-
-```
+3
+4
+5
+6
+7
+8
 modules:
   jira:globalPage:
     - key: hello-world-global-page
@@ -38,7 +38,6 @@ modules:
         function: resolver
       render: native
       title: Hello World!
-```
 ```
 
 ## Properties

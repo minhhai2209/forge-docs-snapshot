@@ -1,9 +1,86 @@
 # API route (Preview)
 
-Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
-When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our
+This section describes a Forge *preview* feature. Preview features are deemed stable;
+however, they remain under active development and may be subject to shorter deprecation
+windows. Preview features are suitable for early adopters in production environments.
 
-[Privacy Policy](https://www.atlassian.com/legal/privacy-policy#how-we-disclose-information-we-collect)
+We release preview features so partners and developers can study, test, and integrate
+them prior to General Availability (GA). For more information,
+see [Forge release phases: EAP, Preview, and GA](/platform/forge/whats-coming/#preview).
 
-.
-You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt-out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
+The Forge `apiRoute` module enables Forge apps to expose REST APIs that can be used to allow authorized external systems to securely invoke functions from an installed app.
+
+For a conceptual overview of app REST APIs and a step‑by‑step guide to configuring `apiRoute`, see:
+
+Currently, the `apiRoute` module is only available for Jira and Confluence apps.
+This feature is currently not available for apps on Isolated Cloud.
+
+## Manifest structure
+
+```
+```
+1
+2
+```
+
+
+
+```
+modules {}
+└─ apiRoute []
+   ├─ key (string) [Mandatory]
+   ├─ path (string) [Mandatory]
+   ├─ operation (string) [Mandatory]
+   ├─ function (string)  [Mandatory]
+   └─ accept [] [Mandatory]
+     └─ application/json (string) [Mandatory]
+   └─ scopes [] [Mandatory]
+     └─ <scope-1> (string) 
+     └─ <scope-2> (string) 
+     └─ ...
+```
+```
+
+## Properties
+
+| Property | Type | Required | Description |
+| --- | --- | --- | --- |
+| `key` | `string` | Yes | The name of the API route. |
+| `path` | `string` | Yes | The developer-defined path that will appear in the final URL. |
+| `method` | `string` | Yes | The HTTP method, such as `GET` or `PUT`. |
+| `function` | `string` | Yes | A reference to the function key that the route is mapping to. |
+| `accept` | `array<string>` | Yes | The payload types that can be accepted. Currently only `application/json` is supported. |
+| `scopes` | `array<string>` | Yes | List of developer-defined scopes this API maps to. |
+
+## Example
+
+```
+```
+1
+2
+```
+
+
+
+```
+modules:
+  apiRoute:
+    - key: employee-api-1
+      path: /getEmployeeName
+      operation: GET
+      function: handler1
+      accept:
+        - application/json 
+      scopes:
+        - read:employee:custom
+    - key: employee-api-2
+      path: /editEmployeeName
+      operation: POST
+      function: handler2
+      accept:
+        - application/json 
+      scopes:
+        - read:employee:custom
+        - write:employee:custom
+```
+```
