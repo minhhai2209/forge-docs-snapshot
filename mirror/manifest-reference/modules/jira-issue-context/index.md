@@ -4,7 +4,7 @@ The `jira:issueContext` module adds a collapsible panel under the other fields o
 These panels give your users a quick way to get information related to the issue from your app.
 Users can expand these panels to view app information or collapse them if they don’t need it.
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-issue-context.png?_v=1.5800.1881)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-issue-context.png?_v=1.5800.1886)
 
 This module can be used in Jira and Jira Service Management.
 It works in the
@@ -187,6 +187,88 @@ Use the [useProductContext](/platform/forge/ui-kit/hooks/use-product-context/) h
 | `projectId` | `string` | The ID of the project where the module is rendered. |
 | `projectKey` | `string` | The key of the project where the module is rendered. |
 | `projectType` | `string` | The type of the project where which the module is rendered. |
+
+## Dynamic module (EAP)
+
+This module can also be declared as a dynamic module. However, this capability is currently only available
+as part of Forge’s Early Access Program (EAP).
+
+For more details, see [Dynamic Modules](/platform/forge/apis-reference/dynamic-modules/).
+
+### Code examples
+
+#### Create a dynamic issue context module
+
+```
+```
+1
+2
+```
+
+
+
+```
+import { requestAtlassian } from "@forge/api";
+const payload = {
+  "type": "jira:issueContext",
+  "key": "issue-context",
+  "data": {
+    "label": "Dynamic Issue Context Label",
+    "resolver": {
+      "function": "resolver"
+    },
+    "resource": "main",
+    "title": "Dynamic Issue Context Title"
+  }
+}
+const response = await requestAtlassian(`/forge/installation/v1/dynamic/module/`, {
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  method: 'POST',
+  body: JSON.stringify(payload),
+});
+const body = await response.text(); 
+console.log(`Response: ${response.status} ${body}`);
+```
+```
+
+#### Update a dynamic issue context module
+
+```
+```
+1
+2
+```
+
+
+
+```
+import { requestAtlassian } from "@forge/api";
+const key = "issue-context";
+const payload = {
+  "type": "jira:issueContext",
+  "key": "issue-context",
+  "data": {
+    "label": "Dynamic Issue Context Label",
+    "resolver": {
+      "function": "resolver"
+    },
+    "resource": "main",
+    "title": "Dynamic Issue Context Title"
+  }
+}
+const response = await requestAtlassian(`/forge/installation/v1/dynamic/module/${key}`, {
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  method: 'PUT',
+  body: JSON.stringify(payload)
+});
+const body = await response.text(); 
+console.log(`Response: ${response.status} ${body}`);
+```
+```
 
 ## Events
 

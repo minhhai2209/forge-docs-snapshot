@@ -1,23 +1,9 @@
 # Forge scopes
 
-Certain platform features, such as the [App storage API](/platform/forge/runtime-reference/storage-api/),
-are authenticated using OAuth 2.0.
+Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
+When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our
 
-| Scope | Description |
-| --- | --- |
-| `read:app-system-token` | Enables Forge to pass a token to a remote backend, that can be used to invoke Atlassian app REST APIs with the permissions of the app "bot" user.  For more information see [Forge Remote](/platform/forge/remote). |
-| `read:app-user-token` | Enables Forge to pass a token to a remote backend, that can be used to invoke Atlassian app REST APIs with the permissions of the logged-in user.  Only app modules can have this scope, because they are associated with a logged-in user session. App event and lifecycle event modules are not associated with a logged-in user session, therefore they cannot have this scope.  For more information [Forge Remote](/platform/forge/remote). |
-| `storage:app` | Enables the [App storage API](/platform/forge/runtime-reference/storage-api/). |
-| `report:personal-data` | Enables the [User privacy API](/platform/forge/user-privacy-guidelines/). |
-| `read:chat:rovo` | Enables [actions](/platform/forge/manifest-reference/modules/rovo-action/) from your Forge app to be used by agents [created by customers](https://support.atlassian.com/rovo/docs/create-and-edit-agents/). |
+[Privacy Policy](https://www.atlassian.com/legal/privacy-policy#how-we-disclose-information-we-collect)
 
-## Atlassian app scopes
-
-Atlassian app scopes enable a Forge app to request a level of access to an Atlassian app. You can find details about each Atlassian app operation's required scopes through the
-[REST API](/platform/forge/apis-reference/product-rest-api-reference/) documentation (specifically, in the
-operation's *Oauth scopes required* field). For information about each Atlassian app event's
-required scopes, see our [events](/platform/forge/events-reference/product_events/)
-documentation.
-
-For more details about each Atlassian app's OAuth 2.0 (3LO) and Forge scopes,
-refer to the pages below:
+.
+You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt-out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.

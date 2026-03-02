@@ -9,19 +9,19 @@ but not the old issue view.
 For more information, see the
 [IssueActivity](/platform/forge/ui-kit-components/jira/issue-activity/) component documentation.
 
-![Example of an Issue activity](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-activity-module-demo.gif?_v=1.5800.1881)
+![Example of an Issue activity](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-activity-module-demo.gif?_v=1.5800.1886)
 
 ## Manifest example
 
 ```
+```
 1
 2
-3
-4
-5
-6
-7
-8
+```
+
+
+
+```
 modules:
   jira:issueActivity:
     - key: hello-world-issue-activity
@@ -30,6 +30,7 @@ modules:
         function: resolver
       render: native
       title: Hello World!
+```
 ```
 
 ## Properties
@@ -85,6 +86,88 @@ Use the [useProductContext](/platform/forge/ui-kit/hooks/use-product-context/) h
 | `projectId` | `string` | The ID of the project where the module is rendered. |
 | `projectKey` | `string` | The key of the project where the module is rendered. |
 | `projectType` | `string` | The type of the project where which the module is rendered. |
+
+## Dynamic module (EAP)
+
+This module can also be declared as a dynamic module. However, this capability is currently only available
+as part of Forge’s Early Access Program (EAP).
+
+For more details, see [Dynamic Modules](/platform/forge/apis-reference/dynamic-modules/).
+
+### Code examples
+
+#### Create a dynamic issue activity module
+
+```
+```
+1
+2
+```
+
+
+
+```
+import { requestAtlassian } from "@forge/api";
+const payload = {
+  "key": "issue-activity",
+  "type": "jira:issueActivity",
+  "data": {
+    "resolver": {
+      "function": "resolver"
+    },
+    "title": "deez",
+    "resource": "main",
+    "render": "native",
+  }
+}
+const response = await requestAtlassian(`/forge/installation/v1/dynamic/module/`, {
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  method: 'POST',
+  body: JSON.stringify(payload),
+});
+const body = await response.text(); 
+console.log(`Response: ${response.status} ${body}`);
+```
+```
+
+#### Update a dynamic issue activity module
+
+```
+```
+1
+2
+```
+
+
+
+```
+import { requestAtlassian } from "@forge/api";
+const key = "issue-activity";
+const payload = {
+  "key": "issue-activity",
+  "type": "jira:issueActivity",
+  "data": {
+    "resolver": {
+      "function": "resolver"
+    },
+    "title": "deez",
+    "resource": "main",
+    "render": "native",
+  }
+}
+const response = await requestAtlassian(`/forge/installation/v1/dynamic/module/${key}`, {
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  method: 'PUT',
+  body: JSON.stringify(payload)
+});
+const body = await response.text(); 
+console.log(`Response: ${response.status} ${body}`);
+```
+```
 
 ## Events
 

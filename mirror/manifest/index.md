@@ -1,52 +1,9 @@
-# Manifest
+# Forge manifest
 
-The manifest is a YAML file (`manifest.yml`) that describes your Forge app. It includes the
-[modules](/platform/forge/modules/) your app wants to use, the
-[permissions](/platform/forge/manifest-reference/permissions/) required by your app,
-and other information about your app.
+Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
+When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our
 
-It’s created when you run the `forge create` command in the Forge CLI.
+[Privacy Policy](https://www.atlassian.com/legal/privacy-policy#how-we-disclose-information-we-collect)
 
-For an introduction to the manifest, check out this video:
-
-## Example
-
-Here is an example `manifest.yml` file:
-
-```
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-app:
-  id: ari:cloud:ecosystem::app/baf12188-3db6-4ec9-aa26-f85cecb62d05
-modules:
-  confluence:contextMenu:
-    - key: dictionary
-      function: main
-      title: Define word
-  function:
-    - key: main
-      handler: index.run
-permissions:
-  scopes:
-    - read:content-details:confluence
-    - read:content.property:confluence
-    - write:content.property:confluence
-```
-
-## Reference documentation
-
-To learn more, check out the manifest
-[reference documentation](/platform/forge/manifest-reference/).
+.
+You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt-out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.

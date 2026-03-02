@@ -8,7 +8,7 @@ It works in the
 [new issue view](https://support.atlassian.com/jira-core-cloud/docs/what-is-the-new-jira-issue-view/)
 but not the old issue view.
 
-![Example of an Issue panel](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-panel-demo-with-show-hide-from-work-item.png?_v=1.5800.1881)
+![Example of an Issue panel](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-panel-demo-with-show-hide-from-work-item.png?_v=1.5800.1886)
 
 ## Manifest example
 
@@ -90,6 +90,90 @@ Use the [useProductContext](/platform/forge/ui-kit/hooks/use-product-context/) h
 | `projectKey` | `string` | The key of the project where the module is rendered. |
 | `projectType` | `string` | The type of the project where which the module is rendered. |
 | `isNewToIssue` | boolean | Defines if the panel was just added to the issue. |
+
+## Dynamic module (EAP)
+
+This module can also be declared as a dynamic module. However, this capability is currently only available
+as part of Forge’s Early Access Program (EAP).
+
+For more details, see [Dynamic Modules](/platform/forge/apis-reference/dynamic-modules/).
+
+### Code examples
+
+#### Create a dynamic issue panel module
+
+```
+```
+1
+2
+```
+
+
+
+```
+import { requestAtlassian } from "@forge/api";
+const payload = {
+  "type": "jira:issuePanel",
+  "key": "issue-panel",
+  "data": {
+    "icon": "https://developer.atlassian.com/platform/forge/images/icons/issue-panel-icon.svg",
+    "resolver": {
+      "function": "resolver"
+    },
+    "resource": "main",
+    "render": "native",
+    "title": "Issue Panel"
+  }
+}
+const response = await requestAtlassian(`/forge/installation/v1/dynamic/module/`, {
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  method: 'POST',
+  body: JSON.stringify(payload),
+});
+const body = await response.text(); 
+console.log(`Response: ${response.status} ${body}`);
+```
+```
+
+#### Update a dynamic issue panel module
+
+```
+```
+1
+2
+```
+
+
+
+```
+import { requestAtlassian } from "@forge/api";
+const key = "issue-panel";
+const payload = {
+  "type": "jira:issuePanel",
+  "key": "issue-panel",
+  "data": {
+    "icon": "https://developer.atlassian.com/platform/forge/images/icons/issue-panel-icon.svg",
+    "resolver": {
+      "function": "resolver"
+    },
+    "resource": "main",
+    "render": "native",
+    "title": "Issue Panel"
+  }
+}
+const response = await requestAtlassian(`/forge/installation/v1/dynamic/module/${key}`, {
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  method: 'PUT',
+  body: JSON.stringify(payload)
+});
+const body = await response.text(); 
+console.log(`Response: ${response.status} ${body}`);
+```
+```
 
 ## Events
 

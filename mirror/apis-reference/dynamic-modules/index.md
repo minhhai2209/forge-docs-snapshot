@@ -23,8 +23,9 @@ This capability has the following limitations:
 
 ## Available modules
 
-For now, only the [Trigger](/platform/forge/manifest-reference/modules/trigger/) module can be declared as a dynamic module.
-We are planning to add more in the future.
+The following modules can be declared as a dynamic module:
+
+We plan to add more in the future.
 
 ## Managing dynamic modules
 

@@ -207,6 +207,8 @@ Example
 | id | `string` | ID of the link. |
 | sourceIssueId | `string` | ID of the source issue. |
 | destinationIssueId | `string` | ID of the destination issue. |
+| sourceProjectId | `string` | ID of the project containing the source issue. |
+| destinationProjectId | `string` | ID of the project containing the destination issue. |
 | issueLinkType | `IssueLinkType` | An object containing information about the link type. |
 
 ## Issue worklog events

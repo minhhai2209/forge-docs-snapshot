@@ -1,46 +1,9 @@
-# Example apps for Rovo
+# Example apps for Forge Rovo
 
-Before you begin exploring these example apps, you'll need to set up the Forge CLI first.
-[Learn more about getting started](/platform/forge/getting-started/).
+Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
+When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our
 
-Once the Forge CLI is up and running, clone an example app repository to explore and customize it locally.
-Each repository's `README.md` file contains quickstart instructions and other details about the app.
+[Privacy Policy](https://www.atlassian.com/legal/privacy-policy#how-we-disclose-information-we-collect)
 
-For more information, refer to our getting started guides for building
-[Confluence](/platform/forge/build-a-hello-world-app-in-confluence/)
-and [Jira](/platform/forge/build-a-hello-world-app-in-jira/) apps.
-
-The `forge register` command creates a unique app ID in the `manifest.yml` file
-and links the ID to the current developer. Forge apps can currently only be deployed
-and installed by the developer who is linked to the app.
-
-The content on this page is written with standard cloud development in mind. To learn about developing
-for Atlassian Government Cloud, go to our
-[Atlassian Government Cloud developer portal](/platform/framework/agc/).
-
-## Jira issue analyst
-
-A Forge Rovo Agent app, Jira issue analyst that uses [Rovo Agent](/platform/forge/manifest-reference/modules/rovo-agent/) and [Action](/platform/forge/manifest-reference/modules/rovo-action) modules to help support and engineering teams analyze issue queues effectively.
-
-To see this app in action, watch this video
-
-### Details
-
-## Question and answer creator
-
-A Forge Rovo Agent app, Question and answer creator that uses Confluence page through the [Rovo Agent](/platform/forge/manifest-reference/modules/rovo-agent/) and [Action](/platform/forge/manifest-reference/modules/rovo-action) modules.
-
-### Details
-
-* **Code**: [Forge Q&A Creator](https://bitbucket.org/atlassian/forge-q-and-a-creator/src/main/)
-* **Atlassian app**: Confluence
-* **Modules**:
-* **UI Kit**:
-  * `Heading`, `Inline`, `Label`, `ProgressBar`, `Stack`, `Strong`, `Text`,`Toggle`
-* **Runtime**: `@forge/resolver`, `@forge/api`
-
-## Weather forecaster
-
-A Forge Rovo Agent app, Weather forecaster that uses Confluence page through the [Rovo Agent](/platform/forge/manifest-reference/modules/rovo-agent/) and [Action](/platform/forge/manifest-reference/modules/rovo-action) modules.
-
-### Details
+.
+You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt-out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.

@@ -1,84 +1,9 @@
-# Button group
+# ButtonGroup
 
-To add the `ButtonGroup` component to your app:
+Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
+When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our
 
-```
-1
-import { ButtonGroup } from '@forge/react';
-```
+[Privacy Policy](https://www.atlassian.com/legal/privacy-policy#how-we-disclose-information-we-collect)
 
-## Description
-
-A button group gives users access to frequently performed, related actions.
-
-## Props
-
-| Name | Type | Required | Description |
-| --- | --- | --- | --- |
-| `appearance` | `"default" | "danger" | "link" | "primary" | "subtle" | "subtle-link" | "warning"` | No | The appearance to apply to all buttons. |
-| `children` | `Array<Button>` | Yes | The buttons to render inside the button group. |
-| `label` | `string` | No | Refers to an aria-label attribute. Sets an accessible name for `ButtonGroup` wrapper to announce it to users of assistive technology. Usage of either this, or the `titleId` attribute is strongly recommended. |
-| `titleId` | `string` | No | ID referenced by the `ButtonGroup` wrapper's aria-labelledby attribute. This ID should be assigned to the group-button title element. Usage of either this, or the `label` attribute is strongly recommended. |
-
-## Examples
-
-### Appearance
-
-#### Default
-
-A button group displays multiple buttons together.
-
-![Example image of a rendered default ButtonGroup](https://dac-static.atlassian.com/platform/forge/ui-kit/images/button-group/button-group-examples.png?_v=1.5800.1881)
-
-```
-```
-1
-2
-```
-
-
-
-```
-import { Button, ButtonGroup } from '@forge/react';
-
-const ButtonGroupDefaultExample = () => {
-  return (
-    <ButtonGroup label="Default button group">
-      <Button appearance="primary">Submit</Button>
-      <Button>Cancel</Button>
-    </ButtonGroup>
-  );
-};
-```
-```
-
-#### Primary
-
-The appearance to apply to all buttons.
-
-![Example image of a rendered primary ButtonGroup](https://dac-static.atlassian.com/platform/forge/ui-kit/images/button-group/button-group-appearance.png?_v=1.5800.1881)
-
-```
-```
-1
-2
-```
-
-
-
-```
-import { Button, ButtonGroup } from '@forge/react';
-
-const ButtonGroupAppearanceExample = () => {
-  return (
-    <ButtonGroup appearance="primary" label="Button group with appearance">
-      <Button>Contact HR</Button>
-      <Button>Feedback</Button>
-      <Button>Request IT Support</Button>
-    </ButtonGroup>
-  );
-};
-```
-```
-
-For more examples, see the [Button component](/platform/forge/ui-kit/components/button/).
+.
+You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt-out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
