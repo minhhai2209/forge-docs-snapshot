@@ -176,7 +176,7 @@ This is an example payload of an updated repository.
       }
     }
   },
-  "eventType": "avi:bitbucket:updated:repository",
+  "eventType": "avi:bitbucket:updated:repository"
 }
 ```
 ```
@@ -428,8 +428,8 @@ interface BuildStatus {
     };
     state: string;
     url: string;
-    createdOn: Date;
-    updatedOn: Date;
+    createdOn: string;
+    updatedOn: string;
 }
 ```
 ```
@@ -654,7 +654,7 @@ This is an example payload of a commit comment being created.
   "comment": {
     "id": 78675
   },
-  "eventType": "avi:bitbucket:created:commit-comment",
+  "eventType": "avi:bitbucket:created:commit-comment"
 }
 ```
 ```
@@ -1781,6 +1781,271 @@ This is an example payload of a pull request reviewer status being updated.
       ],
       "truncated": false
     }
+}
+```
+```
+
+## Deployment events
+
+You can subscribe to these Bitbucket deployment events in Forge apps:
+
+Each event has a different payload format.
+
+### Deployment pending
+
+An event with the name `avi:bitbucket:pending:deployment` is sent when a deployment step, in Bitbucket Pipelines, is ready to be triggered.
+
+The required OAuth scope is `read:pipeline:bitbucket`.
+
+#### Payload
+
+| Name | Type | Description |
+| --- | --- | --- |
+| eventType | `string` | The event name `avi:bitbucket:pending:deployment`. |
+| repository | `BitbucketResource` | The repository of the deployment the event is related to. |
+| workspace | `BitbucketResource` | The workspace of the deployment the event is related to. |
+| pipeline | `Pipeline` | The pipeline of the deployment the event is related to. |
+| deployment | `Deployment` | The deployment the event is related to. |
+| environment | `Environment` | The environment of the deployment the event is related to. |
+
+#### Type reference
+
+```
+```
+1
+2
+```
+
+
+
+```
+interface BitbucketResource {
+  uuid: string;
+}
+interface Pipeline {
+  uuid: string;
+}
+interface Deployment {
+  uuid: string;
+  state: string;
+  status?: string;
+  updatedTimestamp: string
+}
+interface Environment {
+  uuid: string;
+  type: string;
+  name: string;
+}
+```
+```
+
+#### Example
+
+This is an example payload of a deployment step that is ready to be triggered.
+
+```
+```
+1
+2
+```
+
+
+
+```
+{
+  "repository": {
+    "uuid": "{15a31549-1cff-45dc-9d0d-310114c5038b}"
+  },
+  "workspace": {
+    "uuid": "{4c16a397-8e48-479c-8ca2-442e46c90570}"
+  },
+  "pipeline": {
+    "uuid": "{2c727cf1-ae19-4b2d-96c0-5d513f12e004}"
+  },
+  "deployment": {
+    "uuid": "{e057287a-3b30-4aaf-8ab4-7c638937b357}",
+    "state": "UNKNOWN",
+    "updatedTimestamp": "2024-11-15T03:08:01.556468172Z"
+  },
+  "environment": {
+    "uuid": "{fc0697a9-b1d3-44b1-b296-2d7ed47ff150}",
+    "type": "PRODUCTION",
+    "name": "us-east-1"
+  },
+  "eventType": "avi:bitbucket:pending:deployment"
+}
+```
+```
+
+### Deployment started
+
+An event with the name `avi:bitbucket:started:deployment` is sent when a deployment step, in Bitbucket Pipelines, is started.
+
+The required OAuth scope is `read:pipeline:bitbucket`.
+
+#### Payload
+
+| Name | Type | Description |
+| --- | --- | --- |
+| eventType | `string` | The event name `avi:bitbucket:started:deployment`. |
+| repository | `BitbucketResource` | The repository of the deployment the event is related to. |
+| workspace | `BitbucketResource` | The workspace of the deployment the event is related to. |
+| pipeline | `Pipeline` | The pipeline of the deployment the event is related to. |
+| deployment | `Deployment` | The deployment the event is related to. |
+| environment | `Environment` | The environment of the deployment the event is related to. |
+
+#### Type reference
+
+```
+```
+1
+2
+```
+
+
+
+```
+interface BitbucketResource {
+  uuid: string;
+}
+interface Pipeline {
+  uuid: string;
+}
+interface Deployment {
+  uuid: string;
+  state: string;
+  status?: string;
+  updatedTimestamp: string
+}
+interface Environment {
+  uuid: string;
+  type: string;
+  name: string;
+}
+```
+```
+
+#### Example
+
+This is an example payload of a deployment step being started.
+
+```
+```
+1
+2
+```
+
+
+
+```
+{
+  "repository": {
+    "uuid": "{15a31549-1cff-45dc-9d0d-310114c5038b}"
+  },
+  "workspace": {
+    "uuid": "{4c16a397-8e48-479c-8ca2-442e46c90570}"
+  },
+  "pipeline": {
+    "uuid": "{2c727cf1-ae19-4b2d-96c0-5d513f12e004}"
+  },
+  "deployment": {
+    "uuid": "{e057287a-3b30-4aaf-8ab4-7c638937b357}",
+    "state": "IN_PROGRESS",
+    "updatedTimestamp": "2024-11-15T03:08:01.556468172Z"
+  },
+  "environment": {
+    "uuid": "{fc0697a9-b1d3-44b1-b296-2d7ed47ff150}",
+    "type": "PRODUCTION",
+    "name": "us-east-1"
+  },
+  "eventType": "avi:bitbucket:started:deployment"
+}
+```
+```
+
+### Deployment completed
+
+An event with the name `avi:bitbucket:completed:deployment` is sent when a deployment step, in Bitbucket Pipelines, is completed.
+
+The required OAuth scope is `read:pipeline:bitbucket`.
+
+#### Payload
+
+| Name | Type | Description |
+| --- | --- | --- |
+| eventType | `string` | The event name `avi:bitbucket:completed:deployment`. |
+| repository | `BitbucketResource` | The repository of the deployment the event is related to. |
+| workspace | `BitbucketResource` | The workspace of the deployment the event is related to. |
+| pipeline | `Pipeline` | The pipeline of the deployment the event is related to. |
+| deployment | `Deployment` | The deployment the event is related to. |
+| environment | `Environment` | The environment of the deployment the event is related to. |
+
+#### Type reference
+
+```
+```
+1
+2
+```
+
+
+
+```
+interface BitbucketResource {
+  uuid: string;
+}
+interface Pipeline {
+  uuid: string;
+}
+interface Deployment {
+  uuid: string;
+  state: string;
+  status?: string;
+  updatedTimestamp: string
+}
+interface Environment {
+  uuid: string;
+  type: string;
+  name: string;
+}
+```
+```
+
+#### Example
+
+This is an example payload of a deployment step being completed.
+
+```
+```
+1
+2
+```
+
+
+
+```
+{
+  "repository": {
+    "uuid": "{15a31549-1cff-45dc-9d0d-310114c5038b}"
+  },
+  "workspace": {
+    "uuid": "{4c16a397-8e48-479c-8ca2-442e46c90570}"
+  },
+  "pipeline": {
+    "uuid": "{2c727cf1-ae19-4b2d-96c0-5d513f12e004}"
+  },
+  "deployment": {
+    "uuid": "{e057287a-3b30-4aaf-8ab4-7c638937b357}",
+    "state": "COMPLETED",
+    "status": "SUCCESSFUL",
+    "updatedTimestamp": "2024-11-15T03:08:01.556468172Z"
+  },
+  "environment": {
+    "uuid": "{fc0697a9-b1d3-44b1-b296-2d7ed47ff150}",
+    "type": "PRODUCTION",
+    "name": "us-east-1"
+  },
+  "eventType": "avi:bitbucket:completed:deployment"
 }
 ```
 ```
