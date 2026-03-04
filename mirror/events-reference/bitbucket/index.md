@@ -398,6 +398,7 @@ The required OAuth scope is `read:repository:bitbucket`.
 | repository | `BitbucketResource` | The repository the event is related to. |
 | project | `BitbucketResource` | The parent project of the repository that the event is related to. |
 | workspace | `BitbucketResource` | The workspace of the repository the event is related to. |
+| refName | `string` | The ref (branch or tag name) the build status is associated with. |
 | buildStatus | `BuildStatus` | The build status the event is related to. |
 
 #### Type reference
@@ -430,6 +431,7 @@ interface BuildStatus {
     url: string;
     createdOn: string;
     updatedOn: string;
+    refName?: string;
 }
 ```
 ```
@@ -463,6 +465,7 @@ This is an example payload of a build status being created.
   "workspace": {
     "uuid": "{4c16a397-8e48-479c-8ca2-442e46c90570}"
   },
+  "refName": "main",
   "buildStatus": {
     "key": "my-build1",
     "state": "FAILED",
@@ -493,6 +496,7 @@ The required OAuth scope is `read:repository:bitbucket`.
 | repository | `BitbucketResource` | The repository the event is related to. |
 | project | `BitbucketResource` | The parent project of the repository that the event is related to. |
 | workspace | `BitbucketResource` | The workspace of the repository the event is related to. |
+| refName | `string` | The ref (branch or tag name) the build status is associated with. |
 | buildStatus | `BuildStatus` | The build status the event is related to. |
 
 #### Type reference
@@ -525,6 +529,7 @@ interface BuildStatus {
   url: string;
   createdOn: Date;
   updatedOn: Date;
+  refName?: string;
 }
 ```
 ```
@@ -558,6 +563,7 @@ This is an example payload of a build status being updated.
   "workspace": {
     "uuid": "{4c16a397-8e48-479c-8ca2-442e46c90570}"
   },
+  "refName": "main",
   "buildStatus": {
     "key": "my-build1",
     "state": "SUCCESSFUL",
