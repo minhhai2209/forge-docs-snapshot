@@ -398,7 +398,6 @@ The required OAuth scope is `read:repository:bitbucket`.
 | repository | `BitbucketResource` | The repository the event is related to. |
 | project | `BitbucketResource` | The parent project of the repository that the event is related to. |
 | workspace | `BitbucketResource` | The workspace of the repository the event is related to. |
-| refName | `string` | The ref (branch or tag name) the build status is associated with. |
 | buildStatus | `BuildStatus` | The build status the event is related to. |
 
 #### Type reference
@@ -431,7 +430,7 @@ interface BuildStatus {
     url: string;
     createdOn: string;
     updatedOn: string;
-    refName?: string;
+    refName?: string; // branch or tag name
 }
 ```
 ```
@@ -465,7 +464,6 @@ This is an example payload of a build status being created.
   "workspace": {
     "uuid": "{4c16a397-8e48-479c-8ca2-442e46c90570}"
   },
-  "refName": "main",
   "buildStatus": {
     "key": "my-build1",
     "state": "FAILED",
@@ -474,7 +472,8 @@ This is an example payload of a build status being created.
       "hash": "b88c4b490b648bf960eba6f59123456797960e55"
     },
     "createdOn": "2025-01-31T00:42:46.866793Z",
-    "updatedOn": "2025-01-31T00:42:46.866808Z"
+    "updatedOn": "2025-01-31T00:42:46.866808Z",
+    "refName": "main"
   },
   "eventType": "avi:bitbucket:created:build-status"
 }
@@ -496,7 +495,6 @@ The required OAuth scope is `read:repository:bitbucket`.
 | repository | `BitbucketResource` | The repository the event is related to. |
 | project | `BitbucketResource` | The parent project of the repository that the event is related to. |
 | workspace | `BitbucketResource` | The workspace of the repository the event is related to. |
-| refName | `string` | The ref (branch or tag name) the build status is associated with. |
 | buildStatus | `BuildStatus` | The build status the event is related to. |
 
 #### Type reference
@@ -529,7 +527,7 @@ interface BuildStatus {
   url: string;
   createdOn: Date;
   updatedOn: Date;
-  refName?: string;
+  refName?: string; // branch or tag name
 }
 ```
 ```
@@ -563,7 +561,6 @@ This is an example payload of a build status being updated.
   "workspace": {
     "uuid": "{4c16a397-8e48-479c-8ca2-442e46c90570}"
   },
-  "refName": "main",
   "buildStatus": {
     "key": "my-build1",
     "state": "SUCCESSFUL",
@@ -572,7 +569,8 @@ This is an example payload of a build status being updated.
       "hash": "b88c4b490b648bf960eba6f59123456797960e55"
     },
     "createdOn": "2025-01-31T00:42:46.866793Z",
-    "updatedOn": "2025-01-31T01:03:17.105700Z"
+    "updatedOn": "2025-01-31T01:03:17.105700Z",
+    "refName": "main"
   },
   "eventType": "avi:bitbucket:updated:build-status"
 }

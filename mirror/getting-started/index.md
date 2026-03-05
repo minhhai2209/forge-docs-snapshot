@@ -8,7 +8,7 @@ Ask for help on our Developer Community
 
 Welcome to developing with the Forge platform for Atlassian cloud apps. Work through
 the steps below to set up your development environment. To get started using Forge,
-you’ll install the CLI, log in with an Atlassian API token, and create an Atlassian
+you’ll install the CLI, log in with an Atlassian API scoped token, and create an Atlassian
 developer site that has Confluence and all of the Jira applications installed.
 
 After setting up, you'll go through a three-part tutorial to create a simple hello world app
@@ -85,7 +85,7 @@ installing Node.js using this method.
 After installing the Forge CLI, follow the prompts in the terminal to build a hello world app. For a complete explanation
 of each step, continue reading along with the documentation.
 
-![Hello world CLI overview](https://dac-static.atlassian.com/platform/forge/images/forge-cli-overview-without-description.png?_v=1.5800.1892)
+![Hello world CLI overview](https://dac-static.atlassian.com/platform/forge/images/forge-cli-overview-without-description.png?_v=1.5800.1897)
 
 ## Install the Forge CLI
 
@@ -129,16 +129,18 @@ look for errors reported in the terminal.
 
 With the CLI installed, view the complete list of Forge commands by running `forge --help`.
 
-## Log in with an Atlassian API token
+## Log in with an Atlassian API scoped token
 
-Create or use an existing Atlassian API token to log in to the CLI. The CLI uses your
+Create or use an existing Atlassian API scoped token to log in to the CLI. The CLI uses your
 token when running commands.
 
-1. Go to <https://id.atlassian.com/manage/api-tokens>.
-2. Click **Create API token**.
-3. Enter a label to describe your API token. For example, *forge-api-token*.
-4. Click **Create**.
-5. Click **Copy to clipboard** and close the dialog.
+1. Go to <https://id.atlassian.com/manage-profile/security/api-tokens>.
+2. Click **Create API token with scopes**.
+3. Enter a name for your API token (for example, *forge-api-token*) and select the token expiry.
+4. Select **Forge** as the app.
+5. Confirm the default recommended scopes, or select only the scopes you require.
+6. Click **Create token**.
+7. Click **Copy** and close the dialog.
 
 Log in to the Forge CLI to start using Forge commands.
 
@@ -168,7 +170,7 @@ potentially leading Forge CLI not functioning properly when run by a non-privile
    For information about how Atlassian collects and handles your data, read our
    [Privacy Policy](https://www.atlassian.com/legal/privacy-policy).
 3. Enter the email address associated with your Atlassian account.
-4. Enter your Atlassian API token. You copied this to the clipboard in step 5.
+4. Enter your Atlassian API scoped token. You copied this to the clipboard in step 7.
 
 You will see a message similar to this confirming you are logged in:
 
@@ -213,7 +215,7 @@ Otherwise, you can also set environment variables manually:
 read FORGE_EMAIL
 # Enter email
 read -s FORGE_API_TOKEN
-# Enter API token (will not be displayed)
+# Enter your Atlassian API scoped token (will not be displayed)
 export FORGE_EMAIL FORGE_API_TOKEN
 ```
 ```

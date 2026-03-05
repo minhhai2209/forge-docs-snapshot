@@ -238,5 +238,5 @@ Where the properties specific to app events are:
 Below is a list of features that are missing in the current [preview](/platform/forge/whats-coming/#preview) version of App events.
 Follow the [changelog](/platform/forge/changelog/) for any future updates.
 
-* Events can be exchanged only within the scope of the same Atlassian app
+* Events can be exchanged only within the scope of the same Atlassian app (for example, apps installed in Jira can't exchange events with apps installed in Confluence)
 * Publishing apps can't add any custom payload to the event

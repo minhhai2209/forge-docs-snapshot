@@ -1,9 +1,34 @@
 # The Forge REST API
 
-Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
-When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our
+POST
 
-[Privacy Policy](https://www.atlassian.com/legal/privacy-policy#how-we-disclose-information-we-collect)
+## Set secret value by key
 
-.
-You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt-out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
+Stores sensitive credentials in JSON format, with encryption.
+Values set with this method can only be accessed with [Get secret value by key](/platform/forge/rest/api-group-key-value-store/#api-v1-secret-get-post).
+Write conflicts are resolved using a last-write-wins strategy by default, but this can be configured via the key policy option.
+Optionally, you can specify a TTL (Time To Live) to automatically expire the data after a specified duration.
+
+Forge and OAuth2 apps cannot access this REST resource.
+
+### Request
+
+#### Request bodyapplication/json
+
+**value**
+
+oneOf [string, boolean, number, array<undefined>, object]
+
+Required
+
+**options**
+
+ExtendedSetOptions
+
+### Responses
+
+200OK
+
+Successfully set the value with metadata fields returned
+
+204No Content400Bad Request409Conflict

@@ -33,7 +33,7 @@ Usage: forge login [options]
 forge login --user FORGE_EMAIL
 ```
 
-Prompts you to enter an API token then logs you in to Forge with the specified credentials.
+Prompts you to enter a scoped API token then logs you in to Forge with the specified credentials.
 
 ```
 1
@@ -44,11 +44,11 @@ Logs you in to Forge with the specified credentials.
 
 ## Operation
 
-The `forge login` command allows you to authenticate to Atlassian so that you can run Forge commands requiring an authenticated user. When you login, Forge stores your credentials in your computer' local credentials store, sometimes referred to as a keychain.
+The `forge login` command allows you to authenticate to Atlassian so that you can run Forge commands requiring an authenticated user. When you login, Forge stores your credentials in your computer's local credentials store, sometimes referred to as a keychain.
 
 You can optionally provide your credentials by setting environment variables instead of using `forge login`. This method is often used when automating Forge tasks.
 
-Both methods require that you specify an Atlassian API token as well as an email address that you have registered with Atlassian. If you do not yet have an Atlassian API token, go to [API Tokens](https://id.atlassian.com/manage-profile/security/api-tokens) to obtain one.
+Both methods require that you specify an Atlassian API scoped token as well as an email address that you have registered with Atlassian. If you do not yet have an Atlassian API scoped token, see [Log in with an Atlassian API scoped token](/platform/forge/getting-started/#log-in-with-an-atlassian-api-scoped-token) for steps to create one.
 
 The `--non-interactive` option causes the command to produce an error rather than prompt the user for values, if the `--email` or `--token` options are not provided on the command line.
 It is rarely used in practice, as automation scripts generally use environment variables to set credentials.

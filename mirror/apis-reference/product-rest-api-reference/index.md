@@ -1,9 +1,28 @@
 # Atlassian app REST APIs
 
-Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
-When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our
+Forge apps can use the following Atlassian app REST APIs:
 
-[Privacy Policy](https://www.atlassian.com/legal/privacy-policy#how-we-disclose-information-we-collect)
+To call an Atlassian app REST API using the Authenticated [Atlassian app Fetch APIs](/platform/forge/runtime-reference/product-fetch-api/) the operation must support OAuth 2.0 authentication.
+In the Atlassian app API documentation, this is shown by the *OAuth scopes required* field,
+which documents the required OAuth 2.0 scope for that operation.
 
-.
-You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt-out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
+Calling an unsupported operation with `asUser()` returns a `401` error.
+
+Jira Cloud REST API version 2 is not supported by the `forge lint` command.
+Only `/rest/api/3` paths are supported.
+
+## Atlassian app fetch API
+
+The [fetch API](/platform/forge/runtime-reference/fetch-api/#fetch-api) also enables you to make requests to Atlassian app APIs through the following endpoints:
+
+## OAuth 2.0 scopes
+
+Scopes define the operations that an app is permitted to use in an Atlassian app REST API.
+
+See [Add scopes to call an Atlassian REST API](/platform/forge/add-scopes-to-call-an-atlassian-rest-api/) for instructions on how to add scopes to Forge apps, or [Scopes](/platform/forge/manifest-reference/permissions/#scopes) for the list of supported OAuth 2.0 scopes.
+
+## GraphQL APIs
+
+Atlassian apps such as Compass use the [Atlassian platform GraphQL API](https://developer.atlassian.com/platform/atlassian-graphql-api/graphql/) rather than a REST API. To call GraphQL APIs from a Forge app, use Forge's [requestGraph](/platform/forge/runtime-reference/product-fetch-api/#requestgraph) method.
+
+As an alternative to `requestGraph`, Compass also provides a [GraphQL API Toolkit](https://www.npmjs.com/package/@atlassian/forge-graphql) for commonly used calls to the GraphQL API.
