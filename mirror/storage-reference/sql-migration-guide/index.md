@@ -99,7 +99,7 @@ To add an async event function, start with its manifest entry. For example:
 
 ```
 modules:
-    function:
+  function:
     - key: data-migrations-function
       handler: migration.handler
       # This enables the maximum runtime of an async events call
@@ -124,7 +124,7 @@ You can queue multiple async events and store their job status details on a sepa
 
 
 ```
-import { Queue } from "@forge/events";
+import { Queue } from '@forge/events';
 import { dataMigrationDB } from "./data-migration/sql";
 
 // key matches what is defined in the manifest.yml
@@ -570,7 +570,7 @@ This will take in the table construction details and columns, then generate an S
 
 
 ```
-import { sql } from "@forge/sql";
+import { sql } from '@forge/sql';
 
 /**
  * Generates and executes a SQL INSERT query for multiple rows of data.

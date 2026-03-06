@@ -164,12 +164,12 @@ The Connected apps screen can be accessed within Atlassian Administration by nav
 After selecting the app, all available Teamwork Graph connectors will be shown
 in the **Connections** tab.
 
-![Connections tab within Marketplace app showing one Teamwork Graph connector that has not yet been configured](https://dac-static.atlassian.com/platform/forge/images/teamwork-graph/teamwork-graph-connector-not-configured.svg?_v=1.5800.1897)
+![Connections tab within Marketplace app showing one Teamwork Graph connector that has not yet been configured](https://dac-static.atlassian.com/platform/forge/images/teamwork-graph/teamwork-graph-connector-not-configured.svg?_v=1.5800.1901)
 
 Admins must configure the connector before it can start providing data to Teamwork Graph. To
 do this, the admin will click the **Connect** button, which opens a configuration modal.
 
-![Basic modal for configuring Teamwork Graph connector](https://dac-static.atlassian.com/platform/forge/images/teamwork-graph/teamwork-graph-connector-modal.svg?_v=1.5800.1897)
+![Basic modal for configuring Teamwork Graph connector](https://dac-static.atlassian.com/platform/forge/images/teamwork-graph/teamwork-graph-connector-modal.svg?_v=1.5800.1901)
 
 ### Configuration details
 
@@ -282,14 +282,16 @@ Note that Atlassian will automatically take care of deleting the data assocociat
 
 
 ```
-"body": {
-  "action": "CREATED",
-  "name" : "My Connection",
-  "connectionId": "edc0ce33-2f67-4997-8c0f-c5f38923e33f",
-  "configProperties" : {
-    "secret" : "jane",
-    "username" : "joe"
+{
+  "body": {
+    "action": "CREATED",
+    "name" : "My Connection",
+    "connectionId": "edc0ce33-2f67-4997-8c0f-c5f38923e33f",
+    "configProperties" : {
+      "secret" : "jane",
+      "username" : "joe"
     }
+  }
 }
 ```
 ```
@@ -357,8 +359,8 @@ graph:connector:
           function: onConnectionChangeFn 
 
 function:
-    - key: onConnectionChangeFn
-       handler: index.onConnectionChange
+  - key: onConnectionChangeFn
+    handler: index.onConnectionChange
 ```
 ```
 
@@ -417,10 +419,10 @@ graph:connector:
       onConnectionChange:
         function: onConnectionChangeFn 
 function:
-    - key: onConnectionChangeFn
-       handler: index.onConnectionChange
-    - key: validateConnectionFn
-       handler: index.validateConnection
+  - key: onConnectionChangeFn
+    handler: index.onConnectionChange
+  - key: validateConnectionFn
+    handler: index.validateConnection
 ```
 ```
 

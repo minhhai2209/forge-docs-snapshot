@@ -67,13 +67,13 @@ Making a `POST` request to a remote endpoint:
 
 
 ```
-import { invokeRemote } from "@forge/bridge";
+import { invokeRemote } from '@forge/bridge';
 
 const res = await invokeRemote({
   path: `/tasks/`,
   method: 'POST',
   headers: {
-    x-header-key: 'x-header-value',
+    'x-header-key': 'x-header-value',
   },
   body: {
     department: 'Ecosystem',
@@ -97,7 +97,7 @@ Making a `GET` request to a remote endpoint:
 
 
 ```
-import { invokeRemote } from "@forge/bridge";
+import { invokeRemote } from '@forge/bridge';
 
 const res = await invokeRemote({
   path: `/tasks/?team=Forge`,

@@ -11,7 +11,7 @@ Smart Link requests are executed in the context of the user. Both Atlassian and 
 
 By using the [`asUser()`](/platform/forge/runtime-reference/external-fetch-api/) the user Authentication token will automatically be injected in the communication to the remote system. The App should check that the user has a valid token, and if not, trigger the process to authenticate the user.
 
-![](https://dac-static.atlassian.com/platform/forge/snippets/images/graph/screenshot.png?_v=1.5800.1897)
+![](https://dac-static.atlassian.com/platform/forge/snippets/images/graph/screenshot.png?_v=1.5800.1901)
 
 ## Manifest structure
 
@@ -130,9 +130,10 @@ Below is a request to resolve two links.
 
 ```
 {
-  "type": "resolve";
+  "type": "resolve",
   "payload": {
-    "urls": ["https://www.example-link.com/example1","https://www.example-link.com/example2"];
+    "urls": ["https://www.example-link.com/example1","https://www.example-link.com/example2"]
+  }
 }
 ```
 ```

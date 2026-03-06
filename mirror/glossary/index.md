@@ -1,16 +1,9 @@
 # Glossary
 
-|  |  |
-| --- | --- |
-| **app** | Supplemental software built to enhance Atlassian apps. Can be distributed or sold through the Atlassian Marketplace. |
-| **Anonymous user** | A user who is not logged in to an Atlassian account. |
-| **App lifecycle event** | Event which is triggered in response to an app being installed, upgraded, or uninstalled. |
-| **App owner** | Type of contributor that owns an app and has permissions to delete the app or change ownership. |
-| **Atlassian account ID** | A unique value used to identify an Atlassian cloud user. The format is a case-sensitive string of at most 128 ASCII characters. |
-| **Atlassian Connect** | A framework for building apps for Atlassian cloud apps. Connect apps are hosted by developers or third-party hosting services. To build node.js apps hosted by Atlassian , use [Forge.](#Forge) |
-| **Atlassian Connect Express (ACE)** | An officially supported Node.js framework that generates some of the parts required for a Connect app. See also [Atlassian Connect](#aconnect)  and [Atlassian Connect Springboot](#aconnectspring). To build node.js apps hosted by Atlassian, use [Forge.](#forge) |
-| **Atlassian Connect Springboot** | An officially supported Java framework that generates some of the parts required for a Connect app. See also [Atlassian Connect](#aconnect)  and [Atlassian Connect Express.](#aconnectexp) |
-| **Atlassian Marketplace** | The online store to buy and sell apps for Atlassian apps. |
-| **Atlassian Plugin SDK** | A development kit for creating, installing, and building Plugins2 (P2) apps for Atlassian Data Center apps. See also [Plugins2 (P2).](#plugins2) |
-| **Atlassian Resource Identifier (ARI)** | An Atlassian Resource Identifier (ARI) is a globally unique identifier used across Atlassian apps and services for the unique identification of content. |
-| **Automatic update** | An update to an app that is rapplied automatically to all installed copies of the app. |
+Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
+When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our
+
+[Privacy Policy](https://www.atlassian.com/legal/privacy-policy#additional-disclosures-for-ca-residents)
+
+.
+You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.

@@ -48,7 +48,7 @@ Send a `POST` request to `/forge/installation/v1/dynamic/module` to register a d
 
 
 ```
-import { requestAtlassian } from "@forge/api";
+import { requestAtlassian } from '@forge/api';
 const payload = {
   key: "unique-module-key",
   type: "trigger",
@@ -154,7 +154,7 @@ The `dynamicModuleRequest` property requires the same properties as the [registr
 
 
 ```
-import { requestAtlassian } from "@forge/api";
+import { requestAtlassian } from '@forge/api';
 const key = "unique-module-key";
 const payload = {
   key: "unique-module-key",
@@ -281,7 +281,7 @@ Send a `GET` request to `/forge/installation/v1/dynamic/module/` to retrieve a *
 
 
 ```
-import { requestAtlassian } from "@forge/api";
+import { requestAtlassian } from '@forge/api';
 const params = new URLSearchParams({
   limit: '10',
   nextPageToken: '<PAGINATION-TOKEN>'
@@ -314,18 +314,19 @@ Dynamic modules were successfully fetched.
 
 
 ```
-{
-  "key": "a-dynamic-module",
-  "type": "trigger",
-  "data": {
+[
+  {
     "key": "a-dynamic-module",
-    "function": "jira-updated-issue-handler",
-    "events": [
-      "avi:jira:updated:issue"
-    ]
-  }
-},
-{
+    "type": "trigger",
+    "data": {
+      "key": "a-dynamic-module",
+      "function": "jira-updated-issue-handler",
+      "events": [
+        "avi:jira:updated:issue"
+      ]
+    }
+  },
+  {
   "key": "another-dynamic-module",
   "type": "trigger",
   "data": {
@@ -338,8 +339,9 @@ Dynamic modules were successfully fetched.
     "events": [
       "avi:jira:updated:issue"
     ]
+    }
   }
-}
+]
 ```
 ```
 
@@ -411,7 +413,7 @@ Send a `GET` request to `/forge/installation/v1/dynamic/module/<key>` to retriev
 
 
 ```
-import { requestAtlassian } from "@forge/api";
+import { requestAtlassian } from '@forge/api';
 const key = '<YOUR-MODULE-KEY>';
 const response = await requestAtlassian(`/forge/installation/v1/dynamic/module/${key}`, {
   headers: {
@@ -523,7 +525,7 @@ Send a `DELETE` request to `forge/installation/v1/dynamic/module/<key>` to delet
 
 
 ```
-import { requestAtlassian } from "@forge/api";
+import { requestAtlassian } from '@forge/api';
 const moduleKey = '<YOUR-MODULE-KEY>';
 const response = await requestAtlassian(`/forge/installation/v1/dynamic/module/${moduleKey}`, {
   headers: {

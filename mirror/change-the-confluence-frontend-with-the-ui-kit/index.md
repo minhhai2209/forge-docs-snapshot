@@ -92,7 +92,7 @@ ForgeReconciler.render(
 Your app should display the number of comments on the page. You can add more top-level comments to
 the page and refresh the page to see your app update. Your page should look like the following:
 
-![The final app displays on a Confluence page](https://dac-static.atlassian.com/platform/forge/images/display-confluence-macro.png?_v=1.5800.1897)
+![The final app displays on a Confluence page](https://dac-static.atlassian.com/platform/forge/images/display-confluence-macro.png?_v=1.5800.1901)
 
 ## Specify the export view
 
@@ -243,7 +243,7 @@ export const exportFunction = async (payload) => {
 
    ```
    - key: export-key
-      handler: macroExport.exportFunction
+     handler: macroExport.exportFunction
    ```
    ```
 
@@ -273,4 +273,4 @@ You now know enough to develop your own Forge apps. Learn more from our
 [tutorials](/platform/forge/tutorials-and-guides/), [guides](/platform/forge/guides/),
 [example apps](/platform/forge/example-apps/) or [reference pages](/platform/forge/manifest-reference/).
 
-[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.1897)](/platform/forge/call-a-confluence-api/)
+[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.1901)](/platform/forge/call-a-confluence-api/)

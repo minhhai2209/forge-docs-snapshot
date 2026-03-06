@@ -57,10 +57,10 @@ When an Atlassian app admin schedules a migration, the service will notify eligi
 
 ```
 {
-“startTime”: “2021-12-26T00:00:00.000Z”, 
-“endTime”: “2021-12-27T00:00:00.000Z”, 
-“location”: “EU”,
-“migrationId”: 57500
+  "startTime": "2021-12-26T00:00:00.000Z",
+  "endTime": "2021-12-27T00:00:00.000Z",
+  "location": "EU",
+  "migrationId": 57500
 }
 ```
 ```
@@ -85,10 +85,10 @@ Once the site is taken offline, the service will notify eligible apps that have 
 
 ```
 {
- “startTime”: “2021-12-26T00:00:00.000Z”,
- “endTime”: “2021-12-27T00:00:00.000Z”,
- “location”: “EU”,
- “migrationId”: 57500
+  "startTime": "2021-12-26T00:00:00.000Z",
+  "endTime": "2021-12-27T00:00:00.000Z",
+  "location": "EU",
+  "migrationId": 57500
 }
 ```
 ```
@@ -140,8 +140,8 @@ Failed status - service will update the Forge app migration's status to failed:
 
 ```
 {
-“status”: “failed”,
-“errorResponseCode”: “E0004”
+  "status": "failed",
+  "errorResponseCode": "E0004"
 }
 ```
 ```
@@ -158,7 +158,7 @@ App is awaiting a `/commit` hook. The service, once the migration ends, will sen
 
 ```
 {
-“status”: “ready-to-commit”
+"status": "ready-to-commit"
 }
 ```
 ```
@@ -167,7 +167,7 @@ App is awaiting a `/commit` hook. The service, once the migration ends, will sen
 
 Once the site is brought back online, the service will query the status of each Forge app that has started the migration.
 
-The service will ask apps to commit via this endpoint if they’ve reported that they're `ready-to-commit`.
+The service will ask apps to commit via this endpoint if they've reported that they're `ready-to-commit`.
 
 Specifically, this is to commit the copied data to the new region.
 
@@ -183,7 +183,7 @@ Specifically, this is to commit the copied data to the new region.
 
 ```
 {
-“migrationId”: 57500
+"migrationId": 57500
 }
 ```
 ```
@@ -199,7 +199,7 @@ There are various use cases for this endpoint:
 1. Migration cancelled by the user via the UI
 2. No report of `ready-to-commit` by the Forge app. Once the site is brought back online, the service will query the status of each Forge app which has started the migration.
 
-The service will ask apps to roll back via this endpoint if they’ve reported that they aren't `ready-to-commit`.
+The service will ask apps to roll back via this endpoint if they've reported that they aren't `ready-to-commit`.
 
 Specifically, this is intended to roll back the non-destructive copy operation to the new region.
 
@@ -215,7 +215,7 @@ Specifically, this is intended to roll back the non-destructive copy operation t
 
 ```
 {
-“migrationId”: 57500
+"migrationId": 57500
 }
 ```
 ```
@@ -248,7 +248,7 @@ Any non-2xx response to any of the lifecycle events can optionally include any o
 
 ```
 {
- “errorResponseCode”: “E0004”
+ "errorResponseCode": "E0004"
 }
 ```
 ```

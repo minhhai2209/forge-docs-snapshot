@@ -58,7 +58,7 @@ If you encounter errors during installation, use v11.4.0 (or later) instead.
 
 The Forge CLI has a dependency on a third-party package called [node-gyp](https://github.com/nodejs/node-gyp). Installing `node-gyp` is slightly more complex than installing regular Node.js packages because
 it has non-JavaScript dependencies including some components that may need to be provided by your operating system.
-In some situations, the Forge CLI installation process may attempt to dynamically retrieve `node-gyp`’s native platform
+In some situations, the Forge CLI installation process may attempt to dynamically retrieve `node-gyp`'s native platform
 dependencies from external repositories, which will fail if you are required to use a local NPM package mirror. Or,
 the `node-gyp` installation may fail because it tries to build itself from the source, but the right build tools are
 not installed in your local development environment.
@@ -66,7 +66,7 @@ not installed in your local development environment.
 In this scenario, you should instead install the build `node-gyp` dependencies for your operating system as
 described in the [node-gyp instructions](https://github.com/nodejs/node-gyp?tab=readme-ov-file#installation).
 
-After you’ve completed this pre-installation, you should try to [install the Forge CLI](/platform/forge/getting-started/#install-the-forge-cli) again.
+After you've completed this pre-installation, you should try to [install the Forge CLI](/platform/forge/getting-started/#install-the-forge-cli) again.
 
 ## Configuring the development environment to work with an HTTP proxy
 
@@ -163,7 +163,7 @@ This can be done by performing the following steps:
    export GLOBAL_AGENT_HTTP_PROXY=${yourProxyServer}
    ```
    ```
-3. Insert the following line of JavaScript to the third line of Forge’s `cli.js`:
+3. Insert the following line of JavaScript to the third line of Forge's `cli.js`:
 
    ```
    ```
@@ -180,7 +180,7 @@ This can be done by performing the following steps:
 
 **Finding cli.js**
 
-`cli.js` will be located in the ‘lib’ folder of your Node.js installation.
+`cli.js` will be located in the 'lib' folder of your Node.js installation.
 
 For example:
 `%YOUR_NODE_INSTALLATION%/lib/node_modules/@forge/cli/out/bin/cli.js`

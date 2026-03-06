@@ -61,13 +61,13 @@ Making a `POST` request to a remote endpoint:
 
 
 ```
-import { invokeRemote } from "@forge/api";
+import { invokeRemote } from '@forge/api';
 
 const res = await invokeRemote('my-remote-key', {
   path: `/tasks/`,
   method: 'POST',
   headers: {
-    x-header-key: 'x-header-value'
+    'x-header-key': 'x-header-value'
   },
   body: JSON.stringify({
     department: 'Ecosystem',
@@ -96,7 +96,7 @@ Making a `GET` request to a remote endpoint:
 
 
 ```
-import { invokeRemote } from "@forge/api";
+import { invokeRemote } from '@forge/api';
 
 const res = await invokeRemote('my-remote-key', {
   path: `/tasks/?team=Forge`,

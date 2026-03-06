@@ -51,8 +51,8 @@ In a UI Kit app, we can use `useProductContext()` to extract the macro body.
 
 
 ```
-import React from "react";
-import ForgeReconciler, { useProductContext } from "@forge/react";
+import React from 'react';
+import ForgeReconciler, { useProductContext } from '@forge/react';
 
 const App = () => {
   const context = useProductContext();
@@ -101,12 +101,12 @@ Both the `AdfRenderer` component and `view.createAdfRendererIframeProps` require
 
 
 ```
-"body": {
-  "type": "doc",
-  "version": 1,
-  "content": [
-    // ADF content
-  ]
+{
+  "body": {
+    "type": "doc",
+    "version": 1,
+    "content": []
+  }
 }
 ```
 ```
@@ -124,7 +124,7 @@ To render in UI Kit, you can use the `AdfRenderer` component from [@forge/react]
 
 
 ```
-import { AdfRenderer } from "@forge/react";
+import { AdfRenderer } from '@forge/react';
 
 const App = () => {
   // ...
@@ -166,7 +166,7 @@ so it cannot make any assumptions about the format of the body.
 
 
 ```
-import { requestConfluence } from "@forge/bridge";
+import { requestConfluence } from '@forge/bridge';
 
 async function convertMacroBody(to, macroBody, contentId) {
   const params = new URLSearchParams({
@@ -290,7 +290,7 @@ function will be called each time the parent component provides HTML, which we w
 
 
 ```
-import { events } from "@forge/bridge";
+import { events } from '@forge/bridge';
 
 events.on("PROPS", ({ html }) => {
   // Create a fragment, allowing any embedded content scripts to be executed when appended
@@ -315,9 +315,9 @@ The following code uses [createFrame](/platform/forge/ui-kit/components/frame/#u
 
 
 ```
-import React, { useEffect } from "react";
-import { events } from "@forge/bridge";
-import { Frame } from "@forge/react";
+import React, { useEffect } from 'react';
+import { events } from '@forge/bridge';
+import { Frame } from '@forge/react';
 
 const App = () => {
   useEffect(() => {

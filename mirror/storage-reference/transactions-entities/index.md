@@ -308,6 +308,6 @@ Checks a key meets the specified conditions for a custom entity. Conditions are 
 ```
 await kvs.transact()
     // Check value in key for employee entitiy meets conditions
-    .check('employee1', { entityName: 'employee', conditions: new Filter().and('lastName', FilterConditions.beginsWith('S'))
+    .check('employee1', { entityName: 'employee', conditions: new Filter().and('lastName', FilterConditions.beginsWith('S')) })
 ```
 ```

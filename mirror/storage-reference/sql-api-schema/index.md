@@ -26,7 +26,7 @@ You can use the `migrationRunner` SDK to execute DDL operations. To import it:
 
 
 ```
-import migrationRunner from `@forge/sql` ;
+import migrationRunner from '@forge/sql';
 ```
 ```
 
@@ -100,7 +100,11 @@ Next, wrap `createDBobjects` in a single database object creation function (`run
 export const runMigration = async () => {
   try {
     await applyMigrations();
-  };
+  } catch (error) {
+    console.error('Migration failed:', error);
+    throw error;
+  }
+};
 
 export const applyMigrations = async () => {
   const successfulMigrations = await createDBobjects.run();

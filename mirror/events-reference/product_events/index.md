@@ -169,7 +169,7 @@ There will be one extra object `retryContext` in the event payload for a retry. 
 
 
 ```
-import { RetryOptions, InvocationError, InvocationErrorCode } from "@forge/events"
+import { RetryOptions, InvocationError, InvocationErrorCode } from '@forge/events'
 
 export async function onIssueCreated(event, context) {
   try {
@@ -184,11 +184,11 @@ export async function onIssueCreated(event, context) {
   } catch(error) {
     // If the event is retryable, the App can request for another retry
     // although, note that the maximum number of retries is 4 
-    if (e instanceof RetryableException) {
+    if (error instanceof RetryableException) {
       const retryOptions: RetryOptions = {
         retryAfter: calculateBackOffTime(event.retryContext),
         retryReason: InvocationErrorCode.FUNCTION_RETRY_REQUEST,
-        retryData: getRetryData(e, event)
+        retryData: getRetryData(error, event)
       }
       return new InvocationError(retryOptions);
     }
