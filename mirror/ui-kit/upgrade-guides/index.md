@@ -1,9 +1,27 @@
-# Upgrading to latest version of UI Kit
+# Upgrade to latest UI Kit
 
-Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
-When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our
+This page is about the previous version of UI Kit.
 
-[Privacy Policy](https://www.atlassian.com/legal/privacy-policy#how-we-disclose-information-we-collect)
+We highly recommend upgrading to and utilizing the latest version.
+[Get started](/platform/forge/ui-kit/components/) with UI Kit's latest library of components to quickly build your user interface.
 
-.
-You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt-out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
+When upgrading existing UI Kit apps to the latest version of UI Kit, make sure you're checking the correct guide.
+
+## UI Kit 1 apps to UI Kit latest version
+
+The [latest version of UI Kit](https://developer.atlassian.com/platform/forge/changelog/#1590) is now generally available. This version comes with a new major version of `@forge/react` containing 37 updated components.
+
+Check out [Upgrade from UI Kit 1 to UI Kit latest version](/platform/forge/ui-kit/upgrade-to-ui-kit-latest/) to know what you need to do to move from your apps from UI Kit 1 to the latest version.
+
+## UI Kit apps from @forge/react version 9 to major version 10
+
+Upgrading to @forge/react major version 10 may contain breaking changes for existing UI Kit apps,
+*as all existing component APIs have been updated*.
+
+You must be on `@forge/react` major version 10 or higher to use the latest version of
+UI Kit components.
+
+To upgrade your app to the latest version, run `npm install --save @forge/react@latest` in your terminal.
+
+Check out [Upgrade to @forge/react major version 10](/platform/forge/ui-kit/version-10-changes/)
+for guidance on the changes you'll need to make to your app components.

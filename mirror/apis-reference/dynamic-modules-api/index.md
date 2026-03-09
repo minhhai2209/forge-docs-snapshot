@@ -31,12 +31,6 @@ Send a `POST` request to `/forge/installation/v1/dynamic/module` to register a d
 
 ### Request
 
-| Property | Type | Required? | Description |
-| --- | --- | --- | --- |
-| `key` | `string` | Yes | The unique key of the target dynamic module on the installation |
-| `type` | `string` | Yes | The dynamic module being created (for example, use `trigger` to specify the [Trigger](/platform/forge/manifest-reference/modules/trigger/) module) |
-| `data` | `map` | Yes | The dynamic module's structure, but in JSON format. Dynamic modules currently available in EAP are:   The `key` property will be automatically copied into this payload so does not need to be provided again. |
-
 ### Code examples
 
 ```

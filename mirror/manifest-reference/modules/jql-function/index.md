@@ -23,6 +23,109 @@ See the [JQL functions](/cloud/jira/platform/jql-functions/) page for more infor
 | `name` | `string` | Yes | The name of the custom function argument. |
 | `required` | `boolean` | Yes | Whether the argument is required. |
 
+## Dynamic module (EAP)
+
+This module can also be declared as a dynamic module. However, this capability is currently only available
+as part of Forge’s Early Access Program (EAP).
+
+For more details, see [Dynamic Modules](/platform/forge/apis-reference/dynamic-modules/).
+
+### Code examples
+
+The following examples show Dynamic Module implementations specific to this module. For more detailed information about the API used in these examples
+(including error handling information), see [Dynamic Modules API](/platform/forge/apis-reference/dynamic-modules-api/).
+
+#### Create a dynamic JQL function module
+
+```
+```
+1
+2
+```
+
+
+
+```
+import { requestAtlassian } from "@forge/api";
+const payload = {
+  "key": "dynamic-jql-function",
+  "type": "jira:jqlFunction",
+  "data": {
+    "arguments": [
+      {
+        "name": "text",
+        "required": true
+      }
+    ],
+    "function": "resolver",
+    "name": "dynamicSearch",
+    "operators": [
+      "=",
+      "!="
+    ],
+    "types": [
+      "issue"
+    ]
+  }
+}
+const response = await requestAtlassian(`/forge/installation/v1/dynamic/module/`, {
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  method: 'POST',
+  body: JSON.stringify(payload),
+});
+const body = await response.text(); 
+console.log(`Response: ${response.status} ${body}`);
+```
+```
+
+#### Update a dynamic JQL function module
+
+```
+```
+1
+2
+```
+
+
+
+```
+import { requestAtlassian } from "@forge/api";
+const key = "dynamic-jql-function";
+const payload = {
+  "key": "dynamic-jql-function",
+  "type": "jira:jqlFunction",
+  "data": {
+    "arguments": [
+      {
+        "name": "text",
+        "required": true
+      }
+    ],
+    "function": "resolver",
+    "name": "dynamicSearch",
+    "operators": [
+      "=",
+      "!="
+    ],
+    "types": [
+      "issue"
+    ]
+  }
+}
+const response = await requestAtlassian(`/forge/installation/v1/dynamic/module/${key}`, {
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  method: 'PUT',
+  body: JSON.stringify(payload)
+});
+const body = await response.text(); 
+console.log(`Response: ${response.status} ${body}`);
+```
+```
+
 ## Example
 
 ##### Using a function

@@ -58,7 +58,7 @@ Read more about app versioning in [App Versions](/platform/forge/versions/#app-v
 | `function` | `string` | Required if using [triggers](/platform/forge/manifest-reference/modules/trigger/). | A reference to the function module that defines the module. |
 | `response` | [Response](#response) | No | Allows for the configuration of the response type for the webtrigger. |
 
-Since web-triggers are publicly available URLs, Atlassian user information is not attached to invocations. This means that `asUser` API calls will not work in webtrigger functions.
+Web trigger URLs are publicly available and are not authenticated by the Forge platform. Atlassian user information is not attached to invocations, which means `asUser` API calls will not work in web trigger functions. You should implement your own authentication logic inside the handler to verify incoming requests. See [Authentication](/platform/forge/runtime-reference/web-trigger/#authentication) for more details and an example.
 
 ### Response
 

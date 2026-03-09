@@ -1,9 +1,36 @@
-# Overview
+# Forge Realtime (Preview)
 
-Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
-When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our
+Forge Realtime is now available as Preview capability. Preview capabilities are deemed stable; however, they remain under active development and may be subject to shorter deprecation windows. Preview capabilities are suitable for early adopters in production environments.
 
-[Privacy Policy](https://www.atlassian.com/legal/privacy-policy#how-we-disclose-information-we-collect)
+We release preview features so partners and developers can study, test, and integrate them prior to General Availability (GA). For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#preview).
 
-.
-You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt-out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
+Forge Realtime allows you to send events between different instances of your Forge app. This includes instances across different browsing contexts.
+
+For example, you can broadcast realtime events to the multiple tabs that a user has opened. Or you can broadcast realtime events across multiple users that have your app open.
+
+Forge Realtime capabilities include:
+
+* Sending and receiving events between instances of your Forge frontend (Custom UI and UI Kit)
+* Publishing events from your Forge backend to your Forge frontend, using the @forge/realtime package
+* A secure-by-default yet flexible channel permissions context
+
+  * Realtime channel contexts meet the same authentication and confidentiality standards as Atlassian app contexts. The Forge Realtime API also allows for fine-grained control over channel context - for example, restricting channels on a per-issue or per-project basis.
+
+## Using Forge Realtime
+
+References and guides on Realtime capabilities:
+
+## Use cases
+
+Some use cases for these capabilities:
+
+* Create real-time status indicators showing when team members are viewing, editing, or working across the same Forge app context
+* Implement collaborative activity feeds that broadcast project updates and team actions across all users viewing the same workspace context.
+
+## Changes from EAP
+
+### New features
+
+* Realtime is now available in Jira and Confluence.
+* The [contextOverrides](/platform/forge/realtime/authorizing-realtime-channels/#using-context-overrides) option now also accepts Confluence context properties.
+* Event payloads can now be JSON-serializable objects without needing to be stringified first. String payloads are still supported.

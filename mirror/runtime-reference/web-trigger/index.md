@@ -1,7 +1,7 @@
 # Web triggers
 
 Web triggers are incoming HTTPS calls that invoke a function, such as from a third-party webhook implementation. Web
-triggers are configured in the app’s manifest and the URL to call is created through the Forge CLI.
+triggers are configured in the app's manifest and the URL to call is created through the Forge CLI.
 
 The request is serialized to JSON and passed to the function in the format described below. The function that is
 invoked is responsible for parsing the JSON data.
@@ -65,7 +65,23 @@ modules:
 
 There are two types of web triggers, `static` and `dynamic`, that you can specify in your manifest. Read more about these types of web triggers and their usage in [Web trigger module](/platform/forge/manifest-reference/modules/web-trigger).
 
-### Generating a URL
+## Authentication
+
+Web trigger URLs are not authenticated by the Forge platform. This is an intentional design
+choice to maximize compatibility with external tools and services.
+
+External applications and services use a variety of security schemes for authenticating outbound
+webhooks (such as HMAC signatures, bearer tokens, or basic authentication). Imposing a specific
+authentication scheme on Forge web triggers requires modifying the calling client to
+support it, which isn't always possible with proprietary or third-party software. In those
+cases, you'd need to build and host middleware to broker requests between the external tool
+and the Forge platform, resulting in a more complex and less secure system overall.
+
+Instead, you can implement your own authentication logic directly inside the web trigger handler
+function to match the security scheme used by the calling service. This keeps the authentication
+logic running on the Forge platform, rather than pushing it out into external middleware.
+
+## Generating a URL
 
 There are two ways to generate a webtrigger URL. If you are an administrator of an installation, you can run `forge webtrigger create` via the CLI [webtrigger command](/platform/forge/cli-reference/webtrigger/). Alternatively, you can programatically generate webtrigger URLs via the [SDK](/platform/forge/runtime-reference/web-trigger-api/).
 
@@ -160,8 +176,6 @@ The following example shows a request to `/x1/XUBR5WnG2Hk2V52APDdGaRSDm?apples=g
 ```
 
 When no path parameters are provided, `userPath` is an empty string `""`.
-
-## Response
 
 ## Response
 

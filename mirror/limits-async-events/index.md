@@ -1,9 +1,11 @@
 # Async events limits
 
-Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
-When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our
-
-[Privacy Policy](https://www.atlassian.com/legal/privacy-policy#how-we-disclose-information-we-collect)
-
-.
-You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt-out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
+|  |  |  |
+| --- | --- | --- |
+| Event per request | 50 | Maximum number of events pushed in a single request. |
+| Event per minute | 500 | Maximum number of events pushed in one minute. |
+| Payload size | 200 KB | Maximum combined payload size of events in single request. |
+| Retry data size | 4 KB | Maximum size of `retryData`.  This will be enforced from `Nov 13, 2025`. See [CHANGE-2508](/platform/forge/changelog/#CHANGE-2508) for more details. |
+| Payload size for long running functions | 100 KB | Maximum size of an *individual* event.  This limit only applies to functions specifying a timeout greater than 55 seconds. |
+| Retry data size for long running functions | 4 KB | Maximum size of `retryData`.  This limit only applies to functions specifying a timeout greater than 55 seconds. |
+| Cyclic invocation limit | 1000 | An event resolver can push more events to the queue, which may trigger further event handlers in a chain. This limit applies to the total number of **async event push requests** that can be made across all handlers originating from a single initial function invocation, including requests made by downstream handlers. Each push request can contain up to 50 events. For example, a function that calls push 1000 times in a loop, or a chain where each handler calls push once for 1000 hops, both reach this limit. |

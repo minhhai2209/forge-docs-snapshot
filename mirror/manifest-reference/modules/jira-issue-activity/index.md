@@ -9,7 +9,7 @@ but not the old issue view.
 For more information, see the
 [IssueActivity](/platform/forge/ui-kit-components/jira/issue-activity/) component documentation.
 
-![Example of an Issue activity](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-activity-module-demo.gif?_v=1.5800.1901)
+![Example of an Issue activity](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-activity-module-demo.gif?_v=1.5800.1905)
 
 ## Manifest example
 
@@ -95,6 +95,9 @@ as part of Forge’s Early Access Program (EAP).
 For more details, see [Dynamic Modules](/platform/forge/apis-reference/dynamic-modules/).
 
 ### Code examples
+
+The following examples show Dynamic Module implementations specific to this module. For more detailed information about the API used in these examples
+(including error handling information), see [Dynamic Modules API](/platform/forge/apis-reference/dynamic-modules-api/).
 
 #### Create a dynamic issue activity module
 

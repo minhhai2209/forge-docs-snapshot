@@ -8,23 +8,23 @@ It works in the
 [new issue view](https://support.atlassian.com/jira-core-cloud/docs/what-is-the-new-jira-issue-view/)
 but not the old issue view.
 
-![Example of an Issue action button](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-action-location.png?_v=1.5800.1901)
+![Example of an Issue action button](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-action-location.png?_v=1.5800.1905)
 
 This is an example of the triggered modal dialog:
 
-![Example of an Issue action with the above sample code](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-action-demo.png?_v=1.5800.1901)
+![Example of an Issue action with the above sample code](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-action-demo.png?_v=1.5800.1905)
 
 ## Manifest example
 
 ```
-```
 1
 2
-```
-
-
-
-```
+3
+4
+5
+6
+7
+8
 modules:
   jira:issueAction:
     - key: hello-world-issue-action
@@ -33,7 +33,6 @@ modules:
         function: resolver
       render: native
       title: Hello World
-```
 ```
 
 ## Properties
@@ -98,6 +97,9 @@ as part of Forge’s Early Access Program (EAP).
 For more details, see [Dynamic Modules](/platform/forge/apis-reference/dynamic-modules/).
 
 ### Code examples
+
+The following examples show Dynamic Module implementations specific to this module. For more detailed information about the API used in these examples
+(including error handling information), see [Dynamic Modules API](/platform/forge/apis-reference/dynamic-modules-api/).
 
 #### Create a dynamic issue action module
 

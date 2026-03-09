@@ -213,6 +213,85 @@ ari:cloud:ecosystem::extension/<app-id>/<environment-id>/static/<invoked-module-
 You can use it to create the ID of your custom field type.
 There are two ways to get the Atlassian app context, depending on your app's rendering method:
 
+## Dynamic module (EAP)
+
+This module can also be declared as a dynamic module. However, this capability is currently only available
+as part of Forge’s Early Access Program (EAP).
+
+For more details, see [Dynamic Modules](/platform/forge/apis-reference/dynamic-modules/).
+
+### Code examples
+
+The following examples show Dynamic Module implementations specific to this module. For more detailed information about the API used in these examples
+(including error handling information), see [Dynamic Modules API](/platform/forge/apis-reference/dynamic-modules-api/).
+
+#### Create a dynamic custom field type module
+
+```
+```
+1
+2
+```
+
+
+
+```
+import { requestAtlassian } from "@forge/api";
+const payload = {
+  "key": "dynamic-custom-field-type",
+  "type": "jira:customFieldType",
+  "data": {
+    "name": "Dynamic Number Type",
+    "description": "Custom field type for dynamic module testing",
+    "type": "number"
+  }
+}
+const response = await requestAtlassian(`/forge/installation/v1/dynamic/module/`, {
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  method: 'POST',
+  body: JSON.stringify(payload),
+});
+const body = await response.text(); 
+console.log(`Response: ${response.status} ${body}`);
+```
+```
+
+#### Update a dynamic custom field type module
+
+```
+```
+1
+2
+```
+
+
+
+```
+import { requestAtlassian } from "@forge/api";
+const key = "dynamic-custom-field-type";
+const payload = {
+  "key": "dynamic-custom-field-type",
+  "type": "jira:customFieldType",
+  "data": {
+    "name": "Dynamic Number Type",
+    "description": "Custom field type for dynamic module testing",
+    "type": "number"
+  }
+}
+const response = await requestAtlassian(`/forge/installation/v1/dynamic/module/${key}`, {
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  method: 'PUT',
+  body: JSON.stringify(payload)
+});
+const body = await response.text(); 
+console.log(`Response: ${response.status} ${body}`);
+```
+```
+
 ## Read-only fields
 
 Read-only fields are those that have `readOnly` set to `true` in their definition in the manifest.
@@ -764,7 +843,7 @@ const Edit = () => {
 ```
 
 Outcome:
-![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.1901)
+![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.1905)
 
 ##### Updated files
 
@@ -840,7 +919,7 @@ const Edit = () => {
 ```
 
 Outcome:
-![Updated experience to inline edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-inline.png?_v=1.5800.1901)
+![Updated experience to inline edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-inline.png?_v=1.5800.1905)
 
 
 How to edit custom fields in the modal (for more complex UI)
@@ -953,7 +1032,7 @@ const Edit = () => {
 ```
 
 Outcome:
-![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.1901)
+![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.1905)
 
 ##### Updated files
 
@@ -1063,7 +1142,7 @@ ForgeReconciler.render(
 ```
 
 Outcome:
-![Updated experience to modal edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-new-modal.png?_v=1.5800.1901)
+![Updated experience to modal edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-new-modal.png?_v=1.5800.1905)
 
 ### Issue creation and issue transition dialog
 
