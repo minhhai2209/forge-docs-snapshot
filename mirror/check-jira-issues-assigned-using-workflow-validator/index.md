@@ -1,5 +1,11 @@
 # Check whether Jira issues are assigned using a workflow validator
 
+#### Having trouble?
+
+Ask for help on our Developer Community
+
+[Get help](https://community.developer.atlassian.com/session/sso?return_path=%2Fnew-topic%3Fcategory_id%3D45%26tags%3Dforge-check-jira-issues-assigned-using-workflow-validator)
+
 This tutorial describes how to create a Forge app that checks Jira issues are assigned when the
 issue transitions. You'll do this using a Jira workflow validator.
 

@@ -1,5 +1,11 @@
 # Use Forge hosted storage in a Confluence macro
 
+#### Having trouble?
+
+Ask for help on our Developer Community
+
+[Get help](https://community.developer.atlassian.com/session/sso?return_path=%2Fnew-topic%3Fcategory_id%3D45%26tags%3Dforge-create-confluence-macro-with-storage-api)
+
 This tutorial describes how to build an app for sharing definitions for
 terminology and acronyms across an entire Confluence site.
 The app uses Forge hostes storage to store definitions, which allows them to be
