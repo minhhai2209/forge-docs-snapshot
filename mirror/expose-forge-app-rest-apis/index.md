@@ -326,6 +326,10 @@ Both of these REST API endpoints point to the same function. The difference is t
 includes the cloud ID, whereas the second has the client site name. You may use whichever endpoint
 you would like.
 
+The part of the URL before the `<path>` is the base URL. The base URL is available in Connected apps
+under the REST API toggle, once it's enabled. It is also surfaced when a 3LO integration is first setup.
+
+You can also formulate the base URL yourself.
 If using the first URL, one can retrieve the `cloud-id` for a site through the `GET` API
 `https://<site-name>/_edge/tenant_info`. Additionally, the `environment-id` for a Forge app can
 be obtained from the Developer Console. Note that both the `environment-id` and `app-id` are app-specific
