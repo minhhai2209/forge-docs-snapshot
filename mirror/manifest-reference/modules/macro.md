@@ -1,16 +1,4 @@
 ```
----
-source: https://bitbucket.org/atlassian-developers/forge-docs/src/master/content/platform/forge/manifest-reference/modules/macro.md?at=master&mode=edit&fileviewer=file-view-default&spa=0
-title: "Macro"
-description: "Utilize Forge's macro module to develop custom macros that improve content interaction
-and functionality within Confluence."
-platform: platform
-product: forge
-category: reference
-subcategory: manifest
-date: "2026-01-23"
----
-
 # Macro
 
 {{% warning %}}

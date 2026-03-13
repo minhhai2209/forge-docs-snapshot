@@ -1,14 +1,4 @@
 ```
----
-source: https://bitbucket.org/atlassian-developers/forge-docs/src/master/content/platform/forge/custom-ui-bridge/modal.md?at=master&mode=edit&fileviewer=file-view-default&spa=0
-title: 'Custom UI Modal'
-platform: platform
-product: forge
-category: reference
-subcategory: custom-ui
-date: '2025-10-16'
----
-
 # Modal
 
 The `Modal` class enables your Custom UI app to open a modal dialog with a specified resource.

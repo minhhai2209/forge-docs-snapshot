@@ -1,15 +1,4 @@
 ```
----
-source: https://bitbucket.org/atlassian-developers/forge-docs/src/master/content/platform/forge/ui-kit/components/modal.md?at=master&mode=edit&fileviewer=file-view-default&spa=0
-title: "Modal"
-platform: platform
-description: "Incorporate Modal component from Forge UI Kit for focused user interactions, ensuring attention on specific tasks in your app."
-product: forge
-category: reference
-subcategory: ui-kit
-date: "2026-01-23"
----
-
 # Modal
 
 To add the `Modal`, `ModalBody`, `ModalTransition`, `ModalTitle`, `ModalFooter`, `ModalHeader`,

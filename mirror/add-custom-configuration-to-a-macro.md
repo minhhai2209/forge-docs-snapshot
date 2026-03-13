@@ -1,15 +1,4 @@
 ```
----
-source: https://bitbucket.org/atlassian-developers/forge-docs/src/master/content/platform/forge/add-custom-configuration-to-a-macro.md?at=master&mode=edit&fileviewer=file-view-default&spa=0
-title: "Add custom configuration to a macro"
-description: "How to add custom configuration to a macro."
-platform: platform
-product: forge
-category: devguide
-subcategory: platform-concepts
-date: "2025-03-03"
----
-
 # Add custom configuration to a macro
 
 {{% warning %}}

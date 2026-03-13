@@ -16,7 +16,7 @@ To view app installations:
 
 The screen shows a list of all the sites and Atlassian apps that your app is currently connected to.
 
-![A list of sites the app is installed onto](https://dac-static.atlassian.com/platform/forge/images/installation-screen.svg?_v=1.5800.1909)
+![A list of sites the app is installed onto](https://dac-static.atlassian.com/platform/forge/images/installation-screen.svg?_v=1.5800.1910)
 
 You can sort the sites by **version** or **installation date** in ascending or descending order
 by clicking on the corresponding column header.
@@ -39,6 +39,10 @@ While egress permissions can be categorized as analytics,
 can still choose to disable access to analytics. You must ensure that your app can efficiently
 handle the scenario when analytics access is disabled. Otherwise, this may lead to poor user experience,
 in the form of failing app invocations or elements not rendering properly in the UI, and more.
+
+## Check access to custom metrics
+
+For each site that your app is installed on, you can check whether or not admins have enabled custom metrics ingestion. See [custom metrics](/platform/forge/monitor-custom-metrics) for more details.
 
 ## View app logs
 
