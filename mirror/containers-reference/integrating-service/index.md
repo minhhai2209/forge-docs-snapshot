@@ -1,9 +1,75 @@
-# Integrating containerised services
+# Integrating containerised services (EAP)
 
-Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
-When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our
+Forge Containers are now available through Forge's Early Access Program (EAP). To start testing this feature,
+submit your app's ID to our team [through this link](https://ecosystem.atlassian.net/servicedesk/customer/portal/1040/create/18884).
 
-[Privacy Policy](https://www.atlassian.com/legal/privacy-policy#additional-disclosures-for-ca-residents)
+EAPs are offered to selected users for testing and feedback purposes. APIs and features under EAP
+are unsupported and subject to change without notice. APIs and features under EAP are not recommended
+for use in production environments.
 
-.
-You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
+For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
+
+To enable invocations, your container service must have an exposed API. You can invoke this API from an *event,* the app’s front end, or the app’s back end.
+
+## Define endpoints
+
+To invoke your container service from an event or front end invocation, you’ll need to first define an *endpoint* module for your container service.
+
+You can define multiple endpoint modules for your container services, with each one mapped to a specific HTTP URL path. Use the endpoint’s `route:path` property to define the path; it will be appended to the service’s base URL to call the desired endpoint.
+
+For example:
+
+```
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+services:
+  - key: java-service
+    containers:
+      - key: java-container
+        tag: ${TAG}
+        resources:
+          cpu: "1"
+          memory: "2Gi"
+        health:
+          type: http
+          route:
+            path: /health
+
+modules:
+  endpoint:
+    - key: event-invocation
+      service: java-service
+      route:
+        path: /event-invocation
+```
+
+App components such as such as events, webtriggers, and `invokeService` can then invoke your app’s API through these endpoints.
+
+## Build service integration
+
+After defining your containerised service's endpoints, you can now build invocations to or from other capabilities:
+
+## Test invocation locally
+
+You can use `forge tunnel` to test your containerised service locally before pushing its image to Forge. See [Test service locally](/platform/forge/containers-reference/test-service-locally/) for information on how to set this up.
+
+## View container logs
+
+You can view logs for service invocations using the `forge logs --containers` command.
