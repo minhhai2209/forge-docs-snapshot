@@ -169,6 +169,20 @@ interface LicenseDetails {
 
 ### Returns
 
+* **Context:** An object containing contextual information about the current environment
+  in which the app is running. The data available depends on the module in which your app is used.
+  * **accountId:** The Atlassian ID of the user that interacted with the app.
+  * **cloudId:** The ID identifying the cloud context of this app installation.
+  * **extension:** Provides information related to the Forge app extension point, such as the content ID of the page where the app is running, module type and so on.
+  * **license:** Contains information about the license of the app. Note: this field is only present for paid apps in the production environment.
+    `license` is `undefined` for free apps, apps not listed on the Atlassian Marketplace, and apps in development and staging environments.
+    See the `LicenseDetails` type for what information is available.
+  * **localId:** A unique ID for this instance of this app in the content.
+  * **locale:** The locale of the user that interacted with the app.
+  * **moduleKey:** The key for the module as defined in the `manifest.yml` file.
+  * **siteUrl:** The URL of the site of this app installation (e.g. <https://example.atlassian.net>).
+  * **timezone:** The timezone of the user that interacted with the app.
+
 ### Example
 
 ```
@@ -228,7 +242,7 @@ function createHistory(): Promise<{
   goBack(): void;
   goForward(): void;
   listen(
-    listener: (location: LocationDescriptor, action: Action) => void
+    listener: (location: LocationDescriptor, action: Action) => void,
   ): UnlistenCallback;
 }>;
 ```
@@ -360,7 +374,7 @@ view.theme.enable().then(() => {
     <React.StrictMode>
       <App />
     </React.StrictMode>,
-    document.getElementById("root")
+    document.getElementById("root"),
   );
 });
 ```
@@ -458,19 +472,19 @@ export default MyMacro;
 ```
 ```
 
-## createAdfRendererIframeProps (EAP)
+## createAdfRendererIframeProps (Preview)
 
-The `createAdfRendererIframeProps` method is now available as an Early Access Program (EAP). To start testing this feature, sign up using this [form](https://ecosystem.atlassian.net/servicedesk/customer/portal/1040/group/3496/create/18979).
+The `createAdfRendererIframeProps` method is now available as Preview capability. Preview capabilities are deemed stable; however, they remain under active development and may be subject to shorter deprecation windows. Preview capabilities are suitable for early adopters in production environments.
 
-By signing up for this Early Access Program (“EAP”), you acknowledge that use of the Forge embedded macros is governed by the Atlassian Developer Terms. Forge embedded macros are considered “Early Access Materials”, as set forth in Section 12 of the Atlassian Developer Terms and is subject to applicable terms, conditions, and disclaimers.
-
-APIs and features under EAP are unsupported and subject to change without notice. APIs and features under EAP are not recommended for use in production environments.
-
-For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
+For more details, see [Forge Preview](/platform/forge/whats-coming/#forge-preview).
 
 Use `createAdfRendererIframeProps` when building a Custom UI bodied macro that needs to display its rich-text body content, including embedded Forge apps. This function generates the properties needed for an iframe element to render the ADF document type content of a Custom UI bodied macro.
 
 ### Prerequisites
+
+* This method is for **Custom UI** apps only. For UI Kit, use the [AdfRenderer](/platform/forge/ui-kit/components/adf-renderer/) component instead.
+* Your app must be a [Confluence bodied macro](/platform/forge/using-rich-text-bodied-macros/) with [layout:bodied enabled](/platform/forge/using-rich-text-bodied-macros/#step-1--configure-the-manifest) in the macro module properties of the manifest file.
+* Make sure you have the latest `@forge/bridge` package installed `npm install @forge/bridge@latest`
 
 ### Function signature
 
@@ -496,7 +510,7 @@ interface FullContext {
 
 function createAdfRendererIframeProps(
   context: FullContext,
-  iframeId?: string
+  iframeId?: string,
 ): Promise<{
   id: string;
   src: string;
@@ -520,7 +534,7 @@ Returns an object with the following properties:
 
 ### Example
 
-![Example rendered Custom UI bodied macro contents](https://dac-static.atlassian.com/platform/forge/apis-reference/ui-api-bridge/images/view/view-createAdfRendererIframeProps-custom-ui-bodied-macro.svg?_v=1.5800.1910)
+![Example rendered Custom UI bodied macro contents](https://dac-static.atlassian.com/platform/forge/apis-reference/ui-api-bridge/images/view/view-createAdfRendererIframeProps-custom-ui-bodied-macro.svg?_v=1.5800.1914)
 
 ```
 ```
@@ -553,7 +567,7 @@ function App() {
       // src - src of the embedded content renderer
       // onLoad - sends embedded macro contents once iframe has initialised
       // You can apply any styling you like to the iframe
-      setIframe(<iframe id={id} src={src} onLoad={onLoad} />)
+      setIframe(<iframe id={id} src={src} onLoad={onLoad} />),
     );
   }, [context]);
   return (
@@ -572,9 +586,12 @@ You can split up the ADF document object inside `context.extension.macro.body` a
 
 ### Limitations
 
-* **Confluence live pages**: This method is not supported in Confluence live pages (also known as whiteboards or live docs).
-* **Connect macros**: Macros built with Atlassian Connect cannot be embedded.
-* **Modals**: Modals in Custom UI embedded macros are not supported.
+| Parent macro type | Embedded macro type | Modals supported |
+| --- | --- | --- |
+| Custom UI | Custom UI | yes |
+| Custom UI | UI Kit | no |
+| UI Kit | Custom UI | yes |
+| UI Kit | UI Kit | yes |
 
 ### Supported bridge methods
 
@@ -586,7 +603,7 @@ You can split up the ADF document object inside `context.extension.macro.body` a
 | invokeRemote | yes |
 | modal | yes |
 | objectStore (EAP) | no |
-| realtime (Preview) | no |
+| realtime (Preview) | yes |
 | requestBitbucket | N/A |
 | requestConfluence | yes |
 | requestJira | yes |
@@ -595,9 +612,9 @@ You can split up the ADF document object inside `context.extension.macro.body` a
 | rovo (Preview) | yes |
 | showFlag | yes |
 | view | yes |
-| getEditorContent | no |
-| getMacroContent | no |
-| updateMacroContent | no |
+| getEditorContent | yes |
+| getMacroContent | yes |
+| updateMacroContent | yes |
 | updateBylineProperties | yes |
 | Jira bridge APIs | N/A |
 | Dashboard bridge APIs | N/A |
