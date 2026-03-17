@@ -11,7 +11,7 @@ See [Entity properties](/cloud/jira/platform/jira-entity-properties/) in the Jir
 | `key` | `string` | Yes | A key for the module, which other modules can refer to. Must be unique within the manifest.  *Regex:* `^[a-zA-Z0-9_-]+$` |
 | `entityType` | `string` |  | The type of the entity. Allowed types are:  The default value is `issue` |
 | `propertyKey` | `string` | Yes | The key of the entity property from which the data is indexed. |
-| `values` | [PropertyValues](#property-values) | Yes | The list of fields in the JSON object to index with the type of each field. **The maximum number of elements to index is 30. This means that all your `jira:entityProperty` modules combined can't declare more than 30 values.** |
+| `values` | [PropertyValues](#property-values) | Yes | The list of fields in the JSON object to index with the type of each field. **The maximum number of elements to index is 100. This means that all your `jira:entityProperty` modules combined can't declare more than 100 values.**  If you have a valid use case that requires more than 100 indexable entity properties, please reach out via an ECOHELP ticket. |
 
 ## Property values
 

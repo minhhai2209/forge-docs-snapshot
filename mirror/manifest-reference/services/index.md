@@ -29,9 +29,27 @@ The `containers` property lets you configure a container’s resource, scaling, 
 | --- | --- | --- |
 | `key` | Yes | A unique key that maps to the container’s image repository URI. This key is created with the `forge containers create` [command](http://platform/forge/containers-reference/ref-cli/#create); to view all container keys and their corresponding repository URIs, use the `forge repositories list` [command](/platform/forge/containers-reference/ref-cli/#list). |
 | `tag` | Yes | The tag of the image that Forge should use to deploy the container. This image (and tag) must exist in the Forge Container Registry. |
-| `resources` | Yes | Vertical scaling configuration defining CPU and memory available to your container, using the following settings:  * `cpu`: reserved amount of CPU units for the container in either *cpu* or *millicpu*, for example `"1"` or `"1000m"`. * `memory`: reserved amount of memory units for the container in either *mebibytes* or *gibibytes*, for example `"2048Mi"` or `"2Gi"`. |
-| `health` | Yes | Configuration for an HTTP Health check that the Forge Platform will poll for a 2xx response before directing traffic to your container. |
+| `resources` | Yes | Vertical scaling configuration defining CPU and memory available to your container. See [Resources](/platform/forge/containers-reference/ref-manifest/#resources). |
+| `health` | Yes | Configuration for an HTTP Health check that the Forge Platform uses to determine container availability and health. See [Health](/platform/forge/containers-reference/ref-manifest/#health). |
 | `tunnel` | No | Configuration to deploy the container locally and start it automatically with `forge tunnel`. These settings follow the same syntax as a standard docker compose file. See [Testing a containerised service locally](/platform/forge/containers-reference/test-service-locally/) for more information. |
+
+### Resources
+
+The `resources` property defines what compute resources are allocated to the container.
+
+| **Property** | **Required?** | **Description** |
+| --- | --- | --- |
+| `cpu` | Yes | Reserved amount of CPU units for the container in either *cpu* or *millicpu*, for example `"1"` or `"1000m"`. |
+| `memory` | Yes | Reserved amount of memory units for the container in either *mebibytes* or *gibibytes*, for example `"2048Mi"` or `"2Gi"`. |
+
+### Health
+
+The `health` property defines how your container is determined as healthy and ready to receive traffic.
+
+| **Property** | **Required?** | **Description** |
+| --- | --- | --- |
+| `type` | Yes | The type of health check operation to perform. *Currently* only `http` is supported. |
+| `route` | Yes | The operation that will be performed depending on the `type`. When using `http`:  * `path` Expects a path that your container exposes that will be used to assess your container health status. The endpoint for the `path` must support `GET` requests and return a response with `status` between `200` and `399` (inclusive) for the request to be successful. |
 
 ## Scaling
 
