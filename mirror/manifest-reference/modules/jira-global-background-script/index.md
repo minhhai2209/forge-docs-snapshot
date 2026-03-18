@@ -16,12 +16,9 @@ The `jira:globalBackgroundScript` module adds an invisible container that can co
 
 ## Examples
 
-Use the [events](/platform/forge/custom-ui-bridge/events/) API for communication between
-global background scripts and other modules, such as custom fields. Because modules may be rendered in a different order, we recommend handling both scenarios where the background script loads before or after the consumer.
+### Modals
 
-Below is an example with a dropdown-based custom field that emits an event when its value changes. The global background script listens for this event and displays a [flag](/platform/forge/custom-ui-bridge/showFlag/) when the selected value is "flag".
-
-Global background script (listens and responds to field events):
+Use Forge UI bridge [modal API](/platform/forge/apis-reference/ui-api-bridge/modal/) to display modals from a global background script. The example below opens a modal for Jira users to agree to custom terms and conditions set by admins.
 
 ```
 1
@@ -40,12 +37,70 @@ Global background script (listens and responds to field events):
 14
 15
 16
-17
-18
-19
-20
-21
-22
+events.on("app.terms.and.conditions.show", () => {
+  const modal = new Modal({
+    resource: "terms-and-conditions",
+    onClose: (payload) => {
+      console.log("onClose called with", payload);
+    },
+    size: "medium",
+    context: {
+      customKey: "custom-value",
+    },
+    title: "Terms & Conditions",
+    icon: "./icon.png",
+  });
+
+  modal.open();
+});
+```
+
+**Manifest configuration:**
+
+```
+```
+1
+2
+```
+
+
+
+```
+jira:globalBackgroundScript:
+  - key: global-background-script-modal-ui-kit
+    resource: main-resource
+    render: native
+    target:
+      resource: terms-and-conditions
+      render: native
+    experience:
+      - issue-view
+resources:
+  - key: main-resource
+    path: src/frontend/index.jsx
+  - key: terms-and-conditions
+    path: src/frontend/modal.jsx
+```
+```
+
+### Events
+
+Use the [events](/platform/forge/custom-ui-bridge/events/) API for communication between
+global background scripts and other modules, such as custom fields. Because modules may be rendered in a different order, we recommend handling both scenarios where the background script loads before or after the consumer.
+
+Below is an example with a dropdown-based custom field that emits an event when its value changes. The global background script listens for this event and displays a [flag](/platform/forge/custom-ui-bridge/showFlag/) when the selected value is "flag".
+
+Global background script (listens and responds to field events):
+
+```
+```
+1
+2
+```
+
+
+
+```
 import { events, showFlag } from "@forge/bridge";
 
 // Optionally, announce that the background script is ready
@@ -68,6 +123,7 @@ events.on("app.field-change", (payload) => {
     });
   }
 });
+```
 ```
 
 Custom field (edit) module with dropdown menu (emits changes that the background script can react to):
@@ -156,6 +212,37 @@ modules:
 ```
 ```
 
+### Access control on experiences
+
+Restrict the global background script to specific Jira experiences or allow it for all experiences
+
+```
+```
+1
+2
+```
+
+
+
+```
+jira:globalBackgroundScript:
+  - key: global-background-script-modal-ui-kit
+    resource: main-resource
+    render: native
+    target:
+      resource: modal-resource
+      render: native
+    experience:
+      - issue-view
+      - board
+      - dashboard
+      # or
+      - all
+```
+```
+
+If no experience is specified, the global background script will not run anywhere on Jira
+
 ## Properties
 
 | Property | Type | Required | Description |
@@ -164,10 +251,35 @@ modules:
 | `resource` | `string` | Yes | A reference to the static `resources` entry that your context menu app wants to display. See [resources](/platform/forge/manifest-reference/resources) for more details. |
 | `render` | `'native'` | Yes for [UI Kit](/platform/forge/ui-kit/components/) | Indicates the module uses [UI Kit](/platform/forge/ui-kit/components/). |
 | `resolver` | `{ function: string }` or `{ endpoint: string }` | Yes | Set the `function` property if you are using a hosted `function` module for your resolver.  Set the `endpoint` property if you are using [Forge Remote](/platform/forge/forge-remote-overview) to integrate with a remote back end. |
+| `experience` | `string` | `yes` | Indicates in which view experiences this rendering should be used:  * `issue-view` * `dashboard` * `board` * `all` |
+| `target` | `object` | `no` | Defines what resource to load when the modal is invoked. See [Target object](#target-object) for details. |
 
 ## Extension context
+
+The availability of extension context properties depends on the experience where the module is loaded:
+
+* `issue.*` & `project.*` properties are available in `issue-view` experience
+* When using `experience: all`, check for property existence before accessing
 
 | Property | Type | Description |
 | --- | --- | --- |
 | `type` | `string` | The type of the module. |
 | `location` | `string` | The full URL of the host page where this module is displayed. |
+| `issue.id` | `string` | The ID of the issue on which the module is rendered. |
+| `issue.key` | `string` | The key of the issue on which the module is rendered. |
+| `issue.type` | `string` | The name of the type of the issue on which the module is rendered. |
+| `issue.typeId` | `string` | The ID of the type of the issue on which the module is rendered. |
+| `project.id` | `string` | The ID of the project where the module is rendered. |
+| `project.key` | `string` | The key of the project where the module is rendered. |
+| `project.type` | `'business'`  `'software'`  `'product_discovery'`  `'service_desk'`  `'ops'` | The type of the project where the module is rendered. |
+
+## Target
+
+### Target object
+
+The `target` object defines the modal resource that can be opened from the global background script using the Modal API.
+
+| Property | Type | Required | Description |
+| --- | --- | --- | --- |
+| `resource` | `string` | Yes | The key of a static [resource](/platform/forge/manifest-reference/resources) entry. Invoking the modal opens a dialog displaying the resource content. |
+| `render` | `'native'` | Yes, if using [UI Kit](/platform/forge/ui-kit/components/). | Indicates the resource uses [UI Kit](/platform/forge/ui-kit/components/). Required when using UI Kit with `resource`. |

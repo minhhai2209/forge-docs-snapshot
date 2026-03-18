@@ -15,7 +15,7 @@ Configuration allows you to customize what the macro displays by adjusting setti
 To access these settings, you need to go into the edit mode for the macro, as demonstrated below.
 This gives you the ability to customize the macro's output according to your preferences.
 
-![Example of configuring a Forge macro](https://dac-static.atlassian.com/platform/forge/images/macro-config-demo.gif?_v=1.5800.1916)
+![Example of configuring a Forge macro](https://dac-static.atlassian.com/platform/forge/images/macro-config-demo.gif?_v=1.5800.1920)
 
 ## Before you begin
 
@@ -370,8 +370,7 @@ import ForgeReconciler, {
 ```
 ```
 
-You can also add a state to only display the section message if the macro has not already been configured;
-otherwise, it will always show on the macro.
+Wrap the SectionMessage in a conditional such as `{!actualConfig && <SectionMessage>...</SectionMessage>}` so it only displays when the macro has not been configured yet. Otherwise, it will always show on the macro.
 
 ## Add default pet configuration
 
@@ -508,21 +507,22 @@ const Config = () => {
 const App = () => {
   const actualConfig = useConfig();
   const config = actualConfig || defaultConfig;
-  // Displaying the pet's name and age using the configuration values. SectionMessage component is optional.
   return (
     <>
       <Text>
         {config.name} is {config.age} years old.
       </Text>
-      <SectionMessage
-        title="You need to configure this macro"
-        appearance="warning"
-      >
-        <Text>
-          While editing the page, select the macro, and click on the pencil icon
-          to display configuration options.
-        </Text>
-      </SectionMessage>
+      {!actualConfig && (
+        <SectionMessage
+          title="You need to configure this macro"
+          appearance="warning"
+        >
+          <Text>
+            While editing the page, select the macro, and click on the pencil icon
+            to display configuration options.
+          </Text>
+        </SectionMessage>
+      )}
     </>
   );
 };
@@ -567,7 +567,7 @@ You can always delete your app from the site by running the `forge uninstall` co
 ## View your app
 
 1. Edit a Confluence page in your development site.
-2. Select ![Insert icon from the toolbar](https://dac-static.atlassian.com/platform/forge/images/select_dropdown.png?_v=1.5800.1916) from the toolbar.
+2. Select ![Insert icon from the toolbar](https://dac-static.atlassian.com/platform/forge/images/select_dropdown.png?_v=1.5800.1920) from the toolbar.
 3. Find the macro by name and select it. The app is displayed on the page.
 4. Click the pencil icon to open the app's config panel on the right side of the page.
 5. Type the `Pet age`, `Pet name`, and then close the configuration page. The config values are saved automatically.

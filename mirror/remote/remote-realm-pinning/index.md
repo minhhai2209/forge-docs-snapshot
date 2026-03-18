@@ -20,6 +20,8 @@ A `PINNED` status means that the Forge app's data is hosted in the same location
 
 To manage data residency for remotes in Forge:
 
+If your app is upgraded from a Connect app, the `app.connect.remote` field must explicitly reference one of the keys in your `remotes` list. This field is used to preserve the app's region during upgrades. For more details on setting up a Connect-to-Forge manifest, see [Prepare your cloud app (Connect on Forge)](/platform/app-migration/prepare-cloud-app-connect/?tabId=1&tab=connect+on+forge#add-app-migration-webhook-url-to-manifest-of-connect-on-forge-apps).
+
 1. Configure the Manifest: Add a `baseUrl` with region-specific URLs (`US`, `EU`, `AU`, etc.) and include a `storage` attribute with `inScopeEUD: true` for data storage compliance.
 
    ```

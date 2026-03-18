@@ -92,7 +92,7 @@ ForgeReconciler.render(
 Your app should display the number of comments on the page. You can add more top-level comments to
 the page and refresh the page to see your app update. Your page should look like the following:
 
-![The final app displays on a Confluence page](https://dac-static.atlassian.com/platform/forge/images/display-confluence-macro.png?_v=1.5800.1916)
+![The final app displays on a Confluence page](https://dac-static.atlassian.com/platform/forge/images/display-confluence-macro.png?_v=1.5800.1920)
 
 ## Specify the export view
 
@@ -164,8 +164,8 @@ First let's write the function, which will return a representation of the macro 
 
    ```
    export const exportFunction = async (payload) => {
-     const pageId = payload.context.content.id;
-     const comments = await fetchComments(pageId);
+     const pageId = payload.context.extension.content.id;
+     const comments = (await fetchComments(pageId)) ?? [];
 
      return doc(
        p(`Number of comments on this page: ${comments.length}`),
@@ -202,8 +202,8 @@ const fetchComments = async (pageId) => {
 };
 
 export const exportFunction = async (payload) => {
-  const pageId = payload.context.content.id;
-  const comments = await fetchComments(pageId);
+  const pageId = payload.context.extension.content.id;
+  const comments = (await fetchComments(pageId)) ?? [];
 
   return doc(
     p(`Number of comments on this page: ${comments.length}`),
@@ -273,4 +273,4 @@ You now know enough to develop your own Forge apps. Learn more from our
 [tutorials](/platform/forge/tutorials-and-guides/), [guides](/platform/forge/guides/),
 [example apps](/platform/forge/example-apps/) or [reference pages](/platform/forge/manifest-reference/).
 
-[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.1916)](/platform/forge/call-a-confluence-api/)
+[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.1920)](/platform/forge/call-a-confluence-api/)
