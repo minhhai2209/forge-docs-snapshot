@@ -36,7 +36,7 @@ When your user visits the link, an installation screen appears, similar to the o
 It displays information about your app, including the permissions your app is requesting.
 From here, your user can choose a site and an Atlassian app to install your app onto.
 
-![User installation screen](https://dac-static.atlassian.com/platform/forge/images/user-installation-screen.png?_v=1.5800.1920)
+![User installation screen](https://dac-static.atlassian.com/platform/forge/images/user-installation-screen.png?_v=1.5800.1924)
 
 ## Restrict installation links
 
@@ -86,7 +86,7 @@ If needed, you can copy the installation link from the developer console and sen
 
 After deploying a new major version of your app, you might want to upgrade all installations of the app on an eligible older major version to the newer one.
 
-You can use the [Forge CLI](/platform/forge/cli-reference/version/) to start, cancel and list these bulk major version updates, without site admin approval, with `forge version bulk-upgrade`.
+You can use the `forge version bulk-upgrade` [CLI](/platform/forge/cli-reference/version/) to start, cancel and track major version updates in large batches, without site admin approval (as long as your change doesn't require any escalation in privilege). For more information, see [version bulk-upgrade](/platform/forge/cli-reference/version-bulk-upgrade/).
 
 Records from the Forge CLI are time-limited and may not be available indefinitely. It is advisable to document or monitor these records promptly if they are needed for future reference.
 
@@ -98,16 +98,6 @@ Currently, [major version updates](/platform/forge/versions/#major-version-upgra
 * The target version must be greater than the source version.
 * The new major version must not introduce new scopes or egress permissions that represent an escalation of privilege. The following changes are eligible for bulk upgrades:
 * The new major version’s licensing information must remain unchanged.
-
-### Limitations of the bulk upgrade feature
-
-When considering the bulk upgrade feature, it's important to be aware of several limitations that may affect its usage:
-
-* Apps are limited to one concurrent bulk upgrade per environment.
-* Developers will be limited to one concurrent bulk upgrade per Atlassian account.
-* A global limit will be enforced on global concurrent bulk upgrades.
-
-If you find that you've hit the global limit for concurrent bulk upgrades, wait around 30 minutes and retry.
 
 ## List your app on the Atlassian Marketplace
 

@@ -32,6 +32,12 @@ permissions:
 
 See [Permissions](/platform/forge/manifest-reference/permissions/#scopes) for more information about scopes.
 
+## Batch operations
+
+Batch operations allow you to perform multiple SET, GET, or DELETE operations in a single request. Batch operaton requests [use rate limits more efficiently]((/platform/forge/limits-kvs-ce/#10kbsizing)) and can be 5 times faster than making the individual requests in parallel.
+
+See [Batch operations](/platform/forge/storage-reference/batchops/) and [Batch operations for custom entities](/platform/forge/storage-reference/batchops-entities/) for more information.
+
 This page lists different methods for managing data stored in custom entities. For related information:
 
 For a detailed tutorial on storing and querying structured data through custom entities,

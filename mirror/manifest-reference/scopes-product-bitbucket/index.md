@@ -119,9 +119,9 @@ https://bitbucket.org/site/oauth2/access_token
 ```
 ```
 
-For obtaining access/bearer tokens, we support three of RFC-6749's grant
-flows, plus a custom Bitbucket flow for exchanging JWT tokens for access tokens.
-Note that Resource Owner Password Credentials Grant (4.3) is no longer supported.
+For obtaining access/bearer tokens, we support two of RFC-6749's grant flows, plus a custom Bitbucket flow
+for exchanging JWT tokens for access tokens.
+Note that Implicit Grant (4.2) and Resource Owner Password Credentials Grant (4.3) are no longer supported.
 
 #### 1. Authorization Code Grant (4.1)
 
@@ -159,34 +159,9 @@ $ curl -X POST -u "client_id:secret" \
 ```
 ```
 
-#### 2. Implicit Grant (4.2)
+#### 2. Client Credentials Grant (4.4)
 
-This flow is useful for browser-based add-ons that operate without server-side backends.
-
-Request the end user for authorization by directing the browser to:
-
-```
-```
-1
-2
-```
-
-
-
-```
-https://bitbucket.org/site/oauth2/authorize?client_id={client_id}&response_type=token
-```
-```
-
-That will redirect to your preconfigured callback URL with a fragment
-containing the access token
-(`#access_token={token}&token_type=bearer`) where your page's js can
-pull it out of the URL.
-
-#### 3. Client Credentials Grant (4.4)
-
-Somewhat like our existing "2-LO" flow for OAuth 1. Obtain an access
-token that represents not an end user, but the owner of the
+Obtain an access token that represents not an end user, but the owner of the
 client/consumer:
 
 ```
@@ -204,7 +179,7 @@ $ curl -X POST -u "client_id:secret" \
 ```
 ```
 
-#### 4. Bitbucket Cloud JWT Grant (urn:bitbucket:oauth2:jwt)
+#### 3. Bitbucket Cloud JWT Grant (urn:bitbucket:oauth2:jwt)
 
 If your Atlassian Connect add-on uses JWT authentication, you can swap a
 JWT for an OAuth access token. The resulting access token represents the
@@ -232,12 +207,23 @@ $ curl -X POST -H "Authorization: JWT {jwt_token}" \
 
 #### Making Requests
 
-Once you have an access token, as per RFC-6750, you can use it in a request in any of
-the following ways (in decreasing order of desirability):
+As of May 4th, 2026, all OAuth 2.0 authenticated API requests must be directed at
+<https://api.bitbucket.org> with the `access token` placed as a `Bearer` token in the
+request `Authorization` header as per RFC-6750 (2.1)
 
-1. Send it in a request header: `Authorization: Bearer {access_token}`
-2. Include it in a (application/x-www-form-urlencoded) POST body as `access_token={access_token}`
-3. Put it in the query string of a non-POST: `?access_token={access_token}`
+```
+```
+1
+2
+```
+
+
+
+```
+$ curl -H "Authorization: Bearer {access_token}" \
+  https://api.bitbucket.org/2.0/user
+```
+```
 
 #### Repository Cloning
 
@@ -268,9 +254,9 @@ the username field).
 Our access tokens expire in one hour. When this happens you'll get 401
 responses.
 
-Most access tokens grant responses (Implicit and JWT excluded). Therefore, you should include a
-refresh token that can then be used to generate a new access token,
-without the need for end user participation:
+Both the `authorization_code` and `refresh_token` access token grant
+responses include a refresh token that can be used to generate a new access
+token, without the need for end user participation:
 
 ```
 ```
@@ -286,6 +272,14 @@ $ curl -X POST -u "client_id:secret" \
   -d grant_type=refresh_token -d refresh_token={refresh_token}
 ```
 ```
+
+Once a refresh token has been used to issue a new access token, a new refresh
+token will be issued as part of the response. The existing refresh token will
+expire shortly after and should not be used again.
+
+A refresh token which is not used to generate an access token will expire after
+3 months. After this point the end user will be required to complete the full
+`authorization_code` grant flow again.
 
 ### Bitbucket OAuth 2.0 scopes
 

@@ -32,6 +32,12 @@ permissions:
 
 See [Permissions](/platform/forge/manifest-reference/permissions/#scopes) for more information about scopes.
 
+## Batch operations
+
+Batch operations allow you to perform multiple SET, GET, or DELETE operations in a single request. Batch operaton requests [use rate limits more efficiently]((/platform/forge/limits-kvs-ce/#10kbsizing)) and can be 5 times faster than making the individual requests in parallel.
+
+See [Batch operations](/platform/forge/storage-reference/batchops/) and [Batch operations for custom entities](/platform/forge/storage-reference/batchops-entities/) for more information.
+
 ## Legacy version
 
 Legacy versions of the [Key-Value Store](/platform/forge/runtime-reference/storage-api-basic/) and [Custom Entity Store](/platform/forge/storage-reference/storage-api-custom-entities/) were originally provided through the `storage` module of the `@forge/api` package. For now, we will continue supporting the legacy `storage` module.

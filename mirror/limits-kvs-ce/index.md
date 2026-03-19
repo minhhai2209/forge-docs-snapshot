@@ -16,13 +16,11 @@ to queue your app's interactions with the KVS and Custom Entity Store. See
 The limits listed below apply to the [Key-Value Store or Custom Entity Store](/platform/forge/runtime-reference/storage-api/)
 for *each installation* of your app.
 
-| Parameter | Limit |
-| --- | --- |
-| Request rate (RPS) | 1000 |
-| Read (10KB request per min)\* | 4000 |
-| Write (10KB request per min)\* | 4000 |
+### Request size rounding
 
-\* Request sizes are rounded up to the nearest 10KB. Requests that are 10KB or smaller are counted as 1 request. For sizes between 10KB and 20KB, they are counted as 2 requests. For example, a request with a payload of 65KB will be rounded up to 70KB, resulting in a count of 7 requests.
+Request sizes are rounded up to the nearest 10KB. Requests that are 10KB or smaller are counted as 1 request. Requests sized between 10KB and 20KB are counted as 2 requests. For example, a request with a payload of 65KB will be rounded up to 70KB, resulting in a count of 7 requests.
+
+Due to the 10KB rounding, [Batch operations](/platform/forge/storage-reference/batchops/) and [Batch operations for custom entities](/platform/forge/storage-reference/batchops-entities/) are better than the equivalent individual operations at avoiding limits. For example, 10 individual writes of 1KB each will be counted as 100KB of limit use. However, if set in a single batch operation, it will count as 10KB of use.
 
 The new limits, compared to the current rigid per-operation limits, allow apps to distribute their usage dynamically.
 
