@@ -46,7 +46,7 @@ The following examples show Dynamic Module implementations specific to this modu
 
 
 ```
-import { requestAtlassian } from "@forge/api";
+import { asApp } from "@forge/api";
 const payload = {
   "key": "dynamic-jql-function",
   "type": "jira:jqlFunction",
@@ -68,7 +68,7 @@ const payload = {
     ]
   }
 }
-const response = await requestAtlassian(`/forge/installation/v1/dynamic/module/`, {
+const response = await asApp().requestAtlassian(`/forge/installation/v1/dynamic/module/`, {
   headers: {
     'Content-Type': 'application/json'
   },
@@ -91,7 +91,7 @@ console.log(`Response: ${response.status} ${body}`);
 
 
 ```
-import { requestAtlassian } from "@forge/api";
+import { asApp } from "@forge/api";
 const key = "dynamic-jql-function";
 const payload = {
   "key": "dynamic-jql-function",
@@ -114,7 +114,7 @@ const payload = {
     ]
   }
 }
-const response = await requestAtlassian(`/forge/installation/v1/dynamic/module/${key}`, {
+const response = await asApp().requestAtlassian(`/forge/installation/v1/dynamic/module/${key}`, {
   headers: {
     'Content-Type': 'application/json'
   },

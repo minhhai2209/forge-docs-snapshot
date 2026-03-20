@@ -59,7 +59,7 @@ start [options]   upgrades installations using one major version to another vers
 
 ## Operation
 
-The `forge version bulk-upgrade` command lets you upgrade a maximum of 5,000 installations in 1 request.
+The `forge version bulk-upgrade` command lets you upgrade a maximum of 500 installations in 1 request.
 This allows you to safely migrate large sets of customers simultaneously, and verify that the app is working correctly for them.
 
 For example, to initiate a bulk migration on all apps in `production`:
@@ -100,7 +100,7 @@ forge version bulk-upgrade list --environment production
 
 This will return details for the currently running request, including the number of updates completed, pending, and failed.
 
-Once a batch of 5,000 installations is upgraded, you can verify that the upgrade has completed successfully and start migrating the next set of customers.
+Once a batch of 500 installations is upgraded, you can verify that the upgrade has completed successfully and start migrating another batch.
 
 ## Limitations
 

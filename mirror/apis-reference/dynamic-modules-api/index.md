@@ -42,7 +42,7 @@ Send a `POST` request to `/forge/installation/v1/dynamic/module` to register a d
 
 
 ```
-import { requestAtlassian } from '@forge/api';
+import { asApp } from '@forge/api';
 const payload = {
   key: "unique-module-key",
   type: "trigger",
@@ -53,7 +53,7 @@ const payload = {
     "endpoint": "some-endpoint"
   }
 }
-const response = await requestAtlassian(`/forge/installation/v1/dynamic/module/`, {
+const response = await asApp().requestAtlassian(`/forge/installation/v1/dynamic/module/`, {
   headers: {
     'Content-Type': 'application/json'
   },
@@ -148,7 +148,7 @@ The `dynamicModuleRequest` property requires the same properties as the [registr
 
 
 ```
-import { requestAtlassian } from '@forge/api';
+import { asApp } from '@forge/api';
 const key = "unique-module-key";
 const payload = {
   key: "unique-module-key",
@@ -160,7 +160,7 @@ const payload = {
     "endpoint": "some-endpoint"
   }
 }
-const response = await requestAtlassian(`/forge/installation/v1/dynamic/module/${key}`, {
+const response = await asApp().requestAtlassian(`/forge/installation/v1/dynamic/module/${key}`, {
   headers: {
     'Content-Type': 'application/json'
   },
@@ -275,12 +275,12 @@ Send a `GET` request to `/forge/installation/v1/dynamic/module/` to retrieve a *
 
 
 ```
-import { requestAtlassian } from '@forge/api';
+import { asApp } from '@forge/api';
 const params = new URLSearchParams({
   limit: '10',
   nextPageToken: '<PAGINATION-TOKEN>'
 }).toString();
-const response = await requestAtlassian(`/forge/installation/v1/dynamic/module/?${params}`, {
+const response = await asApp().requestAtlassian(`/forge/installation/v1/dynamic/module/?${params}`, {
   headers: {
     'Content-Type': 'application/json'
   },
@@ -407,9 +407,9 @@ Send a `GET` request to `/forge/installation/v1/dynamic/module/<key>` to retriev
 
 
 ```
-import { requestAtlassian } from '@forge/api';
+import { asApp } from '@forge/api';
 const key = '<YOUR-MODULE-KEY>';
-const response = await requestAtlassian(`/forge/installation/v1/dynamic/module/${key}`, {
+const response = await asApp().requestAtlassian(`/forge/installation/v1/dynamic/module/${key}`, {
   headers: {
     'Content-Type': 'application/json'
   },
@@ -519,9 +519,9 @@ Send a `DELETE` request to `forge/installation/v1/dynamic/module/<key>` to delet
 
 
 ```
-import { requestAtlassian } from '@forge/api';
+import { asApp } from '@forge/api';
 const moduleKey = '<YOUR-MODULE-KEY>';
-const response = await requestAtlassian(`/forge/installation/v1/dynamic/module/${moduleKey}`, {
+const response = await asApp().requestAtlassian(`/forge/installation/v1/dynamic/module/${moduleKey}`, {
   headers: {
     'Content-Type': 'application/json'
   },

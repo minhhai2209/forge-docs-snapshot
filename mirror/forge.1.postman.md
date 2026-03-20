@@ -1,7 +1,7 @@
 ```
 {
   "info": {
-    "_postman_id": "9bf5cb7f-bd85-4322-a94e-d8814f83498d",
+    "_postman_id": "2feaa6f2-5a5d-411f-b575-d4cfb52cd820",
     "name": "Key-Value Store/Custom Entity Store REST API",
     "description": "Forge provides hosted storage capabilities for storing your app's data:\n- **Key-Value Store** - stores data as key-value pairs\n- **Custom Entity Store** - stores data within custom data structures (entities)\nBoth capabilities have resources that can be used natively, or accessed by remote resources via REST API. For more information about both capabilities,\nsee [storage-api](https://developer.atlassian.com/platform/forge/runtime-reference/storage-api/).",
     "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
@@ -427,6 +427,72 @@
               }
             ],
             "description": "Sets multiple Key-Value Store and/or Custom Entity Store values in a single operation. \nReturns a type ```BatchResponse``` which contains ```successfulKeys``` and ```failedKeys```.\nOptionally, you can specify a TTL (Time To Live) for each item to automatically expire the data after a specified duration.",
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Batch delete key-value and entity entries",
+          "request": {
+            "url": {
+              "protocol": "{{protocol}}",
+              "host": "{{host}}",
+              "path": "{{basePath}}v1/batch/delete",
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "header": [
+              {
+                "description": "",
+                "disabled": false,
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "description": "",
+                "disabled": false,
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "description": "Deletes multiple Key-Value Store and/or Custom Entity Store entries in a single operation.\nReturns a type ```BatchResponse``` which contains ```successfulKeys``` and ```failedKeys```.\nFailed keys include an ```error``` object with ```code``` and ```message```.",
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Batch get key-value and entity entries",
+          "request": {
+            "url": {
+              "protocol": "{{protocol}}",
+              "host": "{{host}}",
+              "path": "{{basePath}}v1/batch/get",
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "header": [
+              {
+                "description": "",
+                "disabled": false,
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "description": "",
+                "disabled": false,
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "description": "Gets multiple Key-Value Store and/or Custom Entity Store entries in a single operation.\nEach request item may include optional ```options.metadataFields``` to request metadata (createdAt, updatedAt, expireTime) in the response.\nReturns ```successfulKeys``` (each with ```value``` and optionally metadata) and ```failedKeys``` (with ```error.code```, ```error.message```).",
             "body": {
               "mode": "raw",
               "raw": ""

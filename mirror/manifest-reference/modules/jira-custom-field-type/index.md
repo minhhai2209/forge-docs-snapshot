@@ -236,7 +236,7 @@ The following examples show Dynamic Module implementations specific to this modu
 
 
 ```
-import { requestAtlassian } from "@forge/api";
+import { asApp } from "@forge/api";
 const payload = {
   "key": "dynamic-custom-field-type",
   "type": "jira:customFieldType",
@@ -246,7 +246,7 @@ const payload = {
     "type": "number"
   }
 }
-const response = await requestAtlassian(`/forge/installation/v1/dynamic/module/`, {
+const response = await asApp().requestAtlassian(`/forge/installation/v1/dynamic/module/`, {
   headers: {
     'Content-Type': 'application/json'
   },
@@ -269,7 +269,7 @@ console.log(`Response: ${response.status} ${body}`);
 
 
 ```
-import { requestAtlassian } from "@forge/api";
+import { asApp } from "@forge/api";
 const key = "dynamic-custom-field-type";
 const payload = {
   "key": "dynamic-custom-field-type",
@@ -280,7 +280,7 @@ const payload = {
     "type": "number"
   }
 }
-const response = await requestAtlassian(`/forge/installation/v1/dynamic/module/${key}`, {
+const response = await asApp().requestAtlassian(`/forge/installation/v1/dynamic/module/${key}`, {
   headers: {
     'Content-Type': 'application/json'
   },
@@ -843,7 +843,7 @@ const Edit = () => {
 ```
 
 Outcome:
-![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.1924)
+![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.1927)
 
 ##### Updated files
 
@@ -919,7 +919,7 @@ const Edit = () => {
 ```
 
 Outcome:
-![Updated experience to inline edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-inline.png?_v=1.5800.1924)
+![Updated experience to inline edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-inline.png?_v=1.5800.1927)
 
 
 How to edit custom fields in the modal (for more complex UI)
@@ -1032,7 +1032,7 @@ const Edit = () => {
 ```
 
 Outcome:
-![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.1924)
+![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.1927)
 
 ##### Updated files
 
@@ -1142,7 +1142,7 @@ ForgeReconciler.render(
 ```
 
 Outcome:
-![Updated experience to modal edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-new-modal.png?_v=1.5800.1924)
+![Updated experience to modal edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-new-modal.png?_v=1.5800.1927)
 
 ### Issue creation and issue transition dialog
 
