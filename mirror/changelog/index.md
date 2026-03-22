@@ -4,6 +4,6 @@ Between Mar 19, 2026 and Apr 10, 2026, all updates to Forge apps with over 50,00
 
 This temporary change will allow partners to manage the migration of customers in a predictable manner. Downstream services can then absorb the increased traffic without unpredictable spikes.
 
-For detailed information on how to use `forge version bulk-upgrade`, see <https://developer.atlassian.com/platform/forge/cli-reference/version-bulk-upgrade/>.
+For detailed information on how to use `forge version bulk-upgrade`, see [![](https://dac-static.atlassian.com/favicon.ico)Command: version bulk-upgrade](https://developer.atlassian.com/platform/forge/cli-reference/version-bulk-upgrade/).
 
 This change will not affect how apps qualify for the Forge revenue share rate. Your latest deployed app version determines revenue share eligibility. Customer roll-out status is not assessed in the eligibility criteria.
