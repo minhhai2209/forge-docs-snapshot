@@ -12,7 +12,7 @@ Anyone with an Atlassian account and access to the Developer Console or Forge CL
 * For new spaces, the first admin is also assigned as the billing admin for the linked transaction account in the Billing Console. Once the first space admin with billing admin permissions is assigned, they will be able to add more members with [developer space roles](/platform/forge/developer-space/developer-space-roles/) in the [developer console](https://developer.atlassian.com/console/myapps/) and [billing admin role](https://developer.atlassian.com/platform/forge/developer-space/developer-space-roles/#special-roles--billing-and-marketplace-admins) in the billing account respectively.
 * If you are a Marketplace partner, your existing Marketplace vendor account will be automatically ported into Developer Spaces and will be visible in the Developer Console. This is the same account you use on the Marketplace, and all your published apps on the Marketplace are automatically linked to your Developer Space.
 
-![](https://dac-static.atlassian.com/platform/forge/images/developer_space_mp_admin.png?_v=1.5800.1927)
+![](https://dac-static.atlassian.com/platform/forge/images/developer_space_mp_admin.png?_v=1.5800.1931)
 
 The Marketplace admin can nominate the first space admin who also becomes the billing admin for the **initial setup only**. Once the first space admin with billing admin permissions is nominated, they will be able to add more members with [developer space roles](/platform/forge/developer-space/developer-space-roles/) in the [developer console](https://developer.atlassian.com/console/myapps/) and [billing admin role](https://developer.atlassian.com/platform/forge/developer-space/developer-space-roles/#special-roles--billing-and-marketplace-admins) in the billing account respectively.
 
@@ -54,6 +54,27 @@ Once your space is created:
   * The empty state will guide you to create a new app, assign an existing app, or transfer a private app from another space.
 
 As the admin, you’ll be responsible for managing access and paying for any usage charges. You can add teammates and assign roles later.
+
+## Developer Space setup and app limits
+
+To avoid service interruptions, both Marketplace admins and private app developers must complete specific steps in the Developer Space setup.
+
+**For Marketplace admins**:
+
+* Complete the Developer Space setup process, which includes adding console admins
+* Provide the required consent during onboarding.
+
+**For private app developers**:
+
+* Assign your app to a Developer Space.
+
+If these steps are not completed, your app will face the following limitations:
+
+* CLI workflows (including main commands) will be blocked for the app.
+* Developer Console access will be blocked for the app.
+* Customers will not be able to interact with your app.
+
+Please ensure the above requirements are met to maintain full app functionality.
 
 ## Next steps
 

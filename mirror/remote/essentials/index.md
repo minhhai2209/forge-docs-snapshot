@@ -97,14 +97,16 @@ The Forge Invocation Token contains a JSON object with the following properties:
 | `app.license` | `object` | No | Contains information about the license of the app. This field is only present for paid apps in the production environment.  `license` is `undefined` for free apps, apps in `DEVELOPMENT` and `STAGING` environments (unless overridden by [internal testing](https://developer.atlassian.com/platform/marketplace/listing-forge-apps/#testing-your-app-with-different-license-states)) and apps that are not listed on the Atlassian Marketplace. |
 | `app.license.isActive` | `boolean` | No | Specifies if the license is active. |
 | `app.license.billingPeriod` | `string` | No | Represents the app's billing period. |
+| `app.license.capabilitySet` | `string` | No | Indicates the capability set associated with the app's current license edition. Possible values are `capabilityStandard` or `capabilityAdvanced`. |
 | `app.license.ccpEntitlementId` | `string` | No | Represents entitlement id of license if billing system is Commerce Cloud Platform |
 | `app.license.ccpEntitlementSlug` | `string` | No | Represents entitlement number of license if billing system is Commerce Cloud Platform |
 | `app.license.isEvaluation` | `boolean` | No | A flag indicating whether the app is being used under an evaluation license. |
 |
 | `app.license.subscriptionEndDate` | `string` | No | Represents the expiration date of the application subscription. |
-| `app.license.supportEntitlementNumber` | `string` | No | The Support Entitlement Number (SEN) identifying the license. |
+| `app.license.supportEntitlementNumber` | `null` | No | Deprecated in favour of `app.license.ccpEntitlementSlug` and, as such, the value will always be `null` |
 | `app.license.trialEndDate` | `string` | No | Represents the termination date of the trial period. |
 | `app.license.type` | `string` | No | Indicates the type of license. Possible values include, but are not limited to `COMMERCIAL`, `COMMUNITY`, `ACADEMIC`, and `DEVELOPER`. |
+| `app.license.modes` | `[string]` | No | Specifies additional license modes that apply to this installation, indicating how the license can be evaluated. Currently, the only possible value is `USER_ACCESS`. |
 | `app.installation` | `object` | Yes | Information about app installations. |
 | `app.installation.id` | `string` | Yes | Identifier for the specific installation of an app. This is the value that any remote storage should be keyed against. Example: `ari:cloud:ecosystem::installation/75969db9-dc7b-4798-9715-bd098ac0d9d1` |
 | `app.installation.contexts` | `[object]` | Yes | The list of contexts where the app is installed. Each item in the list is an object as defined below. |
@@ -142,13 +144,15 @@ Example:
     "license": {
       "isActive": true,
       "billingPeriod": "MONTHLY",
+      "capabilitySet": "capabilityAdvanced",
       "ccpEntitlementId": "5e176cc2-6fa0-3c7b-8fc4-302443a16e86",
       "ccpEntitlementSlug": "X-3SH-1A6-33A-AS0",
       "isEvaluation": false,
       "subscriptionEndDate": "1689949707000",
-      "supportEntitlementNumber": "SEN-###",
+      "supportEntitlementNumber": null,
       "trialEndDate": "1989949707000",
-      "type": "commercial"
+      "type": "commercial",
+      "modes": ["USER_ACCESS"]
     }
   },
   "context": {

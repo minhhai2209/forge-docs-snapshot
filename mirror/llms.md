@@ -1200,7 +1200,7 @@
 - [requestJira](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/requestJira.md)
 - [requestRemote](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/requestRemote.md)
 - [router](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/router.md)
-- [rovo (Preview)](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/rovo.md)
+- [rovo](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/rovo.md)
 - [showFlag](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/showFlag.md)
 - [view](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/view.md)
 
