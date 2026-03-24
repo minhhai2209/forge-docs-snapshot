@@ -403,6 +403,10 @@ forge install --upgrade --major-version 4
 ```
 ```
 
+## License changes
+
+You can now roll out a decoupled state when you enable licensing. This allows you to migrate users who are still on the free version of your app.
+
 ## EAP limitations
 
 The following features are under development, therefore are not offered as part of EAP:
@@ -410,13 +414,13 @@ The following features are under development, therefore are not offered as part 
 * Code auto-upgrade on customer site not supported.
 * Only Jira, Confluence, and Bitbucket are supported.
 * Forge Containers not supported.
-* Upgrading from version without license to a version with license enabled is not supported.
 * Upgrading from version without storage to a version with storage (KVS and SQL) is not supported.
 * Upgrading from a version without any dynamic webtriggers to a version with a dynamic webtrigger is not supported.
 
 ## Known issues
 
 * Forge [Remote Compute](/platform/forge/runtime-reference/invoke-remote-api/) endpoints cannot use the permissions encoded in the Forge Invocation Token (FIT).
+  * **Workaround:** Listen to the [lifecycle event](#app-upgrade-event) to monitor the current state of the permissions as they change.
 
 ## Tutorials and guides
 

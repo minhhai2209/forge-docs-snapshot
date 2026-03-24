@@ -1,11 +1,10 @@
 # Distribute your apps
 
-When you’re ready to share your Forge app with users, you’ll need to enable sharing for your app
-in the [developer console](/console/myapps/). This generates a link that you
-can share with users to install your app on their Atlassian site.
+If you want to use your Forge app on your own Atlassian site, you can install it directly using the Forge CLI without enabling sharing. See [Promote an app to staging or production](/platform/forge/staging-and-production-apps/) for instructions.
 
-In order to install it,
-they must be the admin of an Atlassian app on that site.
+When you're ready to share your Forge app with other users, you'll need to enable sharing for your app
+in the [developer console](/console/myapps/). This generates a link that you
+can share with users to install your app on their Atlassian site (they must be the admin of that site to do that).
 
 Use this method to share your apps for internal use, or to test your apps
 before [listing them on the Atlassian Marketplace](/platform/marketplace/listing-forge-apps/).
@@ -36,7 +35,7 @@ When your user visits the link, an installation screen appears, similar to the o
 It displays information about your app, including the permissions your app is requesting.
 From here, your user can choose a site and an Atlassian app to install your app onto.
 
-![User installation screen](https://dac-static.atlassian.com/platform/forge/images/user-installation-screen.png?_v=1.5800.1931)
+![User installation screen](https://dac-static.atlassian.com/platform/forge/images/user-installation-screen.png?_v=1.5800.1934)
 
 ## Restrict installation links
 

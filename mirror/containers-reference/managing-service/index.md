@@ -28,7 +28,7 @@ Your appâ€™s containerised service lifecycle begins when you upload the serviceâ
 
 The following diagram provides a high-level view of the container lifecycle:
 
-![Forge Containers lifecycle overview](https://dac-static.atlassian.com/platform/forge/images/containers-lifecycle-overview.png?_v=1.5800.1931)
+![Forge Containers lifecycle overview](https://dac-static.atlassian.com/platform/forge/images/containers-lifecycle-overview.png?_v=1.5800.1934)
 
 This lifecycle involves the following major phases:
 
@@ -229,11 +229,11 @@ With this release, Forge will automatically launch an instance of your service w
 
 ### Start Up Health
 
-Your container must pass health checks before deployment is marked successful and traffic can be routed to it. During startup, your container has up to 50 seconds to begin responding with an HTTP status code between `200` and `399` (inclusive); each health check request has a 3-second timeout. If your container doesn't respond successfully within the startup period, it'll be restarted once; if it fails again during the second attempt, the deployment will fail.
+Your container must pass health checks before deployment is marked successful and traffic can be routed to it. During startup, your container has up to **50 seconds** to begin responding with an HTTP status code between `200` and `399` (inclusive); each health check request has a **3 second** timeout. If your container doesn't respond successfully within the startup period, it'll be restarted once; if it fails again during the second attempt, the deployment will fail.
 
 ### Runtime Health
 
-Once your container is running, it must continue responding successfully to health checks to receive traffic. If it is unresponsive for longer than ~10 seconds, traffic will cease routing to it. If it stays unhealthy for ~20 more seconds, it will be restarted.
+Once your container is running, it must continue responding successfully to health checks to receive traffic. If it is unresponsive for longer than **~10 seconds**, traffic will cease routing to it. If it stays unhealthy for **~20 more seconds**, it will be restarted.
 
 ## Test invocation locally
 

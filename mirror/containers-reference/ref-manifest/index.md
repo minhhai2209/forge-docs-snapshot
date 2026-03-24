@@ -44,7 +44,7 @@ The `resources` property defines what compute resources are allocated to the con
 
 ### Health
 
-The `health` property defines how your container is determined as healthy and ready to receive traffic.
+The `health` property defines how your container is determined as healthy and ready to receive traffic. For more details around timing for configured container health checks during deployment and runtime, see [Deploy the Service](/platform/forge/containers-reference/managing-service/#deploy-the-service).
 
 | **Property** | **Required?** | **Description** |
 | --- | --- | --- |
