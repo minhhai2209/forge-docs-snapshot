@@ -21,7 +21,7 @@ single Atlassian app whilst there are existing installations.
 To add support for additional Atlassian apps to your existing app, it must meet the following requirements:
 
 * **The app must be a Forge app.** Connect apps, including apps with a Forge manifest that still use
-  Connect modules or contain a Connect key, are not eligible.
+  Connect modules are not eligible.
 * **The app must not have any existing installations in non-required Atlassian apps.** For example, if your
   app only has active installations in Confluence, you will be able to set Confluence as required.
   However, if your app has active installations in Confluence and you would like to set Jira as
