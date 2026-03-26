@@ -270,6 +270,7 @@
 
 - [Work item picker custom field in Jira](https://developer.atlassian.com/platform/forge/work-item-picker-custom-field-in-jira.md)
 - [In-app notifications from events](https://developer.atlassian.com/platform/forge/in-app-notifications-from-events.md)
+- [Work around the 1,000 value limit in custom JQL functions](https://developer.atlassian.com/platform/forge/working-around-jql-1000-limit.md)
 
 ### Build
 

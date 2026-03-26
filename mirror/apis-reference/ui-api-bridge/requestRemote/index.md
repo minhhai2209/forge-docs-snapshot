@@ -169,7 +169,6 @@ if (!response.ok) {
 
 ## Limitations
 
-* **FIT claims**: The FIT sent in the authorization header does not include the `app.license` field in the claims. We intend to add these, please follow the [Forge changelog](/platform/forge/changelog/) for updates.
 * **Streaming**: Response body streaming is not supported. The entire response must be received before processing.
 * **OAuth tokens**: Unlike `invokeRemote`, OAuth tokens are not included in requests. If you require them to be delivered on invocation, please use `invokeRemote` instead.
 * **Metrics**: Requests are not tracked in the Developer Console's invocation metrics.

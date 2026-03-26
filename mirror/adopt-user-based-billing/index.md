@@ -1,9 +1,9 @@
 # Adopt user-based billing for Forge apps
 
-User-based billing is available as part of its first milestone release, allowing app developers
+User-based billing is currently available as an Early Access Program (EAP), allowing app developers
 to build, deploy and test an app via Forge CLI on non-production environments.
 
-The milestone releases to follow for user-based billing will enable app publishing, pricing setup,
+Future EAP updates for user-based billing will enable app publishing, pricing setup,
 app revision, and app approval to be available on Atlassian Marketplace.
 
 The user-based billing model allows developers to separate user tiers, offering a more flexible
