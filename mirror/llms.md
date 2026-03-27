@@ -549,31 +549,34 @@
 - [Distribute via console](https://developer.atlassian.com/platform/forge/distribute-your-apps.md)
 - [CLI installation](https://developer.atlassian.com/platform/forge/cli-reference/install.md)
 
-#### Feature flags (EAP)
+#### Feature flags
 
 ##### Overview
 
 - [Overview](https://developer.atlassian.com/platform/forge/feature-flags/overview.md)
 
-##### Concepts
-
-- [Concepts](https://developer.atlassian.com/platform/forge/feature-flags/concepts.md)
-
-##### Quick start
-
-- [Quick start](https://developer.atlassian.com/platform/forge/feature-flags/featureflags-quickstart.md)
-
 ##### Tutorials
 
-- [Page bookmark Confluence app with Feature flags](https://developer.atlassian.com/platform/forge/feature-flags/page-bookmark-feature-flag.md)
+- [Your first feature flag](https://developer.atlassian.com/platform/forge/feature-flags/featureflags-quickstart.md)
+- [Page bookmark Confluence app](https://developer.atlassian.com/platform/forge/feature-flags/page-bookmark-feature-flag.md)
+- [Dark mode switcher Confluence app](https://developer.atlassian.com/platform/forge/feature-flags/dark-mode-feature-flag.md)
 
-##### SDK
+##### How-to guides
 
-- [SDK](https://developer.atlassian.com/platform/forge/feature-flags/feature-flags-sdk.md)
+- [Roll out to a percentage of users](https://developer.atlassian.com/platform/forge/feature-flags/how-to-percentage-rollouts.md)
+- [Target specific users or organizations](https://developer.atlassian.com/platform/forge/feature-flags/how-to-target-users.md)
+- [Use environment-specific flags](https://developer.atlassian.com/platform/forge/feature-flags/how-to-environment-specific.md)
 
-##### Limitations and constraints
+##### Reference
 
+- [Server-side SDK](https://developer.atlassian.com/platform/forge/feature-flags/feature-flags-sdk.md)
+- [Client SDK](https://developer.atlassian.com/platform/forge/feature-flags/feature-flags-client-sdk.md)
 - [Limitations and constraints](https://developer.atlassian.com/platform/forge/feature-flags/limitations.md)
+
+##### Explanation
+
+- [Core concepts](https://developer.atlassian.com/platform/forge/feature-flags/concepts.md)
+- [Client SDK vs server-side SDK](https://developer.atlassian.com/platform/forge/feature-flags/client-vs-server-sdk.md)
 
 ## Reference
 

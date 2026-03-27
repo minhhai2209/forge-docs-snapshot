@@ -1,18 +1,16 @@
 ```
 # Macro
 
-{{% warning %}}
-With the [release of](/platform/forge/changelog/#CHANGE-2381) `@forge/react` version 11.0.0, enhancements have been made
-to the [useConfig](/platform/forge/ui-kit/hooks/use-config/) hook to improve performance in [macro config](/platform/forge/manifest-reference/modules/macro/) apps when receiving configuration value changes.
-
-Confluence macro config apps relying on the **[useProductContext](/platform/forge/ui-kit/hooks/use-product-context/)**
-hook or **[view.getContext()](/platform/forge/apis-reference/ui-api-bridge/view/#getcontext)** need to
-transition to the [useConfig](/platform/forge/ui-kit/hooks/use-config/) hook before upgrading to
-`@forge/react` version 11.0.0 or higher in order to properly access the latest values after the configuration updates.
-
-Confluence macro config apps using the **[useConfig](/platform/forge/ui-kit/hooks/use-config/)** hook
-should upgrade to `@forge/react` version 11.0.0 for improved performance.
-{{% /warning %}}
+> **Warning:** With the [release of](/platform/forge/changelog/#CHANGE-2381) `@forge/react` version 11.0.0, enhancements have been made
+> to the [useConfig](/platform/forge/ui-kit/hooks/use-config/) hook to improve performance in [macro config](/platform/forge/manifest-reference/modules/macro/) apps when receiving configuration value changes.
+> 
+> Confluence macro config apps relying on the **[useProductContext](/platform/forge/ui-kit/hooks/use-product-context/)**
+> hook or **[view.getContext()](/platform/forge/apis-reference/ui-api-bridge/view/#getcontext)** need to
+> transition to the [useConfig](/platform/forge/ui-kit/hooks/use-config/) hook before upgrading to
+> `@forge/react` version 11.0.0 or higher in order to properly access the latest values after the configuration updates.
+> 
+> Confluence macro config apps using the **[useConfig](/platform/forge/ui-kit/hooks/use-config/)** hook
+> should upgrade to `@forge/react` version 11.0.0 for improved performance.
 
 The `macro` module inserts dynamic content into the user interface via an editor. Editor macros are
 only compatible with the Atlassian editor. All cloud sites use the Atlassian editor by default.
@@ -20,9 +18,7 @@ only compatible with the Atlassian editor. All cloud sites use the Atlassian edi
 The `macro` module works in Confluence, where the macro is inserted by typing `/` and selecting
 from the quick insert menu of the editor. The `macro` module is implemented by a Forge function.
 
-{{% warning %}}
-On apps that use Custom UI, module content is displayed inside a [special Forge iframe](/platform/forge/custom-ui/iframe/) which has the [sandbox](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#sandbox) attribute configured. This means that HTML links (for example, `<a href="https://domain.tld/path">...</a>`) in this iframe won't be clickable. To make them clickable, use the [router.navigate](/platform/forge/custom-ui-bridge/router/#navigate) API from the `@forge/bridge` package.
-{{% /warning %}}
+> **Warning:** On apps that use Custom UI, module content is displayed inside a [special Forge iframe](/platform/forge/custom-ui/iframe/) which has the [sandbox](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#sandbox) attribute configured. This means that HTML links (for example, `<a href="https://domain.tld/path">...</a>`) in this iframe won't be clickable. To make them clickable, use the [router.navigate](/platform/forge/custom-ui-bridge/router/#navigate) API from the `@forge/bridge` package.
 
 ![Example of a macro](/platform/forge/snippets/images/macro-example.png)
 
@@ -334,13 +330,11 @@ A list of unlicensed user types that can access this module. Valid values are: <
 
 \* 
 
-{{% warning %}}
-`fullscreen` viewport sizing is now available as part of our Early Access Program (EAP). This allows your macro configuration modal to fill the entire viewport. You can also provide a `title` and an `icon` to display in the header. To start testing, [sign up here](https://ecosystem.atlassian.net/servicedesk/customer/portal/1040/group/3496/create/18983).
-
-By signing up for this Early Access Program (“EAP”), you acknowledge that use of the Forge Full Page Modals is governed by the [Atlassian Developer Terms](https://developer.atlassian.com/platform/marketplace/atlassian-developer-terms/). The Forge Full Page Modals are considered “Early Access Materials”, as set forth in Section 10 of the Atlassian Developer Terms and is subject to applicable terms, conditions, and disclaimers.
-
-For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
-{{% /warning %}}
+> **Warning:** `fullscreen` viewport sizing is now available as part of our Early Access Program (EAP). This allows your macro configuration modal to fill the entire viewport. You can also provide a `title` and an `icon` to display in the header. To start testing, [sign up here](https://ecosystem.atlassian.net/servicedesk/customer/portal/1040/group/3496/create/18983).
+> 
+> By signing up for this Early Access Program (“EAP”), you acknowledge that use of the Forge Full Page Modals is governed by the [Atlassian Developer Terms](https://developer.atlassian.com/platform/marketplace/atlassian-developer-terms/). The Forge Full Page Modals are considered “Early Access Materials”, as set forth in Section 10 of the Atlassian Developer Terms and is subject to applicable terms, conditions, and disclaimers.
+> 
+> For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
 
  
 
@@ -689,26 +683,26 @@ This table details the possible error codes that may be thrown by `view.submit()
 ## Tutorials
 
 {{% layout %}}{{% content %}}
-{{% /content %}},{{% content %}}{{% card %}}
+{{% /content %}}{{% content %}}{{% card %}}
   title: Add configuration to a macro with UI Kit
   description: The app allows you to customize what the macro displays by adjusting settings in a form.
   link: /platform/forge/add-configuration-to-a-macro-with-ui-kit/
-  {{% /card %}}{{% /content %}},{{% content %}}
+  {{% /card %}}{{% /content %}}{{% content %}}
 {{% /content %}}{{% /layout %}}
 
 {{% layout %}}{{% content %}}
-{{% /content %}},{{% content %}}{{% card %}}
+{{% /content %}}{{% content %}}{{% card %}}
   title: Add custom configuration to a macro
   description: The app’s configuration can be edited using a custom configuration modal.
   link: /platform/forge/add-custom-configuration-to-a-macro/
-  {{% /card %}}{{% /content %}},{{% content %}}
+  {{% /card %}}{{% /content %}}{{% content %}}
 {{% /content %}}{{% /layout %}}
 
 {{% layout %}}{{% content %}}
-{{% /content %}},{{% content %}}{{% card %}}
+{{% /content %}}{{% content %}}{{% card %}}
   title: Using rich-text bodied macros
   description: How to configure the manifest and render rich text body content.
   link: /platform/forge/using-rich-text-bodied-macros/
-  {{% /card %}}{{% /content %}},{{% content %}}
+  {{% /card %}}{{% /content %}}{{% content %}}
 {{% /content %}}{{% /layout %}}
 ```

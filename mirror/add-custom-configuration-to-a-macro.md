@@ -1,18 +1,16 @@
 ```
 # Add custom configuration to a macro
 
-{{% warning %}}
-With the [release of](/platform/forge/changelog/#CHANGE-2381) `@forge/react` version 11.0.0, enhancements have been made
-to the [useConfig](/platform/forge/ui-kit/hooks/use-config/) hook to improve performance in [macro config](/platform/forge/manifest-reference/modules/macro/) apps when receiving configuration value changes.
-
-Confluence macro config apps relying on the **[useProductContext](/platform/forge/ui-kit/hooks/use-product-context/)**
-hook or **[view.getContext()](/platform/forge/apis-reference/ui-api-bridge/view/#getcontext)** need to
-transition to the [useConfig](/platform/forge/ui-kit/hooks/use-config/) hook before upgrading to
-`@forge/react` version 11.0.0 or higher in order to properly access the latest values after the configuration updates.
-
-Confluence macro config apps using the **[useConfig](/platform/forge/ui-kit/hooks/use-config/)** hook
-should upgrade to `@forge/react` version 11.0.0 for improved performance.
-{{% /warning %}}
+> **Warning:** With the [release of](/platform/forge/changelog/#CHANGE-2381) `@forge/react` version 11.0.0, enhancements have been made
+> to the [useConfig](/platform/forge/ui-kit/hooks/use-config/) hook to improve performance in [macro config](/platform/forge/manifest-reference/modules/macro/) apps when receiving configuration value changes.
+> 
+> Confluence macro config apps relying on the **[useProductContext](/platform/forge/ui-kit/hooks/use-product-context/)**
+> hook or **[view.getContext()](/platform/forge/apis-reference/ui-api-bridge/view/#getcontext)** need to
+> transition to the [useConfig](/platform/forge/ui-kit/hooks/use-config/) hook before upgrading to
+> `@forge/react` version 11.0.0 or higher in order to properly access the latest values after the configuration updates.
+> 
+> Confluence macro config apps using the **[useConfig](/platform/forge/ui-kit/hooks/use-config/)** hook
+> should upgrade to `@forge/react` version 11.0.0 for improved performance.
 
 Configuration allows you to customize what the macro displays by adjusting settings in a form.
 To access these settings, you need to go into the edit mode for the macro, as demonstrated below.
@@ -136,12 +134,10 @@ app:
 ```
   {{% /tab %}}{{% /tabs %}}
 
-{{% note %}}
-**Important differences:**
-- **UI Kit** uses `render: native` on both the macro and config
-- **Custom UI** does NOT use `render: native` (Custom UI is auto-detected from the build path)
-- Both require the `runtime` property in the `app` section
-{{% /note %}}
+> **Note:** **Important differences:**
+> - **UI Kit** uses `render: native` on both the macro and config
+> - **Custom UI** does NOT use `render: native` (Custom UI is auto-detected from the build path)
+> - Both require the `runtime` property in the `app` section
 
 ## Step 2: Declare resources for the custom editor
 Next, define the `resources` property in the `manifest.yml` file according to the
@@ -172,9 +168,7 @@ resources:
 ```
   {{% /tab %}}{{% /tabs %}}
 
-{{% note %}}
-The `key` value `macro-config` must match the `resource` value in the `config` object from Step 1.
-{{% /note %}}
+> **Note:** The `key` value `macro-config` must match the `resource` value in the `config` object from Step 1.
 
 ## Step 3: Create the configuration resource
 Define the `config` resource at the path specified in [step 2](#step-2--declare-resources-for-the-custom-editor).
@@ -262,13 +256,11 @@ Define the `config` resource at the path specified in [step 2](#step-2--declare-
   );
   ```
 
-  ,{{% note %}}
-  **Important**: `useConfig()` from `@forge/react` does not work for custom macro config. It is exclusively for sidebar macro config. For custom macro config, you must use `view.getContext()` from `@forge/bridge` to access the existing configuration, as shown above.
-
-  You will not be able to close the configuration modal by pressing `Escape` or by clicking outside the modal.
-
-  In UI Kit, we provide a modal header that contains a close button, and users will be able to close the configuration modal that way. The close button does not call `view.submit()` - you should provide submit functionality in the configuration resource as shown above.
-  {{% /note %}},
+  > **Note:** **Important**: `useConfig()` from `@forge/react` does not work for custom macro config. It is exclusively for sidebar macro config. For custom macro config, you must use `view.getContext()` from `@forge/bridge` to access the existing configuration, as shown above.
+> 
+>   You will not be able to close the configuration modal by pressing `Escape` or by clicking outside the modal.
+> 
+>   In UI Kit, we provide a modal header that contains a close button, and users will be able to close the configuration modal that way. The close button does not call `view.submit()` - you should provide submit functionality in the configuration resource as shown above.
   {{% /tab %}}
 {{% tab title="Custom UI" %}}
   For Custom UI, we recommend creating your `config` resource files in the directory `static/config/`.
@@ -385,11 +377,9 @@ Define the `config` resource at the path specified in [step 2](#step-2--declare-
   );
   ```
 
-  ,{{% note %}}
-  **Important**: `useConfig()` from `@forge/react` does not work for custom macro config. It is exclusively for sidebar macro config. For custom macro config, you must use `view.getContext()` from `@forge/bridge` to access the existing configuration, as shown above.
-
-  When `view.submit()` is successful, the modal closes automatically. The success message will only display briefly if there's a network delay.
-  {{% /note %}},
+  > **Note:** **Important**: `useConfig()` from `@forge/react` does not work for custom macro config. It is exclusively for sidebar macro config. For custom macro config, you must use `view.getContext()` from `@forge/bridge` to access the existing configuration, as shown above.
+> 
+>   When `view.submit()` is successful, the modal closes automatically. The success message will only display briefly if there's a network delay.
   {{% /tab %}}{{% /tabs %}}
 
 ## Step 4: Understanding configuration persistence
@@ -414,13 +404,11 @@ The function includes comprehensive error handling that:
 - Displays error codes and messages when submission fails
 - Provides user feedback through the `SectionMessage` component
 
-{{% note %}}
-`view.submit()` supports more options than just config for updating the configuration. See
-[Options for submitting the configuration](/platform/forge/manifest-reference/modules/macro/#options-for-submitting-the-configuration)
-for the full list of options.
-
-To interpret the different error codes returned from `view.submit()`, see [Error code guide](/platform/forge/manifest-reference/modules/macro/#parameters-available-in-the-macro-editor) for the full list.
-{{% /note %}}
+> **Note:** `view.submit()` supports more options than just config for updating the configuration. See
+> [Options for submitting the configuration](/platform/forge/manifest-reference/modules/macro/#options-for-submitting-the-configuration)
+> for the full list of options.
+> 
+> To interpret the different error codes returned from `view.submit()`, see [Error code guide](/platform/forge/manifest-reference/modules/macro/#parameters-available-in-the-macro-editor) for the full list.
 
 ## Validation: Test your configuration
 
@@ -435,9 +423,7 @@ Before proceeding to Step 5, validate that your configuration is working correct
    - Enter test data and click "Submit"
    - Verify the macro displays your configuration data
 
-{{% note %}}
-If you encounter errors during testing, check the browser console for detailed error messages and refer to the [Troubleshooting](#troubleshooting) section below.
-{{% /note %}}
+> **Note:** If you encounter errors during testing, check the browser console for detailed error messages and refer to the [Troubleshooting](#troubleshooting) section below.
 
 ## Step 5: Show changes on app
 Finally, we can show the changes submitted from the `config` on our app.
@@ -519,11 +505,9 @@ Finally, we can show the changes submitted from the `config` on our app.
   );
   ```
 
-  ,{{% note %}}
-  **Important**: When displaying configuration in the macro view, Custom UI apps must use `view.getContext()` from `@forge/bridge` to access the configuration data, as shown above. `useConfig()` from `@forge/react` only works with UI Kit for the main macro display.
-
-  Also note the use of `ReactDOM.createRoot()` instead of the deprecated `ReactDOM.render()` for React 18 compatibility.
-  {{% /note %}},
+  > **Note:** **Important**: When displaying configuration in the macro view, Custom UI apps must use `view.getContext()` from `@forge/bridge` to access the configuration data, as shown above. `useConfig()` from `@forge/react` only works with UI Kit for the main macro display.
+> 
+>   Also note the use of `ReactDOM.createRoot()` instead of the deprecated `ReactDOM.render()` for React 18 compatibility.
   {{% /tab %}}{{% /tabs %}}
 
 ## Troubleshooting

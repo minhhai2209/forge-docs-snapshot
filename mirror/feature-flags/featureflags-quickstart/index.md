@@ -1,17 +1,14 @@
-# Feature flags quick start guide
+# Tutorial: Your first feature flag
 
-Forge Feature Flags is now available as part of Forge Early Access Program (EAP). To start testing this feature, sign up using this
-[form](https://ecosystem.atlassian.net/servicedesk/customer/portal/38/group/136/create/18725).
+In this tutorial, you'll add a feature flag to a Forge app, create the flag in Developer Console, and see it toggle a UI element on and off — without redeploying your app.
 
-Forge Feature Flags is an experimental feature offered to selected users for testing and feedback purposes. This
-feature is unsupported and subject to change without notice. Do not use Forge Feature Flags in apps that
-handle sensitive information and customer data. The Feature flags EAP is fully functional in development, staging, and production environments.
+**What you'll build:** A flag that shows or hides a premium welcome message.
 
-**Note: Feature flags are not available in Atlassian Government Cloud or FedRAMP environments. See**, [Limitations](/platform/forge/feature-flags/limitations#atlassian-government-cloud).
+**What you'll learn:**
 
-Get started with feature flags in your Forge app. You'll create a simple toggle that controls a welcome message without redeploying your app.
-
-**What you'll build:** A feature flag that shows/hides a premium welcome message
+* How to add the server-side SDK to your resolver
+* How to check a flag at runtime
+* How to create a flag in Developer Console and activate it
 
 **Time:** 10 minutes
 
@@ -19,7 +16,7 @@ Get started with feature flags in your Forge app. You'll create a simple toggle 
 
 You need:
 
-**Install required packages:**
+Install the server-side SDK:
 
 ```
 1
@@ -30,18 +27,35 @@ npm install @forge/feature-flags@latest
 
 ## Step 1: Add feature flag code
 
-Update your resolver code to include the feature flag SDK initialization and flag evaluation logic. Replace your `src/resolvers/index.js`:
+Update your resolver to initialize the SDK and check a flag. Replace your `src/resolvers/index.js`:
 
-```
 ```
 1
 2
-```
-
-
-
-```
-//src/resolvers/index.js
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+// src/resolvers/index.js
 import Resolver from '@forge/resolver';
 import { FeatureFlags } from "@forge/feature-flags";
 
@@ -50,26 +64,25 @@ const resolver = new Resolver();
 resolver.define('getFlagValue', async ({ payload, context }) => {
   const featureFlags = new FeatureFlags();
   await featureFlags.initialize({
-    environment: context?.environmentType?.toLowerCase() || "development" 
+    environment: context?.environmentType?.toLowerCase() || "development"
   });
 
   const user = {
     identifiers: {
-      installContext : context?.installContext
+      installContext: context?.installContext
     },
-    attributes: { 
-      installContext : context?.installContext
+    attributes: {
+      installContext: context?.installContext
     }
-  }
+  };
 
-  return featureFlags.checkFlag( user, payload?.flag, false);
+  return featureFlags.checkFlag(user, payload?.flag, false);
 });
 
 export const handler = resolver.getDefinitions();
 ```
-```
 
-Update your frontend code to include feature flag logic. Replace your `src/frontend/index.jsx`:
+Update your frontend to call the resolver and show the message. Replace your `src/frontend/index.jsx`:
 
 ```
 ```
@@ -83,7 +96,7 @@ Update your frontend code to include feature flag logic. Replace your `src/front
 // src/frontend/index.jsx
 import React, { useEffect, useState } from 'react';
 import ForgeReconciler, { Text } from '@forge/react';
-import { view } from '@forge/bridge';
+import { invoke } from '@forge/bridge';
 
 const App = () => {
   const [showPremium, setShowPremium] = useState(false);
@@ -92,11 +105,10 @@ const App = () => {
   useEffect(() => {
     invoke('getFlagValue', { flag: 'show_premium_welcome' })
       .then((value) => {
-        setShowPremium(value)
+        setShowPremium(value);
         setLoading(false);
       })
       .catch(() => {
-        console.error('Feature flag error:');
         setShowPremium(false);
         setLoading(false);
       });
@@ -110,7 +122,7 @@ const App = () => {
     <>
       <Text>Hello world!</Text>
       {showPremium && (
-        <Text appearance="success">🎉 Welcome to Premium Features!</Text>
+        <Text appearance="success">Welcome to Premium Features!</Text>
       )}
     </>
   );
@@ -124,16 +136,7 @@ ForgeReconciler.render(
 ```
 ```
 
-**What this code does:**
-
-* Gets `installContext` from the context
-* Initializes `FeatureFlags` with user context and environment in the resolver
-* Checks the `show_premium_welcome` flag
-* Shows premium message only when flag is enabled
-
 ## Step 2: Deploy your app
-
-Deploy your app with the feature flag code:
 
 ```
 ```
@@ -149,11 +152,9 @@ forge install --upgrade
 ```
 ```
 
-Your app is now deployed with feature flag code, but the flag doesn't exist yet (it will default to `false`).
+The app now contains feature flag code, but the flag doesn't exist yet — it defaults to `false`.
 
 ## Step 3: Create the feature flag
-
-Now create the feature flag in Developer Console:
 
 1. Go to [Developer Console](https://developer.atlassian.com/console)
 2. Select your app → **Manage** → **Feature flags**
@@ -164,7 +165,7 @@ Now create the feature flag in Developer Console:
    * **ID type**: `installContext`
 5. Click **Confirm**
 
-The Flag ID (`show_premium_welcome`) is automatically generated from the name you provide.
+The Flag ID (`show_premium_welcome`) is automatically generated from the name.
 
 6. On the Setup page:
    * Set **Pass** to `100%` and **Fail** to `0%`
@@ -173,37 +174,24 @@ The Flag ID (`show_premium_welcome`) is automatically generated from the name yo
 
 ## Step 4: Test your feature flag
 
-1. **Refresh your app** - You should now see: "🎉 Welcome to Premium Features!"
-2. **Test the toggle:**
+1. **Refresh your app** — You should now see the "Welcome to Premium Features!" message.
+2. **Toggle it off:**
 
    * Go to Developer Console → Feature flags → `show_premium_welcome`
-   * Change **Pass** to `0%`, **Fail** to `100%`
-   * **Save**
-   * Refresh app - Premium message disappears
-   * Change back to **Pass** `100%`, **Fail** `0%`
-   * **Save**
-   * Refresh app - Premium message returns!
+   * Change **Pass** to `0%`, **Fail** to `100%` → **Save**
+   * Refresh your app — the message disappears
+3. **Toggle it back on:**
+
+   * Change back to **Pass** `100%`, **Fail** `0%` → **Save**
+   * Refresh — the message returns
+
+You've just controlled a feature without redeploying your app.
+
+## What you learned
+
+* The server-side SDK (`@forge/feature-flags`) initializes in your resolver
+* `checkFlag(user, flagId, defaultValue)` returns `true` or `false` based on your flag configuration
+* Flags default to `false` when they don't exist yet — safe to deploy code before creating the flag
+* You can change flag behavior instantly from Developer Console
 
 ## Next steps
-
-Congratulations! You've successfully implemented your first feature flag. Here's what to explore next:
-
-### Expand your implementation
-
-* Create additional flags for different features
-* Practice percentage rollouts (10%, 50%, etc.)
-* Test environment-specific configurations
-
-### Best practices to implement
-
-* Use descriptive names: `new-dashboard-layout`, `checkout-v2`
-* Include team/component: `team-dashboard-redesign`
-* Test both enabled and disabled states
-* Write unit tests that mock feature flag responses
-* Use staging environment for validation
-
-### Continue learning
-
----
-
-**You're now ready to use feature flags in your Forge apps!** Start experimenting with different flag configurations and rollout strategies.

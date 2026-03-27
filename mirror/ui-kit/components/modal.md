@@ -90,13 +90,11 @@ The <code>i18n object</code> allows for translation. See <a href="#i18n-object">
 
 <a id="fullscreen-eap"></a>
 
-{{% warning %}}
-`fullscreen` viewport sizing is now available for Confluence and Jira as part of our Early Access Program (EAP). This allows your UI Kit Modal to fill the entire viewport. You can also provide a `title` and an `icon` to display in the header. To start testing, [sign up here](https://ecosystem.atlassian.net/servicedesk/customer/portal/1040/group/3496/create/18983). To use these features, run <code>npm install --save @forge/react@11.11.0-next.1</code> in your terminal.
-
-By signing up for this Early Access Program (“EAP”), you acknowledge that use of the Forge Full Page Modals is governed by the [Atlassian Developer Terms](https://developer.atlassian.com/platform/marketplace/atlassian-developer-terms/). The Forge Full Page Modals are considered “Early Access Materials”, as set forth in Section 10 of the Atlassian Developer Terms and is subject to applicable terms, conditions, and disclaimers.
-
-For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
-{{% /warning %}}
+> **Warning:** `fullscreen` viewport sizing is now available for Confluence and Jira as part of our Early Access Program (EAP). This allows your UI Kit Modal to fill the entire viewport. You can also provide a `title` and an `icon` to display in the header. To start testing, [sign up here](https://ecosystem.atlassian.net/servicedesk/customer/portal/1040/group/3496/create/18983). To use these features, run <code>npm install --save @forge/react@11.11.0-next.1</code> in your terminal.
+> 
+> By signing up for this Early Access Program (“EAP”), you acknowledge that use of the Forge Full Page Modals is governed by the [Atlassian Developer Terms](https://developer.atlassian.com/platform/marketplace/atlassian-developer-terms/). The Forge Full Page Modals are considered “Early Access Materials”, as set forth in Section 10 of the Atlassian Developer Terms and is subject to applicable terms, conditions, and disclaimers.
+> 
+> For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
 
 ### Body
 

@@ -17,6 +17,17 @@ With this release, you can test and assess how to deploy a containerised service
 
 Currently, Forge Containers has the following limitations:
 
+## Region limitations
+
+Pin your test site's location to **Germany** to avoid significant latency.
+
+Forge Containers is currently deployed in `Germany` only. If your test tenant is provisioned in a different region, you may experience up to **100ms+ latency increases** when using [Forge storage APIs](/platform/forge/runtime-reference/storage-api/)
+and [Atlassian app APIs](/platform/forge/apis-reference/product-rest-api-reference/). In some cases, this latency can also impact connection pool limits and query timeouts.
+
+To avoid these issues, we strongly recommend that you pin your test site's data location to **Germany**.
+
+Multi-region support for Forge Containers will be addressed in a future release.
+
 ## Integration limitations
 
 * Forge Containers have not yet been fully tested against every single Forge module that supports an `endpoint` module as its implementation. Some rough edges may exist.

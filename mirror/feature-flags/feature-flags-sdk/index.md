@@ -1,33 +1,48 @@
-# Feature flags SDK
+# Feature flags server-side SDK
 
-Forge Feature Flags is now available as part of Forge Early Access Program (EAP). To start testing this feature, sign up using this
-[form](https://ecosystem.atlassian.net/servicedesk/customer/portal/38/group/136/create/18725).
+API reference for the `@forge/feature-flags` package.
 
-Forge Feature Flags is an experimental feature offered to selected users for testing and feedback purposes. This
-feature is unsupported and subject to change without notice. Do not use Forge Feature Flags in apps that
-handle sensitive information and customer data. The Feature flags EAP is fully functional in development, staging, and production environments.
+The server-side SDK evaluates feature flags in Forge functions (resolvers, triggers, and other backend code). Evaluations are performed locally against a cached configuration — no network request per evaluation.
 
-**Note: Feature flags are not available in Atlassian Government Cloud or FedRAMP environments. See**, [Limitations](/platform/forge/feature-flags/limitations#atlassian-government-cloud).
+## Installation
 
-The Feature flags SDK in Forge is the in-code tool that developers use to flag their features. The SDK runs in Forge functions (resolvers, triggers, and other backend code) and provides local evaluation of feature flags.
+```
+1
+npm install @forge/feature-flags@latest
+```
 
-## SDK overview
+Requires Forge CLI version 2.0.0 or later.
 
-The server-side SDK (`@forge/feature-flags`) is designed for Forge runtime and Forge resolvers.
+## `FeatureFlags`
 
-**Key characteristics:**
+### Constructor
 
-* **Local evaluation**: Evaluations are done in real-time without a network request. Flag checks are effectively a dictionary lookup with some computation.
-* **Polling for updates**: The SDK makes an upfront request for configuration files, then continually polls for changes every 60 seconds.
-* **Multi-user support**: The SDK is designed to run against multiple users, and all SDK methods require a user object for evaluation.
+Creates a new instance of the SDK client.
 
-## Getting started
+### `initialize(config)`
 
-### Prerequisites
+```
+1
+initialize(config: FeatureFlagConfig): Promise<void>
+```
 
-### Installation
+Downloads the latest flag configuration and prepares the SDK for evaluation. Must be called before using `checkFlag` or `getFeatureFlags`.
 
-Install the server SDK using npm:
+**Parameters:**
+
+| Parameter | Type | Required | Description |
+| --- | --- | --- | --- |
+| `config` | `FeatureFlagConfig` | Yes | SDK configuration |
+
+**`FeatureFlagConfig`:**
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `environment` | `'development' | 'staging' | 'production'` | — | Environment tier for flag evaluation |
+
+After initialization, the SDK polls for configuration updates every 60 seconds.
+
+### `checkFlag(user, flagName, defaultValue?)`
 
 ```
 ```
@@ -38,26 +53,68 @@ Install the server SDK using npm:
 
 
 ```
-npm install @forge/feature-flags@latest
+checkFlag(user: FeatureFlagUser, flagName: string, defaultValue?: boolean): boolean
 ```
 ```
 
-### Basic usage pattern
+Evaluates a single feature flag for the given user. Synchronous after initialization.
 
-The SDK follows a simple pattern:
+**Parameters:**
 
-1. **[Initialize](#usage-example)**: Set up the SDK and download the latest flag configurations
-2. **[Check a flag](#usage-example)**: Evaluate flags using the user object
+| Parameter | Type | Required | Description |
+| --- | --- | --- | --- |
+| `user` | `FeatureFlagUser` | Yes | User context for flag evaluation |
+| `flagName` | `string` | Yes | The ID of the feature flag to evaluate |
+| `defaultValue` | `boolean` | No | Fallback value if the flag cannot be evaluated. Defaults to `false`. |
 
-After initialization, the SDK evaluates flags without a network request, typically in less than 1ms.
+**Returns:** `boolean` — `true` if the flag is enabled for this user, `false` otherwise.
 
-## Core concepts
+### `getFeatureFlags(user, flagNames)`
 
-### User object
+```
+```
+1
+2
+```
 
-The user object is the input you provide to the SDK for flag targeting. If you want to target on an attribute, you need to add it to your user object.
 
-The interface for the User Object is:
+
+```
+getFeatureFlags(user: FeatureFlagUser, flagNames: string[]): Record<string, boolean>
+```
+```
+
+Evaluates multiple flags in a single call.
+
+**Parameters:**
+
+| Parameter | Type | Required | Description |
+| --- | --- | --- | --- |
+| `user` | `FeatureFlagUser` | Yes | User context for flag evaluation |
+| `flagNames` | `string[]` | Yes | Array of flag IDs to evaluate |
+
+**Returns:** `Record<string, boolean>` — Map of flag ID to boolean result.
+
+### `shutdown()`
+
+```
+```
+1
+2
+```
+
+
+
+```
+shutdown(): Promise<void>
+```
+```
+
+Stops the polling interval and releases resources. Call this when the SDK instance is no longer needed.
+
+## Interfaces
+
+### `FeatureFlagUser`
 
 ```
 ```
@@ -69,7 +126,10 @@ The interface for the User Object is:
 
 ```
 interface FeatureFlagUser {
-  custom?: Record<string, string | number>;
+  identifiers?: {
+    installContext?: string;
+    accountId?: string;
+  };
   attributes?: {
     installContext?: string;
     accountId?: string;
@@ -77,28 +137,24 @@ interface FeatureFlagUser {
     license?: string;
     capabilitySet?: string;
   };
-  identifiers?: {
-    installContext?: string;
-    accountId?: string;
-  };
+  custom?: Record<string, string | number>;
 }
 ```
 ```
 
-#### User object properties
+**`identifiers`**: Used for percentage-based rollout targeting. Pass `installContext` for site-level rollouts or `accountId` for user-level rollouts. Always pass at least one identifier for a stable evaluation experience.
 
-**identifiers**: Dictionary containing key/value pairs for feature flag targeting, especially for percentage-based rollouts. Supports `installContext` and `accountId`.
+**`attributes`**: Key/value pairs evaluated against flag rules. Predefined attributes:
 
-**attributes**: Dictionary containing key/value pairs for feature flag targeting. Supports:
+| Attribute | Type | Description | Example values |
+| --- | --- | --- | --- |
+| `installContext` | `string` | ARI identifying the app installation context | `ari:cloud:confluence::site/abc123` |
+| `accountId` | `string` | Atlassian account ID of the current user | `5b10ac8d82e05b22cc7d4ef5` |
+| `appVersion` | `string` | Version of the app | `1.2.3` |
+| `license` | `string` | App license status. Only present for paid apps in production. | `ACTIVE`, `INACTIVE`, `TRIAL` |
+| `capabilitySet` | `string` | App license capability tier | `capabilityStandard`, `capabilityAdvanced` |
 
-* `installContext`
-* `appVersion`
-* `license`
-* `capabilitySet`
-
-**custom**: Dictionary for custom targeting attributes not supported in the `attributes` field.
-
-A user object with identifiers is required for `checkFlag`. Always pass the `accountId` or `installContext` if available to ensure a stable experience.
+**`custom`**: Custom key/value pairs for attributes not covered by the predefined set. Values must be `string` or `number`.
 
 ## Usage example
 
@@ -115,116 +171,43 @@ import { getAppContext } from "@forge/api";
 import { FeatureFlags } from "@forge/feature-flags";
 
 export const handler = async (payload, context) => {
-  // Get app context values
-  const {
-    appVersion,
-    license: appLicense,
-    environmentType,
-  } = getAppContext();
+  const { appVersion, license: appLicense, environmentType } = getAppContext();
 
-  // Determine license value based on trialEndDate and isActive
+  // Resolve license value
   let licenseValue = "INACTIVE";
-  const trialEndDate = appLicense?.trialEndDate;
-  const isActive = appLicense?.isActive;
-
-  if (trialEndDate) {
-    const now = new Date();
-    const trialEnd = new Date(trialEndDate);
-    if (trialEnd > now) {
-      licenseValue = "TRIAL";
-    } else if (isActive) {
-      licenseValue = "ACTIVE";
-    }
-  } else if (isActive) {
+  if (appLicense?.trialEndDate && new Date(appLicense.trialEndDate) > new Date()) {
+    licenseValue = "TRIAL";
+  } else if (appLicense?.isActive) {
     licenseValue = "ACTIVE";
   }
 
-  // Determine capabilitySet value (enum)
-  let capabilitySetValue = "capabilityStandard";
-  if (appLicense?.capabilitySet === "capabilityAdvanced") {
-    capabilitySetValue = "capabilityAdvanced";
-  }
+  // Resolve capabilitySet value
+  const capabilitySetValue = appLicense?.capabilitySet === "capabilityAdvanced"
+    ? "capabilityAdvanced"
+    : "capabilityStandard";
 
-  // Initialize the feature flags SDK
   const featureFlags = new FeatureFlags();
   await featureFlags.initialize({
-    environment: environmentType?.toLowerCase() || "development" 
+    environment: environmentType?.toLowerCase() || "development"
   });
 
-  // Define a user with all possible attributes for feature flag rules
   const user = {
     identifiers: {
       accountId: context?.principal?.accountId,
     },
-    attributes: { 
+    attributes: {
       installContext: context?.installContext,
       accountId: context?.principal?.accountId,
-      appVersion: appVersion,
-      license: licenseValue, // "ACTIVE", "INACTIVE", "TRIAL"
-      capabilitySet: capabilitySetValue // "capabilityAdvanced", "capabilityStandard"
+      appVersion,
+      license: licenseValue,
+      capabilitySet: capabilitySetValue,
     }
   };
 
-  // Check a feature flag (synchronous after initialization)
-  const isEnabled = featureFlags.checkFlag(user, "new-feature");
-
-  // Get multiple flags at once (synchronous)
+  const isEnabled = featureFlags.checkFlag(user, "new-feature", false);
   const flags = featureFlags.getFeatureFlags(user, ["feature-a", "feature-b"]);
 
-  // Shutdown when done
   await featureFlags.shutdown();
-}
+};
 ```
 ```
-
-## Best practices
-
-### Error handling
-
-The SDK is designed to be resilient and provide fallback behavior:
-
-* **Initialization failures**: Default to safe fallback values (typically `false` for boolean flags)
-* **Invalid flag names**: Return `false` for non-existent flags
-
-```
-```
-1
-2
-```
-
-
-
-```
-// Example error handling
-try {
-  const isEnabled = featureFlags.checkFlag(user, "new-feature");
-} catch (error) {
-  console.warn("Feature flag evaluation failed:", error);
-  // Use safe fallback
-  const isEnabled = false;
-}
-```
-```
-
-## Troubleshooting
-
-### Common issues
-
-**SDK Initialization Fails**
-
-* Ensure you're using the correct environment (`development`, `staging`, `production`)
-* Verify your app has feature flag permissions enabled
-* Check that you're in the EAP program
-
-**Flags Always Return Default Values**
-
-* Confirm the flag exists in the Developer Console
-* Verify the flag is enabled for your environment
-* Check that your user object contains required identifiers
-
-**Performance Issues**
-
-* The SDK polls every 60 seconds by default — this is normal
-* Flag evaluations should be sub-1ms after initialization
-
-## Next steps

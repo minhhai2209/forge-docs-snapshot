@@ -9,9 +9,6 @@ for use in production environments.
 
 For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
 
-To invoke a container service or make calls from one, you'll need to first define its endpoint.
-See [Define endpoints](/platform/forge/containers-reference/integrating-service/#define-endpoints) for details.
-
 You can make "offline" API calls at any time from your container on behalf of an **installation** within your app environment.
 This means that you no longer need to wait for an invocation to deliver you an `invocationId` to make API requests.
 

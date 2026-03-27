@@ -96,7 +96,7 @@ In the `src` directory, create a new file called `generateReport.js`. This is wh
 
 
 ```
-import { AsyncEvent } from '@forge/events';
+import api, { route } from '@forge/api';
 
 export const handler = async (event, context) => {
     try {
@@ -111,7 +111,7 @@ export const handler = async (event, context) => {
 };
 
 export const processGenerate = async (event) => {
-    const { projectKey } = event;
+    const { projectKey } = event.body;
     
     if (!projectKey) {
         throw new Error('Project key is required but not provided in event payload');
@@ -143,7 +143,16 @@ const fetchIssuesFromJira = async (projectKey) => {
         
         // Fetch real data from Jira API
         const response = await api.asApp().requestJira(
-            route`/rest/api/3/search?jql=project=${projectKey}&maxResults=100`
+            route`/rest/api/3/search/jql`,
+            {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    jql: `project = ${projectKey}`,
+                    fields: ['status', 'customfield_10016'],
+                    maxResults: 100,
+                }),
+            }
         );
         
         if (!response.ok) {

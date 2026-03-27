@@ -1,10 +1,5 @@
 # Feature flags
 
-Forge Feature Flags is now available as part of Forge Early Access Program (EAP). To start testing this feature, sign up using this
-[form](https://ecosystem.atlassian.net/servicedesk/customer/portal/38/group/136/create/18725).
+When you visit any website, it may store or retrieve information on your browser, mostly in the form of cookies. This information might be about you, your preferences or your device and is mostly used to make the site work as you expect it to. The information does not usually directly identify you, but it can give you a more personalized web experience. Because we respect your right to privacy, you can choose not to allow some types of cookies. Click on the different category headings to find out more and change our default settings. However, blocking some types of cookies may impact your experience of the site and the services we are able to offer.
 
-Forge Feature Flags is an experimental feature offered to selected users for testing and feedback purposes. This
-feature is unsupported and subject to change without notice. Do not use Forge Feature Flags in apps that
-handle sensitive information and customer data. The Feature flags EAP is fully functional in development, staging, and production environments.
-
-**Note: Feature flags are not available in Atlassian Government Cloud or FedRAMP environments. See**, [Limitations](/platform/forge/feature-flags/limitations#atlassian-government-cloud).
+[More information](https://www.atlassian.com/legal/cookies)

@@ -46,6 +46,15 @@ Your Forge app must have permission from the
 site admin to access the data it provides within the event payload.
 The OAuth scope required for each event is documented below.
 
+## Common fields in Jira event payloads
+
+In addition to the event-specific fields documented for each event type below, all Jira event payloads include the following common fields at the root level:
+
+| Name | Type | Description |
+| --- | --- | --- |
+| timestamp | `string` | The time when the event occurred, in epoch milliseconds. |
+| webhookTraceValue? | `string` | Only present when your app sent `X-Atlassian-Webhook-Trace` on the related Jira API request; contains the same value as the header. Use this to correlate API requests your app makes with the resulting events, which is helpful for debugging and tracing request flows. Other apps do not receive this field. |
+
 ## Issue events
 
 [↑ Back to top](#core-issue-events)
@@ -437,7 +446,6 @@ Example
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:jira:failed:expression`. |
-| timestamp | `string` | The time when the expression failed to evaluate, in epoch milliseconds. |
 | extensionId | `string` | The ID of the extension where the expression is defined. |
 | workflowId | `string` | The ID of the workflow where the expression was evaluated. |
 | workflowName | `string` | The name of the workflow where the expression was evaluated. |
