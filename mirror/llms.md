@@ -1051,6 +1051,7 @@
 - [Event invocations](https://developer.atlassian.com/platform/forge/containers-reference/int-event.md)
 - [Frontend/backend invocations](https://developer.atlassian.com/platform/forge/containers-reference/int-invokeservice.md)
 - [Call APIs from an installation](https://developer.atlassian.com/platform/forge/containers-reference/int-installbased.md)
+- [Web trigger invocations](https://developer.atlassian.com/platform/forge/containers-reference/int-webtrigger.md)
 
 #### Testing a service locally
 

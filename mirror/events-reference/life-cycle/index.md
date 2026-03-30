@@ -29,7 +29,7 @@ An event with the name `avi:forge:installed:app` is sent when an app has been in
 | Name | Type | Description |
 | --- | --- | --- |
 | id | `string` | The ID of the installation. |
-| installerAccountId? | `string` | [Optional] The ID of the user who installed the Forge app.     In Jira and Confluence apps, use the Get user operation of [Jira](https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-users/#api-rest-api-3-user-get) or [Confluence](https://developer.atlassian.com/cloud/confluence/rest/v1/api-group-users/#api-wiki-rest-api-user-get) REST APIs to retrieve user information.     In Bitbucket apps, use [requestGraph](/platform/forge/apis-reference/fetch-api-product.requestgraph/) and [user query](/platform/atlassian-graphql-api/graphql/#identity_user) to retrieve user information. |
+| installerAccountId? | `string` | [Optional] The ID of the user who installed the Forge app.     In Jira and Confluence apps, use the Get user operation of [Jira](https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-users/#api-rest-api-3-user-get) or [Confluence](https://developer.atlassian.com/cloud/confluence/rest/v1/api-group-users/#api-wiki-rest-api-user-get) REST APIs to retrieve user information.     In Bitbucket apps, use [requestGraph](https://developer.atlassian.com/platform/forge/apis-reference/fetch-api-product.requestgraph/) and [user query](https://developer.atlassian.com/platform/atlassian-graphql-api/graphql/#identity_user) to retrieve user information. |
 | app | `App` | An object describing the Forge app. |
 | environment? | `Environment` | [Optional] An object containing the Forge app's environment id. |
 
@@ -134,7 +134,7 @@ An event with the name `avi:forge:upgraded:app` is sent when an installed app on
 | Name | Type | Description |
 | --- | --- | --- |
 | id | `string` | The ID of the installation. |
-| upgraderAccountId? | `string` | [Optional] The ID of the user who upgraded the Forge app.     In Jira and Confluence apps, use the Get user operation of [Jira](https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-users/#api-rest-api-3-user-get) or [Confluence](https://developer.atlassian.com/cloud/confluence/rest/v1/api-group-users/#api-wiki-rest-api-user-get) REST APIs to retrieve user information.     In Bitbucket apps, use [requestGraph](/platform/forge/apis-reference/fetch-api-product.requestgraph) and [user query](/platform/atlassian-graphql-api/graphql/#identity_user) to retrieve user information. |
+| upgraderAccountId? | `string` | [Optional] The ID of the user who upgraded the Forge app.     In Jira and Confluence apps, use the Get user operation of [Jira](https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-users/#api-rest-api-3-user-get) or [Confluence](https://developer.atlassian.com/cloud/confluence/rest/v1/api-group-users/#api-wiki-rest-api-user-get) REST APIs to retrieve user information.     In Bitbucket apps, use [requestGraph](https://developer.atlassian.com/platform/forge/apis-reference/fetch-api-product.requestgraph) and [user query](https://developer.atlassian.com/platform/atlassian-graphql-api/graphql/#identity_user) to retrieve user information. |
 | app | `App` | An object describing the Forge app. |
 | environment? | `Environment` | [Optional] An object containing the Forge app's environment id. |
 | permissions | `Permissions` | [Optional] An object containing the scopes and external egress permissions that the app has access to. |
@@ -202,5 +202,35 @@ This is an example payload.
     "id": "23863033-1de4-4ebf-b30d-c906264a1e92"
   },
 }
+```
+```
+
+## Pre-uninstallation Trigger
+
+When an uninstall action is initiated via the UI or CLI, a notification will be sent via a pre-uninstall trigger. To do this, a [trigger module](https://developer.atlassian.com/platform/forge/manifest-reference/modules/trigger/) will need to be added to the Forge app.
+
+The pre-uninstall invocation has a timeout of 55 seconds, during which the uninstallation process will be paused. Cleanup operations should conclude in that time interval — once the uninstallation completes, product API calls may not work.
+
+### Example
+
+```
+```
+1
+2
+```
+
+
+
+```
+# manifest.yml
+
+modules:
+  preUninstall:
+    - key: cleanup-before-uninstall
+      function: cleanupHandler
+
+  functions:
+    - key: cleanupHandler
+      handler: index.cleanup
 ```
 ```

@@ -126,18 +126,11 @@ Stops the polling interval and releases resources. Call this when the SDK instan
 
 ```
 interface FeatureFlagUser {
+  attributes?: Record<string, string | number>;
   identifiers?: {
     installContext?: string;
     accountId?: string;
   };
-  attributes?: {
-    installContext?: string;
-    accountId?: string;
-    appVersion?: string;
-    license?: string;
-    capabilitySet?: string;
-  };
-  custom?: Record<string, string | number>;
 }
 ```
 ```
@@ -154,7 +147,7 @@ interface FeatureFlagUser {
 | `license` | `string` | App license status. Only present for paid apps in production. | `ACTIVE`, `INACTIVE`, `TRIAL` |
 | `capabilitySet` | `string` | App license capability tier | `capabilityStandard`, `capabilityAdvanced` |
 
-**`custom`**: Custom key/value pairs for attributes not covered by the predefined set. Values must be `string` or `number`.
+Custom attributes are also supported.
 
 ## Usage example
 

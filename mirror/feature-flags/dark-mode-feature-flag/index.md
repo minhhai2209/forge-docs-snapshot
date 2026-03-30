@@ -23,7 +23,7 @@ Install the `@forge/bridge` package:
 npm install @forge/bridge@latest
 ```
 
-Feature flags in the client SDK require `@forge/bridge` version `5.14.0` or later.
+Feature flags in the client SDK require `@forge/bridge` version `5.15.0` or later.
 
 ## What you'll build
 

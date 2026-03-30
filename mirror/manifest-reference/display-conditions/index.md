@@ -2,6 +2,11 @@
 
 Using display conditions, you can control the visibility of your app modules in the UI.
 
+Display conditions evaluate static context at the manifest level (user role, issue type,
+project) and cannot reference [feature flags](/platform/forge/feature-flags/overview/).
+Feature flags are evaluated at runtime within your app code — use them to control
+behaviour inside your app, not module visibility.
+
 You should not rely on display conditions as a mechanism to protect sensitive data.
 This is because display conditions are executed on the client-side, and it is impossible to guarantee
 that the execution results won't be overridden using the developer tools of a browser.
@@ -39,18 +44,14 @@ jira:issuePanel:
 In the example below, the display conditions for the Jira issue panel module are slightly more complex.
 
 ```
+```
 1
 2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
+```
+
+
+
+```
 jira:issuePanel:
 - key: hello-world-panel
   function: issue-panel-function
@@ -63,6 +64,7 @@ jira:issuePanel:
         projectKey: TEST
         not:
           issueType: Epic
+```
 ```
 
 In this example, the Jira issue panel module will only be rendered if the following conditions are met:

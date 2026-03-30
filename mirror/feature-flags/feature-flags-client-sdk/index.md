@@ -4,7 +4,7 @@ API reference for the feature flags client in the `@forge/bridge` package.
 
 The client SDK evaluates feature flags directly in your Forge UI app's frontend code. Unlike the [server-side SDK](/platform/forge/feature-flags/feature-flags-sdk), it runs in the browser and does not require a resolver round-trip for flag evaluation.
 
-The client SDK is available from `@forge/bridge` version `5.14.0`.
+The client SDK is available from `@forge/bridge` version `5.15.0`.
 
 ## Installation
 

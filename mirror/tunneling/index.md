@@ -194,6 +194,89 @@ to set this up.
     you could see remote timeouts that didn't happen locally.
 * The Forge app UI is only accessible from the same machine running `forge tunnel`.
 
+## Troubleshooting
+
+This section covers common issues that can prevent `forge tunnel` from working correctly.
+
+If you edit `manifest.yml`, run `forge deploy` so the tunnel uses the latest manifest. The tunnel does not replace a deploy. If your change affects installation metadata (for example, permissions or modules), you may also need `forge install --upgrade` on the target site. Otherwise the tunnel can still run while the app misbehaves or fails.
+
+### Tunnel fails to start or connect
+
+Use this section if `forge tunnel` exits immediately, never reaches `Listening for requests...`, or you suspect traffic is not reaching your machine. A firewall, VPN, or corporate proxy can block Cloudflare tunnel traffic even after the CLI has printed `Listening for requests...` — still follow **Check your network and firewall settings** below.
+
+**Check your network and firewall settings**
+
+`forge tunnel` uses [Cloudflare](https://www.cloudflare.com/) to route requests from your Atlassian site to your local machine. If a firewall, VPN, or corporate proxy is blocking outbound connections to Cloudflare, the tunnel cannot establish a connection.
+
+To resolve this:
+
+* Allow outbound connections to Cloudflare tunnel infrastructure. See the [changelog entry](/platform/forge/changelog/#CHANGE-1785) for details on the specific endpoints.
+* If you're behind a corporate proxy, configure your system proxy settings so that Node.js can reach external services.
+* Try disabling your VPN temporarily to determine whether it is the cause.
+
+**Check that the app is deployed**
+
+You must deploy your app at least once before running `forge tunnel`. The tunnel redirects invocations to your local machine but depends on a deployed version to handle the handshake.
+
+Run the following command to ensure your app is deployed:
+
+Then retry `forge tunnel`.
+
+**Restart the tunnel process**
+
+If the tunnel becomes unresponsive or hangs, press `Ctrl+C` to stop it and run `forge tunnel` again. Stale tunnel processes can prevent new connections from being established.
+
+### Tunnel starts but requests are not received
+
+If the tunnel is running but you don't see any output when you trigger your app:
+
+* Confirm you are using the same Atlassian site and environment where your app is installed. The tunnel only intercepts requests on the environment (for example, `development`) where your app is installed.
+* Confirm you are triggering the app from the same browser session on the same machine running `forge tunnel`. The tunnel only displays your own requests — not those from other users.
+* Check that your app is installed and enabled on the target site by running:
+
+* **Check Chrome's Local Network Access setting.** Chrome has a flag that controls whether sites can make requests to resources on your local network. If this flag is set to **Enabled (Blocking)**, the tunnel silently fails — the CLI shows `Listening for requests...` but no requests are received.
+
+  To fix this, go to `chrome://flags/#local-network-access-check` in Chrome and set the flag to **Default** or **Disabled**.
+
+### Tunnel exits with an authentication error
+
+If you see an authentication error when running `forge tunnel`, your CLI session may have expired. Re-authenticate by running:
+
+### "Listening for requests..." shown but app isn't working
+
+If the tunnel starts successfully but your app behaves unexpectedly or shows errors:
+
+* **Check for Node.js version mismatches.** Your app uses the Node.js version set in `manifest.yml` under `app.runtime.name` (for example, `nodejs20.x`, `nodejs22.x`, or `nodejs24.x`). If your local Node.js major version does not match that runtime, behaviour may differ from Forge. See [Native Node.js runtime](/platform/forge/function-reference/nodejs-runtime/), install the matching [Node.js release](https://nodejs.org/en/download/), and use a version manager such as `nvm`:
+
+Replace `22` with `20` or `24` if your manifest uses `nodejs20.x` or `nodejs24.x`.
+
+* **Check for local-only dependencies.** If your code relies on packages or environment-specific globals that aren't bundled with your app, functions may work locally but fail once deployed. Ensure all dependencies are declared in `package.json`.
+* **Check environment variables.** Environment variables must be set locally when tunneling. Variables set in other Forge environments (for example, production) are not accessible to the tunnel. When tunneling, environment variables must be prefixed with `FORGE_USER_VAR_` — for example, `export FORGE_USER_VAR_MY_KEY=test`. In your code, you still access the value as `process.env.MY_KEY`. See [Environments and versions](/platform/forge/environments-and-versions/#forge-tunnel) for details.
+* **Review your console output.** Any errors thrown by your function will appear in the `forge tunnel` output. Look for stack traces or unhandled promise rejections that may indicate the root cause.
+
+### Tunnel is stuck at "Bundling code..."
+
+If `forge tunnel` hangs at the bundling step and never proceeds:
+
+* Check for syntax errors in your source files. Run `forge lint` to identify issues:
+
+* If you are on macOS with Apple Silicon (M1/M2/M3) and using an older Docker-based version of the Forge CLI, see the [Docker bundling issue workaround](#bundling-issues) below.
+* Delete the `node_modules` directory and reinstall dependencies, then retry:
+
+```
+```
+1
+2
+```
+
+
+
+```
+rm -rf node_modules && npm install
+forge tunnel
+```
+```
+
 ### Troubleshooting Docker issues
 
 Older versions of the Forge tunnel use Docker, which may cause issues.

@@ -245,7 +245,7 @@ await kvs.setSecret('example-key', { hello: 'world' }, {
 ```
 ```
 
-You can also request the key's relevant metadata by including `metadataFields` in the `options` parameter, similar to [kvs.getSecret](#kvsgetsecret):
+You can also request the key's relevant metadata by including `returnMetadataFields` in the `options` parameter, similar to [kvs.getSecret](#kvsgetsecret):
 
 ```
 ```
@@ -256,11 +256,12 @@ You can also request the key's relevant metadata by including `metadataFields` i
 
 
 ```
-import { kvs, MetadataField } from '@forge/kvs';                                                      
+import { kvs, MetadataField } from '@forge/kvs';
 
-await kvs.setSecret('example-key', {
+await kvs.setSecret('example-key', { hello: 'world' }, {
+  keyPolicy: 'OVERRIDE',
   returnValue: 'LATEST',
-  metadataFields: [MetadataField.CREATED_AT, MetadataField.UPDATED_AT, MetadataField.EXPIRE_TIME]
+  returnMetadataFields: [MetadataField.CREATED_AT, MetadataField.UPDATED_AT, MetadataField.EXPIRE_TIME]
 });
 ```
 ```

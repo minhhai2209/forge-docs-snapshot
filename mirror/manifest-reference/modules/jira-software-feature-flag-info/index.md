@@ -1,9 +1,65 @@
 # Jira Software Feature Flag Information Provider
 
-Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
-When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our
+The `devops:featureFlagInfoProvider` module allows Forge apps to send feature flag information to Jira and associate it with an issue.
 
-[Privacy Policy](https://www.atlassian.com/legal/privacy-policy#additional-disclosures-for-ca-residents)
+Supplied feature flag information will be presented in the [development panel](https://confluence.atlassian.com/jirasoftwarecloud/viewing-the-development-information-for-an-issue-777002795.html) of the issue it is associated with.
 
-.
-You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
+Feature flag information is written and deleted via the [Jira Software REST API](https://developer.atlassian.com/cloud/jira/software/rest/) which can be accessed by Forge apps using the [requestJira](https://developer.atlassian.com/platform/forge/apis-reference/fetch-api-product.requestjira/) function.
+
+When a user uninstalls an app, all the data that the app sent to Jira is deleted immediately. If the app is reinstalled, this data won't be added back unless the app resends historical information to Jira.
+
+## Example
+
+```
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+modules:
+  devops:featureFlagInfoProvider:
+    - key: my-feature-flag-info-provider
+      name:
+        value: My Feature Flag Info Provider
+      homeUrl: https://www.my-feature-flag.com
+      logoUrl: https://www.my-feature-flag.com/logo.svg
+      documentationUrl: https://www.my-feature-flag.com/help
+      actions:
+        createFlag:
+          urlTemplate: https://www.my-feature-flag.com/create?issueKey={issue.key}&issueSummary={issue.summary}
+        linkFlag:
+          urlTemplate: https://www.my-feature-flag.com/link?issueKey={issue.key}
+```
+
+## Properties
+
+| Property | Type | Required | Description |
+| --- | --- | --- | --- |
+| key | string | Yes | A key to identify this module. |
+| name | object | Yes | A human readable name. |
+| name.value | string | Yes | *Min length:* 1  *Max length:* 255 |
+| homeUrl | string | Yes | URL to the provider's homepage.  *Min length:* 1  *Max length:* 255  *Regex:* `^(http|https):\/\/.*$` |
+| logoUrl | string | No | The logo for the provider, will be displayed in an area 16 by 16 pixels.  *Min length:* 1  *Max length:* 255  *Regex:* `^(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\\\\?([^#]*))?(#(.*))?` |
+| documentationUrl | string | No | Optional URL to documentation about the provider's Jira integration.  *Min length:* 1  *Max length:* 255  *Regex:* `^(http|https):\/\/.*$` |
+| actions | Actions | No | Feature flag actions that can be performed by Jira users. Each action is optional (unless indicated otherwise). The absence of an action indicates that the action is not supported by the provider. |
+
+### Actions
+
+| Property | Type | Required | Description |
+| --- | --- | --- | --- |
+| createFlag | Action | No | Action for creating a feature flag and linking it with a Jira issue.  The given URL will be used on the [Jira issue development panel](https://confluence.atlassian.com/jirasoftwarecloud/viewing-the-development-information-for-an-issue-777002795.html). The "Create feature flag" button will redirect the user to the URL. |
+| linkFlag | Action | No | Action for linking an existing feature flag to a Jira issue.  The given URL will be used on the [Jira issue development panel](https://confluence.atlassian.com/jirasoftwarecloud/viewing-the-development-information-for-an-issue-777002795.html). The "Connect feature flag" button will redirect the user to the URL. |
+
+### Action
+
+| Property | Type | Required | Description |
+| --- | --- | --- | --- |
+| urlTemplate | string | Yes | Defines the URL template that is used when an action is invoked.  The following context parameters are supported: `{issue.key}`, `{issue.summary}`, `{issue.flags}`  *Min length:* 1  *Max length:* 255  *Regex:* `^(http|https):\/\/.*$` |
