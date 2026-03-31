@@ -79,7 +79,7 @@ installing Node.js using this method.
 After installing the Forge CLI, follow the prompts in the terminal to build a hello world app. For a complete explanation
 of each step, continue reading along with the documentation.
 
-![Hello world CLI overview](https://dac-static.atlassian.com/platform/forge/images/forge-cli-overview-without-description.png?_v=1.5800.1954)
+![Hello world CLI overview](https://dac-static.atlassian.com/platform/forge/images/forge-cli-overview-without-description.png?_v=1.5800.1956)
 
 ## Install the Forge CLI
 
@@ -189,7 +189,7 @@ Any command after `forge login` that requires authentication will read your cred
 from the keychain. When this occurs, your keychain may prompt you for access; approve it to allow the
 CLI to run the command.
 
-On Linux, you'll need `libsecret` installed to perform this step.
+On Linux, keychain support requires `libsecret` (used by GNOME Keyring and other secret storage backends). If `libsecret` is not available on your system — for example, on headless servers, WSL environments, or non-GNOME desktops — use environment variables instead, as described in [Using environment variables to login](#using-environment-variables-to-login).
 
 ### Using environment variables to login
 

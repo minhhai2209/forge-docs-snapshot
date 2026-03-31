@@ -25,6 +25,10 @@ This capability has the following limitations:
 
 The following modules can be declared as a dynamic module:
 
+**Jira**
+
+**Jira Service Management**
+
 We plan to add more in the future.
 
 ## Managing dynamic modules
