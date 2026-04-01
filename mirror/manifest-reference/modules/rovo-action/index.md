@@ -264,7 +264,11 @@ export function logTime (payload, context) {
 ```
 ```
 
-## Customer created agents
+## Customer-created agents
+
+Rovo actions will only be registered (and appear in the skill palette) if your app also includes a [Rovo agent](/platform/forge/manifest-reference/modules/rovo-agent/) module. Apps that define actions without a bundled agent will not have those actions available to customer-created agents.
+
+See [FRGE-2071](https://ecosystem.atlassian.net/browse/FRGE-2071) for related details.
 
 Actions in your Forge app can be made available to customer-built agents by adding the `read:chat:rovo` scope to the permissions in your manifest. This enables agents created by customers to utilize these actions.
 
@@ -285,4 +289,4 @@ permissions:
 
 The additional scope is needed because customer-built agents may access data that your app can't otherwise reach. This data can be provided as input to your action through a Rovo chat.
 
-![Example of adding a Forge action](https://dac-static.atlassian.com/platform/forge/images/rovo/customer-add-action.png?_v=1.5800.1956)
+![Example of adding a Forge action](https://dac-static.atlassian.com/platform/forge/images/rovo/customer-add-action.png?_v=1.5800.1962)

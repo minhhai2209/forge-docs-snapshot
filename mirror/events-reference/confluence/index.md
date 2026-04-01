@@ -62,6 +62,7 @@ Page, live doc, and blog post events share the same payload format, with the exc
 | atlassianId | `string` | The ID of the user that caused the event. Absent if the event was triggered by an anonymous user. |
 | eventCreatedDate | `string` | Date and time of the event in ISO 8601 format. |
 | suppressNotifications | `boolean` | Indicates whether notifications for this event were suppressed. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | updateTrigger | `string` | The reason that caused the update event to trigger. Included only for the following events:  * `avi:confluence:updated:page` * `avi:confluence:started:page` * `avi:confluence:snapshotted:page` * `avi:confluence:published:page` * `avi:confluence:updated:blogpost` |
 | content | `Content` | An object representing the page, live doc or blog post. |
 | prevContent | `Content` | Only for `avi:confluence:moved:page`. An object representing the old page. |
@@ -173,6 +174,7 @@ This is an example of an event triggered when a page is created.
   "atlassianId": "4ad9aa0c52dc1b420a791d12",
   "eventCreatedDate": "2021-01-20T06:29:21.907Z",
   "suppressNotifications": false,
+  "selfGenerated": false,
   "content": {
     "id": "838205441",
     "type": "page",
@@ -299,6 +301,7 @@ with the exception of some events that have additional fields (see below).
 | atlassianId | `string` | The ID of the user that caused the event. Absent if the event was triggered by an anonymous user. |
 | eventCreatedDate | `string` | Date and time of the event in ISO 8601 format. |
 | suppressNotifications | `boolean` | Indicates whether notifications for this event were suppressed. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | task | `Task` | An object representing the inline task. |
 | oldTask | `Task` | Only for `avi:confluence:updated:task`. An object representing the previous version of the inline task. |
 | content | `Content` | The page, live doc or blog post, that contains the inline task. |
@@ -529,6 +532,7 @@ payload format.
 | atlassianId | `string` | The ID of the user that caused the event. Absent if the event was triggered by an anonymous user. |
 | eventCreatedDate | `string` | Date and time of the event in ISO 8601 format. |
 | suppressNotifications | `boolean` | Indicates whether notifications for this event were suppressed. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | updateTrigger | `string` | Only for `avi:confluence:updated:comment`. The reason that caused the update event to trigger. |
 | content | `Content` | An object representing the comment. |
 
@@ -670,6 +674,7 @@ This is an example of an event triggered when a new comment is posted on a page.
   "atlassianId": "4ad9aa0c52dc1b420a791d12",
   "eventCreatedDate": "2021-01-20T06:29:21.907Z",
   "suppressNotifications": false,
+  "selfGenerated": false,
   "content": {
     "id": "838205455",
     "type": "comment",
@@ -888,6 +893,7 @@ All space events share the same payload format.
 | eventType | `string` | The event name, such as `avi:confluence:created:space:V2`. |
 | atlassianId | `string` | The ID of the user that caused the event. Absent if the event was triggered by an anonymous user. |
 | eventCreatedDate | `string` | Date and time of the event in ISO 8601 format. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | space | `Space` | An object representing the space. |
 
 ### Type reference
@@ -1029,6 +1035,7 @@ payload format.
 | atlassianId | `string` | The ID of the user that caused the event. Absent if the event was triggered by an anonymous user. |
 | eventCreatedDate | `string` | Date and time of the event in ISO 8601 format. |
 | suppressNotifications | `boolean` | Indicates whether notifications for this event were suppressed. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | updateTrigger | `string` | Only for `avi:confluence:updated:attachment`. The reason that caused the update event to trigger. |
 | attachment | `Attachment` | An object representing the attachment. |
 
@@ -1161,6 +1168,7 @@ This is an example of an event triggered when an attachment is created.
   "atlassianId": "4ad9aa0c52dc1b420a791d12",
   "eventCreatedDate": "2021-01-20T06:29:21.907Z",
   "suppressNotifications": false,
+  "selfGenerated": false,
   "attachment": {
     "id": "838205455",
     "type": "attachment",
@@ -1337,6 +1345,7 @@ Custom content events require the OAuth scope `read:confluence-content.summary` 
 | atlassianId | `string` | The ID of the user that caused the event. Absent if the event was triggered by an anonymous user. |
 | eventCreatedDate | `string` | Date and time of the event in ISO 8601 format. |
 | suppressNotifications | `boolean` | Indicates whether notifications for this event were suppressed. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | updateTrigger | `string` | Only for `avi:confluence:updated:custom_content`. The reason that caused the update event to trigger. |
 | content | `Content` | An object representing the custom content. |
 
@@ -1455,6 +1464,7 @@ This is an example of an event triggered when a Forge custom content is created 
   "atlassianId": "4ad9aa0c52dc1b420a791d12",
   "eventCreatedDate": "2021-01-20T06:29:41.570Z",
   "suppressNotifications": false,
+  "selfGenerated": false,
   "content": {
     "id": "838205552",
     "type": "forge:9149a1f2-9ed3-44ab-80e8-741adf4187fd:2edb9983-c665-4da2-a714-48572fb09cd0:my-custom-content",
@@ -1629,6 +1639,7 @@ Label events require the following OAuth scopes:
 | eventType | `string` | The event name, such as `avi:confluence:added:label`. |
 | atlassianId | `string` | The ID of the user that caused the event. Absent if the event was triggered by an anonymous user. |
 | eventCreatedDate | `string` | Date and time of the event in ISO 8601 format. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | label | `Label` | The label object. |
 | content | `Content` | (Optional) The content the label is associated with. |
 | space | `Space` | (Optional) The space the label is associated with. |
@@ -1993,6 +2004,7 @@ User events require the OAuth scope `read:confluence-user`.
 | --- | --- | --- |
 | eventType | `string` | The event name, such as `avi:confluence:created:user`. |
 | eventCreatedDate | `string` | Date and time of the event in ISO 8601 format. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | user | `User` | Object representing the user that was created or deleted. |
 
 Note that `atlassianId` field is not included in the payload because user events are triggered via
@@ -2083,6 +2095,7 @@ Group events require the OAuth scope `read:confluence-groups`.
 | --- | --- | --- |
 | eventType | `string` | The event name, such as `avi:confluence:created:group`. |
 | eventCreatedDate | `string` | Date and time of the event in ISO 8601 format. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | group | `Group` | Object representing the group that was created or deleted. |
 
 Note that `atlassianId` field is not included in the payload because group events are triggered via
@@ -2156,6 +2169,7 @@ Relation events require the following OAuth scopes:
 | eventType | `string` | The event name, such as `avi:confluence:created:relation`. |
 | atlassianId | `string` | The ID of the user that caused the event. Absent if the event was triggered by an anonymous user. |
 | eventCreatedDate | `string` | Date and time of the event in ISO 8601 format. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | relationName | `string` | Name of the relation. |
 | relationData | `RelationData` | (Optional) Information about a user who created the relationship and the date and time of the creation. Absent for relation types `like` and `favourite`. |
 | source | `EntityWrapper` | Wrapper for the source entity. Depending on the relationship type, contains one of the following subfields: `content`, `space`, or `user`. |
@@ -2595,6 +2609,7 @@ Search events require the following OAuth scopes:
 | eventType | `string` | The event name, such as `avi:confluence:performed:search`. |
 | eventCreatedDate | `string` | Date and time of the event in ISO 8601 format. |
 | atlassianId | `string` | The ID of the user that caused the event. Absent if the event was triggered by an anonymous user. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | query | `string` | The search query string. |
 | accountType | `string` | The type of account of the User who performed the search. |
 | results | `integer` | The number of search results returned. |

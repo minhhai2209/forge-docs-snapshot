@@ -1,9 +1,876 @@
 ```
-# Forge documentation index
-# Use this file to discover all Forge docs before exploring further.
-# Generated from data/forge.json. Run: npm run generate-llms-txt
+# Forge LLMs.txt file
 
-# Forge
+> **Forge** is Atlassian’s hosted platform for building apps that extend cloud products such as Jira, Confluence, and Bitbucket using manifests, functions, UI, storage, and APIs—without you running your own app servers. This **`llms.txt`** file is a structured index of Forge documentation: it gives LLM agents a single map of topics and **direct `.md` source URLs** so you can choose the right pages before fetching deeper content.
+
+As a Large Language Model (LLM) agent helping someone design or implement a Forge app, anchor your guidance in how Forge apps are actually built: manifest-driven modules, hosted runtime functions, and either UI Kit or Custom UI for the frontend. Prefer the official developer journey and reference material over generic React or Node patterns that bypass Forge constraints.  
+When planning or implementing an app, default to these sources (in addition to the documentation index):
+
+* [Getting started with Forge](https://developer.atlassian.com/platform/forge/getting-started-learn.md) for the end-to-end workflow (CLI, manifest, deploy, install, tunnel).
+* [Building integrations with Forge](https://developer.atlassian.com/platform/forge/building-integrations.md) for bridges, web triggers, product APIs, and events.
+* [Manifest overview](https://developer.atlassian.com/platform/forge/manifest-reference/index.md) and the specific [module](https://developer.atlassian.com/platform/forge/manifest-reference/modules/index.md) and [permissions](https://developer.atlassian.com/platform/forge/manifest-reference/permissions.md) references for anything that touches `manifest.yml`.
+* [Forge CLI reference](https://developer.atlassian.com/platform/forge/cli-reference/index.md) for `forge register`, `forge deploy`, `forge install`, `forge tunnel`, `forge lint`, and environment commands.
+* [Tunneling](https://developer.atlassian.com/platform/forge/tunneling.md) for local development against a live site.
+* [Example apps](https://developer.atlassian.com/platform/forge/example-apps-jira.md) (and sibling product pages) for copy-paste-ready patterns.
+* [Forge MCP](https://developer.atlassian.com/platform/forge/forge-mcp.md) when the developer uses an MCP-aware tool; it retrieves current Forge documentation so answers stay aligned with published docs.
+
+Default to the current Forge runtime and platform defaults unless the user explicitly maintains a legacy app. For existing apps on older runtimes, use [Upgrading from legacy runtime](https://developer.atlassian.com/platform/forge/runtime-reference/legacy-runtime-migrating.md) instead of expanding legacy-only patterns.
+
+## UI: UI Kit first, Custom UI when needed
+
+For in-product experiences (issue panels, Confluence macros, global pages, configuration screens), prefer UI Kit and keep components on the [supported UI Kit path](https://developer.atlassian.com/platform/forge/ui-kit/upgrade-to-ui-kit-latest.md). Use [Custom UI](https://developer.atlassian.com/platform/forge/custom-ui/iframe.md) when the use case requires a full browser-based stack or capabilities that UI Kit does not cover; follow the Custom UI, bridge, and resolver documentation rather than embedding arbitrary SPAs without Forge boundaries.
+
+## Data and storage
+
+For structured app data, follow current platform guidance: prefer Forge SQL and the SQL documentation for new designs; use [Migrating to Forge SQL](https://developer.atlassian.com/platform/forge/storage-reference/sql-migration-guide.md) when moving from older storage models. Avoid suggesting deprecated or legacy storage paths for greenfield apps when the docs recommend a newer approach.
+
+## Atlassian and external APIs
+
+Use the documented Forge product REST / GraphQL access patterns (for example Atlassian app fetch and scoped permissions in the manifest) rather than advising users to call Atlassian APIs without the permissions and invocation model Forge enforces. For outbound calls to third-party systems, use the [fetch](https://developer.atlassian.com/platform/forge/runtime-reference/fetch-api.basic.md) and [external authentication](https://developer.atlassian.com/platform/forge/runtime-reference/external-fetch-api.md) guides.
+
+## Long-running work, AI, and async
+
+For work that outlives a normal function invocation (long LLM calls, progress streaming, async continuation), use the patterns in [Handling long-running LLM processes with Forge Realtime](https://developer.atlassian.com/platform/forge/llm-long-running-process-with-forge-realtime.md) and related runtime docs—not unbounded synchronous waits that ignore Forge limits.
+
+## Connect and marketplace
+
+If the user is coming from Connect, start from [Migrating your Connect app](https://developer.atlassian.com/platform/forge/adopting-forge-from-connect.md) and related migration guides rather than treating Connect and Forge as interchangeable. For listing and commercialization, use the current Marketplace and distribution documentation linked from the main guides.
+
+## Packages and versions
+
+Prefer current `@forge/*` packages and CLI behavior from official npm releases and this documentation rather than pinning old versions from memory. When unsure, instruct the user to check the latest package readme or run the CLI/docs-backed workflow.
+
+## EAP, Preview, and GA
+
+Forge labels some capabilities EAP or Preview. Treat them as described on the relevant pages: Preview features can ship with shorter deprecation notice than GA; EAP is experimental and not for production. Prefer GA patterns when both exist, and clearly disclose when a recommendation depends on Preview or EAP.
+
+## How to read Forge markdown (supplementary)
+
+Every page in this documentation set is available as Markdown under `developer.atlassian.com/platform/forge/`. For machine consumption, append `.md` to leaf URLs, or `/index.md` for section roots when `.md` alone would 404—consistent with the links in this index.
+
+Some tables use HTML for `colspan` / `rowspan`.  `{{% layout %}}`, `{{% content %}}`, `{{% card %}}`, `{{% tabs %}}` / `{{% tab %}}`) map to rendered callouts and layout; interpret them as structured hints, not as prose the end user types verbatim.
+
+## Manifest
+
+The Forge `manifest.yml` file is the central configuration file for every Forge app. It defines the app's identity, what it does, and what it's allowed to access. The Forge CLI reads this file to deploy and manage the app.
+
+The manifest has a maximum file size of 200 KB. Deployments fail if this limit is exceeded.
+
+The manifest has three required top-level properties:
+
+- **`app`** *(required)* — Identifies the app (via its unique ARI `id`) and configures runtime settings, licensing, and storage.
+- **`modules`** *(required)* — Declares the Forge modules the app uses (e.g. Jira issue panels, Confluence macros, triggers, web triggers). This is what determines where and how the app appears in Atlassian products. Required unless `connectModules` is present.
+- **`permissions`** *(required)* — Lists the scopes and external fetch URLs the app is allowed to use.
+
+For more information about the Forge manifest, refer to the following sections.
+
+### Manifest overview
+
+- [Manifest overview](https://developer.atlassian.com/platform/forge/manifest-reference/index.md)
+
+### Action type
+
+- [Action type](https://developer.atlassian.com/platform/forge/manifest-reference/action-type.md)
+
+### Display conditions
+
+- [Display conditions](https://developer.atlassian.com/platform/forge/manifest-reference/display-conditions/index.md)
+- [Usage with Confluence modules](https://developer.atlassian.com/platform/forge/manifest-reference/display-conditions/confluence.md)
+- [Usage with Jira/JSM modules](https://developer.atlassian.com/platform/forge/manifest-reference/display-conditions/jira.md)
+- [Entity property conditions](https://developer.atlassian.com/platform/forge/manifest-reference/display-conditions/entity-property-conditions.md)
+- [Permissions](https://developer.atlassian.com/platform/forge/manifest-reference/display-conditions/permissions.md)
+
+### Endpoint
+
+- [Endpoint](https://developer.atlassian.com/platform/forge/manifest-reference/endpoint.md)
+
+### Keyboard shortcuts
+
+- [Keyboard shortcuts](https://developer.atlassian.com/platform/forge/manifest-reference/keyboard-shortcuts/index.md)
+
+### Permissions
+
+- [Permissions](https://developer.atlassian.com/platform/forge/manifest-reference/permissions.md)
+- [Forge scopes](https://developer.atlassian.com/platform/forge/manifest-reference/scopes-forge.md)
+- [Bitbucket scopes](https://developer.atlassian.com/platform/forge/manifest-reference/scopes-product-bitbucket.md)
+- [Compass scopes](https://developer.atlassian.com/platform/forge/manifest-reference/scopes-product-compass.md)
+- [Confluence scopes](https://developer.atlassian.com/platform/forge/manifest-reference/scopes-product-confluence.md)
+- [Jira scopes](https://developer.atlassian.com/platform/forge/manifest-reference/scopes-product-jira.md)
+- [Jira Software scopes](https://developer.atlassian.com/platform/forge/manifest-reference/scopes-product-jsw.md)
+- [Jira Service Management scopes](https://developer.atlassian.com/platform/forge/manifest-reference/scopes-product-jsm.md)
+
+### Providers
+
+- [Providers](https://developer.atlassian.com/platform/forge/manifest-reference/providers.md)
+
+### Remotes
+
+- [Remotes](https://developer.atlassian.com/platform/forge/manifest-reference/remotes.md)
+
+### Resources
+
+- [Resources](https://developer.atlassian.com/platform/forge/manifest-reference/resources.md)
+
+### Services (EAP)
+
+- [Services (EAP)](https://developer.atlassian.com/platform/forge/manifest-reference/services.md)
+
+### Translations
+
+- [Translations](https://developer.atlassian.com/platform/forge/manifest-reference/translations.md)
+- [Forge supported locale codes](https://developer.atlassian.com/platform/forge/manifest-reference/forge-supported-locale-codes.md)
+
+### Variables
+
+- [Variables](https://developer.atlassian.com/platform/forge/manifest-reference/variables.md)
+
+## Modules
+
+Modules are the core building blocks of a Forge app. Defined in the `modules` property of `manifest.yml`, they specify how an app integrates with Atlassian products by mapping to specific extension points — such as panels, macros, menu items, custom fields, triggers, and web triggers.
+
+Each module entry has a `key` (a unique identifier within the app) and typically references a `function` key that points to the handler code to run. Some modules also define UI properties like `title` and `description`, or event subscriptions.
+
+For example:
+
+```yaml
+modules:
+  macro:
+    - key: hello-world-macro
+      function: hello-world-macro-func
+      title: Hello world macro!
+  function:
+    - key: hello-world-macro-func
+      handler: macro.run
+```
+
+Refer to the following sections for more detailed information about Forge modules.
+
+### Overview
+
+- [Overview](https://developer.atlassian.com/platform/forge/manifest-reference/modules/index.md)
+
+### Forge modules
+
+- [Forge modules](https://developer.atlassian.com/platform/forge/manifest-reference/modules/index-common.md)
+- [Consumer](https://developer.atlassian.com/platform/forge/manifest-reference/modules/consumer.md)
+- [Event](https://developer.atlassian.com/platform/forge/manifest-reference/modules/event.md)
+- [Function](https://developer.atlassian.com/platform/forge/manifest-reference/modules/function.md)
+- [Scheduled trigger](https://developer.atlassian.com/platform/forge/manifest-reference/modules/scheduled-trigger.md)
+- [SQL](https://developer.atlassian.com/platform/forge/manifest-reference/modules/sql.md)
+- [Trigger](https://developer.atlassian.com/platform/forge/manifest-reference/modules/trigger.md)
+- [Web trigger](https://developer.atlassian.com/platform/forge/manifest-reference/modules/web-trigger.md)
+- [LLM](https://developer.atlassian.com/platform/forge/manifest-reference/modules/llm.md)
+- [API route](https://developer.atlassian.com/platform/forge/manifest-reference/modules/api-route.md)
+
+### Automation modules
+
+- [Automation modules](https://developer.atlassian.com/platform/forge/manifest-reference/modules/index-automation.md)
+- [Action](https://developer.atlassian.com/platform/forge/manifest-reference/modules/automation-action.md)
+
+### Bitbucket modules
+
+- [Bitbucket modules](https://developer.atlassian.com/platform/forge/manifest-reference/modules/index-bitbucket.md)
+- [Custom merge check](https://developer.atlassian.com/platform/forge/manifest-reference/modules/bitbucket-merge-check.md)
+- [Dynamic Pipelines provider](https://developer.atlassian.com/platform/forge/manifest-reference/modules/bitbucket-dynamic-pipelines-provider.md)
+- [Project settings menu page](https://developer.atlassian.com/platform/forge/manifest-reference/modules/bitbucket-project-settings-menu-page.md)
+- [Repository code file viewer](https://developer.atlassian.com/platform/forge/manifest-reference/modules/bitbucket-repository-code-file-viewer.md)
+- [Repository code overview card](https://developer.atlassian.com/platform/forge/manifest-reference/modules/bitbucket-repository-code-overview-card.md)
+- [Repository code overview action](https://developer.atlassian.com/platform/forge/manifest-reference/modules/bitbucket-repository-code-overview-action.md)
+- [Repository code overview panel](https://developer.atlassian.com/platform/forge/manifest-reference/modules/bitbucket-repository-code-overview-panel.md)
+- [Repository pull request card](https://developer.atlassian.com/platform/forge/manifest-reference/modules/bitbucket-repository-pull-request-card.md)
+- [Repository pull request action](https://developer.atlassian.com/platform/forge/manifest-reference/modules/bitbucket-repository-pull-request-action.md)
+- [Repository pull request overview panel](https://developer.atlassian.com/platform/forge/manifest-reference/modules/bitbucket-repository-pull-request-overview-panel.md)
+- [Repository main menu page](https://developer.atlassian.com/platform/forge/manifest-reference/modules/bitbucket-repository-main-menu-page.md)
+- [Repository settings menu page](https://developer.atlassian.com/platform/forge/manifest-reference/modules/bitbucket-repository-settings-menu-page.md)
+- [Workspace global page](https://developer.atlassian.com/platform/forge/manifest-reference/modules/bitbucket-workspace-global-page.md)
+- [Workspace personal settings page](https://developer.atlassian.com/platform/forge/manifest-reference/modules/bitbucket-workspace-personal-settings-page.md)
+- [Workspace settings menu page](https://developer.atlassian.com/platform/forge/manifest-reference/modules/bitbucket-workspace-settings-menu-page.md)
+
+### Compass modules
+
+- [Compass modules](https://developer.atlassian.com/platform/forge/manifest-reference/modules/index-compass.md)
+- [Admin page](https://developer.atlassian.com/platform/forge/manifest-reference/modules/compass-admin-page.md)
+- [Component page](https://developer.atlassian.com/platform/forge/manifest-reference/modules/compass-component-page.md)
+- [Data provider](https://developer.atlassian.com/platform/forge/manifest-reference/modules/compass-data-provider.md)
+- [Global page](https://developer.atlassian.com/platform/forge/manifest-reference/modules/compass-global-page.md)
+- [Team page](https://developer.atlassian.com/platform/forge/manifest-reference/modules/compass-team-page.md)
+
+### Confluence modules
+
+- [Confluence modules](https://developer.atlassian.com/platform/forge/manifest-reference/modules/index-confluence.md)
+- [Background script](https://developer.atlassian.com/platform/forge/manifest-reference/modules/confluence-background-script.md)
+- [Content action](https://developer.atlassian.com/platform/forge/manifest-reference/modules/confluence-content-action.md)
+- [Content byline item](https://developer.atlassian.com/platform/forge/manifest-reference/modules/confluence-content-byline-item.md)
+- [Content property](https://developer.atlassian.com/platform/forge/manifest-reference/modules/confluence-content-property.md)
+- [Context menu](https://developer.atlassian.com/platform/forge/manifest-reference/modules/confluence-context-menu.md)
+- [Custom content](https://developer.atlassian.com/platform/forge/manifest-reference/modules/confluence-custom-content.md)
+- [Full page (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/confluence-full-page.md)
+- [Global page](https://developer.atlassian.com/platform/forge/manifest-reference/modules/confluence-global-page.md)
+- [Global settings](https://developer.atlassian.com/platform/forge/manifest-reference/modules/confluence-global-settings.md)
+- [Homepage feed](https://developer.atlassian.com/platform/forge/manifest-reference/modules/confluence-homepage-feed.md)
+- [Macro](https://developer.atlassian.com/platform/forge/manifest-reference/modules/macro.md)
+- [Page banner](https://developer.atlassian.com/platform/forge/manifest-reference/modules/confluence-page-banner.md)
+- [Space page](https://developer.atlassian.com/platform/forge/manifest-reference/modules/confluence-space-page.md)
+- [Space settings](https://developer.atlassian.com/platform/forge/manifest-reference/modules/confluence-space-settings.md)
+
+### Dashboard modules (EAP)
+
+- [Dashboard modules (EAP)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/index-dashboard.md)
+- [Widget (EAP)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/dashboard-widget.md)
+- [Background script (EAP)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/dashboard-background-script.md)
+
+### Jira modules
+
+- [Jira modules](https://developer.atlassian.com/platform/forge/manifest-reference/modules/index-jira.md)
+- [Action validator (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-action-validator.md)
+- [Admin page](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-admin-page.md)
+- [Backlog action (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-backlog-action.md)
+- [Board action (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-board-action.md)
+- [Command palette (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-command-palette.md)
+- [Custom field](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-custom-field.md)
+- [Custom field type](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-custom-field-type.md)
+- [Dashboard background script](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-dashboard-background-script.md)
+- [Dashboard gadget](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-dashboard-gadget.md)
+- [Entity property](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-entity-property.md)
+- [Full page (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-full-page.md)
+- [Global background script (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-global-background-script.md)
+- [Global page](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-global-page.md)
+- [Global permission](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-global-permission.md)
+- [Issue action](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-issue-action.md)
+- [Issue activity](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-issue-activity.md)
+- [Issue context](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-issue-context.md)
+- [Issue glance](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-issue-glance.md)
+- [Issue navigator action (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-issue-navigator-action.md)
+- [Issue panel](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-issue-panel.md)
+- [Issue view background script](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-issue-view-background-script.md)
+- [JQL function](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jql-function.md)
+- [Personal settings page (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-personal-settings-page.md)
+- [Project page](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-project-page.md)
+- [Project permission](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-project-permission.md)
+- [Project settings page](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-project-settings-page.md)
+- [Sprint action (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-sprint-action.md)
+- [Time tracking provider (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-time-tracking-provider.md)
+- [UI modifications](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-ui-modifications.md)
+- [Workflow validator (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-workflow-validator.md)
+- [Workflow condition (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-workflow-condition.md)
+- [Workflow post function (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-workflow-post-function.md)
+
+### Jira Service Management modules
+
+- [Jira Service Management modules](https://developer.atlassian.com/platform/forge/manifest-reference/modules/index-jsm.md)
+- [Assets import type](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-service-management-assets-import-type.md)
+- [Organization panel](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-service-management-organization-panel.md)
+- [Portal footer](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-service-management-portal-footer.md)
+- [Portal header](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-service-management-portal-header.md)
+- [Portal profile panel](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-service-management-portal-profile-panel.md)
+- [Portal request create property panel](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-service-management-portal-request-create-property-panel.md)
+- [Portal request detail](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-service-management-portal-request-detail.md)
+- [Portal request detail panel](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-service-management-portal-request-detail-panel.md)
+- [Portal request view action](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-service-management-portal-request-view-action.md)
+- [Portal subheader](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-service-management-portal-subheader.md)
+- [Portal user menu action](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-service-management-portal-user-menu-action.md)
+- [Queue page](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-service-management-queue-page.md)
+- [UI modifications](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-service-management-ui-modifications.md)
+
+### Jira Software modules
+
+- [Jira Software modules](https://developer.atlassian.com/platform/forge/manifest-reference/modules/index-jsw.md)
+- [Development Information Provider](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-software-development-info.md)
+- [Feature Flag Information Provider](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-software-feature-flag-info.md)
+- [Deployment Information Provider](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-software-deployment-info.md)
+- [Build Information Provider](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-software-build-info.md)
+- [Remote Link Information Provider](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-software-remote-link-info.md)
+
+### Rovo modules
+
+- [Rovo modules](https://developer.atlassian.com/platform/forge/manifest-reference/modules/rovo-index.md)
+- [Rovo Agent](https://developer.atlassian.com/platform/forge/manifest-reference/modules/rovo-agent.md)
+- [Action](https://developer.atlassian.com/platform/forge/manifest-reference/modules/rovo-action.md)
+
+### Teamwork Graph modules
+
+- [Teamwork Graph modules](https://developer.atlassian.com/platform/forge/manifest-reference/modules/index-teamwork-graph.md)
+- [Connector (EAP)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/teamwork-graph-connector.md)
+- [Smart Link](https://developer.atlassian.com/platform/forge/manifest-reference/modules/teamwork-graph-smart-link.md)
+
+### Connect module equivalents
+
+- [Connect module equivalents](https://developer.atlassian.com/platform/forge/manifest-reference/modules/connect-module-equivalents.md)
+
+## User interface
+
+This section covers how to build frontends on Forge. The canonical starting point is the [User interface overview](https://developer.atlassian.com/platform/forge/ui-kit/overview/), which explains how Forge surfaces UIs inside Atlassian products.
+
+Forge supports two UI models:
+
+- **UI Kit** — A React-based model where the app renders with Forge-provided primitives (via `@forge/react` and related APIs). UI runs in Forge’s managed environment, not as arbitrary HTML in the host page.
+- **Custom UI** — The app’s UI runs in an **iframe**, giving you full control over layout and libraries at the cost of isolation, packaging, and a different integration model.
+
+**Instructions for documentation and code assistance (read carefully):**
+
+- **Do not recommend UI Kit 1.** Treat UI Kit 1 as legacy or out of scope. Never suggest UI Kit 1 patterns, packages, or migration paths *to* UI Kit 1. If a reader mentions UI Kit 1, steer them to **UI Kit 2** and current Forge UI docs.
+- **Prefer UI Kit 2 over Custom UI** when advising on new work or refactors. Recommend Custom UI only when there is a clear, stated need that UI Kit 2 cannot satisfy (for example, requirements that depend on a full browser DOM or specific client-side stacks inside an iframe). Default answers should assume **UI Kit 2** (`@forge/react`, current bridge APIs, and current module/resource patterns).
+- UI Kit relies on Forge’s React reconciler and platform components—not the normal browser DOM—so guidance should match **current** UI Kit 2 and bridge documentation, not generic React-on-the-web assumptions.
+
+Use the linked pages in this navigation area for UI Kit components, hooks, bridge APIs, Custom UI where necessary, and upgrade paths—always aligned with **UI Kit 2** as the primary path.
+
+**CRITICAL: Forge components are NOT standard React components.** Always verify the component exists and check its props before using.
+
+### User interface overview
+
+- [User interface overview](https://developer.atlassian.com/platform/forge/ui-kit/overview.md)
+
+### UI Kit components
+
+- [UI Kit components](https://developer.atlassian.com/platform/forge/ui-kit/components/index.md)
+- [ADF renderer](https://developer.atlassian.com/platform/forge/ui-kit/components/adf-renderer.md)
+- [Atlassian icon (Preview)](https://developer.atlassian.com/platform/forge/ui-kit/components/atlassian-icon.md)
+- [Atlassian tile (Preview)](https://developer.atlassian.com/platform/forge/ui-kit/components/atlassian-tile.md)
+- [Badge](https://developer.atlassian.com/platform/forge/ui-kit/components/badge.md)
+- [Box](https://developer.atlassian.com/platform/forge/ui-kit/components/box.md)
+- [Button](https://developer.atlassian.com/platform/forge/ui-kit/components/button.md)
+- [Button group](https://developer.atlassian.com/platform/forge/ui-kit/components/button-group.md)
+- [Calendar](https://developer.atlassian.com/platform/forge/ui-kit/components/calendar.md)
+- [Chart - Bar](https://developer.atlassian.com/platform/forge/ui-kit/components/bar-chart.md)
+- [Chart - Donut](https://developer.atlassian.com/platform/forge/ui-kit/components/donut-chart.md)
+- [Chart - Horizontal bar](https://developer.atlassian.com/platform/forge/ui-kit/components/horizontal-bar-chart.md)
+- [Chart - Horizontal stack bar](https://developer.atlassian.com/platform/forge/ui-kit/components/horizontal-stack-bar-chart.md)
+- [Chart - Line](https://developer.atlassian.com/platform/forge/ui-kit/components/line-chart.md)
+- [Chart - Pie](https://developer.atlassian.com/platform/forge/ui-kit/components/pie-chart.md)
+- [Chart - Stack bar](https://developer.atlassian.com/platform/forge/ui-kit/components/stack-bar-chart.md)
+- [Checkbox](https://developer.atlassian.com/platform/forge/ui-kit/components/checkbox.md)
+- [Checkbox group](https://developer.atlassian.com/platform/forge/ui-kit/components/checkbox-group.md)
+- [Code](https://developer.atlassian.com/platform/forge/ui-kit/components/code.md)
+- [Code block](https://developer.atlassian.com/platform/forge/ui-kit/components/code-block.md)
+- [Comment](https://developer.atlassian.com/platform/forge/ui-kit/components/comment.md)
+- [Comment editor](https://developer.atlassian.com/platform/forge/ui-kit/components/comment-editor.md)
+- [Chromeless editor](https://developer.atlassian.com/platform/forge/ui-kit/components/chromeless-editor.md)
+- [Date picker](https://developer.atlassian.com/platform/forge/ui-kit/components/date-picker.md)
+- [Dynamic table](https://developer.atlassian.com/platform/forge/ui-kit/components/dynamic-table.md)
+- [Empty state](https://developer.atlassian.com/platform/forge/ui-kit/components/empty-state.md)
+- [File card (EAP)](https://developer.atlassian.com/platform/forge/ui-kit/components/file-card.md)
+- [File picker (EAP)](https://developer.atlassian.com/platform/forge/ui-kit/components/file-picker.md)
+- [Form](https://developer.atlassian.com/platform/forge/ui-kit/components/form.md)
+- [Frame](https://developer.atlassian.com/platform/forge/ui-kit/components/frame.md)
+- [Heading](https://developer.atlassian.com/platform/forge/ui-kit/components/heading.md)
+- [Icon](https://developer.atlassian.com/platform/forge/ui-kit/components/icon.md)
+- [Image](https://developer.atlassian.com/platform/forge/ui-kit/components/image.md)
+- [Inline](https://developer.atlassian.com/platform/forge/ui-kit/components/inline.md)
+- [Inline edit](https://developer.atlassian.com/platform/forge/ui-kit/components/inline-edit.md)
+- [Link](https://developer.atlassian.com/platform/forge/ui-kit/components/link.md)
+- [List](https://developer.atlassian.com/platform/forge/ui-kit/components/list.md)
+- [Lozenge](https://developer.atlassian.com/platform/forge/ui-kit/components/lozenge.md)
+- [Modal](https://developer.atlassian.com/platform/forge/ui-kit/components/modal.md)
+- [Popup](https://developer.atlassian.com/platform/forge/ui-kit/components/popup.md)
+- [Pressable](https://developer.atlassian.com/platform/forge/ui-kit/components/pressable.md)
+- [Progress bar](https://developer.atlassian.com/platform/forge/ui-kit/components/progress-bar.md)
+- [Progress tracker](https://developer.atlassian.com/platform/forge/ui-kit/components/progress-tracker.md)
+- [Radio](https://developer.atlassian.com/platform/forge/ui-kit/components/radio.md)
+- [Radio group](https://developer.atlassian.com/platform/forge/ui-kit/components/radio-group.md)
+- [Range](https://developer.atlassian.com/platform/forge/ui-kit/components/range.md)
+- [Section message](https://developer.atlassian.com/platform/forge/ui-kit/components/section-message.md)
+- [Select](https://developer.atlassian.com/platform/forge/ui-kit/components/select.md)
+- [Spinner](https://developer.atlassian.com/platform/forge/ui-kit/components/spinner.md)
+- [Stack](https://developer.atlassian.com/platform/forge/ui-kit/components/stack.md)
+- [Tabs](https://developer.atlassian.com/platform/forge/ui-kit/components/tabs.md)
+- [Tag](https://developer.atlassian.com/platform/forge/ui-kit/components/tag.md)
+- [Tag group](https://developer.atlassian.com/platform/forge/ui-kit/components/tag-group.md)
+- [Text](https://developer.atlassian.com/platform/forge/ui-kit/components/text.md)
+- [Text area](https://developer.atlassian.com/platform/forge/ui-kit/components/text-area.md)
+- [Text field](https://developer.atlassian.com/platform/forge/ui-kit/components/textfield.md)
+- [Time picker](https://developer.atlassian.com/platform/forge/ui-kit/components/time-picker.md)
+- [Tile (Preview)](https://developer.atlassian.com/platform/forge/ui-kit/components/tile.md)
+- [Toggle](https://developer.atlassian.com/platform/forge/ui-kit/components/toggle.md)
+- [Tooltip](https://developer.atlassian.com/platform/forge/ui-kit/components/tooltip.md)
+- [User](https://developer.atlassian.com/platform/forge/ui-kit/components/user.md)
+- [User group](https://developer.atlassian.com/platform/forge/ui-kit/components/user-group.md)
+- [User picker](https://developer.atlassian.com/platform/forge/ui-kit/components/user-picker.md)
+- [XCSS](https://developer.atlassian.com/platform/forge/ui-kit/components/xcss.md)
+
+### Jira UI Kit components
+
+- [Jira UI Kit components](https://developer.atlassian.com/platform/forge/ui-kit/jira-components/index.md)
+- [Custom field edit (Preview)](https://developer.atlassian.com/platform/forge/ui-kit/jira-components/custom-field-edit.md)
+
+### UI Kit hooks
+
+- [UI Kit hooks](https://developer.atlassian.com/platform/forge/ui-kit/hooks/hooks-reference.md)
+- [useConfig](https://developer.atlassian.com/platform/forge/ui-kit/hooks/use-config.md)
+- [useContentProperty](https://developer.atlassian.com/platform/forge/ui-kit/hooks/use-content-property.md)
+- [useForm](https://developer.atlassian.com/platform/forge/ui-kit/hooks/use-form.md)
+- [useIssueProperty](https://developer.atlassian.com/platform/forge/ui-kit/hooks/use-issue-property.md)
+- [useObjectStore (EAP)](https://developer.atlassian.com/platform/forge/ui-kit/hooks/use-object-store.md)
+- [useProductContext](https://developer.atlassian.com/platform/forge/ui-kit/hooks/use-product-context.md)
+- [useSpaceProperty](https://developer.atlassian.com/platform/forge/ui-kit/hooks/use-space-property.md)
+- [useTheme](https://developer.atlassian.com/platform/forge/ui-kit/hooks/use-theme.md)
+- [useTranslation](https://developer.atlassian.com/platform/forge/ui-kit/hooks/use-translation.md)
+- [useWidgetConfig (EAP)](https://developer.atlassian.com/platform/forge/ui-kit/hooks/use-widget-config.md)
+- [useWidgetContext (EAP)](https://developer.atlassian.com/platform/forge/ui-kit/hooks/use-widget-context.md)
+
+### Forge bridge APIs
+
+- [Forge bridge APIs](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/bridge.md)
+- [events](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/events.md)
+- [i18n](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/i18n.md)
+- [invoke](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/invoke.md)
+- [invokeRemote](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/invokeRemote.md)
+- [modal](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/modal.md)
+- [objectStore (EAP)](https://developer.atlassian.com/platform/forge/custom-ui-bridge/objectStore.md)
+- [realtime (Preview)](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/realtime.md)
+- [requestBitbucket](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/requestBitbucket.md)
+- [requestConfluence](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/requestConfluence.md)
+- [requestJira](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/requestJira.md)
+- [requestRemote](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/requestRemote.md)
+- [router](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/router.md)
+- [rovo](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/rovo.md)
+- [showFlag](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/showFlag.md)
+- [view](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/view.md)
+
+### Jira bridge APIs
+
+- [Jira bridge APIs](https://developer.atlassian.com/platform/forge/apis-reference/jira-api-bridge/bridge.md)
+- [ViewIssueModal](https://developer.atlassian.com/platform/forge/apis-reference/jira-api-bridge/viewIssueModal.md)
+- [CreateIssueModal](https://developer.atlassian.com/platform/forge/apis-reference/jira-api-bridge/createIssueModal.md)
+- [uiModifications](https://developer.atlassian.com/platform/forge/apis-reference/jira-api-bridge/uiModifications.md)
+- [workflowRules (EAP)](https://developer.atlassian.com/platform/forge/apis-reference/jira-api-bridge/workflowRules.md)
+
+### Confluence bridge APIs
+
+- [Confluence bridge APIs](https://developer.atlassian.com/platform/forge/apis-reference/confluence-api-bridge/bridge.md)
+- [getEditorContent](https://developer.atlassian.com/platform/forge/apis-reference/confluence-api-bridge/getEditorContent.md)
+- [getMacroContent](https://developer.atlassian.com/platform/forge/apis-reference/confluence-api-bridge/getMacroContent.md)
+- [updateMacroContent](https://developer.atlassian.com/platform/forge/apis-reference/confluence-api-bridge/updateMacroContent.md)
+- [updateBylineProperties](https://developer.atlassian.com/platform/forge/apis-reference/confluence-api-bridge/updateBylineProperties.md)
+
+### Dashboard bridge APIs (EAP)
+
+- [Dashboard bridge APIs (EAP)](https://developer.atlassian.com/platform/forge/apis-reference/dashboard-bridge-apis/bridge.md)
+- [widget (EAP)](https://developer.atlassian.com/platform/forge/apis-reference/dashboard-bridge-apis/widget.md)
+- [widgetEdit (EAP)](https://developer.atlassian.com/platform/forge/apis-reference/dashboard-bridge-apis/widget-edit.md)
+
+### Custom UI
+
+- [Custom UI](https://developer.atlassian.com/platform/forge/custom-ui/iframe.md)
+
+### Upgrade UI Kit versions
+
+- [Upgrade UI Kit versions](https://developer.atlassian.com/platform/forge/ui-kit/upgrade-guides.md)
+- [Notify site admins using Forge app with UI Kit 1](https://developer.atlassian.com/platform/forge/ui-kit/notify-site-admins-using-forge-app-with-ui-kit-1.md)
+- [Upgrade to @forge/react major version 10](https://developer.atlassian.com/platform/forge/ui-kit/version-10-changes.md)
+
+## Events reference
+
+This section is the **Forge events reference**—how apps run code in response to activity **without a UI**. The entry point is [Events](https://developer.atlassian.com/platform/forge/events-reference/). For conceptual flow and setup, also use the [Events](https://developer.atlassian.com/platform/forge/events/) guide.
+
+**What “events” cover here:**
+
+- **Atlassian product and platform events** — Emitted when users or background processes do something in (or related to) Atlassian products. Your app **subscribes** in `manifest.yml` with the **`trigger`** module to one or more named events. Reference pages are split by source, for example **Jira**, **Jira Software**, **Confluence**, **Compass**, **Bitbucket**, plus **Life cycle** and **Data security policy** events. Payloads, availability, and filters differ by product—always defer to the specific product page under this index.
+- **Scheduled trigger events** — Invoke a function on a **schedule** you define (periodic jobs), configured via the scheduled trigger flow documented under this section.
+- **Web trigger events** — **Inbound HTTP** to a Forge-generated URL invokes your app—useful for third-party systems calling into Forge without going through an Atlassian UI.
+
+**Related topics in the same navigation area:**
+
+- **App events (Preview)** — Your app can **publish** custom backend events; other installed apps may **subscribe**. This is separate from product-generated triggers: it uses the **`event`** module and different semantics (cross-app, publisher/subscriber). Treat as preview until the docs say otherwise.
+- **Retry and reliability** — For Atlassian app event triggers, the platform supports **retries** (app- vs platform-level behavior). Implementation details use packages such as **`@forge/events`** (see the Atlassian app events and trigger docs for `InvocationError`, limits, and retry options).
+
+When advising readers: pick the **right source** (product event vs schedule vs HTTP vs app-published event), confirm the event is **listed and supported** on the relevant reference page, declare the correct **`trigger` or `event` module** in the manifest, and match **scopes and impersonation** (`asApp` vs `asUser`) to how they must access data in the handler.
+
+### Events overview
+
+- [Events overview](https://developer.atlassian.com/platform/forge/events-reference/index.md)
+
+### Atlassian app events
+
+- [Atlassian app events](https://developer.atlassian.com/platform/forge/events-reference/product_events.md)
+- [Bitbucket events](https://developer.atlassian.com/platform/forge/events-reference/bitbucket.md)
+- [Compass events](https://developer.atlassian.com/platform/forge/events-reference/compass.md)
+- [Confluence events](https://developer.atlassian.com/platform/forge/events-reference/confluence.md)
+- [Jira events](https://developer.atlassian.com/platform/forge/events-reference/jira.md)
+- [Jira Software events](https://developer.atlassian.com/platform/forge/events-reference/jira-software.md)
+- [Expressions playground](https://developer.atlassian.com/platform/forge/events-reference/expressions-playground.md)
+
+### App events (Preview)
+
+- [App events (Preview)](https://developer.atlassian.com/platform/forge/events-reference/app-events.md)
+
+### Life cycle events
+
+- [Life cycle events](https://developer.atlassian.com/platform/forge/events-reference/life-cycle.md)
+
+### Data security policy events
+
+- [Data security policy events](https://developer.atlassian.com/platform/forge/events-reference/data-security-policy-events.md)
+
+### Scheduled trigger events
+
+- [Scheduled trigger events](https://developer.atlassian.com/platform/forge/events-reference/scheduled-trigger.md)
+
+### Web trigger events
+
+- [Web trigger events](https://developer.atlassian.com/platform/forge/events-reference/web-trigger.md)
+
+## Function reference
+
+This section documents **Forge functions**—server-side JavaScript that runs in Forge’s managed runtime. The hub page is the [Function reference](https://developer.atlassian.com/platform/forge/function-reference/index/). Functions are declared in the app manifest, wired to modules or triggers, and implement app logic, integrations, and background work without you hosting your own servers.
+
+Forge runs your function code in a constrained environment (scopes, quotas, and runtime APIs apply). Use the pages under this navigation area for handlers, context, invocation limits, and product-specific behavior.
+
+**Invocation types (overview):**
+
+- **Resolver** — Backend functions invoked **from the UI** (UI Kit or Custom UI) to fetch data, perform actions, or bridge the frontend to privileged operations. Resolvers are typically defined with `@forge/resolver` and connected to a UI module via manifest configuration.
+- **Web trigger** — An **HTTP endpoint** exposed by your app that invokes a function when called with the correct URL and authentication. Used for inbound integrations, webhooks from external systems, or programmatic triggers from outside the Atlassian UI.
+- **Async events (product / lifecycle events)** — Functions run in response to **asynchronous events** from Atlassian products or the platform (for example, issue updated, page published, or other supported event types). These are usually configured with Forge **triggers** and event payloads documented per product.
+- **Scheduled triggers** — Functions run on a **schedule** (cron-like) defined in the manifest. Use for periodic jobs such as sync, cleanup, or reporting, subject to platform scheduling and limits.
+- **Realtime events** — Functions invoked in response to **realtime** / live update flows where the platform pushes activity to your app (preview or product-specific; check current docs for availability and payload shape). Treat as event-driven like async events, but oriented to low-latency or streaming-style scenarios where documented.
+
+When helping readers, map their use case to the right invocation type: UI-driven work often starts with **resolvers**; external HTTP callers with **web triggers**; reactions to product activity with **async events**; time-based work with **scheduled triggers**; and realtime flows only where the docs say they are supported.
+
+### Functions overview
+
+- [Functions overview](https://developer.atlassian.com/platform/forge/function-reference/index.md)
+
+### Arguments
+
+- [Arguments](https://developer.atlassian.com/platform/forge/function-reference/arguments.md)
+
+### Runtimes
+
+- [Runtimes](https://developer.atlassian.com/platform/forge/runtime-reference/index.md)
+- [Node.js](https://developer.atlassian.com/platform/forge/function-reference/nodejs-runtime.md)
+- [Legacy runtime (deprecated)](https://developer.atlassian.com/platform/forge/runtime-reference/legacy-runtime-reference.md)
+
+### Forge resolver
+
+- [Forge resolver](https://developer.atlassian.com/platform/forge/runtime-reference/forge-resolver.md)
+
+### Scheduled triggers
+
+- [Scheduled triggers](https://developer.atlassian.com/platform/forge/function-reference/scheduled-trigger.md)
+
+### Web triggers
+
+- [Web triggers](https://developer.atlassian.com/platform/forge/runtime-reference/web-trigger.md)
+- [Function reference](https://developer.atlassian.com/platform/forge/runtime-reference/web-trigger.md)
+- [API reference](https://developer.atlassian.com/platform/forge/runtime-reference/web-trigger-api.md)
+
+### Async events
+
+- [Async events](https://developer.atlassian.com/platform/forge/runtime-reference/async-events-api.md)
+- [Basic usage](https://developer.atlassian.com/platform/forge/runtime-reference/async-events-api.md)
+- [Error handling](https://developer.atlassian.com/platform/forge/runtime-reference/async-events-api-error-handling.md)
+- [Upgrade to @forge/events major version 2](https://developer.atlassian.com/platform/forge/runtime-reference/async-events-api-version-2-upgrade.md)
+
+### Realtime events (Preview)
+
+- [Realtime events (Preview)](https://developer.atlassian.com/platform/forge/runtime-reference/realtime-events-api.md)
+
+### Dynamic Modules (EAP)
+
+- [Dynamic Modules (EAP)](https://developer.atlassian.com/platform/forge/apis-reference/dynamic-modules.md)
+- [API reference](https://developer.atlassian.com/platform/forge/apis-reference/dynamic-modules-api.md)
+
+### Atlassian app REST APIs
+
+- [Atlassian app REST APIs](https://developer.atlassian.com/platform/forge/apis-reference/product-rest-api-reference.md)
+- [Bitbucket API requests](https://developer.atlassian.com/platform/forge/apis-reference/fetch-api-product.requestbitbucket.md)
+- [Confluence API requests](https://developer.atlassian.com/platform/forge/apis-reference/fetch-api-product.requestconfluence.md)
+- [Jira API requests](https://developer.atlassian.com/platform/forge/apis-reference/fetch-api-product.requestjira.md)
+- [GraphQL API requests](https://developer.atlassian.com/platform/forge/apis-reference/fetch-api-product.requestgraph.md)
+
+### Fetch APIs
+
+- [Fetch APIs](https://developer.atlassian.com/platform/forge/runtime-reference/fetch-api.md)
+- [Basic fetch client](https://developer.atlassian.com/platform/forge/runtime-reference/fetch-api.basic.md)
+- [External authentication](https://developer.atlassian.com/platform/forge/runtime-reference/external-fetch-api.md)
+
+### Invoke Remote API
+
+- [Invoke Remote API](https://developer.atlassian.com/platform/forge/runtime-reference/invoke-remote-api.md)
+
+### App context API
+
+- [App context API](https://developer.atlassian.com/platform/forge/runtime-reference/app-context-api.md)
+
+### Privacy API
+
+- [Privacy API](https://developer.atlassian.com/platform/forge/runtime-reference/privacy-api.md)
+
+### Authorize API
+
+- [Authorize API](https://developer.atlassian.com/platform/forge/runtime-reference/authorize-api.md)
+
+### i18n API
+
+- [i18n API](https://developer.atlassian.com/platform/forge/runtime-reference/i18n.md)
+
+### LLMs API
+
+- [LLMs API](https://developer.atlassian.com/platform/forge/runtime-reference/forge-llms-api.md)
+
+## Storage reference
+
+This section describes **Forge hosted storage**—durable, platform-managed persistence scoped per app installation (quotas and limits apply). The overview page is [Storage](https://developer.atlassian.com/platform/forge/runtime-reference/storage-api/). Use the pages linked from there and from this navigation area for APIs, migrations, and product-specific limits.
+
+Forge offers **four** hosted storage capabilities. They differ mainly by **data model**, **query shape**, and **typical payload size**—not by “which is newest.” For **Key-value store** and **Custom Entity Store**, new apps should use the **`@forge/kvs`** package; the legacy `storage` module on `@forge/api` is still supported but does not receive new features—see migration docs when advising upgrades.
+
+**How they differ:**
+
+- **Key-value store** — Stores **key–value pairs**. Best when you need simple persistence: flags, small JSON blobs, configuration, or lookups by key without relational structure. This is the lightest model when a single key maps to a value and you do not need entity schemas or rich querying across records.
+
+- **Custom Entity Store** — Stores **typed records** defined by **custom entities** (your app’s schema) and supports **querying** over that data (including more complex query patterns documented separately). Use this when you have many similar objects, need filters or structured access patterns, or outgrow ad hoc keys. Query APIs can be **eventually consistent**; check the current docs for semantics and limits.
+
+- **Forge SQL** — Provisions a **dedicated SQL database per customer installation**. Use this when the data is **relational**: joins, transactions, and interrelated tables are first-class. Prefer this over forcing relational models into key-value or entity abstractions.
+
+- **Object Store (EAP)** — For **large objects** (e.g. substantial binary or media-like payloads) that do not fit the key-value or entity value models comfortably. Treat availability and limits as **Early Access Program** until the docs say otherwise.
+
+When recommending an option: start from the **shape of the data** (key/value vs entity + query vs relational vs large blobs), then confirm **scopes, quotas, and EAP status** in the official pages below this index.
+
+### Storage overview
+
+- [Storage overview](https://developer.atlassian.com/platform/forge/runtime-reference/storage-api.md)
+
+### Key-Value Store
+
+- [Key-Value Store](https://developer.atlassian.com/platform/forge/runtime-reference/storage-api-basic.md)
+- [Storing data](https://developer.atlassian.com/platform/forge/runtime-reference/storage-api-basic-api.md)
+- [Querying data](https://developer.atlassian.com/platform/forge/runtime-reference/storage-api-query.md)
+- [Encrypting stored data](https://developer.atlassian.com/platform/forge/runtime-reference/storage-api-secret.md)
+- [Running batch operations](https://developer.atlassian.com/platform/forge/storage-reference/batchops.md)
+- [Running transactions](https://developer.atlassian.com/platform/forge/storage-reference/transactions.md)
+- [Error handling](https://developer.atlassian.com/platform/forge/storage-reference/handling-errors-kvs.md)
+
+### Custom Entity Store
+
+- [Custom Entity Store](https://developer.atlassian.com/platform/forge/storage-reference/storage-api-custom-entities.md)
+- [Defining entities](https://developer.atlassian.com/platform/forge/runtime-reference/custom-entities.md)
+- [Storing entities](https://developer.atlassian.com/platform/forge/runtime-reference/storage-api-custom-entities.md)
+- [Querying data](https://developer.atlassian.com/platform/forge/runtime-reference/storage-api-query-complex.md)
+- [Querying data (legacy)](https://developer.atlassian.com/platform/forge/runtime-reference/storage-api-query-complex-legacy.md)
+- [Running batch operations](https://developer.atlassian.com/platform/forge/storage-reference/batchops-entities.md)
+- [Running transactions](https://developer.atlassian.com/platform/forge/storage-reference/transactions-entities.md)
+- [Error handling](https://developer.atlassian.com/platform/forge/storage-reference/handling-errors-customentities.md)
+
+### SQL
+
+- [SQL](https://developer.atlassian.com/platform/forge/storage-reference/sql.md)
+- [Tutorial](https://developer.atlassian.com/platform/forge/storage-reference/sql-tutorial.md)
+- [Manage schemas](https://developer.atlassian.com/platform/forge/storage-reference/sql-api-schema.md)
+- [Execute SQL operations](https://developer.atlassian.com/platform/forge/storage-reference/sql-api.md)
+- [Error handling](https://developer.atlassian.com/platform/forge/storage-reference/sql-handling-errors.md)
+
+### Object Store (EAP)
+
+- [Object Store (EAP)](https://developer.atlassian.com/platform/forge/storage-reference/object-store.md)
+- [Managing objects](https://developer.atlassian.com/platform/forge/storage-reference/object-store-api.md)
+
+## REST API references
+
+Forge publishes **two different REST documentation trees** under `/platform/forge/rest/`. They are **not** interchangeable “v1 vs v2” of the same API—**scope, caller, and hosting model differ.** Point readers to the correct tree or they will use the wrong integration pattern.
+
+### [KVS / Custom Entity Store API (`/rest/v1/`)](https://developer.atlassian.com/platform/forge/rest/v1/)
+
+This reference is centered on the **hosted storage REST API** for the **Key-Value Store** and **Custom Entity Store**: overview, quotas and limits, KVS operations, entity operations, transactions, and batching. Use it when the question is specifically **HTTP access to Forge KVS/CES** (payloads, endpoints, and limits for that surface).
+
+### [Forge Containers REST API — intro (`/rest/v2/intro/`)](https://developer.atlassian.com/platform/forge/rest/v2/intro/#about)
+
+This reference describes the broader **REST APIs that Forge Containers** can call **outbound** from a **containerised** service: Atlassian product APIs, Forge platform APIs, and other documented resources. Calls go through the **egress sidecar** (for example using `FORGE_EGRESS_PROXY_URL` as documented there). This area is tied to **Forge Containers** and, as documented on that page, is **EAP**—not for production unless and until the docs say otherwise.
+
+**How to choose:** If the user is building **normal Forge functions** with `@forge/kvs` or runtime storage APIs, they usually follow the **Storage** / **runtime** docs—not necessarily these REST pages. If they are integrating **hosted storage via REST**, start with **`/rest/v1/`**. If they are in **Forge Containers** and need **outbound REST** to Forge or Atlassian services, start with **`/rest/v2/intro/`** and follow the egress and EAP guidance there.
+
+- [APIs for Forge Containers](https://developer.atlassian.com/platform/forge/rest/v2/index.md)
+- [KVS/Custom Entity Store API](https://developer.atlassian.com/platform/forge/rest/v1/index.md)
+
+## Platform limits and usage
+
+This area documents **Forge platform limits, usage, and (historically) quotas**. The canonical overview is [Platform quotas and limits](https://developer.atlassian.com/platform/forge/platform-quotas-and-limits/).
+
+**Pricing and fairness:** Forge uses a **consumption-based** model with a **free usage allowance**; platform **limits** still apply so the platform stays reliable and fair. If an app **consistently exceeds** limits, Atlassian may contact you—you can also reach out if you need higher limits. Abusive or unstable usage may be **throttled or suspended** even when billing could apply.
+
+**Quotas vs limits:** **Quotas** (hard caps introduced mainly for abuse prevention) have largely been **retired** in favor of consumption pricing; **platform limits** are the non‑negotiable constraints that **do not scale** with spend (invocation duration, payload sizes, counts of certain resources, and so on). Always read the **specific limit page** for the feature in question—do not assume a paid tier removes a documented platform cap.
+
+**Beyond Forge docs:** Apps can still hit **Atlassian product rate limits** (for example Jira or Confluence REST)—those are **separate** from Forge platform limits.
+
+**Operations:** Teams monitor and forecast usage via the **Developer Console** (usage and costs) and the **cost estimator** linked from the platform pricing docs.
+
+When answering questions, **cite the relevant subsection** above instead of inventing numbers; limits change over time.
+
+- [Overview](https://developer.atlassian.com/platform/forge/platform-quotas-and-limits.md)
+- [Exceeding limits and suspended apps](https://developer.atlassian.com/platform/forge/exceeding-limits-and-suspended-apps.md)
+- [Invocation limits](https://developer.atlassian.com/platform/forge/limits-invocation.md)
+- [Resource limits](https://developer.atlassian.com/platform/forge/limits-resource.md)
+- [KVS and Custom Entity Store limits](https://developer.atlassian.com/platform/forge/limits-kvs-ce.md)
+- [Forge SQL limits](https://developer.atlassian.com/platform/forge/limits-sql.md)
+- [Forge Object Store](https://developer.atlassian.com/platform/forge/limits-object-store.md)
+- [Forge LLM limits](https://developer.atlassian.com/platform/forge/limits-llm.md)
+- [Web trigger limits](https://developer.atlassian.com/platform/forge/limits-web-trigger.md)
+- [Async events limits](https://developer.atlassian.com/platform/forge/limits-async-events.md)
+- [App and developer limits](https://developer.atlassian.com/platform/forge/limits-app-developer.md)
+- [Scheduled trigger limits](https://developer.atlassian.com/platform/forge/limits-scheduled-trigger.md)
+
+## CLI reference
+
+This section documents the **Forge CLI**—the command-line tool used to **create, run, deploy, and operate** Forge apps from a developer machine or automation. The index is [Forge CLI](https://developer.atlassian.com/platform/forge/cli-reference/).
+
+**Basics (from the overview):**
+
+- **Install** globally with npm: `npm i -g @forge/cli@latest`
+- **Authenticate**: `forge login`
+- **Environment setup** for day-to-day development is covered in the [getting started](https://developer.atlassian.com/platform/forge/getting-started/#before-you-begin) flow—point readers there before deep CLI flags.
+
+**Upgrades:** To move to a new CLI version, **fully remove** the global package and **reinstall** (for example `npm uninstall -g @forge/cli` then `npm i -g @forge/cli@latest`), as described on the CLI overview page.
+
+**Version support:** Each CLI release is only supported for a **limited window** (see the Forge **deprecation policy** for CLI version support). Prefer advising **current `@forge/cli@latest`** so users get fixes, compatible APIs, and supported behavior.
+
+**How to use this reference:** Pages under this navigation item document **individual commands** (arguments, options, and typical workflows such as deploy, tunnel, logs, variables, licensing, and containers-related commands where applicable). When helping someone, name the **exact `forge` subcommand** they need and send them to the matching reference page rather than guessing flags—behavior and defaults change between versions.
+
+### CLI
+
+- [CLI](https://developer.atlassian.com/platform/forge/cli-reference/index.md)
+
+### assistant
+
+- [assistant](https://developer.atlassian.com/platform/forge/cli-reference/assistant.md)
+- [off](https://developer.atlassian.com/platform/forge/cli-reference/assistant-off.md)
+- [on](https://developer.atlassian.com/platform/forge/cli-reference/assistant-on.md)
+
+### autocomplete
+
+- [autocomplete](https://developer.atlassian.com/platform/forge/cli-reference/autocomplete.md)
+
+### build
+
+- [build](https://developer.atlassian.com/platform/forge/cli-reference/build.md)
+- [list](https://developer.atlassian.com/platform/forge/cli-reference/build-list.md)
+
+### containers
+
+- [containers](https://developer.atlassian.com/platform/forge/cli-reference/containers.md)
+- [create](https://developer.atlassian.com/platform/forge/cli-reference/containers-create.md)
+- [delete](https://developer.atlassian.com/platform/forge/cli-reference/containers-delete.md)
+- [docker-login](https://developer.atlassian.com/platform/forge/cli-reference/containers-docker-login.md)
+- [get-login](https://developer.atlassian.com/platform/forge/cli-reference/containers-get-login.md)
+
+### create
+
+- [create](https://developer.atlassian.com/platform/forge/cli-reference/create.md)
+
+### deploy
+
+- [deploy](https://developer.atlassian.com/platform/forge/cli-reference/deploy.md)
+- [list](https://developer.atlassian.com/platform/forge/cli-reference/deploy-list.md)
+
+### eligibility
+
+- [eligibility](https://developer.atlassian.com/platform/forge/cli-reference/eligibility.md)
+
+### environments
+
+- [environments](https://developer.atlassian.com/platform/forge/cli-reference/environments.md)
+- [create](https://developer.atlassian.com/platform/forge/cli-reference/environments-create.md)
+- [delete](https://developer.atlassian.com/platform/forge/cli-reference/environments-delete.md)
+- [list](https://developer.atlassian.com/platform/forge/cli-reference/environments-list.md)
+
+### feedback
+
+- [feedback](https://developer.atlassian.com/platform/forge/cli-reference/feedback.md)
+
+### install
+
+- [install](https://developer.atlassian.com/platform/forge/cli-reference/install.md)
+- [list](https://developer.atlassian.com/platform/forge/cli-reference/install-list.md)
+
+### lint
+
+- [lint](https://developer.atlassian.com/platform/forge/cli-reference/lint.md)
+
+### login
+
+- [login](https://developer.atlassian.com/platform/forge/cli-reference/login.md)
+
+### logout
+
+- [logout](https://developer.atlassian.com/platform/forge/cli-reference/logout.md)
+
+### logs
+
+- [logs](https://developer.atlassian.com/platform/forge/cli-reference/logs.md)
+
+### providers
+
+- [providers](https://developer.atlassian.com/platform/forge/cli-reference/providers.md)
+- [configure](https://developer.atlassian.com/platform/forge/cli-reference/providers-configure.md)
+
+### register
+
+- [register](https://developer.atlassian.com/platform/forge/cli-reference/register.md)
+
+### repositories
+
+- [repositories](https://developer.atlassian.com/platform/forge/cli-reference/repositories.md)
+- [images](https://developer.atlassian.com/platform/forge/cli-reference/repositories-images.md)
+- [list](https://developer.atlassian.com/platform/forge/cli-reference/repositories-list.md)
+
+### settings
+
+- [settings](https://developer.atlassian.com/platform/forge/cli-reference/settings.md)
+- [list](https://developer.atlassian.com/platform/forge/cli-reference/settings-list.md)
+- [set](https://developer.atlassian.com/platform/forge/cli-reference/settings-set.md)
+
+### show
+
+- [show](https://developer.atlassian.com/platform/forge/cli-reference/show.md)
+- [containers](https://developer.atlassian.com/platform/forge/cli-reference/show-containers.md)
+- [services](https://developer.atlassian.com/platform/forge/cli-reference/show-services.md)
+
+### storage
+
+- [storage](https://developer.atlassian.com/platform/forge/cli-reference/storage.md)
+- [entities](https://developer.atlassian.com/platform/forge/cli-reference/storage-entities.md)
+
+### tunnel
+
+- [tunnel](https://developer.atlassian.com/platform/forge/cli-reference/tunnel.md)
+
+### uninstall
+
+- [uninstall](https://developer.atlassian.com/platform/forge/cli-reference/uninstall.md)
+
+### variables
+
+- [variables](https://developer.atlassian.com/platform/forge/cli-reference/variables.md)
+- [list](https://developer.atlassian.com/platform/forge/cli-reference/variables-list.md)
+- [set](https://developer.atlassian.com/platform/forge/cli-reference/variables-set.md)
+- [unset](https://developer.atlassian.com/platform/forge/cli-reference/variables-unset.md)
+
+### version
+
+- [version](https://developer.atlassian.com/platform/forge/cli-reference/version.md)
+- [bulk-upgrade](https://developer.atlassian.com/platform/forge/cli-reference/version-bulk-upgrade.md)
+- [compare](https://developer.atlassian.com/platform/forge/cli-reference/version-compare.md)
+- [details](https://developer.atlassian.com/platform/forge/cli-reference/version-details.md)
+- [list](https://developer.atlassian.com/platform/forge/cli-reference/version-list.md)
+
+### webtrigger
+
+- [webtrigger](https://developer.atlassian.com/platform/forge/cli-reference/webtrigger.md)
+- [create](https://developer.atlassian.com/platform/forge/cli-reference/webtrigger-create.md)
+- [delete](https://developer.atlassian.com/platform/forge/cli-reference/webtrigger-delete.md)
+- [list](https://developer.atlassian.com/platform/forge/cli-reference/webtrigger-list.md)
+
+### whoami
+
+- [whoami](https://developer.atlassian.com/platform/forge/cli-reference/whoami.md)
+
+## Example apps
+
+This section contains curated references that show how real Forge apps are structured and how they use Atlassian product APIs, UI patterns, and platform features. Use them when someone wants **working patterns** or **comparison to Atlassian’s own app code**, not only prose documentation.
+
+- [Bitbucket](https://developer.atlassian.com/platform/forge/example-apps-bitbucket.md)
+- [Compass](https://developer.atlassian.com/platform/forge/example-apps-compass.md)
+- [Confluence](https://developer.atlassian.com/platform/forge/example-apps-confluence.md)
+- [Jira](https://developer.atlassian.com/platform/forge/example-apps-jira.md)
+- [Jira Service Management](https://developer.atlassian.com/platform/forge/example-apps-jsm.md)
+- [Rovo](https://developer.atlassian.com/platform/forge/example-apps-rovo.md)
 
 ## Guides
 
@@ -14,6 +881,7 @@
 #### Introduction to Forge
 
 - [The Forge platform](https://developer.atlassian.com/platform/forge/introduction/the-forge-platform.md)
+- [Forge MCP Server](https://developer.atlassian.com/platform/forge/forge-mcp.md)
 - [Why build with Forge](https://developer.atlassian.com/platform/forge/introduction/why-build-with-forge.md)
 - [Forge platform pricing](https://developer.atlassian.com/platform/forge/forge-platform-pricing.md)
 
@@ -40,15 +908,6 @@
 ##### Building integrations
 
 - [Building integrations](https://developer.atlassian.com/platform/forge/building-integrations.md)
-
-##### Example apps
-
-- [Bitbucket](https://developer.atlassian.com/platform/forge/example-apps-bitbucket.md)
-- [Compass](https://developer.atlassian.com/platform/forge/example-apps-compass.md)
-- [Confluence](https://developer.atlassian.com/platform/forge/example-apps-confluence.md)
-- [Jira](https://developer.atlassian.com/platform/forge/example-apps-jira.md)
-- [Jira Service Management](https://developer.atlassian.com/platform/forge/example-apps-jsm.md)
-- [Rovo](https://developer.atlassian.com/platform/forge/example-apps-rovo.md)
 
 ##### Tutorials
 
@@ -209,21 +1068,6 @@
 - [Modules](https://developer.atlassian.com/platform/forge/modules.md)
 - [App security](https://developer.atlassian.com/platform/forge/security.md)
 
-#### Platform limits and usage
-
-- [Overview](https://developer.atlassian.com/platform/forge/platform-quotas-and-limits.md)
-- [Exceeding limits and suspended apps](https://developer.atlassian.com/platform/forge/exceeding-limits-and-suspended-apps.md)
-- [Invocation limits](https://developer.atlassian.com/platform/forge/limits-invocation.md)
-- [Resource limits](https://developer.atlassian.com/platform/forge/limits-resource.md)
-- [KVS and Custom Entity Store limits](https://developer.atlassian.com/platform/forge/limits-kvs-ce.md)
-- [Forge SQL limits](https://developer.atlassian.com/platform/forge/limits-sql.md)
-- [Forge Object Store](https://developer.atlassian.com/platform/forge/limits-object-store.md)
-- [Forge LLM limits](https://developer.atlassian.com/platform/forge/limits-llm.md)
-- [Web trigger limits](https://developer.atlassian.com/platform/forge/limits-web-trigger.md)
-- [Async events limits](https://developer.atlassian.com/platform/forge/limits-async-events.md)
-- [App and developer limits](https://developer.atlassian.com/platform/forge/limits-app-developer.md)
-- [Scheduled trigger limits](https://developer.atlassian.com/platform/forge/limits-scheduled-trigger.md)
-
 #### User interface
 
 - [Overview](https://developer.atlassian.com/platform/forge/user-interface.md)
@@ -286,7 +1130,7 @@
 
 ##### Forge MCP Server
 
-- [Forge MCP Server](https://developer.atlassian.com/platform/forge/forge-mcp.md)
+- [Forge MCP Server](https://developer.atlassian.com/platform/forge/forge-mcp-model-context-protocol.md)
 
 ##### Contributors
 
@@ -582,446 +1426,6 @@
 
 - [Reference](https://developer.atlassian.com/platform/forge/manifest-reference/index.md)
 
-### CLI
-
-#### CLI
-
-- [CLI](https://developer.atlassian.com/platform/forge/cli-reference/index.md)
-
-#### assistant
-
-- [assistant](https://developer.atlassian.com/platform/forge/cli-reference/assistant.md)
-- [off](https://developer.atlassian.com/platform/forge/cli-reference/assistant-off.md)
-- [on](https://developer.atlassian.com/platform/forge/cli-reference/assistant-on.md)
-
-#### autocomplete
-
-- [autocomplete](https://developer.atlassian.com/platform/forge/cli-reference/autocomplete.md)
-
-#### build
-
-- [build](https://developer.atlassian.com/platform/forge/cli-reference/build.md)
-- [list](https://developer.atlassian.com/platform/forge/cli-reference/build-list.md)
-
-#### containers
-
-- [containers](https://developer.atlassian.com/platform/forge/cli-reference/containers.md)
-- [create](https://developer.atlassian.com/platform/forge/cli-reference/containers-create.md)
-- [delete](https://developer.atlassian.com/platform/forge/cli-reference/containers-delete.md)
-- [docker-login](https://developer.atlassian.com/platform/forge/cli-reference/containers-docker-login.md)
-- [get-login](https://developer.atlassian.com/platform/forge/cli-reference/containers-get-login.md)
-
-#### create
-
-- [create](https://developer.atlassian.com/platform/forge/cli-reference/create.md)
-
-#### deploy
-
-- [deploy](https://developer.atlassian.com/platform/forge/cli-reference/deploy.md)
-- [list](https://developer.atlassian.com/platform/forge/cli-reference/deploy-list.md)
-
-#### eligibility
-
-- [eligibility](https://developer.atlassian.com/platform/forge/cli-reference/eligibility.md)
-
-#### environments
-
-- [environments](https://developer.atlassian.com/platform/forge/cli-reference/environments.md)
-- [create](https://developer.atlassian.com/platform/forge/cli-reference/environments-create.md)
-- [delete](https://developer.atlassian.com/platform/forge/cli-reference/environments-delete.md)
-- [list](https://developer.atlassian.com/platform/forge/cli-reference/environments-list.md)
-
-#### feedback
-
-- [feedback](https://developer.atlassian.com/platform/forge/cli-reference/feedback.md)
-
-#### install
-
-- [install](https://developer.atlassian.com/platform/forge/cli-reference/install.md)
-- [list](https://developer.atlassian.com/platform/forge/cli-reference/install-list.md)
-
-#### lint
-
-- [lint](https://developer.atlassian.com/platform/forge/cli-reference/lint.md)
-
-#### login
-
-- [login](https://developer.atlassian.com/platform/forge/cli-reference/login.md)
-
-#### logout
-
-- [logout](https://developer.atlassian.com/platform/forge/cli-reference/logout.md)
-
-#### logs
-
-- [logs](https://developer.atlassian.com/platform/forge/cli-reference/logs.md)
-
-#### providers
-
-- [providers](https://developer.atlassian.com/platform/forge/cli-reference/providers.md)
-- [configure](https://developer.atlassian.com/platform/forge/cli-reference/providers-configure.md)
-
-#### register
-
-- [register](https://developer.atlassian.com/platform/forge/cli-reference/register.md)
-
-#### repositories
-
-- [repositories](https://developer.atlassian.com/platform/forge/cli-reference/repositories.md)
-- [images](https://developer.atlassian.com/platform/forge/cli-reference/repositories-images.md)
-- [list](https://developer.atlassian.com/platform/forge/cli-reference/repositories-list.md)
-
-#### settings
-
-- [settings](https://developer.atlassian.com/platform/forge/cli-reference/settings.md)
-- [list](https://developer.atlassian.com/platform/forge/cli-reference/settings-list.md)
-- [set](https://developer.atlassian.com/platform/forge/cli-reference/settings-set.md)
-
-#### show
-
-- [show](https://developer.atlassian.com/platform/forge/cli-reference/show.md)
-- [containers](https://developer.atlassian.com/platform/forge/cli-reference/show-containers.md)
-- [services](https://developer.atlassian.com/platform/forge/cli-reference/show-services.md)
-
-#### storage
-
-- [storage](https://developer.atlassian.com/platform/forge/cli-reference/storage.md)
-- [entities](https://developer.atlassian.com/platform/forge/cli-reference/storage-entities.md)
-
-#### tunnel
-
-- [tunnel](https://developer.atlassian.com/platform/forge/cli-reference/tunnel.md)
-
-#### uninstall
-
-- [uninstall](https://developer.atlassian.com/platform/forge/cli-reference/uninstall.md)
-
-#### variables
-
-- [variables](https://developer.atlassian.com/platform/forge/cli-reference/variables.md)
-- [list](https://developer.atlassian.com/platform/forge/cli-reference/variables-list.md)
-- [set](https://developer.atlassian.com/platform/forge/cli-reference/variables-set.md)
-- [unset](https://developer.atlassian.com/platform/forge/cli-reference/variables-unset.md)
-
-#### version
-
-- [version](https://developer.atlassian.com/platform/forge/cli-reference/version.md)
-- [bulk-upgrade](https://developer.atlassian.com/platform/forge/cli-reference/version-bulk-upgrade.md)
-- [compare](https://developer.atlassian.com/platform/forge/cli-reference/version-compare.md)
-- [details](https://developer.atlassian.com/platform/forge/cli-reference/version-details.md)
-- [list](https://developer.atlassian.com/platform/forge/cli-reference/version-list.md)
-
-#### webtrigger
-
-- [webtrigger](https://developer.atlassian.com/platform/forge/cli-reference/webtrigger.md)
-- [create](https://developer.atlassian.com/platform/forge/cli-reference/webtrigger-create.md)
-- [delete](https://developer.atlassian.com/platform/forge/cli-reference/webtrigger-delete.md)
-- [list](https://developer.atlassian.com/platform/forge/cli-reference/webtrigger-list.md)
-
-#### whoami
-
-- [whoami](https://developer.atlassian.com/platform/forge/cli-reference/whoami.md)
-
-### Manifest
-
-#### Manifest overview
-
-- [Manifest overview](https://developer.atlassian.com/platform/forge/manifest-reference/index.md)
-
-#### Action type
-
-- [Action type](https://developer.atlassian.com/platform/forge/manifest-reference/action-type.md)
-
-#### Display conditions
-
-- [Display conditions](https://developer.atlassian.com/platform/forge/manifest-reference/display-conditions/index.md)
-- [Usage with Confluence modules](https://developer.atlassian.com/platform/forge/manifest-reference/display-conditions/confluence.md)
-- [Usage with Jira/JSM modules](https://developer.atlassian.com/platform/forge/manifest-reference/display-conditions/jira.md)
-- [Entity property conditions](https://developer.atlassian.com/platform/forge/manifest-reference/display-conditions/entity-property-conditions.md)
-- [Permissions](https://developer.atlassian.com/platform/forge/manifest-reference/display-conditions/permissions.md)
-
-#### Endpoint
-
-- [Endpoint](https://developer.atlassian.com/platform/forge/manifest-reference/endpoint.md)
-
-#### Keyboard shortcuts
-
-- [Keyboard shortcuts](https://developer.atlassian.com/platform/forge/manifest-reference/keyboard-shortcuts/index.md)
-
-#### Permissions
-
-- [Permissions](https://developer.atlassian.com/platform/forge/manifest-reference/permissions.md)
-- [Forge scopes](https://developer.atlassian.com/platform/forge/manifest-reference/scopes-forge.md)
-- [Bitbucket scopes](https://developer.atlassian.com/platform/forge/manifest-reference/scopes-product-bitbucket.md)
-- [Compass scopes](https://developer.atlassian.com/platform/forge/manifest-reference/scopes-product-compass.md)
-- [Confluence scopes](https://developer.atlassian.com/platform/forge/manifest-reference/scopes-product-confluence.md)
-- [Jira scopes](https://developer.atlassian.com/platform/forge/manifest-reference/scopes-product-jira.md)
-- [Jira Software scopes](https://developer.atlassian.com/platform/forge/manifest-reference/scopes-product-jsw.md)
-- [Jira Service Management scopes](https://developer.atlassian.com/platform/forge/manifest-reference/scopes-product-jsm.md)
-
-#### Providers
-
-- [Providers](https://developer.atlassian.com/platform/forge/manifest-reference/providers.md)
-
-#### Remotes
-
-- [Remotes](https://developer.atlassian.com/platform/forge/manifest-reference/remotes.md)
-
-#### Resources
-
-- [Resources](https://developer.atlassian.com/platform/forge/manifest-reference/resources.md)
-
-#### Services (EAP)
-
-- [Services (EAP)](https://developer.atlassian.com/platform/forge/manifest-reference/services.md)
-
-#### Translations
-
-- [Translations](https://developer.atlassian.com/platform/forge/manifest-reference/translations.md)
-- [Forge supported locale codes](https://developer.atlassian.com/platform/forge/manifest-reference/forge-supported-locale-codes.md)
-
-#### Variables
-
-- [Variables](https://developer.atlassian.com/platform/forge/manifest-reference/variables.md)
-
-### Modules
-
-#### Overview
-
-- [Overview](https://developer.atlassian.com/platform/forge/manifest-reference/modules/index.md)
-
-#### Forge modules
-
-- [Forge modules](https://developer.atlassian.com/platform/forge/manifest-reference/modules/index-common.md)
-- [Consumer](https://developer.atlassian.com/platform/forge/manifest-reference/modules/consumer.md)
-- [Event](https://developer.atlassian.com/platform/forge/manifest-reference/modules/event.md)
-- [Function](https://developer.atlassian.com/platform/forge/manifest-reference/modules/function.md)
-- [Scheduled trigger](https://developer.atlassian.com/platform/forge/manifest-reference/modules/scheduled-trigger.md)
-- [SQL](https://developer.atlassian.com/platform/forge/manifest-reference/modules/sql.md)
-- [Trigger](https://developer.atlassian.com/platform/forge/manifest-reference/modules/trigger.md)
-- [Web trigger](https://developer.atlassian.com/platform/forge/manifest-reference/modules/web-trigger.md)
-- [LLM](https://developer.atlassian.com/platform/forge/manifest-reference/modules/llm.md)
-- [API route](https://developer.atlassian.com/platform/forge/manifest-reference/modules/api-route.md)
-
-#### Automation modules
-
-- [Automation modules](https://developer.atlassian.com/platform/forge/manifest-reference/modules/index-automation.md)
-- [Action](https://developer.atlassian.com/platform/forge/manifest-reference/modules/automation-action.md)
-
-#### Bitbucket modules
-
-- [Bitbucket modules](https://developer.atlassian.com/platform/forge/manifest-reference/modules/index-bitbucket.md)
-- [Custom merge check](https://developer.atlassian.com/platform/forge/manifest-reference/modules/bitbucket-merge-check.md)
-- [Dynamic Pipelines provider](https://developer.atlassian.com/platform/forge/manifest-reference/modules/bitbucket-dynamic-pipelines-provider.md)
-- [Project settings menu page](https://developer.atlassian.com/platform/forge/manifest-reference/modules/bitbucket-project-settings-menu-page.md)
-- [Repository code file viewer](https://developer.atlassian.com/platform/forge/manifest-reference/modules/bitbucket-repository-code-file-viewer.md)
-- [Repository code overview card](https://developer.atlassian.com/platform/forge/manifest-reference/modules/bitbucket-repository-code-overview-card.md)
-- [Repository code overview action](https://developer.atlassian.com/platform/forge/manifest-reference/modules/bitbucket-repository-code-overview-action.md)
-- [Repository code overview panel](https://developer.atlassian.com/platform/forge/manifest-reference/modules/bitbucket-repository-code-overview-panel.md)
-- [Repository pull request card](https://developer.atlassian.com/platform/forge/manifest-reference/modules/bitbucket-repository-pull-request-card.md)
-- [Repository pull request action](https://developer.atlassian.com/platform/forge/manifest-reference/modules/bitbucket-repository-pull-request-action.md)
-- [Repository pull request overview panel](https://developer.atlassian.com/platform/forge/manifest-reference/modules/bitbucket-repository-pull-request-overview-panel.md)
-- [Repository main menu page](https://developer.atlassian.com/platform/forge/manifest-reference/modules/bitbucket-repository-main-menu-page.md)
-- [Repository settings menu page](https://developer.atlassian.com/platform/forge/manifest-reference/modules/bitbucket-repository-settings-menu-page.md)
-- [Workspace global page](https://developer.atlassian.com/platform/forge/manifest-reference/modules/bitbucket-workspace-global-page.md)
-- [Workspace personal settings page](https://developer.atlassian.com/platform/forge/manifest-reference/modules/bitbucket-workspace-personal-settings-page.md)
-- [Workspace settings menu page](https://developer.atlassian.com/platform/forge/manifest-reference/modules/bitbucket-workspace-settings-menu-page.md)
-
-#### Compass modules
-
-- [Compass modules](https://developer.atlassian.com/platform/forge/manifest-reference/modules/index-compass.md)
-- [Admin page](https://developer.atlassian.com/platform/forge/manifest-reference/modules/compass-admin-page.md)
-- [Component page](https://developer.atlassian.com/platform/forge/manifest-reference/modules/compass-component-page.md)
-- [Data provider](https://developer.atlassian.com/platform/forge/manifest-reference/modules/compass-data-provider.md)
-- [Global page](https://developer.atlassian.com/platform/forge/manifest-reference/modules/compass-global-page.md)
-- [Team page](https://developer.atlassian.com/platform/forge/manifest-reference/modules/compass-team-page.md)
-
-#### Confluence modules
-
-- [Confluence modules](https://developer.atlassian.com/platform/forge/manifest-reference/modules/index-confluence.md)
-- [Background script](https://developer.atlassian.com/platform/forge/manifest-reference/modules/confluence-background-script.md)
-- [Content action](https://developer.atlassian.com/platform/forge/manifest-reference/modules/confluence-content-action.md)
-- [Content byline item](https://developer.atlassian.com/platform/forge/manifest-reference/modules/confluence-content-byline-item.md)
-- [Content property](https://developer.atlassian.com/platform/forge/manifest-reference/modules/confluence-content-property.md)
-- [Context menu](https://developer.atlassian.com/platform/forge/manifest-reference/modules/confluence-context-menu.md)
-- [Custom content](https://developer.atlassian.com/platform/forge/manifest-reference/modules/confluence-custom-content.md)
-- [Full page (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/confluence-full-page.md)
-- [Global page](https://developer.atlassian.com/platform/forge/manifest-reference/modules/confluence-global-page.md)
-- [Global settings](https://developer.atlassian.com/platform/forge/manifest-reference/modules/confluence-global-settings.md)
-- [Homepage feed](https://developer.atlassian.com/platform/forge/manifest-reference/modules/confluence-homepage-feed.md)
-- [Macro](https://developer.atlassian.com/platform/forge/manifest-reference/modules/macro.md)
-- [Page banner](https://developer.atlassian.com/platform/forge/manifest-reference/modules/confluence-page-banner.md)
-- [Space page](https://developer.atlassian.com/platform/forge/manifest-reference/modules/confluence-space-page.md)
-- [Space settings](https://developer.atlassian.com/platform/forge/manifest-reference/modules/confluence-space-settings.md)
-
-#### Dashboard modules (EAP)
-
-- [Dashboard modules (EAP)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/index-dashboard.md)
-- [Widget (EAP)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/dashboard-widget.md)
-- [Background script (EAP)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/dashboard-background-script.md)
-
-#### Jira modules
-
-- [Jira modules](https://developer.atlassian.com/platform/forge/manifest-reference/modules/index-jira.md)
-- [Action validator (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-action-validator.md)
-- [Admin page](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-admin-page.md)
-- [Backlog action (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-backlog-action.md)
-- [Board action (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-board-action.md)
-- [Command palette (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-command-palette.md)
-- [Custom field](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-custom-field.md)
-- [Custom field type](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-custom-field-type.md)
-- [Dashboard background script](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-dashboard-background-script.md)
-- [Dashboard gadget](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-dashboard-gadget.md)
-- [Entity property](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-entity-property.md)
-- [Full page (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-full-page.md)
-- [Global background script (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-global-background-script.md)
-- [Global page](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-global-page.md)
-- [Global permission](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-global-permission.md)
-- [Issue action](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-issue-action.md)
-- [Issue activity](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-issue-activity.md)
-- [Issue context](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-issue-context.md)
-- [Issue glance](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-issue-glance.md)
-- [Issue navigator action (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-issue-navigator-action.md)
-- [Issue panel](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-issue-panel.md)
-- [Issue view background script](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-issue-view-background-script.md)
-- [JQL function](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jql-function.md)
-- [Personal settings page (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-personal-settings-page.md)
-- [Project page](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-project-page.md)
-- [Project permission](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-project-permission.md)
-- [Project settings page](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-project-settings-page.md)
-- [Sprint action (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-sprint-action.md)
-- [Time tracking provider (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-time-tracking-provider.md)
-- [UI modifications](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-ui-modifications.md)
-- [Workflow validator (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-workflow-validator.md)
-- [Workflow condition (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-workflow-condition.md)
-- [Workflow post function (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-workflow-post-function.md)
-
-#### Jira Service Management modules
-
-- [Jira Service Management modules](https://developer.atlassian.com/platform/forge/manifest-reference/modules/index-jsm.md)
-- [Assets import type](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-service-management-assets-import-type.md)
-- [Organization panel](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-service-management-organization-panel.md)
-- [Portal footer](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-service-management-portal-footer.md)
-- [Portal header](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-service-management-portal-header.md)
-- [Portal profile panel](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-service-management-portal-profile-panel.md)
-- [Portal request create property panel](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-service-management-portal-request-create-property-panel.md)
-- [Portal request detail](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-service-management-portal-request-detail.md)
-- [Portal request detail panel](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-service-management-portal-request-detail-panel.md)
-- [Portal request view action](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-service-management-portal-request-view-action.md)
-- [Portal subheader](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-service-management-portal-subheader.md)
-- [Portal user menu action](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-service-management-portal-user-menu-action.md)
-- [Queue page](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-service-management-queue-page.md)
-- [UI modifications](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-service-management-ui-modifications.md)
-
-#### Jira Software modules
-
-- [Jira Software modules](https://developer.atlassian.com/platform/forge/manifest-reference/modules/index-jsw.md)
-- [Development Information Provider](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-software-development-info.md)
-- [Feature Flag Information Provider](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-software-feature-flag-info.md)
-- [Deployment Information Provider](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-software-deployment-info.md)
-- [Build Information Provider](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-software-build-info.md)
-- [Remote Link Information Provider](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-software-remote-link-info.md)
-
-#### Rovo modules
-
-- [Rovo modules](https://developer.atlassian.com/platform/forge/manifest-reference/modules/rovo-index.md)
-- [Rovo Agent](https://developer.atlassian.com/platform/forge/manifest-reference/modules/rovo-agent.md)
-- [Action](https://developer.atlassian.com/platform/forge/manifest-reference/modules/rovo-action.md)
-
-#### Teamwork Graph modules
-
-- [Teamwork Graph modules](https://developer.atlassian.com/platform/forge/manifest-reference/modules/index-teamwork-graph.md)
-- [Connector (EAP)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/teamwork-graph-connector.md)
-- [Smart Link](https://developer.atlassian.com/platform/forge/manifest-reference/modules/teamwork-graph-smart-link.md)
-
-#### Connect module equivalents
-
-- [Connect module equivalents](https://developer.atlassian.com/platform/forge/manifest-reference/modules/connect-module-equivalents.md)
-
-### Functions
-
-#### Functions overview
-
-- [Functions overview](https://developer.atlassian.com/platform/forge/function-reference/index.md)
-
-#### Arguments
-
-- [Arguments](https://developer.atlassian.com/platform/forge/function-reference/arguments.md)
-
-#### Runtimes
-
-- [Runtimes](https://developer.atlassian.com/platform/forge/runtime-reference/index.md)
-- [Node.js](https://developer.atlassian.com/platform/forge/function-reference/nodejs-runtime.md)
-- [Legacy runtime (deprecated)](https://developer.atlassian.com/platform/forge/runtime-reference/legacy-runtime-reference.md)
-
-#### Forge resolver
-
-- [Forge resolver](https://developer.atlassian.com/platform/forge/runtime-reference/forge-resolver.md)
-
-#### Scheduled triggers
-
-- [Scheduled triggers](https://developer.atlassian.com/platform/forge/function-reference/scheduled-trigger.md)
-
-#### Web triggers
-
-- [Web triggers](https://developer.atlassian.com/platform/forge/runtime-reference/web-trigger.md)
-- [Function reference](https://developer.atlassian.com/platform/forge/runtime-reference/web-trigger.md)
-- [API reference](https://developer.atlassian.com/platform/forge/runtime-reference/web-trigger-api.md)
-
-#### Async events
-
-- [Async events](https://developer.atlassian.com/platform/forge/runtime-reference/async-events-api.md)
-- [Basic usage](https://developer.atlassian.com/platform/forge/runtime-reference/async-events-api.md)
-- [Error handling](https://developer.atlassian.com/platform/forge/runtime-reference/async-events-api-error-handling.md)
-- [Upgrade to @forge/events major version 2](https://developer.atlassian.com/platform/forge/runtime-reference/async-events-api-version-2-upgrade.md)
-
-#### Realtime events (Preview)
-
-- [Realtime events (Preview)](https://developer.atlassian.com/platform/forge/runtime-reference/realtime-events-api.md)
-
-#### Dynamic Modules (EAP)
-
-- [Dynamic Modules (EAP)](https://developer.atlassian.com/platform/forge/apis-reference/dynamic-modules.md)
-- [API reference](https://developer.atlassian.com/platform/forge/apis-reference/dynamic-modules-api.md)
-
-#### Atlassian app REST APIs
-
-- [Atlassian app REST APIs](https://developer.atlassian.com/platform/forge/apis-reference/product-rest-api-reference.md)
-- [Bitbucket API requests](https://developer.atlassian.com/platform/forge/apis-reference/fetch-api-product.requestbitbucket.md)
-- [Confluence API requests](https://developer.atlassian.com/platform/forge/apis-reference/fetch-api-product.requestconfluence.md)
-- [Jira API requests](https://developer.atlassian.com/platform/forge/apis-reference/fetch-api-product.requestjira.md)
-- [GraphQL API requests](https://developer.atlassian.com/platform/forge/apis-reference/fetch-api-product.requestgraph.md)
-
-#### Fetch APIs
-
-- [Fetch APIs](https://developer.atlassian.com/platform/forge/runtime-reference/fetch-api.md)
-- [Basic fetch client](https://developer.atlassian.com/platform/forge/runtime-reference/fetch-api.basic.md)
-- [External authentication](https://developer.atlassian.com/platform/forge/runtime-reference/external-fetch-api.md)
-
-#### Invoke Remote API
-
-- [Invoke Remote API](https://developer.atlassian.com/platform/forge/runtime-reference/invoke-remote-api.md)
-
-#### App context API
-
-- [App context API](https://developer.atlassian.com/platform/forge/runtime-reference/app-context-api.md)
-
-#### Privacy API
-
-- [Privacy API](https://developer.atlassian.com/platform/forge/runtime-reference/privacy-api.md)
-
-#### Authorize API
-
-- [Authorize API](https://developer.atlassian.com/platform/forge/runtime-reference/authorize-api.md)
-
-#### i18n API
-
-- [i18n API](https://developer.atlassian.com/platform/forge/runtime-reference/i18n.md)
-
-#### LLMs API
-
-- [LLMs API](https://developer.atlassian.com/platform/forge/runtime-reference/forge-llms-api.md)
-
 ### Containers (EAP)
 
 #### Forge Containers overview
@@ -1056,233 +1460,5 @@
 #### Testing a service locally
 
 - [Testing a service locally](https://developer.atlassian.com/platform/forge/containers-reference/test-service-locally.md)
-
-### Storage
-
-#### Storage overview
-
-- [Storage overview](https://developer.atlassian.com/platform/forge/runtime-reference/storage-api.md)
-
-#### Key-Value Store
-
-- [Key-Value Store](https://developer.atlassian.com/platform/forge/runtime-reference/storage-api-basic.md)
-- [Storing data](https://developer.atlassian.com/platform/forge/runtime-reference/storage-api-basic-api.md)
-- [Querying data](https://developer.atlassian.com/platform/forge/runtime-reference/storage-api-query.md)
-- [Encrypting stored data](https://developer.atlassian.com/platform/forge/runtime-reference/storage-api-secret.md)
-- [Running batch operations](https://developer.atlassian.com/platform/forge/storage-reference/batchops.md)
-- [Running transactions](https://developer.atlassian.com/platform/forge/storage-reference/transactions.md)
-- [Error handling](https://developer.atlassian.com/platform/forge/storage-reference/handling-errors-kvs.md)
-
-#### Custom Entity Store
-
-- [Custom Entity Store](https://developer.atlassian.com/platform/forge/storage-reference/storage-api-custom-entities.md)
-- [Defining entities](https://developer.atlassian.com/platform/forge/runtime-reference/custom-entities.md)
-- [Storing entities](https://developer.atlassian.com/platform/forge/runtime-reference/storage-api-custom-entities.md)
-- [Querying data](https://developer.atlassian.com/platform/forge/runtime-reference/storage-api-query-complex.md)
-- [Querying data (legacy)](https://developer.atlassian.com/platform/forge/runtime-reference/storage-api-query-complex-legacy.md)
-- [Running batch operations](https://developer.atlassian.com/platform/forge/storage-reference/batchops-entities.md)
-- [Running transactions](https://developer.atlassian.com/platform/forge/storage-reference/transactions-entities.md)
-- [Error handling](https://developer.atlassian.com/platform/forge/storage-reference/handling-errors-customentities.md)
-
-#### SQL
-
-- [SQL](https://developer.atlassian.com/platform/forge/storage-reference/sql.md)
-- [Tutorial](https://developer.atlassian.com/platform/forge/storage-reference/sql-tutorial.md)
-- [Manage schemas](https://developer.atlassian.com/platform/forge/storage-reference/sql-api-schema.md)
-- [Execute SQL operations](https://developer.atlassian.com/platform/forge/storage-reference/sql-api.md)
-- [Error handling](https://developer.atlassian.com/platform/forge/storage-reference/sql-handling-errors.md)
-
-#### Object Store (EAP)
-
-- [Object Store (EAP)](https://developer.atlassian.com/platform/forge/storage-reference/object-store.md)
-- [Managing objects](https://developer.atlassian.com/platform/forge/storage-reference/object-store-api.md)
-
-### User Interface
-
-#### User interface overview
-
-- [User interface overview](https://developer.atlassian.com/platform/forge/ui-kit/overview.md)
-
-#### UI Kit components
-
-- [UI Kit components](https://developer.atlassian.com/platform/forge/ui-kit/components/index.md)
-- [ADF renderer](https://developer.atlassian.com/platform/forge/ui-kit/components/adf-renderer.md)
-- [Atlassian icon (Preview)](https://developer.atlassian.com/platform/forge/ui-kit/components/atlassian-icon.md)
-- [Atlassian tile (Preview)](https://developer.atlassian.com/platform/forge/ui-kit/components/atlassian-tile.md)
-- [Badge](https://developer.atlassian.com/platform/forge/ui-kit/components/badge.md)
-- [Box](https://developer.atlassian.com/platform/forge/ui-kit/components/box.md)
-- [Button](https://developer.atlassian.com/platform/forge/ui-kit/components/button.md)
-- [Button group](https://developer.atlassian.com/platform/forge/ui-kit/components/button-group.md)
-- [Calendar](https://developer.atlassian.com/platform/forge/ui-kit/components/calendar.md)
-- [Chart - Bar](https://developer.atlassian.com/platform/forge/ui-kit/components/bar-chart.md)
-- [Chart - Donut](https://developer.atlassian.com/platform/forge/ui-kit/components/donut-chart.md)
-- [Chart - Horizontal bar](https://developer.atlassian.com/platform/forge/ui-kit/components/horizontal-bar-chart.md)
-- [Chart - Horizontal stack bar](https://developer.atlassian.com/platform/forge/ui-kit/components/horizontal-stack-bar-chart.md)
-- [Chart - Line](https://developer.atlassian.com/platform/forge/ui-kit/components/line-chart.md)
-- [Chart - Pie](https://developer.atlassian.com/platform/forge/ui-kit/components/pie-chart.md)
-- [Chart - Stack bar](https://developer.atlassian.com/platform/forge/ui-kit/components/stack-bar-chart.md)
-- [Checkbox](https://developer.atlassian.com/platform/forge/ui-kit/components/checkbox.md)
-- [Checkbox group](https://developer.atlassian.com/platform/forge/ui-kit/components/checkbox-group.md)
-- [Code](https://developer.atlassian.com/platform/forge/ui-kit/components/code.md)
-- [Code block](https://developer.atlassian.com/platform/forge/ui-kit/components/code-block.md)
-- [Comment](https://developer.atlassian.com/platform/forge/ui-kit/components/comment.md)
-- [Comment editor](https://developer.atlassian.com/platform/forge/ui-kit/components/comment-editor.md)
-- [Chromeless editor](https://developer.atlassian.com/platform/forge/ui-kit/components/chromeless-editor.md)
-- [Date picker](https://developer.atlassian.com/platform/forge/ui-kit/components/date-picker.md)
-- [Dynamic table](https://developer.atlassian.com/platform/forge/ui-kit/components/dynamic-table.md)
-- [Empty state](https://developer.atlassian.com/platform/forge/ui-kit/components/empty-state.md)
-- [File card (EAP)](https://developer.atlassian.com/platform/forge/ui-kit/components/file-card.md)
-- [File picker (EAP)](https://developer.atlassian.com/platform/forge/ui-kit/components/file-picker.md)
-- [Form](https://developer.atlassian.com/platform/forge/ui-kit/components/form.md)
-- [Frame](https://developer.atlassian.com/platform/forge/ui-kit/components/frame.md)
-- [Heading](https://developer.atlassian.com/platform/forge/ui-kit/components/heading.md)
-- [Icon](https://developer.atlassian.com/platform/forge/ui-kit/components/icon.md)
-- [Image](https://developer.atlassian.com/platform/forge/ui-kit/components/image.md)
-- [Inline](https://developer.atlassian.com/platform/forge/ui-kit/components/inline.md)
-- [Inline edit](https://developer.atlassian.com/platform/forge/ui-kit/components/inline-edit.md)
-- [Link](https://developer.atlassian.com/platform/forge/ui-kit/components/link.md)
-- [List](https://developer.atlassian.com/platform/forge/ui-kit/components/list.md)
-- [Lozenge](https://developer.atlassian.com/platform/forge/ui-kit/components/lozenge.md)
-- [Modal](https://developer.atlassian.com/platform/forge/ui-kit/components/modal.md)
-- [Popup](https://developer.atlassian.com/platform/forge/ui-kit/components/popup.md)
-- [Pressable](https://developer.atlassian.com/platform/forge/ui-kit/components/pressable.md)
-- [Progress bar](https://developer.atlassian.com/platform/forge/ui-kit/components/progress-bar.md)
-- [Progress tracker](https://developer.atlassian.com/platform/forge/ui-kit/components/progress-tracker.md)
-- [Radio](https://developer.atlassian.com/platform/forge/ui-kit/components/radio.md)
-- [Radio group](https://developer.atlassian.com/platform/forge/ui-kit/components/radio-group.md)
-- [Range](https://developer.atlassian.com/platform/forge/ui-kit/components/range.md)
-- [Section message](https://developer.atlassian.com/platform/forge/ui-kit/components/section-message.md)
-- [Select](https://developer.atlassian.com/platform/forge/ui-kit/components/select.md)
-- [Spinner](https://developer.atlassian.com/platform/forge/ui-kit/components/spinner.md)
-- [Stack](https://developer.atlassian.com/platform/forge/ui-kit/components/stack.md)
-- [Tabs](https://developer.atlassian.com/platform/forge/ui-kit/components/tabs.md)
-- [Tag](https://developer.atlassian.com/platform/forge/ui-kit/components/tag.md)
-- [Tag group](https://developer.atlassian.com/platform/forge/ui-kit/components/tag-group.md)
-- [Text](https://developer.atlassian.com/platform/forge/ui-kit/components/text.md)
-- [Text area](https://developer.atlassian.com/platform/forge/ui-kit/components/text-area.md)
-- [Text field](https://developer.atlassian.com/platform/forge/ui-kit/components/textfield.md)
-- [Time picker](https://developer.atlassian.com/platform/forge/ui-kit/components/time-picker.md)
-- [Tile (Preview)](https://developer.atlassian.com/platform/forge/ui-kit/components/tile.md)
-- [Toggle](https://developer.atlassian.com/platform/forge/ui-kit/components/toggle.md)
-- [Tooltip](https://developer.atlassian.com/platform/forge/ui-kit/components/tooltip.md)
-- [User](https://developer.atlassian.com/platform/forge/ui-kit/components/user.md)
-- [User group](https://developer.atlassian.com/platform/forge/ui-kit/components/user-group.md)
-- [User picker](https://developer.atlassian.com/platform/forge/ui-kit/components/user-picker.md)
-- [XCSS](https://developer.atlassian.com/platform/forge/ui-kit/components/xcss.md)
-
-#### Jira UI Kit components
-
-- [Jira UI Kit components](https://developer.atlassian.com/platform/forge/ui-kit/jira-components/index.md)
-- [Custom field edit (Preview)](https://developer.atlassian.com/platform/forge/ui-kit/jira-components/custom-field-edit.md)
-
-#### UI Kit hooks
-
-- [UI Kit hooks](https://developer.atlassian.com/platform/forge/ui-kit/hooks/hooks-reference.md)
-- [useConfig](https://developer.atlassian.com/platform/forge/ui-kit/hooks/use-config.md)
-- [useContentProperty](https://developer.atlassian.com/platform/forge/ui-kit/hooks/use-content-property.md)
-- [useForm](https://developer.atlassian.com/platform/forge/ui-kit/hooks/use-form.md)
-- [useIssueProperty](https://developer.atlassian.com/platform/forge/ui-kit/hooks/use-issue-property.md)
-- [useObjectStore (EAP)](https://developer.atlassian.com/platform/forge/ui-kit/hooks/use-object-store.md)
-- [useProductContext](https://developer.atlassian.com/platform/forge/ui-kit/hooks/use-product-context.md)
-- [useSpaceProperty](https://developer.atlassian.com/platform/forge/ui-kit/hooks/use-space-property.md)
-- [useTheme](https://developer.atlassian.com/platform/forge/ui-kit/hooks/use-theme.md)
-- [useTranslation](https://developer.atlassian.com/platform/forge/ui-kit/hooks/use-translation.md)
-- [useWidgetConfig (EAP)](https://developer.atlassian.com/platform/forge/ui-kit/hooks/use-widget-config.md)
-- [useWidgetContext (EAP)](https://developer.atlassian.com/platform/forge/ui-kit/hooks/use-widget-context.md)
-
-#### Forge bridge APIs
-
-- [Forge bridge APIs](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/bridge.md)
-- [events](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/events.md)
-- [i18n](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/i18n.md)
-- [invoke](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/invoke.md)
-- [invokeRemote](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/invokeRemote.md)
-- [modal](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/modal.md)
-- [objectStore (EAP)](https://developer.atlassian.com/platform/forge/custom-ui-bridge/objectStore.md)
-- [realtime (Preview)](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/realtime.md)
-- [requestBitbucket](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/requestBitbucket.md)
-- [requestConfluence](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/requestConfluence.md)
-- [requestJira](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/requestJira.md)
-- [requestRemote](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/requestRemote.md)
-- [router](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/router.md)
-- [rovo](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/rovo.md)
-- [showFlag](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/showFlag.md)
-- [view](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/view.md)
-
-#### Jira bridge APIs
-
-- [Jira bridge APIs](https://developer.atlassian.com/platform/forge/apis-reference/jira-api-bridge/bridge.md)
-- [ViewIssueModal](https://developer.atlassian.com/platform/forge/apis-reference/jira-api-bridge/viewIssueModal.md)
-- [CreateIssueModal](https://developer.atlassian.com/platform/forge/apis-reference/jira-api-bridge/createIssueModal.md)
-- [uiModifications](https://developer.atlassian.com/platform/forge/apis-reference/jira-api-bridge/uiModifications.md)
-- [workflowRules (EAP)](https://developer.atlassian.com/platform/forge/apis-reference/jira-api-bridge/workflowRules.md)
-
-#### Confluence bridge APIs
-
-- [Confluence bridge APIs](https://developer.atlassian.com/platform/forge/apis-reference/confluence-api-bridge/bridge.md)
-- [getEditorContent](https://developer.atlassian.com/platform/forge/apis-reference/confluence-api-bridge/getEditorContent.md)
-- [getMacroContent](https://developer.atlassian.com/platform/forge/apis-reference/confluence-api-bridge/getMacroContent.md)
-- [updateMacroContent](https://developer.atlassian.com/platform/forge/apis-reference/confluence-api-bridge/updateMacroContent.md)
-- [updateBylineProperties](https://developer.atlassian.com/platform/forge/apis-reference/confluence-api-bridge/updateBylineProperties.md)
-
-#### Dashboard bridge APIs (EAP)
-
-- [Dashboard bridge APIs (EAP)](https://developer.atlassian.com/platform/forge/apis-reference/dashboard-bridge-apis/bridge.md)
-- [widget (EAP)](https://developer.atlassian.com/platform/forge/apis-reference/dashboard-bridge-apis/widget.md)
-- [widgetEdit (EAP)](https://developer.atlassian.com/platform/forge/apis-reference/dashboard-bridge-apis/widget-edit.md)
-
-#### Custom UI
-
-- [Custom UI](https://developer.atlassian.com/platform/forge/custom-ui/iframe.md)
-
-#### Upgrade UI Kit versions
-
-- [Upgrade UI Kit versions](https://developer.atlassian.com/platform/forge/ui-kit/upgrade-guides.md)
-- [Notify site admins using Forge app with UI Kit 1](https://developer.atlassian.com/platform/forge/ui-kit/notify-site-admins-using-forge-app-with-ui-kit-1.md)
-- [Upgrade to @forge/react major version 10](https://developer.atlassian.com/platform/forge/ui-kit/version-10-changes.md)
-
-### Events
-
-#### Events overview
-
-- [Events overview](https://developer.atlassian.com/platform/forge/events-reference/index.md)
-
-#### Atlassian app events
-
-- [Atlassian app events](https://developer.atlassian.com/platform/forge/events-reference/product_events.md)
-- [Bitbucket events](https://developer.atlassian.com/platform/forge/events-reference/bitbucket.md)
-- [Compass events](https://developer.atlassian.com/platform/forge/events-reference/compass.md)
-- [Confluence events](https://developer.atlassian.com/platform/forge/events-reference/confluence.md)
-- [Jira events](https://developer.atlassian.com/platform/forge/events-reference/jira.md)
-- [Jira Software events](https://developer.atlassian.com/platform/forge/events-reference/jira-software.md)
-- [Expressions playground](https://developer.atlassian.com/platform/forge/events-reference/expressions-playground.md)
-
-#### App events (Preview)
-
-- [App events (Preview)](https://developer.atlassian.com/platform/forge/events-reference/app-events.md)
-
-#### Life cycle events
-
-- [Life cycle events](https://developer.atlassian.com/platform/forge/events-reference/life-cycle.md)
-
-#### Data security policy events
-
-- [Data security policy events](https://developer.atlassian.com/platform/forge/events-reference/data-security-policy-events.md)
-
-#### Scheduled trigger events
-
-- [Scheduled trigger events](https://developer.atlassian.com/platform/forge/events-reference/scheduled-trigger.md)
-
-#### Web trigger events
-
-- [Web trigger events](https://developer.atlassian.com/platform/forge/events-reference/web-trigger.md)
-
-### APIs for Forge Containers
-
-- [APIs for Forge Containers](https://developer.atlassian.com/platform/forge/rest/v2/index.md)
-
-### KVS/Custom Entity Store API
-
-- [KVS/Custom Entity Store API](https://developer.atlassian.com/platform/forge/rest/v1/index.md)
 - [Get help](https://developer.atlassian.com/platform/forge/get-help.md)
 ```

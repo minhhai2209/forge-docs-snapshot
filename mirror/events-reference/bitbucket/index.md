@@ -23,6 +23,7 @@ The required OAuth scope is `read:repository:bitbucket`.
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:bitbucket:created:repository`. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | actor | `Actor` | The user that has caused the event. |
 | repository | `BitbucketResource` | The repository the event is related to. |
 | project | `BitbucketResource` | The project of the repository the event is related to. |
@@ -95,6 +96,7 @@ The required OAuth scope is `read:repository:bitbucket`.
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:bitbucket:updated:repository`. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | actor | `Actor` | The user that has caused the event. |
 | repository | `BitbucketResource` | The repository the event is related to. |
 | project | `BitbucketResource` | The project of the repository the event is related to. |
@@ -192,6 +194,7 @@ The required OAuth scope is `read:repository:bitbucket`.
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:bitbucket:push:repository`. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | actor | `Actor` | The user that has caused the event. |
 | repository | `BitbucketResource` | The repository the event is related to. |
 | project | `BitbucketResource` | The project of the repository the event is related to. |
@@ -322,6 +325,7 @@ The required OAuth scope is `read:repository:bitbucket`.
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:bitbucket:deleted:repository`. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | actor | `Actor` | The user that has caused the event. |
 | repository | `BitbucketResource` | The repository the event is related to. |
 | project | `BitbucketResource` | The project of the repository the event is related to. |
@@ -394,6 +398,7 @@ The required OAuth scope is `read:repository:bitbucket`.
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:bitbucket:created:build-status`. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | actor | `Actor` | The user that has caused the event. |
 | repository | `BitbucketResource` | The repository the event is related to. |
 | project | `BitbucketResource` | The parent project of the repository that the event is related to. |
@@ -491,6 +496,7 @@ The required OAuth scope is `read:repository:bitbucket`.
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:bitbucket:updated:build-status`. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | actor | `Actor` | The user that has caused the event. |
 | repository | `BitbucketResource` | The repository the event is related to. |
 | project | `BitbucketResource` | The parent project of the repository that the event is related to. |
@@ -586,6 +592,7 @@ The required OAuth scope is `read:repository:bitbucket`.
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:bitbucket:created:commit-comment`. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | actor | `Actor` | The user that has caused the event. |
 | repository | `BitbucketResource` | The repository of the commit the event is related to. |
 | project | `BitbucketResource` | The project of the commit the event is related to. |
@@ -680,6 +687,7 @@ The required OAuth scope is `read:pullrequest:bitbucket`.
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:bitbucket:created:pullrequest`. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | actor | `Actor` | The user that has caused the event. |
 | repository | `BitbucketResource` | The repository of the pull request the event is related to. |
 | project | `BitbucketResource` | The project of the pull request the event is related to. |
@@ -783,6 +791,7 @@ The required OAuth scope is `read:pullrequest:bitbucket`.
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:bitbucket:updated:pullrequest`. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | actor | `Actor` | The user that has caused the event. |
 | repository | `BitbucketResource` | The repository of the pull request the event is related to. |
 | project | `BitbucketResource` | The project of the pull request the event is related to. |
@@ -886,6 +895,7 @@ The required OAuth scope is `read:pullrequest:bitbucket`.
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:bitbucket:fulfilled:pullrequest`. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | actor | `Actor` | The user that has caused the event. |
 | repository | `BitbucketResource` | The repository of the pull request the event is related to. |
 | project | `BitbucketResource` | The project of the pull request the event is related to. |
@@ -995,6 +1005,7 @@ The required OAuth scope is `read:pullrequest:bitbucket`.
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:bitbucket:rejected:pullrequest`. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | actor | `Actor` | The user that has caused the event. |
 | repository | `BitbucketResource` | The repository of the pull request the event is related to. |
 | project | `BitbucketResource` | The project of the pull request the event is related to. |
@@ -1099,6 +1110,7 @@ The required OAuth scope is `read:pullrequest:bitbucket`.
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:bitbucket:created:pullrequest-comment`. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | actor | `Actor` | The user that has caused the event. |
 | repository | `BitbucketResource` | The repository of the pull request the event is related to. |
 | project | `BitbucketResource` | The project of the pull request the event is related to. |
@@ -1211,6 +1223,7 @@ The required OAuth scope is `read:pullrequest:bitbucket`.
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:bitbucket:updated:pullrequest-comment`. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | actor | `Actor` | The user that has caused the event. |
 | repository | `BitbucketResource` | The repository of the pull request the event is related to. |
 | project | `BitbucketResource` | The project of the pull request the event is related to. |
@@ -1326,6 +1339,7 @@ The required OAuth scope is `read:pullrequest:bitbucket`.
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:bitbucket:deleted:pullrequest-comment`. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | actor | `Actor` | The user that has caused the event. |
 | repository | `BitbucketResource` | The repository of the pull request the event is related to. |
 | project | `BitbucketResource` | The project of the pull request the event is related to. |
@@ -1438,6 +1452,7 @@ The required OAuth scope is `read:pullrequest:bitbucket`.
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:bitbucket:resolved:pullrequest-comment`. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | actor | `Actor` | The user that has caused the event. |
 | repository | `BitbucketResource` | The repository of the pull request the event is related to. |
 | project | `BitbucketResource` | The project of the pull request the event is related to. |
@@ -1550,6 +1565,7 @@ The required OAuth scope is `read:pullrequest:bitbucket`.
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:bitbucket:reopened:pullrequest-comment`. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | actor | `Actor` | The user that has caused the event. |
 | repository | `BitbucketResource` | The repository of the pull request the event is related to. |
 | project | `BitbucketResource` | The project of the pull request the event is related to. |
@@ -1667,6 +1683,7 @@ The required OAuth scope is `read:pullrequest:bitbucket`.
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:bitbucket:updated:pullrequest-reviewer-status`. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | actor | `Actor` | The user that has caused the event. |
 | repository | `BitbucketResource` | The repository of the pull request the event is related to. |
 | project | `BitbucketResource` | The project of the pull request the event is related to. |
@@ -1806,6 +1823,7 @@ The required OAuth scope is `read:pipeline:bitbucket`.
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:bitbucket:pending:deployment`. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | repository | `BitbucketResource` | The repository of the deployment the event is related to. |
 | workspace | `BitbucketResource` | The workspace of the deployment the event is related to. |
 | pipeline | `Pipeline` | The pipeline of the deployment the event is related to. |
@@ -1892,6 +1910,7 @@ The required OAuth scope is `read:pipeline:bitbucket`.
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:bitbucket:started:deployment`. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | repository | `BitbucketResource` | The repository of the deployment the event is related to. |
 | workspace | `BitbucketResource` | The workspace of the deployment the event is related to. |
 | pipeline | `Pipeline` | The pipeline of the deployment the event is related to. |
@@ -1978,6 +1997,7 @@ The required OAuth scope is `read:pipeline:bitbucket`.
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:bitbucket:completed:deployment`. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | repository | `BitbucketResource` | The repository of the deployment the event is related to. |
 | workspace | `BitbucketResource` | The workspace of the deployment the event is related to. |
 | pipeline | `Pipeline` | The pipeline of the deployment the event is related to. |

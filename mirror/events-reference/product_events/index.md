@@ -430,6 +430,46 @@ modules:
 After the app is deployed, events whose payload have `Bug` as the issue type will be delivered and trigger the `main`
 function. For other and undefined issue types, events will be filtered out.
 
+## Detect and filter self-generated events
+
+When your app makes an API call that triggers an event your app is also subscribed to, the resulting
+event is considered *self-generated*. Filtering out these events is important to prevent infinite
+loops.
+
+For example, if your app updates a Confluence page in response to a `page updated` event,
+that update triggers another `page updated` event. Without filtering, your app would process its
+own update, trigger yet another event, and repeat indefinitely.
+
+To filter out self-generated events, set the
+[`ignoreSelf` filter in your manifest](/platform/forge/manifest-reference/modules/trigger/#filter-reference).
+This automatically discards self-generated events before your function is invoked:
+
+```
+```
+1
+2
+```
+
+
+
+```
+modules:
+  trigger:
+    - key: my-trigger
+      function: main
+      events:
+        - avi:confluence:updated:page
+      filter:
+        ignoreSelf: true
+  function:
+    - key: main
+      handler: index.run
+```
+```
+
+If you don't use the `ignoreSelf` filter, self-generated events will still be delivered to your
+app with a `selfGenerated` property set to `true` in the event payload.
+
 ## OAuth 2.0 scopes
 
 When using Atlassian app events, your Forge app must have permission from the site admin to access
@@ -443,4 +483,4 @@ to add new scopes to your app.
 
 ## Known issues
 
-* Atlassian app events larger than 200 kB are not delivered. This limit may change without notice.
+Atlassian app events larger than 200 kB are not delivered. This limit may change without notice.

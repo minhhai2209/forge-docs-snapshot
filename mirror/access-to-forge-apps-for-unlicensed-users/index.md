@@ -73,9 +73,7 @@ Ensure that you do not return any data to the front-end that you do not wish to 
 
 #### Frontend bridge calls from unlicensed users
 
-Frontend bridge calls using `requestConfluence()` or `requestJira()` from `@forge/bridge` will fail for unlicensed users because these methods call APIs as the current user and require proper user authentication. Unlicensed users (including `anonymous`, `customer`, and `unlicensed` user types) don't have the authentication context needed for these API calls, so these methods will return authentication errors.
-
-Instead of using frontend bridge calls, use backend resolvers with `api.asApp().requestConfluence()` or `api.asApp().requestJira()` to make API calls for unlicensed users. The `asApp()` context uses your app's service account authentication, which works regardless of the user's license status.
+Calls made utilising the Forge frontend bridge will make unauthenticated requests when a user is not present and the app has declared support for anonymous users.
 
 #### AccountType property in resolver context
 

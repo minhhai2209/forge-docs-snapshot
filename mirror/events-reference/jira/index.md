@@ -78,6 +78,7 @@ Example
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:jira:created:issue`. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | issue | `Issue` | The issue the event is related to. |
 | atlassianId? | `string` | [Optional] The ID of the user that has caused the event. |
 | associatedUsers? | `AssociatedUsers` | [Optional] An object containing an array of one user, with the user being the one who created the issue. |
@@ -99,6 +100,7 @@ Example
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:jira:updated:issue`. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | jiraEventTypeName? | `string` | [Optional] Subtype of the update (for example, `issue_resolved`, `issue_moved`, `issue_generic`). Only present for [Issue updated](#issue-updated) and [Issue created](#issue-created) events. |
 | issue | `Issue` | The issue the event relates to. |
 | atlassianId? | `string` | [Optional] The ID of the user that has caused the event. |
@@ -123,6 +125,7 @@ Example
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:jira:deleted:issue`. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | issue | `Issue` | The issue the event relates to. |
 | atlassianId? | `string` | [Optional] The ID of the user that triggered the event. |
 | associatedUsers? | `AssociatedUsers` | [Optional] An array containing the name of the user who deleted the issue. |
@@ -143,6 +146,7 @@ Example
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:jira:assigned:issue`. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | issue | `Issue` | The issue the event is related to. |
 | atlassianId? | `string` | [Optional] The ID of the user that has caused the event. |
 | changelog | `Changelog` | A list of changes that have occurred in the update. The `to` and `from` fields display the accounts IDs of the assignees that the issue was to and from respectively, or `null` when the issue is unassigned or was previously unassigned. |
@@ -163,6 +167,7 @@ Example
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:jira:viewed:issue`. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | issue | `Issue` | The issue the event is related to. |
 | atlassianId | `string` | The ID of the user that has caused the event. |
 | user | `User` | The user who has viewed the issue. |
@@ -183,6 +188,7 @@ Example
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:jira:mentioned:issue`. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | issue | `Issue` | The issue the event is related to. |
 | atlassianId? | `string` | [Optional] The ID of the user that has caused the event. |
 | mentionedAccountIds | `string[]` | A list of account IDs of mentioned users. |
@@ -213,6 +219,7 @@ Example
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name, such as `avi:jira:created:issuelink`. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | id | `string` | ID of the link. |
 | sourceIssueId | `string` | ID of the source issue. |
 | destinationIssueId | `string` | ID of the destination issue. |
@@ -247,6 +254,7 @@ Example
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name, such as `avi:jira:updated:worklog`. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | worklog | `Worklog` | The worklog the event is related to. |
 
 ## Issue type events
@@ -279,6 +287,7 @@ Example
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name, such as `avi:jira:created:issuetype`. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | issueType | `issueType` | The `issueType` the event is related to. |
 | atlassianId? | `string` | [Optional] The ID of the user that has caused the event. |
 
@@ -299,6 +308,7 @@ Example
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:jira:commented:issue`. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | issue | `Issue` | The issue the event is related to. |
 | atlassianId? | `string` | [Optional] The ID of the user that has caused the event. |
 | associatedUsers? | `AssociatedUsers` | [Optional] The user who has made the comment. |
@@ -318,6 +328,7 @@ Example
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:jira:mentioned:comment`. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | issue | `Issue` | The issue the event is related to. |
 | atlassianId? | `string` | [Optional] The ID of the user that has caused the event. |
 | mentionedAccountIds | `string[]` | A list of the account IDs of the users mentioned in the comment. |
@@ -338,6 +349,7 @@ Example
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:jira:deleted:comment`. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | issue | `Issue` | The issue the event is related to. |
 | atlassianId? | `string` | [Optional] The ID of the user that has caused the event. |
 | comment | `Comment` | An object describing the comment, including its author, body content, and other metadata. |
@@ -361,6 +373,7 @@ The required OAuth scope is `manage:jira-configuration`.
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name, such as `avi:jira:created:field`. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | id | `string` | ID of the custom field. |
 | key | `string` | Key of the custom field. |
 | type | `string` | Custom field type. |
@@ -385,6 +398,7 @@ The required OAuth scope is `manage:jira-configuration`.
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name, such as `avi:jira:created:field:context`. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | id | `string` | ID of the context. |
 | fieldId | `string` | ID of the custom field. |
 | fieldKey | `string` | Key of the custom field. |
@@ -400,6 +414,7 @@ The required OAuth scope is `manage:jira-configuration`.
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:jira:updated:field:context:configuration`. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | customFieldId | `string` | ID of the custom field. |
 | customFieldKey | `string` | Key of the custom field. |
 | configurationId | `long` | ID of the configuration. |
@@ -446,6 +461,7 @@ Example
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:jira:failed:expression`. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | extensionId | `string` | The ID of the extension where the expression is defined. |
 | workflowId | `string` | The ID of the workflow where the expression was evaluated. |
 | workflowName | `string` | The name of the workflow where the expression was evaluated. |
@@ -515,6 +531,7 @@ OAuth 2.0 scopes required:
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name, such as `avi:jira:created:version`. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | version | `Version` | The version which triggered the event. |
 | mergedVersion? | `Version` | [Optional] The version that was merged with the version which triggered the event. Applicable only with `avi:jira:merged:version`. |
 | atlassianId? | `string` | [Optional] The ID of the user that has caused the event. |
@@ -530,6 +547,7 @@ Example
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:jira:deleted:version`. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | version | `Version` | The version which triggered the event. |
 | mergedVersion? | `Version` | [Optional] The version that was merged with the version which triggered the event. |
 | newAffectsVersion? | `Version` | [Optional] The version that was placed into the field "Affects versions" instead of the deleted version. |
@@ -568,6 +586,7 @@ Example
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:jira:created:project`. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | project | `Project` | The project the event is related to. |
 
 ## Attachment events
@@ -596,6 +615,7 @@ Example
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:jira:created:attachment`. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | attachment | `Attachment` | The attachment the event is related to. |
 
 ## Component events
@@ -628,6 +648,7 @@ Example
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name, such as `avi:jira:created:component`. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | component | `Component` | The component the event is related to. |
 | atlassianId? | `string` | [Optional] The ID of the user that has caused the event. |
 
@@ -660,6 +681,7 @@ Example
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name, such as `avi:jira:created:user`. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | user | `UserDetails` | The user the event is related to. |
 
 ### User deleted
@@ -675,6 +697,7 @@ Example
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:jira:deleted:user`. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | user | `User` | The user the event is related to. |
 
 ## Filter events
@@ -704,6 +727,7 @@ Example
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name, such as `avi:jira:created:filter`. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | filter | `Filter` | The filter the event is related to. |
 | atlassianId? | `string` | [Optional] The ID of the user that has caused the event. |
 
@@ -732,6 +756,7 @@ Example
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:jira:timetracking:provider:changed`. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | property | `Property` | The property with key set to `jira.timetracking.selected` and value indicating the selected time tracking provider. |
 
 ## Configuration events
@@ -757,5 +782,6 @@ Example
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:jira:changed:configuration`. |
+| selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | property | `Property` | The property consists of a key that is one of  * `jira.option.allowsubtasks` * `jira.option.allowunassigned` * `jira.option.voting` * `jira.option.watching` * `jira.option.issuelinking`  and a value that is either `true` or `false`. |
 | atlassianId? | `string` | [Optional] The ID of the user that has caused the event. |

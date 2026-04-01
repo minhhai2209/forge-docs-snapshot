@@ -1,9 +1,43 @@
 # Forge Object Store limits
 
-Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
-When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our
+Forge Object Store is now available as part of our Early Access Program (EAP). To start testing this feature, sign up using this [form](https://ecosystem.atlassian.net/servicedesk/customer/portal/3422/group/3571/create/18555).
 
-[Privacy Policy](https://www.atlassian.com/legal/privacy-policy#how-we-disclose-information-we-collect)
+Forge Object Store is an experimental feature offered for testing and feedback purposes. This feature is unsupported and subject to change without notice. Do not use Forge Object Store in apps that handle sensitive information, including personal data and customer data.
 
-.
-You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt-out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
+For more details, see [Forge EAP, Preview, and GA](https://developer.atlassian.com/platform/forge/whats-coming/#eap).
+
+The [Forge Object Store](/platform/forge/storage-reference/object-store/) is a hosted storage solution that let you manage large items such as data objects or media files. It provides you with a seamless way to efficiently store, retrieve, and manage objects directly from your Forge apps.
+
+### EAP limitations
+
+The Forge Object Store EAP is only available for testing purposes; apps using this feature can't be deployed to production.
+In addition, objects stored during EAP will have a time-to-live (TTL) of 90 days.
+
+**All stored objects will be deleted at the end of the EAP.** Atlassian will provide notice before the end of the EAP to ensure you have time to download any stored
+data.
+
+### Rate limits per installation
+
+If the following rate limits are exceeded, Forge will return a `TOO_MANY_REQUESTS` error.
+
+| Parameter | Limit |
+| --- | --- |
+| Object Store requests per second | 5000 |
+| Pre-signed URL requests per second | 1000 |
+
+### Operation limits
+
+When building interfaces for object download/uploads, you must use the available
+[frontend components](/platform/forge/storage-reference/object-store/#frontend-components).
+
+| Parameter | Limit |
+| --- | --- |
+| Maximum object size | 1 GB |
+| Maximum request payload size | 1 kB |
+| Pre-signed URL validity | 1 hour |
+
+The maximum object size applies to objects uploaded through any [frontend component](/platform/forge/storage-reference/object-store/#frontend-components) used in conjunction with the Forge Object Store (for example, the `useObjectStore`
+[UI Kit hook](/platform/forge/ui-kit/hooks/use-object-store/)).
+
+Meanwhile, the maximum request payload size only applies to the actual [Forge Object Store request](/platform/forge/storage-reference/object-store-api/).
+This request should only contain the object's name and other relevant metadata (not the object itself).
