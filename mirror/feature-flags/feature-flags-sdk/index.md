@@ -97,19 +97,6 @@ Evaluates multiple flags in a single call.
 
 ### `shutdown()`
 
-```
-```
-1
-2
-```
-
-
-
-```
-shutdown(): Promise<void>
-```
-```
-
 Stops the polling interval and releases resources. Call this when the SDK instance is no longer needed.
 
 ## Interfaces
@@ -200,7 +187,7 @@ export const handler = async (payload, context) => {
   const isEnabled = featureFlags.checkFlag(user, "new-feature", false);
   const flags = featureFlags.getFeatureFlags(user, ["feature-a", "feature-b"]);
 
-  await featureFlags.shutdown();
+  featureFlags.shutdown();
 };
 ```
 ```

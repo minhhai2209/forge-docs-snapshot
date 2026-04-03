@@ -56,7 +56,7 @@ resolver.define('getFeature', async ({ context }) => {
   };
 
   const isEnabled = featureFlags.checkFlag(user, "my-feature-flag", false);
-  await featureFlags.shutdown();
+  featureFlags.shutdown();
   return isEnabled;
 });
 ```
@@ -91,7 +91,7 @@ resolver.define('getFeature', async ({ context }) => {
   };
 
   const isEnabled = featureFlags.checkFlag(user, "my-feature-flag", false);
-  await featureFlags.shutdown();
+  featureFlags.shutdown();
   return isEnabled;
 });
 ```

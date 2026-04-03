@@ -57,7 +57,7 @@ resolver.define('getFeature', async ({ context }) => {
   };
 
   const isEnabled = featureFlags.checkFlag(user, "enterprise-feature", false);
-  await featureFlags.shutdown();
+  featureFlags.shutdown();
   return isEnabled;
 });
 ```
@@ -108,7 +108,7 @@ resolver.define('getFeature', async ({ context }) => {
   };
 
   const isEnabled = featureFlags.checkFlag(user, "beta-feature", false);
-  await featureFlags.shutdown();
+  featureFlags.shutdown();
   return isEnabled;
 });
 ```
@@ -164,7 +164,7 @@ resolver.define('getFeature', async ({ context }) => {
   };
 
   const isEnabled = featureFlags.checkFlag(user, "premium-feature", false);
-  await featureFlags.shutdown();
+  featureFlags.shutdown();
   return isEnabled;
 });
 ```

@@ -79,19 +79,6 @@ isInitialized(): boolean
 
 ### `shutdown()`
 
-```
-```
-1
-2
-```
-
-
-
-```
-shutdown(): Promise<void>
-```
-```
-
 Releases resources. Call this before re-initializing with an updated user context.
 
 ## Interfaces
@@ -232,7 +219,7 @@ To re-evaluate flags with a different user context, shut down the current instan
 
 
 ```
-await featureFlags.shutdown();
+featureFlags.shutdown();
 
 const updatedUser = {
   attributes: {
