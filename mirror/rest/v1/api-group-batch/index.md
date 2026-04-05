@@ -1,9 +1,99 @@
 # The Forge REST API
 
-Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
-When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our
+POST
 
-[Privacy Policy](https://www.atlassian.com/legal/privacy-policy#additional-disclosures-for-ca-residents)
+## Batch get key-value and entity entries
 
-.
-You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
+Gets multiple Key-Value Store and/or Custom Entity Store entries in a single operation.
+Each request item may include optional `options.metadataFields` to request metadata (createdAt, updatedAt, expireTime) in the response.
+Returns `successfulKeys` (each with `value` and optionally metadata) and `failedKeys` (with `error.code`, `error.message`).
+
+Forge and OAuth2 apps cannot access this REST resource.
+
+### Request
+
+#### Request bodyapplication/json
+
+array<anyOf [BatchGetTypedItemSchema, BatchGetUntypedItemSchema]>
+
+### Responses
+
+200OK
+
+Successfully retrieved the requested keys; returns list of successful keys (with value and optionally metadata) and failed keys (with error details).
+
+400Bad Request
+
+`1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15``curl --request POST \
+--url 'https://api.atlassian.com/forge/storage/kvs/v1/batch/get' \
+--header 'Accept: application/json' \
+--header 'Content-Type: application/json' \
+--data '[
+{
+"key": "<string>",
+"entityName": "<string>",
+"options": {
+"metadataFields": [
+"CREATED_AT"
+]
+}
+}
+]'`
+
+`1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22``{
+"successfulKeys": [
+{
+"key": "<string>",
+"entityName": "<string>",
+"value": "<string>",
+"createdAt": 116,
+"updatedAt": 121,
+"expireTime": "<string>"
+}
+],
+"failedKeys": [
+{
+"key": "<string>",
+"entityName": "<string>",
+"error": {
+"code": "<string>",
+"message": "<string>"
+}
+}
+]
+}`
