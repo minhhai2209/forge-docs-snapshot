@@ -60,9 +60,15 @@ For example, to allow inline CSS in your app, use the following configuration:
 permissions:
   content:
     styles:
-      - 'unsafe-inline'
+      - "unsafe-inline"
 ```
 ```
+
+## Customer-managed egress
+
+Apps that have [customer-managed egress](/platform/forge/customer-managed-egress-and-remotes/) enabled can configure egress *per installation*. Any egress additions or modifications must be approved by an admin.
+
+When customer-managed egress is configured, the content security policies are dynamically updated to include any specified domains and their resource types.
 
 ## Update the manifest file
 
@@ -112,10 +118,10 @@ section below for more details.
 
    ```
    <html>
-       <body>
-           <p style="color: blue; font-size: 46px;">Hello world!</p>
-           <img src="https://media1.giphy.com/media/d2jioMTLON9bDogE/giphy.gif" />
-       </body>
+     <body>
+       <p style="color: blue; font-size: 46px;">Hello world!</p>
+       <img src="https://media1.giphy.com/media/d2jioMTLON9bDogE/giphy.gif" />
+     </body>
    </html>
    ```
    ```

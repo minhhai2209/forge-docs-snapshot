@@ -101,3 +101,37 @@ services:
       max: 1
 ```
 ```
+
+## Example: Customer-managed remote (EAP)
+
+The following manifest shows an endpoint that uses a [customer-managed remote](/platform/forge/customer-managed-egress-and-remotes/) denoted by the `configurable` field.
+
+```
+```
+1
+2
+```
+
+
+
+```
+modules:
+  webtrigger:
+    - key: customer-managed-remote-webtrigger
+      endpoint: dynamic-remote-healthcheck
+
+endpoint:
+  - key: dynamic-remote-healthcheck
+    remote: my-remote
+    route:
+      path: /healthcheck
+
+remotes:
+  - key: my-remote
+    configurable:
+      name: webtrigger /healthcheck
+      description: A remote that will call /healthcheck from a webtrigger
+    operations:
+      - compute
+```
+```

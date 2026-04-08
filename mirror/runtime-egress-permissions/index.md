@@ -55,7 +55,7 @@ permissions:
 ```
 ```
 
-###### Example as an object
+### Example as an object
 
 You can also define external domains as objects with additional properties:
 
@@ -257,3 +257,23 @@ or through the
 If you've listed your app on the Atlassian Marketplace, you’ll need to publish the new version to
 the Marketplace to update the egress controls of your app. After which, you'll need to ask your users
 to uninstall and reinstall the app via its Marketplace listing.
+
+## Use customer-managed egress
+
+The app can use [customer-managed egress](/platform/forge/customer-managed-egress-and-remotes/) to indicate that an app can configure egress that is specific to an installation.
+
+```
+```
+1
+2
+```
+
+
+
+```
+permissions:
+  external:
+    configurable:
+      enabled: true
+```
+```

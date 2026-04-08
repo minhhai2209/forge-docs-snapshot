@@ -569,6 +569,11 @@ When helping readers, map their use case to the right invocation type: UI-driven
 - [Dynamic Modules (EAP)](https://developer.atlassian.com/platform/forge/apis-reference/dynamic-modules.md)
 - [API reference](https://developer.atlassian.com/platform/forge/apis-reference/dynamic-modules-api.md)
 
+### Customer-managed egress and remotes (EAP)
+
+- [Customer-managed egress and remotes (EAP)](https://developer.atlassian.com/platform/forge/customer-managed-egress-and-remotes.md)
+- [API reference](https://developer.atlassian.com/platform/forge/apis-reference/customer-managed-egress-and-remotes-api.md)
+
 ### Atlassian app REST APIs
 
 - [Atlassian app REST APIs](https://developer.atlassian.com/platform/forge/apis-reference/product-rest-api-reference.md)

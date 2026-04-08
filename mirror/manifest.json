@@ -1,14 +1,14 @@
 {
   "root_url": "https://developer.atlassian.com/platform/forge",
-  "generated_at": "2026-04-07T18:49:27.601961+00:00",
-  "discovered_urls": 702,
-  "downloaded_pages": 700,
+  "generated_at": "2026-04-08T18:57:18.806270+00:00",
+  "discovered_urls": 705,
+  "downloaded_pages": 703,
   "skipped_pages": 2,
-  "duration_seconds": 1813.4,
+  "duration_seconds": 1850.16,
   "user_agent": "ForgeDocsMirror/1.0 (+https://github.com/minhhai2209/forge-docs-snapshot)",
   "delay_seconds": 0.25,
   "failures": [
-    "timeout: https://developer.atlassian.com/platform/forge/set-up-forge",
+    "timeout: https://developer.atlassian.com/platform/forge/example-apps-rovo",
     "playwright: https://developer.atlassian.com/platform/forge/resources/Forge-Data-Processing-Addendum.pdf"
   ]
 }

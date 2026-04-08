@@ -158,6 +158,14 @@ equivalent CSP directive.
 External permissions support the following types for each entry in the list of domains:
 `String | EgressPermission | Remote`
 
+`external` also supports the following top level properties:
+
+| Property | Type | Required | Description |
+| --- | --- | --- | --- |
+| `external.configurable.enabled` | `boolean` | No | Defines whether an app can use [customer-managed egress](/platform/forge/customer-managed-egress-and-remotes). |
+
+The `external.configurable.enabled` field is immutable when deployed to production. It can't be removed from the manifest once added.
+
 ### Egress permissions
 
 You can use the `EgressPermission` type to define egress permission as an object, as well as
@@ -246,7 +254,7 @@ You can define these directly as an `EgressPermission` object.
 You don't need to specify individual URL paths, such as `example-dev.com/path`. Adding one domain
 allows access to any URL on that domain.
 
-###### EXAMPLE AS A STRING
+##### EXAMPLE AS A STRING
 
 ```
 ```
@@ -484,7 +492,7 @@ permissions:
   external:
     fetch:
       client:
-        - address: '*'
+        - address: "*"
 ```
 ```
 
