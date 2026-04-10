@@ -15,14 +15,6 @@ Instead, all new KVS and Custom Entity Store feature updates are applied to the 
 
 The `@forge/kvs` package provides better support for types through generics. This lets you indicate what data you’re working with for all KVS and Custom Entity Store operations.
 
-## Error handling for keys
-
-You’ll need to update any functions that rely on error handling for non-existent keys.
-
-The legacy `storage` module of `@forge/api` returned an `UNDEFINED` error to any request that specified a key that doesn’t exist. The `@forge/kvs` will now return a `KEY_NOT_FOUND` error instead.
-
-This applies to the following methods:
-
 ## Module changes
 
 The `kvs` module of the `@forge/kvs` package provides access to all builders to perform CRUD operations to the KVS and Custom Entity Store.

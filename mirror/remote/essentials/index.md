@@ -83,7 +83,7 @@ The Forge Invocation Token contains a JSON object with the following properties:
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
 | `app` | `object` | Yes | Information about the app and installation context. |
-| `app.installationId` | `string` | Yes | Identifier for the specific installation of an app. This is the value that any remote storage should be keyed against. Example: `ari:cloud:ecosystem::installation/75969db9-dc7b-4798-9715-bd098ac0d9d1` |
+| `app.installationId` | `string` | Yes | Represents the installation of an app in a site or workspace.  Use this value as the key for remote storage.  The value does not change on app upgrades but **will change** when reinstalling an app (either directly or as part of a site recreation or whole product import). See [Recovering data if installationId changes](#recovering-data-if-installationid-changes).  Example: `ari:cloud:ecosystem::installation/0a3a7799-53ae-4a5b-9e7e-03338980abb5` |
 | `app.apiBaseUrl` | `url` | Yes | API base URL where all Atlassian app API requests should be routed. Example: `https://api.atlassian.com/ex/confluence/4c822e2f-510f-48b9-b8d2-8419d0932949` |
 | `app.id` | `string` | Yes | The Forge application ID. This should match the value in your Forge `manifest.yml` file. Example: `ari:cloud:ecosystem::app/77334c21-3dd0-474f-a53f-28b4eeee5a71` |
 | `app.version` | `string` | Yes | [**\*DEPRECATED\***](https://developer.atlassian.com/changelog/#CHANGE-2433): The app `app.version` value used by some internal Atlassian services. To invoke your actual app version, use `app.appVersion` instead. The `app.version` field will be removed on September 24, 2025.  Example: `1` |
@@ -101,7 +101,6 @@ The Forge Invocation Token contains a JSON object with the following properties:
 | `app.license.ccpEntitlementId` | `string` | No | Represents entitlement id of license if billing system is Commerce Cloud Platform |
 | `app.license.ccpEntitlementSlug` | `string` | No | Represents entitlement number of license if billing system is Commerce Cloud Platform |
 | `app.license.isEvaluation` | `boolean` | No | A flag indicating whether the app is being used under an evaluation license. |
-|
 | `app.license.subscriptionEndDate` | `string` | No | Represents the expiration date of the application subscription. |
 | `app.license.supportEntitlementNumber` | `null` | No | Deprecated in favour of `app.license.ccpEntitlementSlug` and, as such, the value will always be `null` |
 | `app.license.trialEndDate` | `string` | No | Represents the termination date of the trial period. |
@@ -112,7 +111,10 @@ The Forge Invocation Token contains a JSON object with the following properties:
 | `app.installation.contexts` | `[object]` | Yes | The list of contexts where the app is installed. Each item in the list is an object as defined below. |
 | `app.installation.contexts.name` | `string` | Yes | Name of the context where app is installed. |
 | `app.installation.contexts.apiBaseUrl` | `url` | Yes | API base URL where all Atlassian app API requests should be routed. Example: `https://api.atlassian.com/ex/confluence/4c822e2f-510f-48b9-b8d2-8419d0932949` |
-| `context` | `object` |  | The context depends on how the app is using Forge Remote. When invoked from a frontend function, it will contain context describing the module that invoked it. When invoked from a backend function, no context is currently provided. |
+| `context` | `object` | No | The context depends on how the app is using Forge Remote. When invoked from a frontend function, it will contain context describing the module that invoked it. When invoked from a backend function, no context is currently provided. |
+| `context.cloudId` | `string` | No | Identifies a single cloud site (a.k.a. tenant) in Forge. Sometimes referred to as `siteId` or `tenantId`. Sits below the organisation ID but above the workspace ID.  Applicable only to Jira and Confluence apps.  It is a stable identifier and does not change upon app re-installation or site data recovery.  Example: `d0d52620-3203-4cfa-8db5-f2587155f0dd` |
+| `context.workspaceId` | `string` | No | Identifies a single Bitbucket workspace and is only applicable to Bitbucket apps.  It is a stable identifier and does not change upon app re-installation or site data recovery.  Example: `{b7ea02c9-0871-4858-a2a6-a190d7de977c}` |
+| `context.siteUrl` | `string` | No | Human‑readable base URL of the tenant where the invocation happened.  If available, you can use it to cross-reference between Connect and Forge when migrating.  Example: `https://pbray2.jira-dev.com` |
 | `principal` | `string` |  | The identifier for the user who invoked the app. UI modules only. |
 
 Example:
@@ -148,7 +150,7 @@ Example:
       "ccpEntitlementId": "5e176cc2-6fa0-3c7b-8fc4-302443a16e86",
       "ccpEntitlementSlug": "X-3SH-1A6-33A-AS0",
       "isEvaluation": false,
-      "subscriptionEndDate": "1689949707000",
+      "subscriptionEndDate": "2026-12-08T00:00:00.000Z",
       "supportEntitlementNumber": null,
       "trialEndDate": "1989949707000",
       "type": "commercial",
@@ -258,6 +260,30 @@ When an app contains a `remotes` declaration, Forge will (by default) assume the
 To qualify for the `PINNED` status, you must explicitly declare that your remote backend does not store in-scope End-User Data. Alternatively, apps can still achieve `PINNED` status if they store in-scope End-User Data on a remote backend configured with region-specific URLs. To meet data residency requirements, update the manifest file by defining region-specific `baseUrl` values and marking them with `inScopeEUD: true` to ensure compliance with data residency standards. See [Remotes](/platform/forge/manifest-reference/remotes/#data-residency) for specific instructions on how to do this in your manifest.
 
 For more details about in-scope End-User Data and the `PINNED` status for apps, see [Data residency](/platform/forge/data-residency/).
+
+## Best practice for storing data passed to a Forge Remote
+
+We strongly advise to store data against `installationId` because it is guaranteed to always be available for all apps, and other identifiers may not be available in the future. If you are using `cloudId` (for Jira and Confluence apps) or `workspaceId` (for Bitbucket apps), do so with caution and monitor the [Forge Changelog](/platform/forge/changelog) in case identifiers change.
+
+### Migrating from Connect to Forge
+
+During migration, you’ll often need to cross-reference stored data between your Connect and Forge apps. Because `installationId` only applies to Forge apps, and most Connect apps store data against `clientKey`, Forge has temporarily made `clientKey` available in Forge until Connect reaches end-of-support. For more details, see the [changelog announcement](/changelog/#CHANGE-3115) and the migration guide at [Retrieving the Connect clientKey in Forge](/platform/adopting-forge-from-connect/migrate-connect-clientkey).
+
+### Recovering data if `installationId` changes
+
+If you reinstall an app the `installationId` will change. Reinstallation occurs either directly (when running `forge install` followed by `forge uninstall`) or through recovery operations that involve site recreation or whole product imports.
+
+App upgrades (minor or major) do not change the value of `installationId`.
+
+Because of this, we are aware that storing data against `installationId` isn’t ideal and does require manual intervention when the value changes.
+
+#### Recovering data stored remotely
+
+For data stored in your own data store, you must manually map the old `installationId` to the new `installationId`. You can find the new `installationId` in the FIT token claims of recent invocations as you did before or by contacting Atlassian support.
+
+#### Recovering data stored using Forge Storage
+
+If you are using [Forge Storage](/platform/forge/storage/), you must contact Atlassian support who can link the new installation to the old data, within a retention period. See [Hosted storage data lifecycle - App reinstallation](/platform/forge/storage-reference/hosted-storage-data-lifecycle/#app-reinstallation).
 
 ## Reference materials
 
