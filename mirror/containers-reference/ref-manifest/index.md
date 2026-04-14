@@ -9,6 +9,8 @@ for use in production environments.
 
 For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
 
+The `endpoint` module described on this page is also documented in the [Endpoint manifest reference](/platform/forge/manifest-reference/endpoint/).
+
 Forge features a top-level manifest property named `services` that lets you define a service and its corresponding container.
 It supports the following properties:
 

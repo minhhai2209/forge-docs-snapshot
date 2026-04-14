@@ -574,6 +574,11 @@ When helping readers, map their use case to the right invocation type: UI-driven
 - [Customer-managed egress and remotes (EAP)](https://developer.atlassian.com/platform/forge/customer-managed-egress-and-remotes.md)
 - [API reference](https://developer.atlassian.com/platform/forge/apis-reference/customer-managed-egress-and-remotes-api.md)
 
+### License API
+
+- [License API](https://developer.atlassian.com/platform/forge/apis-reference/license-api.md)
+- [API reference](https://developer.atlassian.com/platform/forge/apis-reference/license-api.md)
+
 ### Atlassian app REST APIs
 
 - [Atlassian app REST APIs](https://developer.atlassian.com/platform/forge/apis-reference/product-rest-api-reference.md)
@@ -747,22 +752,25 @@ This section documents the **Forge CLI**—the command-line tool used to **creat
 - [build](https://developer.atlassian.com/platform/forge/cli-reference/build.md)
 - [list](https://developer.atlassian.com/platform/forge/cli-reference/build-list.md)
 
-### containers
-
-- [containers](https://developer.atlassian.com/platform/forge/cli-reference/containers.md)
-- [create](https://developer.atlassian.com/platform/forge/cli-reference/containers-create.md)
-- [delete](https://developer.atlassian.com/platform/forge/cli-reference/containers-delete.md)
-- [docker-login](https://developer.atlassian.com/platform/forge/cli-reference/containers-docker-login.md)
-- [get-login](https://developer.atlassian.com/platform/forge/cli-reference/containers-get-login.md)
-
 ### create
 
 - [create](https://developer.atlassian.com/platform/forge/cli-reference/create.md)
+
+### custom-scopes
+
+- [custom-scopes](https://developer.atlassian.com/platform/forge/cli-reference/custom-scopes.md)
+- [create](https://developer.atlassian.com/platform/forge/cli-reference/custom-scopes-create.md)
+- [list](https://developer.atlassian.com/platform/forge/cli-reference/custom-scopes-list.md)
 
 ### deploy
 
 - [deploy](https://developer.atlassian.com/platform/forge/cli-reference/deploy.md)
 - [list](https://developer.atlassian.com/platform/forge/cli-reference/deploy-list.md)
+
+### developer-spaces
+
+- [developer-spaces](https://developer.atlassian.com/platform/forge/cli-reference/developer-spaces.md)
+- [list](https://developer.atlassian.com/platform/forge/cli-reference/developer-spaces-list.md)
 
 ### eligibility
 
@@ -809,23 +817,11 @@ This section documents the **Forge CLI**—the command-line tool used to **creat
 
 - [register](https://developer.atlassian.com/platform/forge/cli-reference/register.md)
 
-### repositories
-
-- [repositories](https://developer.atlassian.com/platform/forge/cli-reference/repositories.md)
-- [images](https://developer.atlassian.com/platform/forge/cli-reference/repositories-images.md)
-- [list](https://developer.atlassian.com/platform/forge/cli-reference/repositories-list.md)
-
 ### settings
 
 - [settings](https://developer.atlassian.com/platform/forge/cli-reference/settings.md)
 - [list](https://developer.atlassian.com/platform/forge/cli-reference/settings-list.md)
 - [set](https://developer.atlassian.com/platform/forge/cli-reference/settings-set.md)
-
-### show
-
-- [show](https://developer.atlassian.com/platform/forge/cli-reference/show.md)
-- [containers](https://developer.atlassian.com/platform/forge/cli-reference/show-containers.md)
-- [services](https://developer.atlassian.com/platform/forge/cli-reference/show-services.md)
 
 ### storage
 
