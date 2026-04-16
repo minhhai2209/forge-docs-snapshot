@@ -1270,6 +1270,10 @@ This section contains curated references that show how real Forge apps are struc
 
 - [Data residency](https://developer.atlassian.com/platform/forge/data-residency.md)
 
+##### Tenant data isolation
+
+- [Tenant data isolation](https://developer.atlassian.com/platform/forge/tenant-data-isolation.md)
+
 ##### Configuring app security
 
 ###### Unlicensed user app access

@@ -54,7 +54,7 @@ from the environment in which they execute. By running apps in isolated environm
 
 To understand how this works in detail, see the diagram and notes on the Forge app environment below:
 
-![Forge app environment diagram](https://dac-static.atlassian.com/platform/forge/images/forge-app-environment-diagram.svg?_v=1.5800.1977)
+![Forge app environment diagram](https://dac-static.atlassian.com/platform/forge/images/forge-app-environment-diagram.svg?_v=1.5800.1978)
 
 * App bundle: The app bundle is the packaged app code.
 * Forge runtime: Forge apps run in AWS as lambdas. [AWS Lambda](https://aws.amazon.com/lambda/features/)
@@ -91,10 +91,27 @@ environments.
 
 Data isolation for apps is necessary in a cloud environment. The Atlassian cloud apps are
 multi-tenant, so apps need to be multi-tenant. However, this means that apps can potentially mix
-customer data. For example, two customers use an app that uses a global object to cache data by
-issue key. Issue keys are not globally unique, therefore data could leak from one customer to another.
+customer data if not handled carefully.
 
-It is the developer's responsibility to keep tenant data isolated. This can be achieved by not keeping data in memory or on disk after the invocation finishes, and partitioning any global caches to separate data by tenant. Refer to the [Shared responsibility model](/platform/forge/shared-responsibility-model/) for information about the responsibilities of developers and Forge in [keeping customer data safe](/platform/forge/shared-responsibility-model/#tenant-safety).
+The Forge runtime reuses warm execution processes across invocations for performance. **Module-level
+(global) variables are not cleared between invocations**, so data written to global scope during one
+tenant's invocation can persist into the next invocation (which may belong to an entirely different
+tenant). This is one of the most common causes of cross-tenant data leaks in Forge apps.
+
+It is the developer's responsibility to keep tenant data isolated. Key rules:
+
+* Don't store tenant-specific data in module-level variables.
+* If you use in-memory caches, always key them by a tenant identifier such as `cloudId`.
+* Don't use identifiers that are not globally unique (such as Jira issue keys) as cache keys.
+* Use [Forge Hosted Storage](/platform/forge/storage/#forge-hosted-storage) for data that must persist across invocations —
+  it is automatically scoped per app installation.
+
+For detailed guidance, safe and unsafe code examples, and an audit checklist, see
+[Tenant data isolation in Forge apps](/platform/forge/tenant-data-isolation/).
+
+Refer to the [Shared responsibility model](/platform/forge/shared-responsibility-model/) for the
+full breakdown of responsibilities between you and Atlassian for
+[keeping customer data safe](/platform/forge/shared-responsibility-model/#tenant-safety).
 
 ### Environments
 

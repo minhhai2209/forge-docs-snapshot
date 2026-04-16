@@ -1,11 +1,5 @@
 # Set up remotes for data residency realm pinning
 
-Using the capabilities discussed on this page may make your app *not* eligible for **Runs on Atlassian**.
-
-Go to [this page](/platform/forge/runs-on-atlassian/) to know more about the Runs on Atlassian program.
-To know how to check if your app is eligible for Runs on Atlassian, go to the
-[Forge CLI documentation](/platform/forge/cli-reference/eligibility/).
-
 Forge Remote data residency provides you with the flexibility to help meet [data residency](/platform/forge/data-residency/) requirements by pinning [remote endpoints](/platform/forge/remote/) to specific regions. This guide walks you through setting up realm pinning for remotes in your Forge apps.
 
 ## What is realm pinning?

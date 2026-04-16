@@ -1,11 +1,5 @@
 # Add content security and egress controls
 
-Using the capabilities discussed on this page may make your app *not* eligible for **Runs on Atlassian**.
-
-Go to [this page](/platform/forge/runs-on-atlassian/) to know more about the Runs on Atlassian program.
-To know how to check if your app is eligible for Runs on Atlassian, go to the
-[Forge CLI documentation](/platform/forge/cli-reference/eligibility/).
-
 Having visibility and control over the external systems that your app communicates and shares data
 with helps maintain the security of your app and your app users.
 

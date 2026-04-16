@@ -143,11 +143,6 @@ permissions:
 
 ## External permissions
 
-Using the capabilities discussed in this section may make your app *not* eligible for **Runs on Atlassian**.
-
-Go to [this page](/platform/forge/runs-on-atlassian/) to know more about the Runs on Atlassian program. To know how to check if your app is eligible for Runs on Atlassian, go to the
-[Forge CLI documentation](/platform/forge/cli-reference/eligibility/).
-
 The `external` section declares the external resources that your Forge UI app is allowed to access.
 This section also covers external website your Forge function is allowed to communicate with.
 This covers both Custom UI resolvers and any other Forge functions.

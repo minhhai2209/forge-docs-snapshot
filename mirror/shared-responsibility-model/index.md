@@ -111,17 +111,33 @@ Ensure that data is appropriately stored and read by your app.
 
 ### Tenant safety
 
-**Atlassian's responsibilities**
-
 Developers and Atlassian are jointly responsible for tenant safety. If your app is deployed on this runtime, the following responsibilities apply:
 
 **Your responsibilities**
 
-* Keep data in memory only within an invocation context; for example, don’t write to global variables or disk in a way that would expose customer data.
+* Keep data in memory only within an invocation context. **Do not write tenant-specific data to
+  module-level (global) variables** — the Forge runtime may reuse a warm execution process across
+  multiple tenant invocations without clearing module-level state. Data stored in global variables
+  during one tenant's invocation can persist into the next invocation, which may belong to a
+  different tenant.
+* If you use in-memory caches, always partition them by a tenant identifier such as `cloudId`. Do
+  not use identifiers that are not globally unique (such as Jira issue keys) as global cache keys,
+  because the same key can exist in multiple tenants' instances.
+* Do not write tenant-specific data to the local filesystem in a way that persists after the
+  invocation finishes.
+* Prefer [Forge Storage](/platform/forge/storage/) for any data that must persist across
+  invocations. Forge Storage is automatically scoped per app installation, making it inherently
+  tenant-safe.
 
 **Atlassian's responsibilities**
 
 * An app installed on tenant A cannot request data from an app installed on tenant B.
+* Segregate data storage to prevent cross-tenant access. This includes Forge app storage.
+
+A common source of cross-tenant data leaks is module-level caching — a standard Node.js pattern
+that is unsafe in Forge's shared runtime environment. See
+[Tenant data isolation in Forge apps](/platform/forge/tenant-data-isolation/) for safe and unsafe
+code examples, and an audit checklist for your app.
 
 With the legacy runtime, Atlassian was responsible for tenant isolation. An app installed on tenant A
 could not communicate with an app installed on tenant B.
