@@ -95,7 +95,7 @@ The Forge Invocation Token contains a JSON object with the following properties:
 | `app.module.type` | `string` | Yes | The module type initiating the remote call. This will be the module type, such as `xen:macro` for front-end invocations. Otherwise, it will be `core:endpoint`. To determine the type of module that specified the remote resolver, see `payload.context.extension.type`. Example: `core:endpoint` |
 | `app.module.key` | `string` | Yes | The Forge module key for this endpoint. Example: `forge-remote-app-boot` |
 | `app.license` | `object` | No | Contains information about the license of the app. This field is only present for paid apps in the production environment.  `license` is `undefined` for free apps, apps in `DEVELOPMENT` and `STAGING` environments (unless overridden by [internal testing](https://developer.atlassian.com/platform/marketplace/listing-forge-apps/#testing-your-app-with-different-license-states)) and apps that are not listed on the Atlassian Marketplace. |
-| `app.license.isActive` | `boolean` | No | Specifies if the license is active. |
+| `app.license.active` | `boolean` | No | Specifies if the license is active. **Note:** `app.license.isActive` is still available but deprecated; use `app.license.active` instead. |
 | `app.license.billingPeriod` | `string` | No | Represents the app's billing period. |
 | `app.license.capabilitySet` | `string` | No | Indicates the capability set associated with the app's current license edition. Possible values are `capabilityStandard` or `capabilityAdvanced`. |
 | `app.license.ccpEntitlementId` | `string` | No | Represents entitlement id of license if billing system is Commerce Cloud Platform |
@@ -144,7 +144,7 @@ Example:
       "key": "forge-remote-app-boot"
     },
     "license": {
-      "isActive": true,
+      "active": true,
       "billingPeriod": "MONTHLY",
       "capabilitySet": "capabilityAdvanced",
       "ccpEntitlementId": "5e176cc2-6fa0-3c7b-8fc4-302443a16e86",

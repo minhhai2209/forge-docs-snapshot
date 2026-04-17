@@ -144,7 +144,7 @@ resolver.define('getFeature', async ({ context }) => {
   let licenseValue = "INACTIVE";
   if (appLicense?.trialEndDate && new Date(appLicense.trialEndDate) > new Date()) {
     licenseValue = "TRIAL";
-  } else if (appLicense?.isActive) {
+  } else if (appLicense?.active) {
     licenseValue = "ACTIVE";
   }
 

@@ -61,6 +61,8 @@ Context is the same for all modules.
 38
 39
 40
+41
+42
 export type Context = {
   installContext: string;
   principal?: Principal;
@@ -74,6 +76,8 @@ export type Principal = {
 }
 
 export type License = {
+  active: boolean;
+  
   isActive: boolean;
   billingPeriod?: string | null;
   capabilitySet?: string | null;

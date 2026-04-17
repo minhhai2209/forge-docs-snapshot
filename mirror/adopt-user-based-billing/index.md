@@ -211,7 +211,7 @@ FIT: {
   app: {
 ...
     license: {
-      isActive: true,
+      active: true,
     }
   },
   context: {

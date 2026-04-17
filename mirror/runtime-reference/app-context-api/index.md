@@ -57,6 +57,8 @@ Use `getAppContext` to get a Forge function's context details, including the
 49
 50
 51
+52
+53
 export declare function getAppContext(): AppContext;
 
 export type AppContext = {
@@ -86,6 +88,8 @@ export type InstallationAri = {
 };
 
 export type License = {
+  active?: boolean;
+  
   isActive?: boolean;
   billingPeriod?: string;
   capabilitySet?: CapabilitySet;
@@ -177,6 +181,6 @@ console.log(moduleKey);
 // 'hello-world'
 
 console.log(JSON.stringify(license));
-//{"isActive":true,"billingPeriod":"MONTHLY","ccpEntitlementId":"NULL","ccpEntitlementSlug":"NULL","isEvaluation":"NULL","subscriptionEndDate":"NULL","supportEntitlementNumber":"NULL","trialEndDate":"NULL","type":"commercial"}
+//{"active":true,"billingPeriod":"MONTHLY","ccpEntitlementId":"NULL","ccpEntitlementSlug":"NULL","isEvaluation":"NULL","subscriptionEndDate":"NULL","supportEntitlementNumber":"NULL","trialEndDate":"NULL","type":"commercial"}
 ```
 ```
