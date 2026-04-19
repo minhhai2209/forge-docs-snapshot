@@ -1,9 +1,61 @@
-# Command: variables list
+# variables list
 
-Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
-When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our
+## Description
 
-[Privacy Policy](https://www.atlassian.com/legal/privacy-policy#how-we-disclose-information-we-collect)
+list the environment variables
 
-.
-You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt-out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
+## Usage
+
+```
+1
+Usage: forge variables list [options]
+```
+
+## Options
+
+```
+1
+2
+3
+4
+5
+6
+--verbose                        enable verbose mode
+-e, --environment [environment]  specify the environment (see your default
+                                 environment by running forge settings list)
+--json                           output results in JSON format (default:
+                                 false)
+-h, --help                       display help for command
+```
+
+## Operation
+
+The `forge variables list` command displays all environment variables set for your app through the `forge variables set` command. When you run `forge variables list` without an environment option (`--environment` or `-e`), the command returns the variables from your *default environment*. Your default environment is set the first time you run an environment-specific command.
+
+The values of encrypted Forge environment variables will not be displayed.
+
+Forge environment variables are associated with a single app and environment context.
+Deploying the app to another environment won’t copy the environment variables across to the new environment context.
+
+## Examples
+
+This displays the values of Forge environment variables set in your default environment.
+
+```
+```
+1
+2
+```
+
+
+
+```
+forge variables list -e production
+```
+```
+
+This command displays the values of Forge environment variables set in the `production` environment.
+
+## Troubleshooting
+
+If you don't see environment variables that you're certain you've set, check the variables for other environments. Forge uses your default environment if you don't specify one, so variables meant for another environment might have been unintentionally applied there.
