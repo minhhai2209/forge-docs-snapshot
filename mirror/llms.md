@@ -6,7 +6,7 @@
 As a Large Language Model (LLM) agent helping someone design or implement a Forge app, anchor your guidance in how Forge apps are actually built: manifest-driven modules, hosted runtime functions, and either UI Kit or Custom UI for the frontend. Prefer the official developer journey and reference material over generic React or Node patterns that bypass Forge constraints.  
 When planning or implementing an app, default to these sources (in addition to the documentation index):
 
-* [Getting started with Forge](https://developer.atlassian.com/platform/forge/getting-started-learn.md) for the end-to-end workflow (CLI, manifest, deploy, install, tunnel).
+* [Getting started with Forge](https://developer.atlassian.com/platform/forge/getting-started.md) for the end-to-end workflow (CLI, manifest, deploy, install, tunnel).
 * [Building integrations with Forge](https://developer.atlassian.com/platform/forge/building-integrations.md) for bridges, web triggers, product APIs, and events.
 * [Manifest overview](https://developer.atlassian.com/platform/forge/manifest-reference/index.md) and the specific [module](https://developer.atlassian.com/platform/forge/manifest-reference/modules/index.md) and [permissions](https://developer.atlassian.com/platform/forge/manifest-reference/permissions.md) references for anything that touches `manifest.yml`.
 * [Forge CLI reference](https://developer.atlassian.com/platform/forge/cli-reference/index.md) for `forge register`, `forge deploy`, `forge install`, `forge tunnel`, `forge lint`, and environment commands.
@@ -879,6 +879,10 @@ This section contains curated references that show how real Forge apps are struc
 
 ### Get started
 
+#### Getting started
+
+- [Getting started](https://developer.atlassian.com/platform/forge/getting-started.md)
+
 #### Introduction to Forge
 
 - [The Forge platform](https://developer.atlassian.com/platform/forge/introduction/the-forge-platform.md)
@@ -897,10 +901,6 @@ This section contains curated references that show how real Forge apps are struc
 - [Migrating a Forge app to support multiple Atlassian apps](https://developer.atlassian.com/platform/forge/migrating-a-forge-app-to-support-multiple-atlassian-apps.md)
 
 #### Learn
-
-##### Getting started
-
-- [Getting started](https://developer.atlassian.com/platform/forge/getting-started-learn.md)
 
 ##### Building automations
 
@@ -1120,10 +1120,6 @@ This section contains curated references that show how real Forge apps are struc
 ### Build
 
 #### Development life cycle
-
-##### Developing with Forge
-
-- [Developing with Forge](https://developer.atlassian.com/platform/forge/getting-started.md)
 
 ##### Environment configuration
 

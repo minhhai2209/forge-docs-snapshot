@@ -38,12 +38,27 @@ The process for transferring apps between Developer Spaces depends on whether yo
 
 **Private apps:**
 
-* Transfers of private apps between Developer Spaces currently require support intervention.
-* Contact [Atlassian support](https://developer.atlassian.com/support) and provide details about the app and the spaces involved. Include the app name, app ID, current Developer Space ID, and the target Developer Space ID.
+Before you transfer an app, you must know:
+
+* To transfer a private app to a different Developer Space, you must have the **Admin** role in both the source and destination Developer Spaces.
+* App transfer is not allowed on the first two days of the month, when invoice is pending.
+* The app will be co-invoiced with other apps of the Developer Space from the next billing cycle. You will get a separate bill for the current cycle.
+
+**To transfer a private app:**
+
+1. In the Developer Console, select the Developer Space where the app is present.
+2. From the list of apps in the Developer Space, use the overflow menu on the right to select "Transfer app".
+3. Make sure you understand that Forge charges will be incurred on the destination Developer Space.
+4. Choose the destination Developer Space from the list and confirm the transfer.
+
+If the destination Developer Space is not visible in the list, verify that you have the **Admin** role in that space. Contact the space Admin to request the necessary permissions.
+
+# Can't be an Admin of the destination Developer Space?
+
+If due to certain reasons you cannot get yourself added to the destination Developer Space as an Admin, then you can still raise a Support Ticket for the App Transfer.
+Additionally, the approval from an Admin of the destination Developer Space will be required on the ticket.
 
 **Marketplace apps:**
-
-The process for transferring apps is subject to change. We’ll update this documentation as soon as a self-serve or automated transfer flow becomes available in the Developer Console.
 
 ## Creating new apps in a Developer Space
 
