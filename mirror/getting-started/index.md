@@ -80,13 +80,6 @@ installing Node.js using this method.
    ```
    ```
 
-## Hello world CLI overview
-
-After installing the Forge CLI, follow the prompts in the terminal to build a hello world app. For a complete explanation
-of each step, continue reading along with the documentation.
-
-![Hello world CLI overview](https://dac-static.atlassian.com/platform/forge/images/forge-cli-overview-without-description.png?_v=1.5800.1982)
-
 ## Install the Forge CLI
 
 Install the Forge CLI using npm. You’ll install the CLI globally so that the commands
@@ -128,6 +121,36 @@ You should see a version number reported in the terminal. If a version number is
 look for errors reported in the terminal.
 
 With the CLI installed, view the complete list of Forge commands by running `forge --help`.
+
+## Build your first Forge app
+
+After installing the Forge CLI, follow the prompts in the terminal, or use the steps outlined below to build a hello world app.
+
+1. Log in with your Atlassian account and API token. [Token generation instructions below](#log-in-with-an-atlassian-api-scoped-token).
+2. Set up a cloud developer site.
+
+   A free Atlassian cloud developer site lets you install and test your app on Atlassian apps including Confluence and Jira. If you don't have one yet, set it up now:
+
+   1. Go to <http://go.atlassian.com/cloud-dev> and create a site using the email address associated with your Atlassian account.
+   2. Once your site is ready, log in and complete the setup wizard.
+3. Create a new Forge app from a template, or follow one of the [detailed tutorials](#next-steps) for a guided walkthrough.
+4. Deploy your app code to Forge.
+
+   ```
+   ```
+   1
+   2
+   ```
+
+
+
+   ```
+   cd <your-app-dir>
+   forge deploy
+   ```
+   ```
+5. Install the app to your Atlassian site. You can now view and test your app.
+6. Run a local tunnel for hot reload and log streams while developing.
 
 ## Log in with an Atlassian API scoped token
 
