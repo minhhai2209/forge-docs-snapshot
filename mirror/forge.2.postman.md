@@ -1,7 +1,7 @@
 ```
 {
   "info": {
-    "_postman_id": "2e0f6af4-2eb1-46b0-9ffd-f57011488595",
+    "_postman_id": "0d128a5c-c185-48c0-a325-6572309eba61",
     "name": "Forge Containers API",
     "description": "The Forge Containers Public API\n\n**Important:** The API base URL should be read from the `FORGE_EGRESS_PROXY_URL` environment variable.\nThe localhost URL in the servers section is for documentation purposes only.\n",
     "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
@@ -13,6 +13,86 @@
       "item": [
         {
           "name": "Get app installations",
+          "request": {
+            "url": {
+              "protocol": "{{protocol}}",
+              "host": "{{host}}",
+              "path": "{{basePath}}v1/installations",
+              "query": [
+                {
+                  "key": "pageSize",
+                  "value": "{{pageSize}}",
+                  "disabled": true,
+                  "description": "The maximum number of installations to return per page. The default and maximum value is 100. The minimum value is 1.\n"
+                },
+                {
+                  "key": "cursor",
+                  "value": "{{cursor}}",
+                  "disabled": true,
+                  "description": "A cursor for pagination. Use the cursor returned from a previous response to fetch the next page of results. If cursor is not provided, the first page of results will be returned.\n"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "header": [
+              {
+                "description": "",
+                "disabled": false,
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "description": "Returns all installations for the given app Id and environment. \nThis endpoint has a rate limit of 100 requests per minute per `appId`.\nSupports optional pagination via query parameters.\n\n**Limit:** [100 requests per minute per `appId`](/platform/forge/limits-containers/#limits).\n\n**Example requests:**\n```\n# Returns up to the first 100 installations (default page size)\nGET /v1/installations\n\n# Returns up to the first 50 installations\nGET /v1/installations?pageSize=50\n\n# Returns up to the next 50 installations after the given cursor\nGET /v1/installations?pageSize=50&cursor=eyJhbGciOi...\n\n# Returns up to the next 100 installations after the given cursor (default page size)\nGET /v1/installations?cursor=eyJhbGciOi...\n```\n",
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "type": "string"
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get details about a single app installation",
+          "request": {
+            "url": {
+              "protocol": "{{protocol}}",
+              "host": "{{host}}",
+              "path": "{{basePath}}v1/installation/:installationId",
+              "query": [],
+              "variable": [
+                {
+                  "key": "installationId",
+                  "value": "{{installationId}}",
+                  "description": "The UUID of the installation to retrieve.",
+                  "disabled": false
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "description": "",
+                "disabled": false,
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "description": "Returns detailed information about a single installation for the given installation ID. This endpoint has a rate limit of 1 request per minute per `installationId`.\n\n**Limit:** [1 request per minute per `installationId`](/platform/forge/limits-containers/#limits). If a single `appId` has multiple installations, this rate limit will be applied separately to each `installationId`.\n",
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "type": "string"
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get app installations (deprecated)",
           "request": {
             "url": {
               "protocol": "{{protocol}}",
@@ -30,7 +110,7 @@
                 "value": "application/json"
               }
             ],
-            "description": "Returns all installations for the given app Id and environment.\n",
+            "description": "**Deprecated.** Use `/v1/installations` instead.\n\nReturns all installations for the given app Id and environment.\n",
             "auth": {
               "type": "bearer",
               "bearer": {
@@ -939,7 +1019,7 @@
                 "value": "application/json"
               }
             ],
-            "description": "Retrieve key-value pairs matching the provided list of criteria. This method does not return secret values set by [Set secret value](/platform/forge/rest/v1/api-group-key-value-store/#api-v1-secret-set-post).",
+            "description": "Retrieve key-value pairs matching the provided list of criteria. This method does not return secret values set by [Set secret value](/platform/forge/rest/api-group-key-value-store/#api-v1-secret-set-post).",
             "auth": {
               "type": "bearer",
               "bearer": {
@@ -1001,6 +1081,98 @@
           "response": []
         },
         {
+          "name": "Batch delete key-value and entity entries",
+          "request": {
+            "url": {
+              "protocol": "{{protocol}}",
+              "host": "{{host}}",
+              "path": "{{basePath}}forge/storage/kvs/v1/batch/delete",
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "forge-proxy-authorization",
+                "value": "{{forge-proxy-authorization}}",
+                "description": "Forge Proxy Authorization header. Must start with \"Forge \" followed by comma-separated key-value pairs.\n\n**Format:** `Forge [field1=value1,field2=value2,...]`\n\n**Required Fields:**\n- `id` - Invocation ID from the corresponding inbound request (x-forge-invocation-id)\n\n**Optional Fields:**\n- `as=` - Specifies whether to call the API using either the app or its user as context\n- `accountId=` - For user impersonation (only supported when as=user)\n\n**Examples:**\n- `Forge as=app,id=invocation-123` - Use app context with invocation ID\n- `Forge as=user,id=invocation-123` - Use user context with invocation ID  \n- `Forge as=user,accountId=user-123,id=invocation-123` - User impersonation\n",
+                "disabled": false
+              },
+              {
+                "description": "",
+                "disabled": false,
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "description": "",
+                "disabled": false,
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "description": "Deletes multiple Key-Value Store and/or Custom Entity Store entries in a single operation.\nReturns a type ```BatchResponse``` which contains ```successfulKeys``` and ```failedKeys```.\nFailed keys include an ```error``` object with ```code``` and ```message```.",
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "type": "string"
+              }
+            },
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Batch get key-value and entity entries",
+          "request": {
+            "url": {
+              "protocol": "{{protocol}}",
+              "host": "{{host}}",
+              "path": "{{basePath}}forge/storage/kvs/v1/batch/get",
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "forge-proxy-authorization",
+                "value": "{{forge-proxy-authorization}}",
+                "description": "Forge Proxy Authorization header. Must start with \"Forge \" followed by comma-separated key-value pairs.\n\n**Format:** `Forge [field1=value1,field2=value2,...]`\n\n**Required Fields:**\n- `id` - Invocation ID from the corresponding inbound request (x-forge-invocation-id)\n\n**Optional Fields:**\n- `as=` - Specifies whether to call the API using either the app or its user as context\n- `accountId=` - For user impersonation (only supported when as=user)\n\n**Examples:**\n- `Forge as=app,id=invocation-123` - Use app context with invocation ID\n- `Forge as=user,id=invocation-123` - Use user context with invocation ID  \n- `Forge as=user,accountId=user-123,id=invocation-123` - User impersonation\n",
+                "disabled": false
+              },
+              {
+                "description": "",
+                "disabled": false,
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "description": "",
+                "disabled": false,
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "description": "Gets multiple Key-Value Store and/or Custom Entity Store entries in a single operation.\nEach request item may include optional ```options.metadataFields``` to request metadata (createdAt, updatedAt, expireTime) in the response.\nReturns ```successfulKeys``` (each with ```value``` and optionally metadata) and ```failedKeys``` (with ```error.code```, ```error.message```).",
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "type": "string"
+              }
+            },
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            }
+          },
+          "response": []
+        },
+        {
           "name": "Get secret value by key",
           "request": {
             "url": {
@@ -1031,7 +1203,7 @@
                 "value": "application/json"
               }
             ],
-            "description": "Gets a value by key, which was stored using [Set secret value by key](/platform/forge/rest/v1/api-group-key-value-store/#api-v1-secret-set-post). The value is decrypted before being returned.",
+            "description": "Gets a value by key, which was stored using [Set secret value by key](/platform/forge/rest/api-group-key-value-store/#api-v1-secret-set-post). The value is decrypted before being returned.",
             "auth": {
               "type": "bearer",
               "bearer": {
@@ -1077,7 +1249,7 @@
                 "value": "application/json"
               }
             ],
-            "description": "Stores sensitive credentials in JSON format, with encryption. \nValues set with this method can only be accessed with [Get secret value by key](/platform/forge/rest/v1/api-group-key-value-store/#api-v1-secret-get-post). \nWrite conflicts are resolved using a last-write-wins strategy by default, but this can be configured via the key policy option.\nOptionally, you can specify a TTL (Time To Live) to automatically expire the data after a specified duration.",
+            "description": "Stores sensitive credentials in JSON format, with encryption. \nValues set with this method can only be accessed with [Get secret value by key](/platform/forge/rest/api-group-key-value-store/#api-v1-secret-get-post). \nWrite conflicts are resolved using a last-write-wins strategy by default, but this can be configured via the key policy option.\nOptionally, you can specify a TTL (Time To Live) to automatically expire the data after a specified duration.",
             "auth": {
               "type": "bearer",
               "bearer": {
@@ -1356,6 +1528,35 @@
       "name": "Forge LLM",
       "description": "This API is accessible only from Forge applications and requires platform-provided authentication headers. It enables Forge apps to interact with native Forge-supported LLMs.\nFor more information, see the [Forge LLMs documentation](https://go.atlassian.com/forge-llms-api-reference)",
       "item": [
+        {
+          "name": "/forge/llm",
+          "request": {
+            "url": {
+              "protocol": "{{protocol}}",
+              "host": "{{host}}",
+              "path": "{{basePath}}forge/llm",
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "forge-proxy-authorization",
+                "value": "{{forge-proxy-authorization}}",
+                "description": "Forge Proxy Authorization header. Must start with \"Forge \" followed by comma-separated key-value pairs.\n\n**Format:** `Forge [field1=value1,field2=value2,...]`\n\n**Required Fields:**\n- `id` - Invocation ID from the corresponding inbound request (x-forge-invocation-id)\n\n**Optional Fields:**\n- `as=` - Specifies whether to call the API using either the app or its user as context\n- `accountId=` - For user impersonation (only supported when as=user)\n\n**Examples:**\n- `Forge as=app,id=invocation-123` - Use app context with invocation ID\n- `Forge as=user,id=invocation-123` - Use user context with invocation ID  \n- `Forge as=user,accountId=user-123,id=invocation-123` - User impersonation\n",
+                "disabled": false
+              },
+              {
+                "description": "",
+                "disabled": false,
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "description": "Returns the list of supported AI models and their respective statuses"
+          },
+          "response": []
+        },
         {
           "name": "/forge/llm/{model}",
           "request": {
@@ -1994,7 +2195,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name\": \"forge-container-realtime-channel\",\n  \"payload\": \"Realtime message sent from the container service, id=1\",\n  \"options\": {\n    \"token\": \"example-token\"\n  }\n}"
+              "raw": "{\n  \"name\": \"forge-container-realtime-channel\",\n  \"payload\": \"Realtime message sent from the container service, id=1\",\n  \"options\": {\n    \"token\": \"example-token\",\n    \"contextOverrides\": [\n      \"board\"\n    ]\n  }\n}"
             }
           },
           "response": []

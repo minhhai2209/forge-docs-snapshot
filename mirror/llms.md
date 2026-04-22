@@ -285,6 +285,7 @@ Refer to the following sections for more detailed information about Forge module
 
 - [Rovo modules](https://developer.atlassian.com/platform/forge/manifest-reference/modules/rovo-index.md)
 - [Rovo Agent](https://developer.atlassian.com/platform/forge/manifest-reference/modules/rovo-agent.md)
+- [Rovo Agent Connector (EAP)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/rovo-agent-connector.md)
 - [Action](https://developer.atlassian.com/platform/forge/manifest-reference/modules/rovo-action.md)
 
 ### Teamwork Graph modules
@@ -712,6 +713,7 @@ When answering questions, **cite the relevant subsection** above instead of inve
 - [Forge SQL limits](https://developer.atlassian.com/platform/forge/limits-sql.md)
 - [Forge Object Store](https://developer.atlassian.com/platform/forge/limits-object-store.md)
 - [Forge LLM limits](https://developer.atlassian.com/platform/forge/limits-llm.md)
+- [Forge Containers REST API limits](https://developer.atlassian.com/platform/forge/limits-containers.md)
 - [Web trigger limits](https://developer.atlassian.com/platform/forge/limits-web-trigger.md)
 - [Async events limits](https://developer.atlassian.com/platform/forge/limits-async-events.md)
 - [App and developer limits](https://developer.atlassian.com/platform/forge/limits-app-developer.md)

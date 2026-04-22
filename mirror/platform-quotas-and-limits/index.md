@@ -58,6 +58,12 @@ Details limits for Forge LLMs such as context window size and requests per minut
 
 For more information, see [Forge LLM limits](/platform/forge/limits-llm/).
 
+### Forge Containers REST API
+
+Details limits for using the Forge Containers REST API, such as the number of allowed requests per minute for a given API, helping ensure fair use and reliable performance.
+
+For more information, see [Forge Containers REST API limits](/platform/forge/limits-containers/).
+
 ### Web Trigger
 
 Sets rate limits for Web trigger operations (get, create, delete) per minute, app, environment, and context. Exceeding these thresholds results in temporary request denials until usage normalizes.
