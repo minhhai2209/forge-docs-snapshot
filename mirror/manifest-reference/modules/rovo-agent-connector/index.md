@@ -42,6 +42,8 @@ modules {}
    ├─ icon (string) [Optional]
    ├─ conversationStarters [] [Optional]
    │  └─ conversationStarter (string)
+   ├─ productContexts [] [Mandatory]
+   │  └─ product (string)
    └─ protocols [] [Mandatory]
       └─ agent2Agent
          └─ jsonRpcTransport
@@ -55,6 +57,10 @@ remotes []
 resources []
 └─ key (string) [Mandatory]
 └─ path (string) [Mandatory]
+
+permissions []
+└─ scopes []
+  └─ scope (string) [Mandatory]
 ```
 ```
 
@@ -64,6 +70,8 @@ In this structure:
 * The `endpoint` property references a separately defined [`endpoint` module](/platform/forge/manifest-reference/endpoint/), which specifies the route Jira uses to communicate with your remote agent via JSON-RPC.
 * The `remotes` configuration identifies the domain of your remote service and enables authentication tokens to be passed to your service.
 * The `resources` module provides static assets like the agent icon.
+* The `productContexts` property specifies which Atlassian products the agent operates in. Only `jira` is supported during the EAP.
+* The `permissions.scopes` array declares the OAuth scopes your app requires. The `read:jira-work` scope is required for the agent to function correctly.
 
 ## Properties
 
@@ -74,6 +82,7 @@ In this structure:
 | `description` | `string` |  | The description of your Agent. This is used to describe what your Agent can do to users. |
 | `icon` | `string` |  | The icon displayed as the Agent’s avatar.  The `icon` property accepts a relative path from a declared resource. Alternatively, you can also use an absolute URL to a self-hosted icon.  If no icon is provided, or if there's an issue preventing the icon from loading, a generic avatar will be displayed. |
 | `conversationStarters` | `string[]` |  | Conversation starters that will be suggested to the user when they engage with your Agent. |
+| `productContexts` | `string[]` | Yes | The Atlassian apps within which the agent should operate.  Only `jira` can be used during the EAP. |
 | `protocols` | `object` | Yes | Defines the protocols and transport mechanisms your remote agent uses to communicate with Jira.  See [A2A Protocols](#a2a-protocols) for more configuration details |
 
 ### A2A Protocols
@@ -88,13 +97,9 @@ In this structure:
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
 | `endpoint` | `string` | Yes | The key of the endpoint that should be invoked for JSON-RPC communication with your remote agent. |
-| `streaming` | `boolean` |  | Whether responses from the remote agent are streamed back to Jira incrementally. Defaults to `false`. |
+| `streaming` | `boolean` |  | Whether responses from the remote agent are streamed back to Jira incrementally using [Server-Sent Events (SSE)](https://a2a-protocol.org/latest/topics/streaming-and-async/#streaming-with-server-sent-events-sse). Defaults to `false`. |
 
 The `rovo:agentConnector` module works together with other manifest configurations to enable remote agent integration:
-
-## Oauth Scopes
-
-Your app needs to include the following Jira oauth scope to work properly `read:jira-work`.
 
 ## Manifest example
 
@@ -115,6 +120,8 @@ modules:
       name: Your Awesome Agent
       description: An awesome agent that you built
       icon: resource:agent-resources;icons/your-agent.svg
+      productContexts:
+        - jira
       protocols:
         agent2Agent:
           jsonRpcTransport:
@@ -135,7 +142,6 @@ remotes:
 resources:
   - key: agent-resources
     path: static/hello-world/build
-
 permissions:
   scopes:
     - read:jira-work

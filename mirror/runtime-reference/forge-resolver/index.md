@@ -385,7 +385,20 @@ type Context = {
         toString: () => string
       }
     ]
-  }
+  },
+  license?: LicenseDetails;
+};
+
+type LicenseDetails = {
+  active?: boolean;
+  billingPeriod?: string;
+  ccpEntitlementId?: string;
+  ccpEntitlementSlug?: string;
+  isEvaluation?: boolean;
+  subscriptionEndDate?: string;
+  supportEntitlementNumber?: string | null;
+  trialEndDate?: string;
+  type?: string;
 };
 
 function define(
@@ -418,6 +431,9 @@ function define(
     * **environmentType:** The name of the [environment](/platform/forge/environments-and-versions/) where the component is deployed.
     * **installContext**: The ARI identifying the cloud or Atlassian app context of this component installation.
     * **installation**: A summary of the app installation, including the installation ARI and the contexts where the app is installed.
+    * **license:** Contains information about the license of the app. Note: this field is only present for paid apps in the production environment.
+      `license` is `undefined` for free apps, apps not listed on the Atlassian Marketplace, and apps in development and staging environments.
+      See the `LicenseDetails` type for what information is available.
 
 Additional contextual information for your Custom UI app. The data available in the `extension` property depends on the module in which your Custom UI resolver is used. Note that **context** is similar to [Platform Context](/platform/forge/ui-kit-hooks-reference/#returns-3), although it's not a 1-to-1 mapping.
 
