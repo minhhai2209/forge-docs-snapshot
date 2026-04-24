@@ -159,6 +159,7 @@ Refer to the following sections for more detailed information about Forge module
 - [SQL](https://developer.atlassian.com/platform/forge/manifest-reference/modules/sql.md)
 - [Trigger](https://developer.atlassian.com/platform/forge/manifest-reference/modules/trigger.md)
 - [Web trigger](https://developer.atlassian.com/platform/forge/manifest-reference/modules/web-trigger.md)
+- [Pre-uninstall trigger](https://developer.atlassian.com/platform/forge/manifest-reference/modules/pre-uninstall-trigger.md)
 - [LLM](https://developer.atlassian.com/platform/forge/manifest-reference/modules/llm.md)
 - [API route](https://developer.atlassian.com/platform/forge/manifest-reference/modules/api-route.md)
 

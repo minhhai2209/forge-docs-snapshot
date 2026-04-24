@@ -205,9 +205,9 @@ This is an example payload.
 ```
 ```
 
-## Pre-uninstallation Trigger
+## Pre-uninstallation
 
-When an uninstall action is initiated via the UI or CLI, a notification will be sent via a pre-uninstall trigger. To do this, a [trigger module](https://developer.atlassian.com/platform/forge/manifest-reference/modules/trigger/) will need to be added to the Forge app.
+When an uninstall action is initiated via the UI or CLI, a notification will be sent via a pre-uninstall trigger. To do this, a [`preUninstall` module](/platform/forge/manifest-reference/modules/pre-uninstall-trigger/) will need to be added to the Forge app.
 
 The pre-uninstall invocation has a timeout of 55 seconds, during which the uninstallation process will be paused. Cleanup operations should conclude in that time interval — once the uninstallation completes, product API calls may not work.
 

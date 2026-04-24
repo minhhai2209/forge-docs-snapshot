@@ -45,20 +45,16 @@ tunnel:
 Use `image` to define a pre-built image for the tunnel instead. For example:
 
 ```
-```
 1
 2
-```
-
-
-
-```
+3
+4
+5
 tunnel:
   docker:
     image: java-service:${TAG}
     ports:
       - "8080:8080"
-```
 ```
 
 Running `forge tunnel` will then create a docker compose stack using the container’s `tunnel` configuration and the latest Forge Containers proxy sidecar. Terminating the tunnel will also clean up the compose stack.
