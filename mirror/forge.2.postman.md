@@ -1,7 +1,7 @@
 ```
 {
   "info": {
-    "_postman_id": "de2cf062-f1a8-4e45-bc7b-a831d2f12e82",
+    "_postman_id": "79c71f91-d75e-4228-b1a5-09d92cb93154",
     "name": "Forge Containers API",
     "description": "The Forge Containers Public API\n\n**Important:** The API base URL should be read from the `FORGE_EGRESS_PROXY_URL` environment variable.\nThe localhost URL in the servers section is for documentation purposes only.\n",
     "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"

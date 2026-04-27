@@ -15,6 +15,9 @@ This guide will use the `jira:adminPage` module with Custom UI, but you can add 
 the modules where the [createHistory API](/platform/forge/apis-reference/ui-api-bridge/view/#createhistory)
 is available.
 
+You can also explore the [forge-module-router](https://github.com/robertmassaioli/forge-module-router) community package for additional routing utilities.
+This package is community-maintained and not part of the official Atlassian Forge toolset.
+
 1. Navigate to the directory where you want to create the app. A new directory with the app's name
    will be created there.
 2. Create your app by running:
@@ -25,8 +28,16 @@ is available.
 7. Change to the app subdirectory to see the app files.
 
    ```
+   ```
    1
+   2
+   ```
+
+
+
+   ```
    cd custom-ui-routing-tutorial
+   ```
    ```
 
 ## Build the content for your Custom UI
@@ -222,4 +233,4 @@ export default App;
 
 You now have a full page app with routing:
 
-![Example app with routing](https://dac-static.atlassian.com/platform/forge/images/custom-ui-routing.gif?_v=1.5800.1996)
+![Example app with routing](https://dac-static.atlassian.com/platform/forge/images/custom-ui-routing.gif?_v=1.5800.1997)
