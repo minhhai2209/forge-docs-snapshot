@@ -1,4 +1,4 @@
-# Work around the 1,000 value limit in custom JQL functions
+# Manage the 1,000 value limit in custom JQL functions
 
 When using custom JQL functions that return large result sets, customers encounter this error:
 

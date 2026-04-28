@@ -91,12 +91,3 @@ Using the `analytics` category on a domain that isn't on this list will prevent 
 This policy ensures that the `analytics` egress category is used transparently and only for legitimate
 analytics purposes, maintaining user trust regardless of your app's participation in trust programs
 like [Runs on Atlassian](/platform/forge/runs-on-atlassian).
-
-## Requesting approval for additional domains
-
-If you need to use an analytics tool that's not on the pre-approved list, raise a support request
-[here](https://ecosystem.atlassian.net/servicedesk/customer/portal/34/group/3534/create/4180).
-
-Atlassian will review your request and the information provided at its sole discretion. If
-Atlassian approves your request, the tool will be added to the allowlist and published on
-the developer documentation. If not, you will be advised to select an approved alternative.
