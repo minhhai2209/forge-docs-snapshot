@@ -1,5 +1,11 @@
 # Incrementally adopting Forge from Connect
 
+# Declare your migration intent
+
+You can now communicate your migration plan and commitment status to your users using the [`core:connectToForgeMigration`](/platform/adopting-forge-from-connect/connect-to-forge-migration-module/) manifest module. This lets you share a valid URL to your migration timeline and indicate whether you intend to migrate before Connect End of Support (EOS).
+
+Currently, this feature is only available to a canary cohort of developers and applies only to private apps utilising Connect modules. It does not affect any public Marketplace apps, and the messaging will not be visible to all users yet.
+
 Connect apps for **Confluence Cloud** and **Jira Cloud**, including **Jira Service Management**, can now incrementally adopt powerful Forge capabilities, all while keeping their existing features, installations and reviews.
 
 ## Why should I adopt Forge?
