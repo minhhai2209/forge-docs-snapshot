@@ -889,9 +889,15 @@ This section contains curated references that show how real Forge apps are struc
 #### Introduction to Forge
 
 - [The Forge platform](https://developer.atlassian.com/platform/forge/introduction/the-forge-platform.md)
-- [Forge MCP Server](https://developer.atlassian.com/platform/forge/forge-mcp.md)
 - [Why build with Forge](https://developer.atlassian.com/platform/forge/introduction/why-build-with-forge.md)
 - [Forge platform pricing](https://developer.atlassian.com/platform/forge/forge-platform-pricing.md)
+
+#### AI development toolkit
+
+- [Overview](https://developer.atlassian.com/platform/forge/ai-development-toolkit/index.md)
+- [Forge AI Plugin](https://developer.atlassian.com/platform/forge/ai-development-toolkit/forge-ai-plugin.md)
+- [Forge MCP Server](https://developer.atlassian.com/platform/forge/ai-development-toolkit/forge-mcp.md)
+- [Forge skills](https://developer.atlassian.com/platform/forge/ai-development-toolkit/forge-developer-skills.md)
 
 #### Migration guides
 
@@ -1049,6 +1055,7 @@ This section contains curated references that show how real Forge apps are struc
 - [Build a Rovo Agent app](https://developer.atlassian.com/platform/forge/build-a-hello-world-rovo-agent.md)
 - [Build a Q&A Rovo Agent for Confluence](https://developer.atlassian.com/platform/forge/build-a-q-and-a-rovo-agent-for-confluence.md)
 - [Build a Jira issue analyst Rovo Agent](https://developer.atlassian.com/platform/forge/build-a-jira-issue-analyst-rovo-agent.md)
+- [Integrate remote agents with Jira](https://developer.atlassian.com/platform/forge/remote-agents-in-jira.md)
 
 ###### Teamwork Graph
 
@@ -1130,7 +1137,7 @@ This section contains curated references that show how real Forge apps are struc
 
 ##### Forge MCP Server
 
-- [Forge MCP Server](https://developer.atlassian.com/platform/forge/forge-mcp-model-context-protocol.md)
+- [Forge MCP Server](https://developer.atlassian.com/platform/forge/ai-development-toolkit/forge-mcp.md)
 
 ##### Contributors
 
