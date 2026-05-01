@@ -1,6 +1,6 @@
 # Support data residency realm migrations for Forge Remote
 
-The realm `migration` module is for Forge apps using remotes that need to align with the customer's Atlassian app region. While Forge automatically manages hosting, pinning, and migration for apps using Forge-hosted storage solutions like [Key-Value Store](/platform/forge/runtime-reference/storage-api-basic/) and [Custom Entity Store](/platform/forge/storage-reference/storage-api-custom-entities/), apps with remotes must actively manage data location through realm pinning and migration.
+The realm `migration` module is for Forge apps using remotes that need to align with the customer's Atlassian app region. While Forge automatically manages hosting, pinning, and migration for apps using Forge-hosted storage solutions like [Key-Value Store](/platform/forge/storage-reference/kvs/) and [Custom Entity Store](/platform/forge/storage-reference/entities/), apps with remotes must actively manage data location through realm pinning and migration.
 
 Customers may request a migration if a Forge app was originally installed in a global location due to missing region-specific `baseUrl` settings or if the Forge app did not support the host Atlassian app's region.
 

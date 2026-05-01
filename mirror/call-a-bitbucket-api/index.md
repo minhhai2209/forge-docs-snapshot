@@ -11,7 +11,7 @@ In this section, you'll modify your app to call the Bitbucket REST API from your
 from the `@forge/api` package, you'll get the repository metadata and print the repository's full name to the console.
 
 The `@forge/api` package simplifies HTTP operations and contains other Forge APIs such as the
-[Storage](/platform/forge/runtime-reference/storage-api/) API.
+[Storage](/platform/forge/storage-reference/) API.
 For this tutorial, you’ll also use the context of a [Custom UI resolver](/platform/forge/runtime-reference/custom-ui-resolver/)
 to get context information about the page the app is on.
 
@@ -459,5 +459,5 @@ ForgeReconciler.render(
 In the next tutorial, you'll learn how to make changes to your app's frontend using the
 [UI Kit components](/platform/forge/ui-kit/components/) of Forge.
 
-[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.2006)](/platform/forge/build-a-hello-world-app-in-bitbucket/)
-[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.2006)](/platform/forge/change-the-bitbucket-frontend-with-the-ui-kit)
+[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.2007)](/platform/forge/build-a-hello-world-app-in-bitbucket/)
+[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.2007)](/platform/forge/change-the-bitbucket-frontend-with-the-ui-kit)

@@ -12,12 +12,12 @@ Consider data shape and size limits when selecting the storage option that best 
 
 | API | Overview | Ideal for |
 | --- | --- | --- |
-| [Key-Value Store](/platform/forge/runtime-reference/storage-api-basic/) | Simple storage for key/value pairs | User preferences, app configuration, simple data storage |
-| [Custom entities store](/platform/forge/storage-reference/storage-api-custom-entities/) | Structured data storage with custom entities and query capabilities | Complex data structures, queryable data, relationships between entities |
+| [Key-Value Store](/platform/forge/storage-reference/kvs/) | Simple storage for key/value pairs | User preferences, app configuration, simple data storage |
+| [Custom entities store](/platform/forge/storage-reference/entities/) | Structured data storage with custom entities and query capabilities | Complex data structures, queryable data, relationships between entities |
 | [SQL](/platform/forge/storage-reference/sql/) | Fully managed relational database | Complex data models, relationships, transactions, advanced queries |
 | [Object Store (EAP)](/platform/forge/storage-reference/object-store/) | Large file and media storage | Binary data, files, media, large objects |
 
-See [platform quotas and limits](/platform/forge/platform-quotas-and-limits/) and [storage options](/platform/forge/runtime-reference/storage-api/) for more details.
+See [platform quotas and limits](/platform/forge/platform-quotas-and-limits/) and [storage options](/platform/forge/storage-reference/) for more details.
 
 ### Example code
 

@@ -7,7 +7,7 @@ Using the `@forge/api` package, you'll learn how to make REST calls to an authen
 In this section, you'll modify your app to call the [Jira Service Management REST API](/cloud/jira/service-desk/rest/intro/#jira-cloud-platform-apis). Using the [requestJira](/platform/forge/apis-reference/ui-api-bridge/requestJira) function from the `@forge/bridge` package, you'll get the list of queues on a Jira Service Management queue page app in the form of an array and print the number of comments to the console.
 
 The `@forge/bridge` package simplifies HTTP operations and contains other Forge APIs such as the
-[Storage](/platform/forge/runtime-reference/storage-api/) and
+[Storage](/platform/forge/storage-reference/) and
 [Properties](/platform/forge/runtime-reference/properties-api/) APIs.
 For this tutorial, you'll also use the UI Kit hook
 [useProductContext](/platform/forge/ui-kit/hooks/use-product-context/) to get context information about the Jira Service Management queues the app is on.
@@ -175,7 +175,7 @@ ForgeReconciler.render(
 2. Refresh the JSM queue page app.
 3. Check the output of the app in your browser's developer console. The number of queues on the service desk displays as follows:
 
-![The message displayed in the browser console](https://dac-static.atlassian.com/platform/forge/images/console-log-successful-jsm.png?_v=1.5800.2006)
+![The message displayed in the browser console](https://dac-static.atlassian.com/platform/forge/images/console-log-successful-jsm.png?_v=1.5800.2007)
 
 ## Set required permissions
 
@@ -234,5 +234,5 @@ For information about how Atlassian collects and handles your data, read our
 In the next tutorial, you'll learn how to make changes to your app's frontend using the
 [UI Kit components](/platform/forge/ui-kit/components/) of Forge.
 
-[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.2006)](/platform/forge/build-a-hello-world-app-in-jira-service-management/)
-[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.2006)](/platform/forge/change-the-jira-service-management-frontend-with-the-ui-kit/)
+[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.2007)](/platform/forge/build-a-hello-world-app-in-jira-service-management/)
+[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.2007)](/platform/forge/change-the-jira-service-management-frontend-with-the-ui-kit/)

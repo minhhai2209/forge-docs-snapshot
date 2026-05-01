@@ -1,13 +1,13 @@
 # Forge scopes
 
-Certain platform features, such as the [App storage API](/platform/forge/runtime-reference/storage-api/),
+Certain platform features, such as the [App storage API](/platform/forge/storage-reference/),
 are authenticated using OAuth 2.0.
 
 | Scope | Description |
 | --- | --- |
 | `read:app-system-token` | Enables Forge to pass a token to a remote backend, that can be used to invoke Atlassian app REST APIs with the permissions of the app "bot" user.  For more information see [Forge Remote](/platform/forge/remote). |
 | `read:app-user-token` | Enables Forge to pass a token to a remote backend, that can be used to invoke Atlassian app REST APIs with the permissions of the logged-in user.  Only app modules can have this scope, because they are associated with a logged-in user session. App event and lifecycle event modules are not associated with a logged-in user session, therefore they cannot have this scope.  For more information [Forge Remote](/platform/forge/remote). |
-| `storage:app` | Enables the [App storage API](/platform/forge/runtime-reference/storage-api/). |
+| `storage:app` | Enables the [App storage API](/platform/forge/storage-reference/). |
 | `report:personal-data` | Enables the [User privacy API](/platform/forge/user-privacy-guidelines/). |
 | `read:chat:rovo` | Enables [actions](/platform/forge/manifest-reference/modules/rovo-action/) from your Forge app to be used by agents [created by customers](https://support.atlassian.com/rovo/docs/create-and-edit-agents/). |
 

@@ -13,14 +13,14 @@ the [Async events API](/platform/forge/runtime-reference/async-events-api/)
 to queue your app's interactions with the KVS and Custom Entity Store. See
 [Queue app interactions with storage API](/platform/forge/storage-api-limit-handling/) for guidance. While the new limits are designed to fit the majority of apps, partners with data-heavy apps can reach out to Atlassian support and ask for extended limits.
 
-The limits listed below apply to the [Key-Value Store or Custom Entity Store](/platform/forge/runtime-reference/storage-api/)
+The limits listed below apply to the [Key-Value Store or Custom Entity Store](/platform/forge/storage-reference/)
 for *each installation* of your app.
 
 ### Request size rounding
 
 Request sizes are rounded up to the nearest 10KB. Requests that are 10KB or smaller are counted as 1 request. Requests sized between 10KB and 20KB are counted as 2 requests. For example, a request with a payload of 65KB will be rounded up to 70KB, resulting in a count of 7 requests.
 
-Due to the 10KB rounding, [Batch operations](/platform/forge/storage-reference/batchops/) and [Batch operations for custom entities](/platform/forge/storage-reference/batchops-entities/) are better than the equivalent individual operations at avoiding limits. For example, 10 individual writes of 1KB each will be counted as 100KB of limit use. However, if set in a single batch operation, it will count as 10KB of use.
+Due to the 10KB rounding, [Batch operations](/platform/forge/storage-reference/kvs-batch/) and [Batch operations for custom entities](/platform/forge/storage-reference/entities-batch/) are better than the equivalent individual operations at avoiding limits. For example, 10 individual writes of 1KB each will be counted as 100KB of limit use. However, if set in a single batch operation, it will count as 10KB of use.
 
 The new limits, compared to the current rigid per-operation limits, allow apps to distribute their usage dynamically.
 
@@ -58,18 +58,18 @@ The KVS and Custom Entity Store also let you package multiple operations into on
 
 ## Custom Entity Store limits
 
-Custom entities (used for [complex queries](/platform/forge/runtime-reference/storage-api-query-complex/)) are subject to the following additional limits:
+Custom entities (used for [complex queries](/platform/forge/storage-reference/entities-api-query/)) are subject to the following additional limits:
 
 | Category | Requirements | Limits |
 | --- | --- | --- |
 | Entity | Entity names:   * Must only consist of the following characters `a-z0-9:-_.` * Must follow the regex pattern `[_a-z0-9:-.]` * Cannot start with `-` or `_` * Must not begin or end with a `.` * Must not contain the sequence `..`   In addition, an app must not have duplicate entity names. | * An app can have a maximum of 20 entities * Each entity can have a maximum of 7 custom indexes and 50 attributes * Objects that can be stored as custom entities have a maximum depth of 31 and a maximum size of 240KiB (RAW) per object * Entity names cannot be shorter than 3 characters or longer than 60 characters in length |
 | Attribute | Attribute names must follow the regex `[_A-Za-z][_0-9A-Za-z]*`. | Attribute names have a maximum length of 64 characters. |
-| Index | Index names must contain only the following characters `a-zA-Z0-9:-_.`, and must adhere to the following requirements:   * Must not begin or end with a `.` * Must not contain the sequence `..` * Must not be empty   In addition, each index name within an entity must be unique. | * Each entity can have a maximum of 7 custom indexes * The size of combined values for all   [range](/platform/forge/runtime-reference/custom-entities/#index-types)   attributes on any defined index cannot exceed 900 bytes * The size of combined values for all   [partition](/platform/forge/runtime-reference/custom-entities/#index-types)   attributes on any defined index cannot exceed 1700 bytes * Index names cannot be shorter than 3 characters or longer than 50 characters in length. |
+| Index | Index names must contain only the following characters `a-zA-Z0-9:-_.`, and must adhere to the following requirements:   * Must not begin or end with a `.` * Must not contain the sequence `..` * Must not be empty   In addition, each index name within an entity must be unique. | * Each entity can have a maximum of 7 custom indexes * The size of combined values for all   [range](/platform/forge/storage-reference/entities-manifest/#index-types)   attributes on any defined index cannot exceed 900 bytes * The size of combined values for all   [partition](/platform/forge/storage-reference/entities-manifest/#index-types)   attributes on any defined index cannot exceed 1700 bytes * Index names cannot be shorter than 3 characters or longer than 50 characters in length. |
 | Keys | A key should:   * Follow the regex pattern `/^(?!\s+$)[a-zA-Z0-9:._\s-#]+$/` * Contain at least 1 character * Not be empty * Not contain only blank space(s) | A key can contain a maximum of 500 characters. |
 
-In addition, each [complex query](/platform/forge/runtime-reference/storage-api-query-complex/)
+In addition, each [complex query](/platform/forge/storage-reference/entities-api-query/)
 can only have a maximum of 100 conditions
 (for example, `beginsWith`, `contains`, and `isGreaterThan`). This limit applies to conditions used in
-[where](/platform/forge/runtime-reference/storage-api-query-complex/#where),
-[andFilter](/platform/forge/runtime-reference/storage-api-query-complex/#andfilter---orfilter), and
-[orFilter](/platform/forge/runtime-reference/storage-api-query-complex/#andfilter---orfilter) filters.
+[where](/platform/forge/storage-reference/entities-api-query/#where),
+[andFilter](/platform/forge/storage-reference/entities-api-query/#andfilter---orfilter), and
+[orFilter](/platform/forge/storage-reference/entities-api-query/#andfilter---orfilter) filters.

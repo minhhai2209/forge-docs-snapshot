@@ -61,7 +61,7 @@ permissions:
 
 ### Platform and Atlassian app scopes
 
-Certain platform features, such as the [App storage API](/platform/forge/runtime-reference/storage-api/),
+Certain platform features, such as the [App storage API](/platform/forge/storage-reference/),
 are authenticated using OAuth 2.0.
 For a list of scopes required by these features, refer to [Forge scopes](/platform/forge/manifest-reference/scopes-forge/).
 

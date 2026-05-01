@@ -176,8 +176,8 @@ that is automatically scoped per installation.
 
 ### Use Forge Storage for durable cross-invocation data
 
-[Forge hosted storage capabilities](/platform/forge/storage/) ([Key-Value Store]{/platform/forge/runtime-reference/storage-api-basic/},
-[Custom Entity Store](/platform/forge/storage-reference/storage-api-custom-entities/),
+[Forge hosted storage capabilities](/platform/forge/storage/) ([Key-Value Store]{/platform/forge/storage-reference/kvs/},
+[Custom Entity Store](/platform/forge/storage-reference/entities/),
 [SQL](/platform/forge/storage-reference/sql/))
 is **automatically scoped per app installation**, which means it is
 inherently tenant-safe. Prefer storage over in-memory caches when you need data

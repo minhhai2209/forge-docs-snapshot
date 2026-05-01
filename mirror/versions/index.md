@@ -29,13 +29,13 @@ will initially have a version of `1.1` (major version `1`, minor version `1`).
 There are different ways to see what version of your app is installed on each site, in each environment:
 
 * The `forge install list` [command](/platform/forge/cli-reference/install-list/) will display the major version installed on each site:
-  ![forge install list](https://dac-static.atlassian.com/platform/forge/images/app-version/cli.png?_v=1.5800.2006)
+  ![forge install list](https://dac-static.atlassian.com/platform/forge/images/app-version/cli.png?_v=1.5800.2007)
 * In the [developer console](https://developer.atlassian.com/console/myapps/), your app's **Installations** page (under **MONITOR**) will display the major and minor version. The first segment of the version is the major version
   number. All sites on the same major version will also be on the same minor version:
-  ![Developer Console > MONITOR > Installations](https://dac-static.atlassian.com/platform/forge/images/app-version/dev-cons-install.png?_v=1.5800.2006)
+  ![Developer Console > MONITOR > Installations](https://dac-static.atlassian.com/platform/forge/images/app-version/dev-cons-install.png?_v=1.5800.2007)
 * In the [developer console](https://developer.atlassian.com/console/myapps/), your app's
   **Deployments** page (under **BUILD**) will show who performed each deployment (**Contributor**), and when. It’ll also show which major version each deployment targeted within an environment:
-  ![Developer Console > BUILD > Deployments](https://dac-static.atlassian.com/platform/forge/images/app-version/dev-cons-deploy.png?_v=1.5800.2006)
+  ![Developer Console > BUILD > Deployments](https://dac-static.atlassian.com/platform/forge/images/app-version/dev-cons-deploy.png?_v=1.5800.2007)
 
 Each site’s admin can also see and upgrade their installed app’s version. See
 [Manage app upgrades](https://support.atlassian.com/security-and-access-policies/docs/manage-your-users-third-party-apps/#Manage-app-upgrades) for more details.
@@ -486,7 +486,7 @@ This is a known issue; see [MP-524](https://jira.atlassian.com/browse/MP-524) fo
 ### Limitations
 
 * Any manifest file changes relating to
-  [Custom Entities](/platform/forge/runtime-reference/custom-entities/)
+  [Custom Entities](/platform/forge/storage-reference/entities-manifest/)
   cannot be backported. When you use the `--major-version`, the `forge deploy`
   command will ignore the `storage` section of your manifest file.
 * Due to a restriction in the Marketplace, the Version management screen displays only up to 9 backports for any single major version.

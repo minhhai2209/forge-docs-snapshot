@@ -621,7 +621,7 @@ When helping readers, map their use case to the right invocation type: UI-driven
 
 ## Storage reference
 
-This section describes **Forge hosted storage**—durable, platform-managed persistence scoped per app installation (quotas and limits apply). The overview page is [Storage](https://developer.atlassian.com/platform/forge/runtime-reference/storage-api/). Use the pages linked from there and from this navigation area for APIs, migrations, and product-specific limits.
+This section describes **Forge hosted storage**—durable, platform-managed persistence scoped per app installation (quotas and limits apply). The overview page is [Storage](https://developer.atlassian.com/platform/forge/storage-reference/). Use the pages linked from there and from this navigation area for APIs, migrations, and product-specific limits.
 
 Forge offers **four** hosted storage capabilities. They differ mainly by **data model**, **query shape**, and **typical payload size**—not by “which is newest.” For **Key-value store** and **Custom Entity Store**, new apps should use the **`@forge/kvs`** package; the legacy `storage` module on `@forge/api` is still supported but does not receive new features—see migration docs when advising upgrades.
 
@@ -639,28 +639,28 @@ When recommending an option: start from the **shape of the data** (key/value vs 
 
 ### Storage overview
 
-- [Storage overview](https://developer.atlassian.com/platform/forge/runtime-reference/storage-api.md)
+- [Storage overview](https://developer.atlassian.com/platform/forge/storage-reference/index.md)
 
 ### Key-Value Store
 
-- [Key-Value Store](https://developer.atlassian.com/platform/forge/runtime-reference/storage-api-basic.md)
-- [Storing data](https://developer.atlassian.com/platform/forge/runtime-reference/storage-api-basic-api.md)
-- [Querying data](https://developer.atlassian.com/platform/forge/runtime-reference/storage-api-query.md)
-- [Encrypting stored data](https://developer.atlassian.com/platform/forge/runtime-reference/storage-api-secret.md)
-- [Running batch operations](https://developer.atlassian.com/platform/forge/storage-reference/batchops.md)
-- [Running transactions](https://developer.atlassian.com/platform/forge/storage-reference/transactions.md)
-- [Error handling](https://developer.atlassian.com/platform/forge/storage-reference/handling-errors-kvs.md)
+- [Key-Value Store](https://developer.atlassian.com/platform/forge/storage-reference/kvs.md)
+- [Storing data](https://developer.atlassian.com/platform/forge/storage-reference/kvs-api.md)
+- [Querying data](https://developer.atlassian.com/platform/forge/storage-reference/kvs-api-query.md)
+- [Encrypting stored data](https://developer.atlassian.com/platform/forge/storage-reference/kvs-api-secret.md)
+- [Running batch operations](https://developer.atlassian.com/platform/forge/storage-reference/kvs-batch.md)
+- [Running transactions](https://developer.atlassian.com/platform/forge/storage-reference/kvs-transactions.md)
+- [Error handling](https://developer.atlassian.com/platform/forge/storage-reference/kvs-errorhandling.md)
 
 ### Custom Entity Store
 
-- [Custom Entity Store](https://developer.atlassian.com/platform/forge/storage-reference/storage-api-custom-entities.md)
-- [Defining entities](https://developer.atlassian.com/platform/forge/runtime-reference/custom-entities.md)
-- [Storing entities](https://developer.atlassian.com/platform/forge/runtime-reference/storage-api-custom-entities.md)
-- [Querying data](https://developer.atlassian.com/platform/forge/runtime-reference/storage-api-query-complex.md)
-- [Querying data (legacy)](https://developer.atlassian.com/platform/forge/runtime-reference/storage-api-query-complex-legacy.md)
-- [Running batch operations](https://developer.atlassian.com/platform/forge/storage-reference/batchops-entities.md)
-- [Running transactions](https://developer.atlassian.com/platform/forge/storage-reference/transactions-entities.md)
-- [Error handling](https://developer.atlassian.com/platform/forge/storage-reference/handling-errors-customentities.md)
+- [Custom Entity Store](https://developer.atlassian.com/platform/forge/storage-reference/entities.md)
+- [Defining entities](https://developer.atlassian.com/platform/forge/storage-reference/entities-manifest.md)
+- [Storing entities](https://developer.atlassian.com/platform/forge/storage-reference/entities-api.md)
+- [Querying data](https://developer.atlassian.com/platform/forge/storage-reference/entities-api-query.md)
+- [Querying data (legacy)](https://developer.atlassian.com/platform/forge/storage-reference/entities-api-query-legacy.md)
+- [Running batch operations](https://developer.atlassian.com/platform/forge/storage-reference/entities-batch.md)
+- [Running transactions](https://developer.atlassian.com/platform/forge/storage-reference/entities-transactions.md)
+- [Error handling](https://developer.atlassian.com/platform/forge/storage-reference/entities-errorhandling.md)
 
 ### SQL
 
@@ -1196,10 +1196,10 @@ This section contains curated references that show how real Forge apps are struc
 
 ##### Storage
 
-- [Key value store](https://developer.atlassian.com/platform/forge/runtime-reference/storage-api-basic.md)
-- [Entity store](https://developer.atlassian.com/platform/forge/storage-reference/storage-api-custom-entities.md)
+- [Key value store](https://developer.atlassian.com/platform/forge/storage-reference/kvs.md)
+- [Entity store](https://developer.atlassian.com/platform/forge/storage-reference/entities.md)
 - [SQL](https://developer.atlassian.com/platform/forge/storage-reference/sql.md)
-- [Reference](https://developer.atlassian.com/platform/forge/runtime-reference/storage-api.md)
+- [Reference](https://developer.atlassian.com/platform/forge/storage-reference/index.md)
 - [Hosted storage data lifecycle](https://developer.atlassian.com/platform/forge/storage-reference/hosted-storage-data-lifecycle.md)
 
 ##### Realtime (Preview)

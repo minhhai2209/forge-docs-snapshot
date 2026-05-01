@@ -16,8 +16,8 @@ In order to communicate with Forge’s back end via REST API from remote, you’
 ### Additional prerequisites for Custom Entities
 
 Before you can start storing data in the Custom Entity Store, you’ll need to *define* your entities first. See
-[Custom Entity Store](/platform/forge/storage-reference/storage-api-custom-entities/) and
-[Custom entities](/platform/forge/runtime-reference/custom-entities/) for detailed information on how to do this.
+[Custom Entity Store](/platform/forge/storage-reference/entities/) and
+[Custom entities](/platform/forge/storage-reference/entities-manifest/) for detailed information on how to do this.
 
 ## Authentication
 
@@ -98,7 +98,7 @@ Each `400 Bad Request` response will be accompanied by an *error code* containin
 | ENTITY\_TYPE\_TOO\_SHORT | The provided key needs to be more than 3 characters. |
 | ENTITY\_TYPE\_TOO\_LARGE | The provided key has exceeded the maximum 60 characters. |
 | INVALID\_ENTITY\_TYPE | The provided key does not match the regex: `/^(?![\.\-])(?!.*\.{2})[a-z0-9:\-.]*(?<![.])$/`. |
-| INVALID\_ENTITY\_VALUE | Entity values must match one of the types defined in [Custom Entities](/platform/forge/runtime-reference/custom-entities/#values). |
+| INVALID\_ENTITY\_VALUE | Entity values must match one of the types defined in [Custom Entities](/platform/forge/storage-reference/entities-manifest/#values). |
 | INVALID\_ENTITY\_ATTRIBUTE | The specified attribute name is a reserved value and cannot be utilized. |
 | INVALID\_ENTITY\_INDEX | The custom entity index provided is invalid. The index name is a reserved value and cannot be utilized. |
 

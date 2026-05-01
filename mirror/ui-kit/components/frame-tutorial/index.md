@@ -4,7 +4,7 @@ The app in this example showcases a logo designer and renders a preview of the d
 
 The result will look like this:
 
-![Logo Designer app](https://dac-static.atlassian.com/platform/forge/ui-kit/images/frame/frame-tutorial.gif?_v=1.5800.2006)
+![Logo Designer app](https://dac-static.atlassian.com/platform/forge/ui-kit/images/frame/frame-tutorial.gif?_v=1.5800.2007)
 
 This example illustrates the following:
 
@@ -151,7 +151,7 @@ To create the web app resources:
    ```
 4. Configure the required app permissions:
 
-   * access to the [Storage API](/platform/forge/runtime-reference/storage-api) to persist the logo configurations
+   * access to the [Storage API](/platform/forge/storage-reference/) to persist the logo configurations
    * allow `unsafe-inline` for CSS to allow manipulating logo styles
    * allow egress access to external images
 
@@ -716,7 +716,7 @@ Now, we are ready to include the Logo Display Frame Component into the main UI K
 
 You can use the [Events API](/platform/forge/custom-ui-bridge/events) on `@forge/bridge` to communicate between the UI Kit (main app) and the Frame component. The communication mechanism is utilised in this example to enable the logo design controls (logo picker, radius slider, and so on) to modify the logo preview component within the `Frame` component.
 
-![Example image of a logo designer app using Frame component](https://dac-static.atlassian.com/platform/forge/ui-kit/images/frame/frame-logo-designer.png?_v=1.5800.2006)
+![Example image of a logo designer app using Frame component](https://dac-static.atlassian.com/platform/forge/ui-kit/images/frame/frame-logo-designer.png?_v=1.5800.2007)
 
 1. Create the React hooks to abstract the underlying communication implementation. Copy the following `hooks.js` implementation into both UI Kit and Frame component sides:
 
@@ -888,7 +888,7 @@ You can use the [Events API](/platform/forge/custom-ui-bridge/events) on `@forge
 
 ## Step 8: Invoke backend FaaS function from Frame component
 
-`Frame` component can invoke the FaaS function resources (resolvers) that are defined within its containing UI Kit App. In this example, [Storage](/platform/forge/runtime-reference/storage-api/#key-value-store) is utilised to persist and load the logo configuration, and the Storage API operations will be wrapped inside the Forge resolvers, and will be invoked from both UI Kit side and inside the `Frame` component.
+`Frame` component can invoke the FaaS function resources (resolvers) that are defined within its containing UI Kit App. In this example, [Storage](/platform/forge/storage-reference/#key-value-store) is utilised to persist and load the logo configuration, and the Storage API operations will be wrapped inside the Forge resolvers, and will be invoked from both UI Kit side and inside the `Frame` component.
 
 1. Go to `src/resolvers/index.js` to create resolver functions for persisting and fetching logo configurations. Replace the exisitng code with the following:
 

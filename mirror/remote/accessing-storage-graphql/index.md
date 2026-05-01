@@ -285,7 +285,7 @@ mutation forge_app_setExample($input: SetAppStoredEntityMutationInput!) {
 **GraphQL variables**
 
 The `encrypted` field is how you would store secrets in Forge storage. Setting it to `true` is the equivalent of the `kvs.setSecret` from the
-[Key-Value Store](/platform/forge/runtime-reference/storage-api-secret/).
+[Key-Value Store](/platform/forge/storage-reference/kvs-api-secret/).
 
 ```
 ```

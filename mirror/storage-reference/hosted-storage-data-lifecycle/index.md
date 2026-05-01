@@ -1,6 +1,6 @@
 # Data lifecycle for Forge-hosted storage
 
-This document outlines the Forge-hosted [Persistent](/platform/forge/runtime-reference/storage-api/#persistent) storage data lifecycle for apps. It focuses on data managed through Forge-hosted storage and explains how data is provisioned, retained, and deleted at different stages of the app lifecycle. Understanding these stages helps you effectively plan your app's behavior and ensures it meets data handling requirements.
+This document outlines the Forge-hosted [Persistent](/platform/forge/storage-reference/#persistent) storage data lifecycle for apps. It focuses on data managed through Forge-hosted storage and explains how data is provisioned, retained, and deleted at different stages of the app lifecycle. Understanding these stages helps you effectively plan your app's behavior and ensures it meets data handling requirements.
 
 This guide only discusses Forge-hosted Persistent storage and doesn't include remote or other types of storage. While this guide details how Atlassian manages Forge-hosted data, you may find these practices useful for managing remote storage as well to ensure consistency and effective data handling.
 
@@ -26,7 +26,7 @@ When an app is uninstalled, the data is first 'soft deleted' and then retained f
 
 ### App reinstallation
 
-If an app is reinstalled, it is treated as a new installation. However, if a request is made within 21 days of uninstallation, the new installation can be relinked to the old data. For more details on the process, refer to [Data recovery for apps with hosted storage](/platform/forge/runtime-reference/storage-api/#data-recovery-for-apps-with-hosted-storage).
+If an app is reinstalled, it is treated as a new installation. However, if a request is made within 21 days of uninstallation, the new installation can be relinked to the old data. For more details on the process, refer to [Data recovery for apps with hosted storage](/platform/forge/storage-reference/#data-recovery-for-apps-with-hosted-storage).
 
 ### App deletion
 

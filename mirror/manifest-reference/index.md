@@ -47,7 +47,7 @@ The `app` dictionary contains properties about your Forge app. Some of these are
 | `licensing` | No | The app's licensing state. To enable licensing for your app, add the `enabled` field attribute and set its value to `true`.  See [licensing](/platform/marketplace/listing-forge-apps/#enabling-licensing-for-your-app) to learn more. |
 | `package` | No | Settings relating to packaging the Forge application.  See [Packaging](#package) to learn more. |
 | `runtime` | Yes | Settings relating to the Forge runtime.  See [Runtime](#runtimev2) to learn more. |
-| `storage` | No | A list of *custom entities* and their respective *indexes*. Custom entities are user-defined data structures for storing app data. Forge's storage API lets you query data stored in these structures using a wide array of query conditions. These query conditions make it possible to build advanced, complex queries to suit your app's operations.  See [Custom entities](/platform/forge/runtime-reference/custom-entities) to learn more. |
+| `storage` | No | A list of *custom entities* and their respective *indexes*. Custom entities are user-defined data structures for storing app data. Forge's storage API lets you query data stored in these structures using a wide array of query conditions. These query conditions make it possible to build advanced, complex queries to suit your app's operations.  See [Custom entities](/platform/forge/storage-reference/entities-manifest) to learn more. |
 
 ### Runtime
 

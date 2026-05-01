@@ -21,7 +21,7 @@ Currently, Forge Containers has the following limitations:
 
 Pin your test site's location to **Germany** to avoid significant latency.
 
-Forge Containers is currently deployed in `Germany` only. If your test tenant is provisioned in a different region, you may experience up to **100ms+ latency increases** when using [Forge storage APIs](/platform/forge/runtime-reference/storage-api/)
+Forge Containers is currently deployed in `Germany` only. If your test tenant is provisioned in a different region, you may experience up to **100ms+ latency increases** when using [Forge storage APIs](/platform/forge/storage-reference/)
 and [Atlassian app APIs](/platform/forge/apis-reference/product-rest-api-reference/). In some cases, this latency can also impact connection pool limits and query timeouts.
 
 To avoid these issues, we strongly recommend that you pin your test site's data location to **Germany**.

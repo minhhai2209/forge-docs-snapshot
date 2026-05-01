@@ -10,7 +10,7 @@ Forge apps are built in JavaScript; however, the environment differs a little fr
 
 Below is a diagram demonstrating the Forge platform architecture.
 
-![Forge Architecture diagram](https://dac-static.atlassian.com/platform/forge/images/introduction/forge-architecture.png?_v=1.5800.2006)
+![Forge Architecture diagram](https://dac-static.atlassian.com/platform/forge/images/introduction/forge-architecture.png?_v=1.5800.2007)
 
 ## Forge runtime
 
@@ -36,7 +36,7 @@ A Forge app can subscribe to events or set up an HTTP endpoint to invoke a funct
 
 Forge's hosted storage lets you store data partitioned by Atlassian app and site. Hosted storage also provides data residency features that allow admins to control where app data is hosted.
 
-[Learn more about Forge storage](https://developer.atlassian.com/platform/forge/runtime-reference/storage-api/)
+[Learn more about Forge storage](https://developer.atlassian.com/platform/forge/storage-reference/)
 
 ## App frontend
 

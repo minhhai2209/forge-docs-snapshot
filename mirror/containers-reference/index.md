@@ -37,7 +37,7 @@ Each instance will mount a *read-only* root file system, except for the followin
 
 Forge Containers aims to enable use cases that wouldn't be possible otherwise without container support. However, our goal is not to provide a general-purpose container management platform. As such, Forge Containers will be implemented with the following constraints:
 
-* **Forge Containers will be *stateless*.** This allows us to focus on scalability, rapid deployment, and cost efficiency. For your persistent storage needs, we recommend you use Forge’s available [hosted storage capabilities](/platform/forge/runtime-reference/storage-api/).
+* **Forge Containers will be *stateless*.** This allows us to focus on scalability, rapid deployment, and cost efficiency. For your persistent storage needs, we recommend you use Forge’s available [hosted storage capabilities](/platform/forge/storage-reference/).
 * **Each container is tied to one app.** Every service hosted by Forge Containers must be owned by only one app. Each service and its containers can only be configured in a Forge app’s manifest.
 * **Containers are effectively headless.** Containers hosted and launched via Forge Containers cannot be accessed via SSH or other forms of remote login.
 * **Containers are deployed and run independent of app version.**

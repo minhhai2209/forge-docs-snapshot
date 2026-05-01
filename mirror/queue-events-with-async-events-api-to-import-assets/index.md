@@ -17,7 +17,7 @@ For example, if the third-party service contains 100 objects to be imported into
 3. Submit the 10 transformed objects to Assets using the Imports REST API.
 4. Queue another event to execute the same task to handle the next 10 objects until all 100 objects are consumed.
 
-![Sequence diagram to explain the approach.](https://dac-static.atlassian.com/platform/forge/images/jsm-assets-import/queues-diagram.png?_v=1.5800.2006)
+![Sequence diagram to explain the approach.](https://dac-static.atlassian.com/platform/forge/images/jsm-assets-import/queues-diagram.png?_v=1.5800.2007)
 
 ### About scheduled imports
 
@@ -74,7 +74,7 @@ Async events also have a higher invocation time limit than other types of invoca
 
 ## Update the manifest
 
-Since this app uses [Forge Storage API](/platform/forge/runtime-reference/storage-api/), we will need to update the manifest to include the following scope:
+Since this app uses [Forge Storage API](/platform/forge/storage-reference/), we will need to update the manifest to include the following scope:
 
 ```
 ```
@@ -944,7 +944,7 @@ Once you have tested that all the functionality is working as intended, you can 
 
 Now you have a working Assets Import app that can handle a larger number of import records because they have been broken down into smaller chunks!
 
-![Assets import app backed by Forge Async Events runs when an user click 'Start Import' in Import tab.](https://dac-static.atlassian.com/platform/forge/images/jsm-assets-import/import-app-running.gif?_v=1.5800.2006)
+![Assets import app backed by Forge Async Events runs when an user click 'Start Import' in Import tab.](https://dac-static.atlassian.com/platform/forge/images/jsm-assets-import/import-app-running.gif?_v=1.5800.2007)
 
 ## Developing for Atlassian Government Cloud
 

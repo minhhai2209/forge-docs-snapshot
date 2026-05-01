@@ -12,7 +12,7 @@ The app uses Forge hostes storage to store definitions, which allows them to be
 shared between several macros and accessed from the site administration.
 
 In this tutorial you will learn how to persist and retrieve data from Forge hosted storage
-(specifically, the [Key-Value Store](/platform/forge/runtime-reference/storage-api))
+(specifically, the [Key-Value Store](/platform/forge/storage-reference/))
 and display the results in a table.
 
 This tutorial has an accompanying [Bitbucket repository](https://bitbucket.org/atlassian/definitions-macro-tutorial/src/master/).
@@ -356,7 +356,7 @@ interface Term {
 
 ## Step 5: Create the definitions table
 
-![The definition table](https://dac-static.atlassian.com/platform/forge/images/definition-macro-step-5.png?_v=1.5800.2006)
+![The definition table](https://dac-static.atlassian.com/platform/forge/images/definition-macro-step-5.png?_v=1.5800.2007)
 
 In this step, you'll add a [Dynamic Table](/platform/forge/ui-kit/components/dynamic-table/) to the definitions macro to show the list of terms side by side with a list of definitions.
 
@@ -493,7 +493,7 @@ For reference, a finished version of the `src/frontend/definition-table.jsx` fil
 
 ## Step 6: Allow a user to add a definition
 
-![The usable definition table](https://dac-static.atlassian.com/platform/forge/images/definition-macro-step-6a.png?_v=1.5800.2006)
+![The usable definition table](https://dac-static.atlassian.com/platform/forge/images/definition-macro-step-6a.png?_v=1.5800.2007)
 
 At this stage, there's still no data stored for the app. In this step, you'll add the
 ability to store a definition for a term.
@@ -757,9 +757,9 @@ Explore Forge storage in further detail over the following pages:
 
 * Read [App storage options](/platform/forge/storage/) for an overview of the different ways Forge
   apps can store data
-* Read about the [Key-Value Store](/platform/forge/runtime-reference/storage-api) which
+* Read about the [Key-Value Store](/platform/forge/storage-reference/) which
   details the JavaScript API.
-* Learn more about how [Queries](/platform/forge/runtime-reference/storage-api-query) can
+* Learn more about how [Queries](/platform/forge/storage-reference/kvs-api-query) can
   be run against data stored in the Key-Value Store.
 * View the [Limits](/platform/forge/platform-quotas-and-limits/#storage-quotas) that apply
   to apps using Forge hosted storage.

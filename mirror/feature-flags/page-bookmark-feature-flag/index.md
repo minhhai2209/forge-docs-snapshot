@@ -390,7 +390,7 @@ export const handler = resolver.getDefinitions();
 **Key backend features:**
 
 1. **Backend feature flag check**: Validates the feature flag on every resolver call
-2. **User-specific storage**: Each user has their own bookmark list stored as `bookmarks_${accountId}` using the [Key-Value Store](/platform/forge/runtime-reference/storage-api-basic/) from `@forge/kvs`
+2. **User-specific storage**: Each user has their own bookmark list stored as `bookmarks_${accountId}` using the [Key-Value Store](/platform/forge/storage-reference/kvs/) from `@forge/kvs`
 3. **Toggle logic**: Adds or removes page IDs from the bookmark array
 4. **Security**: Feature flag acts as a circuit breaker - if disabled, no storage operations occur
 

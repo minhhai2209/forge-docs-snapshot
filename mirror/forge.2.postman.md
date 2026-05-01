@@ -1,7 +1,7 @@
 ```
 {
   "info": {
-    "_postman_id": "ab784ec7-fd0e-46fe-b544-3cf5c0ff7a5e",
+    "_postman_id": "1b4befa7-f750-4c59-97dd-e79f4799c43f",
     "name": "Forge Containers API",
     "description": "The Forge Containers Public API\n\n**Important:** The API base URL should be read from the `FORGE_EGRESS_PROXY_URL` environment variable.\nThe localhost URL in the servers section is for documentation purposes only.\n",
     "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
@@ -1467,7 +1467,7 @@
                 "value": "application/json"
               }
             ],
-            "description": "Retrieves custom entities matching the provided list of criteria using query conditions. See [Querying the Custom Entity Store](https://developer.atlassian.com/platform/forge/runtime-reference/storage-api-query-complex/) for more information about building complex queries.",
+            "description": "Retrieves custom entities matching the provided list of criteria using query conditions. See [Querying the Custom Entity Store](https://developer.atlassian.com/platform/forge/storage-reference/entities-api-query/) for more information about building complex queries.",
             "auth": {
               "type": "bearer",
               "bearer": {

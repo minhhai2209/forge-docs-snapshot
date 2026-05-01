@@ -1,6 +1,6 @@
 # Use custom entities to store structured data
 
-This tutorial demonstrates how to store structured data through custom entities and query that data. This will help you understand how [custom entities](/platform/forge/runtime-reference/custom-entities/) work in Forge.
+This tutorial demonstrates how to store structured data through custom entities and query that data. This will help you understand how [custom entities](/platform/forge/storage-reference/entities-manifest/) work in Forge.
 
 You’ll build a Confluence app that can create users with multiple attributes (name, age, and country). This app will also allow you to query those users through any of their attributes, and delete them.
 
@@ -118,7 +118,7 @@ Here, we declare a `users` entity with the following attributes: `name`, `age`, 
 * `by-country`: for querying by `country`
 * `by-country-name`: for querying by `name` and `country`, together
 
-See [Indexes](/platform/forge/runtime-reference/custom-entities/#indexes) for more details about how to construct an index.
+See [Indexes](/platform/forge/storage-reference/entities-manifest/#indexes) for more details about how to construct an index.
 
 ## Step 3: Deploy and install your app
 
@@ -140,7 +140,7 @@ See [Indexes](/platform/forge/runtime-reference/custom-entities/#indexes) for mo
 
    If the indexes were created successfully, this command should display the following:
 
-   ![custom-entities-indexes-table-successful-command](https://dac-static.atlassian.com/platform/forge/images/custom-entities-indexes.png?_v=1.5800.2006)
+   ![custom-entities-indexes-table-successful-command](https://dac-static.atlassian.com/platform/forge/images/custom-entities-indexes.png?_v=1.5800.2007)
 3. Install your app by running:
 4. Select your Atlassian app using the arrow keys and press the enter key.
 5. Enter the URL for your development site. For example, *example.atlassian.net*. [View a list of your active sites at Atlassian administration](https://admin.atlassian.com/).
@@ -230,7 +230,7 @@ export const createUser = async (event, context) => {
 ```
 ```
 
-The `create-user.js` file features a function named `createUser` which makes a call to [set storage operation](/platform/forge/runtime-reference/storage-api/#storage-entity--entity-name---set).
+The `create-user.js` file features a function named `createUser` which makes a call to [set storage operation](/platform/forge/storage-reference/entities-api/#entity---set).
 
 1. Modify the `manifest.yml` to add this new endpoint.
 
@@ -366,7 +366,7 @@ export const queryUsers = async (event, context) => {
 The `query-users.js` file will hold the functionality to submit your query. This file:
 
 * Uses the `by-country-name` index we previously declared in the `manifest.yml` to filter by the `country` attribute.
-* Uses the `beginsWith` condition to filter partial or exact matches to the user’s `name`. See [Filtering methods](/platform/forge/runtime-reference/custom-entities/#filtering-methods) and [Conditions](/platform/forge/runtime-reference/storage-api-query-complex/#basic-methods) for more information about building queries.
+* Uses the `beginsWith` condition to filter partial or exact matches to the user’s `name`. See [Filtering methods](/platform/forge/storage-reference/entities-api-query/#where) and [Conditions](/platform/forge/storage-reference/entities-api-query/#basic-methods) for more information about building queries.
 
 Modify the `manifest.yml` to add this new endpoint.
 
@@ -417,8 +417,8 @@ curl -v $URL -d '{"name": "M", "country":"India"}'
 
 Finally, add the following to your app:
 
-* **Get details:** uses the `kvs.entity("entity-name").get` endpoint to fetch details about a selected user, identified by its key. Learn more about the endpoint [here](/platform/forge/runtime-reference/storage-api/#storage-entity--entity-name---get).
-* **Delete user:** uses the `kvs.entity("entity-name").delete` endpoint to trigger the deletion of a specific user, identified by its key. Learn more about the endpoint [here](/platform/forge/runtime-reference/storage-api/#storage-entity--entity-name---delete).
+* **Get details:** uses the `kvs.entity("entity-name").get` endpoint to fetch details about a selected user, identified by its key. Learn more about the endpoint [here](/platform/forge/storage-reference/entities-api/#entity---get).
+* **Delete user:** uses the `kvs.entity("entity-name").delete` endpoint to trigger the deletion of a specific user, identified by its key. Learn more about the endpoint [here](/platform/forge/storage-reference/entities-api/#entity---delete).
 
 To do this, create a new file in the `src/` directory named called `get-and-delete-user.js` with the following contents:
 

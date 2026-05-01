@@ -1,15 +1,15 @@
 # Migrating to @forge/kvs from legacy storage module
 
-This page provides guidance on updating any functions that still use the `@forge/api` package's `storage` module to use the new `@forge/kvs` package instead. If you're building a new app, use the `@forge/kvs` package from the start; see the [Storage overview](/platform/forge/runtime-reference/storage-api/) for the recommended package and capabilities.
+This page provides guidance on updating any functions that still use the `@forge/api` package's `storage` module to use the new `@forge/kvs` package instead. If you're building a new app, use the `@forge/kvs` package from the start; see the [Storage overview](/platform/forge/storage-reference/) for the recommended package and capabilities.
 
 Apps that call the KVS or Custom Entity Store from a remote previously did so via GraphQL. We strongly recommend that you migrate those integrations
 to the REST API instead. See [Accessing Forge storage from a remote via REST API](/platform/forge/remote/accessing-storage/) for more detailed information.
 
 ## Why you should migrate
 
-Legacy versions of the [Key-Value Store](/platform/forge/runtime-reference/storage-api-basic/) (KVS) and [Custom Entity Store](/platform/forge/storage-reference/storage-api-custom-entities/) were originally provided through the `storage` module of the `@forge/api` package. As of [March 17, 2025](/platform/forge/changelog/#CHANGE-2399), we stopped applying feature updates to this module.
+Legacy versions of the [Key-Value Store](/platform/forge/storage-reference/kvs/) (KVS) and [Custom Entity Store](/platform/forge/storage-reference/entities/) were originally provided through the `storage` module of the `@forge/api` package. As of [March 17, 2025](/platform/forge/changelog/#CHANGE-2399), we stopped applying feature updates to this module.
 
-Instead, all new KVS and Custom Entity Store feature updates are applied to the `@forge/kvs` package. For example, [KVS transactions](/platform/forge/storage-reference/transactions/) and [Custom Entity Store transactions](/platform/forge/storage-reference/transactions-entities/) are only available through `@forge/kvs`.
+Instead, all new KVS and Custom Entity Store feature updates are applied to the `@forge/kvs` package. For example, [KVS transactions](/platform/forge/storage-reference/kvs-transactions/) and [Custom Entity Store transactions](/platform/forge/storage-reference/entities-transactions/) are only available through `@forge/kvs`.
 
 ### Typing improvements
 
@@ -21,7 +21,7 @@ The `kvs` module of the `@forge/kvs` package provides access to all builders to 
 
 ### Replace startsWith filter with beginsWith
 
-The `query.where` [operation](/platform/forge/runtime-reference/storage-api-query/#query-where) now uses the `beginsWith` filter instead of `startsWith`.
+The `query.where` [operation](/platform/forge/storage-reference/kvs-api-query/#query-where) now uses the `beginsWith` filter instead of `startsWith`.
 
 **Before**
 
@@ -59,7 +59,7 @@ await kvs.query().
 
 ### Replace sortOrder with Sort
 
-The `SortOrder` method is now simply the `sort` [method](/platform/forge/runtime-reference/storage-api-query-complex/#sort); all enum definitions are unchanged.
+The `SortOrder` method is now simply the `sort` [method](/platform/forge/storage-reference/entities-api-query/#sort); all enum definitions are unchanged.
 
 **Before**
 
@@ -97,11 +97,11 @@ The `kvs` module introduces several changes to the way filters work in the Custo
 
 ### Filter builder
 
-The `kvs` module provides a Custom Entity Store builder for composing `filter` conditions, ensuring better predictability. This builder also helps provide better support for [transactions](/platform/forge/storage-reference/transactions-entities/).
+The `kvs` module provides a Custom Entity Store builder for composing `filter` conditions, ensuring better predictability. This builder also helps provide better support for [transactions](/platform/forge/storage-reference/entities-transactions/).
 
 ### Replace andFilter/orFilter with filter
 
-The `andFilter` and `orFilter` methods have been replaced by a simpler `filters` [method](/platform/forge/runtime-reference/storage-api-query-complex/#filters):
+The `andFilter` and `orFilter` methods have been replaced by a simpler `filters` [method](/platform/forge/storage-reference/entities-api-query/#filters):
 
 ```
 ```
@@ -130,7 +130,7 @@ await kvs
 
 ### Rename conditional filters
 
-Some [where](/platform/forge/runtime-reference/storage-api-query-complex/#conditions) methods have been renamed to match their corresponding [filters](/platform/forge/runtime-reference/storage-api-query-complex/#filters) conditions:
+Some [where](/platform/forge/storage-reference/entities-api-query/#conditions) methods have been renamed to match their corresponding [filters](/platform/forge/storage-reference/entities-api-query/#filters) conditions:
 
 ```
 ```

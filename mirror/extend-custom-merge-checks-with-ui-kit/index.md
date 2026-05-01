@@ -1,7 +1,7 @@
 # Part 2: Extend custom merge checks with UI Kit
 
 This guide describes how to use [UI Kit](/platform/forge/ui-kit/get-started-with-ui/) and
-[Forge storage](/platform/forge/runtime-reference/storage-api/) to extend a custom merge check app.
+[Forge storage](/platform/forge/storage-reference/) to extend a custom merge check app.
 
 In Part 1, we made sure the title of a PR did not include the string "DRAFT".
 Alternatively, you might have scenarios where you want to ensure the title does include some particular piece of text.
@@ -103,7 +103,7 @@ Test that the app is still behaving as expected after the refactor.
 
 We need a way to store and retrieve the string we want to check for when validating the pull request title.
 To do this, define [resolver](/platform/forge/runtime-reference/forge-resolver/#forge-resolver) methods for the frontend to call.
-The resolver methods will interact with [Forge's storage API](/platform/forge/runtime-reference/storage-api/) for storing and retrieving the configured string.
+The resolver methods will interact with [Forge's storage API](/platform/forge/storage-reference/) for storing and retrieving the configured string.
 
 1. In the app's top-level directory, install the `@forge/resolver` package by running:
 
@@ -692,7 +692,7 @@ app:
    ```
 3. Navigate to your repository settings and open the "Check pull request title" menu item under the `FORGE APPS` section.
 
-   ![Check pull request title repository settings page](https://dac-static.atlassian.com/platform/forge/images/bitbucket-merge-check-configuration-page.png?_v=1.5800.2006)
+   ![Check pull request title repository settings page](https://dac-static.atlassian.com/platform/forge/images/bitbucket-merge-check-configuration-page.png?_v=1.5800.2007)
 4. Set the pull request title substring value. For example, *TICKET-*.
 5. Ensure the merge check is enabled via the Repository settings → Custom merge checks page if it is not already enabled.
 6. Create a pull request without the substring in the title.
@@ -704,4 +704,4 @@ app:
 
 Check out an example app, continue to one of the other tutorials, or read through the reference pages to learn more.
 
-[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.2006)](/platform/forge/build-a-pull-request-title-validator-with-custom-merge-checks/)
+[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.2007)](/platform/forge/build-a-pull-request-title-validator-with-custom-merge-checks/)

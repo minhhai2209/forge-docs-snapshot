@@ -379,7 +379,7 @@ five calls per minute per user is enforced.
 To consume the Atlassian GraphQL API and ingest metrics in real-time into observability tools,
 we recommend having the following components in your infrastructure:
 
-![Partner Server View](https://dac-static.atlassian.com/platform/forge/images/partner-server-arch.svg?_v=1.5800.2006)
+![Partner Server View](https://dac-static.atlassian.com/platform/forge/images/partner-server-arch.svg?_v=1.5800.2007)
 
 ### CronJob service
 
@@ -608,7 +608,7 @@ The following metrics are available for all `function` invocations making either
 [Fetch API](/platform/forge/runtime-reference/fetch-api/),
 [Async events API](/platform/forge/runtime-reference/async-events-api/),
 and [Web trigger API](/platform/forge/runtime-reference/web-trigger-api/),
-or [hosted storage API](/platform/forge/runtime-reference/storage-api/) HTTP requests
+or [hosted storage API](/platform/forge/storage-reference/) HTTP requests
 via the [App metrics API](/platform/forge/export-app-metrics/#query-the-app-metrics-api):
 
 * **API request count**: The total number of HTTP requests, grouped by status codes, such as `2xx`,
