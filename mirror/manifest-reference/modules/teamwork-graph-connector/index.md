@@ -1,13 +1,10 @@
-# Teamwork Graph connector (EAP)
+# Teamwork Graph connector
 
-The Teamwork Graph connector module is now available through Forge's Early Access Program (EAP).
+You understand and acknowledge that Atlassian will process any data you store using the Teamwork Graph Connector module across the applicable end user's Atlassian products in accordance with that end user's [Atlassian Customer Agreement](https://www.atlassian.com/legal/atlassian-customer-agreement) and the [Atlassian Privacy Policy](https://www.atlassian.com/legal/privacy-policy).
 
-EAPs are offered to selected users for testing and feedback purposes. We are currently working with
-a select group of EAP participants to get their apps production-ready and available for publishing on Marketplace.
+If you use the Teamwork Graph Connector module to store data obtained from a product or service provided by another entity, you must comply with any policies or agreements governing your access and use of the original source of such data, and you must not cause Atlassian to breach any such policies or agreements.
 
-You must be part of the Forge connector EAP to use this module and the
-[Connector SDK](/platform/teamwork-graph/connector-reference/overview/). You can express interest in
-joining this EAP through [this form](https://ecosystem.atlassian.net/servicedesk/customer/portal/1040/group/3496/create/18836).
+As a condition on your right to use the Teamwork Graph Connector module, you must not (and must not authorize any third party to) store any data that constitutes emails, calendar entries, meeting recordings, human resources information system data, financial or health data regulated under applicable Laws or industry regulations, or anything constituting "special categories" of data under GDPR or similar Laws.
 
 The `graph:connector` module allows your app to import data from external tools into Atlassian's Teamwork Graph.
 Once the data is integrated into the Graph, it becomes accessible across various Atlassian experiences, including
@@ -58,6 +55,10 @@ npm i @forge/teamwork-graph
 32
 33
 34
+35
+36
+37
+38
 modules {}
 └─ graph:connector
    ├─ key (string) [Required]
@@ -66,6 +67,10 @@ modules {}
    │  ├─ light (string) [Required]
    │  └─ dark (string) [Required]
    ├─ objectTypes (array of string) [Required]
+   ├─ capabilities (object) [Optional]
+   │  ├─ replicatesPermissions (boolean) [Optional]
+   │  ├─ syncFidelity (string) [Optional]
+   │  └─ supportsIncrementalSync (boolean) [Optional]
    ├─ auth (object) [Optional]
    │  └─ provider (AuthProvider) [Required]
    └─ datasource (object) [Required]
@@ -102,7 +107,11 @@ function []
 | `icons` | `object` | Yes | All connectors require a light and dark icon to allow change of theme. These icons are used in the admin experience of connector configuration as well as the end user experience in Search, where users can filter search results by connector. |
 | `icons.light` | `string` | Yes | Icon to display when theme is set to light. |
 | `icons.dark` | `string` | Yes | Icon to display when theme is set to dark. |
-| `objectTypes` | `Array(string)` | Yes | List of object types ingested by the connector.  See supported [Object types](/platform/teamwork-graph/object-types/overview). |
+| `objectTypes` | `Array(string)` | Yes | List of object types ingested by the connector.  See supported [Object types](/platform/teamwork-graph/connector-reference/object-types-connectors/overview/). |
+| `capabilities` | `object` | No | Optional block declaring the connector's data handling behavior. Values are displayed to admins on the configuration screen before they enable the connector.  *The entire* `capabilities` *block is optional.* **If a capability is omitted**, the admin configuration screen displays "**Capability** not declared by developer," which may reduce customer confidence. Only `replicatesPermissions`, `syncFidelity`, and `supportsIncrementalSync` are accepted. Additional properties are rejected. |
+| `capabilities.replicatesPermissions` | `boolean` | No | Whether the connector mirrors source-system access controls into Teamwork Graph. If `false`, all ingested data is visible to every user in the Atlassian workspace. |
+| `capabilities.syncFidelity` | `string` | No | Sync behavior of the connector. Allowed values:   * `append` — adds new objects only. * `upsert` — adds new objects and updates existing ones. * `mirror` — adds, updates, and deletes objects so Teamwork Graph always reflects current source state. Recommended. |
+| `capabilities.supportsIncrementalSync` | `boolean` | No | Whether the connector supports delta sync (only changes since the last run). If `false`, each sync is a full re-ingestion. |
 | `auth` | `object` | No | If the Atlassian user must be authenticated with the source system to see the ingested data, the Auth Provider to authenticate end users needs to be specified.  Contains a `provider` property specifying the authentication provider. |
 | `auth.provider` | `AuthProvider` | Yes | The authentication provider to use for end-user authentication. |
 | `datasource` | `object` | Yes | This section contains all the related data to enable Datasource configuration by Admin Users. |
@@ -164,12 +173,12 @@ The Connected apps screen can be accessed within Atlassian Administration by nav
 After selecting the app, all available Teamwork Graph connectors will be shown
 in the **Connections** tab.
 
-![Connections tab within Marketplace app showing one Teamwork Graph connector that has not yet been configured](https://dac-static.atlassian.com/platform/forge/images/teamwork-graph/teamwork-graph-connector-not-configured.svg?_v=1.5800.2007)
+![Connections tab within Marketplace app showing one Teamwork Graph connector that has not yet been configured](https://dac-static.atlassian.com/platform/forge/images/teamwork-graph/teamwork-graph-connector-not-configured.svg?_v=1.5800.2015)
 
 Admins must configure the connector before it can start providing data to Teamwork Graph. To
 do this, the admin will click the **Connect** button, which opens a configuration modal.
 
-![Basic modal for configuring Teamwork Graph connector](https://dac-static.atlassian.com/platform/forge/images/teamwork-graph/teamwork-graph-connector-modal.svg?_v=1.5800.2007)
+![Basic modal for configuring Teamwork Graph connector](https://dac-static.atlassian.com/platform/forge/images/teamwork-graph/teamwork-graph-connector-modal.svg?_v=1.5800.2015)
 
 ### Configuration details
 
@@ -181,6 +190,9 @@ Using the properties that are defined in the manifest under the `formConfigurati
 you can add to and customize this screen. You can provide additional details to admins in the **Before you begin**
 section with the `instructions` property, and add fields for admins to provide any further information
 you require for the connector, such as API keys, with the `form` property.
+
+If you have defined a `capabilities` block in the manifest, a summary of your declared capabilities
+is shown to admins on this screen before they enable the connector. Each capability you omit from the manifest is shown with its own **not declared by developer** message for that capability, rather than a single message for the entire `capabilities` block.
 
 ## Supported functions
 
@@ -249,7 +261,7 @@ The `onConnectionChange` function will be executed when there is any change to t
 configuration of a connection. The possible values for action are `CREATED`,
 `UPDATED`, and `DELETED`.
 
-Note that Atlassian will automatically take care of deleting the data assocociated with the Connection. No data deletion logic is required to remove the data from Teamwork Graph by the App when a Connection is deleted.
+Note that Atlassian will automatically take care of deleting the data associated with the Connection. No data deletion logic is required to remove the data from Teamwork Graph by the App when a Connection is deleted.
 
 #### Request
 
@@ -348,6 +360,10 @@ permissions:
 graph:connector:
   - key: example-connector
     name: Example Connector
+    capabilities:
+      replicatesPermissions: false
+      syncFidelity: append
+      supportsIncrementalSync: false
     icons: 
      light: https://static.example-hello-world.com/favicon-light.ico
      dark: https://static.example-hello-world.com/favicon-dark.ico
@@ -395,6 +411,10 @@ permissions:
 graph:connector:
   - key: example-connector
     name: Example Connector
+    capabilities:
+      replicatesPermissions: true
+      syncFidelity: mirror
+      supportsIncrementalSync: true
     icons: 
      light: https://static.example-hello-world.com/favicon-light.ico
      dark: https://static.example-hello-world.com/favicon-dark.ico
@@ -443,6 +463,20 @@ such as Rovo Search, please ensure your connector adheres to the following guide
 * Use the official service name as the connector name. For example, "Service Now".
 * Do not add prefixes, suffixes, or descriptors. For example, avoid names like “ServiceNow Demand
   Connector” or "ServiceNow by Your Name". The connector should simply be named after the service.
+
+### Declare capabilities
+
+Declare the `capabilities` block in your manifest so admins understand how your connector handles
+data before enabling it. While this block is optional, omitting individual capabilities causes the admin configuration screen to display a not declared by developer message for each omitted capability, which may reduce customer confidence.
+
+At a minimum, declare:
+
+* `replicatesPermissions` — whether you mirror source-system access controls or apply workspace-wide access.
+* `syncFidelity` — use `mirror` if your connector supports deletion propagation, `upsert` if it updates existing objects, or `append` if it only adds new ones.
+* `supportsIncrementalSync` — whether your connector performs delta syncs or full re-ingestions.
+
+For documentation requirements alongside capability declarations, see
+[Connector requirements and best practices](/platform/teamwork-graph/connector-requirements-and-best-practices/).
 
 ### Differentiation between Atlassian-built and Partner-built connectors
 

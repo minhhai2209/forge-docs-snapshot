@@ -63,7 +63,7 @@ See [Permissions](/platform/forge/manifest-reference/permissions/#scopes) for mo
 
 ## Batch operations
 
-Batch operations allow you to perform multiple SET, GET, or DELETE operations in a single request. Batch operaton requests [use rate limits more efficiently]((/platform/forge/limits-kvs-ce/#10kbsizing)) and can be 5 times faster than making the individual requests in parallel.
+Batch operations allow you to perform multiple SET, GET, or DELETE operations in a single request. Batch operation requests [use rate limits more efficiently](/platform/forge/limits-kvs-ce#10kbsizing) and can be 5 times faster than making the individual requests in parallel.
 
 See [Batch operations](/platform/forge/storage-reference/kvs-batch/) and [Batch operations for custom entities](/platform/forge/storage-reference/entities-batch/) for more information.
 

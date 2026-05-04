@@ -1,14 +1,5 @@
 # Build a Teamwork Graph connector
 
-Teamwork Graph connectors are available through Forge's Early Access Program (EAP).
-
-EAPs are offered to selected users for testing and feedback purposes. We are currently working
-with a select group of EAP participants to get their apps production-ready and available for
-publishing on Marketplace.
-
-If you are interested in joining this EAP, you can express interest through
-[this form](https://ecosystem.atlassian.net/servicedesk/customer/portal/1040/group/3496/create/18836).
-
 This tutorial demonstrates how to add data to Atlassian's Teamwork Graph using the
 [Forge Teamwork Graph connector module](/platform/forge/manifest-reference/modules/teamwork-graph-connector/)
 and [Connector SDK APIs](https://developer.atlassian.com/platform/teamwork-graph/connector-reference/overview/).
@@ -102,6 +93,10 @@ Make the following changes in `manifest.yml` file of the app.
      graph:connector:
        - key: google-drive-connector
          name: Google Drive
+         capabilities:
+           replicatesPermissions: false
+           syncFidelity: append
+           supportsIncrementalSync: false
          icons:
            light: https://static.example-hello-world.com/favicon-light.ico
            dark: https://static.example-hello-world.com/favicon-dark.ico
@@ -137,6 +132,10 @@ Here, you have defined the Teamwork Graph connector, including:
 
 * The [object types](/platform/teamwork-graph/object-types/overview/) it supports. In this example, `atlassian:document`.
 * The configuration details that will appear in Atlassian Administration, allowing an admin to set up the connector.
+* The `capabilities` block, which declares data handling behaviour to admins before they enable the connector.
+
+For requirements on what to declare and document as a third-party connector developer, see
+[Connector requirements and best practices](/platform/teamwork-graph/connector-requirements-and-best-practices/).
 
 The `datasource` property in this module also enables:
 

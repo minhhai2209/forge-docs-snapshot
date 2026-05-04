@@ -292,7 +292,7 @@ Refer to the following sections for more detailed information about Forge module
 ### Teamwork Graph modules
 
 - [Teamwork Graph modules](https://developer.atlassian.com/platform/forge/manifest-reference/modules/index-teamwork-graph.md)
-- [Connector (EAP)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/teamwork-graph-connector.md)
+- [Connector](https://developer.atlassian.com/platform/forge/manifest-reference/modules/teamwork-graph-connector.md)
 - [Smart Link](https://developer.atlassian.com/platform/forge/manifest-reference/modules/teamwork-graph-smart-link.md)
 
 ### Connect module equivalents
