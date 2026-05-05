@@ -8,9 +8,10 @@ done by adding permissions in your app's `manifest.yml` file.
 
 This guide covers unlicensed access for:
 
+* **Jira and Jira Service Management** - modules rendered on Jira Service Management.
 * **Jira Service Management** - unlicensed users in portals
-* **Jira** - modules rendered on Jira Service Management portals
 * **Confluence** - guest users and anonymous users
+* **Jira** - anonymous users for select modules
 
 By default, only licensed, authenticated users of the Atlassian app within which an
 app runs, can use that app. For Jira Service Management, these licensed users
@@ -33,9 +34,11 @@ types, reflecting different levels of the user’s relationship with the site:
 
 Unlicensed access is currently supported for the following Jira Service Management modules:
 
-And for the following Jira modules rendered on Jira Service Management portal:
+And for the following Jira modules rendered on Jira Service Management Agent View:
 
-Note that full-page Jira modules (for example, `jira:globalPage` and `jiraServiceManagement:queuePage`) do **not** support unlicensed or anonymous access.
+And for the following Jira modules rendered on Jira Service Management Portal:
+
+Note that full-page Jira modules (for example, `jira:globalPage`, `jira:fullPage`, and `jiraServiceManagement:queuePage`) do **not** support unlicensed or anonymous access.
 To support `customer` (licensed), `unlicensed`, or `anonymous` users, use Jira Service Management portal modules such as `portalFooter`, `portalHeader`, or `portalSubheader`.
 
 ### Confluence Forge Modules
@@ -49,6 +52,16 @@ types, reflecting different levels of the user’s relationship with the site:
 | `anonymous` | A user who is not logged in to an Atlassian account. |
 
 Unlicensed access is currently supported for the following Confluence modules:
+
+Note that the `confluence:fullPage` module does **not** support unlicensed or anonymous access. Full-page modules require a user with an Atlassian account.
+
+### Jira Forge Modules
+
+| Unlicensed user | Description |
+| --- | --- |
+| `anonymous` | A user who is not logged in to an Atlassian account. |
+
+Unlicensed access is currently supported for the following Jira modules:
 
 ### Supported functionality
 

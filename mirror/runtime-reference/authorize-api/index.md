@@ -1,9 +1,109 @@
 # Authorize API
 
-Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
-When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our
+Forge Authorize API helps app developers verify user permissions before making requests using
+the `asApp` method.
 
-[Privacy Policy](https://www.atlassian.com/legal/privacy-policy#additional-disclosures-for-ca-residents)
+Import the Authorize API package in your app, as follows:
 
-.
-You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
+```
+1
+import { authorize } from "@forge/api";
+```
+
+The `authorize` function returns a number of helper functions that check the current user's
+permissions to issues, projects, or content. These are convenience methods that call the
+[Jira bulk permissions API](https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-permissions/)
+and the [Confluence content permissions API](/cloud/confluence/rest/v1/api-group-content-permissions/#api-wiki-rest-api-content-id-permission-check-post).
+
+```
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+const canEdit = await authorize().onJiraIssue(issueId).canEdit();
+
+if (canEdit) {
+  await api.asApp().requestJira(route`/rest/api/3/issue/${issueId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ update: { summary: [{ set: "updated summary" }] } }),
+  });
+}
+```
+
+## Method signature
+
+```
+```
+1
+2
+```
+
+
+
+```
+type Id = number | string;
+
+type authorize = () => {
+  onJiraIssue: (issueIds: Id | Id[]) => {
+    canAssign: () => Promise<boolean>;
+    canCreate: () => Promise<boolean>;
+    canEdit: () => Promise<boolean>;
+    canMove: () => Promise<boolean>;
+    canDelete: () => Promise<boolean>;
+    canAddComments: () => Promise<boolean>;
+    canEditAllComments: () => Promise<boolean>;
+    canDeleteAllComments: () => Promise<boolean>;
+    canCreateAttachments: () => Promise<boolean>;
+    canDeleteAllAttachments: () => Promise<boolean>;
+  };
+  onJiraProject: (projectIds: Id | Id[]) => {
+    canAssignIssues: () => Promise<boolean>;
+    canCreateIssues: () => Promise<boolean>;
+    canEditIssues: () => Promise<boolean>;
+    canMoveIssues: () => Promise<boolean>;
+    canDeleteIssues: () => Promise<boolean>;
+    canAddComments: () => Promise<boolean>;
+    canEditAllComments: () => Promise<boolean>;
+    canDeleteAllComments: () => Promise<boolean>;
+    canCreateAttachments: () => Promise<boolean>;
+    canDeleteAllAttachments: () => Promise<boolean>;
+  };
+  onConfluenceContent: (contentIds: Id | Id[]) => {
+    canRead: () => Promise<boolean>;
+    canUpdate: () => Promise<boolean>;
+    canDelete: () => Promise<boolean>;
+  };
+  // useful for checking permissions of issues and projects in one call
+  onJira: (
+    perms: Array<{
+      permissions: string[];
+      issues?: Id[];
+      projects?: Id[];
+    }>
+  ) => Promise<{
+    permission: string;
+    issues?: number[];
+    projects?: number[];
+  }>;
+};
+```
+```
+
+## Parameters
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `issueIds` | `number | string | (number | string)[]` | The issue IDs to check permissions for. |
+| `projectIds` | `number | string | (number | string)[]` | The project IDs to check permissions for. |
+| `contentIds` | `number | string | (number | string)[]` | The content IDs to check permissions for. |
+| `perms` | `({ permissions: string[]; issues?: (number | string)[]; projects?: (number | string)[]; })[]` | Array of permissions to check for issues and projects. Passed as `projectPermissions` to the [Jira bulk permissions API.](https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-permissions/#api-rest-api-3-permissions-check-post) |

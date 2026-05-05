@@ -70,7 +70,7 @@ A modal dialog displays content that requires user interaction, in a layer above
 </td>
 <td>No</td>
 <td>
-<p>The title of the modal. When provided, a <a href="#header">modal header</a> will be rendered with the title and a close button.</p>
+<p>The title of the modal. Fullscreen modals always render a <a href="#header">modal header</a>, and when this prop is provided it sets that header title (defaulting to the manifest title or extension name). For non-fullscreen modals, providing this prop will render a default header with the title and a close button; otherwise, use <code>ModalHeader</code> with <code>ModalTitle</code> for custom layouts.</p>
 <p>
 
 The <code>i18n object</code> allows for translation. See <a href="#i18n-object">i18n object</a>.
@@ -82,7 +82,7 @@ The <code>i18n object</code> allows for translation. See <a href="#i18n-object">
             <td><code>icon</code></td>
             <td><code>string</code></td>
             <td>No</td>
-            <td>The URL of the icon that displays next to the title. When provided, a <a href="#header">modal header</a> will be rendered with the icon, title and a close button.</td>
+            <td>The URL of the icon displayed beside the modal title in the default <a href="#header">modal header</a>. Use this with the <code>title</code> prop for fullscreen modals; for non-fullscreen sizes or custom header layouts, use <code>ModalHeader</code> with <code>ModalTitle</code>.</td>
         </tr>
     </tbody>
 </table>
