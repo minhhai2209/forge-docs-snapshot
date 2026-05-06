@@ -4,7 +4,7 @@ The `jira:issueContext` module adds a collapsible panel under the other fields o
 These panels give your users a quick way to get information related to the issue from your app.
 Users can expand these panels to view app information or collapse them if they don’t need it.
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-issue-context.png?_v=1.5800.2020)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-issue-context.png?_v=1.5800.2022)
 
 This module can be used in Jira and Jira Service Management.
 It works in the
@@ -325,5 +325,4 @@ However, if you have multiple issue view modules in your app, you should use the
 
 ### Limitations
 
-* There is a delay between the moment the issue is modified and when the event is emitted. It might take up to a few seconds.
-* When the issue is modified by the user who is currently viewing it, it will not be refreshed. This is because we assume the change was made by that same user and there is no need for an update.
+There is a delay between the moment the issue is modified and when the event is emitted. It might take up to a few seconds.

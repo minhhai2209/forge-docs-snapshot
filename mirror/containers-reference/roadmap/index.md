@@ -32,12 +32,12 @@ Multi-region support for Forge Containers will be addressed in a future release.
 
 * Forge Containers have not yet been fully tested against every single Forge module that supports an `endpoint` module as its implementation. Some rough edges may exist.
 * Documentation for reading/writing from Forge Object Store (EAP) is not yet available.
-* Apps can't process an async event within a container and provide a result back to the queue (async events processed by a container currently use a ‘fire and forget’ mechanism, and can't retry or assess success/failure of the event processing).
-* Containers can’t call the REST APIs of Bitbucket Cloud and Compass.
+* Apps can't process an async event within a container and provide a result back to the queue (async events processed by a container currently use a 'fire and forget' mechanism, and can't retry or assess success/failure of the event processing).
+* Containers can't call the REST APIs of Bitbucket Cloud and Compass.
 
 ## Deployment limitations
 
-* You can only build and run Forge Container services on Forge’s `development` and custom [environments](https://developer.atlassian.com/platform/forge/environments-and-versions/#environments).
+* You can only build and run Forge Container services on Forge's `development` and custom [environments](https://developer.atlassian.com/platform/forge/environments-and-versions/#environments).
 * An app can only have *one* containerised service, which can only have *one* defined container.
 * To deploy a change to a container image, you'll need to run `forge deploy`.
 
@@ -48,9 +48,17 @@ Multi-region support for Forge Containers will be addressed in a future release.
 
 ## Resource and scaling limitations
 
-* An app’s service can only have *one* instance, and cannot scale.
+* An app's service can only have *one* instance, and cannot scale.
 * A service can have a maximum of 1000m CPU and 2048 Mi of memory allocated.
 
 ## Observability limitations
 
 CPU and memory usage tracking in the Developer Console are not yet available.
+
+## Pricing
+
+Forge Containers are free to use during EAP. Pricing will apply from the point at which Forge Containers enters [Preview](/platform/forge/whats-coming/#forge-early-access-program--eap-).
+
+Unlike other Forge capabilities that use a [consumption-based pricing model](/platform/forge/forge-platform-pricing/), Forge Containers use a **reservation-based pricing model**. You pay for the CPU and memory capacity reserved for each container instance, regardless of whether that instance is actively handling requests. This reflects the always-on nature of container services, which must remain running to serve traffic at any time.
+
+See [Forge Containers pricing](/platform/forge/containers-reference/pricing/) for unit prices, cost examples, and optimization options.

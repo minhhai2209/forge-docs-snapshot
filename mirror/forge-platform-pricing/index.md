@@ -11,6 +11,8 @@ Forge uses a consumption-based pricing model, offering most capabilities for fre
 
 ## Billable capabilities and pricing
 
+[Forge Containers](/platform/forge/containers-reference/pricing/) use a separate **reservation-based pricing model** and are not included in the table below.
+
 | Capability | Unit | Free usage allowance (monthly) | Overage price per unit ($USD) |
 | --- | --- | --- | --- |
 | Forge Functions: Duration | $/GB-seconds | 100,000 GB-seconds | 0.000025 |
@@ -21,7 +23,7 @@ Forge uses a consumption-based pricing model, offering most capabilities for fre
 | SQL: Compute requests | $/1M-requests | 100,000 requests | 1.929 |
 | SQL: Data stored | $/GB-hours | 730 GB-hours | 0.00076850 |
 
-**Note:** Empty KVS reads count as 1KB towards your usage, whereas non-empty reads are based on actual size. While we may consider a future update to apply this 1KB minimum to all reads under 1KB, the current policy applies only to empty reads. We will provide advance notice prior to adopting any changes.
+Empty KVS reads count as 1KB towards your usage, whereas non-empty reads are based on actual size. While we may consider a future update to apply this 1KB minimum to all reads under 1KB, the current policy applies only to empty reads. We will provide advance notice prior to adopting any changes.
 
 ### Example: Calculating your monthly bill
 
@@ -60,7 +62,6 @@ Here’s how your monthly charge would be calculated:
    * Free usage allowance: **730 GB-hours**
    * Overage: 694.3 – 730 = **0 GB-hours** (no overage, so no charge)
 
-**Note:**
 SQL storage is billed based on the total amount of data stored, measured hourly and summed over the month (GB-hours). You are not billed based on the amount of data read or written, but on the cumulative storage held each hour.
 
 At the start of each new month, your SQL storage usage calculation continues from the amount of data stored at the end of the previous month. If you have not deleted any data, your hourly storage “snapshots” will begin at this higher baseline, and your total GB-hours for the new month will accumulate more quickly. To reduce future charges, consider deleting unneeded data before the next billing cycle begins.
@@ -111,6 +112,8 @@ At launch, the following capabilities will be charged above the free threshold:
 * KVS Storage: Data Read and Data Written
 * SQL: Compute (duration and request) and Data Stored
 * Logs: Data Written
+
+[Forge Containers](/platform/forge/containers-reference/pricing/) are also billable, but use a separate reservation-based pricing model with no free usage allowance.
 
 Other capabilities not listed here, such as using Connect on Forge modules or remote capabilities, will remain free.
 

@@ -161,5 +161,4 @@ However, if you have multiple issue view modules in your app, you should use the
 
 ### Limitations
 
-* There is a delay between the moment the issue is modified and when the event is emitted. It might take up to a few seconds.
-* When the issue is modified by the user who is currently viewing it, it will not be refreshed. This is because we assume the change was made by that same user and there is no need for an update.
+There is a delay between the moment the issue is modified and when the event is emitted. It might take up to a few seconds.

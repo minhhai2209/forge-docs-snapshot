@@ -8,7 +8,7 @@ It works in the
 [new issue view](https://support.atlassian.com/jira-core-cloud/docs/what-is-the-new-jira-issue-view/)
 but not the old issue view.
 
-![Example of an Issue panel](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-panel-demo-with-show-hide-from-work-item.png?_v=1.5800.2020)
+![Example of an Issue panel](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-panel-demo-with-show-hide-from-work-item.png?_v=1.5800.2022)
 
 ## Manifest example
 
@@ -231,5 +231,4 @@ However, if you have multiple issue view modules in your app, you should use the
 
 ### Limitations
 
-* There is a delay between the moment the issue is modified and when the event is emitted. It might take up to a few seconds.
-* When the issue is modified by the user who is currently viewing it, it will not be refreshed. This is because we assume the change was made by that same user and there is no need for an update.
+There is a delay between the moment the issue is modified and when the event is emitted. It might take up to a few seconds.

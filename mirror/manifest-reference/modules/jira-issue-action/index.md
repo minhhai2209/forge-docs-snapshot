@@ -8,23 +8,23 @@ It works in the
 [new issue view](https://support.atlassian.com/jira-core-cloud/docs/what-is-the-new-jira-issue-view/)
 but not the old issue view.
 
-![Example of an Issue action button](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-action-location.png?_v=1.5800.2020)
+![Example of an Issue action button](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-action-location.png?_v=1.5800.2022)
 
 This is an example of the triggered modal dialog:
 
-![Example of an Issue action with the above sample code](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-action-demo.png?_v=1.5800.2020)
+![Example of an Issue action with the above sample code](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-action-demo.png?_v=1.5800.2022)
 
 ## Manifest example
 
 ```
-```
 1
 2
-```
-
-
-
-```
+3
+4
+5
+6
+7
+8
 modules:
   jira:issueAction:
     - key: hello-world-issue-action
@@ -33,7 +33,6 @@ modules:
         function: resolver
       render: native
       title: Hello World
-```
 ```
 
 ## Properties
@@ -227,5 +226,4 @@ However, if you have multiple issue view modules in your app, you should use the
 
 ### Limitations
 
-* There is a delay between the moment the issue is modified and when the event is emitted. It might take up to a few seconds.
-* When the issue is modified by the user who is currently viewing it, it will not be refreshed. This is because we assume the change was made by that same user and there is no need for an update.
+There is a delay between the moment the issue is modified and when the event is emitted. It might take up to a few seconds.

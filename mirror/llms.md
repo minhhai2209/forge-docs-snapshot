@@ -1447,6 +1447,10 @@ This section contains curated references that show how real Forge apps are struc
 
 - [Roadmap](https://developer.atlassian.com/platform/forge/containers-reference/roadmap.md)
 
+#### Pricing (coming soon)
+
+- [Pricing (coming soon)](https://developer.atlassian.com/platform/forge/containers-reference/pricing.md)
+
 #### Reference
 
 - [Reference](https://developer.atlassian.com/platform/forge/containers-reference/reference.md)
