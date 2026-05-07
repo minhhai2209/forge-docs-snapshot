@@ -3,7 +3,7 @@
 This page lists the Key-Value Store's basic methods for storing unencrypted data. Data stored through these
 methods can be queried through the [kvs.query](#kvs.query) tool.
 
-To store sensitive data in a more secure manner, you'll need to [encrypt your stored data](/platform/forge/runtime-reference/storage-api-secret)
+To store sensitive data in a more secure manner, you'll need to [encrypt your stored data](/platform/forge/storage-reference/kvs-api-secret)
 instead. This data, however, can't be queried through the [kvs.query](#kvs.query) tool.
 
 To start, import the Forge KVS package in your app, as follows:
@@ -34,17 +34,17 @@ See [Permissions](/platform/forge/manifest-reference/permissions/#scopes) for mo
 
 ## Batch operations
 
-Batch operations allow you to perform multiple SET, GET, or DELETE operations in a single request. Batch operaton requests [use rate limits more efficiently]((/platform/forge/limits-kvs-ce/#10kbsizing)) and can be 5 times faster than making the individual requests in parallel.
+Batch operations allow you to perform multiple SET, GET, or DELETE operations in a single request. Batch operation requests [use rate limits more efficiently](/platform/forge/limits-kvs-ce#10kbsizing) and can be 5 times faster than making the individual requests in parallel.
 
-See [Batch operations](/platform/forge/storage-reference/batchops/) and [Batch operations for custom entities](/platform/forge/storage-reference/batchops-entities/) for more information.
+See [Batch operations](/platform/forge/storage-reference/kvs-batch/) and [Batch operations for custom entities](/platform/forge/storage-reference/entities-batch/) for more information.
 
 ## Legacy version
 
-Legacy versions of the [Key-Value Store](/platform/forge/runtime-reference/storage-api-basic/) and [Custom Entity Store](/platform/forge/storage-reference/storage-api-custom-entities/) were originally provided through the `storage` module of the `@forge/api` package. For now, we will continue supporting the legacy `storage` module.
+Legacy versions of the [Key-Value Store](/platform/forge/storage-reference/kvs/) and [Custom Entity Store](/platform/forge/storage-reference/entities/) were originally provided through the `storage` module of the `@forge/api` package. For now, we will continue supporting the legacy `storage` module.
 
 However, as of [March 17, 2025](/platform/forge/changelog/#CHANGE-2399), no further feature updates will be provided through this module. Instead, all new KVS and Custom Entity Store feature updates will only be built on modules in the @forge/kvs package. For example,
-[KVS transactions](/platform/forge/storage-reference/transactions/) and
-[Custom Entity Store transactions](/platform/forge/storage-reference/transactions-entities/) are only available through `@forge/kvs`.
+[KVS transactions](/platform/forge/storage-reference/kvs-transactions/) and
+[Custom Entity Store transactions](/platform/forge/storage-reference/entities-transactions/) are only available through `@forge/kvs`.
 
 We strongly recommend using `@forge/kvs`. Migrating to this package will only change the interface to your app’s data; all data stored through the legacy module will remain intact.
 
@@ -101,9 +101,9 @@ When specifying a TTL, keep in mind the following:
 
 #### Change write conflict strategy
 
-When writing data (using either [kvs.set](/platform/forge/runtime-reference/storage-api-basic-api/#kvs-set),
-[kvs.setsecret](/platform/forge/runtime-reference/storage-api-secret/#kvs-setsecret), or
-[kvs.entity().set](/platform/forge/runtime-reference/storage-api-custom-entities/#entity---set)), Forge resolves write conflicts
+When writing data (using either [kvs.set](/platform/forge/storage-reference/kvs-api/#kvs-set),
+[kvs.setsecret](/platform/forge/storage-reference/kvs-api-secret/#kvs-setsecret), or
+[kvs.entity().set](/platform/forge/storage-reference/entities-api/#entity---set)), Forge resolves write conflicts
 using a *last-write-wins* strategy by default.
 
 You can control this behaviour through the `keyPolicy` option, which supports two properties:
@@ -436,7 +436,7 @@ await kvs.delete('example-key');
 ## kvs.query
 
 Builds a query which returns a set of entities matching the provided list of criteria.
-See [Querying data](/platform/forge/runtime-reference/storage-api-query) for more information
+See [Querying data](/platform/forge/storage-reference/kvs-api-query) for more information
 on building and executing queries.
 
 `kvs.query` does not return secret values set by `kvs.setSecret`.

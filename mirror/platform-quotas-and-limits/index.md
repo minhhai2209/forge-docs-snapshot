@@ -92,6 +92,8 @@ For more information, see [Scheduled trigger limits](/platform/forge/limits-sche
 
 You can track your usage and forecast costs using:
 
+For practical techniques to reduce your app's billable usage, see [Optimise Forge platform costs](/platform/forge/optimise-forge-costs/).
+
 ## Migration note
 
 We’ve reorganized this content for clarity. Quotas have been retired, and platform limits are now documented per category. If you’ve bookmarked the old quotas page, use this overview to find the updated guidance.

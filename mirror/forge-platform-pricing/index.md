@@ -11,8 +11,6 @@ Forge uses a consumption-based pricing model, offering most capabilities for fre
 
 ## Billable capabilities and pricing
 
-[Forge Containers](/platform/forge/containers-reference/pricing/) use a separate **reservation-based pricing model** and are not included in the table below.
-
 | Capability | Unit | Free usage allowance (monthly) | Overage price per unit ($USD) |
 | --- | --- | --- | --- |
 | Forge Functions: Duration | $/GB-seconds | 100,000 GB-seconds | 0.000025 |
@@ -74,6 +72,8 @@ This example shows how charges are only applied to usage above the free monthly 
 ## Estimate and monitor your costs
 
 Use the [Forge cost estimator](https://developer.atlassian.com/forge-cost-estimator) to preview potential monthly charges based on your app's projected usage.
+
+For practical techniques to keep your app within the free tier or minimise overage charges, see [Optimise Forge platform costs](/platform/forge/optimise-forge-costs/).
 
 You can [monitor usage metrics and cost](https://developer.atlassian.com/platform/forge/monitor-usage-metrics/) for your Forge apps in the [Developer console](/platform/forge/monitor-usage-metrics/). This helps you:
 

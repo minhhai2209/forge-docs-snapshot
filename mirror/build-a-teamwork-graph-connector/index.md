@@ -13,6 +13,17 @@ In this tutorial, we’ll use a web trigger to invoke our methods. For related d
 only demonstrates the backend of the app. It doesn’t include any frontend components, such as
 [UI Kit](/platform/forge/ui-kit/components/).
 
+## Build with AI assistance
+
+As an alternative to this manual tutorial, use the Forge Connector skill to build a
+Teamwork Graph connector with AI assistance. When invoked in your IDE or Rovo Chat, the skill
+walks you through each step — from setting up your connector in `manifest.yml` to writing the
+code that fetches, transforms, and pushes data into Teamwork Graph.
+
+[Forge Connector skill
+
+Build a Teamwork Graph connector with AI assistance.](https://github.com/atlassian/forge-skills/blob/main/README.md)
+
 ## Example app
 
 To view the app code for this tutorial, check out the example app.
@@ -130,7 +141,7 @@ Make the following changes in `manifest.yml` file of the app.
 
 Here, you have defined the Teamwork Graph connector, including:
 
-* The [object types](/platform/teamwork-graph/object-types/overview/) it supports. In this example, `atlassian:document`.
+* The [object types](/platform/teamwork-graph/object-types/) it supports. In this example, `atlassian:document`.
 * The configuration details that will appear in Atlassian Administration, allowing an admin to set up the connector.
 * The `capabilities` block, which declares data handling behaviour to admins before they enable the connector.
 

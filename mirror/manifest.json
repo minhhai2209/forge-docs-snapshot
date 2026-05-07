@@ -1,13 +1,15 @@
 {
   "root_url": "https://developer.atlassian.com/platform/forge",
-  "generated_at": "2026-05-06T19:08:55.281134+00:00",
-  "discovered_urls": 719,
-  "downloaded_pages": 718,
-  "skipped_pages": 1,
-  "duration_seconds": 2091.92,
+  "generated_at": "2026-05-07T19:08:17.809180+00:00",
+  "discovered_urls": 722,
+  "downloaded_pages": 719,
+  "skipped_pages": 3,
+  "duration_seconds": 2035.37,
   "user_agent": "ForgeDocsMirror/1.0 (+https://github.com/minhhai2209/forge-docs-snapshot)",
   "delay_seconds": 0.25,
   "failures": [
+    "timeout: https://developer.atlassian.com/platform/forge/change-the-jira-service-management-frontend-with-the-ui-kit",
+    "timeout: https://developer.atlassian.com/platform/forge/set-up-forge",
     "playwright: https://developer.atlassian.com/platform/forge/resources/Forge-Data-Processing-Addendum.pdf"
   ]
 }

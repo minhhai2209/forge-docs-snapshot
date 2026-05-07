@@ -1078,6 +1078,7 @@ This section contains curated references that show how real Forge apps are struc
 - [App compatibility](https://developer.atlassian.com/platform/forge/app-compatibility.md)
 - [Modules](https://developer.atlassian.com/platform/forge/modules.md)
 - [App security](https://developer.atlassian.com/platform/forge/security.md)
+- [Optimise Forge platform costs](https://developer.atlassian.com/platform/forge/optimise-forge-costs.md)
 
 #### User interface
 

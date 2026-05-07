@@ -1,4 +1,8 @@
-# Integrate remote agents with Jira
+# Integrate remote agents with Jira (EAP)
+
+Remote agents in Jira are available through Forge's Early Access Program (EAP). EAP grants selected users early testing access for feedback; APIs and features in EAP are experimental, unsupported, subject to change without notice, and not recommended for production. [Sign up here](https://go.atlassian.com/signup-forge-agent-connector) to participate.
+
+For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
 
 This guide is intended for developers seeking to integrate **AI agents running on external infrastructure** (referred to in this guide as *Remote Agents*) into Jira. For patterns to enable [Rovo agents](https://www.atlassian.com/software/rovo/features) running on Atlassian's AI agent platform to interact with external APIs or MCP servers, see the following:
 
@@ -33,7 +37,7 @@ This guide assumes you are operating a typical multi-tenant SaaS-style web appli
 
 **Jira tenant** or **Jira site** — Jira is a multi-tenant web application hosted on Atlassian infrastructure. Each tenant is accessible under a different base URL, typically `${customer-subdomain}.atlassian.net`, though the domain and TLD may vary. If listing on the Atlassian Marketplace, your remote agent must be ready to handle installations and tasks from multiple Jira tenants.
 
-![Simplified integration architecture showing a Jira site, a Forge app acting as middleware, and the remote service hosting the agent](https://dac-static.atlassian.com/platform/forge/images/remote-agents/architecture.png?_v=1.5800.2022)
+![Simplified integration architecture showing a Jira site, a Forge app acting as middleware, and the remote service hosting the agent](https://dac-static.atlassian.com/platform/forge/images/remote-agents/architecture.png?_v=1.5800.2025)
 
 *Simplified integration architecture*
 
@@ -76,7 +80,7 @@ Always verify events sent as webhooks using JWKS before processing them. Failing
 
 3. After receiving and verifying an installation event, your remote service may optionally call the Jira REST API to retrieve additional information about the Jira tenant.
 4. Your remote service then persists the Jira installation information in its data store. See [Recommended schema for jiraInstallations table](#recommended-schema-for-jirainstallations-table) for recommended properties to store.
-   ![Installation flow diagram](https://dac-static.atlassian.com/platform/forge/images/remote-agents/installation-flow.png?_v=1.5800.2022)
+   ![Installation flow diagram](https://dac-static.atlassian.com/platform/forge/images/remote-agents/installation-flow.png?_v=1.5800.2025)
 5. Your agent may also initiate a post-installation configuration flow that the administrator will be directed to after installing your agent. Most remote agents will need to implement this in order to map the customer's tenant in the remote service to their tenant in Jira. This flow is covered in the [Agent configuration](#3--agent-configuration) section below.
 
 After configuration is complete, your agent is ready to [handle tasks](#2--handling-jira-tasks).
@@ -125,7 +129,7 @@ Conversations between users and agents (including any additional input from the 
 
 During its lifecycle, a `task` will start in the `submitted` state and then transition through a number of states until it reaches a terminal state (`rejected`, `completed`, `canceled`, or `failed`).
 
-![Task lifecycle state diagram](https://dac-static.atlassian.com/platform/forge/images/remote-agents/task-lifecycle.png?_v=1.5800.2022)
+![Task lifecycle state diagram](https://dac-static.atlassian.com/platform/forge/images/remote-agents/task-lifecycle.png?_v=1.5800.2025)
 
 The directional arrows on the diagram are important. Once a task has entered a terminal state — `rejected`, `completed`, `canceled`, or `failed` — it **can not be restarted**. Subsequent messages from the user for the same context should be handled by creating a new task. See the ["single active task per context" rule](#the-single-active-task-per-context-rule) for more details.
 
@@ -157,7 +161,7 @@ There are a few rules that govern agent context and task lifecycle in Jira:
 * However, if a user sends a new message to the remote agent in an ongoing chat session with that agent, Jira will send your agent a new `message` with the `contextId` corresponding to that chat. Your agent should update an existing active task or create a new task within the same context when this happens. See the ["single active task per context" rule](#the-single-active-task-per-context-rule).
 * Contexts are **always** private to a single user and agent. Messages from different users about the same work item should each have a separate context.
 
-![Cardinality of remote agent task-related objects](https://dac-static.atlassian.com/platform/forge/images/remote-agents/context-cardinality.png?_v=1.5800.2022)
+![Cardinality of remote agent task-related objects](https://dac-static.atlassian.com/platform/forge/images/remote-agents/context-cardinality.png?_v=1.5800.2025)
 
 *Cardinality of remote agent task-related objects.*
 
@@ -169,7 +173,7 @@ Each agent can potentially have multiple contexts for the same user on the same 
 * Therefore if your agent receives a new `message` in relation to a `task` it is already working on, it should attempt to incorporate that `message` into the context it is using to process the task (if possible).
 * Your agent may have multiple active tasks for the same user and work item, provided they are in different contexts.
 
-![A context may have multiple tasks, but only the newest may be in an active state](https://dac-static.atlassian.com/platform/forge/images/remote-agents/single-active-task.png?_v=1.5800.2022)
+![A context may have multiple tasks, but only the newest may be in an active state](https://dac-static.atlassian.com/platform/forge/images/remote-agents/single-active-task.png?_v=1.5800.2025)
 
 *A context may have multiple tasks, but only the newest may be in an active state.*
 
@@ -186,41 +190,41 @@ The following diagrams show the user experience and flow for a typical assignmen
 
 ## Initial assignment
 
-![Assignment flow diagram](https://dac-static.atlassian.com/platform/forge/images/remote-agents/assign-flow.png?_v=1.5800.2022)
+![Assignment flow diagram](https://dac-static.atlassian.com/platform/forge/images/remote-agents/assign-flow.png?_v=1.5800.2025)
 
-![User assigns remote agent to work item](https://dac-static.atlassian.com/platform/forge/images/remote-agents/assign-1.png?_v=1.5800.2022)
+![User assigns remote agent to work item](https://dac-static.atlassian.com/platform/forge/images/remote-agents/assign-1.png?_v=1.5800.2025)
 
 *User assigns remote agent to work item*
 
-![Agent's task status displayed in the Jira UI](https://dac-static.atlassian.com/platform/forge/images/remote-agents/assign-2.png?_v=1.5800.2022)
+![Agent's task status displayed in the Jira UI](https://dac-static.atlassian.com/platform/forge/images/remote-agents/assign-2.png?_v=1.5800.2025)
 
 *Agent's task status displayed in the Jira UI*
 
 ## Task execution
 
-![Task execution flow diagram](https://dac-static.atlassian.com/platform/forge/images/remote-agents/exec-flow.png?_v=1.5800.2022)
+![Task execution flow diagram](https://dac-static.atlassian.com/platform/forge/images/remote-agents/exec-flow.png?_v=1.5800.2025)
 
-![Agent requests input from user](https://dac-static.atlassian.com/platform/forge/images/remote-agents/exec-1.png?_v=1.5800.2022)
+![Agent requests input from user](https://dac-static.atlassian.com/platform/forge/images/remote-agents/exec-1.png?_v=1.5800.2025)
 
 *Agent requests input from user*
 
-![User selects "Refine in Chat" and provides further input to the Agent](https://dac-static.atlassian.com/platform/forge/images/remote-agents/exec-2.png?_v=1.5800.2022)
+![User selects "Refine in Chat" and provides further input to the Agent](https://dac-static.atlassian.com/platform/forge/images/remote-agents/exec-2.png?_v=1.5800.2025)
 
 *User selects "Refine in Chat" and provides further input to the Agent*
 
 ## Task completion
 
-![Task completion flow diagram](https://dac-static.atlassian.com/platform/forge/images/remote-agents/complete-flow.png?_v=1.5800.2022)
+![Task completion flow diagram](https://dac-static.atlassian.com/platform/forge/images/remote-agents/complete-flow.png?_v=1.5800.2025)
 
-![Agent returns task in "completed" status with prompt to draft a comment](https://dac-static.atlassian.com/platform/forge/images/remote-agents/complete-1.png?_v=1.5800.2022)
+![Agent returns task in "completed" status with prompt to draft a comment](https://dac-static.atlassian.com/platform/forge/images/remote-agents/complete-1.png?_v=1.5800.2025)
 
 *Agent returns task in "completed" status — final task message is displayed in the Jira UI with prompt to draft a comment*
 
-![User selects "Draft comment" and modifies content to their tastes](https://dac-static.atlassian.com/platform/forge/images/remote-agents/complete-2.png?_v=1.5800.2022)
+![User selects "Draft comment" and modifies content to their tastes](https://dac-static.atlassian.com/platform/forge/images/remote-agents/complete-2.png?_v=1.5800.2025)
 
 *User selects "Draft comment" and modifies content to their tastes*
 
-![User posts comment on work item](https://dac-static.atlassian.com/platform/forge/images/remote-agents/complete-3.png?_v=1.5800.2022)
+![User posts comment on work item](https://dac-static.atlassian.com/platform/forge/images/remote-agents/complete-3.png?_v=1.5800.2025)
 
 *User posts comment on work item*
 
