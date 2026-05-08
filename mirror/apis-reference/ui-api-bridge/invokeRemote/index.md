@@ -1,12 +1,37 @@
 # invokeRemote
 
-The `invokeRemote` bridge method enables apps to integrate with [remote backends](/platform/forge/remote)
-hosted outside the Atlassian platform.
+The `invokeRemote` bridge method enables apps to integrate with a single [remote backend](/platform/forge/remote) hosted outside the Atlassian platform.
 
 Requests are validated and hydrated with required authentication (e.g. OAuth tokens if configured) before being proxied from Forge to the remote server. The HTTP response is validated before being returned to the frontend.
 
-To use the `invokeRemote` bridge method, you need to define an [endpoint](/platform/forge/manifest-reference/endpoint)
-for your back end in the `manifest.yml` file.
+To use the `invokeRemote` bridge method, you need to define an [endpoint](/platform/forge/manifest-reference/endpoint) for your back end in the `manifest.yml` file. For example:
+
+```
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+modules:
+  jira:issuePanel:
+    - key: my-jira-issue-panel
+      resolver:
+        endpoint: my-remote-endpoint
+      # ... other resolver properties
+  endpoint:
+    - key: my-remote-endpoint
+      remote: my-remote
+remotes:
+  - key: my-remote
+    baseUrl: https://my-remote.com
+```
 
 Invocations from users, webtriggers, or scheduled triggers are subject to Forge's [invocation limits](/platform/forge/platform-quotas-and-limits/#invocation-limits).
 
@@ -23,6 +48,8 @@ Invocations from users, webtriggers, or scheduled triggers are subject to Forge'
 8
 9
 10
+11
+12
 interface InvokeRemoteInput {
   path: string;
   method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
@@ -30,29 +57,45 @@ interface InvokeRemoteInput {
   body?: unknown;
 }
 
-function invokeRemote(
-  input: InvokeRemoteInput
-): Promise<{ [key: string]: any } | void>;
+function invokeRemote(input: InvokeRemoteInput): Promise<{
+    headers: Record<string, string[]>;
+    status: number;
+    body?: Record<string, any>;
+}>;
 ```
 
 ## Arguments
 
-* **path**: The path that will be appended to the `baseUrl` of the [remote](/platform/forge/manifest-reference/remotes).
+* **path**: The path that will be appended to the `baseUrl` of the [remote](/platform/forge/manifest-reference/remotes) following the relative path resolution rules of the [URL Standard](https://developer.mozilla.org/en-US/docs/Web/API/URL/URL).
 * **method**: The HTTP method for the request.
 * **headers**: Optional custom [headers](/platform/forge/remote/essentials#request-headers) that you can add to your request.
-* **body**: The body of your request.
+* **body**: Optional body of your request. If you are sending a `body`, you must send a valid JSON `object` as it will get transformed with `JSON.stringify(body)` before being sent to the remote.
 
 ## Returns
 
-A `Promise` that resolves with the data returned from the invoked endpoint:
+### Successful responses
 
-* The `content-type` header must be `application/json`.
-* The HTTP status code from the response is available in the `Promise`.
-* For successful responses, headers will be available in the `headers` properties.
-* Non-2xx status codes do not cause the `Promise` to reject. Only 401 responses reject the promise.
-* If a remote returns a non-2xx response without a body, this will result in an error from `invokeRemote`.
+To resolve the `Promise` successfully, the remote must respond with:
 
-Further information about the Forge Remote invocation contract can be found [here](/platform/forge/forge-remote-invocation-contract).
+| Status code | Body required? | `content-type` header required? |
+| --- | --- | --- |
+| 2xx | No | No |
+| Non-2xx (except 401, see below) | Yes | No, but if set, it must be set to `application/json` |
+
+### Error responses
+
+Possible error scenarios which cause the `Promise` to reject:
+
+| Description | Error message |
+| --- | --- |
+| 401 returned from the remote.  This status code is reserved for the Forge platform to identify Forge Invocation Token validation errors. | `Remote could not verify the Forge Invocation Token` |
+| Non-2xx with `content-type` header set but not equal to `application/json` | `Invalid response from remote` |
+| Body value is not valid JSON and cannot be parsed.  This same error will occur if the status is non-2xx without a body. | `Invalid response from remote` |
+| Network error (e.g. server unreachable) | `Invalid response from remote` |
+| Timeout | `Remote invocation timed out after X seconds` |
+| Other unhandled error | `An unexpected error happened` |
+
+See the [Forge Remote invocation contract](/platform/forge/forge-remote-invocation-contract) for further details.
 
 ## Example
 
@@ -82,7 +125,7 @@ const res = await invokeRemote({
   }
 });
 
-console.log(`Created task: ${JSON.stringify(res.task)}`);
+console.log(`Created task: ${JSON.stringify(res.body.task)}`);
 ```
 ```
 
@@ -104,6 +147,6 @@ const res = await invokeRemote({
   method: 'GET'
 });
 
-console.log(`Tasks: ${JSON.stringify(res.body[0])}`);
+console.log(`Tasks: ${JSON.stringify(res.body.tasks[0])}`);
 ```
 ```

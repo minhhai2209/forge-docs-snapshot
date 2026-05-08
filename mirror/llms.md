@@ -1352,6 +1352,7 @@ This section contains curated references that show how real Forge apps are struc
 - [Create alert rules](https://developer.atlassian.com/platform/forge/create-alert-rules.md)
 - [Manage alert rules](https://developer.atlassian.com/platform/forge/manage-alert-rules.md)
 - [View open and closed alerts](https://developer.atlassian.com/platform/forge/view-open-and-closed-alerts.md)
+- [Usage alerts](https://developer.atlassian.com/platform/forge/usage-alerts.md)
 
 ##### Monitor app metrics
 

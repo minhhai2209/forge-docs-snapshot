@@ -7,7 +7,7 @@ This module can be used in Jira Service Management.
 
 Unlicensed user access: This module supports interaction with customer accounts and unlicensed accounts. It does not support anonymous access. For information, see [Access to Forge apps for unlicensed users](/platform/forge/access-to-forge-apps-for-unlicensed-users).
 
-![Example of a Portal Request Detail](https://dac-static.atlassian.com/platform/forge/snippets/images/portal-request-detail-demo.png?_v=1.5800.2025)
+![Example of a Portal Request Detail](https://dac-static.atlassian.com/platform/forge/snippets/images/portal-request-detail-demo.png?_v=1.5800.2027)
 
 ## Properties
 

@@ -1,28 +1,22 @@
 # Forge changelog
 
+EDITED 8 May 2026
+
 Hello Marketplace partners,
 
 We're excited to share that the newest improvements to Atlassian’s design language is here, as you may have seen at Team '26!
 
 These build upon on our refreshed visual language that launched last year at Team ’25 (including colour, typography, and iconography that many of you already adopted). It makes it even easier to build modern UI that is cohesive across Atlassian and Marketplace apps, with better visual clarity and accessibility.
 
-These improvements are being shipped as components, design tokens and guidance updates to the Atlassian Design System (ADS) and Forge UI Kit, featuring new/updated:
+We will be shipping these improvements to components, design tokens and guidance as part of the Atlassian Design System (ADS), and Forge UI Kit will also receive updates.
 
-* Tile system and components (including objects)
-* Labelling system and components (for status and categorisation)
-* Shape – Border & Radius foundations
-* Motion foundations
-* Spotlight component
+The following are in development behind feature gates. To preview the new improvements, please see [Atlassian Design System documentation](https://atlassian.design/design-system "https://atlassian.design/design-system"). We will share adoption and migration details once they are ready for use in your apps.
 
-## What's coming soon
-
-The following are in development behind feature gates. To preview the new improvements please find more details on <https://atlassian.design/>.
-
-### 🎨 Tile & Object System
+## 🎨 Tile & Object system
 
 The Tile & Object system replaces inconsistent custom tile-like UI elements — previously scattered across products with mismatched sizes, radii, colours, and naming conventions. We now offer a single, coherent standard for representing tasks, pages, objects, and app icons.
 
-Changes are coming to [Avatar](https://atlassian.design/components/avatar/examples "https://atlassian.design/components/avatar/examples"), [Icon tile](https://atlassian.design/components/icon/icon-tile "https://atlassian.design/components/icon/icon-tile"), [Tile](https://atlassian.design/components/tile/overview "https://atlassian.design/components/tile/overview") and [Object](https://atlassian.design/components/object/object-explorer "https://atlassian.design/components/object/object-explorer") packages to align with the new Tile system. The [Icon object](https://atlassian.design/components/icon-object/icon-explorer "https://atlassian.design/components/icon-object/icon-explorer") package has been deprecated and replaced by [Object](https://atlassian.design/components/object/object-explorer "https://atlassian.design/components/object/object-explorer"). Adoption details are landing soon — stay tuned.
+Changes are coming to [Avatar](https://atlassian.design/components/avatar/examples "https://atlassian.design/components/avatar/examples"), [Icon tile](https://atlassian.design/components/icon/icon-tile "https://atlassian.design/components/icon/icon-tile"), [Tile](https://atlassian.design/components/tile/overview "https://atlassian.design/components/tile/overview") and [Object](https://atlassian.design/components/object/object-explorer "https://atlassian.design/components/object/object-explorer") packages to align with the new Tile system. The [Icon-object](https://atlassian.design/components/icon-object/icon-explorer "https://atlassian.design/components/icon-object/icon-explorer") package has been deprecated and replaced by [Object](https://atlassian.design/components/object/object-explorer "https://atlassian.design/components/object/object-explorer").
 
 *Before/After of Tile System in Jira*
 
@@ -44,19 +38,13 @@ Together, these foundations ensure components feel more unified and polished —
 
 *New border width tokens*
 
-### **🏷️ Labelling & Categorization System - Phase 1**
+### **🏷️ Labelling system (for status and categorisation)**
 
-Atlassian's product ecosystem currently lacks a cohesive and standardised approach to object labelling. Each product has developed its own patterns and components for representing status, tags, verification, and classification, leading to inconsistent experiences as products become more integrated.
+We’re introducing a more intuitive, accessible, and scalable labelling system that standardises consistent presentation of statuses and categorisation, supporting app-specific needs while maintaining coherence and visual clarity.
 
-With our improvements to labelling we have introduced a visual uplift for the components used to label, tag, and categorise content across Atlassian apps: [Lozenges](https://atlassian.design/components/lozenge/lozenge/examples "https://atlassian.design/components/lozenge/lozenge/examples"), [Tags](https://atlassian.design/components/tag/tag/examples "https://atlassian.design/components/tag/tag/examples"), and [Badges](https://atlassian.design/components/badge/examples "https://atlassian.design/components/badge/examples"). We have also introduced a new [Lozenge dropdown variant](https://atlassian.design/components/lozenge/lozenge-dropdown-trigger "https://atlassian.design/components/lozenge/lozenge-dropdown-trigger") and a new [Avatar tag](https://atlassian.design/components/tag/avatar-tag/examples "https://atlassian.design/components/tag/avatar-tag/examples"). Please note that subtle lozenges are deprecated - replaced by tags for non status lozenges. Our aim is to create a unified, extensible labelling system that:
+We’ve updated the visual appearance of [Lozenges](https://atlassian.design/components/lozenge/lozenge/examples "https://atlassian.design/components/lozenge/lozenge/examples"), [Tags](https://atlassian.design/components/tag/tag/examples "https://atlassian.design/components/tag/tag/examples"), and [Badges](https://atlassian.design/components/badge/examples "https://atlassian.design/components/badge/examples") to have the right level of prominence in the UI, and look and feel harmonious in every context they show up. Lozenges can now included a trailing metric, and we are introducing a new [Lozenge dropdown variant](https://atlassian.design/components/lozenge/lozenge-dropdown-trigger "https://atlassian.design/components/lozenge/lozenge-dropdown-trigger"), as well as a new [Avatar tag](https://atlassian.design/components/tag/avatar-tag/examples "https://atlassian.design/components/tag/avatar-tag/examples") to represent individuals, teams, or AI agents.
 
-* Powers consistent experiences across the Atlassian ecosystem
-* Supports product-specific needs while maintaining coherence
-* Facilitates future innovations in work management and discovery
-* Reduces implementation effort for product teams
-* Reduces cognitive load for customers
-
-This is Phase 1 of a broader labelling system that will enable consistent semantics in Phase 2.
+Additionally, to provide greater visual distinction and hierarchy between Lozenge and Tag, subtle Lozenge will be deprecated and need to be migrated to the new default Lozenge appearance, or where applicable to Tag instead.
 
 *Updated components: Badge, Lozenge, ad Tag*
 
@@ -64,10 +52,14 @@ This is Phase 1 of a broader labelling system that will enable consistent semant
 
 ### **✨ Motion Foundations - Phase 1 (Early access)**
 
-Motion breathes life into every interaction and brand moment within apps, helping users understand spatial relationships, confirms their actions, and carries branded human expression across experiences. Our approach to motion introduces a systematic, shared language, enabling you to make good motion **the easy default**, not an exception.
+Motion breathes life into every interaction and brand moment within apps, helping users understand spatial relationships, confirms their actions, and carries branded human expression across experiences. Our approach to motion introduces a systematic, shared language, enabling you to make good motion the easy default, not an exception.
 
-With this early access release, we will be introducing semantic motion tokens and base tokens as the foundation of the system. Uplifted and new motion in key Atlassian Design System components will be coming as well as an [improved motion primitive](https://atlassian.design/components/motion/motion-primitive/examples "https://atlassian.design/components/motion/motion-primitive/examples") to replace legacy entering components and simplify applying entry and exit transitions in UI.
-
-Check out our [motion foundation guidelines](https://atlassian.design/foundations/motion "https://atlassian.design/foundations/motion") to familiarise yourself with the upcoming changes.
+In the initial release, we will be introducing semantic motion tokens and base tokens as the foundation of the system. Uplifted and new motion in key Atlassian Design System components are coming, as well as an [improved motion primitive](https://atlassian.design/components/motion/motion-primitive/examples "https://atlassian.design/components/motion/motion-primitive/examples") to replace legacy entering components and simplify applying entry and exit transitions in UI.  
+  
+Learn more about how we think about motion on [atlassian.design](https://atlassian.design/foundations/motion "https://atlassian.design/foundations/motion").
 
 *Motion package before vs after*
+
+## Questions or feedback?
+
+We'd love to hear from you — please share on the [Atlassian Developer Community](https://community.developer.atlassian.com/c/atlassian-ecosystem-design/21 "https://community.developer.atlassian.com/c/atlassian-ecosystem-design/21")!
