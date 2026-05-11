@@ -11,7 +11,7 @@ This package module uses the app's credentials, determined by the scopes defined
 
 ## Get app licenses
 
-Send a `GET` request to `/forge/installation/v1/license` to retrieve license information for one or more apps on the current site.
+Send a `GET` request to `/forge/app/v1/license` to retrieve license information for one or more apps on the current site.
 
 If `appId` is not provided, the request falls back to the calling app (self-query). For explicit `appId` queries, all apps must share the same developer space as the caller and match the caller environment (`environmentType` + `environmentKey`).
 
@@ -41,7 +41,7 @@ Node.js
 import { asApp } from '@forge/api';
 
 // Self-query: retrieve the calling app's own license
-const response = await asApp().requestAtlassian(`/forge/installation/v1/license`, {
+const response = await asApp().requestAtlassian(`/forge/app/v1/license`, {
   headers: {
     'Content-Type': 'application/json'
   },
@@ -184,7 +184,7 @@ The License service encountered an unexpected problem.
 
 ## Remote compatibility
 
-You can call the License REST API from a remote backend. For more information, see [Calling Atlassian app APIs from a remote](/platform/forge/remote/calling-product-apis/), and the API endpoint is `https://api.atlassian.com/forge/installation/v1/license`.
+You can call the License REST API from a remote backend. For more information, see [Calling Atlassian app APIs from a remote](/platform/forge/remote/calling-product-apis/), and the API endpoint is `https://api.atlassian.com/forge/app/v1/license`.
 
 ## Rate limit
 
