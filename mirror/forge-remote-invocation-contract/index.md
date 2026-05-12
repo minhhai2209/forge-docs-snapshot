@@ -60,7 +60,7 @@ x-b3-spanid: 2a2436c64727923f
 authorization: Bearer ${FIT}
 x-forge-oauth-system: ${OAuth-System-Token}
 x-forge-oauth-user: ${OAuth-User-Token}
-header1: value ## Set customer headers when invoking your remote from a UI module
+header1: value ## Set custom headers when invoking your remote from a UI module
 ```
 ```
 

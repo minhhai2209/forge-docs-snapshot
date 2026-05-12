@@ -113,6 +113,7 @@ const createIssueModal = new CreateIssueModal({
     versions: ['10039'],
     fixVersions: ['10039'],
     customfield_10010: 'custom value', 
+    customfield_10028: '2026-05-12T09:34:48',
   },
 });
 

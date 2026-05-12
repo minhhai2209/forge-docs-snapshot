@@ -69,32 +69,6 @@ Evaluates a single feature flag for the given user. Synchronous after initializa
 
 **Returns:** `boolean` — `true` if the flag is enabled for this user, `false` otherwise.
 
-### `getFeatureFlags(user, flagNames)`
-
-```
-```
-1
-2
-```
-
-
-
-```
-getFeatureFlags(user: FeatureFlagUser, flagNames: string[]): Record<string, boolean>
-```
-```
-
-Evaluates multiple flags in a single call.
-
-**Parameters:**
-
-| Parameter | Type | Required | Description |
-| --- | --- | --- | --- |
-| `user` | `FeatureFlagUser` | Yes | User context for flag evaluation |
-| `flagNames` | `string[]` | Yes | Array of flag IDs to evaluate |
-
-**Returns:** `Record<string, boolean>` — Map of flag ID to boolean result.
-
 ### `shutdown()`
 
 Stops the polling interval and releases resources. Call this when the SDK instance is no longer needed.
