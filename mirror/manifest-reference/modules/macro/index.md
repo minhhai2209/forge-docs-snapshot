@@ -19,7 +19,7 @@ from the quick insert menu of the editor. The `macro` module is implemented by a
 
 On apps that use Custom UI, module content is displayed inside a [special Forge iframe](/platform/forge/custom-ui/iframe/) which has the [sandbox](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#sandbox) attribute configured. This means that HTML links (for example, `<a href="https://domain.tld/path">...</a>`) in this iframe won't be clickable. To make them clickable, use the [router.navigate](/platform/forge/custom-ui-bridge/router/#navigate) API from the `@forge/bridge` package.
 
-![Example of a macro](https://dac-static.atlassian.com/platform/forge/snippets/images/macro-example.png?_v=1.5800.2031)
+![Example of a macro](https://dac-static.atlassian.com/platform/forge/snippets/images/macro-example.png?_v=1.5800.2036)
 
 ## Manifest structure
 
@@ -85,7 +85,7 @@ resources []
 | `config.render` | `'native'` | Yes for [UI Kit](/platform/forge/ui-kit/components/) | Indicates the module uses [UI Kit](/platform/forge/ui-kit/components/). |
 | `config.viewportSize` | `'small'`, `'medium'`, `'large'`, `'xlarge'`, `'max'` or `'fullscreen'` |  | The [display size](/platform/forge/manifest-reference/resources) of `resource`. Can only be set if the module is using the `resource` property. Remove this property to enable automatic resizing of the module. For `fullscreen` viewports, the `config.title` and `config.icon` will be displayed in the header. |
 | `config.openOnInsert` | `boolean` |  | Defaults to `false` for classic configuration, defaults to `true` for custom configuration. An optional configuration to control if the classic configuration sidepanel or the custom configuration modal is automatically opened when first inserted. |
-| `adfExport` | `{ function: string }` |  | **For UI Kit and Custom UI use only**. Contains a `function` property, which references the `function` module that defines the export view of the macro, specified in [Atlassian document format](/cloud/jira/platform/apis/document/structure/). The specified function can consume the `exportType` directly from the function's payload in order to specify different views per export type. The `exportType` can be one of `pdf`, `word`, or `other`. See this [tutorial](/platform/forge/change-the-confluence-frontend-with-the-ui-kit/#specify-the-export-view) for more information. |
+| `adfExport` | `{ function: string }` |  | Defines how your macro appears when a Confluence page is exported.  Contains a `function` property which references a `function` module that returns the macro content in [Atlassian document format](/cloud/jira/platform/apis/document/structure/).  The specified function can consume the `exportType` directly from the function's payload in order to specify different views per export type. The `exportType` can be one of `pdf`, `word`, or `other`. See this [tutorial](/platform/forge/change-%0Athe-confluence-frontend-with-the-ui-kit/#specify-the-export-view) for more information.  The `adfExport` function is invoked once per macro instance during export operations. Pages with many macro instances can trigger a large number of invocations in a single export, potentially causing rate limiting and performance issues. Consider minimizing backend work within the function and informing customers about potential limitations when using many macros on pages that will be exported. |
 | `layout` | `'block'`, `'inline'` or `'bodied'` |  | `'block'` type is used by default.  `'inline'` shows the element inline with existing text.   * For UI Kit apps, inline macros dynamically resize to wrap the content. * A limitation exists for Custom UI apps that prevents inline macros from dynamically resizing when the content of the macro is changed.     `'bodied'` sets the macro to have a rich text body.   * This allows users to insert and edit rich content (such as images and tables) within the macro using the Confluence editor, and allows your app to insert a body using a custom editor. * Please see the link to the tutorial [here](/platform/forge/using-rich-text-bodied-macros). |
 | `autoConvert` | `autoConvert object` |  | Inserts a macro into the editor when a recognised URL is pasted in by the user. See [Macro autoconvert.](#macro-autoconvert) |
 | `autoConvert.matchers` | `[matcher, ...]` | Yes, if using `autoConvert` | The list of patterns that define what URLs should be matched. |
@@ -280,9 +280,9 @@ in the context of custom macro configuration.
 
 | Parameter | Type | Required | Details | Code |
 | --- | --- | --- | --- | --- |
-| `config` | [Config payload](#supported-config-payload-format) | Yes | Sets the config properties of the macro. | ``` view.submit({   config: {     param1: "test",     param2: [1, 2, 3]   } }) ``` |
-| `body` | [ADF document](/cloud/jira/platform/apis/document/structure/) | No | Sets the rich text body of the macro. Can only be used with `layout: bodied` macros. | ``` view.submit({   config: {},   body: {     type: "doc",     version: 1,     content: [       // ADF content     ]   } }) ``` |
-| `keepEditing` | `boolean` | No | Defaults to `false`, which automatically closes the config modal on submit. Set this to `true` to keep the modal open. | ``` view.submit({   config: {},   keepEditing: true }) ``` |
+| `config` | [Config payload](#supported-config-payload-format) | Yes | Sets the config properties of the macro. | ```  ``` 1 2 ```    ``` view.submit({   config: {     param1: "test",     param2: [1, 2, 3]   } }) ``` ``` |
+| `body` | [ADF document](/cloud/jira/platform/apis/document/structure/) | No | Sets the rich text body of the macro. Can only be used with `layout: bodied` macros. | ```  ``` 1 2 ```    ``` view.submit({   config: {},   body: {     type: "doc",     version: 1,     content: [       // ADF content     ]   } }) ``` ``` |
+| `keepEditing` | `boolean` | No | Defaults to `false`, which automatically closes the config modal on submit. Set this to `true` to keep the modal open. | ```  ``` 1 2 ```    ``` view.submit({   config: {},   keepEditing: true }) ``` ``` |
 
 ### Supported config payload format
 

@@ -279,7 +279,7 @@ The customer-managed egress and remotes APIs are designed so that admins must be
 * **Setting** egress or remotes, and **deleting** egress groups or domains, is only available via the Forge bridge functions and must be explicitly approved by an admin.
 * These operations cannot be performed on behalf of an admin via Forge User Impersonation.
 * **Reading** configuration (for example, to adjust your UI based on configured egress/remotes) can be done from resolvers.
-* Changes to egress configuration are also recorded in Atlassian Guard audit logs, giving admins centralized visibility into who modified what and when.
+* Changes to egress configuration and dynamic modules are also recorded in Atlassian Guard audit logs, giving admins centralized visibility into who modified what and when.
 
 For detailed API behaviour and type definitions, see the [Forge bridge permissions reference](/platform/forge/apis-reference/ui-api-bridge/permissions/).
 

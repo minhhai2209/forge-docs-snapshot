@@ -82,11 +82,14 @@ Forge Containers checks average resource usage every 15 seconds.
 
 ## Tunnel
 
-The `tunnel` property lets you configure which port service invocations should be made to.
+The `tunnel` property lets you configure settings for running the container locally, including which port service invocations should be made to.
 
 | **Property** | **Required?** | **Description** |
 | --- | --- | --- |
 | `port` | Yes | The port of the locally-deployed service. While tunnelling, any invocations of this service will be made to `localhost:${port}`. |
+| `docker` | No | Docker Compose configuration for building and running the container locally when `forge tunnel` is started.  Only a subset of [Docker Compose](https://docs.docker.com/compose/) service properties is supported, primarily for enabling tunnelling features (including [hot reloading](/platform/forge/containers-reference/test-service-locally-hot-reloading/)). |
+
+See [Testing a containerised service locally](/platform/forge/containers-reference/test-service-locally/) for more details.
 
 ## Example
 

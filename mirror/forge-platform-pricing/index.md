@@ -123,6 +123,12 @@ Forge pricing reflects not just raw compute/storage, but also value-added featur
 **Will there be differences in pricing for public vs. private apps?**  
 No, the same thresholds and pricing apply to both public Marketplace apps and private/internal apps. However, to create a sustainable business, pricing has to be calibrated to current market conditions, and there are many variables that can change over time. These include pricing for the services Atlassian consumes to deliver Forge. We will always endeavour to price competitively and will review pricing periodically (much like Atlassian does for its flagship apps). Changes to pricing and or the introduction of new capabilities will be announced at least 3 months in advance.
 
+**Will I also be charged for usage in a non-production environment?**
+Yes. Usage will be measured across all environments which include production, staging, development and all [custom development environments](https://developer.atlassian.com/platform/forge/environments-and-versions/#custom-environments).
+
+**Will I be charged for usage on sandbox sites?**
+Effective April 4, 2026, Forge usage on up to the first five sandboxes associated with each production site where your app is installed is now exempt from billing. Usage resulting from customers testing your app in sandboxes will no longer appear on your monthly Forge bill. For more details, refer to the [changelog announcement](https://developer.atlassian.com/platform/forge/changelog/#CHANGE-3135).
+
 **What support and SLAs are available for paid usage?**  
 Apps exceeding the free tier will be eligible for enhanced support and SLAs, including 99.90% uptime for Compute, KVS, and SQL. Service credits are available if uptime falls below thresholds. Find more details in the [Forge Service Level Agreement](https://developer.atlassian.com/platform/forge/forge-service-level-agreement/).
 

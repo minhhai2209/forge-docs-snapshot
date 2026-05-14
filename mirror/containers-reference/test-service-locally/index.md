@@ -37,7 +37,7 @@ tunnel:
       context: ./services/java-spring-server
       dockerfile: Dockerfile
     ports:
-      - "8080:8080"
+      - '8080:8080'
 ```
 
 **`image` is defined**
@@ -54,13 +54,17 @@ tunnel:
   docker:
     image: java-service:${TAG}
     ports:
-      - "8080:8080"
+      - '8080:8080'
 ```
 
 Running `forge tunnel` will then create a docker compose stack using the container’s `tunnel` configuration and the latest Forge Containers proxy sidecar. Terminating the tunnel will also clean up the compose stack.
 
 You can add `tunnel` configurations for only a subset of containers. This lets you test and run some containers locally without the overhead of starting up all containers.
 If you do this, however, any invocations to containers that *don’t* have a `tunnel` configuration set up will fail. We’re working on addressing this in a future milestone: <https://ecosystem.atlassian.net/browse/OIC-192>
+
+The Forge CLI allows *hot reloading*, letting you make code changes without having to manually rebuild and restart your containers. With hot reloading, you won't need to restart the tunnel either.
+
+See [Hot reloading for containerised services](/platform/forge/containers-reference/test-service-locally-hot-reloading/) for setup instructions and examples.
 
 ## Optional: Set up a docker compose manually
 

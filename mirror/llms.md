@@ -329,7 +329,9 @@ Use the linked pages in this navigation area for UI Kit components, hooks, bridg
 - [Atlassian icon (Preview)](https://developer.atlassian.com/platform/forge/ui-kit/components/atlassian-icon.md)
 - [Atlassian tile (Preview)](https://developer.atlassian.com/platform/forge/ui-kit/components/atlassian-tile.md)
 - [Badge](https://developer.atlassian.com/platform/forge/ui-kit/components/badge.md)
+- [Bleed (Preview)](https://developer.atlassian.com/platform/forge/ui-kit/components/bleed.md)
 - [Box](https://developer.atlassian.com/platform/forge/ui-kit/components/box.md)
+- [Breadcrumbs (Preview)](https://developer.atlassian.com/platform/forge/ui-kit/components/breadcrumbs.md)
 - [Button](https://developer.atlassian.com/platform/forge/ui-kit/components/button.md)
 - [Button group](https://developer.atlassian.com/platform/forge/ui-kit/components/button-group.md)
 - [Calendar](https://developer.atlassian.com/platform/forge/ui-kit/components/calendar.md)
@@ -364,6 +366,7 @@ Use the linked pages in this navigation area for UI Kit components, hooks, bridg
 - [Lozenge](https://developer.atlassian.com/platform/forge/ui-kit/components/lozenge.md)
 - [Modal](https://developer.atlassian.com/platform/forge/ui-kit/components/modal.md)
 - [Popup](https://developer.atlassian.com/platform/forge/ui-kit/components/popup.md)
+- [Pagination (Preview)](https://developer.atlassian.com/platform/forge/ui-kit/components/pagination.md)
 - [Pressable](https://developer.atlassian.com/platform/forge/ui-kit/components/pressable.md)
 - [Progress bar](https://developer.atlassian.com/platform/forge/ui-kit/components/progress-bar.md)
 - [Progress tracker](https://developer.atlassian.com/platform/forge/ui-kit/components/progress-tracker.md)
@@ -1477,5 +1480,6 @@ This section contains curated references that show how real Forge apps are struc
 #### Testing a service locally
 
 - [Testing a service locally](https://developer.atlassian.com/platform/forge/containers-reference/test-service-locally.md)
+- [Hot reloading](https://developer.atlassian.com/platform/forge/containers-reference/test-service-locally-hot-reloading.md)
 - [Get help](https://developer.atlassian.com/platform/forge/get-help.md)
 ```
