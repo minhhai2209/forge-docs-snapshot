@@ -25,7 +25,15 @@ The `jira:actionValidator` module can be used against specific Jira actions.
 
 ### workItemTypeChanged
 
-This action will let app to execute custom validation when user tries to change work item type through issueView screen.
+This action lets an app execute custom validation whenever a user changes the type of a work item. The validator is triggered across the following flows:
+
+* **Issue view** - the user changes the work item type from the type field on the issue view.
+* **Move issue** - when the work item type changes as part of moving an issue.
+* **Bulk move/migrate** - the work item type changes as part of a bulk move or migration.
+* **Convert to subtask** - when a standard work item is converted to a subtask type.
+* **Convert subtask to a work item** - when a subtask is converted to a standard work item.
+
+The validator is only invoked when the target type is different from the current type.
 
 The following [context variables](https://developer.atlassian.com/cloud/jira/platform/jira-expressions/#context-variables)
 are available in the validation expression:
@@ -37,6 +45,7 @@ are available in the validation expression:
 * `project` ([Project](https://developer.atlassian.com/cloud/jira/platform/jira-expressions-type-reference#project)):
   The project the issue belongs to.
 * `newIssueType` ([String](https://developer.atlassian.com/cloud/jira/platform/jira-expressions-type-reference#string)): The new issue type ID that the work item is being changed to.
+* `newIssueTypeData` ([IssueType](https://developer.atlassian.com/cloud/jira/platform/jira-expressions-type-reference/#issuetype)): The new issue type that the work item is being changed to.
 
 ## Example
 
@@ -65,8 +74,3 @@ modules:
 The following limitations apply to apps that use the `jira:actionValidator` module:
 
 * **One validator per action type**: You can declare only one `jira:actionValidator` module per action type.
-* **Compatible modules only**: If an app declares a `jira:actionValidator` module, it can only declare the following additional module types:
-
-  * Page modules: `jira:adminPage`, `jira:projectPage`, `jira:projectSettingsPage`, `jira:globalPage`, `jira:personalSettingsPage`
-  * `core:function` modules
-* **Module count limit**: Apps with `jira:actionValidator` modules can declare a maximum of two non-core modules in total (for example, one action validator + one additional non-core module). `core:*` modules don’t count toward this limit.

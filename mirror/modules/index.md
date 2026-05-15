@@ -54,6 +54,8 @@ Here's an example of how modules appear in the `manifest.yml` file.
 35
 36
 37
+38
+39
 modules:
   macro:
     - key: hello-world-macro
@@ -63,10 +65,12 @@ modules:
   webtrigger:
     - key: webtrigger-sync
       function: my-forge-app-sync-func
+      urlFormat: v2
       response:
         type: dynamic
     - key: my-webtrigger-async
       function: my-async-func
+      urlFormat: v2
       response:
         type: dynamic
   trigger:

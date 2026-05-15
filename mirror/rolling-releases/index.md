@@ -416,6 +416,7 @@ The following features are under development, therefore are not offered as part 
 * Forge Containers not supported.
 * Upgrading from version without storage to a version with storage (KVS and SQL) is not supported.
 * Upgrading from a version without any dynamic webtriggers to a version with a dynamic webtrigger is not supported.
+* Upgrading from a version without [Forge LLMs](/platform/forge/runtime-reference/forge-llms-api/) to a version with [Forge LLMs](/platform/forge/runtime-reference/forge-llms-api/) is not supported.
 
 ## Known issues
 

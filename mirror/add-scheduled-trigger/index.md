@@ -23,10 +23,12 @@ Add a [web trigger](/platform/forge/manifest-reference/modules/web-trigger/) mod
 4
 5
 6
+7
 modules:
   webtrigger:
     - key: temporary-development-webtrigger
       function: '<your-function-key>'
+      urlFormat: v2
       response:
         type: dynamic
 ```

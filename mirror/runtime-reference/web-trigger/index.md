@@ -53,6 +53,7 @@ modules:
   webtrigger:
     - key: example
       function: my-function
+      urlFormat: v2
       response:
         type: dynamic
   function:

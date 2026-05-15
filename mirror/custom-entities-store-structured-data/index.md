@@ -140,7 +140,7 @@ See [Indexes](/platform/forge/storage-reference/entities-manifest/#indexes) for 
 
    If the indexes were created successfully, this command should display the following:
 
-   ![custom-entities-indexes-table-successful-command](https://dac-static.atlassian.com/platform/forge/images/custom-entities-indexes.png?_v=1.5800.2036)
+   ![custom-entities-indexes-table-successful-command](https://dac-static.atlassian.com/platform/forge/images/custom-entities-indexes.png?_v=1.5800.2041)
 3. Install your app by running:
 4. Select your Atlassian app using the arrow keys and press the enter key.
 5. Enter the URL for your development site. For example, *example.atlassian.net*. [View a list of your active sites at Atlassian administration](https://admin.atlassian.com/).
@@ -248,6 +248,7 @@ The `create-user.js` file features a function named `createUser` which makes a c
        ...
        - key: user-management-via-entities-webtrigger-create-user
          function: create-user
+         urlFormat: v2
          response:
            type: dynamic
      function:
@@ -384,6 +385,7 @@ modules:
     ...
     - key: user-management-via-entities-webtrigger-query-users
       function: query-users
+      urlFormat: v2
       response:
         type: dynamic
   function:
@@ -515,10 +517,12 @@ modules:
     ...
     - key: user-management-via-entities-webtrigger-get-user
       function: get-user
+      urlFormat: v2
       response:
         type: dynamic
     - key: user-management-via-entities-webtrigger-delete-user
       function: delete-user
+      urlFormat: v2
       response:
         type: dynamic
   function:

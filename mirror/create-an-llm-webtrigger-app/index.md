@@ -79,6 +79,7 @@ modules:
   webtrigger:
     - key: llm-webtrigger-app-webtrigger-sync
       function: sync
+      urlFormat: v2
       response:
         type: dynamic
   function:

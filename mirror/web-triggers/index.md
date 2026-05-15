@@ -46,6 +46,7 @@ When adding a web trigger to your app, or updating an existing web trigger, cons
 1. If adding a new web trigger function that is `dynamic` and your app currently does not have other `dynamic`, this is considered as egress and will become a major version update for you app.
 2. If adding a new web trigger that is `static`, this is considered as a minor version update for your app.
 3. If updating an existing `static` web trigger to be `dynamic`, this is considered as a major version update for your app.
+4. After specifying `urlFormat` for the first time, changing `urlFormat` from `v1` to `v2` (and vice-versa) changes the URL of the web trigger. Existing URLs generated with the previous format will continue to work, but new URLs generated after the change will use the new format.
 
 Read more about app versioning in [App Versions](/platform/forge/versions/#app-versions).
 
@@ -56,6 +57,7 @@ Read more about app versioning in [App Versions](/platform/forge/versions/#app-v
 | `key` | `string` | Yes | A key for the module, which other modules can refer to. Must be unique within the manifest.  *Regex:* `^[a-zA-Z0-9_-]+$` |
 |
 | `function` | `string` | Required if using [triggers](/platform/forge/manifest-reference/modules/trigger/). | A reference to the function module that defines the module. |
+| `urlFormat` | `v1 | v2` | No | The URL format to use for the web trigger.   * `v1`: The existing app-based URL format (and what is used if `urlFormat` is not specified). * `v2`: The new installation-based URL format with an improved domain. Use `v2` for new web triggers. |
 | `response` | [Response](#response) | No | Allows for the configuration of the response type for the webtrigger. |
 
 Web trigger URLs are publicly available and are not authenticated by the Forge platform. Atlassian user information is not attached to invocations, which means `asUser` API calls will not work in web trigger functions. You should implement your own authentication logic inside the handler to verify incoming requests. See [Authentication](/platform/forge/runtime-reference/web-trigger/#authentication) for more details and an example.
@@ -101,6 +103,7 @@ modules:
   webtrigger:
     - key: no-egress-web-trigger
       function: no-egress-function
+      urlFormat: v2
       response:
         type: static
         outputs:
@@ -152,6 +155,7 @@ modules:
   webtrigger:
     - key: egress-web-trigger
       function: egress-function
+      urlFormat: v2
       response: # Dynamic web triggers do not need to define a response field and are dynamic by default.
         type: dynamic
 ```
@@ -187,6 +191,10 @@ export async function egressFunction() {
 
 ### Example web trigger URL
 
+The URL format depends on the `urlFormat` field set in the manifest.
+
+`urlFormat: v1` (app-based domain format & what is used if `urlFormat` is not specified):
+
 ```
 ```
 1
@@ -197,6 +205,21 @@ export async function egressFunction() {
 
 ```
 https://4a6d16a1-bf25-4ddb-9a1a-3a781c11af3d.hello.atlassian-dev.net/x1/XUBR5WnG2Hk2V52APDdGaRSDm
+```
+```
+
+`urlFormat: v2` (installation-based domain format):
+
+```
+```
+1
+2
+```
+
+
+
+```
+https://788926e4-e61e-473a-a1d0-b27e0b1ec96f.webtrigger.atlassian.app/public/XUBR5WnG2Hk2V52APDdGaRSDm
 ```
 ```
 
