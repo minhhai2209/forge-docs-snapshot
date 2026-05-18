@@ -116,6 +116,7 @@ The Forge Invocation Token contains a JSON object with the following properties:
 | `context.workspaceId` | `string` | No | Identifies a single Bitbucket workspace and is only applicable to Bitbucket apps.  It is a stable identifier and does not change upon app re-installation or site data recovery.  Example: `{b7ea02c9-0871-4858-a2a6-a190d7de977c}` |
 | `context.siteUrl` | `string` | No | Human‑readable base URL of the tenant where the invocation happened.  If available, you can use it to cross-reference between Connect and Forge when migrating.  Example: `https://pbray2.jira-dev.com` |
 | `principal` | `string` |  | The identifier for the user who invoked the app. UI modules only. |
+| `icLabel` | `string` | No | The presence of this field means the request originated from an Isolated Cloud environment. Use this field to determine the JWKS URL to validate the request and, if using [Forge Storage](/platform/forge/storage-reference), the Storage URL.  See [Isolated Cloud support](/platform/forge/remote/essentials/#isolated-cloud-support).  Example: `orange` |
 
 Example:
 
@@ -176,6 +177,7 @@ Example:
     }
   },
   "principal": "655362:312d3308-8954-42b0-aa38-771a10c88656",
+  "icLabel": "orange",
   "aud": "ari:cloud:ecosystem::app/8db33809-1f32-48bb-8c52-5877dab48107",
   "iss": "forge/invocation-token",
   "iat": 1700175149,
@@ -252,6 +254,47 @@ export const validateContextToken = async (invocationToken, appId) => {
 }
 ```
 ```
+
+## Isolated Cloud support
+
+The same app can be deployed to Commercial and Isolated Cloud (IC) environments. The `icLabel` claim in the FIT indicates whether a request originates from a Commercial or IC environment.
+
+Because of this, you can no longer determine the JWKS URL (required) and Storage URLs (optional if using [Forge Storage](/platform/forge/storage-reference)) based solely on `appId`. There are two implementation options:
+
+1. Store a mapping between `icLabel` and URL, though this would need to be updated when new ICs are introduced.
+2. Construct the URL using a URL template (recommended).
+
+**Security critical**: To prevent URL injection attacks, you **must** validate that the `icLabel` matches the regex `^[a-z0-9_-]{1,50}$` before inserting it into the JWKS URL. The validation flow should be:
+
+1. Extract `icLabel` from the FIT (before validation).
+2. Validate `icLabel` format against the regex.
+3. Construct the JWKS URL using the validated `icLabel`.
+4. Validate the FIT token against that JWKS endpoint.
+
+To support IC, add `isolatedCloud` URL templates alongside your existing commercial app config:
+
+```
+```
+1
+2
+```
+
+
+
+```
+export default [
+  {
+    appId: 'ari:cloud:ecosystem::app/COMMERCIAL_APP_ID',
+    isolatedCloud: {
+      jwksUrlTemplate: 'https://some-domain.{IC_LABEL}.net/some-path.json',
+      storageUrlTemplate: 'https://some-domain.{IC_LABEL}.net/some-path',
+    },
+  },
+];
+```
+```
+
+The JWKS and Storage domains and paths will be provided as part of onboarding your app to IC.
 
 ## Data residency eligibility
 

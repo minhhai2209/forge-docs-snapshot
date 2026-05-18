@@ -5,7 +5,7 @@
 | Runtime seconds  (also includes UI modules invoked by Forge Remote) | 25 | Maximum runtime permitted before the app is stopped. |
 | Runtime seconds  (events invoked by Forge Remote) | 5 | Maximum runtime permitted before the app is stopped. This applies to remote back ends receiving events from the Atlassian platform. |
 | Runtime seconds (async events and scheduled trigger module) | 900 | This applies to function modules that are only referenced by consumer or scheduled trigger modules. Default timeout is 55 seconds. Use [timeoutSeconds](/platform/forge/manifest-reference/modules/function/) to extend it. |
-| Runtime seconds  (web-triggers) | 55 | Maximum runtime permitted before the app is stopped. |
+| Runtime seconds  (web-trigger, action and rovo:agentConnector modules) | 55 | Maximum runtime permitted before the app is stopped. |
 | Single outbound request timeout (async events) | 180 | Maximum time a single outbound request can take before being terminated. Outbound requests refer to fetch requests, including both Atlassian app REST API and external API requests. This limit can only be reached using [long-running functions](/platform/forge/use-a-long-running-function/). |
 | Log lines per invocation | 100 per runtime minute (rounded up) | Maximum number of log entries for an invocation. The limit is calculated based on the function timeout, specified by `timeoutSeconds`, rounded up per minute.  * A function without a timeout declared is limited to 100 log lines. * A function with `timeoutSeconds: 90` (a minute and a half) is limited to 200 log lines. |
 | Log size per invocation | 200 KB | Maximum size of all log line data generated per invocation. |

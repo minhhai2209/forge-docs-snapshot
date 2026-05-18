@@ -23,6 +23,15 @@ During the EAP, apps using Rovo Agent Connector:
 * Can't be deployed to the `production` and `staging` [environments](/platform/forge/environments-and-versions/).
 * Can't be distributed or listed on the Atlassian Marketplace.
 
+## Timeouts
+
+| Transport Type | Timeout |
+| --- | --- |
+| `streaming=false` (sync invocation) | 55s |
+| `streaming=true` (SSE stream) | 900s (15min) |
+
+Note that in case of timeouts during the streaming requests, the product (ie, Jira) will attempt to reconnect automatically to the remote agent.
+
 ## Manifest structure
 
 ```

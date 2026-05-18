@@ -273,6 +273,12 @@ Refer to the following sections for more detailed information about Forge module
 - [Queue page](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-service-management-queue-page.md)
 - [UI modifications](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-service-management-ui-modifications.md)
 
+### Customer Service Management modules
+
+- [Customer Service Management modules](https://developer.atlassian.com/platform/forge/manifest-reference/modules/index-csm.md)
+- [Queue page (EAP)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/customer-service-management-queue-page.md)
+- [Request detail (EAP)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/customer-service-management-request-detail.md)
+
 ### Jira Software modules
 
 - [Jira Software modules](https://developer.atlassian.com/platform/forge/manifest-reference/modules/index-jsw.md)
