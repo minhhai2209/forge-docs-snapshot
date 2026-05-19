@@ -60,7 +60,7 @@ The following limits apply to each query sent and response received by your app'
 | Response size | 4 MiB |
 | Per-connection timeout for `SELECT` queries | 5 seconds |
 | Per-connection timeout for `INSERT`, `UPDATE`, and `DELETE` queries | 10 seconds |
-| Per-connection query timeoutfor [DDL queries](/platform/forge/storage-reference/sql-api-schema/#manage-your-database-schema) | 20 seconds |
+| Per-connection query timeout for [DDL queries](/platform/forge/storage-reference/sql-api-schema/#manage-database-schemas) | 20 seconds |
 
 ### SOC2 and ISO compliance
 
@@ -83,7 +83,7 @@ With this implementation, your app’s database schema needs to be applied as so
 
 During the execution phase, Forge SQL will also take care of migrating data between older and newer schema versions.
 
-[Manage database schema
+[Manage database schemas
 
 Learn more about defining and updating your app’s SQL database schema.](/platform/forge/storage-reference/sql-api-schema/)
 

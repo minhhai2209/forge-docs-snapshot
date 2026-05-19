@@ -27,6 +27,8 @@ The following modules can be declared as a dynamic module:
 
 **Jira**
 
+**Confluence**
+
 **Jira Service Management**
 
 We plan to add more in the future.

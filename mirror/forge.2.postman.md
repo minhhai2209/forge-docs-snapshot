@@ -1,7 +1,7 @@
 ```
 {
   "info": {
-    "_postman_id": "7d4835e3-5af2-463a-bbd9-6628090ad4d5",
+    "_postman_id": "0d5722f2-840a-42aa-abcc-92b66951123b",
     "name": "Forge Containers API",
     "description": "The Forge Containers Public API\n\n**Important:** The API base URL should be read from the `FORGE_EGRESS_PROXY_URL` environment variable.\nThe localhost URL in the servers section is for documentation purposes only.\n",
     "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
@@ -81,36 +81,6 @@
               }
             ],
             "description": "Returns detailed information about a single installation for the given installation ID. This endpoint has a rate limit of 1 request per minute per `installationId`.\n\n**Limit:** [1 request per minute per `installationId`](/platform/forge/limits-containers/#limits). If a single `appId` has multiple installations, this rate limit will be applied separately to each `installationId`.\n",
-            "auth": {
-              "type": "bearer",
-              "bearer": {
-                "key": "token",
-                "type": "string"
-              }
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Get app installations (deprecated)",
-          "request": {
-            "url": {
-              "protocol": "{{protocol}}",
-              "host": "{{host}}",
-              "path": "{{basePath}}v0/installations",
-              "query": [],
-              "variable": []
-            },
-            "method": "GET",
-            "header": [
-              {
-                "description": "",
-                "disabled": false,
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "description": "**Deprecated.** Use `/v1/installations` instead.\n\nReturns all installations for the given app Id and environment.\n",
             "auth": {
               "type": "bearer",
               "bearer": {

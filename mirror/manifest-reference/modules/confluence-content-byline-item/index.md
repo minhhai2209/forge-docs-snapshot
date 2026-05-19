@@ -6,7 +6,7 @@ The `title`, `icon`, and `tooltip` of the module render together as a list item.
 
 On apps that use Custom UI, module content is displayed inside a [special Forge iframe](/platform/forge/custom-ui/iframe/) which has the [sandbox](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#sandbox) attribute configured. This means that HTML links (for example, `<a href="https://domain.tld/path">...</a>`) in this iframe won't be clickable. To make them clickable, use the [router.navigate](/platform/forge/custom-ui-bridge/router/#navigate) API from the `@forge/bridge` package.
 
-![Example of a Content byline item](https://dac-static.atlassian.com/platform/forge/images/content-byline-item-demo.gif?_v=1.5800.2046)
+![Example of a Content byline item](https://dac-static.atlassian.com/platform/forge/images/content-byline-item-demo.gif?_v=1.5800.2051)
 
 ## Properties
 
@@ -194,6 +194,99 @@ When the source URL does not have the appropriate permissions, the dynamic prope
 Check out the [Page approver app](/platform/forge/example-apps-confluence/#page-approver-app-with-ui-kit) as an example of
 an app that updates the title and tooltip on change, and prepopulates a default icon that's missing
 from the `manifest.yml` file.
+
+## Dynamic module (EAP)
+
+This module can also be declared as a dynamic module. However, this capability is currently only available
+as part of Forge’s Early Access Program (EAP).
+
+For more details, see [Dynamic Modules](/platform/forge/apis-reference/dynamic-modules/).
+
+When you register a dynamic `confluence:contentBylineItem` module, the `data` object uses the same properties as a static `confluence:contentBylineItem` module in the manifest. The module `key` is provided as a top-level property in the Dynamic Modules API payload.
+
+Dynamic module registration controls whether the byline module exists for an app installation. To dynamically update the byline item's displayed `title`, `icon`, or `tooltip` for individual Confluence content, use [content properties](#content-properties-to-store-byline-properties) or [dynamic properties](#dynamic-properties).
+
+### Code examples
+
+The following examples show Dynamic Module implementations specific to this module. For more detailed information about the API used in these examples
+(including error handling information), see [Dynamic Modules API](/platform/forge/apis-reference/dynamic-modules-api/).
+
+#### Create a dynamic content byline item module
+
+```
+```
+1
+2
+```
+
+
+
+```
+import { asApp } from "@forge/api";
+const payload = {
+  "key": "content-byline-item-dynamic",
+  "type": "confluence:contentBylineItem",
+  "data": {
+    "resolver": {
+      "function": "resolver"
+    },
+    "resource": "main",
+    "render": "native",
+    "title": "Dynamic byline item",
+    "tooltip": "Open the dynamic byline item",
+    "viewportContainer": "popup"
+  }
+}
+const response = await asApp().requestAtlassian(`/forge/installation/v1/dynamic/module/`, {
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  method: 'POST',
+  body: JSON.stringify(payload),
+});
+const body = await response.text();
+console.log(`Response: ${response.status} ${body}`);
+```
+```
+
+#### Update a dynamic content byline item module
+
+```
+```
+1
+2
+```
+
+
+
+```
+import { asApp } from "@forge/api";
+const key = "content-byline-item-dynamic";
+const payload = {
+  "key": "content-byline-item-dynamic",
+  "type": "confluence:contentBylineItem",
+  "data": {
+    "resolver": {
+      "function": "resolver"
+    },
+    "resource": "main",
+    "render": "native",
+    "title": "Updated dynamic byline item",
+    "tooltip": "Open the updated dynamic byline item",
+    "viewportContainer": "popup"
+  }
+}
+const response = await asApp().requestAtlassian(`/forge/installation/v1/dynamic/module/${key}`, {
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  method: 'PUT',
+  body: JSON.stringify(payload)
+});
+const body = await response.text();
+console.log(`Response: ${response.status} ${body}`);
+```
+```
 
 ## Extension context
 

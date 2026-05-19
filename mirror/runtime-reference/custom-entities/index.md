@@ -115,6 +115,13 @@ You can delete indexes in
 and [custom environments](/platform/forge/environments-and-versions/#custom-environments). Indexes that have already been included in deployments to `staging` and `production` can no longer be
 deleted in *any* environment.
 
+### Backporting
+
+Any manifest file changes relating to custom entities cannot be
+[backported](/platform/forge/versions/#backporting). When you use the
+`--major-version` option, the `forge deploy` command will ignore the
+`storage` section of your manifest file.
+
 ## Indexes
 
 While the `entities` property assigns multiple attributes to each key, `indexes` sets which attributes to create indexes for. Attributes with indexes are optimized for your queries; as such, you should create indexes based on the query patterns you intend to use.

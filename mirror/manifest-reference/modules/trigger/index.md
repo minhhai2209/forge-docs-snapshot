@@ -9,7 +9,7 @@ is fired.
 
 Event delivery for `trigger` modules may be delayed by up to **3** minutes.
 
-## Dynamic module - Jira (EAP)
+## Dynamic module - Jira & Confluence (EAP)
 
 This module can also be declared as a dynamic module. However, this capability is currently only available
 as part of Forge’s Early Access Program (EAP).

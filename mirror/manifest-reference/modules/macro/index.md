@@ -19,7 +19,7 @@ from the quick insert menu of the editor. The `macro` module is implemented by a
 
 On apps that use Custom UI, module content is displayed inside a [special Forge iframe](/platform/forge/custom-ui/iframe/) which has the [sandbox](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#sandbox) attribute configured. This means that HTML links (for example, `<a href="https://domain.tld/path">...</a>`) in this iframe won't be clickable. To make them clickable, use the [router.navigate](/platform/forge/custom-ui-bridge/router/#navigate) API from the `@forge/bridge` package.
 
-![Example of a macro](https://dac-static.atlassian.com/platform/forge/snippets/images/macro-example.png?_v=1.5800.2046)
+![Example of a macro](https://dac-static.atlassian.com/platform/forge/snippets/images/macro-example.png?_v=1.5800.2051)
 
 ## Manifest structure
 
@@ -98,6 +98,114 @@ resources []
 | Key | Type | Required | Description |
 | --- | --- | --- | --- |
 | `i18n` | `string` | Yes | A key referencing a translated string in the translation files. For more details, see [Translations](/platform/forge/manifest-reference/translations). |
+
+## Dynamic module (EAP)
+
+This module can also be declared as a dynamic module. However, this capability is currently only available
+as part of Forge’s Early Access Program (EAP).
+
+For more details, see [Dynamic Modules](/platform/forge/apis-reference/dynamic-modules/).
+
+When you register a dynamic `macro` module, the `data` object uses the same properties as a static `macro` module in the manifest. The module `key` is provided as a top-level property in the Dynamic Modules API payload.
+
+### Code examples
+
+The following examples show Dynamic Module implementations specific to this module. For more detailed information about the API used in these examples
+(including error handling information), see [Dynamic Modules API](/platform/forge/apis-reference/dynamic-modules-api/).
+
+#### Create a dynamic macro module
+
+```
+```
+1
+2
+```
+
+
+
+```
+import { asApp } from "@forge/api";
+const payload = {
+  "key": "macro-dynamic",
+  "type": "macro",
+  "data": {
+    "resolver": {
+      "function": "resolver"
+    },
+    "resource": "main",
+    "render": "native",
+    "title": "Dynamic macro",
+    "description": "A macro registered with the Dynamic Modules API",
+    "autoConvert": {
+      "matchers": [
+        {
+          "pattern": "https://www.example.com/*/about"
+        }
+      ]
+    }
+  }
+}
+const response = await asApp().requestAtlassian(`/forge/installation/v1/dynamic/module/`, {
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  method: 'POST',
+  body: JSON.stringify(payload),
+});
+const body = await response.text();
+console.log(`Response: ${response.status} ${body}`);
+```
+```
+
+#### Update a dynamic macro module
+
+```
+```
+1
+2
+```
+
+
+
+```
+import { asApp } from "@forge/api";
+const key = "macro-dynamic";
+const payload = {
+  "key": "macro-dynamic",
+  "type": "macro",
+  "data": {
+    "resolver": {
+      "function": "resolver"
+    },
+    "resource": "main",
+    "render": "native",
+    "title": "Updated dynamic macro",
+    "description": "A macro updated with the Dynamic Modules API",
+    "autoConvert": {
+      "matchers": [
+        {
+          "pattern": "https://www.example.com/*/about"
+        },
+        {
+          "pattern": "https://www.example.com/*/music"
+        }
+      ]
+    }
+  }
+}
+const response = await asApp().requestAtlassian(`/forge/installation/v1/dynamic/module/${key}`, {
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  method: 'PUT',
+  body: JSON.stringify(payload)
+});
+const body = await response.text();
+console.log(`Response: ${response.status} ${body}`);
+```
+```
+
+When you update the URL patterns for a dynamic macro module's autoconvert matchers, you may need to leave the Confluence editor, perform a hard refresh on the Confluence page view, and then re-open the editor before the updated patterns are applied.
 
 ## Extension context
 

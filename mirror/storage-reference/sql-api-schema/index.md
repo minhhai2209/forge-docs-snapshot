@@ -1,4 +1,4 @@
-# Manage your database schema
+# Manage database schemas
 
 Use *Data Definition Language (DDL)* to create and update database objects (such as tables and indexes) in your provisioned SQL database. Forge SQL supports MySQL-compatible DDL operations like `CREATE`, `ALTER`, and `DROP` (for more details, see
 [SQL Statement Overview](https://docs.pingcap.com/tidb/stable/sql-statement-overview) in the TiDB documentation).

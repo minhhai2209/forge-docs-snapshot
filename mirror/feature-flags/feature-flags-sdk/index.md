@@ -26,7 +26,7 @@ Creates a new instance of the SDK client.
 initialize(config: FeatureFlagConfig): Promise<void>
 ```
 
-Downloads the latest flag configuration and prepares the SDK for evaluation. Must be called before using `checkFlag` or `getFeatureFlags`.
+Downloads the latest flag configuration and prepares the SDK for evaluation. Must be called before using `checkFlag`, `getFlag`, or `getAllFlagIds`.
 
 **Parameters:**
 
@@ -69,6 +69,55 @@ Evaluates a single feature flag for the given user. Synchronous after initializa
 
 **Returns:** `boolean` — `true` if the flag is enabled for this user, `false` otherwise.
 
+### `getFlag(user, flagId)`
+
+```
+```
+1
+2
+```
+
+
+
+```
+getFlag(user: FeatureFlagUser, flagId: string): FlagEvaluationDetails | undefined
+```
+```
+
+Gets the evaluation details for a specific feature flag. Useful for debugging purposes.
+
+**Parameters:**
+
+| Parameter | Type | Required | Description |
+| --- | --- | --- | --- |
+| `user` | `FeatureFlagUser` | Yes | User context for flag evaluation |
+| `flagId` | `string` | Yes | The ID of the feature flag to retrieve |
+
+**Returns:** `FlagEvaluationDetails | undefined` — The flag's evaluation details, or `undefined` if the flag does not exist.
+
+---
+
+### `getAllFlagIds()`
+
+```
+```
+1
+2
+```
+
+
+
+```
+getAllFlagIds(): string[]
+```
+```
+
+Returns an array of all available flag IDs in the current configuration.
+
+**Returns:** `string[]` — An array of flag ID strings.
+
+---
+
 ### `shutdown()`
 
 Stops the polling interval and releases resources. Call this when the SDK instance is no longer needed.
@@ -109,6 +158,37 @@ interface FeatureFlagUser {
 | `capabilitySet` | `string` | App license capability tier | `capabilityStandard`, `capabilityAdvanced` |
 
 Custom attributes are also supported.
+
+### `FlagEvaluationDetails`
+
+```
+```
+1
+2
+```
+
+
+
+```
+interface FlagEvaluationDetails {
+  flagId: string;
+  name: string;
+  value: boolean;
+  matchedRule: string | null;
+  reason: 'override' | 'rule_match' | 'default' | 'disabled';
+}
+```
+```
+
+Returned by `getFlag()`. Contains the full evaluation result for a specific flag.
+
+| Property | Type | Description |
+| --- | --- | --- |
+| `flagId` | `string` | The unique identifier of the flag |
+| `name` | `string` | The human-readable name of the flag |
+| `value` | `boolean` | The evaluated value of the flag for the given user |
+| `matchedRule` | `string | null` | The ID of the rule that matched, or `null` if no rule matched |
+| `reason` | `string` | Why the flag resolved to its value: `'override'` (user-specific override applied), `'rule_match'` (a targeting rule matched), `'default'` (no rule matched, default value used), or `'disabled'` (flag is disabled) |
 
 ## Usage example
 
@@ -159,7 +239,16 @@ export const handler = async (payload, context) => {
   };
 
   const isEnabled = featureFlags.checkFlag(user, "new-feature", false);
-  const flags = featureFlags.getFeatureFlags(user, ["feature-a", "feature-b"]);
+
+  // Get evaluation details for a specific flag (useful for debugging)
+  const flagDetails = featureFlags.getFlag(user, "new-feature");
+  if (flagDetails) {
+    console.log(`Flag "${flagDetails.name}" evaluated to ${flagDetails.value} (reason: ${flagDetails.reason})`);
+  }
+
+  // Get all available flag IDs
+  const allFlagIds = featureFlags.getAllFlagIds();
+  console.log("Available flags:", allFlagIds);
 
   featureFlags.shutdown();
 };
