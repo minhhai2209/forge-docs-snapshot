@@ -17,11 +17,11 @@ You'll need one of the following in your manifest.yml:
 
 Which one you need depends on whether you want to access Atlassian app APIs as a generic bot user (`appSystemToken`) or the current user's permission (`appUserToken`).
 
-This ensures requests to your remote contain an `x-forge-oauth-system` or `x-forge-oauth-user` header, containing a token you can use to call Atlassian app and Forge storage APIs.
+When your remote is called, the authentication token for calling Atlassian app and Forge storage APIs is sent in either the `x-forge-oauth-system` HTTP header (for `appSystemToken`) or the `x-forge-oauth-user` HTTP header (for `appUserToken`).
 
 ### Token Expiry
 
-Both of these tokens are encoded in JWT. The [`exp`](https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.4) claim in their payload represents the expiration time.
+Tokens sent in either the `x-forge-oauth-system` header or the `x-forge-oauth-user` header are encoded in JWT. The [`exp` claim](https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.4) in their payload represents the expiration time.
 
 * We recommend adding a [lifecycle events](/platform/forge/events-reference/life-cycle/#installation)
   trigger for the installation and upgrade events to ensure that your app starts off with a token available.
@@ -33,17 +33,16 @@ Both of these tokens are encoded in JWT. The [`exp`](https://datatracker.ietf.or
 
 ## Getting started
 
-Once you've got your token, you can use it in backend requests to Atlassian app APIs.
+Each request from Forge to your remote includes two values you'll need to call Atlassian app APIs:
 
-### Getting the API Base URL
+* The **auth token**, in either the `x-forge-oauth-system` or `x-forge-oauth-user` HTTP header
+* The **API base URL**, embedded in the FIT token (in the `Authorization` header) under the `app.apiBaseUrl` claim
 
-The `apiBaseUrl` is provided in the FIT token under the `app.apiBaseUrl` claim. This is the base URL where all Atlassian app API requests should be routed.
+To extract both values from an incoming request:
 
-To use it:
-
-1. Parse the FIT token (received in the `Authorization` header of requests to your remote)
-2. Extract the `app.apiBaseUrl` field from the token's claims
-3. Use this value as the base URL when calling Atlassian app APIs
+1. Read the auth token from the `x-forge-oauth-system` or `x-forge-oauth-user` header
+2. Parse the FIT token from the `Authorization` header
+3. Extract `app.apiBaseUrl` from the FIT token's claims — use this as the base URL for all Atlassian app API requests
 
 Example FIT token claim:
 
@@ -72,7 +71,7 @@ For details on the FIT token structure and validation, see [Forge Invocation Tok
 
 ### Node.js example
 
-This example uses the `fetch` function from the `node-fetch` module to request data from the Confluence API:
+This example uses the `fetch` function from the `node-fetch` module to request data from the Confluence API (here, `token` is the value you received in the `x-forge-oauth-system` or `x-forge-oauth-user` header):
 
 ```
 ```
@@ -103,7 +102,7 @@ to retrieve an app token stored in a request from the Forge platform.
 
 ### Java example
 
-This example uses a GET request to call the Confluence Content API:
+This example uses a GET request to call the Confluence Content API (here `token` is the value you received in the `x-forge-oauth-system` or `x-forge-oauth-user` header):
 
 ```
 ```

@@ -257,6 +257,10 @@ The Dynamic Module service encountered an unexpected problem.
 
 Send a `GET` request to `/forge/installation/v1/dynamic/module/` to retrieve a *paginated list* of dynamic modules currently registered on the app installation.
 
+If a registered dynamic module shares the same `key` as a static module declared in your app's `manifest.yml`, the static module takes precedence and the dynamic module will be omitted from the response.
+
+To make the dynamic module discoverable, update your `manifest.yml` to remove or rename the clashing `key`, then redeploy your app.
+
 ### Request
 
 | Property | Type | Required? | Description |
