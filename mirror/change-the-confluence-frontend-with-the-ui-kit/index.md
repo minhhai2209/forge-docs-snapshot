@@ -21,7 +21,7 @@ the other UI Kit components.
 You’ll add a new component to display the number of comments on a page.
 
 1. Start the tunnel by running:
-2. Navigate to the `frontend` directory and open the `index.jsx` file.
+2. Navigate to the `src/frontend` directory and open the `index.jsx` file.
 3. Inside the `<>` tag, add the following before the first `Text` component:
 
    ```
@@ -92,17 +92,19 @@ ForgeReconciler.render(
 Your app should display the number of comments on the page. You can add more top-level comments to
 the page and refresh the page to see your app update. Your page should look like the following:
 
-![The final app displays on a Confluence page](https://dac-static.atlassian.com/platform/forge/images/display-confluence-macro.png?_v=1.5800.2054)
+![The final app displays on a Confluence page](https://dac-static.atlassian.com/platform/forge/images/display-confluence-macro.png?_v=1.5800.2055)
 
 ## Specify the export view
 
-When the page is exported to PDF, Word, or viewed in the page history, you can specify how the app should be displayed.
-This is done by specifying an `adfExport` function, and referencing it in your app's `manifest.yml` file.
+When a Confluence page is exported to PDF or Word, or viewed in the page history, you can specify how
+the app should be displayed. This is done by defining an `adfExport` function and referencing it in
+your app's `manifest.yml` file.
 
-First let's write the function, which will return a representation of the macro in [Atlassian document format](https://developer.atlassian.com/cloud/jira/platform/apis/document/structure/).
+The function returns a representation of the macro in
+[Atlassian document format](https://developer.atlassian.com/cloud/jira/platform/apis/document/structure/) (ADF).
 
-1. In your app's `src` directory, create a new file called `macroExport.js`, and open it.
-2. To include the number of comments in the export view, fetch the comments on the page with the [@forge/api](https://developer.atlassian.com/platform/forge/apis-reference/fetch-api-product.requestconfluence/) package. First, install the required packages by running the following command from your app's top-level directory:
+1. In your app's `src` directory (alongside `index.js`), create a new file called `macroExport.js`, and open it.
+2. To include the number of comments in the export view, fetch the comments on the page with the [@forge/api](/platform/forge/apis-reference/fetch-api-product.requestconfluence/) package. The Confluence macro template already includes `@forge/api`, so you only need to install `@atlaskit/adf-utils` to build ADF. Run the following command from your app's top-level directory:
 
    ```
    ```
@@ -113,7 +115,7 @@ First let's write the function, which will return a representation of the macro 
 
 
    ```
-   npm install @forge/api && npm install @atlaskit/adf-utils
+   npm install @atlaskit/adf-utils
    ```
    ```
 3. Now, add the following to the top of your `macroExport.js` file:
@@ -178,7 +180,7 @@ First let's write the function, which will return a representation of the macro 
    Notice that the function is consuming the `exportType` from the `payload` object.
    The valid `exportType` values are `pdf`, `word`, and `other`.
 
-Your `macroExport.js` file should look like the following:
+Your complete `src/macroExport.js` file should look like the following:
 
 ```
 ```
@@ -189,7 +191,7 @@ Your `macroExport.js` file should look like the following:
 
 
 ```
-import api, {route} from '@forge/api';
+import api, { route } from '@forge/api';
 import { doc, p } from '@atlaskit/adf-utils/builders';
 
 const fetchComments = async (pageId) => {
@@ -209,14 +211,14 @@ export const exportFunction = async (payload) => {
     p(`Number of comments on this page: ${comments.length}`),
     p(`Hello world! This is an export of type ${payload.exportType}.`)
   );
-}
+};
 ```
 ```
 
 ## Reference the export function in the manifest
 
-1. In the app’s top-level directory, open the `manifest.yml` file.
-2. Under `macro`, add the following property:
+1. In the app's top-level directory, open the `manifest.yml` file.
+2. Under the `macro` module, add the `adfExport` property:
 
    ```
    ```
@@ -231,7 +233,7 @@ export const exportFunction = async (payload) => {
      function: export-key
    ```
    ```
-3. Under `function`, add the following entry
+3. Under the `function` list, add a new entry for the export function:
 
    ```
    ```
@@ -247,7 +249,48 @@ export const exportFunction = async (payload) => {
    ```
    ```
 
-Once deployed, your macro should export as specified along with the rest of the Confluence page when exporting to pdf, word, or viewed in page history.
+Your complete `manifest.yml` should look like the following:
+
+```
+```
+1
+2
+```
+
+
+
+```
+modules:
+  macro:
+    - key: hello-world-app-hello-world-macro
+      resource: main
+      render: native
+      resolver:
+        function: resolver
+      title: hello-world-app
+      adfExport:
+        function: export-key
+  function:
+    - key: resolver
+      handler: index.handler
+    - key: export-key
+      handler: macroExport.exportFunction
+resources:
+  - key: main
+    path: src/frontend/index.jsx
+app:
+  runtime:
+    name: nodejs24.x
+    memoryMB: 256
+    architecture: arm64
+  id: '<your app id>'
+permissions:
+  scopes:
+    - read:comment:confluence
+```
+```
+
+Once deployed, your macro content is included when you export the Confluence page to PDF or Word, or view it in the page history.
 
 ## Close the tunnel and deploy the app
 
@@ -273,4 +316,4 @@ You now know enough to develop your own Forge apps. Learn more from our
 [tutorials](/platform/forge/tutorials-and-guides/), [guides](/platform/forge/guides/),
 [example apps](/platform/forge/example-apps/) or [reference pages](/platform/forge/manifest-reference/).
 
-[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.2054)](/platform/forge/call-a-confluence-api/)
+[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.2055)](/platform/forge/call-a-confluence-api/)
