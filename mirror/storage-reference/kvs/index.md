@@ -36,6 +36,8 @@ Learn more about Forge’s pricing structure, allowances, and billing by visitin
 
 Estimate your app’s monthly costs using the [cost estimator](https://developer.atlassian.com/forge-cost-estimator), which lets you model usage and see potential charges.
 
+KVS reads and writes are billable above the free monthly allowance, and writes are significantly more expensive than reads. For advice on reducing KVS usage — such as caching, batching, and using `kvs.query()` effectively — see [Storage optimisations](/platform/forge/optimise-forge-costs/#storage-optimisations).
+
 ## Recommendations
 
 When using the KVS and Custom Entity Store, we strongly recommend that you:

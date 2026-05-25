@@ -19,6 +19,10 @@ Examples of the many Atlassian app and platform events your app can listen for i
 See [Types of event modules](#types-of-event-modules) for more information about the events
 available in Forge.
 
+Event-driven triggers usually cost less than polling on a schedule because your function is only invoked when there's real work to do.
+
+For advice on optimising invocation costs (such as filtering events effectively, ignoring events your own app generated, and exiting early), see [Trigger & scheduling optimisations](/platform/forge/optimise-forge-costs/#trigger--scheduling-optimisations).
+
 Some use cases for apps that respond to events include:
 
 * An app that maintains and publishes to Confluence up-to-date custom statistics about Jira issue

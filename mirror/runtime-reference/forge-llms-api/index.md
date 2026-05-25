@@ -1,4 +1,4 @@
-# Forge LLMs API
+# Forge LLMs API (EAP)
 
 [Forge LLMs](/platform/forge/runtime-reference/forge-llms-api/) is available through Forge's Early Access Program (EAP). EAP grants selected users early testing access for feedback; APIs and features in EAP are experimental, unsupported, subject to change without notice, and not recommended for production — [sign up here](https://go.atlassian.com/signup-forge-llms) to participate.
 
@@ -10,10 +10,6 @@ Forge LLMs lets your Forge app call Atlassian‑hosted large language models (LL
 
 See the [LLM module reference](/platform/forge/manifest-reference/modules/llm/) for details on the `llm` module for your
 `manifest.yml`.
-
-**Important:**
-
-The app retains its [**Runs on Atlassian**](/platform/forge/runs-on-atlassian) eligibility after the module is added.
 
 ## Versioning
 
@@ -257,10 +253,7 @@ You can use the `list` method from the SDK to dynamically fetch the list of supp
 | Model ID | Variants | Family | Status | EOL |
 | --- | --- | --- | --- | --- |
 | `claude-haiku-4-5-20251001` | Haiku | Claude | `ACTIVE` |  |
-| `claude-sonnet-4-20250514` | Sonnet | Claude | `ACTIVE` |  |
 | `claude-sonnet-4-5-20250929` | Sonnet | Claude | `ACTIVE` |  |
-| `claude-opus-4-1-20250805` | Opus | Claude | `ACTIVE` |  |
-| `claude-opus-4-5-20251101` | Opus | Claude | `ACTIVE` |  |
 | `claude-opus-4-6` | Opus | Claude | `ACTIVE` |  |
 
 As AI models evolve quickly, check regularly for deprecated status and associated EOL dates so your apps do not break.
@@ -294,9 +287,41 @@ The Forge LLM API reports usage data per request (the number of input and output
 
 During the EAP, usage tracking is limited to the data provided in the API response.
 
-## Pricing
+## Pricing (coming soon)
 
-LLMs will become a paid Forge feature soon. Usage (token input/output volume) will appear in the developer console under usage and costs. Specific pricing will be published before preview.
+When LLMs graduate to Preview and General Availability, they will be a billable Forge capability. LLM usage is charged to the developer of the Forge app, and usage will be counted toward your Forge monthly bill. The Forge LLMs API does not include a free monthly usage quota.
+
+Forge LLM usage is tracked in credits, which correspond to model input and output tokens. Each model has a token-to-credit conversion ratio, and more powerful models use more credits per token.
+
+On your bill you'll see two line items: input credits and output credits. You can also see a detailed breakdown of usage per model in the developer console.
+
+### Model pricing per token usage
+
+| Model | Credits per 1M tokens | Price per 1M input tokens ($USD) | Price per 1M output tokens ($USD) |
+| --- | --- | --- | --- |
+| Opus 4.6 | 50 credits | $5 | $25 |
+| Sonnet 4.5 | 30 credits | $3 | $15 |
+| Haiku 4.5 | 10 credits | $1 | $5 |
+
+### Billing in Forge LLM Credits
+
+| Price per input credit ($USD) | Price per output credit ($USD) |
+| --- | --- |
+| $0.10 / 1M credits | $0.50 / 1M credits |
+
+### Worked example
+
+In a given month imagine your app consumes (in millions of tokens):
+
+* Opus 4.6: 0.5M input tokens and 0.2M output tokens
+* Haiku 4.5: 5M input tokens and 1M output tokens
+
+Converting the tokens to LLM credits for billing:
+
+* Opus 4.6: (0.5 × 50) = 25M input credits + (0.2 × 50) = 10M output credits
+* Haiku 4.5: (5 × 10) = 50M input credits + (1 × 10) = 10M output credits
+* Total credits: 75M input credits + 20M output credits
+* Total cost: Input (75 × $0.10) + Output (20 × $0.50) = $7.50 + $10.00 = **$17.50**
 
 ## Responsible AI
 

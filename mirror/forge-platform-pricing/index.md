@@ -69,6 +69,30 @@ $1.25 (compute) + $0.00275 (KVS reads) + $0 (SQL data stored) = **$1.25275**
 
 This example shows how charges are only applied to usage above the free monthly allowance for each capability, and how multiple capabilities can contribute to your total bill.
 
+## Billing for Rovo agents and actions
+
+Forge consumption-based pricing covers the platform resources your app uses, such as compute, storage, and logs. If your Forge app includes a [Rovo agent](/platform/forge/manifest-reference/modules/rovo-agent/) or [Rovo action](/platform/forge/manifest-reference/modules/rovo-action/), Rovo usage is billed separately from Forge consumption-based pricing.
+
+### How Rovo billing works for customers
+
+Rovo billing is managed at the customer organization level, so Marketplace partners are not responsible for the AI usage costs of their Rovo agents. Every paid Jira, Confluence, or Jira Service Management subscription includes a pooled allowance of **Rovo credits** and **indexed objects**. The size of this allowance is determined by the customer's subscription tier and the number of licensed users in their organization.
+
+Each agent request consumes credits from the customer's pool according to the rates defined in [Rovo usage limits](https://support.atlassian.com/rovo/docs/rovo-usage-limits/), regardless of whether the agent was built by Atlassian, created by the customer in Atlassian Studio, or distributed through a Marketplace Forge app.
+
+If a customer exceeds their included credit quota and their organization has overage billing enabled, the additional charges are applied directly to the customer's Atlassian invoice. For more information about how customers are billed for Rovo usage, see [Rovo usage limits](https://support.atlassian.com/rovo/docs/rovo-usage-limits/) in Atlassian Support.
+
+### What Forge developers are billed for
+
+When a Rovo agent in your Forge app invokes a [Forge action](/platform/forge/manifest-reference/modules/rovo-action/), that action runs on the Forge platform like any other Forge function. The compute, storage, and log usage produced while executing your action counts towards your Forge platform pricing in the usual way, and any overage above the free usage allowance is billed to you according to the [pricing table](#billable-capabilities-and-pricing) above.
+
+In short:
+
+* **Rovo credits** (the cost of the AI interaction itself) are paid by the customer's organization from their pooled Rovo allowance.
+* **Forge consumption-based pricing** (compute, storage, and logs used to execute your action) is paid by the developer of the Forge app, just like for any other Forge module.
+* **Marketplace licensing** (for paid Marketplace apps) continues to be paid by the customer through Atlassian Marketplace.
+
+Rovo credits, indexed objects, and the rules for Rovo overage billing are set by Atlassian and may change over time. The pricing model on this page covers only Forge platform resource usage. For the latest Rovo credit allowances and pricing, see [Rovo usage limits](https://support.atlassian.com/rovo/docs/rovo-usage-limits/).
+
 ## Estimate and monitor your costs
 
 Use the [Forge cost estimator](https://developer.atlassian.com/forge-cost-estimator) to preview potential monthly charges based on your app's projected usage.
@@ -116,6 +140,9 @@ At launch, the following capabilities will be charged above the free threshold:
 [Forge Containers](/platform/forge/containers-reference/pricing/) are also billable, but use a separate reservation-based pricing model with no free usage allowance.
 
 Other capabilities not listed here, such as using Connect on Forge modules or remote capabilities, will remain free.
+
+**Will I be charged for the Rovo credits used by a Rovo agent in my Forge app?**  
+No. Rovo credits are paid by the customer's organization from their pooled Rovo allowance, not by the Forge app developer. As a developer, you are only billed for the Forge platform resources (compute, storage, and logs) used to execute any Forge actions your agent invokes. See [Billing for Rovo agents and actions](#billing-for-rovo-agents-and-actions) for details.
 
 **What makes Forge a valuable choice for building on the cloud?**  
 Forge pricing reflects not just raw compute/storage, but also value-added features like data residency, customer compliance features like BRIE and BYOK, support for regulated environments like Atlassian Government Cloud, and integrated billing/discovery.

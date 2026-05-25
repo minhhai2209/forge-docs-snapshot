@@ -77,7 +77,7 @@ Forge also provides components for building frontends that interact with the For
 
 * UI Kit components
   * [File picker](/platform/forge/ui-kit/components/file-picker/): lets users select files locally.
-  * [FIle card](/platform/forge/ui-kit/components/file-card/): displays files selected through the file picker, along with file information and upload progress.
+  * [File card](/platform/forge/ui-kit/components/file-card/): displays files selected through the file picker, along with file information and upload progress.
 * [`objectStore`](/platform/forge/custom-ui-bridge/objectStore/) bridge methods: lets you integrate functions with Forge Object Store calls.
 * [`useObjectStore`](/platform/forge/ui-kit/hooks/use-object-store/) hook: uses the `objectStore` bridge method to execute file management operations and track the state of objects.
 

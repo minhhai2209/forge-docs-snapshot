@@ -2,6 +2,8 @@
 
 You can configure a scheduled trigger for your existing app to repeatedly invoke a function on a scheduled interval.
 
+Scheduled triggers count toward your app's billable function duration. Choose the longest interval that meets your requirements, exit early when there is no work to do, and consider event-driven alternatives. For recommendations managing on trigger and scheduling costs, see [Trigger & scheduling optimisations](/platform/forge/optimise-forge-costs/#trigger--scheduling-optimisations).
+
 This guide assumes you have an app with a [function](/platform/forge/manifest-reference/modules/function)
 that you would like to trigger on a schedule.
 If you haven’t already created a function, see [Getting started](/platform/forge/getting-started/)

@@ -358,8 +358,8 @@ Use the linked pages in this navigation area for UI Kit components, hooks, bridg
 - [Date picker](https://developer.atlassian.com/platform/forge/ui-kit/components/date-picker.md)
 - [Dynamic table](https://developer.atlassian.com/platform/forge/ui-kit/components/dynamic-table.md)
 - [Empty state](https://developer.atlassian.com/platform/forge/ui-kit/components/empty-state.md)
-- [File card (EAP)](https://developer.atlassian.com/platform/forge/ui-kit/components/file-card.md)
-- [File picker (EAP)](https://developer.atlassian.com/platform/forge/ui-kit/components/file-picker.md)
+- [File card (Preview)](https://developer.atlassian.com/platform/forge/ui-kit/components/file-card.md)
+- [File picker (Preview)](https://developer.atlassian.com/platform/forge/ui-kit/components/file-picker.md)
 - [Form](https://developer.atlassian.com/platform/forge/ui-kit/components/form.md)
 - [Frame](https://developer.atlassian.com/platform/forge/ui-kit/components/frame.md)
 - [Heading](https://developer.atlassian.com/platform/forge/ui-kit/components/heading.md)
@@ -624,9 +624,9 @@ When helping readers, map their use case to the right invocation type: UI-driven
 
 - [i18n API](https://developer.atlassian.com/platform/forge/runtime-reference/i18n.md)
 
-### LLMs API
+### LLMs API (EAP)
 
-- [LLMs API](https://developer.atlassian.com/platform/forge/runtime-reference/forge-llms-api.md)
+- [LLMs API (EAP)](https://developer.atlassian.com/platform/forge/runtime-reference/forge-llms-api.md)
 
 ## Storage reference
 
@@ -900,6 +900,7 @@ This section contains curated references that show how real Forge apps are struc
 - [The Forge platform](https://developer.atlassian.com/platform/forge/introduction/the-forge-platform.md)
 - [Why build with Forge](https://developer.atlassian.com/platform/forge/introduction/why-build-with-forge.md)
 - [Forge platform pricing](https://developer.atlassian.com/platform/forge/forge-platform-pricing.md)
+- [Optimise Forge platform costs](https://developer.atlassian.com/platform/forge/optimise-forge-costs.md)
 
 #### AI development toolkit
 
@@ -1087,7 +1088,6 @@ This section contains curated references that show how real Forge apps are struc
 - [App compatibility](https://developer.atlassian.com/platform/forge/app-compatibility.md)
 - [Modules](https://developer.atlassian.com/platform/forge/modules.md)
 - [App security](https://developer.atlassian.com/platform/forge/security.md)
-- [Optimise Forge platform costs](https://developer.atlassian.com/platform/forge/optimise-forge-costs.md)
 
 #### User interface
 

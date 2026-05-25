@@ -22,16 +22,16 @@ Make sure you have the following:
   on the command line.
 * If you are using UI Kit, make sure you have installed the latest version of UI Kit before you begin deploying your app.
   Navigate to the top-level directory of the app and run `npm install @forge/react@latest --save` on the command line.
-* An existing Forge app. If you don't have one, create a new app using `forge create` and select the *confluence-global-page* template.
+* An existing Forge app. If you don't have one, create a new app using `forge create` and select the *confluence-full-page* template.
 
 ## Step 1: Configure the manifest
 
-Update your `manifest.yml` to add the `confluence:fullPage` module. The key differences from `confluence:globalPage` are:
+Update your `manifest.yml` to configure the `confluence:fullPage` module for the dashboard app. The key properties are:
 
-* Replace `confluence:globalPage` with `confluence:fullPage`
-* Replace `route` with `routePrefix`
+* `routePrefix` defines the URL path for your full page module
 * `title` is optional for the full page module
 * For UI Kit, ensure `render: native` is set
+* Add `read:confluence-user` scope under `permissions` to fetch user information
 
 Your `manifest.yml` should look like the following:
 
