@@ -8,6 +8,8 @@ Forge Realtime allows Forge apps to subscribe and publish to realtime channels. 
 
 Realtime events can also be published from [resolvers](/platform/forge/runtime-reference/forge-resolver/), eliminating the need for the frontend to poll the resolver for live updates. However, resolvers cannot subscribe to channels.
 
+**Rate limits apply to all Realtime operations**. Please see [Realtime Limits](/platform/forge/limits-realtime/) for more details.
+
 ## subscribe
 
 The `subscribe()` function allows you to subscribe to a channel and call a provided callback function when any event is published to the channel. This includes events published from both the frontend and from resolvers.

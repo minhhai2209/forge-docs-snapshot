@@ -101,9 +101,9 @@ The Forge Invocation Token contains a JSON object with the following properties:
 | `app.license.ccpEntitlementId` | `string` | No | Represents entitlement id of license if billing system is Commerce Cloud Platform |
 | `app.license.ccpEntitlementSlug` | `string` | No | Represents entitlement number of license if billing system is Commerce Cloud Platform |
 | `app.license.isEvaluation` | `boolean` | No | A flag indicating whether the app is being used under an evaluation license. |
-| `app.license.subscriptionEndDate` | `string` | No | Represents the expiration date of the application subscription. |
+| `app.license.subscriptionEndDate` | `string (date-time)` | No | The date and time when the subscription ends, in ISO 8601 format. Example: `2026-12-08T00:00:00.000Z` |
 | `app.license.supportEntitlementNumber` | `null` | No | Deprecated in favour of `app.license.ccpEntitlementSlug` and, as such, the value will always be `null` |
-| `app.license.trialEndDate` | `string` | No | Represents the termination date of the trial period. |
+| `app.license.trialEndDate` | `string (date-time)` | No | The date and time when the trial period ends, in ISO 8601 format. Example: `2027-06-08T00:00:00.000Z` |
 | `app.license.type` | `string` | No | Indicates the type of license. Possible values include, but are not limited to `COMMERCIAL`, `COMMUNITY`, `ACADEMIC`, and `DEVELOPER`. |
 | `app.license.modes` | `[string]` | No | Specifies additional license modes that apply to this installation, indicating how the license can be evaluated. Currently, the only possible value is `USER_ACCESS`. |
 | `app.installation` | `object` | Yes | Information about app installations. |
@@ -153,7 +153,7 @@ Example:
       "isEvaluation": false,
       "subscriptionEndDate": "2026-12-08T00:00:00.000Z",
       "supportEntitlementNumber": null,
-      "trialEndDate": "1989949707000",
+      "trialEndDate": "2027-06-08T00:00:00.000Z",
       "type": "commercial",
       "modes": ["USER_ACCESS"]
     }

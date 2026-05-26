@@ -6,7 +6,9 @@ We release preview features so partners and developers can study, test, and inte
 
 This API enables Forge apps to publish events to realtime channels. This is suited for scenarios where live updates are sent beyond the current page or to multiple users. Unlike the existing [Async events API](https://developer.atlassian.com/platform/forge/runtime-reference/async-events-api/), realtime events are emitted via WebSocket connections rather than on the window object.
 
-**Forge functions can only publish events at this time**. You will need to set up the frontend of your app to first subscribe to events using the respective realtime `@forge/bridge` [API](/platform/forge/apis-reference/ui-api-bridge/realtime) before receiving the published events.
+**Forge functions can only publish events and sign realtime tokens**. You will need to set up the frontend of your app to first subscribe to events using the respective realtime `@forge/bridge` [API](/platform/forge/apis-reference/ui-api-bridge/realtime) before receiving the published events.
+
+**Rate limits apply to all Realtime operations**. Please see [Realtime Limits](/platform/forge/limits-realtime/) for more details.
 
 ## Get started
 

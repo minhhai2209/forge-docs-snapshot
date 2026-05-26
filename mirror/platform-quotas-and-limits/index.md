@@ -88,6 +88,12 @@ Covers limits on scheduled triggers, including how many triggers an app can defi
 
 For more information, see [Scheduled trigger limits](/platform/forge/limits-scheduled-trigger/).
 
+### Realtime limits
+
+Sets rate limits for all Realtime operations, per second, per installation.
+
+For more information, see [Realtime limits](/platform/forge/limits-realtime/).
+
 ## Monitoring and managing costs
 
 You can track your usage and forecast costs using:

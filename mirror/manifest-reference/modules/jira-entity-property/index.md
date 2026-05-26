@@ -131,12 +131,15 @@ This example uses an issue entity property with the key of `stats`, which is def
    "comments": 5,
    "statusTransitions": 6,
    "lastCommenter": "<account-id>",
-   "blockedIssues": ["10000", "10001"]
+   "blockedIssues": ["10000", "10001"],
+   "summary": "Performance improvements for the dashboard",
+   "category": "optimization",
+   "lastUpdated": "2025-06-15T10:30:00Z"
 }
 ```
 ```
 
-Using the `jira:entityProperty` module you request that fields of an entity property are indexed.
+Using the `jira:entityProperty` module, you request that fields of an entity property are indexed.
 
 ```
 ```
@@ -165,10 +168,24 @@ modules:
         - path: blockedIssues
           type: string
           searchAlias: blockedIssues
+        - path: summary
+          type: text
+          searchAlias: statsSummary
+        - path: category
+          type: string
+          searchAlias: statsCategory
+        - path: lastUpdated
+          type: date
+          searchAlias: statsLastUpdated
 ```
 ```
 
-Now, indexed data is available to search in JQL, as in this example:
+### JQL syntax
+
+Once indexed, you can query entity property data in JQL using two syntax forms:
+
+* **Search alias** — Use the `searchAlias` value directly as the JQL field name. This is the recommended approach.
+* **Full property path** — Use the format `issue.property['<propertyKey>'].<path>`. This works without a `searchAlias`.
 
 ```
 ```
@@ -181,12 +198,122 @@ Now, indexed data is available to search in JQL, as in this example:
 ```
 commentCount = 5
 issue.property['stats'].comments = 5
-lastCommenter = currentUser()
+```
+```
+
+Both queries above return the same results. The search alias form is shorter and easier to read.
+
+### JQL examples by type
+
+The JQL operators available for a field depend on the `type` you specified in the module definition.
+
+#### `number` type
+
+The `number` type supports exact match (`=`, `!=`), comparison (`>`, `>=`, `<`, `<=`), and ordering.
+
+```
+```
+1
+2
+```
+
+
+
+```
+commentCount = 5
+commentCount > 3
+commentCount >= 1 AND commentCount <= 10
+transitionCount != 0
+ORDER BY commentCount ASC
+```
+```
+
+#### `text` type
+
+The `text` type tokenizes the value before indexing, which means you can search for individual words
+using the `~` (contains) and `!~` (does not contain) operators.
+
+```
+```
+1
+2
+```
+
+
+
+```
+statsSummary ~ "dashboard"
+statsSummary ~ "performance improvements"
+statsSummary !~ "bug"
+```
+```
+
+The `text` type does not support exact match (`=`) or ordering. Use the `string` type if you need exact matching.
+
+#### `string` type
+
+The `string` type indexes the value as-is and supports exact match (`=`, `!=`) only.
+
+```
+```
+1
+2
+```
+
+
+
+```
+statsCategory = "optimization"
+statsCategory != "bug"
 blockedIssues[0] = "10000"
 ```
 ```
 
-Similarly, you can request indexing for other entity types, such as `user` and `project`.
+To search for a value in an indexed array of strings, use the array index syntax (for example, `blockedIssues[0]`).
+
+#### `date` type
+
+The `date` type supports exact match, comparison, and ordering. Use the format `YYYY-MM-DD` or an ISO 8601
+date-time with timezone offset.
+
+```
+```
+1
+2
+```
+
+
+
+```
+statsLastUpdated > "2025-01-01"
+statsLastUpdated >= "2025-06-01" AND statsLastUpdated < "2025-07-01"
+statsLastUpdated > "2025-06-15T00:00:00Z"
+ORDER BY statsLastUpdated DESC
+```
+```
+
+#### `user` type
+
+The `user` type accepts an Atlassian account ID and supports the `currentUser()` function.
+
+```
+```
+1
+2
+```
+
+
+
+```
+lastCommenter = currentUser()
+lastCommenter = "<account-id>"
+lastCommenter != currentUser()
+```
+```
+
+### User and project entity types
+
+You can also request indexing for `user` and `project` entity types.
 
 ```
 ```
@@ -216,7 +343,10 @@ modules:
 ```
 ```
 
-In a JQL search, you access these properties using a prefix.
+In a JQL search, you access `user` and `project` properties using a prefix that corresponds to a JQL user or
+project field.
+
+For **project** properties, use the `project` prefix:
 
 ```
 ```
@@ -229,7 +359,21 @@ In a JQL search, you access these properties using a prefix.
 ```
 project.pagesCount = 5
 project.property['project-stats'].pages = 5
-assigne.commentCount = 10
+```
+```
+
+For **user** properties, use a user-based field as the prefix (for example, `assignee`, `reporter`, or `creator`):
+
+```
+```
+1
+2
+```
+
+
+
+```
+assignee.commentCount = 10
 reporter.property['user-stats'].comments = 10
 ```
 ```

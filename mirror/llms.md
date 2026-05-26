@@ -728,6 +728,7 @@ When answering questions, **cite the relevant subsection** above instead of inve
 - [Async events limits](https://developer.atlassian.com/platform/forge/limits-async-events.md)
 - [App and developer limits](https://developer.atlassian.com/platform/forge/limits-app-developer.md)
 - [Scheduled trigger limits](https://developer.atlassian.com/platform/forge/limits-scheduled-trigger.md)
+- [Realtime limits](https://developer.atlassian.com/platform/forge/limits-realtime.md)
 
 ## CLI reference
 
