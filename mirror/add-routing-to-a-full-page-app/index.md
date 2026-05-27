@@ -233,4 +233,4 @@ export default App;
 
 You now have a full page app with routing:
 
-![Example app with routing](https://dac-static.atlassian.com/platform/forge/images/custom-ui-routing.gif?_v=1.5800.2070)
+![Example app with routing](https://dac-static.atlassian.com/platform/forge/images/custom-ui-routing.gif?_v=1.5800.2073)

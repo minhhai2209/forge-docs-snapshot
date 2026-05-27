@@ -10,6 +10,10 @@ instance.
 Marketplace Partners have the option to use the billing model that covers all users,
 or switch to the user-based billing model. However, both billing models cannot be used for the same app.
 
+To get started with user-based billing, see [Adopt user-based billing for your app](/platform/forge/adopt-user-based-billing/).
+For details on listing your app and setting up pricing on Marketplace, see
+[Listing Forge apps on the Atlassian Marketplace](/platform/marketplace/listing-forge-apps/).
+
 ## How user-based billing works
 
 User-based billing is exclusively for Forge apps, which includes Forge apps with Connect module.
@@ -43,3 +47,5 @@ as well as larger enterprises. Here’s why:
 * **Facilitates growth**: This feature supports incremental and broader app adoption within
   organizations over time. Additionally, it enables customers to procure more apps as they
   pay per user, justifying the need and cost when utilized by business-critical teams.
+
+## Next steps

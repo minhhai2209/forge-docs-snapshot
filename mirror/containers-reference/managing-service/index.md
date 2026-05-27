@@ -28,7 +28,7 @@ Your appâ€™s containerised service lifecycle begins when you upload the serviceâ
 
 The following diagram provides a high-level view of the container lifecycle:
 
-![Forge Containers lifecycle overview](https://dac-static.atlassian.com/platform/forge/images/containers-lifecycle-overview.png?_v=1.5800.2070)
+![Forge Containers lifecycle overview](https://dac-static.atlassian.com/platform/forge/images/containers-lifecycle-overview.png?_v=1.5800.2073)
 
 This lifecycle involves the following major phases:
 
@@ -110,11 +110,12 @@ export TAG=${BITBUCKET_COMMIT:0:8}
 Forge containers can be terminated and replaced at any time. To allow a container to shut down gracefully, the following sequence applies to a container that is being terminated:
 
 1. A `SIGTERM` signal is sent to the main process (`PID 1`) in the container.
-2. The container has a grace period of 30 seconds for cleanup and exit.
-3. If the process is still running after 30 seconds, a `SIGKILL` signal is sent to forcibly terminate the process.
+2. The container has a grace period of 5 minutes for cleanup and exit.
+3. If the process is still running after 5 minutes, a `SIGKILL` signal is sent to forcibly terminate the process.
 
 Ensure your application handles `SIGTERM` to shut down gracefully.
 If your container uses a startup shell script as its entry point to spawn the application process, use `exec` when starting your application so that it becomes `PID 1` and receives `SIGTERM` directly.
+The 5-minute grace period is a maximum - if your application finishes shutting down sooner, it will exit immediately.
 
 ## Set service to listen correctly
 
