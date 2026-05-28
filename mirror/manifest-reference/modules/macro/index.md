@@ -19,7 +19,7 @@ from the quick insert menu of the editor. The `macro` module is implemented by a
 
 On apps that use Custom UI, module content is displayed inside a [special Forge iframe](/platform/forge/custom-ui/iframe/) which has the [sandbox](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#sandbox) attribute configured. This means that HTML links (for example, `<a href="https://domain.tld/path">...</a>`) in this iframe won't be clickable. To make them clickable, use the [router.navigate](/platform/forge/custom-ui-bridge/router/#navigate) API from the `@forge/bridge` package.
 
-![Example of a macro](https://dac-static.atlassian.com/platform/forge/snippets/images/macro-example.png?_v=1.5800.2073)
+![Example of a macro](https://dac-static.atlassian.com/platform/forge/snippets/images/macro-example.png?_v=1.5800.2075)
 
 ## Manifest structure
 
@@ -86,7 +86,7 @@ resources []
 | `config.viewportSize` | `'small'`, `'medium'`, `'large'`, `'xlarge'`, `'max'` or `'fullscreen'` |  | The [display size](/platform/forge/manifest-reference/resources) of `resource`. Can only be set if the module is using the `resource` property. Remove this property to enable automatic resizing of the module. For `fullscreen` viewports, the `config.title` and `config.icon` will be displayed in the header. |
 | `config.openOnInsert` | `boolean` |  | Defaults to `false` for classic configuration, defaults to `true` for custom configuration. An optional configuration to control if the classic configuration sidepanel or the custom configuration modal is automatically opened when first inserted. |
 | `adfExport` | `{ function: string }` |  | Defines how your macro appears when a Confluence page is exported.  Contains a `function` property which references a `function` module that returns the macro content in [Atlassian document format](/cloud/jira/platform/apis/document/structure/).  The specified function can consume the `exportType` directly from the function's payload in order to specify different views per export type. The `exportType` can be one of `pdf`, `word`, or `other`. See this [tutorial](/platform/forge/change-%0Athe-confluence-frontend-with-the-ui-kit/#specify-the-export-view) for more information.  The `adfExport` function is invoked once per macro instance during export operations. Pages with many macro instances can trigger a large number of invocations in a single export, potentially causing rate limiting and performance issues. Consider minimizing backend work within the function and informing customers about potential limitations when using many macros on pages that will be exported. |
-| `layout` | `'block'`, `'inline'` or `'bodied'` |  | `'block'` type is used by default.  `'inline'` shows the element inline with existing text.   * For UI Kit apps, inline macros dynamically resize to wrap the content. * A limitation exists for Custom UI apps that prevents inline macros from dynamically resizing when the content of the macro is changed.     `'bodied'` sets the macro to have a rich text body.   * This allows users to insert and edit rich content (such as images and tables) within the macro using the Confluence editor, and allows your app to insert a body using a custom editor. * Please see the link to the tutorial [here](/platform/forge/using-rich-text-bodied-macros). |
+| `layout` | `'block'`, `'inline'` or `'bodied'` |  | `'block'` type is used by default.  `'inline'` shows the element inline with existing text.   * For UI Kit apps, inline macros dynamically resize to wrap the content. * Custom UI inline macros have a minimum rendered width of approximately 300px due to the browser's default iframe sizing. To allow your macro to render at a smaller width, set `width: fit-content` on the `body` element of your Custom UI app's HTML. See [Notes on layout and sizing](#notes-on-layout-and-sizing) for details.     `'bodied'` sets the macro to have a rich text body.   * This allows users to insert and edit rich content (such as images and tables) within the macro using the Confluence editor, and allows your app to insert a body using a custom editor. * Please see the link to the tutorial [here](/platform/forge/using-rich-text-bodied-macros). |
 | `autoConvert` | `autoConvert object` |  | Inserts a macro into the editor when a recognised URL is pasted in by the user. See [Macro autoconvert.](#macro-autoconvert) |
 | `autoConvert.matchers` | `[matcher, ...]` | Yes, if using `autoConvert` | The list of patterns that define what URLs should be matched. |
 | `autoConvert.matchers.pattern` | `string` | Yes, if using `autoConvert` | A string that defines a specific URL pattern to be matched, using wildcards for variable parts of the URL, such as unique IDs.  * Use multiple wildcards to match multiple sub-paths. Do not include all sub-paths with a single wildcard. * Ensure URLs do not contain whitespace unless it is URL encoded. * Wildcards cannot be used in place of a protocol. Custom URL Schemes are supported See [examples](#matching-custom-url-schemes) * Maximum length of the pattern is 1024 characters. |
@@ -424,5 +424,54 @@ This table details the possible error codes that may be thrown by `view.submit()
 | `INVALID_EXTENSION_TYPE` | When providing a `body`, the macro must be a rich text macro (`layout: "bodied"`). |
 | `INVALID_BODY` | The provided `body` is not a valid [ADF document node](/cloud/jira/platform/apis/document/nodes/doc/). |
 | `MACRO_NOT_FOUND` | The macro that you are attempting to update no longer exists. It may have been deleted by another user editing the page. |
+
+## Notes on layout and sizing
+
+### Inline macro width (Custom UI)
+
+Custom UI inline macros are rendered inside an `<iframe>`. All major browsers apply a default minimum width of 300px to `<iframe>` elements, which means your inline macro will render at a minimum of approximately 300px wide even if the content inside is smaller.
+
+To override this and allow the macro to shrink to fit its content, add the following CSS to your Custom UI app. The recommended approach is to add it in a `<style>` tag or an external stylesheet in your `index.html`:
+
+```
+```
+1
+2
+```
+
+
+
+```
+<style>
+  body {
+    width: fit-content;
+  }
+</style>
+```
+```
+
+This tells the browser to size the body to its content rather than expanding to the iframe default width. The `fit-content` value is [supported across all browsers that Forge targets](https://caniuse.com/?search=fit-content).
+
+If you apply these styles using a `style` attribute directly on the `<body>` element (for example, `<body style="width: fit-content">`), you must also declare the `unsafe-inline` permission in your `manifest.yml`, as inline styles are blocked by the default Content Security Policy:
+
+```
+```
+1
+2
+```
+
+
+
+```
+permissions:
+  content:
+    styles:
+      - "unsafe-inline"
+```
+```
+
+Using a `<style>` tag or external stylesheet does not require this permission.
+
+This limitation only applies to Custom UI apps. UI Kit inline macros automatically resize to wrap their content without any additional configuration.
 
 ## Tutorials

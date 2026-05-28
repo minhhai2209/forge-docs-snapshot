@@ -263,9 +263,30 @@ In this section, we cover some limitations and differences between Connect and F
 ### Macro layout
 
 * Forge macros do not support adding plain text or [multi-bodied macros](/cloud/confluence/working-with-a-multi-bodied-macro/).
+
   * Reading existing `plain-text` bodies from Connect macros is supported through the `__bodyContent` key in the config object.
   * If you want to provide a similar experience to plain text macros in your Forge app, you can use a [TextArea](/platform/forge/ui-kit/components/text-area) component in your macro configuration.
 * You cannot change the body type of an existing macro as part of the migration, even if the Forge macro declares a different type in the `layout` parameter.
+* Some Connect inline macros can render at very small widths (for example, 10px wide), depending on implementation. Custom UI inline macros have a minimum rendered width of approximately 300px due to the browser's default `<iframe>` sizing. To allow widths smaller than 300px, add the following to your Custom UI app's `index.html`:
+
+  ```
+  ```
+  1
+  2
+  ```
+
+
+
+  ```
+  <style>
+    body {
+      width: fit-content;
+    }
+  </style>
+  ```
+  ```
+
+  This is not required for UI Kit inline macros, which automatically resize to wrap their content. See [Inline macro width (Custom UI)](/platform/forge/manifest-reference/modules/macro/#notes-on-layout-and-sizing) for details, including when the `unsafe-inline` Content Security Policy permission is required.
 * Forge macros can be *children* of Connect or Forge rich bodied macros, with some limitations:
 
 ### Configuration data

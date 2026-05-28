@@ -1,10 +1,10 @@
 {
   "root_url": "https://developer.atlassian.com/platform/forge",
-  "generated_at": "2026-05-27T19:18:09.615126+00:00",
+  "generated_at": "2026-05-28T19:26:44.532675+00:00",
   "discovered_urls": 732,
   "downloaded_pages": 731,
   "skipped_pages": 1,
-  "duration_seconds": 1888.08,
+  "duration_seconds": 2066.11,
   "user_agent": "ForgeDocsMirror/1.0 (+https://github.com/minhhai2209/forge-docs-snapshot)",
   "delay_seconds": 0.25,
   "failures": [

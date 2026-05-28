@@ -40,7 +40,7 @@ To begin creating an alert rule:
 
 In this step, you will select the metric and filters that define the source of the alert.
 
-![Create alert rule - select alert source screen](https://dac-static.atlassian.com/platform/forge/images/alerts/new_alert-alert_source.svg?_v=1.5800.2073)
+![Create alert rule - select alert source screen](https://dac-static.atlassian.com/platform/forge/images/alerts/new_alert-alert_source.svg?_v=1.5800.2075)
 
 ### Select source metric
 
@@ -51,6 +51,7 @@ metric. The available metrics are:
 * **Invocation errors**: The number of invocations that failed with an error. Errors can be due to
   out of memory issues, timeouts, or unhandled exceptions.
 * **Invocation success rate**: The percentage of successful vs. failed invocations.
+* **API request count**: The number of API requests made from the app.
 
 ### Add source filters (optional)
 
@@ -62,6 +63,8 @@ For more specific alerts, you can add filters to refine the source. You can filt
 * **Site**: The specific sites that will be monitored. A maximum of 25 sites can be selected.
 * **Major version**: The major app versions that will be monitored. Selecting a major version
   includes all its minor versions.
+* **Status** (only for API request count): The status code returned in the API response. Eg. 500, 404 etc.
+* **URL** (only for API request count): The API request path called from the app.
 
 Note that you can only select error types, functions, sites, and major versions that have had invocations
 within the past 14 days.
@@ -77,7 +80,7 @@ with alerts based on historical data. Adjust the time period, thresholds, and al
 the chart and estimation banner to find the right balance between staying informed and managing alert
 volume.
 
-![Create alert rule - configure conditions screen](https://dac-static.atlassian.com/platform/forge/images/alerts/new_alert-conditions.svg?_v=1.5800.2073)
+![Create alert rule - configure conditions screen](https://dac-static.atlassian.com/platform/forge/images/alerts/new_alert-conditions.svg?_v=1.5800.2075)
 
 ### Select time period
 
@@ -131,7 +134,7 @@ In this step, you will specify who should be notified when the alert is triggere
 be notified by email when the alert is opened, when the alert changes severities, and when the alert
 is closed.
 
-![Create alert rule - add responders screen](https://dac-static.atlassian.com/platform/forge/images/alerts/new_alert-responders.svg?_v=1.5800.2073)
+![Create alert rule - add responders screen](https://dac-static.atlassian.com/platform/forge/images/alerts/new_alert-responders.svg?_v=1.5800.2075)
 
 ### Add responders
 
@@ -146,7 +149,7 @@ Once you’ve added the responders, you’re ready to finalize the alert rule in
 In this final step, you will provide additional details about the alert to help your team
 identify and manage it effectively.
 
-![Create alert rule - specify alert details screen](https://dac-static.atlassian.com/platform/forge/images/alerts/new_alert-alert_details.svg?_v=1.5800.2073)
+![Create alert rule - specify alert details screen](https://dac-static.atlassian.com/platform/forge/images/alerts/new_alert-alert_details.svg?_v=1.5800.2075)
 
 ### Enter alert name
 
