@@ -21,9 +21,9 @@ To request expiry metadata for results, pass the `EXPIRE_TIME` metadata field us
 13
 14
 15
-import { kvs, WhereConditions } from '@forge/kvs';
+import { kvs, WhereConditions, MetadataField } from '@forge/kvs';
 
-await kvs.query({ metadataFields: ['EXPIRE_TIME'] })
+await kvs.query({ metadataFields: [MetadataField.EXPIRE_TIME] })
   // Filter the response to only keys that start with the string 'value'
   .where('key', WhereConditions.beginsWith('value'))
 
@@ -36,6 +36,41 @@ await kvs.query({ metadataFields: ['EXPIRE_TIME'] })
 
   // Get a list of results
   .getMany();
+```
+
+This returns a `ListResult` object containing the matching key-value pairs and the requested metadata:
+
+```
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+{
+  "results": [
+    {
+      "key": "value-1",
+      "value": "stored data",
+      "expireTime": "2026-01-15T16:12:19.000Z"
+    },
+    {
+      "key": "value-2",
+      "value": { "name": "another entry" },
+      "expireTime": "2026-03-20T10:30:00.000Z"
+    }
+  ],
+  "nextCursor": "eyJrZXkiOiJ2YWx1ZS0yIn0="
+}
 ```
 
 The `Query` object is immutable.
@@ -129,6 +164,64 @@ export interface Result<T> {
 ```
 ```
 
+### Response
+
+The response is a `ListResult` object containing:
+
+| Property | Type | Description |
+| --- | --- | --- |
+| `results` | `Result<T>[]` | An array of key-value pairs matching the query. |
+| `nextCursor` | `string` (optional) | A cursor for fetching the next page of results. If absent, there are no more results. |
+
+Each `Result` object contains:
+
+| Property | Type | Description |
+| --- | --- | --- |
+| `key` | `string` | The key of the stored entry. |
+| `value` | `T` | The value of the stored entry. |
+
+If `metadataFields` were requested in the query options, each result will also include the requested metadata attributes (such as `createdAt`, `updatedAt`, or `expireTime`).
+
+### Example response
+
+```
+```
+1
+2
+```
+
+
+
+```
+{
+  "results": [
+    { "key": "item-1", "value": { "name": "First item" } },
+    { "key": "item-2", "value": { "name": "Second item" } }
+  ],
+  "nextCursor": "eyJrZXkiOiJpdGVtLTIifQ=="
+}
+```
+```
+
+When there are no more pages of results, `nextCursor` is omitted:
+
+```
+```
+1
+2
+```
+
+
+
+```
+{
+  "results": [
+    { "key": "item-3", "value": { "name": "Third item" } }
+  ]
+}
+```
+```
+
 ## query.getOne
 
 Execute the query and get the first matching result, if any matches exist. If there
@@ -153,6 +246,36 @@ export interface Result<T> {
 }
 ```
 ```
+
+### Response
+
+The response is a single `Result` object, or `undefined` if no match is found.
+
+| Property | Type | Description |
+| --- | --- | --- |
+| `key` | `string` | The key of the stored entry. |
+| `value` | `T` | The value of the stored entry. |
+
+If `metadataFields` were requested in the query options, the result will also include the requested metadata attributes (such as `createdAt`, `updatedAt`, or `expireTime`).
+
+### Example response
+
+When a match is found:
+
+```
+```
+1
+2
+```
+
+
+
+```
+{ "key": "item-1", "value": { "name": "First item" } }
+```
+```
+
+When no match is found, the result resolves to `undefined`.
 
 ## query.where
 

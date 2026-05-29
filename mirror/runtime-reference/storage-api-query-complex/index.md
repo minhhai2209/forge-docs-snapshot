@@ -370,6 +370,64 @@ export interface Result<T> {
 ```
 ```
 
+### Response
+
+The response is a `ListResult` object containing:
+
+| Property | Type | Description |
+| --- | --- | --- |
+| `results` | `Result<T>[]` | An array of key-value pairs matching the query. |
+| `nextCursor` | `string` (optional) | A cursor for fetching the next page of results. If absent, there are no more results. |
+
+Each `Result` object contains:
+
+| Property | Type | Description |
+| --- | --- | --- |
+| `key` | `string` | The key of the stored entry. |
+| `value` | `T` | The value of the stored entry. |
+
+If `metadataFields` were requested in the query options, each result will also include the requested metadata attributes (such as `createdAt`, `updatedAt`, or `expireTime`).
+
+### Example response
+
+```
+```
+1
+2
+```
+
+
+
+```
+{
+  "results": [
+    { "key": "item-1", "value": { "name": "First item" } },
+    { "key": "item-2", "value": { "name": "Second item" } }
+  ],
+  "nextCursor": "eyJrZXkiOiJpdGVtLTIifQ=="
+}
+```
+```
+
+When there are no more pages of results, `nextCursor` is omitted:
+
+```
+```
+1
+2
+```
+
+
+
+```
+{
+  "results": [
+    { "key": "item-3", "value": { "name": "Third item" } }
+  ]
+}
+```
+```
+
 ## query.getOne
 
 Execute the query and get the first matching result, if any matches exist. If there
@@ -394,6 +452,36 @@ export interface Result<T> {
 }
 ```
 ```
+
+### Response
+
+The response is a single `Result` object, or `undefined` if no match is found.
+
+| Property | Type | Description |
+| --- | --- | --- |
+| `key` | `string` | The key of the stored entry. |
+| `value` | `T` | The value of the stored entry. |
+
+If `metadataFields` were requested in the query options, the result will also include the requested metadata attributes (such as `createdAt`, `updatedAt`, or `expireTime`).
+
+### Example response
+
+When a match is found:
+
+```
+```
+1
+2
+```
+
+
+
+```
+{ "key": "item-1", "value": { "name": "First item" } }
+```
+```
+
+When no match is found, the result resolves to `undefined`.
 
 ## Example entity
 
