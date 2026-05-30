@@ -1,9 +1,87 @@
-# Get started with the Forge MCP Server
+# Set up the Forge MCP Server
 
-Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
-When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our
+The Forge MCP Server is a remote Model Context Protocol (MCP) server that exposes authoritative Forge and Atlassian Cloud knowledge to coding agents and AI-powered IDEs. It’s designed to help developers using tools like Cursor, VS Code, or Rovo Dev CLI get grounded, detailed, searchable context for their developer agents.
 
-[Privacy Policy](https://www.atlassian.com/legal/privacy-policy#additional-disclosures-for-ca-residents)
+## What is the Forge MCP Server?
 
-.
-You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
+The Forge MCP Server provides Forge-specific knowledge and search as APIs, making it easy for AI coding agents to access:
+
+* **How-to guides**: Provide information about building Forge apps and code snippets for common Forge tasks.
+* **Module catalogs**: Recommend the right modules, manifest shapes, scopes, and backend patterns for your use case.
+* **Manifest guidance**: Help with manifest structure, scopes, and permissions.
+* **Forge document search**: Answer technical questions about Forge and Atlassian Cloud APIs using up-to-date knowledge bases.
+* **Agent-friendly APIs**: Structure results so agents can turn guidance into working code.
+
+Unlike general-purpose APIs, this server is aimed at developers working in AI-powered IDEs and code editors, not conversational AI chat platforms.
+
+## Who is it for?
+
+* Developers building Forge apps in IDEs like Cursor or VS Code.
+* Teams using AI-powered coding assistants that support the MCP protocol like Rovo Dev CLI.
+* Anyone who wants to accelerate Forge app development with reliable, context-aware guidance.
+
+## What’s not included
+
+* The Forge MCP server does not replace the Forge CLI. You’ll still use the CLI for tasks like tunneling, bundling, and deploying your app.
+* It does not perform local file system actions or run CLI commands on your behalf.
+
+## Prerequisites
+
+Before you start, make sure you have:
+
+* **Node.js 22+** installed (this [runtime version](/platform/forge/function-reference/nodejs-runtime/) is required running the MCP proxy if needed).
+* A supported AI-powered IDE (for example, Rovo Dev CLI, Cursor, VS Code) or another MCP-compatible client.
+
+## Connecting your IDE to the Forge MCP server
+
+Select your IDE or client to get the configuration you need.
+
+Rovo Dev CLI
+
+Cursor
+
+VS Code
+
+Other IDEs or custom clients
+
+To connect Rovo Dev CLI to the Forge MCP server, follow the [instructions in our support documentation](https://support.atlassian.com/rovo/docs/connect-to-an-mcp-server-in-rovo-dev-cli/).
+
+Add the following configuration to your `~/.rovodev/mcp.json` file:
+
+```
+```
+1
+2
+```
+
+
+
+```
+{
+  "mcpServers": {
+    "forge": {
+      "url": "https://mcp.atlassian.com/v1/forge/mcp",
+      "transport": "http"
+    }
+  }
+}
+```
+```
+
+## Example development flow
+
+When working with AI coding agents, it’s important to explicitly instruct them to use the Forge-related tools provided by the MCP server. This ensures their work is based on the most up-to-date Forge knowledge, as some agents may not use these tools unless prompted and might otherwise attempt to build your app without referencing the latest documentation or guidance.
+
+1. Create your app with the Forge CLI — Use the CLI to scaffold, tunnel, bundle, and deploy your app. The MCP server does not create or run apps for you. Once you have an app (or a codebase you're exploring), employ your AI coding agent with the Forge MCP server.
+2. Prompt your agent: “Create a Confluence macro that shows a pie chart of Jira issues by status. Use the Forge MCP tools to ensure your solution is based on the latest Forge documentation.”
+3. Agent plans the task: Calls the `forge-development-guide` guide for a high-level context.
+4. Agent gathers details: Uses guides like `forge-ui-kit-developer-guide`, `forge-modules-list`, and `forge-app-manifest-guide` as needed.
+5. Agent queries documentation: Searches for specific components or API usage using `search-forge-docs`.
+6. You build and test: Use the Forge CLI to lint, deploy, and install your app. The agent can help troubleshoot errors by querying the MCP server for relevant documentation.
+
+## Security and access
+
+* The Forge MCP server only provides publicly available information; no authentication is required.
+* All data is sourced from <https://developer.atlassian.com/>.
+* Rate limiting may be applied to prevent abuse.
+* Risk: The information returned by the MCP server may become out-of-date if the knowledge index is not refreshed regularly as Forge evolves. Always verify critical details against the latest official Forge documentation.
