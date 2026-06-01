@@ -163,6 +163,8 @@ resources:
 ```
 ```
 
+If your app has multiple modules or views, you can define multiple named entry points within a single resource using the optional `entry` property (Preview), rather than declaring a separate resource for each view. See [Resources — Multiple entry points (Preview)](/platform/forge/manifest-reference/resources/#multiple-entry-points-preview) for details.
+
 ## Resolver
 
 [Resolver](/platform/forge/runtime-reference/forge-resolver/) enables you to define backend functions for your UI Kit and Custom UI apps.

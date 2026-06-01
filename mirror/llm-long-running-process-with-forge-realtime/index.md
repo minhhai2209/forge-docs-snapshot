@@ -1,8 +1,14 @@
 # Handling long-running LLM processes with Forge Realtime
 
-[Forge LLMs](/platform/forge/runtime-reference/forge-llms-api/) is available through Forge's Early Access Program (EAP). EAP grants selected users early testing access for feedback; APIs and features in EAP are experimental, unsupported, subject to change without notice, and not recommended for production — [sign up here](https://go.atlassian.com/signup-forge-llms) to participate.
+Forge LLMs is now available as *preview* feature.
 
-For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
+Preview features are deemed stable;
+however, they remain under active development and may be subject to shorter deprecation
+windows. Preview features are suitable for early adopters in production environments.
+
+We release preview features so partners and developers can study, test, and integrate
+them prior to General Availability (GA). For more information,
+see [Forge release phases: EAP, Preview, and GA](/platform/forge/whats-coming/#preview).
 
 ## Overview
 

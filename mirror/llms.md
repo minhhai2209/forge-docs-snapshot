@@ -624,9 +624,13 @@ When helping readers, map their use case to the right invocation type: UI-driven
 
 - [i18n API](https://developer.atlassian.com/platform/forge/runtime-reference/i18n.md)
 
-### LLMs API (EAP)
+### LLMs API (Preview)
 
-- [LLMs API (EAP)](https://developer.atlassian.com/platform/forge/runtime-reference/forge-llms-api.md)
+- [LLMs API (Preview)](https://developer.atlassian.com/platform/forge/runtime-reference/forge-llms-api.md)
+- [Pricing](https://developer.atlassian.com/platform/forge/runtime-reference/forge-llms-api-pricing.md)
+- [Models](https://developer.atlassian.com/platform/forge/runtime-reference/forge-llms-models.md)
+- [API reference](https://developer.atlassian.com/platform/forge/runtime-reference/forge-llms-api-reference.md)
+- [Error handling](https://developer.atlassian.com/platform/forge/runtime-reference/forge-llms-api-errors.md)
 
 ## Storage reference
 

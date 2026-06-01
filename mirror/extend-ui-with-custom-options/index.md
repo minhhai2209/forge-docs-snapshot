@@ -39,6 +39,8 @@ This is the manifest declaration for a basic Jira issue panel using Frame or Cus
   the static assets for the resource. It should contain the `index.html` entry point for the
   Custom UI app; in this case, `static/hello-world/build/index.html`.
 
+If your app has multiple modules or views, you can define multiple named HTML entry points within a single resource using the optional `entry` property, rather than declaring a separate resource for each view. See [Resources — Multiple entry points (Preview)](/platform/forge/manifest-reference/resources/#multiple-entry-points-preview) for details.
+
 Consider an example `index.html` file saved in the root of the resource path:
 
 ```

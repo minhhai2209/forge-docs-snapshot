@@ -27,7 +27,7 @@ This package module uses the app's credentials, determined by the scopes defined
 
 ## Register a dynamic module
 
-Send a `POST` request to `/forge/installation/v1/dynamic/module` to register a dynamic module for the current app installation.
+Send a `POST` request to `/forge/installation/v2/dynamic/module` to register a dynamic module for the current app installation. The module `key` is generated server-side as a UUID v4 and returned in the response.
 
 ### Request
 
@@ -44,7 +44,6 @@ Send a `POST` request to `/forge/installation/v1/dynamic/module` to register a d
 ```
 import { asApp } from '@forge/api';
 const payload = {
-  key: "unique-module-key",
   type: "trigger",
   data: {
     events: [
@@ -53,7 +52,7 @@ const payload = {
     "endpoint": "some-endpoint"
   }
 }
-const response = await asApp().requestAtlassian(`/forge/installation/v1/dynamic/module/`, {
+const response = await asApp().requestAtlassian(`/forge/installation/v2/dynamic/module/`, {
   headers: {
     'Content-Type': 'application/json'
   },
@@ -119,23 +118,22 @@ The Dynamic Module service encountered an unexpected problem.
 
 ## Update a registered module
 
-Send a `PUT` request to `/forge/installation/v1/dynamic/module/<key>` to update a dynamic module registered on the installation
-(identified by the module's `key`).
+Send a `PUT` request to `/forge/installation/v2/dynamic/module/<key>` to update a dynamic module registered on the installation
+(identified by the module's `key` in the URL path).
 
 ### Request
 
 | Property | Type | Required? | Description |
 | --- | --- | --- | --- |
-| `key` | `string` | Yes | The unique key of the target dynamic module on the installation |
+| `key` (path) | `string` | Yes | The unique key of the target dynamic module on the installation. Provided in the URL path; the path key is authoritative. |
 | `dynamicModuleRequest` | `map` | Yes | Payload that defines the updated dynamic module |
 
-The `dynamicModuleRequest` property requires the same properties as the [registration request](#register-a-dynamic-module), as in:
+The `dynamicModuleRequest` body has the following properties:
 
 | Property | Type | Required? | Description |
 | --- | --- | --- | --- |
-| `key` | `string` | Yes | The unique key of the target dynamic module on the installation |
 | `type` | `string` | Yes | The dynamic module being created (for example, use `trigger` to specify the [Trigger](/platform/forge/manifest-reference/modules/trigger/) module) |
-| `data` | `map` | Yes | The dynamic module's structure, but in JSON format (the `payload`s in the [Code examples](#put-example) use the [Trigger](/platform/forge/manifest-reference/modules/trigger/) module). The `key` property will be automatically copied into this payload so does not need to be provided again. |
+| `data` | `map` | Yes | The dynamic module's structure, but in JSON format (the `payload`s in the [Code examples](#put-example) use the [Trigger](/platform/forge/manifest-reference/modules/trigger/) module). |
 
 ### Code examples
 
@@ -149,9 +147,8 @@ The `dynamicModuleRequest` property requires the same properties as the [registr
 
 ```
 import { asApp } from '@forge/api';
-const key = "unique-module-key";
+const key = "<SERVER-GENERATED-UUID>";
 const payload = {
-  key: "unique-module-key",
   type: "trigger",
   data: {
     events: [
@@ -160,7 +157,7 @@ const payload = {
     "endpoint": "some-endpoint"
   }
 }
-const response = await asApp().requestAtlassian(`/forge/installation/v1/dynamic/module/${key}`, {
+const response = await asApp().requestAtlassian(`/forge/installation/v2/dynamic/module/${key}`, {
   headers: {
     'Content-Type': 'application/json'
   },
@@ -190,10 +187,10 @@ The taget dynamic module was successfully updated. The response will contain the
 
 ```
 {
-  "key": "unique-module-key",
+  "key": "<SERVER-GENERATED-UUID>",
   "type": "trigger",
   "data": {
-    "key": "unique-module-key",
+    "key": "<SERVER-GENERATED-UUID>",
     "events": [
       "avi:jira:updated:issue"
     ],
@@ -255,7 +252,7 @@ The Dynamic Module service encountered an unexpected problem.
 
 ## List registered modules
 
-Send a `GET` request to `/forge/installation/v1/dynamic/module/` to retrieve a *paginated list* of dynamic modules currently registered on the app installation.
+Send a `GET` request to `/forge/installation/v2/dynamic/module/` to retrieve a *paginated list* of dynamic modules currently registered on the app installation.
 
 If a registered dynamic module shares the same `key` as a static module declared in your app's `manifest.yml`, the static module takes precedence and the dynamic module will be omitted from the response.
 
@@ -284,7 +281,7 @@ const params = new URLSearchParams({
   limit: '10',
   nextPageToken: '<PAGINATION-TOKEN>'
 }).toString();
-const response = await asApp().requestAtlassian(`/forge/installation/v1/dynamic/module/?${params}`, {
+const response = await asApp().requestAtlassian(`/forge/installation/v2/dynamic/module/?${params}`, {
   headers: {
     'Content-Type': 'application/json'
   },
@@ -391,7 +388,7 @@ The Dynamic Module service encountered an unexpected problem.
 
 ## Retrieve a registered module
 
-Send a `GET` request to `/forge/installation/v1/dynamic/module/<key>` to retrieve a registered dynamic module on the installation
+Send a `GET` request to `/forge/installation/v2/dynamic/module/<key>` to retrieve a registered dynamic module on the installation
 (identified by the module's `key`).
 
 ### Request
@@ -413,7 +410,7 @@ Send a `GET` request to `/forge/installation/v1/dynamic/module/<key>` to retriev
 ```
 import { asApp } from '@forge/api';
 const key = '<YOUR-MODULE-KEY>';
-const response = await asApp().requestAtlassian(`/forge/installation/v1/dynamic/module/${key}`, {
+const response = await asApp().requestAtlassian(`/forge/installation/v2/dynamic/module/${key}`, {
   headers: {
     'Content-Type': 'application/json'
   },
@@ -503,7 +500,7 @@ The Dynamic Module service encountered an unexpected problem.
 
 ## Delete a registered module
 
-Send a `DELETE` request to `forge/installation/v1/dynamic/module/<key>` to delete a registered dynamic module on the installation
+Send a `DELETE` request to `/forge/installation/v2/dynamic/module/<key>` to delete a registered dynamic module on the installation  
 (identified by the module's `key`).
 
 ### Request
@@ -525,7 +522,7 @@ Send a `DELETE` request to `forge/installation/v1/dynamic/module/<key>` to delet
 ```
 import { asApp } from '@forge/api';
 const moduleKey = '<YOUR-MODULE-KEY>';
-const response = await asApp().requestAtlassian(`/forge/installation/v1/dynamic/module/${moduleKey}`, {
+const response = await asApp().requestAtlassian(`/forge/installation/v2/dynamic/module/${moduleKey}`, {
   headers: {
     'Content-Type': 'application/json'
   },

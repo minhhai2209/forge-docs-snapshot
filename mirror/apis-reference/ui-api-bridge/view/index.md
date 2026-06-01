@@ -458,11 +458,7 @@ export default MyMacro;
 ```
 ```
 
-## createAdfRendererIframeProps (Preview)
-
-The `createAdfRendererIframeProps` method is now available as Preview capability. Preview capabilities are deemed stable; however, they remain under active development and may be subject to shorter deprecation windows. Preview capabilities are suitable for early adopters in production environments.
-
-For more details, see [Forge Preview](/platform/forge/whats-coming/#forge-preview).
+## createAdfRendererIframeProps
 
 Use `createAdfRendererIframeProps` when building a Custom UI bodied macro that needs to display its rich-text body content, including embedded Forge apps. This function generates the properties needed for an iframe element to render the ADF document type content of a Custom UI bodied macro.
 
@@ -520,7 +516,7 @@ Returns an object with the following properties:
 
 ### Example
 
-![Example rendered Custom UI bodied macro contents](https://dac-static.atlassian.com/platform/forge/apis-reference/ui-api-bridge/images/view/view-createAdfRendererIframeProps-custom-ui-bodied-macro.svg?_v=1.5800.2077)
+![Example rendered Custom UI bodied macro contents](https://dac-static.atlassian.com/platform/forge/apis-reference/ui-api-bridge/images/view/view-createAdfRendererIframeProps-custom-ui-bodied-macro.svg?_v=1.5800.2081)
 
 ```
 ```
@@ -531,6 +527,7 @@ Returns an object with the following properties:
 
 
 ```
+import React, { useState, useEffect } from "react";
 import { view } from "@forge/bridge";
 
 function App() {
@@ -572,12 +569,7 @@ You can split up the ADF document object inside `context.extension.macro.body` a
 
 ### Limitations
 
-| Parent macro type | Embedded macro type | Modals supported |
-| --- | --- | --- |
-| Custom UI | Custom UI | yes |
-| Custom UI | UI Kit | no |
-| UI Kit | Custom UI | yes |
-| UI Kit | UI Kit | yes |
+* **Connect macros**: Macros built with Atlassian Connect cannot be embedded.
 
 ### Supported bridge methods
 
@@ -588,12 +580,12 @@ You can split up the ADF document object inside `context.extension.macro.body` a
 | invoke | yes |
 | invokeRemote | yes |
 | modal | yes |
-| objectStore (EAP) | no |
+| objectStore (EAP) | yes |
 | realtime (Preview) | yes |
 | requestBitbucket | N/A |
 | requestConfluence | yes |
 | requestJira | yes |
-| requestRemote | no |
+| requestRemote | yes |
 | router | yes |
 | rovo (Preview) | yes |
 | showFlag | yes |

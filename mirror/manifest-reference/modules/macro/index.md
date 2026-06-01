@@ -19,7 +19,7 @@ from the quick insert menu of the editor. The `macro` module is implemented by a
 
 On apps that use Custom UI, module content is displayed inside a [special Forge iframe](/platform/forge/custom-ui/iframe/) which has the [sandbox](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#sandbox) attribute configured. This means that HTML links (for example, `<a href="https://domain.tld/path">...</a>`) in this iframe won't be clickable. To make them clickable, use the [router.navigate](/platform/forge/custom-ui-bridge/router/#navigate) API from the `@forge/bridge` package.
 
-![Example of a macro](https://dac-static.atlassian.com/platform/forge/snippets/images/macro-example.png?_v=1.5800.2077)
+![Example of a macro](https://dac-static.atlassian.com/platform/forge/snippets/images/macro-example.png?_v=1.5800.2081)
 
 ## Manifest structure
 
@@ -106,7 +106,7 @@ as part of Forge’s Early Access Program (EAP).
 
 For more details, see [Dynamic Modules](/platform/forge/apis-reference/dynamic-modules/).
 
-When you register a dynamic `macro` module, the `data` object uses the same properties as a static `macro` module in the manifest. The module `key` is provided as a top-level property in the Dynamic Modules API payload.
+When you register a dynamic `macro` module, the `data` object uses the same properties as a static `macro` module in the manifest. The module `key` is generated server-side and returned in the create response; for updates, supply it in the URL path.
 
 ### Code examples
 
@@ -126,7 +126,6 @@ The following examples show Dynamic Module implementations specific to this modu
 ```
 import { asApp } from "@forge/api";
 const payload = {
-  "key": "macro-dynamic",
   "type": "macro",
   "data": {
     "resolver": {
@@ -145,7 +144,7 @@ const payload = {
     }
   }
 }
-const response = await asApp().requestAtlassian(`/forge/installation/v1/dynamic/module/`, {
+const response = await asApp().requestAtlassian(`/forge/installation/v2/dynamic/module/`, {
   headers: {
     'Content-Type': 'application/json'
   },
@@ -171,7 +170,6 @@ console.log(`Response: ${response.status} ${body}`);
 import { asApp } from "@forge/api";
 const key = "macro-dynamic";
 const payload = {
-  "key": "macro-dynamic",
   "type": "macro",
   "data": {
     "resolver": {
@@ -193,7 +191,7 @@ const payload = {
     }
   }
 }
-const response = await asApp().requestAtlassian(`/forge/installation/v1/dynamic/module/${key}`, {
+const response = await asApp().requestAtlassian(`/forge/installation/v2/dynamic/module/${key}`, {
   headers: {
     'Content-Type': 'application/json'
   },

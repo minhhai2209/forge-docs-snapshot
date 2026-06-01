@@ -1,7 +1,7 @@
 ```
 {
   "info": {
-    "_postman_id": "5dba9ee9-fbba-4372-b0f1-1400b840cf44",
+    "_postman_id": "bd208c40-0e93-473f-8b93-eea8c0d0f084",
     "name": "Forge Containers API",
     "description": "The Forge Containers Public API\n\n**Important:** The API base URL should be read from the `FORGE_EGRESS_PROXY_URL` environment variable.\nThe localhost URL in the servers section is for documentation purposes only.\n",
     "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
@@ -558,7 +558,7 @@
             "url": {
               "protocol": "{{protocol}}",
               "host": "{{host}}",
-              "path": "{{basePath}}atlassian/forge/installation/v1/dynamic/module",
+              "path": "{{basePath}}atlassian/forge/installation/v2/dynamic/module",
               "query": [
                 {
                   "key": "nextPageToken",
@@ -606,7 +606,7 @@
             "url": {
               "protocol": "{{protocol}}",
               "host": "{{host}}",
-              "path": "{{basePath}}atlassian/forge/installation/v1/dynamic/module",
+              "path": "{{basePath}}atlassian/forge/installation/v2/dynamic/module",
               "query": [],
               "variable": []
             },
@@ -631,6 +631,7 @@
                 "value": "application/json"
               }
             ],
+            "description": "Updates an existing dynamic module. The `key` in the URL path is authoritative; the request body does not include `key`.",
             "auth": {
               "type": "bearer",
               "bearer": {
@@ -651,7 +652,7 @@
             "url": {
               "protocol": "{{protocol}}",
               "host": "{{host}}",
-              "path": "{{basePath}}atlassian/forge/installation/v1/dynamic/module",
+              "path": "{{basePath}}atlassian/forge/installation/v2/dynamic/module",
               "query": [],
               "variable": []
             },
@@ -670,6 +671,7 @@
                 "value": "application/json"
               }
             ],
+            "description": "Creates a dynamic module. The module `key` is generated server-side as a UUID v4 and returned in the response.",
             "auth": {
               "type": "bearer",
               "bearer": {
@@ -690,7 +692,7 @@
             "url": {
               "protocol": "{{protocol}}",
               "host": "{{host}}",
-              "path": "{{basePath}}atlassian/forge/installation/v1/dynamic/module/:key",
+              "path": "{{basePath}}atlassian/forge/installation/v2/dynamic/module/:key",
               "query": [],
               "variable": [
                 {
@@ -732,7 +734,7 @@
             "url": {
               "protocol": "{{protocol}}",
               "host": "{{host}}",
-              "path": "{{basePath}}atlassian/forge/installation/v1/dynamic/module/:key",
+              "path": "{{basePath}}atlassian/forge/installation/v2/dynamic/module/:key",
               "query": [],
               "variable": [
                 {

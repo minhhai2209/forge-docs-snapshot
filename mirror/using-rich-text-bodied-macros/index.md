@@ -72,18 +72,14 @@ ForgeReconciler.render(
 
 The ADF body can be rendered in two ways:
 
-1. using the renderer components ([AdfRenderer](/platform/forge/ui-kit/components/adf-renderer/) for UI Kit and [view.createAdfRendererIframeProps](/platform/forge/apis-reference/ui-api-bridge/view/#createadfrendereriframeprops--preview-) for Custom UI)
+1. using the renderer components ([AdfRenderer](/platform/forge/ui-kit/components/adf-renderer/) for UI Kit and [view.createAdfRendererIframeProps](/platform/forge/apis-reference/ui-api-bridge/view/#createadfrendereriframeprops) for Custom UI)
 2. by rendering the raw HTML
 
 ### Comparison between using renderer components or HTML export
 
-See detailed documentation for the [AdfRenderer](/platform/forge/ui-kit/components/adf-renderer/) and [view.createAdfRendererIframeProps](/platform/forge/apis-reference/ui-api-bridge/view/#createadfrendereriframeprops--preview-).
+See detailed documentation for the [AdfRenderer](/platform/forge/ui-kit/components/adf-renderer/) and [view.createAdfRendererIframeProps](/platform/forge/apis-reference/ui-api-bridge/view/#createadfrendereriframeprops).
 
 ### Using renderer components
-
-Using the `AdfRenderer` component and the `createAdfRendererIframeProps` method to render embedded Forge macros in an ADF body is available as a Preview capability. Preview capabilities are deemed stable; however, they remain under active development and may be subject to shorter deprecation windows. Preview capabilities are suitable for early adopters in production environments.
-
-For more details, see [Forge Preview](/platform/forge/whats-coming/#forge-preview).
 
 For UI Kit, you can use the `AdfRenderer` component, while for Custom UI, you can use `view.createAdfRendererIframeProps`.
 Both the `AdfRenderer` component and `view.createAdfRendererIframeProps` require the `document` prop, which is an ADF document with the following structure:

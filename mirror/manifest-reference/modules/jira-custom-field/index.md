@@ -499,7 +499,7 @@ const Edit = () => {
 ```
 
 Outcome:
-![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.2077)
+![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.2081)
 
 ##### Updated files
 
@@ -575,7 +575,7 @@ const Edit = () => {
 ```
 
 Outcome:
-![Updated experience to inline edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-inline.png?_v=1.5800.2077)
+![Updated experience to inline edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-inline.png?_v=1.5800.2081)
 
 
 How to edit custom fields in the modal (for more complex UI)
@@ -688,7 +688,7 @@ const Edit = () => {
 ```
 
 Outcome:
-![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.2077)
+![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.2081)
 
 ##### Updated files
 
@@ -798,7 +798,7 @@ ForgeReconciler.render(
 ```
 
 Outcome:
-![Updated experience to modal edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-new-modal.png?_v=1.5800.2077)
+![Updated experience to modal edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-new-modal.png?_v=1.5800.2081)
 
 ### Issue creation and issue transition dialog
 
@@ -1216,7 +1216,6 @@ The following examples show Dynamic Module implementations specific to this modu
 ```
 import { asApp } from "@forge/api";
 const payload = {
-  "key": "dynamic-custom-field",
   "type": "jira:customField",
   "data": {
     "name": "Dynamic Text Field",
@@ -1231,7 +1230,7 @@ const payload = {
     }
   }
 }
-const response = await asApp().requestAtlassian(`/forge/installation/v1/dynamic/module/`, {
+const response = await asApp().requestAtlassian(`/forge/installation/v2/dynamic/module/`, {
   headers: {
     'Content-Type': 'application/json'
   },
@@ -1257,7 +1256,6 @@ console.log(`Response: ${response.status} ${body}`);
 import { asApp } from "@forge/api";
 const key = "dynamic-custom-field";
 const payload = {
-  "key": "dynamic-custom-field",
   "type": "jira:customField",
   "data": {
     "name": "Dynamic Text Field",
@@ -1272,7 +1270,7 @@ const payload = {
     }
   }
 }
-const response = await asApp().requestAtlassian(`/forge/installation/v1/dynamic/module/${key}`, {
+const response = await asApp().requestAtlassian(`/forge/installation/v2/dynamic/module/${key}`, {
   headers: {
     'Content-Type': 'application/json'
   },
