@@ -1476,6 +1476,10 @@ This section contains curated references that show how real Forge apps are struc
 - [API contract](https://developer.atlassian.com/platform/forge/containers-reference/ref-api.md)
 - [Logging format](https://developer.atlassian.com/platform/forge/containers-reference/ref-logging.md)
 
+#### Image requirements
+
+- [Image requirements](https://developer.atlassian.com/platform/forge/containers-reference/ref-image-security.md)
+
 #### Managing a service
 
 - [Managing a service](https://developer.atlassian.com/platform/forge/containers-reference/managing-service.md)

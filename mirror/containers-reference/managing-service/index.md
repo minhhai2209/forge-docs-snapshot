@@ -28,7 +28,7 @@ Your app’s containerised service lifecycle begins when you upload the service�
 
 The following diagram provides a high-level view of the container lifecycle:
 
-![Forge Containers lifecycle overview](https://dac-static.atlassian.com/platform/forge/images/containers-lifecycle-overview.png?_v=1.5800.2081)
+![Forge Containers lifecycle overview](https://dac-static.atlassian.com/platform/forge/images/containers-lifecycle-overview.png?_v=1.5800.2087)
 
 This lifecycle involves the following major phases:
 
@@ -203,6 +203,8 @@ When building your container’s image, specify the following:
 docker build . -t "forge-ecr.services.atlassian.com/forge/5175c066-7f18-474e-9137-19e6718a8c99/java-service:latest" --platform linux/amd64
 ```
 ```
+
+Images used by your apps are subject to our [image security guidelines](/platform/forge/containers-reference/ref-image-security/). These guidelines describe the hardening, egress, and tenant-isolation requirements that apply during Marketplace approval.
 
 ## Upload an image
 

@@ -52,6 +52,43 @@ app:
     remote: connect
 ```
 
+# Unlicensed and anonymous user access is not enabled by default in Forge
+
+In Connect, macros are rendered for unlicensed and anonymous (guest) users by default.
+
+In Forge, this access is **opt-in**. Without explicitly declaring `unlicensedAccess` in your manifest, users without an app license or users who are not logged in will not be able to view your macro after migration.
+
+To preserve the same behaviour as your Connect macro, add `unlicensedAccess` to your macro module:
+
+```
+```
+1
+2
+```
+
+
+
+```
+modules:
+  macro:
+    - key: static-macro-key
+      resource: main
+      render: native
+      unlicensedAccess:
+        - unlicensed  # logged-in users without an app license
+        - anonymous   # users who are not logged in (guests)
+```
+```
+
+You can include either or both values depending on what your Connect macro previously supported:
+
+* `unlicensed` — grants access to users who are logged in but do not have a license for your app.
+* `anonymous` — grants access to users who are not logged in (equivalent to guest access in Confluence).
+
+Note that not all Forge modules support unlicensed access. Check the module reference to confirm which values are supported for your specific module before adding this property.
+
+For more information, see [Access to Forge apps for unlicensed users](/platform/forge/access-to-forge-apps-for-unlicensed-users/).
+
 ## Macro lifecycle
 
 Macros created with the Connect version of your app are stored in Confluence in the Connect storage format, represented here as Atlassian Document Format.

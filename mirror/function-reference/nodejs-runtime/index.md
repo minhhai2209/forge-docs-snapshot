@@ -3,8 +3,8 @@
 The Forge app runtime includes a set of APIs that provide additional functionality to the Forge platform. You
 can use these APIs to interact with REST endpoints and to store data.
 
-This runtime supports `Node.js 20` and `Node.js 22`. See [Node.js](https://nodejs.org/en/about/previous-releases) for details on these and earlier versions.
-we also intend to support newer versions as they become available. As such, you can import any built-in, local, or third-party
+This runtime supports `Node.js 24` (recommended), `Node.js 22`, and `Node.js 20`. See [Node.js](https://nodejs.org/en/about/previous-releases) for details on these and earlier versions.
+We also intend to support newer versions as they become available. As such, you can import any built-in, local, or third-party
 Node modules into your app. This provides compatibility with all Node libraries and NPM packages, allowing you
 to leverage the entire JavaScript developer ecosystem.
 
@@ -54,7 +54,7 @@ The Forge runtime allows your app to run directly on a secure VM environment. Yo
 At invocation time, Forge calls a context function. Each module receives different [request parameters](/platform/forge/function-reference/arguments/) based on
 the module type.
 
-![A code editor showing the invocation context](https://dac-static.atlassian.com/platform/forge/images/invocation-context.png?_v=1.5800.2081)
+![A code editor showing the invocation context](https://dac-static.atlassian.com/platform/forge/images/invocation-context.png?_v=1.5800.2087)
 
 You can also explicitly request a Forge function’s context details (for example, the
 [environments and versions](/platform/forge/environments-and-versions/) an app is executing in). See

@@ -1,45 +1,9 @@
-# Forge LLMs models (Preview)
+# Forge LLMs models (EAP)
 
-Forge LLMs is now available as *preview* feature.
+Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
+When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our
 
-Preview features are deemed stable;
-however, they remain under active development and may be subject to shorter deprecation
-windows. Preview features are suitable for early adopters in production environments.
+[Privacy Policy](https://www.atlassian.com/legal/privacy-policy#how-we-disclose-information-we-collect)
 
-We release preview features so partners and developers can study, test, and integrate
-them prior to General Availability (GA). For more information,
-see [Forge release phases: EAP, Preview, and GA](/platform/forge/whats-coming/#preview).
-
-Forge LLMs supports three Claude variants: Sonnet, Opus, and Haiku. You choose the model per request, allowing you to balance latency, capability, and cost for each use case.
-
-## Supported models
-
-You can use the `list` method from the [@forge/llm SDK](/platform/forge/runtime-reference/forge-llms-api/#forgelllm-sdk) to dynamically fetch the list of supported models and their current status.
-
-You can use the `list` method from the [@forge/llm SDK](/platform/forge/runtime-reference/forge-llms-api-reference/) to dynamically fetch the list of supported models and their current status.
-|:-----------------------------|:--------|:-------|:---------|:----|
-| `claude-haiku-4-5-20251001` | Haiku | Claude | `ACTIVE` | |
-| `claude-sonnet-4-20250514` | Sonnet | Claude | `ACTIVE` | |
-| `claude-sonnet-4-5-20250929` | Sonnet | Claude | `ACTIVE` | |
-| `claude-opus-4-1-20250805` | Opus | Claude | `ACTIVE` | |
-| `claude-opus-4-5-20251101` | Opus | Claude | `ACTIVE` | |
-| `claude-opus-4-6` | Opus | Claude | `ACTIVE` | |
-
-AI models evolve quickly. Check the `status` and `EOL` fields regularly, and update your app before a model reaches end-of-life to avoid disruption. Initially only text input/output is supported; multimodal support may be considered later.
-
-## Claude - Opus
-
-* Most capable (best for complex, deep reasoning tasks)
-* Slowest (higher latency due to depth)
-* Highest cost
-
-## Claude - Sonnet
-
-* Balanced capability
-* Moderate speed
-* Moderate cost
-
-## Claude - Haiku
-
-* Fast and efficient (best for lightweight or high‑volume tasks)
-* Lowest cost
+.
+You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt-out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.

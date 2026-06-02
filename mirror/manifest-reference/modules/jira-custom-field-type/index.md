@@ -841,7 +841,7 @@ const Edit = () => {
 ```
 
 Outcome:
-![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.2081)
+![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.2087)
 
 ##### Updated files
 
@@ -917,7 +917,7 @@ const Edit = () => {
 ```
 
 Outcome:
-![Updated experience to inline edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-inline.png?_v=1.5800.2081)
+![Updated experience to inline edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-inline.png?_v=1.5800.2087)
 
 
 How to edit custom fields in the modal (for more complex UI)
@@ -1030,7 +1030,7 @@ const Edit = () => {
 ```
 
 Outcome:
-![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.2081)
+![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.2087)
 
 ##### Updated files
 
@@ -1140,7 +1140,7 @@ ForgeReconciler.render(
 ```
 
 Outcome:
-![Updated experience to modal edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-new-modal.png?_v=1.5800.2081)
+![Updated experience to modal edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-new-modal.png?_v=1.5800.2087)
 
 ### Issue creation and issue transition dialog
 
@@ -1333,6 +1333,36 @@ view:
 Since your app stores the data required to format the field on the Jira side, the user experience remains fast and reliable.
 
 See the [documentation for Jira expressions](/cloud/jira/platform/jira-expressions/) to find out what else is possible.
+
+### List View
+
+Forge custom fields are now displayed as columns in Jira's [List View](https://support.atlassian.com/jira-software-cloud/docs/what-is-the-list-view/). When your field defines a formatter expression, the List View evaluates and displays the formatted value, not the raw stored value.
+For example, if a number field stores 42 and your manifest defines a formatter like following
+
+```
+```
+1
+2
+```
+
+
+
+```
+view:
+  formatter:
+    expression: |-
+      value + " story points"
+```
+```
+
+The List View column will display “42 story points”.
+
+Defining a formatter expression is the key requirement for ensuring meaningful values appear in the List View. Without a formatter, the raw stored value is shown (e.g., 42 instead of 42 story points).
+
+#### Limitations in the List View
+
+* Read-only: Inline editing of Forge custom field values is not available in the List View. To edit a field value, users must open the issue.
+* No custom UI rendering: The view.resource component is not rendered in the table. Field values are displayed as text only.
 
 ### Value Function
 

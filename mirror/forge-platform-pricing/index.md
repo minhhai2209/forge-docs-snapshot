@@ -20,6 +20,8 @@ Forge uses a consumption-based pricing model, offering most capabilities for fre
 | SQL: Compute duration | $/hr | 1 hr | 0.143 |
 | SQL: Compute requests | $/1M-requests | 100,000 requests | 1.929 |
 | SQL: Data stored | $/GB-hours | 730 GB-hours | 0.00076850 |
+| LLM: Input | $/credits | 0 credits | 0.0000001 |
+| LLM: Output | $/credits | 0 credits | 0.0000005 |
 
 Empty KVS reads count as 1KB towards your usage, whereas non-empty reads are based on actual size. While we may consider a future update to apply this 1KB minimum to all reads under 1KB, the current policy applies only to empty reads. We will provide advance notice prior to adopting any changes.
 
@@ -30,6 +32,7 @@ Suppose your Forge app uses the following in a single month:
 * **Compute functions:** 150,000 GB-seconds
 * **Key-Value Store Reads:** 0.15 GB
 * **SQL:** Data stored: Your app adds 2.73 MB of data every hour and does not delete any data during the month.
+* **LLM:** 2,000,000 input credits and 500,000 output credits
 
 Here’s how your monthly charge would be calculated:
 
@@ -64,8 +67,20 @@ SQL storage is billed based on the total amount of data stored, measured hourly 
 
 At the start of each new month, your SQL storage usage calculation continues from the amount of data stored at the end of the previous month. If you have not deleted any data, your hourly storage “snapshots” will begin at this higher baseline, and your total GB-hours for the new month will accumulate more quickly. To reduce future charges, consider deleting unneeded data before the next billing cycle begins.
 
+4. **LLM: Input and Output**
+   * Free usage allowance: **0 credits** (no free allowance)
+   * **Input:**
+     * Your usage: **2,000,000 credits**
+     * Overage price: $0.0000001 per credit
+     * **Charge:** 2,000,000 × $0.0000001 = **$0.20**
+   * **Output:**
+     * Your usage: **500,000 credits**
+     * Overage price: $0.0000005 per credit
+     * **Charge:** 500,000 × $0.0000005 = **$0.25**
+   * **Total LLM charge:** $0.20 + $0.25 = **$0.45**
+
 **Total monthly charge:**  
-$1.25 (compute) + $0.00275 (KVS reads) + $0 (SQL data stored) = **$1.25275**
+$1.25 (compute) + $0.00275 (KVS reads) + $0 (SQL data stored) + $0.45 (LLM) = **$1.70275**
 
 This example shows how charges are only applied to usage above the free monthly allowance for each capability, and how multiple capabilities can contribute to your total bill.
 
@@ -136,6 +151,7 @@ At launch, the following capabilities will be charged above the free threshold:
 * KVS Storage: Data Read and Data Written
 * SQL: Compute (duration and request) and Data Stored
 * Logs: Data Written
+* LLM: Input and Output (billed per credit, with no free usage allowance)
 
 [Forge Containers](/platform/forge/containers-reference/pricing/) are also billable, but use a separate reservation-based pricing model with no free usage allowance.
 

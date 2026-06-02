@@ -1,22 +1,9 @@
 # Forge changelog
 
-Previously, [we announced an upcoming fix](https://developer.atlassian.com/platform/forge/changelog/#CHANGE-3138 "https://developer.atlassian.com/platform/forge/changelog/#CHANGE-3138") to how Forge SQL returns `DATETIME` column values when the time component is `00:00:00`. We are now rolling out this update on Jun 5, 2026 instead of Oct 6, 2026
+Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
+When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our
 
-As this change relates to a bugfix in an underlying library dependency, deferring the update could expose the platform to security vulnerabilities. However, updating the library as scheduled means rolling out the `DATETIME` fix earlier than expected.
+[Privacy Policy](https://www.atlassian.com/legal/privacy-policy#how-we-disclose-information-we-collect)
 
-**What's changing:**
-
-Previously, querying the value of a `DATETIME` column where the time component is set to `00:00:00` would result in only the date portion being returned. For example, the value `'1970-01-01 00:00:00'` would be returned as `'1970-01-01'`. After this update, the full value including the time component will be correctly returned (`'1970-01-01 00:00:00'`).  
-  
-This affects `DATETIME` column values that were set in the following ways:
-
-1. The value was explicitly set with a time component of `00:00:00`, or
-2. The value was set with only the date component, in which case the time component defaults to `00:00:00`.
-
-**What you should do:**
-
-If your Forge app reads `DATETIME` values from Forge SQL and parses the returned string, verify that your parsing logic handles the full `YYYY-MM-DD HH:MM:SS` format.
-
-**Why we're accelerating this:**
-
-Remaining on an outdated version of this library dependency has the potential to leave Forge SQL exposed to security vulnerabilities. We cannot responsibly defer a necessary security update to honour the original grace period. We apologise for the shortened notice and appreciate your understanding.
+.
+You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt-out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.

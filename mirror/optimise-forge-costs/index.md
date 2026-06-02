@@ -19,6 +19,8 @@ See [Forge platform pricing](/platform/forge/forge-platform-pricing/) for the au
 | SQL: Compute duration | $/hr | 1 hr | 0.143 |
 | SQL: Compute requests | $/1M-requests | 100,000 requests | 1.929 |
 | SQL: Data stored | $/GB-hours | 730 GB-hours | 0.00076850 |
+| LLM: Input | $/credits | 0 credits | 0.0000001 |
+| LLM: Output | $/credits | 0 credits | 0.0000005 |
 
 Capabilities not listed above — including UI modules, Jira expressions, and Forge Remote — are **free** and do not contribute to your bill.
 
@@ -27,6 +29,7 @@ Capabilities not listed above — including UI modules, Jira expressions, and Fo
 * **Function duration × memory = GB-seconds.** Compute cost is determined by how long your functions run multiplied by the memory allocated to them. Reducing either dimension reduces cost. The techniques in this guide primarily target reducing function duration — by reducing unnecessary invocations, cutting API call counts, and exiting early.
 * **KVS reads and writes.** Key-Value Store operations are billed by data volume. Writes are ~20× more expensive than reads, so minimising unnecessary writes has an outsized impact on costs.
 * **Logging.** Every call to `console.log()` contributes to log write volume. Avoid verbose logging in hot paths; use log levels and strip debug logs from production builds.
+* **LLM input and output.** LLM usage is billed per credit with no free usage allowance. Input credits and output credits are charged at different rates ($0.0000001/credit for input, $0.0000005/credit for output).
 
 You can monitor your app's usage and forecast costs in the [Developer Console](/platform/forge/monitor-usage-metrics/), and use the [Forge cost estimator](https://developer.atlassian.com/forge-cost-estimator) to preview potential charges.
 

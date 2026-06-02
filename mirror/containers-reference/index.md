@@ -33,6 +33,8 @@ For more details about this standard, refer to the [Kubernetes documentation](ht
 In addition to this standard, Forge Containers will deploy all container instances with restricted file system permissions.
 Each instance will mount a *read-only* root file system, except for the following directories (which will continue to be writeable):
 
+Images used by your apps are subject to our [image security guidelines](/platform/forge/containers-reference/ref-image-security/). These guidelines describe the hardening, egress, and tenant-isolation requirements that apply during Marketplace approval.
+
 ## Constraints
 
 Forge Containers aims to enable use cases that wouldn't be possible otherwise without container support. However, our goal is not to provide a general-purpose container management platform. As such, Forge Containers will be implemented with the following constraints:
