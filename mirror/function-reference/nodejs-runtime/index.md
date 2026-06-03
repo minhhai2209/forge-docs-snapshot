@@ -3,10 +3,11 @@
 The Forge app runtime includes a set of APIs that provide additional functionality to the Forge platform. You
 can use these APIs to interact with REST endpoints and to store data.
 
-This runtime supports `Node.js 24` (recommended), `Node.js 22`, and `Node.js 20`. See [Node.js](https://nodejs.org/en/about/previous-releases) for details on these and earlier versions.
-We also intend to support newer versions as they become available. As such, you can import any built-in, local, or third-party
-Node modules into your app. This provides compatibility with all Node libraries and NPM packages, allowing you
-to leverage the entire JavaScript developer ecosystem.
+This runtime supports `Node.js 22` and `Node.js 24`. See [Node.js](https://nodejs.org/en/about/previous-releases) for details on these and earlier versions. We intend to support newer LTS versions as they become available.
+
+You can import any built-in, local, or third-party Node modules into your app. This provides compatibility with all Node libraries and NPM packages, allowing you to leverage the entire JavaScript developer ecosystem.
+
+`Node.js 20` reached end-of-life on April 30, 2026. While the `nodejs20.x` runtime remains available, we recommend upgrading to `nodejs22.x` or `nodejs24.x`. See the [manifest reference](/platform/forge/manifest-reference/#runtimev2) for all supported runtime values.
 
 For details about migrating from the legacy sandbox runtime, see
 [Upgrading from legacy runtime](/platform/forge/runtime-reference/legacy-runtime-migrating/).
@@ -31,12 +32,18 @@ Repeat the `npm install` command for any other Forge packages your app uses.
 The `runtime` section of the `manifest.yml` file features a `name` property that lets you specify what runtime to use. To specify the native Node.js runtime, set `name` to `nodejs24.x`:
 
 ```
+```
 1
 2
-3
+```
+
+
+
+```
 app:
   runtime:
     name: nodejs24.x
+```
 ```
 
 Adding the `runtime.name` property to the manifest file will not trigger a major upgrade. As such, deploying this change alone to production will automatically install it on all sites.
@@ -54,7 +61,7 @@ The Forge runtime allows your app to run directly on a secure VM environment. Yo
 At invocation time, Forge calls a context function. Each module receives different [request parameters](/platform/forge/function-reference/arguments/) based on
 the module type.
 
-![A code editor showing the invocation context](https://dac-static.atlassian.com/platform/forge/images/invocation-context.png?_v=1.5800.2087)
+![A code editor showing the invocation context](https://dac-static.atlassian.com/platform/forge/images/invocation-context.png?_v=1.5800.2090)
 
 You can also explicitly request a Forge function’s context details (for example, the
 [environments and versions](/platform/forge/environments-and-versions/) an app is executing in). See

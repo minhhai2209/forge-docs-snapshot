@@ -153,7 +153,10 @@ At launch, the following capabilities will be charged above the free threshold:
 * Logs: Data Written
 * LLM: Input and Output (billed per credit, with no free usage allowance)
 
-[Forge Containers](/platform/forge/containers-reference/pricing/) are also billable, but use a separate reservation-based pricing model with no free usage allowance.
+The following capabilities are also billable, but use different pricing models and provide no free usage allowance:
+
+* [Forge Containers](/platform/forge/containers-reference/pricing/): uses a separate reservation-based pricing model.
+* [Forge LLM](/platform/forge/runtime-reference/forge-llms-api-pricing/): tracked in credits, which correspond to model input and output tokens. Each model has a token-to-credit conversion ratio, and more powerful models use more credits per token.
 
 Other capabilities not listed here, such as using Connect on Forge modules or remote capabilities, will remain free.
 

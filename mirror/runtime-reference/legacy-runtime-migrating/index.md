@@ -34,10 +34,10 @@ runtime versions.
 ### Node.js LTS version
 
 The legacy runtime runs on an environment that mimics
-[Node.js 14](https://nodejs.org/en/blog/release/v14.19.0). The latest runtime uses
-[Node.js 18](https://nodejs.org/en/blog/release/v18.12.0), and we intend to support newer versions that
-achieve "long-term support" (LTS) status. If your app is affected by any breaking changes between both
-versions, you’ll need to address these.
+[Node.js 14](https://nodejs.org/en/blog/release/v14.19.0). The latest runtime supports
+[Node.js 22](https://nodejs.org/en/blog/release/v22.11.0) and [Node.js 24](https://nodejs.org/en/blog/release/v24.11.0), and we intend to support newer versions that
+achieve "long-term support" (LTS) status. If your app is affected by any breaking changes between
+versions, you'll need to address these.
 
 ### API redirects
 
