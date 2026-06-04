@@ -37,7 +37,11 @@ modules {}
        ├─ tooltip (string) [Optional]
 ```
 
-Both the propertyKey and the searchAlias must be globally unique. Prefixing it with a unique representation for your Forge app is the best way to ensure this.
+The `propertyKey` and the `searchAlias` must both be globally unique. Prefixing both with a unique representation for your Forge app is the best way to ensure this.
+
+If your app is a [Connect-on-Forge app](/platform/adopting-forge-from-connect/how-to-adopt/), then these properties must be unique in *both surfaces*. The `searchAlias` values here and the `alias` values in any Connect `confluenceContentProperties` module share the same namespace. Reusing the same alias on both (even for different `propertyKey` values) will break CQL search on every tenant that installs the app.
+
+If you are migrating from Connect to Forge, remove the old `confluenceContentProperties` module in the same release that adds this one. For related information, learn more about [Communicating between Connect and Forge](/platform/adopting-forge-from-connect/extending-your-app/#communicating-between-connect-and-forge).
 
 ## Properties
 

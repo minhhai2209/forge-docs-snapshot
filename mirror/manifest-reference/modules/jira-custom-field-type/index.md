@@ -841,7 +841,7 @@ const Edit = () => {
 ```
 
 Outcome:
-![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.2090)
+![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.2094)
 
 ##### Updated files
 
@@ -917,7 +917,7 @@ const Edit = () => {
 ```
 
 Outcome:
-![Updated experience to inline edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-inline.png?_v=1.5800.2090)
+![Updated experience to inline edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-inline.png?_v=1.5800.2094)
 
 
 How to edit custom fields in the modal (for more complex UI)
@@ -1030,7 +1030,7 @@ const Edit = () => {
 ```
 
 Outcome:
-![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.2090)
+![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.2094)
 
 ##### Updated files
 
@@ -1140,7 +1140,7 @@ ForgeReconciler.render(
 ```
 
 Outcome:
-![Updated experience to modal edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-new-modal.png?_v=1.5800.2090)
+![Updated experience to modal edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-new-modal.png?_v=1.5800.2094)
 
 ### Issue creation and issue transition dialog
 
@@ -1254,11 +1254,7 @@ are available in the validation expression:
   If the field stores a [collection](#collection-types), the value type will be a
   [List](https://developer.atlassian.com/cloud/jira/platform/jira-expressions-type-reference#list) with items of one of the types specified above.
 
-The expression can return three types of values:
-
-* `true` means that the validation was successful, and the operation is allowed.
-* `false` means that the value is invalid. The error message defined in the manifest's `validation.errorMessage` property will be shown to the user.
-* `String` means that the value is invalid. The returned string will be shown as the error message to the user.
+The formatter expression must return a `string` value that represents how the field should be displayed in the UI.
 
 #### Using formatters in CSV export
 
