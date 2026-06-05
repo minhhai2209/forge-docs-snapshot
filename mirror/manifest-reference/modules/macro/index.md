@@ -19,7 +19,7 @@ from the quick insert menu of the editor. The `macro` module is implemented by a
 
 On apps that use Custom UI, module content is displayed inside a [special Forge iframe](/platform/forge/custom-ui/iframe/) which has the [sandbox](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#sandbox) attribute configured. This means that HTML links (for example, `<a href="https://domain.tld/path">...</a>`) in this iframe won't be clickable. To make them clickable, use the [router.navigate](/platform/forge/custom-ui-bridge/router/#navigate) API from the `@forge/bridge` package.
 
-![Example of a macro](https://dac-static.atlassian.com/platform/forge/snippets/images/macro-example.png?_v=1.5800.2094)
+![Example of a macro](https://dac-static.atlassian.com/platform/forge/snippets/images/macro-example.png?_v=1.5800.2099)
 
 ## Manifest structure
 
@@ -99,10 +99,10 @@ resources []
 | --- | --- | --- | --- |
 | `i18n` | `string` | Yes | A key referencing a translated string in the translation files. For more details, see [Translations](/platform/forge/manifest-reference/translations). |
 
-## Dynamic module (EAP)
+## Dynamic module (Preview)
 
-This module can also be declared as a dynamic module. However, this capability is currently only available
-as part of Forge’s Early Access Program (EAP).
+This module can also be declared as a dynamic module. However, this capability is currently
+available as a Forge *preview* feature.
 
 For more details, see [Dynamic Modules](/platform/forge/apis-reference/dynamic-modules/).
 

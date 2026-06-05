@@ -23,10 +23,10 @@ See the [JQL functions](/cloud/jira/platform/jql-functions/) page for more infor
 | `name` | `string` | Yes | The name of the custom function argument. |
 | `required` | `boolean` | Yes | Whether the argument is required. |
 
-## Dynamic module (EAP)
+## Dynamic module (Preview)
 
-This module can also be declared as a dynamic module. However, this capability is currently only available
-as part of Forge’s Early Access Program (EAP).
+This module can also be declared as a dynamic module. However, this capability is currently
+available as a Forge *preview* feature.
 
 For more details, see [Dynamic Modules](/platform/forge/apis-reference/dynamic-modules/).
 

@@ -9,19 +9,19 @@ but not the old issue view.
 For more information, see the
 [IssueActivity](/platform/forge/ui-kit-components/jira/issue-activity/) component documentation.
 
-![Example of an Issue activity](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-activity-module-demo.gif?_v=1.5800.2094)
+![Example of an Issue activity](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-activity-module-demo.gif?_v=1.5800.2099)
 
 ## Manifest example
 
 ```
+```
 1
 2
-3
-4
-5
-6
-7
-8
+```
+
+
+
+```
 modules:
   jira:issueActivity:
     - key: hello-world-issue-activity
@@ -30,6 +30,7 @@ modules:
         function: resolver
       render: native
       title: Hello World!
+```
 ```
 
 ## Properties
@@ -86,10 +87,10 @@ Use the [useProductContext](/platform/forge/ui-kit/hooks/use-product-context/) h
 | `projectKey` | `string` | The key of the project where the module is rendered. |
 | `projectType` | `string` | The type of the project where which the module is rendered. |
 
-## Dynamic module (EAP)
+## Dynamic module (Preview)
 
-This module can also be declared as a dynamic module. However, this capability is currently only available
-as part of Forge’s Early Access Program (EAP).
+This module can also be declared as a dynamic module. However, this capability is currently
+available as a Forge *preview* feature.
 
 For more details, see [Dynamic Modules](/platform/forge/apis-reference/dynamic-modules/).
 

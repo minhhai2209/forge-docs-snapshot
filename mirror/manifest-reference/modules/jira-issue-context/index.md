@@ -4,7 +4,7 @@ The `jira:issueContext` module adds a collapsible panel under the other fields o
 These panels give your users a quick way to get information related to the issue from your app.
 Users can expand these panels to view app information or collapse them if they don’t need it.
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-issue-context.png?_v=1.5800.2094)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-issue-context.png?_v=1.5800.2099)
 
 This module can be used in Jira and Jira Service Management.
 It works in the
@@ -188,10 +188,10 @@ Use the [useProductContext](/platform/forge/ui-kit/hooks/use-product-context/) h
 | `projectKey` | `string` | The key of the project where the module is rendered. |
 | `projectType` | `string` | The type of the project where which the module is rendered. |
 
-## Dynamic module (EAP)
+## Dynamic module (Preview)
 
-This module can also be declared as a dynamic module. However, this capability is currently only available
-as part of Forge’s Early Access Program (EAP).
+This module can also be declared as a dynamic module. However, this capability is currently
+available as a Forge *preview* feature.
 
 For more details, see [Dynamic Modules](/platform/forge/apis-reference/dynamic-modules/).
 

@@ -1,11 +1,16 @@
-# Dynamic Modules API (EAP)
+# Dynamic Modules API (Preview)
 
-Forge Dynamic Modules is now available as part of Forge’s Early Access Program (EAP).
-To start testing this, sign up [here](https://ecosystem.atlassian.net/servicedesk/customer/portal/3595).
+[Dynamic Modules](/platform/forge/apis-reference/dynamic-modules/) is now available as a Forge *preview* feature.
 
-EAP features and APIs are unsupported, and subject to change without notice. Apps that use dynamic modules should not be deployed to `production` environments.
+Preview features are deemed stable;
+however, they remain under active development and may be subject to shorter deprecation
+windows. Preview features are suitable for early adopters in production environments.
 
-All dynamic modules created during EAP will not be carried over to Preview. For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
+We release preview features so partners and developers can study, test, and integrate
+them prior to General Availability (GA). For more information,
+see [Forge release phases: EAP, Preview, and GA](/platform/forge/whats-coming/#preview).
+
+Dynamic modules registered during EAP must be re-registered for Preview.
 
 You can manage [Dynamic Modules](/platform/forge/apis-reference/dynamic-modules/) through its REST API.
 This API checks every request for OAuth authorisation to determine if it has permissions to access the

@@ -8,11 +8,11 @@ It works in the
 [new issue view](https://support.atlassian.com/jira-core-cloud/docs/what-is-the-new-jira-issue-view/)
 but not the old issue view.
 
-![Example of an Issue action button](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-action-location.png?_v=1.5800.2094)
+![Example of an Issue action button](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-action-location.png?_v=1.5800.2099)
 
 This is an example of the triggered modal dialog:
 
-![Example of an Issue action with the above sample code](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-action-demo.png?_v=1.5800.2094)
+![Example of an Issue action with the above sample code](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-action-demo.png?_v=1.5800.2099)
 
 ## Manifest example
 
@@ -90,10 +90,10 @@ Use the [useProductContext](/platform/forge/ui-kit/hooks/use-product-context/) h
 | `projectKey` | `string` | The key of the project where the module is rendered. |
 | `projectType` | `string` | The type of the project where which the module is rendered. |
 
-## Dynamic module (EAP)
+## Dynamic module (Preview)
 
-This module can also be declared as a dynamic module. However, this capability is currently only available
-as part of Forge’s Early Access Program (EAP).
+This module can also be declared as a dynamic module. However, this capability is currently
+available as a Forge *preview* feature.
 
 For more details, see [Dynamic Modules](/platform/forge/apis-reference/dynamic-modules/).
 

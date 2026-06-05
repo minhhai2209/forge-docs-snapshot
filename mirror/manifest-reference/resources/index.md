@@ -73,6 +73,8 @@ We release preview features so partners and developers can study, test, and inte
 them prior to General Availability (GA). For more information,
 see [Forge release phases: EAP, Preview, and GA](/platform/forge/whats-coming/#preview).
 
+This feature is currently available for [Jira](/platform/forge/manifest-reference/modules/index-jira/) and [Confluence](/platform/forge/manifest-reference/modules/index-confluence/) modules. Other Atlassian apps will be supported in the future.
+
 Use `entry` to define multiple named entry points inside a single resource. This is useful when multiple modules share dependencies and you want to reduce bundle duplication. Use the tabs to switch between UI Kit and Custom UI examples.
 
 `entry` values are source files (`.jsx`, `.js`, and similar) relative to `path`. The Forge CLI bundles each entry and creates shared chunks for common dependencies.

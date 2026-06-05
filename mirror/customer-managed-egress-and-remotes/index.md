@@ -1,4 +1,10 @@
-# Customer-managed egress and remotes (EAP)
+# Customer-managed egress and remotes (Preview)
+
+[Customer-managed egress and remotes](/platform/forge/customer-managed-egress-and-remotes/) is now available as a Forge Preview feature.
+
+Preview features are deemed stable; however, they remain under active development and may be subject to shorter deprecation windows. Preview features are suitable for early adopters in production environments.
+
+We release preview features so partners and developers can study, test, and integrate them prior to General Availability (GA). For more information, see [Forge release phases: EAP, Preview, and GA](/platform/forge/whats-coming/#preview).
 
 Customer-managed egress and remotes are a way of defining egress in your app. They let customers and admins control which external services your app can talk to, and when those connections are enabled.
 
@@ -286,10 +292,20 @@ For detailed API behaviour and type definitions, see the [Forge bridge permissio
 ## Limitations and considerations
 
 * **Runs on Atlassian eligibility**:
+
   * Any app that uses customer‑managed egress or customer‑managed remotes is not eligible for [Runs on Atlassian](/platform/forge/runs-on-atlassian/).
 * **Maximum configuration limits**:
-  * There is a limit of 10 customer-managed egress groups per installation. This is required for scaling limits and to ensure that the size of the CSPs generated on page load won't get too big.
-* **Connect remotes**:
-  * Connect remotes cannot be dynamically added using customer-managed remotes. Adding a `configurable` field to a Connect remote will be rejected.
+
+  * There is a limit of 10 customer-managed egress groups (keys) per installation.
+  * Each egress group can contain a maximum of 10 domain entries.
+  * The total number of egress entries (unique domain-type pairs) across both manifest static egress and customer-managed dynamic egress must not exceed 40. Each combination of a domain and a permission type counts as a separate entry. Backend fetch egress (`FETCH_BACKEND_SIDE`) is excluded from this count.
+* **Unsupported manifest references**:
+
+  * Configurable remotes cannot be referenced in the following manifest contexts:
+    * `permissions.fetch.backend` and `permissions.fetch.client`
+    * `providers.auth[].remotes`
+    * `modules.migration:dataResidency`
+    * the Connect remote
 * **App upgrade eligibility**:
+
   * Information about versioning changes for customer-managed egress and remotes are on the [versions page](/platform/forge/versions/).

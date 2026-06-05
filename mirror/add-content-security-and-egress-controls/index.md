@@ -60,6 +60,12 @@ permissions:
 
 ## Customer-managed egress
 
+[Customer-managed egress and remotes](/platform/forge/customer-managed-egress-and-remotes/) is now available as a Forge Preview feature.
+
+Preview features are deemed stable; however, they remain under active development and may be subject to shorter deprecation windows. Preview features are suitable for early adopters in production environments.
+
+We release preview features so partners and developers can study, test, and integrate them prior to General Availability (GA). For more information, see [Forge release phases: EAP, Preview, and GA](/platform/forge/whats-coming/#preview).
+
 Apps that have [customer-managed egress](/platform/forge/customer-managed-egress-and-remotes/) enabled can configure egress *per installation*. Any egress additions or modifications must be approved by an admin.
 
 When customer-managed egress is configured, the content security policies are dynamically updated to include any specified domains and their resource types.
