@@ -430,6 +430,242 @@ modules:
 After the app is deployed, events whose payload have `Bug` as the issue type will be delivered and trigger the `main`
 function. For other and undefined issue types, events will be filtered out.
 
+## Filtering by entity properties
+
+This section describes a Forge *preview* feature. Preview features are deemed stable;
+however, they remain under active development and may be subject to shorter deprecation
+windows. Preview features are suitable for early adopters in production environments.
+
+We release preview features so partners and developers can study, test, and integrate
+them prior to General Availability (GA). For more information,
+see [Forge release phases: EAP, Preview, and GA](/platform/forge/whats-coming/#preview).
+
+Forge apps can also filter events based on [entity properties](/cloud/jira/platform/jira-entity-properties/) and
+enrich event payloads with selected entity property values.
+
+### Manifest syntax
+
+Use the `filter.expression` field to filter events by entity property values, and the
+`payload.include.propertyPaths` field to include entity property values in the delivered event payload.
+
+```
+```
+1
+2
+```
+
+
+
+```
+modules:
+  trigger:
+    - key: issue-updated-trigger
+      function: main
+      events:
+        - avi:jira:updated:issue
+      filter:
+        expression: |
+          event.runtime.project.properties['myapp'].status == 'active'
+          && event.runtime.issue.properties['myapp'].type == 'bug'
+      payload:
+        include:
+          propertyPaths: ["project.properties['myapp'].status", "issue.properties['myapp'].type"]
+```
+```
+
+#### Key points about the syntax
+
+1. **Filter expressions**: Entity property paths in filter expressions must be prefixed with `event.runtime.`
+   (for example, `event.runtime.issue.properties['key'].field`). Sub-paths can use dot notation (`.field`) or
+   bracket notation (`['field']`). For example, `event.runtime.issue.properties['myapp']['type']` is equivalent
+   to `event.runtime.issue.properties['myapp'].type`.
+2. **Payload enrichment**: Paths in the `payload.include.propertyPaths` section do **not** use the
+   `event.runtime` prefix — they use the entity directly (for example, `issue.properties['key'].field`).
+3. **Independence**: Filtering and enrichment are independent — a property used in a filter expression is
+   **not** automatically included in the payload. You must explicitly add it to `propertyPaths` if you also
+   want it in the delivered payload.
+4. **Unresolvable properties**: A property that cannot be resolved at runtime will have its value set to
+   `null`. Your manifest will pass validation even if entity property paths are wrong, but things may fail
+   at runtime.
+5. **Nested object resolution**: Paths must resolve to a **primitive value or an array of primitives**. If a
+   path resolves to a nested object, the value will be `null`. You must provide the full path to the specific
+   value you need.
+
+   For example, given an entity property with key `some-property`:
+
+   ```
+   ```
+   1
+   2
+   ```
+
+
+
+   ```
+   {
+       "x": {
+           "y": {
+               "z": true
+           }
+       }
+   }
+   ```
+   ```
+
+   * `event.runtime.issue.properties['some-property'].x` → `null` (resolves to an object)
+   * `event.runtime.issue.properties['some-property'].x.y.z` → `true` (resolves to a primitive value)
+   * `event.runtime.issue.properties['some-property']['x.y.z']` → `true` (bracket notation equivalent)
+   * Paths that resolve to an **array of primitives** support expression operations under parentheses. For
+     example:
+
+     ```
+     ```
+     1
+     2
+     ```
+
+
+
+     ```
+     filter:
+       expression: (event.runtime.issue.properties['some-array-property'].strings).length > 0
+     ```
+     ```
+6. **Root-level property access**: If the entity property value itself is a primitive (string, number,
+   boolean), you can access it directly without a sub-path. For example,
+   `event.runtime.project.properties['myPropertyKey']` works when the stored value is a primitive.
+
+### Delivered payload shape
+
+When `payload.include.propertyPaths` is configured, the resolved values are delivered on the `event`
+object inside your trigger function under the top-level `payloadIncludeProperties` field. Each path you
+declared in `payload.include.propertyPaths` appears as a key (a string), with the resolved value as the
+corresponding value.
+
+For example, given the manifest from the [Manifest syntax](#manifest-syntax) section above, your function
+receives an event that contains:
+
+```
+```
+1
+2
+```
+
+
+
+```
+{
+  "payloadIncludeProperties": {
+    "project.properties['myapp'].status": "active",
+    "issue.properties['myapp'].type": "bug"
+  }
+}
+```
+```
+
+You can access these values in your function like this:
+
+```
+```
+1
+2
+```
+
+
+
+```
+export async function main(event, context) {
+  // Entity property values resolved at event time
+  const projectStatus = event.payloadIncludeProperties["project.properties['myapp'].status"]; // e.g. 'active'
+  const issueType     = event.payloadIncludeProperties["issue.properties['myapp'].type"];     // e.g. 'bug'
+}
+```
+```
+
+If a path cannot be resolved (for example, the property doesn't exist on that entity), the value will be absent.
+
+### Supported entities
+
+Entity property filtering and enrichment currently supports properties on three Jira entity types:
+
+| Entity | Expression path example |
+| --- | --- |
+| **Issue** | `event.runtime.issue.properties['key'].path` |
+| **Project** | `event.runtime.project.properties['key'].path` |
+| **User** | `event.runtime.user.properties['key'].path` |
+
+### Supported events
+
+Entity property filtering and enrichment is supported for the following Jira Forge events:
+
+* `avi:jira:created:issue`
+* `avi:jira:updated:issue`
+* `avi:jira:deleted:issue`
+* `avi:jira:commented:issue`
+* `avi:jira:deleted:comment`
+* `avi:jira:created:worklog`
+* `avi:jira:updated:worklog`
+* `avi:jira:deleted:worklog`
+* `avi:jira:created:issuelink`
+* `avi:jira:deleted:issuelink`
+* `avi:jira:created:attachment`
+* `avi:jira:deleted:attachment`
+* `avi:jira:assigned:issue`
+
+For `issuelink` events, filtering is based on the **source** issue or project properties.
+
+### Limits and constraints
+
+| Constraint | Limit |
+| --- | --- |
+| **Distinct entity property paths** across all `trigger` modules in a single app manifest, combined across filter expressions **and** `payload.include.propertyPaths` (deduplicated — the same path counts only once) | **5 paths total** |
+| **Data freshness** | Filters are evaluated against recently stored entity property values that could be up to **a few seconds older** than the event generation time |
+| **Processing overhead** | Triggers using runtime entity property filtering or enrichment involve additional processing time compared to triggers that do not use them |
+
+#### Example of path counting
+
+```
+```
+1
+2
+```
+
+
+
+```
+modules:
+  trigger:
+    # Trigger 1 — uses 2 paths in filter, 1 additional in payload = 3 paths
+    - key: trigger-1
+      function: main
+      events:
+        - avi:jira:updated:issue
+      filter:
+        expression: |
+          event.runtime.project.properties['config'].status == 'active'    # Path 1
+          && event.runtime.issue.properties['meta'].type == 'bug'          # Path 2
+      payload:
+        include:
+          propertyPaths:
+            - "project.properties['config'].status"   # Same as Path 1 — not counted again
+            - "issue.properties['flags'].priority"    # Path 3
+
+    # Trigger 2 — uses 1 additional path = 4 paths total
+    - key: trigger-2
+      function: main
+      events:
+        - avi:jira:updated:issue
+      filter:
+        expression: |
+          event.runtime.user.properties['prefs'].role == 'admin'           # Path 4
+  function:
+    - key: main
+      handler: index.run
+```
+```
+
+In this example, **4 out of 5** allowed paths are used.
+
 ## Detect and filter self-generated events
 
 When your app makes an API call that triggers an event your app is also subscribed to, the resulting

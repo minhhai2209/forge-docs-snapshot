@@ -109,6 +109,8 @@ console.log(`Response: ${response.status} ${body}`);
 | `endpoint` | `string` |  | A reference to the `endpoint` that specifies the remote back end that receives the event if you are using [Forge Remote](/platform/forge/remote) to integrate with a remote back end.  Required if no `function` is specified. |
 | `events` | `Array<string>` | Yes | A list of [Atlassian app events](/platform/forge/events-reference/) that trigger the function or endpoint. |
 | `filter` | [Filter](#filter-reference) | No | A set of options to prevent invoking a function or endpoint. |
+| `payload` | `object` | No | Configure the event payload delivered to your function. |
+| `payload.include.propertyPaths` | `Array<string>` | No | A list of entity property paths whose values are resolved and included in the delivered event payload. Paths use the entity directly without the `event.runtime.` prefix (for example, `issue.properties['key'].field`). See [Filtering by entity properties](/platform/forge/events-reference/product_events/#filtering-by-entity-properties) for full details. |
 
 ### Filter reference
 
