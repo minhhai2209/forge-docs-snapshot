@@ -79,7 +79,7 @@ interface PublishOptions {
 interface PublishResult {
   eventId: string | null;
   eventTimestamp: string | null;
-  errors: any;
+  errors?: any[];
 }
 ```
 ```
@@ -178,7 +178,7 @@ const signRealtimeToken = (
 interface TokenResult = {
     token: string | null;
     expiresAt: number | null;
-    errors?: any;
+    errors?: any[];
 }
 ```
 ```
@@ -193,7 +193,7 @@ interface TokenResult = {
 * **TokenResult**: A `TokenResult` which contains the signed token result.
   * **token**: The signed token. This is the value to be used in the `token` argument in your `publish()`, `publishGlobal()`, `subscribe()` or `subscribeGlobal()` calls
   * **expiresAt**: The timestamp of when the token expires, in Epoch time.
-  * **errors**: A list of error messages if the event failed to publish.
+  * **errors**: A list of errors if token generation failed. See [Error handling for realtime methods](/platform/forge/realtime/error-handling-for-realtime-methods/) for expected errors.
 
 ### Example
 

@@ -62,10 +62,6 @@ The following limits apply to each query sent and response received by your app'
 | Per-connection timeout for `INSERT`, `UPDATE`, and `DELETE` queries | 10 seconds |
 | Per-connection query timeout for [DDL queries](/platform/forge/storage-reference/sql-api-schema/#manage-database-schemas) | 20 seconds |
 
-### SOC2 and ISO compliance
-
-Forge SQL has not yet undergone external assessment for SOC 2 or ISO certification. As we continue development on Forge SQL, we will aim to include it in our standard audit certification reporting cycle.
-
 ### Versioning
 
 If you add Forge SQL to an existing app, admins of that app's current installations must review and consent before updating.

@@ -574,6 +574,7 @@ When helping readers, map their use case to the right invocation type: UI-driven
 ### Realtime events (Preview)
 
 - [Realtime events (Preview)](https://developer.atlassian.com/platform/forge/runtime-reference/realtime-events-api.md)
+- [Error handling](https://developer.atlassian.com/platform/forge/realtime/error-handling-for-realtime-methods.md)
 
 ### Dynamic Modules (Preview)
 
@@ -1220,7 +1221,7 @@ This section contains curated references that show how real Forge apps are struc
 ##### Realtime (Preview)
 
 - [Overview](https://developer.atlassian.com/platform/forge/realtime/index.md)
-- [Authorizing realtime channels](https://developer.atlassian.com/platform/forge/realtime/authorizing-realtime-channels.md)
+- [Authorizing channels](https://developer.atlassian.com/platform/forge/realtime/authorizing-realtime-channels.md)
 
 ##### Remotes
 

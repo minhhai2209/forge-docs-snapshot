@@ -312,7 +312,7 @@ interface PublishOptions {
 interface PublishResult {
   eventId: string | null;
   eventTimestamp: string | null;
-  errors?: string[];
+  errors?: any[];
 }
 ```
 ```
@@ -360,7 +360,7 @@ type ProductContext = Jira | Confluence | Bitbucket;
 * **PublishResult**: A `PublishResult` which contains information about the published event.
   * **eventId**: The ID of the published event as a string. The value will be null if the event failed to publish or if there are no existing subscriptions for that channel.
   * **eventTimestamp**: The timestamp of the published event, in epoch milliseconds.
-  * **errors**: A list of error messages if the event failed to publish.
+  * **errors**: A list of error messages if the event failed to publish. See [Error handling for Realtime methods](/platform/forge/realtime/error-handling-for-realtime-methods/) for expected errors.
 
 ### Example
 
@@ -426,6 +426,7 @@ interface PublishOptions {
 interface PublishResult {
   eventId: string | null;
   eventTimestamp: string | null;
+  errors?: any[];
 }
 ```
 ```
@@ -473,7 +474,7 @@ type ProductContext = Jira | Confluence | Bitbucket;
 * **PublishResult**: A `PublishResult` which contains information about the published event.
   * **eventId**: The ID of the published event as a string. The value will be null if the event failed to publish or if there are no existing subscriptions for that channel.
   * **eventTimestamp**: The timestamp of the published event, in epoch milliseconds.
-  * **errors**: A list of error messages if the event failed to publish.
+  * **errors**: A list of error messages if the event failed to publish. See [Error handling for Realtime methods](/platform/forge/realtime/error-handling-for-realtime-methods/) for expected errors.
 
 ### Example
 

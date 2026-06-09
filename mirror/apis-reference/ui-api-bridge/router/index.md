@@ -1,6 +1,7 @@
 # router
 
-The NavigationLocation object used in the navigate, open, and getUrl methods is in Preview and is supported only in Confluence and Jira.
+The NavigationLocation object used in the navigate, open, and getUrl methods is in
+Preview and is supported only in Bitbucket, Confluence and Jira.
 
 We release preview features so partners and developers can study, test, and integrate
 them prior to General Availability (GA). For more information,
@@ -222,9 +223,36 @@ router.reload();
 
 ## Target locations and properties
 
-A `NavigationLocation` is a specific target within Confluence, Jira, or directory that can be
-navigated to using the `navigate` or `open` methods. It consists of a target location and its
+A `NavigationLocation` is a specific target within Bitbucket, Confluence, Jira, or directory that
+can be navigated to using the `navigate` or `open` methods. It consists of a target location and its
 corresponding properties, which are outlined below.
+
+### Bitbucket
+
+#### `module`
+
+The page containing the supported module. Supported Bitbucket modules:
+
+##### Example
+
+To navigate to `/${workspace}/workspace/forge/${appId}/${environmentKey}/${moduleKey}`:
+
+```
+```
+1
+2
+```
+
+
+
+```
+router.navigate({
+  target: "module",
+  moduleKey: "my-workspace-global-page-module-key",
+  workspaceId: "my-workspace"
+});
+```
+```
 
 ### Confluence
 

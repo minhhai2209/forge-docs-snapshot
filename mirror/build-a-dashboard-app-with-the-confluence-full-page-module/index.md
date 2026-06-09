@@ -12,7 +12,7 @@ At the end of this tutorial, you'll have created an app using the full page modu
 
 [Example app
 
-Full source code for this tutorial, including UI Kit and Custom UI implementations.](https://bitbucket.org/atlassian/full-page-module-apps/src/main/Confluence-full-page-module-examples/)
+Full source code for this tutorial, including UI Kit and Custom UI implementations.](https://bitbucket.org/atlassian/global-and-full-page-apps/src/main/Confluence-full-page-module-examples/)
 
 ## Before you begin
 

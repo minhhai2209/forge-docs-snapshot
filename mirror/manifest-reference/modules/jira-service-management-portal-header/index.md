@@ -3,7 +3,7 @@
 The `jiraServiceManagement:portalHeader` module adds a panel at the top of customer portal pages.
 This module can be used in Jira Service Management.
 
-![Example of a portal header](https://dac-static.atlassian.com/platform/forge/snippets/images/portal-header-screen-shot.png?_v=1.5800.2102)
+![Example of a portal header](https://dac-static.atlassian.com/platform/forge/snippets/images/portal-header-screen-shot.png?_v=1.5800.2106)
 
 ## Properties
 
