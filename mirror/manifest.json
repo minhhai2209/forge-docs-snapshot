@@ -1,14 +1,15 @@
 {
   "root_url": "https://developer.atlassian.com/platform/forge",
-  "generated_at": "2026-06-09T19:20:05.690591+00:00",
+  "generated_at": "2026-06-10T19:30:38.234125+00:00",
   "discovered_urls": 738,
-  "downloaded_pages": 736,
-  "skipped_pages": 2,
-  "duration_seconds": 2169.87,
+  "downloaded_pages": 735,
+  "skipped_pages": 3,
+  "duration_seconds": 2260.69,
   "user_agent": "ForgeDocsMirror/1.0 (+https://github.com/minhhai2209/forge-docs-snapshot)",
   "delay_seconds": 0.25,
   "failures": [
-    "timeout: https://developer.atlassian.com/platform/forge/manifest",
+    "timeout: https://developer.atlassian.com/platform/forge/profiling-node-js-app-code-tunnel",
+    "timeout: https://developer.atlassian.com/platform/forge/build-a-jira-issue-analyst-rovo-agent",
     "playwright: https://developer.atlassian.com/platform/forge/resources/Forge-Data-Processing-Addendum.pdf"
   ]
 }
