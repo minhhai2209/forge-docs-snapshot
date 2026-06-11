@@ -2,7 +2,7 @@
 
 You can call your remote backend from your frontend (Custom UI and UI Kit) using the `@forge/bridge` package. The diagram below illustrates the data flow.
 
-![Forge Remote diagram describing the flow of data and auth between Forge and remote application](https://dac-static.atlassian.com/platform/forge/images/remote/remote-calling-backend-from-frontend.png?_v=1.5800.2106)
+![Forge Remote diagram describing the flow of data and auth between Forge and remote application](https://dac-static.atlassian.com/platform/forge/images/remote/remote-calling-backend-from-frontend.png?_v=1.5800.2109)
 
 ## Setting up the manifest
 
@@ -19,12 +19,18 @@ These three pieces work together in a chain: **UI module → endpoint → remote
 Add a [`remotes`](/platform/forge/manifest-reference/remotes) entry with a unique `key` and the `baseUrl` of your backend. The `baseUrl` is the URL prefix that gets prepended to the `path` you specify in your frontend `invokeRemote` or `requestRemote` calls.
 
 ```
+```
 1
 2
-3
+```
+
+
+
+```
 remotes:
   - key: my-remote
     baseUrl: https://my-backend.example.com
+```
 ```
 
 ### Step 2: Define the endpoint

@@ -841,7 +841,7 @@ const Edit = () => {
 ```
 
 Outcome:
-![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.2106)
+![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.2109)
 
 ##### Updated files
 
@@ -917,7 +917,7 @@ const Edit = () => {
 ```
 
 Outcome:
-![Updated experience to inline edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-inline.png?_v=1.5800.2106)
+![Updated experience to inline edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-inline.png?_v=1.5800.2109)
 
 
 How to edit custom fields in the modal (for more complex UI)
@@ -1030,7 +1030,7 @@ const Edit = () => {
 ```
 
 Outcome:
-![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.2106)
+![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.2109)
 
 ##### Updated files
 
@@ -1140,7 +1140,7 @@ ForgeReconciler.render(
 ```
 
 Outcome:
-![Updated experience to modal edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-new-modal.png?_v=1.5800.2106)
+![Updated experience to modal edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-new-modal.png?_v=1.5800.2109)
 
 ### Issue creation and issue transition dialog
 
@@ -1217,6 +1217,35 @@ After portal request creation is confirmed, non-required custom fields need to r
 update their value within 10 seconds. If they don't, the issue will be created with the default
 values.
 
+### Issue Bulk Edit (Preview)
+
+If your app's edit experience relies on issue or project context, note that this context is unavailable in Jira Issue Bulk Edit. You can use the renderContext value to detect this scenario and render an appropriate fallback UI. See the example below:
+
+```
+```
+1
+2
+```
+
+
+
+```
+const [renderContext, setRenderContext] = useState(null);
+
+useEffect(() => {
+  view.getContext().then((context) => {
+    setRenderContext(context.extension.renderContext);
+  });
+}, []);
+
+if (renderContext === 'issue-bulk-edit') {
+  return <IssueBulkEditContextEditExperience />;
+}
+
+return <EditExperience />;
+```
+```
+
 ### Formatter
 
 The formatter is used to render the field on views where rendering with functions is not supported,
@@ -1253,6 +1282,8 @@ are available in the validation expression:
 
   If the field stores a [collection](#collection-types), the value type will be a
   [List](https://developer.atlassian.com/cloud/jira/platform/jira-expressions-type-reference#list) with items of one of the types specified above.
+
+For `issue-bulk-edit` experience only `value` and `fieldId` are available in the context.
 
 The formatter expression must return a `string` value that represents how the field should be displayed in the UI.
 
@@ -1772,7 +1803,7 @@ creating a ticket in the [Forge Jira project](https://ecosystem.atlassian.net/ji
 | `edit.function` | `string` |  | A reference to the `function` module that provides the editing experience for fields of this type. |
 | `edit.resource` | `string` |  | A reference to the static `resources` entry that your edit entry point wants to display. See [Resources](/platform/forge/manifest-reference/resources) for more details. To submit the view, use the [submit API](/platform/forge/apis-reference/ui-api-bridge/view/#submit). |
 | `edit.render` | `'native'` |  | Indicates if your edit entry point should display as UI Kit. |
-| `edit.experience` | `string[]` | yes | Indicates on which view experiences this rendering should be used. Currently supported edit experiences:  * `'issue-view'` * `'issue-create'` * `'issue-transition'` * `'portal-request'` |
+| `edit.experience` | `string[]` | yes | Indicates on which view experiences this rendering should be used. Currently supported edit experiences:  * `'issue-view'` * `'issue-create'` * `'issue-transition'` * `'portal-request'` * `'issue-bulk-edit'`    `'issue-bulk-edit'` is available only for `Object` type as of now. |
 | `edit.isInline` | `boolean` |  | Indicates if your edit entry point should display inline on the issue view. |
 | `edit.parser.expression` | `string` |  | A Jira expression that parses strings into valid values of this field. See [parser](#parser) for more details. |
 | `edit.validation.expression` | `string` |  | A Jira expression that validates the field value. See [validation](#validation) for more details. |
@@ -1813,14 +1844,16 @@ Use the [useProductContext](/platform/forge/ui-kit/hooks/use-product-context/) h
 | `project.id` | `string` | `edit` `view` | The ID of the project where the module is rendered. |
 | `project.key` | `string` | `edit` `view` | The key of the project where the module is rendered. |
 | `project.type` | `'business'`  `'software'`  `'product_discovery'`  `'service_desk'`  `'ops'` | `edit` `view` | The type of the project where the module is rendered. |
-| `renderContext` | `'issue-view'` `'issue-create'` `'issue-transition'` `'portal-view'` `'portal-request'` | `edit` `view` | The context in which the extension is rendered. |
-| `experience` | `'issue-view'` `'issue-create'` `'issue-transition'` `'portal-view'` `'portal-request'` | `edit` `view` | The type of experience in which the extension is rendered. While the render context is tied to a specific view, the experience property defines the type of view. |
+| `renderContext` | `'issue-view'` `'issue-create'` `'issue-transition'` `'portal-view'` `'portal-request'` `'issue-bulk-edit'` | `edit` `view` | The context in which the extension is rendered. |
+| `experience` | `'issue-view'` `'issue-create'` `'issue-transition'` `'portal-view'` `'portal-request'` `'issue-bulk-edit'` | `edit` `view` | The type of experience in which the extension is rendered. While the render context is tied to a specific view, the experience property defines the type of view. |
 | `configurationId` | `number` | `contextConfig` | The ID of the current [configuration](#configuration). |
 | `configuration` | `any` | `contextConfig` | The [configuration](#configuration) stored for the custom field context. |
 | `fieldContextId` | `number` | `contextConfig` | Reference to the field context ID the [configuration](#configuration) is associated with. |
 | `issueTransition.id` | `string` | `edit` | The ID of the transition on which the module is rendered. Only available for `issue-transition` experience. |
 | `portal.id` | `number` | `edit` | The ID of the service desk, depending on the page where it is rendered. Only available for `portal-view` and `portal-request` experiences. |
 | `request.typeId` | `number` | `edit` | The ID of the request type, depending on the page where it is rendered. Only available for `portal-view` and `portal-request` experiences. |
+
+For `issue-bulk-edit`, `Issue` and `Project` details will not be available in extension context.
 
 ## Example
 

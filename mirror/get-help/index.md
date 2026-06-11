@@ -15,6 +15,8 @@ Visit **[Developer and Marketplace support](https://developer.atlassian.com/supp
 * Atlassian Marketplace
 * Extra partner resources
 
+To help resolve your case faster, see [Reduce case resolution time](/developer-guide/how-to-reduce-resolution-time/) for a checklist of information to include when you raise a support case.
+
 ## Give feedback
 
 Create an issue in the [Forge Jira project](https://ecosystem.atlassian.net/projects/FRGE)

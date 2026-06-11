@@ -13,6 +13,9 @@ In this tutorial, we’ll use a web trigger to invoke our methods. For related d
 only demonstrates the backend of the app. It doesn’t include any frontend components, such as
 [UI Kit](/platform/forge/ui-kit/components/).
 
+For production connectors that need recurring ingestion, retries, and task fan-out, see
+[Orchestration for Forge connectors](/platform/teamwork-graph/orchestration-for-forge-connectors/).
+
 ## Build with AI assistance
 
 As an alternative to this manual tutorial, use the Forge Connector skill to build a

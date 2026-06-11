@@ -44,7 +44,7 @@ Breadcrumbs are a navigation system used to show a user's location in a site or 
 
 The default breadcrumbs with a series of linked items.
 
-![Example image of rendered default breadcrumbs](https://dac-static.atlassian.com/platform/forge/ui-kit/images/breadcrumbs/breadcrumbs-default.png?_v=1.5800.2106)
+![Example image of rendered default breadcrumbs](https://dac-static.atlassian.com/platform/forge/ui-kit/images/breadcrumbs/breadcrumbs-default.png?_v=1.5800.2109)
 
 ```
 ```
@@ -71,7 +71,7 @@ const BreadcrumbsDefaultExample = () => {
 
 Use the `maxItems` prop to limit the number of visible breadcrumb items. When the number of items exceeds `maxItems`, the middle items collapse into an ellipsis that can be expanded.
 
-![Example image of rendered breadcrumbs with max items](https://dac-static.atlassian.com/platform/forge/ui-kit/images/breadcrumbs/breadcrumbs-max-items.png?_v=1.5800.2106)
+![Example image of rendered breadcrumbs with max items](https://dac-static.atlassian.com/platform/forge/ui-kit/images/breadcrumbs/breadcrumbs-max-items.png?_v=1.5800.2109)
 
 ```
 ```
@@ -100,7 +100,7 @@ const BreadcrumbsMaxItemsExample = () => {
 
 Use `iconBefore` and `iconAfter` on `BreadcrumbsItem` to add icons to individual breadcrumb items.
 
-![Example image of rendered breadcrumbs with icons](https://dac-static.atlassian.com/platform/forge/ui-kit/images/breadcrumbs/breadcrumbs-with-icons.png?_v=1.5800.2106)
+![Example image of rendered breadcrumbs with icons](https://dac-static.atlassian.com/platform/forge/ui-kit/images/breadcrumbs/breadcrumbs-with-icons.png?_v=1.5800.2109)
 
 ```
 ```
@@ -134,7 +134,7 @@ const BreadcrumbsWithIconsExample = () => {
 
 Use `defaultExpanded` to show all breadcrumb items expanded on initial render, even when the number of items exceeds `maxItems`.
 
-![Example image of rendered breadcrumbs default expanded](https://dac-static.atlassian.com/platform/forge/ui-kit/images/breadcrumbs/breadcrumbs-default-expanded.png?_v=1.5800.2106)
+![Example image of rendered breadcrumbs default expanded](https://dac-static.atlassian.com/platform/forge/ui-kit/images/breadcrumbs/breadcrumbs-default-expanded.png?_v=1.5800.2109)
 
 ```
 ```
