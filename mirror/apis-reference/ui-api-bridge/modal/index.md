@@ -25,7 +25,7 @@ The Modal bridge API is exclusive to Custom UI; If you are using UI Kit, you can
 interface ModalOptions {
   resource?: string | null;
   onClose?: (payload?: any) => any;
-  size?: 'small' | 'medium' | 'large' | 'xlarge' | 'max' | 'fullscreen';
+  size?: 'small' | 'medium' | 'large' | 'xlarge' | 'max' | 'fullscreen' | 'resizable';
   context?: any;
   closeOnEscape?: boolean;
   closeOnOverlayClick?: boolean;
@@ -53,12 +53,37 @@ class Modal {
   * **xlarge** - w: `968px` h: `90vh`
   * **max** - w: `100%` h: `100%`
   * **fullscreen** - w: `100vw` h: `100vh` (fills entire viewport, and `title` and `icon` will be displayed in the header)
+  * **resizable** - w: `auto` h: `auto` minHeight: `320px` minWidth: `400px` maxHeight: `100%` maxWidth: `calc(100vw - 120px)`
 * **context**: Custom context that can be added to the context in the modal resource. It will appear
   under the `extension.modal` key in the context object returned from `view.getContext()`.
 * **closeOnEscape**: If set to false, the modal will not close when pressing escape.
 * **closeOnOverlayClick**: If set to false, the modal will not close when clicking the overlay.
 * **title**: If provided, the modal will render a header with the title and a close button.
 * **icon**: If provided, the modal will render a header with an icon next to the title, and a close button.
+
+## Resizable design guidelines
+
+The resizable size behaviour has been provided to accommodate apps with content-driven sizing — for example, rendering a list with an unknown number of items. We recommend using this as a last resort over fixed modal dimensions, to avoid unexpected layout shifts and a jarring user experience.
+To ensure the iframe resizes to your app's content rather than the document's default full-width body, you may need to explicitly set `width: fit-content` on your top-level container, for example `body { width: fit-content; }`
+
+If your app imports `@atlaskit/css-reset`, be aware that it sets `width: 100%` on the `body` and `html` elements, overriding the `width: fit-content` recommendation above. To make sure your custom style takes effect, either:
+
+* add `!important` to your inline styling, for example `body { width: fit-content !important; }`, or
+* import `@atlaskit/css-reset` before your own stylesheet so your styles take precedence:
+
+```
+```
+1
+2
+```
+
+
+
+```
+import '@atlaskit/css-reset';
+import './index.css';
+```
+```
 
 ## Example
 

@@ -13,7 +13,6 @@ through REST-style HTTP endpoints that run on Atlassian infrastructure. This pag
 those endpoints from your app using the [`apiRoute` module](/platform/forge/manifest-reference/modules/api-route/).
 
 Currently, this functionality is only available for Jira and Confluence apps.
-This feature is currently not available for apps on Isolated Cloud.
 
 ## Before you begin
 

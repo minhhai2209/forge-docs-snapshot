@@ -14,7 +14,7 @@ only demonstrates the backend of the app. It doesn’t include any frontend comp
 [UI Kit](/platform/forge/ui-kit/components/).
 
 For production connectors that need recurring ingestion, retries, and task fan-out, see
-[Orchestration for Forge connectors](/platform/teamwork-graph/orchestration-for-forge-connectors/).
+[Build an orchestrated connector](/platform/teamwork-graph/orchestration-for-forge-connectors/).
 
 ## Build with AI assistance
 

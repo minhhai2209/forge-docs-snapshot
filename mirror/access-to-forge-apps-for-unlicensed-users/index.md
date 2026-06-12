@@ -67,22 +67,18 @@ Unlicensed access is currently supported for the following Jira modules:
 
 #### Authenticated Atlassian app API calls
 
-Unlicensed users won't be able to make `asUser` API calls because the user is
-unauthorized and won't have full access to the Jira Service Management project.
-However, apps with the necessary permissions will be able to make `asApp`
-API calls.
+Only JSM customer users can make `asUser()` API calls from frontend and backend contexts. Other `unlicensed` user types can't make these calls because they are unauthorized and don't have full Jira Service Management project access.
+Making `asUser()` calls from a backend function on behalf of a user without an active session is currently not supported for unlicensed users.
+
+Apps with the necessary permissions are able to make `asApp()`
+API calls. Bear in mind that `asApp()` authenticates as your app's service account
+which will usually have a higher level of privileges than anonymous users.
+Ensure that you do not return any data to the front-end that you do not wish to expose to less privileged users.
 
 | Authenticated Atlassian app API calls | Unlicensed access |
 | --- | --- |
-| asUser | Not allowed |
-| asApp | Allowed |
-
-#### Calling Jira APIs from unlicensed contexts
-
-Unlicensed users (including `customer` and `anonymous`) cannot make `asUser` calls.
-For Jira Service Management data, you may need to call the REST API from your resolver using `asApp` with the required scopes, where applicable.
-Bear in mind that `.asApp()` authenticates as your app's service account which will usually have a higher level of privileges than anonymous users.
-Ensure that you do not return any data to the front-end that you do not wish to expose to less privileged users.
+| `asUser` | Allowed for JSM `customer` users only |
+| `asApp` | Allowed |
 
 #### Frontend bridge calls from unlicensed users
 
@@ -172,14 +168,11 @@ modules:
 This app allows `anonymous` and `customer` users to interact with the `hello-world-panel`
 module. Hence, when an `anonymous` or `customer` user visits the portal page,
 this app module will be run.
-However, since this app doesn't allow `unlicensed` users, this app module won't
-be available and won't be run if an `unlicensed` user visits the portal page.
+However, since this app doesn't allow users with `accountType: unlicensed`, this module won't run for that user type on the portal page.
 
-3. For unlicensed users, plan your data access with asApp (allowed) instead of asUser (not allowed for unlicensed).
-4. Run `forge lint` then `forge deploy`. Note that the Atlassian app may cache invocation responses for up to ~5 minutes, so validate after that.
-5. This app allows `anonymous` and `customer` users to interact with the `hello-world-panel` module.
-   Hence, when an `anonymous` or `customer` user visits the portal page, this app module will be run.
-   However, since this app doesn't allow `unlicensed` users, this app module won't be available and won't be run if an `unlicensed` user visits the portal page.
+3. Run `forge lint` then `forge deploy`.
+
+The Atlassian app may cache invocation responses for up to ~5 minutes, so validate after that.
 
 ## Customize app behavior for different types of users
 

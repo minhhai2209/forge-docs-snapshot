@@ -10,7 +10,7 @@ The `customerServiceManagement:requestDetail` module adds a panel to the request
 
 This module can be used in Customer Service Management.
 
-![Example of a CSM Request Detail](https://dac-static.atlassian.com/platform/forge/snippets/images/csm-request-detail-demo.png?_v=1.5800.2109)
+![Example of a CSM Request Detail](https://dac-static.atlassian.com/platform/forge/snippets/images/csm-request-detail-demo.png?_v=1.5800.2111)
 
 ## Properties
 

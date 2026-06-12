@@ -12,12 +12,11 @@ Forge app REST APIs let your app expose its own HTTP endpoints so that external 
 your app code running on Forge.
 
 You can expose app REST APIs so that another system can call your app’s logic directly through a secure,
-controlled endpoint. For example, you might expose an endpoint that lets a customers internal HR system read
+controlled endpoint. For example, you might expose an endpoint that lets a customer's internal HR system read
 employee data your app manages, or allow a reporting service to trigger a long‑running calculation
 in your app.
 
-Currently, this functionality is only available for Jira and Confluence apps, and is *not* available
-for apps on Isolated Cloud.
+Currently, this functionality is only available for Jira and Confluence apps.
 
 This page explains what app REST APIs are in Forge, when to use them, and how they are secured.
 For reference documentation and tutorials, see:
@@ -81,7 +80,7 @@ Forge app REST APIs are designed so customers remain in control of who can call 
 * A site/org admin must explicitly enable a Forge app’s REST APIs in **Connected Apps** in [Atlassian Administration](https://admin.atlassian.com/).
 * Admins can enable or disable this capability per site. Disabling it stops all app REST API calls for that site.
 
-For detailed instructions, see [Access REST APIs exposed by a Forge app](/platform/forge/access-forge-rest-apis/#admin-enabling-of-rest-apis-in-a-forge-app).
+For detailed instructions, see [Access REST APIs exposed by a Forge app](/platform/forge/access-rest-apis-exposed-by-a-forge-app/#admin-enabling-of-rest-apis-in-a-forge-app).
 
 ### Security model
 
