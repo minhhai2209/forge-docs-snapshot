@@ -214,14 +214,41 @@ declaring your app’s eligibility and data collection policy.
 
 ### Security incident response
 
+Effective security incident response is a collaborative effort. You're responsible for promptly reporting incidents to Atlassian, keeping your security contacts up to date, acknowledging Atlassian's notifications, and containing incidents on your side. Atlassian provides triage and investigative support, ranging from asynchronous guidance to real-time joint collaboration where required.
+
 **Your responsibilities**
 
 * Establish a [security incident response plan](/platform/marketplace/app-security-incident-management-guidelines/)
   , so you are better prepared to respond to security breaches and incidents.
+* Review and follow the [Partner Security Incident Response Program](/platform/marketplace/partner-security-incident-response-program/), which defines how to report incidents and how Atlassian shares platform logs during an incident.
+* Detect and remediate incidents originating in systems you control, taking immediate action on discovery to limit impact (for example, rotating compromised credentials and shipping fixes).
 * Promptly notify Atlassian upon discovery of any security incident in accordance with the [Atlassian developer terms](/platform/marketplace/atlassian-developer-terms/).
-* Keep developer account contact information up to date for security incidents.
+* Promptly respond to Atlassian-initiated incident notifications when Atlassian detects security issues involving your app.
+* Keep security contact information up to date for timely mitigation of security incidents.
+* Coordinate with Atlassian over the communication channels established for the incident, including asynchronous ticket updates, chat, or video calls.
+* Notify your affected customers of confirmed incidents involving your app.
+* Safely handle any logs that Atlassian shares with you in line with its data classification.
 
 **Atlassian's responsibilities**
+
+* Maintain a [security incident response plan](https://www.atlassian.com/trust/security/security-incident-management)
+  that includes the ability to detect and respond to app security incidents.
+* Proactively notify you when Atlassian detects a security incident that may affect your app or its customers.
+* Provide incident triage and investigative support, ranging from asynchronous guidance on tickets to real-time joint collaboration over chat or video calls where required.
+* Share the platform-side logs relevant to your app's activity, subject to privacy review and data-minimization.
+* Coordinate the joint response, including discussing containment options and supporting customer notification where appropriate.
+
+**Responsibilities per hosting model**
+
+Incident response responsibilities depend on where your app runs. When your app runs entirely on our platform, Atlassian can fully support investigation, containment, and log sharing while you remediate your app and notify customers. For any components of your app that are hosted outside the Atlassian Platform (such as Forge Remote and Connect on Forge modules), you are responsible for detection, containment, and recovery on your infrastructure, while Atlassian provides platform-side investigative support and coordinates the joint response where required.
+
+It is your responsibility to notify customers of incidents involving your app. For incidents originating from the Atlassian platform, Atlassian will coordinate with you on next steps.
+
+| Responsibility | Detect | Contain | Fix | Notify Customers |
+| --- | --- | --- | --- | --- |
+| **Runs on Atlassian** | Atlassian & You | Atlassian & You | You | You |
+| **Forge Remote** | You | You | You | You |
+| **Connect on Forge** | You | You | You | You |
 
 ### Disaster recovery
 

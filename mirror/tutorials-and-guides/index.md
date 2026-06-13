@@ -113,6 +113,16 @@ Also uses the underlying Imports REST API to send data into Assets.
 
 See [Import Third Party data into Assets](/platform/forge/assets-import-app/).
 
+## Customer Service Management
+
+Tutorials for building Forge apps for Customer Service Management.
+
+### Import customer context data with a Forge app
+
+This guide explains how to build a Forge app that imports customer context data (organizations, customers, and entitlements) from a source site to the destination where the app is installed, including connection, mapping, and bulk import patterns.
+
+See [Import customer context data with a Forge app](/platform/forge/csm-import-data/).
+
 ## Guides
 
 The guides section provides quick references for common tasks when working with Forge.

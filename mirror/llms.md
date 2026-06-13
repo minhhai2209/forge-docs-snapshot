@@ -278,6 +278,7 @@ Refer to the following sections for more detailed information about Forge module
 - [Customer Service Management modules](https://developer.atlassian.com/platform/forge/manifest-reference/modules/index-csm.md)
 - [Queue page (EAP)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/customer-service-management-queue-page.md)
 - [Request detail (EAP)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/customer-service-management-request-detail.md)
+- [CRM import (EAP)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/customer-service-management-crm-import.md)
 
 ### Jira Software modules
 
@@ -1064,6 +1065,10 @@ This section contains curated references that show how real Forge apps are struc
 - [Import third party data into Assets](https://developer.atlassian.com/platform/forge/assets-import-app.md)
 - [Use Async Events API to queue jobs to import objects into Assets](https://developer.atlassian.com/platform/forge/queue-events-with-async-events-api-to-import-assets.md)
 - [Build a Custom UI app](https://developer.atlassian.com/platform/forge/build-a-custom-ui-app-in-jira-service-management.md)
+
+###### Customer Service Management
+
+- [Import customer context data with a Forge app (EAP)](https://developer.atlassian.com/platform/forge/csm-import-data.md)
 
 ###### Rovo
 
