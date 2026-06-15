@@ -25,18 +25,14 @@ Start by creating an [event consumer](/platform/forge/runtime-reference/async-ev
 9
 10
 11
-12
-13
 modules:
   # Async events
   consumer:
     - key: queue-consumer
       # Name of the queue for which this consumer will be invoked
       queue: storage-async-queue
-      resolver:
-        function: consumer-function
-        # resolver function to be called with payload
-        method: event-listener
+      # Function to be called with payload
+      function: consumer-function
   function:
     - key: consumer-function
       handler: index.handler
@@ -46,7 +42,7 @@ modules:
 
 Next, create a new Queue object mapped to the `storage-async-queue` queue we defined earlier in the manifest. Instead of calling `kvs.set` directly inside the Atlassian app event handler, we will push the events to the queue.
 
-By calling `kvs.set` inside the resolver, we can leverage the resolver’s [retry mechanism](/platform/forge/runtime-reference/async-events-api/#retry-events). Should the call to `kvs.set` hit the operation limit and return an error, we can catch the error and trigger the request to be retried by returning an `InvocationError`:
+By calling `kvs.set` inside the consumer function, we can leverage the [retry mechanism](/platform/forge/runtime-reference/async-events-api/#retries). Should the call to `kvs.set` hit the operation limit and return an error, we can catch the error and trigger the request to be retried by returning an `InvocationError`:
 
 ```
 ```
@@ -79,11 +75,11 @@ export async function onIssueCreated(event, context) {
 ```
 ```
 
-You can only retry an event for a maximum of **four** times.
+Async events are automatically retried within the [retention window](/platform/forge/runtime-reference/async-events-api/#retention-window) (24 hours, extendable up to 96 hours), with a maximum of **four** retries. Retries use exponential backoff. See [Retries](/platform/forge/runtime-reference/async-events-api/#retries) for details.
 
-## Step 3: Create the resolver for the event consumer
+## Step 3: Create the handler for the event consumer
 
-Last, create the resolver that calls the storage API for the event consumer `queue-consumer`. This resolver configures how the batch calls queued (in `storage-async-queue`) are processed:
+Last, create the handler function that calls the storage API for the event consumer `queue-consumer`. This function configures how the batch calls queued (in `storage-async-queue`) are processed:
 
 ```
 ```
@@ -94,45 +90,42 @@ Last, create the resolver that calls the storage API for the event consumer `que
 
 
 ```
-import Resolver from '@forge/resolver';
-
-const asyncResolver = new Resolver();
+import { InvocationError, InvocationErrorCode } from '@forge/events';
+import { storage as kvs } from '@forge/api';
 
 // Async event handler
-asyncResolver.define("event-listener", async ({ payload, context }) => {
+export async function handler(event, context) {
+  let retryDelay = 0;
 
-  // If `payload.retryContext` exists, this event is a retry event
-  if (payload.retryContext) {
+  // If `event.retryContext` exists, this event is a retry event
+  if (event.retryContext) {
     const baseDelay = 20;
     const randomJitter = Math.random() * 100;
     
     // Exponential backoff with jitter
-    retryDelay = (baseDelay * (2 ** payload.retryContext.retryCount)) + randomJitter;
+    retryDelay = (baseDelay * (2 ** event.retryContext.retryCount)) + randomJitter;
   }  
 
   // Store issue key by calling a Storage API
   try {
-    await kvs.set('most-recent-issue-created', payload.issueKey);
+    await kvs.set('most-recent-issue-created', event.body.issueKey);
   } catch (error) {
     // Return an InvocationError to trigger a retry
-    // Only a maximum of 4 retries are allowed
     return new InvocationError({
       retryAfter: retryDelay,
       retryReason: InvocationErrorCode.FUNCTION_RETRY_REQUEST,
       retryData: {
-        issueKey: payload.issueKey
+        issueKey: event.body.issueKey
       }
     });
   }
-});
-
-export const handler = asyncResolver.getDefinitions();
+}
 ```
 ```
 
 ## Reference implementation
 
-Refer to the following sample for the complete contents of this guide’s `index.jsx` file:
+Refer to the following sample for the complete contents of this guide's `index.js` file:
 
 ```
 ```
@@ -143,11 +136,10 @@ Refer to the following sample for the complete contents of this guide’s `index
 
 
 ```
-import {InvocationError, InvocationErrorCode, Queue} from "@forge/events";
-import Resolver from '@forge/resolver';
+import { InvocationError, InvocationErrorCode, Queue } from '@forge/events';
+import { storage as kvs } from '@forge/api';
 
 const storageAsyncQueue = new Queue({ key: 'storage-async-queue' });
-const asyncResolver = new Resolver();
 
 // Product event handling
 export async function onIssueCreated(event, context) {
@@ -166,33 +158,31 @@ export async function onIssueCreated(event, context) {
 }
 
 // Async event handler
-asyncResolver.define("event-listener", async ({ payload, context }) => {
+export async function handler(event, context) {
+  let retryDelay = 0;
 
-  // If `payload.retryContext` exists, this event is a retry event
-  if (payload.retryContext) {
+  // If `event.retryContext` exists, this event is a retry event
+  if (event.retryContext) {
     const baseDelay = 20;
     const randomJitter = Math.random() * 100;
     
     // Exponential backoff with jitter
-    retryDelay = (baseDelay * (2 ** payload.retryContext.retryCount)) + randomJitter;
+    retryDelay = (baseDelay * (2 ** event.retryContext.retryCount)) + randomJitter;
   }  
 
   // Store issue key by calling a Storage API
   try {
-    await kvs.set('most-recent-issue-created', payload.issueKey);
+    await kvs.set('most-recent-issue-created', event.body.issueKey);
   } catch (error) {
     // Return an InvocationError to trigger a retry
-    // Only a maximum of 4 retries are allowed
     return new InvocationError({
       retryAfter: retryDelay,
       retryReason: InvocationErrorCode.FUNCTION_RETRY_REQUEST,
       retryData: {
-        issueKey: payload.issueKey
+        issueKey: event.body.issueKey
       }
     });
   }
-});
-
-export const handler = asyncResolver.getDefinitions();
+}
 ```
 ```

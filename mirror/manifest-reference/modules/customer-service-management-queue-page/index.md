@@ -1,4 +1,4 @@
-# Customer Service Management queue page (EAP)
+# Customer Service Management queue page
 
 |  |  |  |  |
 | --- | --- | --- | --- |

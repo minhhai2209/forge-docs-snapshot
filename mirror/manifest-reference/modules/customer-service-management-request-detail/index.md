@@ -1,16 +1,10 @@
-# Customer Service Management request detail (EAP)
-
-Forge’s EAP offers experimental features to selected users for testing and feedback purposes.
-These features are unsupported and not recommended for use in production environments. They
-are also subject to change without notice.
-
-For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
+# Customer Service Management request detail
 
 The `customerServiceManagement:requestDetail` module adds a panel to the request details screen of a Customer Service Management support site. The content of the module is shown below the **Conversation history** section on the request details page.
 
 This module can be used in Customer Service Management.
 
-![Example of a CSM Request Detail](https://dac-static.atlassian.com/platform/forge/snippets/images/csm-request-detail-demo.png?_v=1.5800.2113)
+![Example of a CSM Request Detail](https://dac-static.atlassian.com/platform/forge/snippets/images/csm-request-detail-demo.png?_v=1.5800.2119)
 
 ## Properties
 
@@ -45,8 +39,6 @@ Use the [useProductContext](/platform/forge/ui-kit/hooks/use-product-context/) h
 | `location` | `string` | The full URL of the host page where this module is displayed. |
 
 ## Unlicensed access
-
-This module is currently in EAP. The behavior of unlicensed access is documented here as it has been verified for this module during EAP. The semantics may change before general availability.
 
 By default, this module is only visible to licensed Jira users. To make the module available to other user types on a Customer Service Management support site, opt in using the `unlicensedAccess` property in the `manifest.yml` file.
 
@@ -91,7 +83,7 @@ modules:
 
 ### App visibility by configuration and user type
 
-The following table shows whether the module is visible for each combination of `unlicensedAccess` value and user type. This reflects behavior verified during EAP.
+The following table shows whether the module is visible for each combination of `unlicensedAccess` value and user type.
 
 | User type | `unlicensedAccess` not declared | `unlicensedAccess: []` | `unlicensedAccess: [customer]` | `unlicensedAccess: [unlicensed]` | `unlicensedAccess: [customer, unlicensed]` |
 | --- | --- | --- | --- | --- | --- |
@@ -113,7 +105,7 @@ Atlassian apps may cache invocation responses for up to five minutes, so wait fi
 
 ### Authenticated Atlassian app API calls
 
-Unlicensed users won't be able to make `asUser` API calls because the user is unauthorized and won't have full access to the Jira Service Management project. However, apps with the necessary permissions will be able to make `asApp` API calls.
+Unlicensed users won't be able to make `asUser` API calls because the user is unauthorized and won't have access to the Customer Service Management space. However, apps with the necessary permissions will be able to make `asApp` API calls.
 
 | Authenticated Atlassian app API calls | Unlicensed access |
 | --- | --- |

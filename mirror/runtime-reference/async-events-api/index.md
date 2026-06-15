@@ -19,13 +19,8 @@ import { Queue } from '@forge/events';
 const queue = new Queue({ key: 'queue-name' });
 ```
 
-## Push API
-
-Pushes events to the queue to be processed later. The events processing can be delayed up to 15 minutes
-using the `delayInSeconds` setting. A maximum of 50 events can be pushed per request, up to a maximum
-combined payload of 200 KB.
-
-### Method signature
+`Queue` is generic and accepts an optional body type parameter. Pass your own type to constrain
+the events the queue accepts, so `Queue.push()` only allows events whose `body` matches that type:
 
 ```
 1
@@ -38,11 +33,38 @@ combined payload of 200 KB.
 8
 9
 10
-11
-12
-13
-14
-15
+import { Queue } from '@forge/events';
+
+interface IssueEventBody {
+    issueKey: string;
+}
+
+const queue = new Queue<IssueEventBody>({ key: 'queue-name' });
+
+await queue.push({ body: { issueKey: 'ABC-123' } }); // Allowed
+// await queue.push({ body: { foo: 'bar' } });        // Type error
+```
+
+Use the same type for the [consumer function](/platform/forge/runtime-reference/async-events-api/#consumer-function)
+that processes these events to type the event end to end.
+
+## Push API
+
+Pushes events to the queue to be processed later. The events processing can be delayed up to 15 minutes
+using the `delayInSeconds` setting. A maximum of 50 events can be pushed per request, up to a maximum
+combined payload of 200 KB.
+
+### Method signature
+
+```
+```
+1
+2
+```
+
+
+
+```
 export type Body = Record<string, unknown>;
 export interface Concurrency {
     key: string;
@@ -58,6 +80,7 @@ export interface PushResult {
 }
 
 const result: PushResult = await queue.push(PushEvent | PushEvent[]);
+```
 ```
 
 ### Example
@@ -92,6 +115,13 @@ await queue.push({
 
 ## Event consumer
 
+An event consumer is a standalone exported function that processes events from a queue. Unlike
+[resolver functions](/platform/forge/runtime-reference/forge-resolver/), consumer functions do not use the
+`Resolver` class. Instead, the consumer module in the manifest points directly to a
+[`function`](/platform/forge/manifest-reference/modules/function/) module.
+
+### Manifest configuration
+
 To create an event consumer module in the app manifest, use:
 
 ```
@@ -117,10 +147,17 @@ modules:
 ```
 ```
 
+The `handler` value follows the format `file.function`, where `consumer.handler` refers to the
+`handler` function exported from `src/consumer.js` (or `src/consumer.ts`). You can use any file
+name and function name, as long as they match the `handler` value in the manifest.
+
 The optional `timeoutSeconds` parameter of the [`function`](/platform/forge/manifest-reference/modules/function/) module specifies the maximum runtime for an async event consumer function, enabling it to run longer than the default of 55 seconds.
 You can specify up to 900 seconds (15 minutes).
 
-To define the function for the consumer module, use:
+### Consumer function
+
+To define the function for the consumer module, export an async function from the file specified
+in the manifest `handler` property:
 
 ```
 ```
@@ -133,11 +170,72 @@ To define the function for the consumer module, use:
 ```
 import { AsyncEvent } from '@forge/events';
 
-export async function handler(event, context) {
+export async function handler(event: AsyncEvent, context) {
+    // Access the event body
+    const data = event.body;
     // Process the event
 }
 ```
 ```
+
+The `AsyncEvent` type from `@forge/events` provides type safety for the `event` parameter. By
+default, `event.body` is typed as `Record<string, unknown>`. `AsyncEvent` is generic and accepts
+an optional body type parameter, so you can pass your own type to get a fully typed `body`. Use the
+same type you passed to the [`Queue`](/platform/forge/runtime-reference/async-events-api/#get-started)
+to type the event from push to consumption:
+
+```
+```
+1
+2
+```
+
+
+
+```
+import { AsyncEvent } from '@forge/events';
+
+interface IssueEventBody {
+    issueKey: string;
+}
+
+export async function handler(event: AsyncEvent<IssueEventBody>, context) {
+    // event.body is typed as IssueEventBody
+    const { issueKey } = event.body;
+    // Process the event
+}
+```
+```
+
+If you are using JavaScript instead of TypeScript, you can omit the import and type annotation:
+
+```
+```
+1
+2
+```
+
+
+
+```
+export async function handler(event, context) {
+    // Access the event body
+    const data = event.body;
+    // Process the event
+}
+```
+```
+
+### AsyncEvent properties
+
+The `event` parameter passed to the consumer function is an `AsyncEvent` object with the following
+properties:
+
+| Property | Type | Description |
+| --- | --- | --- |
+| `body` | `Record<string, unknown>` | The event payload, as provided in the `body` field of the [PushEvent](/platform/forge/runtime-reference/async-events-api/#push-api). |
+| `jobId` | `string` | The unique identifier for the job that this event belongs to. Use this to [track progress](/platform/forge/runtime-reference/async-events-api/#tracking-progress-of-events) or [cancel the job](/platform/forge/runtime-reference/async-events-api/#cancel-a-job-in-progress). |
+| `retryContext` | [RetryContext](/platform/forge/runtime-reference/async-events-api/#retry-context) | undefined | Contains retry metadata when the event is being retried. This property is only populated on retries, so check that it exists before accessing it. See [Retries](/platform/forge/runtime-reference/async-events-api/#retries). |
 
 ## Tracking progress of events
 
@@ -179,9 +277,11 @@ You can cancel a job that's in progress using its `JobProgress` instance. When a
 
 
 ```
-import { AsyncEvent } from '@forge/events';
+import { Queue, AsyncEvent } from '@forge/events';
 
-export async function handler(event, context) {
+const queue = new Queue({ key: 'queue-name' });
+
+export async function handler(event: AsyncEvent, context) {
   const jobProgress = queue.getJob(event.jobId);
 
   try {
@@ -196,7 +296,7 @@ export async function handler(event, context) {
 
 ## Controlling processing concurrency
 
-You can control the concurrency of event processing by setting the `concurrency` field of the `PushEvent` argument to`Queue.push()`.
+You can control the concurrency of event processing by setting the `concurrency` field of the `PushEvent` argument to `Queue.push()`.
 This limits the number of events that can be processed concurrently.
 
 Concurrency counters are implicitly scoped to an app installation, but not to a specific queue,
@@ -239,7 +339,7 @@ It begins when the Async Event is successfully enqueued and lasts for **24 hours
 
 Retention window is extended due to:
 
-* **processing overhead** cause by performance degradation of the Forge platform,
+* **processing overhead** caused by performance degradation of the Forge platform,
 * **retries** triggered by [platform level errors](/platform/forge/runtime-reference/async-events-api/#platform-level-errors).
 
 Retention window can be extended by another **72 hours**, to a total of 96 hours.
@@ -304,6 +404,9 @@ interface RetentionWindow {
 
 #### Example for reading the `retryContext`
 
+The `retryContext` property is only populated when the event is being retried, so check that it
+exists before reading it. Otherwise, destructuring it on a first delivery throws a `TypeError`.
+
 ```
 ```
 1
@@ -313,19 +416,22 @@ interface RetentionWindow {
 
 
 ```
-import {AsyncEvent} from '@forge/events';
+import { AsyncEvent } from '@forge/events';
 
-export async function handler(event) {
-    const {
-        retryCount,
-        retryData,
-        retryReason,
-        retentionWindow: {
-            startTime,
-            remainingTimeMs
-        }
-    } = event.retryContext;
-    //...
+export async function handler(event: AsyncEvent) {
+    // retryContext is only present on retries
+    if (event.retryContext) {
+        const {
+            retryCount,
+            retryData,
+            retryReason,
+            retentionWindow: {
+                startTime,
+                remainingTimeMs
+            }
+        } = event.retryContext;
+        //...
+    }
 }
 ```
 ```
@@ -381,7 +487,7 @@ interface RetryOptions {
 | --- | --- | --- | --- |
 | `retryAfter` | number | true | The initial delay before the Async Event retry processing starts. The maximum `retryAfter` value is `900` seconds (15 minutes). Any `retryAfter` values exceeding this limit are lowered to `900` seconds. |
 | `retryReason` | InvocationErrorCode | true | The reason for the Async Event retry. By default, `FUNCTION_RETRY_REQUEST` is used. |
-| `retryData` | any | false | Additional data to assist the app's retry request. The maximum `retryData` size is 4KB. This will be enforced from `Nov 13, 2025`. |
+| `retryData` | any | false | Additional data to assist the app's retry request. The maximum `retryData` size is 4KB. |
 
 #### InvocationErrorCode values
 
@@ -405,7 +511,7 @@ In the following sample code, the app calls an external API and is rate limited.
 ```
 import { AsyncEvent, InvocationError, InvocationErrorCode } from '@forge/events';
 
-export async function handler(event) {
+export async function handler(event: AsyncEvent) {
   const userName = event.body.userName;
   const response = await callExternalApi(userName);
 

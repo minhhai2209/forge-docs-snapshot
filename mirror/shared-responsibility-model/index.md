@@ -42,6 +42,7 @@ Ensure that every request made to the application is sufficiently authorized.
 * Before making calls `asApp()`, you must verify expected permissions
   (for example, from Atlassian app context) with the permissions REST APIs
   before making the request.
+* Apps must not request scopes or permissions that are not strictly required.
 
 **Atlassian's responsibilities**
 
@@ -91,6 +92,7 @@ Ensure that data is appropriately stored and read by your app.
   sensitive API keys at least every 90 days.
 * Ensure that authorisation controls exist to segregate data access between
   different user roles within the same tenant.
+* Define and implement app-level data retention and deletion timelines.
 
 **Atlassian's responsibilities**
 
@@ -184,6 +186,13 @@ declaring your app’s eligibility and data collection policy.
 * Ensure data is appropriately handled. This includes ensuring
   caching of data does not negatively impact the security of apps or the platform.
 
+**Your responsibilities**
+
+* Declare all external domains your app calls in the Forge manifest
+  (`permissions.external`). Use explicit domains.
+  * Broad wildcards (`*`) are strongly discouraged.
+* Apps must not call insecure outbound endpoints (`http://`) for sensitive operations.
+
 ### Runtime/Server security
 
 **Atlassian's responsibilities**
@@ -269,13 +278,25 @@ It is your responsibility to notify customers of incidents involving your app. F
 
 **Atlassian's responsibilities**
 
+**Your responsibilities**
+
+* Apps must not rely on client-supplied data alone to verify a user's identity or permissions.
+* Apps must not continue operating compromised integrations without key or token revocation.
+
 ### DoS protection
 
 **Atlassian's responsibilities**
 
 * Detect DoS attacks against applications, or caused by applications.
 * Mitigate DoS attacks against applications.
-* Suspend apps that may be misbehaving/performing a high volume of requests.
+* Suspend apps that may be affecting the stability of Atlassian's system or affecting
+  the performance or availability of Atlassian's core user experiences.
+
+**Your responsibilities**
+
+* Use **timeouts, bounded retries, and circuit breakers** for outbound calls to avoid
+  retry storms.
+* Protect web triggers with **authentication and replay checks**.
 
 ### Abuse prevention
 
