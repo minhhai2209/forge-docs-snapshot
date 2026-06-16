@@ -188,6 +188,10 @@ resolver.define('GET projects', async ({ payload, context }) => {
 ```
 ```
 
+### Triggers
+
+For [product event triggers](/platform/forge/manifest-reference/modules/trigger/) and [scheduled triggers](/platform/forge/manifest-reference/modules/scheduled-trigger/), you can use `filter.appIsLicensed` to automatically skip invocations on sites where the app does not have an active license. See the filter reference for [triggers](/platform/forge/manifest-reference/modules/trigger/#filter-reference) and [scheduled triggers](/platform/forge/manifest-reference/modules/scheduled-trigger/#filter-reference).
+
 ### Forge Remote
 
 Developers can access `userAccess` in the Forge Invocation Token’s (FIT) context.

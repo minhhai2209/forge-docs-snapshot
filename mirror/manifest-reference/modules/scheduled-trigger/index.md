@@ -38,6 +38,15 @@ For step-by-step instructions on how to use this module type, see the following 
 | `function` | `string` | Required if using [triggers](/platform/forge/manifest-reference/modules/trigger/). | A reference to the function module that defines the module. |
 | `endpoint` | `string` | Yes (if no `function` is specified). | A reference to the `endpoint` [specifying the remote back end](/platform/forge/manifest-reference/endpoint/) that resolves your event (if you are using [Forge Remote).](/platform/forge/forge-remote-overview) |
 | `interval` | `'fiveMinute'`, `'hour'`, `'day'`, `'week'` | Yes | The interval at which to invoke the function. |
+| `filter` | [Filter](#filter-reference) | No | Configure conditions for when the trigger should be invoked. |
+
+### Filter reference
+
+| Property | Type | Required | Description |
+| --- | --- | --- | --- |
+| `appIsLicensed` | `boolean` | Yes (if `filter` is defined) | When `appIsLicensed` is set to `true`, invocations are skipped for sites where the app does not have an active license. When set to `false` or omitted, invocations occur regardless of the app's license status. |
+
+Scheduled triggers do not fire in response to user actions, so `ignoreSelf` and `expression` (available in product event [triggers](/platform/forge/manifest-reference/modules/trigger/#filter-reference)) are not applicable here.
 
 ### Example
 
@@ -55,6 +64,8 @@ modules:
     - key: example-scheduled-trigger
       function: my-scheduled-function
       interval: hour # Runs hourly
+      filter: # Optional. Skip invocations for unlicensed sites.
+        appIsLicensed: true
   function:
     - key: my-scheduled-function
       handler: index.trigger

@@ -706,6 +706,35 @@ modules:
 If you don't use the `ignoreSelf` filter, self-generated events will still be delivered to your
 app with a `selfGenerated` property set to `true` in the event payload.
 
+## Skip invocations for unlicensed apps
+
+Set `filter.appIsLicensed` to `true` to skip trigger invocations for sites where the app does not have an active license. See the [filter reference](/platform/forge/manifest-reference/modules/trigger/#filter-reference) for more details.
+
+```
+```
+1
+2
+```
+
+
+
+```
+modules:
+  trigger:
+    - key: my-trigger
+      function: main
+      events:
+        - avi:jira:commented:issue
+      filter:
+        appIsLicensed: true
+  function:
+    - key: main
+      handler: index.run
+```
+```
+
+If you don't set `filter.appIsLicensed`, trigger functions will be invoked regardless of the app's license status on the site.
+
 ## OAuth 2.0 scopes
 
 When using Atlassian app events, your Forge app must have permission from the site admin to access

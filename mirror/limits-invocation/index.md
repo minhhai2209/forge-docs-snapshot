@@ -16,5 +16,6 @@
 | Network requests | 3,000,000 requests per minute, per app and 100,000 requests per minute, per app, per tenant | The maximum number of requests per minute that an app can make for network calls, including those made using `requestJira` or `requestConfluence`. |
 | Memory | 1,024MB | Available memory per invocation. Default memory limit is 512MB. To change it, use the `memoryMB` setting of the `runtime` [property](/platform/forge/manifest-reference/#runtime). |
 | Ephemeral disk space | 512MB | Available space in the `/tmp` directory. Data is only guaranteed for the duration of a single invocation and may be cleared between executions. Don't write tenant-specific data to this directory in a way that persists after the invocation finishes. See [Tenant safety](/platform/forge/shared-responsibility-model/#tenant-safety) for guidance on filesystem usage. |
+| Payload size | 5MB | The maximum request payload size for an invocation. |
 | Front-end invocation request payload size | 500KB | The maximum request payload size for a front-end invocation (for example, `invoke` and `invokeRemote` via `@forge/bridge`). |
 | Front-end invocation response payload size | 5MB | The maximum response payload size from a front-end invocation (for example, `invoke` and `invokeRemote` via `@forge/bridge`). |

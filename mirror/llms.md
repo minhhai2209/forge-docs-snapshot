@@ -1135,7 +1135,7 @@ This section contains curated references that show how real Forge apps are struc
 ##### Licensing
 
 - [Overview](https://developer.atlassian.com/platform/forge/licensing-overview.md)
-- [Adopt user-based billing](https://developer.atlassian.com/platform/forge/adopt-user-based-billing.md)
+- [Adopt user-based billing (EAP)](https://developer.atlassian.com/platform/forge/adopt-user-based-billing.md)
 
 #### Programs
 

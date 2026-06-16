@@ -20,6 +20,9 @@ Forge apps won't work for unlicensed users in portals/views, such as the Jira
 Service Management portal, that support unlicensed use cases unless you
 configure your app to allow it.
 
+To allow unlicensed users to access your app, set the distribution status to `Sharing` in the developer console.
+To learn more about app distribution, refer to [distributing your apps](/platform/forge/distribute-your-apps)
+
 ## Overview of Forge unlicensed access
 
 Before configuring unlicensed access, make sure you understand the different
@@ -59,6 +62,7 @@ Note that the `confluence:fullPage` module does **not** support unlicensed or an
 
 | Unlicensed user | Description |
 | --- | --- |
+| `unlicensed` | Users with an Atlassian account who have limited access to a single Jira space. Guests are authenticated but don't consume a paid license. |
 | `anonymous` | A user who is not logged in to an Atlassian account. |
 
 Unlicensed access is currently supported for the following Jira modules:
