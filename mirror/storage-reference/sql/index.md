@@ -16,6 +16,16 @@ Forge SQL is currently based on a
 
 We recommend that you avoid designing applications with TiDb-specific functionality.
 
+### Query policy
+
+To maintain strict ANSI SQL compliance and to pre-emptively increase the
+security posture of Forge SQL, some SQL functions, statements, and syntax
+patterns are restricted in app queries. Restricted queries are rejected with a
+`SQL_POLICY_VIOLATION` error before they reach the database.
+
+See [Forge SQL query policy](/platform/forge/storage-reference/sql-query-policy/)
+for the full list of restricted keywords and how to request an exemption.
+
 ## Platform pricing resources
 
 Learn more about Forge’s pricing structure, allowances, and billing by visiting [Forge platform pricing](/platform/forge/forge-platform-pricing/).

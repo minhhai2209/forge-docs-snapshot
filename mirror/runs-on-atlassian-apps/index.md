@@ -14,7 +14,7 @@ The Forge CLI provides a programmatic way to verify the above requirements.
 
 While controls that limit external data egress are in place, these controls do not prevent misuse of access granted to the app during installation or abuse of the app runtime. The boundaries of tenant safety and data handling are defined in the [Shared responsibility model](/platform/forge/shared-responsibility-model/#tenant-safety).
 
-![Runs on Atlassian page on app listing page](https://dac-static.atlassian.com/platform/forge/images/app-listing.svg?_v=1.5800.2124)
+![Runs on Atlassian page on app listing page](https://dac-static.atlassian.com/platform/forge/images/app-listing.svg?_v=1.5800.2130)
 
 See [Runs on Atlassian](/platform/forge/runs-on-atlassian/) for more details.
 
@@ -291,7 +291,7 @@ For the Forge platform in general, the following rules apply:
 
 | Egress type | Applies to | Details |
 | --- | --- | --- |
-| `images` | Custom UI and UI Kit | * `hostname` (For example, `my-tenant.atlassian.net`. [Custom domains](https://support.atlassian.com/organization-administration/docs/add-a-custom-domain/) are also allowed.) * `*.wp.com` * `secure.gravatar.com` * `images.unsplash.com` * `api.media.atlassian.com` * `api.atlassian.com` * `pf-emoji-service--cdn.us-east-1.prod.public.atl-paas.net` (for emojis) * `avatar-management--avatars.us-west-2.prod.public.atl-paas.net` |
+| `images` | Custom UI and UI Kit | * `hostname` (For example, `my-tenant.atlassian.net`. [Custom domains](https://support.atlassian.com/organization-administration/docs/add-a-custom-domain/) are also allowed.) * `*.wp.com` * `secure.gravatar.com` * `images.unsplash.com` * `api.media.atlassian.com` * `api.atlassian.com` * `pf-emoji-service.prod-east.frontend.public.atl-paas.net` (for emojis) * `avatar-management--avatars.us-west-2.prod.public.atl-paas.net` |
 | `media` | Custom UI | * `hostname` (For example, `my-tenant.atlassian.net`. [Custom domains](https://support.atlassian.com/organization-administration/docs/add-a-custom-domain/) are also allowed.) * `api.media.atlassian.com` |
 | `frames` | Custom UI | * `hostname` (For example, `my-tenant.atlassian.net`. [Custom domains](https://support.atlassian.com/organization-administration/docs/add-a-custom-domain/) are also allowed.) |
 | `fetch.client` | Custom UI and UI Kit | * `api.media.atlassian.com` * `api.atlassian.com/gateway/api/emoji/` (to fetch list of emojis) |
@@ -362,7 +362,7 @@ To render emojis in your app, internal APIs are used to access the list of emoji
 We’ve allow-listed the following:
 
 * `api.atlassian.com/gateway/api/emoji/` for `fetch.client` to list emojis
-* `pf-emoji-service--cdn.us-east-1.prod.public.atl-paas.net` to fetch emojis
+* `pf-emoji-service.prod-east.frontend.public.atl-paas.net` to fetch emojis
 
 However, if the API for getting the list of emojis is accessed using tenant-host
 (for example, `https://my-tenant.atlassian.net/gateway/api/emoji/`), this may be blocked by the

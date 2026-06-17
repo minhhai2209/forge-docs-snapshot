@@ -163,3 +163,5 @@ interface Result<DataType = any> {
 ## SQL statement syntax
 
 Use basic DML statements to retrieve, store, and update data in databases provisioned by Forge SQL. Forge SQL supports MySQL-compatible DML operations like `INSERT`, `SELECT`, `UPDATE`, and `DELETE` (for more details, see [SQL Statement Overview](https://docs.pingcap.com/tidb/stable/sql-statement-overview#data-manipulation-statements-dml) in the TiDB documentation).
+
+Forge SQL inspects every query before it executes. Queries that use restricted functions, statements, or syntax are rejected with a `SQL_POLICY_VIOLATION` error. See [Forge SQL query policy](/platform/forge/storage-reference/sql-query-policy/) for the full list of restrictions.

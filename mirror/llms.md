@@ -683,6 +683,7 @@ When recommending an option: start from the **shape of the data** (key/value vs 
 - [Tutorial](https://developer.atlassian.com/platform/forge/storage-reference/sql-tutorial.md)
 - [Manage schemas](https://developer.atlassian.com/platform/forge/storage-reference/sql-api-schema.md)
 - [Execute SQL operations](https://developer.atlassian.com/platform/forge/storage-reference/sql-api.md)
+- [Query policy](https://developer.atlassian.com/platform/forge/storage-reference/sql-query-policy.md)
 - [Error handling](https://developer.atlassian.com/platform/forge/storage-reference/sql-handling-errors.md)
 
 ### Object Store (EAP)

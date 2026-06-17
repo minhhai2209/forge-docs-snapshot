@@ -156,12 +156,17 @@ export default App;
 | `edit.render` | `'native'` | If using modern versions of [UI Kit](/platform/forge/ui-kit/components/) | Indicates the editing experience uses UI Kit. |
 | `refreshable` | `boolean` |  | Set the `refreshable` property of the dashboard item to `false` to override the native Jira refresh behavior. |
 | `displayConditions` | `object` |  | An object that defines whether the gadget is displayed on the list of gadgets available to install. If a gadget is already added to the dashboard, users without the permission to use it will see an error message. See [display conditions](/platform/forge/manifest-reference/display-conditions). |
+| `connectKeys` | `string[]` |  | A list of Connect dashboard item module keys that this Forge gadget replaces at load time. When non-empty, only the listed keys are matched - the Forge gadget's own `key` is excluded. See [Migrate Jira dashboard items](/platform/adopting-forge-from-connect/migrate-jira-dashboard-items/). |
 
 ### i18n object
 
 | Key | Type | Required | Description |
 | --- | --- | --- | --- |
 | `i18n` | `string` | Yes | A key referencing a translated string in the translation files. For more details, see [Translations](/platform/forge/manifest-reference/translations). |
+
+## Migrating from Connect
+
+To migrate from `jira:jiraDashboardItems` to `jira:dashboardGadget` while preserving existing gadget instances on customer dashboards, use the `connectKeys` property and follow the [Jira dashboard items migration guide](/platform/adopting-forge-from-connect/migrate-jira-dashboard-items/).
 
 ## Extension context
 
