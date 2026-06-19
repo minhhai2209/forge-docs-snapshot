@@ -1,7 +1,7 @@
 ```
 {
   "info": {
-    "_postman_id": "f7f34aa1-43d8-4017-86b0-c84f5863eaaf",
+    "_postman_id": "75747caa-4931-4cdf-8dd8-7ea4469248f5",
     "name": "Forge Containers API",
     "description": "The Forge Containers Public API\n\n**Important:** The API base URL should be read from the `FORGE_EGRESS_PROXY_URL` environment variable.\nThe localhost URL in the servers section is for documentation purposes only.\n",
     "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
@@ -768,7 +768,7 @@
     },
     {
       "name": "Forge Events",
-      "description": "Forge async events endpoints for submitting events to queues",
+      "description": "Forge async events endpoints for submitting events to queues.\n\nFor information on error types and handling, see [Async events API error handling](https://developer.atlassian.com/platform/forge/runtime-reference/async-events-api-error-handling/).\n",
       "item": [
         {
           "name": "Publish Async Events to Forge",
@@ -807,7 +807,7 @@
                 "value": "application/json"
               }
             ],
-            "description": "Submit asynchronous events to the Forge events system.\nEvents are queued for processing and will be delivered to the specified queue.\n",
+            "description": "Submit asynchronous events to the Forge events system.\nEvents are queued for processing and will be delivered to the specified queue.\n\nFor information on error types and handling, see [Async events API error handling](https://developer.atlassian.com/platform/forge/runtime-reference/async-events-api-error-handling/).\n",
             "auth": {
               "type": "bearer",
               "bearer": {

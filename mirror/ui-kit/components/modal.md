@@ -33,15 +33,15 @@ A modal dialog displays content that requires user interaction, in a layer above
 <tbody>
 <tr>
 <td><code>height</code></td>
-<td><code>number</code></td>
+<td><code>string | number</code></td>
 <td>No</td>
 <td>Height of the modal dialog. When unset the modal dialog will grow to fill the viewport and then start overflowing its contents.</td>
 </tr>
 <tr>
 <td><code>width</code></td>
-<td><code>"small" | "medium" | "large" | "x-large" | "fullscreen" | number</code></td>
+<td><code>"small" | "medium" | "large" | "x-large" | "fullscreen" | "resizable" (Preview) | string | number</code></td>
 <td>No</td>
-<td>Width of the modal dialog. The recommended way to specify modal width is using named size options. For <code>fullscreen</code> viewports, <code>title</code> and <code>icon</code> will be displayed in the header.</td>
+<td>Width of the modal dialog. The recommended way to specify modal width is using named size options. For <code>fullscreen</code> viewports, <code>title</code> and <code>icon</code> will be displayed in the header.  Refer to <a href="https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/modal/#resizable-design-guidelines">resizable design guidelines</a> for more direction.</td>
 </tr>
 <tr>
 <td><code>onClose</code></td>

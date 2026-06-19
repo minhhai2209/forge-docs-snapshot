@@ -16,7 +16,7 @@ app's frontend to interact with the [Forge Object Store](/platform/forge/storage
 The following diagram shows how the hook integrates the backend resolver with the
 [File picker](/platform/forge/ui-kit/components/file-picker/) and [File card](/platform/forge/ui-kit/components/file-card/):
 
-![Diagram of how the hook interacts with the resolver and File components](https://dac-static.atlassian.com/platform/forge/ui-kit/images/hook/useObjectStore.png?_v=1.5800.2133)
+![Diagram of how the hook interacts with the resolver and File components](https://dac-static.atlassian.com/platform/forge/ui-kit/images/hook/useObjectStore.png?_v=1.5800.2143)
 
 [Example app
 

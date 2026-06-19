@@ -8,23 +8,23 @@ It works in the
 [new issue view](https://support.atlassian.com/jira-core-cloud/docs/what-is-the-new-jira-issue-view/)
 but not the old issue view.
 
-![Example of an Issue action button](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-action-location.png?_v=1.5800.2133)
+![Example of an Issue action button](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-action-location.png?_v=1.5800.2143)
 
 This is an example of the triggered modal dialog:
 
-![Example of an Issue action with the above sample code](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-action-demo.png?_v=1.5800.2133)
+![Example of an Issue action with the above sample code](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-action-demo.png?_v=1.5800.2143)
 
 ## Manifest example
 
 ```
+```
 1
 2
-3
-4
-5
-6
-7
-8
+```
+
+
+
+```
 modules:
   jira:issueAction:
     - key: hello-world-issue-action
@@ -33,6 +33,7 @@ modules:
         function: resolver
       render: native
       title: Hello World
+```
 ```
 
 ## Properties
@@ -43,7 +44,7 @@ modules:
 | `resource` | `string` | If using [Custom UI](/platform/forge/custom-ui/) or modern versions of [UI Kit](/platform/forge/ui-kit/) | The key of a static `resources` entry that your module will display. See [resources](/platform/forge/manifest-reference/resources) for more details. |
 | `render` | `'native'` | If using modern versions of [UI Kit](/platform/forge/ui-kit/components/) | Indicates the module uses [UI Kit](/platform/forge/ui-kit/components/). |
 | `resolver` | `{ function: string }` or `{ endpoint: string }` |  | Set the `function` property if you are using a hosted `function` module for your resolver.  Set the `endpoint` property if you are using [Forge Remote](/platform/forge/forge-remote-overview) to integrate with a remote back end. |
-| `viewportSize` | `'small'`, `'medium'`, `'large'`, `'xlarge'` or `'max'` |  | The [display size](/platform/forge/manifest-reference/resources) of `resource`. Can only be set if the module is using the `resource` property. Remove this property to enable automatic resizing of the module. |
+| `viewportSize` | `'small'`, `'medium'`, `'large'`, `'xlarge'`, `'max'`, `'resizable'` (Preview) or `{ width: string; height: string }` (Preview) |  | The [display size](/platform/forge/manifest-reference/resources) of `resource`. Can only be set if the module is using the `resource` property. Refer to [resizable design guidelines](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/modal/#resizable-design-guidelines) for more direction. For the custom dimensions object, it accepts any common CSS size string for width and height,, e.g. `'500px'`, `'60vh'`. |
 | `title` | `string` or `i18n object` | Yes | The title of the issue action, which is displayed as a menu item.  The `i18n object` allows for translation. See [i18n object](#i18n-object). |
 | `displayConditions` | `object` |  | The object that defines whether or not a module is displayed in the UI of the app. See [display conditions](/platform/forge/manifest-reference/display-conditions). |
 

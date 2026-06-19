@@ -1,6 +1,6 @@
 # Install the Forge AI Plugin
 
-The Forge AI Plugin bundles Forge-focused skills and MCP-backed tooling so your AI coding agent can scaffold apps, review them before deploy, debug production issues, and stay current on Forge APIs and the Atlassian Design System.
+The Forge AI Plugin bundles Forge-focused skills and MCP-backed tooling so your AI coding agent can scaffold, review, optimize, secure, debug, and connect Forge apps — and stay current on Forge APIs and the Atlassian Design System.
 
 ## What's included
 
@@ -11,8 +11,11 @@ The plugin provides the following [skills](/platform/forge/ai-development-toolki
 | Skill | What it does | Sample capabilities |
 | --- | --- | --- |
 | `forge-app-builder` | Guides scaffolding through production: `forge create`, developer spaces and templates, deploy and install, module selection, cross-product scopes, and common CLI or permission issues. | Forge CLI, environments, cross-product scopes |
-| `forge-app-review` | Supports pre-deploy review and audits: security, architecture, cost and invocation efficiency, performance, and trigger or scheduling waste. | Audit before release, reduce invocations, find misconfigurations |
-| `skills/forge-debugger` | Supports systematic troubleshooting: deploy errors, resolver failures, blank or missing UI, scopes and permissions, and apps that stopped working in Jira or Confluence. | Logs, blank panels, resolver errors, missing app in UI |
+| `forge-app-review` | Performs a lightweight release-readiness review across manifest and module wiring, architecture, runtime compatibility, dependency posture, tests, deploy readiness, and obvious security, cost, or reliability signals. | Pre-deploy checks, release readiness, manifest and resolver wiring |
+| `forge-cost-optimizer` | Helps reduce Forge platform consumption across invocations, storage, logs, memory, triggers, API calls, and frontend or backend boundaries. | Invocations, storage writes, logs, memory, scheduled triggers |
+| `forge-debugger` | Supports systematic troubleshooting: deploy errors, resolver failures, blank or missing UI, scopes and permissions, and apps that stopped working in Jira or Confluence. | Logs, blank panels, resolver errors, missing app in UI |
+| `forge-connector` | Guides building `graph:connector` apps that ingest external data into Atlassian's Teamwork Graph so it can appear in Rovo Search and Rovo Chat. | Teamwork Graph, `setObjects`, Rovo Search, Rovo Chat |
+| `forge-security-review` | Performs white-box Forge app security audits with rule-driven checks for authorization, injection, tenant isolation, secrets handling, egress and remotes, web triggers, and static analysis workflows. | AuthZ, injection, tenant isolation, web triggers, static analysis |
 
 ### MCP servers
 
@@ -27,7 +30,7 @@ Before you install, make sure you have:
 
 ## Install the plugin
 
-Run the appropriate command to install the Forge Skills Plugin on your chosen agent:
+Run the appropriate command to install the Forge AI Plugin on your chosen agent:
 
 Claude Code
 
@@ -36,6 +39,8 @@ Cursor
 Gemini CLI
 
 GitHub Copilot CLI
+
+OpenAI Codex
 
 Rovo Dev
 
@@ -54,7 +59,7 @@ Rovo Dev
 
 ## Verify the installation
 
-After installing, run three quick checks to confirm everything is working.
+After installing, run a few quick checks to confirm everything is working.
 
 ### 1. Verify the skill layer
 
@@ -77,8 +82,11 @@ You should get a structured Forge workflow — developer space discovery, templa
 
 You can also confirm the other skills:
 
-* **Review:** "Review my Forge app for security and unnecessary trigger invocations before I deploy."
+* **Review:** "Review my Forge app before release and tell me whether it is ready to ship."
+* **Cost:** "Audit my Forge app for unnecessary invocations, storage writes, logs, and memory usage."
+* **Security:** "Run a white-box security review on this Forge app and include CVSS-scored findings."
 * **Debug:** "My Forge issue panel is blank after deploy — help me trace it."
+* **Connector:** "I want to ingest data from an external project management tool into Rovo Search using a Forge connector app. Where do I start?"
 
 ### 2. Verify the Forge MCP Server
 

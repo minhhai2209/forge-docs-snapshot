@@ -6,16 +6,17 @@ Once your remote backend has received a request from Forge, you can call Atlassi
 
 When setting up your app to:
 
-* Call a remote (from a Custom UI or UI Kit 2 frontend)
-* Send Atlassian app and lifecycle events (to a remote)
+* Call a remote from a Custom UI or UI Kit frontend
+* Call a remote from a Forge function backend
+* Send Atlassian app and lifecycle events to a remote
 * Configure scheduled triggers to invoke a remote backend
 
-You'll need one of the following in your manifest.yml:
+You'll need one of the following auth properties set to `true` in your `manifest.yml`:
 
-* `endpoint.auth.appSystemToken` set to `true`
-* `endpoint.auth.appUserToken` set to `true`
+* `appSystemToken` — to access Atlassian app APIs as the app's generic bot user
+* `appUserToken` — to access Atlassian app APIs with the current user's permissions
 
-Which one you need depends on whether you want to access Atlassian app APIs as a generic bot user (`appSystemToken`) or the current user's permission (`appUserToken`).
+Where you configure `auth` depends on where your remote is invoked from:
 
 When your remote is called, the authentication token for calling Atlassian app and Forge storage APIs is sent in either the `x-forge-oauth-system` HTTP header (for `appSystemToken`) or the `x-forge-oauth-user` HTTP header (for `appUserToken`).
 

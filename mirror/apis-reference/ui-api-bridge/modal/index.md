@@ -25,7 +25,7 @@ The Modal bridge API is exclusive to Custom UI; If you are using UI Kit, you can
 interface ModalOptions {
   resource?: string | null;
   onClose?: (payload?: any) => any;
-  size?: 'small' | 'medium' | 'large' | 'xlarge' | 'max' | 'fullscreen' | 'resizable';
+  size?: 'small' | 'medium' | 'large' | 'xlarge' | 'max' | 'fullscreen' | 'resizable' | { width: string; height: string };
   context?: any;
   closeOnEscape?: boolean;
   closeOnOverlayClick?: boolean;
@@ -53,7 +53,8 @@ class Modal {
   * **xlarge** - w: `968px` h: `90vh`
   * **max** - w: `100%` h: `100%`
   * **fullscreen** - w: `100vw` h: `100vh` (fills entire viewport, and `title` and `icon` will be displayed in the header)
-  * **resizable** - w: `auto` h: `auto` minHeight: `320px` minWidth: `400px` maxHeight: `100%` maxWidth: `calc(100vw - 120px)`
+  * **resizable (Preview)** - w: `auto` h: `auto`. The constraints for `resizable` are: `minHeight: 320px`, `minWidth: 400px`, `maxHeight: 100%` and `maxWidth: calc(100vw - 120px)`
+  * **custom dimensions (Preview)** - w: `string` h: `string`. Accepts any common CSS size string for width and height, e.g. `'500px'`, `'60vh'`.
 * **context**: Custom context that can be added to the context in the modal resource. It will appear
   under the `extension.modal` key in the context object returned from `view.getContext()`.
 * **closeOnEscape**: If set to false, the modal will not close when pressing escape.
