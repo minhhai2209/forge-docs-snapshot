@@ -19,18 +19,12 @@ These three pieces work together in a chain: **UI module → endpoint → remote
 Add a [`remotes`](/platform/forge/manifest-reference/remotes) entry with a unique `key` and the `baseUrl` of your backend. The `baseUrl` is the URL prefix that gets prepended to the `path` you specify in your frontend `invokeRemote` or `requestRemote` calls.
 
 ```
-```
 1
 2
-```
-
-
-
-```
+3
 remotes:
   - key: my-remote
     baseUrl: https://my-backend.example.com
-```
 ```
 
 ### Step 2: Define the endpoint
