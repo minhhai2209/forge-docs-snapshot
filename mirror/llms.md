@@ -1364,6 +1364,7 @@ This section contains curated references that show how real Forge apps are struc
 - [Manage Developer Space settings](https://developer.atlassian.com/platform/forge/developer-space/manage-developer-space.md)
 - [Billing and payments in Developer Spaces](https://developer.atlassian.com/platform/forge/developer-space/billing-for-developer-spaces.md)
 - [Publish a Developer Space to the Atlassian Marketplace](https://developer.atlassian.com/platform/forge/developer-space/publish-developer-space.md)
+- [Developer Space insights dashboard](https://developer.atlassian.com/platform/forge/developer-space/developer-space-insights.md)
 
 #### Observability
 

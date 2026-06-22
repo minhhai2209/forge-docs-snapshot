@@ -30,7 +30,7 @@ Use the [customerServiceManagement:crmImport](/platform/forge/manifest-reference
 
 The modal reads the credentials and configuration saved by the admin page, fetches data from the external source, and invokes the [Customer Service Management](/cloud/customer-service-management/) bulk APIs to write that data to the destination.
 
-![CRM Import modal triggered from the Manage dropdown on the Organizations page](https://dac-static.atlassian.com/platform/forge/snippets/images/csm-crm-import-demo-modal.png?_v=1.5800.2143)
+![CRM Import modal triggered from the Manage dropdown on the Organizations page](https://dac-static.atlassian.com/platform/forge/snippets/images/csm-crm-import-demo-modal.png?_v=1.5800.2144)
 
 ## What the app needs to do
 
