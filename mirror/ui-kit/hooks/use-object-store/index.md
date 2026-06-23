@@ -1,22 +1,17 @@
-# useObjectStore (EAP)
+# useObjectStore (Preview)
 
-UI components for [Forge Object Store](/platform/forge/storage-reference/object-store/)
-are now available as part of our Early Access Program (EAP). These components can also be
-used for remote object store back-ends. To start testing,
-[sign up here](https://ecosystem.atlassian.net/servicedesk/customer/portal/1040/group/3496/create/18937).
+Forge Object Store and its UI components are now in Preview, and therefore fully supported. However, they remain under active development and may be subject to shorter deprecation windows. Preview features are suitable for early adopters in production environments.
 
-By signing up for this Early Access Program (“EAP”), you acknowledge that use of the Forge Object Store UI Components is governed by the [Atlassian Developer Terms](https://developer.atlassian.com/platform/marketplace/atlassian-developer-terms/). The Forge Object Store UI Components are considered “Early Access Materials”, as set forth in Section 10 of the Atlassian Developer Terms and is subject to applicable terms, conditions, and disclaimers.
+We release preview features so partners and developers can study, test, and integrate them prior to General Availability (GA). For more details, see [Forge EAP, Preview, and GA](https://developer.atlassian.com/platform/forge/whats-coming/#forge-preview).
 
-For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
-
-The `useObjectStore` hook lets you perform file management operations and track the state of each objects. This hook provides a way for your
-app's frontend to interact with the [Forge Object Store](/platform/forge/storage-reference/object-store/) through the the
+The `useObjectStore` hook lets you perform file management operations and track the state of each object. This hook provides a way for your
+app's frontend to interact with the [Forge Object Store](/platform/forge/storage-reference/object-store/) through the
 [objectStore bridge API](/platform/forge/custom-ui-bridge/objectStore/).
 
 The following diagram shows how the hook integrates the backend resolver with the
 [File picker](/platform/forge/ui-kit/components/file-picker/) and [File card](/platform/forge/ui-kit/components/file-card/):
 
-![Diagram of how the hook interacts with the resolver and File components](https://dac-static.atlassian.com/platform/forge/ui-kit/images/hook/useObjectStore.png?_v=1.5800.2144)
+![Diagram of how the hook interacts with the resolver and File components](https://dac-static.atlassian.com/platform/forge/ui-kit/images/hook/useObjectStore.png?_v=1.5800.2148)
 
 [Example app
 

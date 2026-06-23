@@ -19,6 +19,7 @@ See [Forge platform pricing](/platform/forge/forge-platform-pricing/) for the au
 | SQL: Compute duration | $/hr | 1 hr | 0.143 |
 | SQL: Compute requests | $/1M-requests | 100,000 requests | 1.929 |
 | SQL: Data stored | $/GB-hours | 730 GB-hours | 0.00076850 |
+| Object Store: Requests (starting July 1, 2026) | $/1k-requests | 5,000 requests | 0.001353 |
 | LLM: Input | $/credits | 0 credits | 0.0000001 |
 | LLM: Output | $/credits | 0 credits | 0.0000005 |
 

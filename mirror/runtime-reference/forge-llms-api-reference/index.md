@@ -78,25 +78,77 @@ Both methods support a `chat` and a `stream` interface available for all support
 
 
 ```
-```javascript
-interface Prompt {
+type Prompt = LlmRequest & {
   model: string;
-  messages: {
-    role: "system" | "user" | "assistant" | "tool";
-    content: string | { type: 'text'; text: string; }[];
-  }[];
-  max_completion_tokens?: number;
+};
+
+interface LlmRequest {
+  messages: Message[];
   temperature?: number;
+  max_completion_tokens?: number;
   top_p?: number;
-  tools?: {
-    type: "function";
-    function: {
-      name: string;
-      description: string;
-      parameters: object;
+  tools?: Tool[];
+  tool_choice?: ToolChoice;
+}
+type Message = SystemMessage | UserMessage | AssistantMessage | ToolMessage;
+
+interface SystemMessage {
+  content: Content;
+  role: "system";
+}
+interface UserMessage {
+  content: Content;
+  role: "user";
+}
+interface ToolMessage {
+  content: Content;
+  role: "tool";
+  tool_call_id?: string;
+  name?: string;
+}
+interface AssistantMessage {
+  content: Content;
+  role: "assistant";
+  tool_calls?: ToolCall[];
+}
+
+interface ToolCall {
+  id: string;
+  type: "function";
+  index: number;
+  function: {
+    name: string;
+    arguments: object;
+  };
+}
+
+type ToolChoice =
+  | "auto"
+  | "none"
+  | "required"
+  | {
+      type: "function";
+      function: {
+        name: string;
+      };
     };
-  }[];
-  tool_choice?: "auto" | "none" | "required" | { type: "function"; function: { name: string } };
+
+interface Tool {
+  type: "function";
+  function: {
+    name: string;
+    description: string;
+    parameters: Record<string, unknown>;
+  };
+}
+
+type Content = string | ContentPart[];
+
+type ContentPart = TextPart;
+
+interface TextPart {
+  type: "text";
+  text: string;
 }
 ```
 ```
@@ -113,21 +165,26 @@ interface Prompt {
 
 ```
 interface LlmResponse {
-  choices: {
-    finish_reason: string;
-    index?: number;
-    message: {
-      content: string | { type: "text"; text: string; }[];
-      role: "assistant";
-      tool_calls?: {
-        id: string;
-        type: "function";
-        index: number;
-        function: { name: string; arguments: object; };
-      }[];
-    };
-  }[];
-  usage?: { input_token?: number; output_token?: number; total_token?: number; };
+  choices: Choice[];
+  usage?: Usage;
+}
+
+interface Choice {
+  finish_reason: string;
+  index?: number;
+  message: AssistantMessage;
+}
+
+interface Usage {
+  input_tokens?: number;
+  output_tokens?: number;
+  total_tokens?: number;
+}
+
+interface AssistantMessage {
+  content: Content;
+  role: "assistant";
+  tool_calls?: ToolCall[];
 }
 
 interface StreamResponse extends AsyncIterable<LlmResponse> {
@@ -136,8 +193,8 @@ interface StreamResponse extends AsyncIterable<LlmResponse> {
 
 interface ModelListResponse {
   models: {
-    model: string;
-    status: "active" | "deprecated";
+    model: string,
+    status: "active" | "deprecated",
   }[];
 }
 ```
@@ -154,20 +211,23 @@ interface ModelListResponse {
 
 
 ```
-import { chat } from '@forge/llm';
+import { chat } from "@forge/llm";
 try {
   const response = await chat({
-    model: 'claude-3-7-sonnet-20250219',
+    model: "claude-opus-4-6",
     messages: [
       {
-        role: 'user', content: 'Write a short poem about Forge LLMs.'
-      }
+        role: "user",
+        content: "Write a short poem about Forge LLMs.",
+      },
     ],
   });
 
   console.log("#### LLM response:", JSON.stringify(response));
 } catch (err) {
-  console.error('#### LLM request failed:', { error:  err.context?.responseText });
+  console.error("#### LLM request failed:", {
+    error: err.context?.responseText,
+  });
   throw err;
 }
 ```
@@ -184,14 +244,15 @@ try {
 
 
 ```
-import { stream } from '@forge/llm';
+import { stream } from "@forge/llm";
 try {
   const response = await stream({
-    model: 'claude-3-7-sonnet-20250219',
+    model: "claude-opus-4-6",
     messages: [
       {
-        role: 'user', content: 'Write a short poem about Forge LLMs.'
-      }
+        role: "user",
+        content: "Write a short poem about Forge LLMs.",
+      },
     ],
   });
 
@@ -200,9 +261,10 @@ try {
   }
 
   response.close();
-
 } catch (err) {
-  console.error('#### LLM request failed:', { error:  err.context?.responseText });
+  console.error("#### LLM request failed:", {
+    error: err.context?.responseText,
+  });
   throw err;
 }
 ```
@@ -210,8 +272,8 @@ try {
 
 ## Validation rules
 
-The following request validation rules apply to specific models:
+The following request validation rules apply:
 
-| Rule | Models |
-| --- | --- |
-| When adjusting sampling parameters, modify either `temperature` or `top_p`. Do not modify both at the same time. | `claude-haiku-4-5-20251001`, `claude-sonnet-4-5-20250929` |
+| Rule |
+| --- |
+| `temperature` and `top_p` cannot be specified together. Provide only one of these, not both. |

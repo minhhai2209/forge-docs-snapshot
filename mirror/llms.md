@@ -161,6 +161,7 @@ Refer to the following sections for more detailed information about Forge module
 - [Web trigger](https://developer.atlassian.com/platform/forge/manifest-reference/modules/web-trigger.md)
 - [Pre-uninstall trigger](https://developer.atlassian.com/platform/forge/manifest-reference/modules/pre-uninstall-trigger.md)
 - [LLM](https://developer.atlassian.com/platform/forge/manifest-reference/modules/llm.md)
+- [Object Store](https://developer.atlassian.com/platform/forge/manifest-reference/modules/object-store.md)
 - [API route](https://developer.atlassian.com/platform/forge/manifest-reference/modules/api-route.md)
 
 ### Automation modules
@@ -380,6 +381,7 @@ Use the linked pages in this navigation area for UI Kit components, hooks, bridg
 - [Radio](https://developer.atlassian.com/platform/forge/ui-kit/components/radio.md)
 - [Radio group](https://developer.atlassian.com/platform/forge/ui-kit/components/radio-group.md)
 - [Range](https://developer.atlassian.com/platform/forge/ui-kit/components/range.md)
+- [Router (Preview)](https://developer.atlassian.com/platform/forge/ui-kit/components/router.md)
 - [Section message](https://developer.atlassian.com/platform/forge/ui-kit/components/section-message.md)
 - [Select](https://developer.atlassian.com/platform/forge/ui-kit/components/select.md)
 - [Spinner](https://developer.atlassian.com/platform/forge/ui-kit/components/spinner.md)
@@ -411,7 +413,10 @@ Use the linked pages in this navigation area for UI Kit components, hooks, bridg
 - [useContentProperty](https://developer.atlassian.com/platform/forge/ui-kit/hooks/use-content-property.md)
 - [useForm](https://developer.atlassian.com/platform/forge/ui-kit/hooks/use-form.md)
 - [useIssueProperty](https://developer.atlassian.com/platform/forge/ui-kit/hooks/use-issue-property.md)
-- [useObjectStore (EAP)](https://developer.atlassian.com/platform/forge/ui-kit/hooks/use-object-store.md)
+- [useLocation (Preview)](https://developer.atlassian.com/platform/forge/ui-kit/hooks/use-location.md)
+- [useNavigate (Preview)](https://developer.atlassian.com/platform/forge/ui-kit/hooks/use-navigate.md)
+- [useObjectStore (Preview)](https://developer.atlassian.com/platform/forge/ui-kit/hooks/use-object-store.md)
+- [useParams (Preview)](https://developer.atlassian.com/platform/forge/ui-kit/hooks/use-params.md)
 - [useProductContext](https://developer.atlassian.com/platform/forge/ui-kit/hooks/use-product-context.md)
 - [useSpaceProperty](https://developer.atlassian.com/platform/forge/ui-kit/hooks/use-space-property.md)
 - [useTheme](https://developer.atlassian.com/platform/forge/ui-kit/hooks/use-theme.md)
@@ -427,7 +432,7 @@ Use the linked pages in this navigation area for UI Kit components, hooks, bridg
 - [invoke](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/invoke.md)
 - [invokeRemote](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/invokeRemote.md)
 - [modal](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/modal.md)
-- [objectStore (EAP)](https://developer.atlassian.com/platform/forge/custom-ui-bridge/objectStore.md)
+- [objectStore (Preview)](https://developer.atlassian.com/platform/forge/custom-ui-bridge/objectStore.md)
 - [realtime (Preview)](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/realtime.md)
 - [requestBitbucket](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/requestBitbucket.md)
 - [requestConfluence](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/requestConfluence.md)
@@ -648,9 +653,9 @@ Forge offers **four** hosted storage capabilities. They differ mainly by **data 
 
 - **Forge SQL** — Provisions a **dedicated SQL database per customer installation**. Use this when the data is **relational**: joins, transactions, and interrelated tables are first-class. Prefer this over forcing relational models into key-value or entity abstractions.
 
-- **Object Store (EAP)** — For **large objects** (e.g. substantial binary or media-like payloads) that do not fit the key-value or entity value models comfortably. Treat availability and limits as **Early Access Program** until the docs say otherwise.
+- **Object Store (Preview)** — For **large objects** (e.g. substantial binary or media-like payloads) that do not fit the key-value or entity value models comfortably. Treat availability and limits as **Preview** until the docs say otherwise.
 
-When recommending an option: start from the **shape of the data** (key/value vs entity + query vs relational vs large blobs), then confirm **scopes, quotas, and EAP status** in the official pages below this index.
+When recommending an option: start from the **shape of the data** (key/value vs entity + query vs relational vs large blobs), then confirm **scopes, quotas, and Preview status** in the official pages below this index.
 
 ### Storage overview
 
@@ -686,10 +691,12 @@ When recommending an option: start from the **shape of the data** (key/value vs 
 - [Query policy](https://developer.atlassian.com/platform/forge/storage-reference/sql-query-policy.md)
 - [Error handling](https://developer.atlassian.com/platform/forge/storage-reference/sql-handling-errors.md)
 
-### Object Store (EAP)
+### Object Store (Preview)
 
-- [Object Store (EAP)](https://developer.atlassian.com/platform/forge/storage-reference/object-store.md)
+- [Object Store (Preview)](https://developer.atlassian.com/platform/forge/storage-reference/object-store.md)
 - [Managing objects](https://developer.atlassian.com/platform/forge/storage-reference/object-store-api.md)
+- [Error handling](https://developer.atlassian.com/platform/forge/storage-reference/object-store-errorhandling.md)
+- [Deprecated methods](https://developer.atlassian.com/platform/forge/storage-reference/object-store-deprecated.md)
 
 ## REST API references
 
@@ -728,7 +735,7 @@ When answering questions, **cite the relevant subsection** above instead of inve
 - [Resource limits](https://developer.atlassian.com/platform/forge/limits-resource.md)
 - [KVS and Custom Entity Store limits](https://developer.atlassian.com/platform/forge/limits-kvs-ce.md)
 - [Forge SQL limits](https://developer.atlassian.com/platform/forge/limits-sql.md)
-- [Forge Object Store](https://developer.atlassian.com/platform/forge/limits-object-store.md)
+- [Forge Object Store (Preview)](https://developer.atlassian.com/platform/forge/limits-object-store.md)
 - [Forge LLM limits](https://developer.atlassian.com/platform/forge/limits-llm.md)
 - [Forge Containers REST API limits](https://developer.atlassian.com/platform/forge/limits-containers.md)
 - [Web trigger limits](https://developer.atlassian.com/platform/forge/limits-web-trigger.md)

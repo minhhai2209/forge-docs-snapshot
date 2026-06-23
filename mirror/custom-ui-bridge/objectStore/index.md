@@ -1,18 +1,13 @@
-# objectStore (EAP)
+# objectStore (Preview)
 
-UI components for [Forge Object Store](/platform/forge/storage-reference/object-store/)
-are now available as part of our Early Access Program (EAP). These components can also be
-used for remote object store back-ends. To start testing,
-[sign up here](https://ecosystem.atlassian.net/servicedesk/customer/portal/1040/group/3496/create/18937).
+Forge Object Store and its UI components are now in Preview, and therefore fully supported. However, they remain under active development and may be subject to shorter deprecation windows. Preview features are suitable for early adopters in production environments.
 
-By signing up for this Early Access Program (“EAP”), you acknowledge that use of the Forge Object Store UI Components is governed by the [Atlassian Developer Terms](https://developer.atlassian.com/platform/marketplace/atlassian-developer-terms/). The Forge Object Store UI Components are considered “Early Access Materials”, as set forth in Section 10 of the Atlassian Developer Terms and is subject to applicable terms, conditions, and disclaimers.
-
-For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
+We release preview features so partners and developers can study, test, and integrate them prior to General Availability (GA). For more details, see [Forge EAP, Preview, and GA](https://developer.atlassian.com/platform/forge/whats-coming/#forge-preview).
 
 The `objectStore` bridge API provides methods for integrating your app's frontend with the
 [Forge Object Store](/platform/forge/storage-reference/object-store/). This diagram outlines a typical integration between the `upload` method and backend resolver:
 
-![Diagram of how the upload bridge calls the resolver](https://dac-static.atlassian.com/platform/forge/custom-ui-bridge/images/objectStore.png?_v=1.5800.2144)
+![Diagram of how the upload bridge calls the resolver](https://dac-static.atlassian.com/platform/forge/custom-ui-bridge/images/objectStore.png?_v=1.5800.2148)
 
 [Example app
 

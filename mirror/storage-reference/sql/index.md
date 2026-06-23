@@ -76,7 +76,9 @@ The following limits apply to each query sent and response received by your app'
 
 If you add Forge SQL to an existing app, admins of that app's current installations must review and consent before updating.
 
-As such, adding Forge SQL to an existing app will require a [major version upgrade](/platform/forge/versions/#major-version-upgrades). This will be triggered through the `sql` module (which is required to enable Forge SQL on an app).
+As such, adding Forge SQL to an existing app will require a [major version upgrade](/platform/forge/versions/#major-version-upgrades). This will be triggered through the `sql`
+[module](/platform/forge/manifest-reference/modules/sql/)
+(which is required to enable the feature on an app).
 
 ## Schema management
 
