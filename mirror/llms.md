@@ -289,6 +289,7 @@ Refer to the following sections for more detailed information about Forge module
 - [Deployment Information Provider](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-software-deployment-info.md)
 - [Build Information Provider](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-software-build-info.md)
 - [Remote Link Information Provider](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-software-remote-link-info.md)
+- [Security Information Provider (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-software-security-info.md)
 
 ### Rovo modules
 
@@ -767,8 +768,8 @@ This section documents the **Forge CLI**—the command-line tool used to **creat
 ### assistant
 
 - [assistant](https://developer.atlassian.com/platform/forge/cli-reference/assistant.md)
-- [off](https://developer.atlassian.com/platform/forge/cli-reference/assistant-off.md)
 - [on](https://developer.atlassian.com/platform/forge/cli-reference/assistant-on.md)
+- [off](https://developer.atlassian.com/platform/forge/cli-reference/assistant-off.md)
 
 ### autocomplete
 
@@ -786,8 +787,8 @@ This section documents the **Forge CLI**—the command-line tool used to **creat
 ### custom-scopes
 
 - [custom-scopes](https://developer.atlassian.com/platform/forge/cli-reference/custom-scopes.md)
-- [create](https://developer.atlassian.com/platform/forge/cli-reference/custom-scopes-create.md)
 - [list](https://developer.atlassian.com/platform/forge/cli-reference/custom-scopes-list.md)
+- [create](https://developer.atlassian.com/platform/forge/cli-reference/custom-scopes-create.md)
 
 ### deploy
 
@@ -807,8 +808,8 @@ This section documents the **Forge CLI**—the command-line tool used to **creat
 
 - [environments](https://developer.atlassian.com/platform/forge/cli-reference/environments.md)
 - [create](https://developer.atlassian.com/platform/forge/cli-reference/environments-create.md)
-- [delete](https://developer.atlassian.com/platform/forge/cli-reference/environments-delete.md)
 - [list](https://developer.atlassian.com/platform/forge/cli-reference/environments-list.md)
+- [delete](https://developer.atlassian.com/platform/forge/cli-reference/environments-delete.md)
 
 ### feedback
 
@@ -834,6 +835,13 @@ This section documents the **Forge CLI**—the command-line tool used to **creat
 ### logs
 
 - [logs](https://developer.atlassian.com/platform/forge/cli-reference/logs.md)
+
+### module
+
+- [module](https://developer.atlassian.com/platform/forge/cli-reference/module.md)
+- [add](https://developer.atlassian.com/platform/forge/cli-reference/module-add.md)
+- [list](https://developer.atlassian.com/platform/forge/cli-reference/module-list.md)
+- [show](https://developer.atlassian.com/platform/forge/cli-reference/module-show.md)
 
 ### providers
 
@@ -866,24 +874,24 @@ This section documents the **Forge CLI**—the command-line tool used to **creat
 ### variables
 
 - [variables](https://developer.atlassian.com/platform/forge/cli-reference/variables.md)
-- [list](https://developer.atlassian.com/platform/forge/cli-reference/variables-list.md)
 - [set](https://developer.atlassian.com/platform/forge/cli-reference/variables-set.md)
 - [unset](https://developer.atlassian.com/platform/forge/cli-reference/variables-unset.md)
+- [list](https://developer.atlassian.com/platform/forge/cli-reference/variables-list.md)
 
 ### version
 
 - [version](https://developer.atlassian.com/platform/forge/cli-reference/version.md)
 - [bulk-upgrade](https://developer.atlassian.com/platform/forge/cli-reference/version-bulk-upgrade.md)
-- [compare](https://developer.atlassian.com/platform/forge/cli-reference/version-compare.md)
 - [details](https://developer.atlassian.com/platform/forge/cli-reference/version-details.md)
+- [compare](https://developer.atlassian.com/platform/forge/cli-reference/version-compare.md)
 - [list](https://developer.atlassian.com/platform/forge/cli-reference/version-list.md)
 
 ### webtrigger
 
 - [webtrigger](https://developer.atlassian.com/platform/forge/cli-reference/webtrigger.md)
 - [create](https://developer.atlassian.com/platform/forge/cli-reference/webtrigger-create.md)
-- [delete](https://developer.atlassian.com/platform/forge/cli-reference/webtrigger-delete.md)
 - [list](https://developer.atlassian.com/platform/forge/cli-reference/webtrigger-list.md)
+- [delete](https://developer.atlassian.com/platform/forge/cli-reference/webtrigger-delete.md)
 
 ### whoami
 

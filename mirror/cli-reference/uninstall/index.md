@@ -21,17 +21,13 @@ Usage: forge uninstall [options]
 5
 6
 7
-8
-9
---verbose                        enable verbose mode
--s, --site [site]                site URL (example.atlassian.net)
--p, --product [Atlassian app]    Atlassian app (Jira, Confluence, Compass,
-                                 Bitbucket)
--e, --environment [environment]  specify the environment (see your default
-                                 environment by running forge settings list)
---batch                          select up to 10 installations to uninstall
-                                 (default: false)
--h, --help                       display help for command
+--verbose                               enable verbose mode
+-s, --site [site]                       site URL (example.atlassian.net)
+-p, --product [Atlassian app]           Atlassian app (Jira, Confluence, Compass, Bitbucket)
+-e, --environment [environment]         specify the environment (see your default environment by running forge settings list)
+--batch                                 select up to 10 installations to uninstall (default: false)
+-i, --installation-id <installationId>  specify the installation ID
+-h, --help                              display help for command
 ```
 
 ## Operation

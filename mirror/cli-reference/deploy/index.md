@@ -23,11 +23,13 @@ Usage: forge deploy [options] [command]
 7
 8
 9
+10
 --verbose                        enable verbose mode
 -f, --no-verify                  disable pre-deployment checks
 -v, --major-version [version]    specify a major version to update (Preview)
 -t, --tag <tag>                  specify a build tag to deploy (from forge
                                  build)
+--skip-rollout                   Skip rolling release rollout after deployment
 -e, --environment [environment]  specify the environment (see your default
                                  environment by running forge settings list)
 --non-interactive                run the command without input prompts

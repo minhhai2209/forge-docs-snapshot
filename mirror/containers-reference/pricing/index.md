@@ -24,7 +24,7 @@ Forge Containers are billed based on two dimensions: compute (vCPU) and memory (
 | Compute | vCPU-hour | $0.07177 |
 | Memory | GiB-hour | $0.00786 |
 
-Charges are calculated based on the CPU and memory values declared in your [service manifest](/platform/forge/containers-reference/ref-manifest/), not on actual runtime utilization. Although billing uses an hourly unit, consumption is sampled at **5-minute intervals** and aggregated into hourly totals.
+Charges are calculated based on the CPU and memory values declared in your [service manifest](/platform/forge/containers-reference/ref-manifest/), not on actual runtime utilization. Although billing uses an hourly unit, consumption is sampled at **1-minute intervals** and aggregated into hourly totals.
 
 ## Multi-region deployment model
 

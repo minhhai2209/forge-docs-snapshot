@@ -26,11 +26,9 @@ Usage: forge webtrigger [options] [command]
 1
 2
 3
-4
 create [options]  get a web trigger URL
-delete [options]  delete a webtrigger URL
-help [command]    display help for command
 list [options]    list webtrigger URLs
+delete [options]  delete a webtrigger URL
 ```
 
 ## Operation

@@ -38,9 +38,10 @@ Usage: forge version bulk-upgrade [options] [command]
 13
 14
 15
-16
-cancel [options]  cancels a version upgrade that is in progress.
-help [command]    display help for command
+start [options]   upgrades installations using one major version to another version. The version selection list displays:
+ - major version number
+ - deployment date
+ - number of installations
 list [options]    returns a summary of version update requests. Details include:
  - upgrade ID
  - upgrade request status
@@ -51,10 +52,7 @@ list [options]    returns a summary of version update requests. Details include:
  - number of updates completed
  - number of updates pending
  - number of updates failed
-start [options]   upgrades installations using one major version to another version. The version selection list displays:
- - major version number
- - deployment date
- - number of installations
+cancel [options]  cancels a version upgrade that is in progress.
 ```
 
 ## Operation
