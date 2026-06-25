@@ -841,7 +841,7 @@ const Edit = () => {
 ```
 
 Outcome:
-![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.2152)
+![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.2158)
 
 ##### Updated files
 
@@ -917,7 +917,7 @@ const Edit = () => {
 ```
 
 Outcome:
-![Updated experience to inline edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-inline.png?_v=1.5800.2152)
+![Updated experience to inline edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-inline.png?_v=1.5800.2158)
 
 
 How to edit custom fields in the modal (for more complex UI)
@@ -1030,7 +1030,7 @@ const Edit = () => {
 ```
 
 Outcome:
-![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.2152)
+![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.2158)
 
 ##### Updated files
 
@@ -1140,7 +1140,7 @@ ForgeReconciler.render(
 ```
 
 Outcome:
-![Updated experience to modal edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-new-modal.png?_v=1.5800.2152)
+![Updated experience to modal edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-new-modal.png?_v=1.5800.2158)
 
 ### Issue creation and issue transition dialog
 
@@ -1219,7 +1219,7 @@ values.
 
 ### Issue Bulk Edit (Preview)
 
-If your app's edit experience relies on issue or project context, note that this context is unavailable in Jira Issue Bulk Edit. You can use the renderContext value to detect this scenario and render an appropriate fallback UI. See the example below:
+If your app's edit experience relies on issue or project context, you need to update your implementation. In the `issue-bulk-edit` context, `issue` and `project` are not available. Instead, Forge provides `issues` and `projects` containing the list of issues and projects selected for the bulk edit operation. You can use the `renderContext` value to detect this scenario and render an appropriate UI. See the example below:
 
 ```
 ```
@@ -1844,6 +1844,8 @@ Use the [useProductContext](/platform/forge/ui-kit/hooks/use-product-context/) h
 | `project.id` | `string` | `edit` `view` | The ID of the project where the module is rendered. |
 | `project.key` | `string` | `edit` `view` | The key of the project where the module is rendered. |
 | `project.type` | `'business'`  `'software'`  `'product_discovery'`  `'service_desk'`  `'ops'` | `edit` `view` | The type of the project where the module is rendered. |
+| `issues` | `issue[]` | `edit` | It represents the list of the issues selected for Issue Bulk Edit operation. For each issue `id`, `key`, `type` and `typeId` will be available. |
+| `projects` | `project[]` | `edit` | It represents the list of the projects selected for Issue Bulk Edit operation. For each project `id`, `key` and `type` will be available. |
 | `renderContext` | `'issue-view'` `'issue-create'` `'issue-transition'` `'portal-view'` `'portal-request'` `'issue-bulk-edit'` | `edit` `view` | The context in which the extension is rendered. |
 | `experience` | `'issue-view'` `'issue-create'` `'issue-transition'` `'portal-view'` `'portal-request'` `'issue-bulk-edit'` | `edit` `view` | The type of experience in which the extension is rendered. While the render context is tied to a specific view, the experience property defines the type of view. |
 | `configurationId` | `number` | `contextConfig` | The ID of the current [configuration](#configuration). |
@@ -1852,8 +1854,6 @@ Use the [useProductContext](/platform/forge/ui-kit/hooks/use-product-context/) h
 | `issueTransition.id` | `string` | `edit` | The ID of the transition on which the module is rendered. Only available for `issue-transition` experience. |
 | `portal.id` | `number` | `edit` | The ID of the service desk, depending on the page where it is rendered. Only available for `portal-view` and `portal-request` experiences. |
 | `request.typeId` | `number` | `edit` | The ID of the request type, depending on the page where it is rendered. Only available for `portal-view` and `portal-request` experiences. |
-
-For `issue-bulk-edit`, `Issue` and `Project` details will not be available in extension context.
 
 ## Example
 

@@ -61,6 +61,10 @@ Here is an example of an app that uses `useNavigate` to navigate between pages.
 36
 37
 38
+39
+40
+41
+42
 import ForgeReconciler, { Button, Text, Heading } from '@forge/react';
 import { Router, Route, useNavigate } from '@forge/react/router';
 
@@ -88,17 +92,21 @@ const SettingsPage = () => {
 };
 
 const App = () => (
-  <Router>
+  <>
     <Route path="/">
       <HomePage />
     </Route>
     <Route path="/settings">
       <SettingsPage />
     </Route>
-  </Router>
+  </>
 );
 
-ForgeReconciler.render(<App />);
+ForgeReconciler.render(
+  <Router>
+    <App />
+  </Router>
+);
 ```
 
 ### Function signature

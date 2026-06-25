@@ -94,17 +94,21 @@ const SettingsPage = () => (
 );
 
 const App = () => (
-  <Router>
+  <>
     <Route path="/">
       <HomePage />
     </Route>
     <Route path="/settings">
       <SettingsPage />
     </Route>
-  </Router>
+  </>
 );
 
-ForgeReconciler.render(<App />);
+ForgeReconciler.render(
+  <Router>
+    <App />
+  </Router>
+);
 ```
 ```
 
@@ -125,14 +129,18 @@ import ForgeReconciler, { Text, Spinner } from '@forge/react';
 import { Router, Route } from '@forge/react/router';
 
 const App = () => (
-  <Router fallback={<Spinner label="Loading..." />}>
+  <>
     <Route path="/">
       <Text>Home Page</Text>
     </Route>
-  </Router>
+  </>
 );
 
-ForgeReconciler.render(<App />);
+ForgeReconciler.render(
+  <Router fallback={<Spinner label="Loading..." />}>
+    <App />
+  </Router>
+);
 ```
 ```
 
@@ -158,14 +166,18 @@ const PostDetail = () => {
 };
 
 const App = () => (
-  <Router>
+  <>
     <Route path="/posts/:postId">
       <PostDetail />
     </Route>
-  </Router>
+  </>
 );
 
-ForgeReconciler.render(<App />);
+ForgeReconciler.render(
+  <Router>
+    <App />
+  </Router>
+);
 ```
 ```
 
@@ -191,14 +203,18 @@ const CommentDetail = () => {
 };
 
 const App = () => (
-  <Router>
+  <>
     <Route path="/posts/:postId/comments/:commentId">
       <CommentDetail />
     </Route>
-  </Router>
+  </>
 );
 
-ForgeReconciler.render(<App />);
+ForgeReconciler.render(
+  <Router>
+    <App />
+  </Router>
+);
 ```
 ```
 
@@ -219,7 +235,7 @@ import ForgeReconciler, { Text } from '@forge/react';
 import { Router, Route } from '@forge/react/router';
 
 const App = () => (
-  <Router>
+  <>
     <Route path="/">
       <Text>Home</Text>
     </Route>
@@ -229,9 +245,13 @@ const App = () => (
     <Route path="/*">
       <Text>Page not found</Text>
     </Route>
-  </Router>
+  </>
 );
 
-ForgeReconciler.render(<App />);
+ForgeReconciler.render(
+  <Router>
+    <App />
+  </Router>
+);
 ```
 ```

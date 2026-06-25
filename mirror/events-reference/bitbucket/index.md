@@ -6,6 +6,11 @@ Your Forge app must have permission from the
 workspace admin to access the data it provides within the event payload.
 The OAuth scope required for each event is documented below.
 
+In rare circumstances, Bitbucket event delivery can be significantly delayed.
+If you need to ignore delayed events or handle them differently, check the
+event timestamps — see the payload format sections for the timestamp fields
+available for each event.
+
 ## Repository events
 
 You can subscribe to these Bitbucket repository events in Forge apps:
@@ -23,11 +28,12 @@ The required OAuth scope is `read:repository:bitbucket`.
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:bitbucket:created:repository`. |
+| timestamp | `string` | The timestamp the event was emitted in ISO 8601 format. |
 | selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | actor | `Actor` | The user that has caused the event. |
-| repository | `BitbucketResource` | The repository the event is related to. |
-| project | `BitbucketResource` | The project of the repository the event is related to. |
-| workspace | `BitbucketResource` | The workspace of the repository the event is related to. |
+| repository | `Repository` | The repository the event is related to. |
+| project | `Project` | The project of the repository the event is related to. |
+| workspace | `Workspace` | The workspace of the repository the event is related to. |
 
 #### Type reference
 
@@ -46,7 +52,16 @@ interface Actor {
   uuid: string;
 }
 
-interface BitbucketResource {
+interface Repository {
+  uuid: string;
+  slug?: string;
+}
+
+interface Project {
+  uuid: string;
+}
+
+interface Workspace {
   uuid: string;
 }
 ```
@@ -80,7 +95,8 @@ This is an example payload of a newly created repository.
   "workspace": {
     "uuid": "{4c16a397-8e48-479c-8ca2-442e46c90570}"
   },
-  "eventType": "avi:bitbucket:created:repository"
+  "eventType": "avi:bitbucket:created:repository",
+  "timestamp": "2026-03-23T06:03:12.361017Z"
 }
 ```
 ```
@@ -96,11 +112,12 @@ The required OAuth scope is `read:repository:bitbucket`.
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:bitbucket:updated:repository`. |
+| timestamp | `string` | The timestamp the event was emitted in ISO 8601 format. |
 | selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | actor | `Actor` | The user that has caused the event. |
-| repository | `BitbucketResource` | The repository the event is related to. |
-| project | `BitbucketResource` | The project of the repository the event is related to. |
-| workspace | `BitbucketResource` | The workspace of the repository the event is related to. |
+| repository | `Repository` | The repository the event is related to. |
+| project | `Project` | The project of the repository the event is related to. |
+| workspace | `Workspace` | The workspace of the repository the event is related to. |
 | changes | `Changes` | An object containing the changes that were applied to the repository. |
 
 #### Type reference
@@ -120,7 +137,16 @@ interface Actor {
   uuid: string;
 }
 
-interface BitbucketResource {
+interface Repository {
+  uuid: string;
+  slug?: string;
+}
+
+interface Project {
+  uuid: string;
+}
+
+interface Workspace {
   uuid: string;
 }
 
@@ -178,7 +204,8 @@ This is an example payload of an updated repository.
       }
     }
   },
-  "eventType": "avi:bitbucket:updated:repository"
+  "eventType": "avi:bitbucket:updated:repository",
+  "timestamp": "2026-03-23T06:03:12.361017Z"
 }
 ```
 ```
@@ -194,11 +221,12 @@ The required OAuth scope is `read:repository:bitbucket`.
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:bitbucket:push:repository`. |
+| timestamp | `string` | The timestamp the event was emitted in ISO 8601 format. |
 | selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | actor | `Actor` | The user that has caused the event. |
-| repository | `BitbucketResource` | The repository the event is related to. |
-| project | `BitbucketResource` | The project of the repository the event is related to. |
-| workspace | `BitbucketResource` | The workspace of the repository the event is related to. |
+| repository | `Repository` | The repository the event is related to. |
+| project | `Project` | The project of the repository the event is related to. |
+| workspace | `Workspace` | The workspace of the repository the event is related to. |
 | push | `Push` | An object containing the push information. |
 
 #### Type reference
@@ -218,7 +246,16 @@ interface Actor {
   uuid: string;
 }
 
-interface BitbucketResource {
+interface Repository {
+  uuid: string;
+  slug?: string;
+}
+
+interface Project {
+  uuid: string;
+}
+
+interface Workspace {
   uuid: string;
 }
 
@@ -227,17 +264,22 @@ interface TruncatedValue {
   truncated: boolean;
 }
 
+interface Author {
+  user: Actor;
+}
+
 interface Commit {
   hash: string;
   message: TruncatedValue;
   date: string;
-  author: Actor;
+  author: Author;
 }
 
 interface CommitPush {
   ref: string;
-  before: string | null;
-  after: string | null;
+  mainbranch: boolean;
+  before?: string;
+  after?: string;
   created: boolean;
   closed: boolean;
   forced: boolean;
@@ -246,9 +288,15 @@ interface CommitPush {
 }
 
 interface TagPush {
-  date: string | null;
-  message: TruncatedValue | null;
-  author: Actor | null;
+  ref: string;
+  created: boolean;
+  forced: boolean;
+  closed: boolean;
+  before?: string;
+  after?: string;
+  date?: string;
+  message?: TruncatedValue;
+  author?: Author;
 }
 
 type Push = CommitPush | TagPush;
@@ -275,7 +323,8 @@ This is an example payload of source code being pushed onto a repository.
     "uuid": "{cc8e193d-7603-4dfd-8771-fcc8960aa0fb}"
   },
   "repository": {
-    "uuid": "{15a31549-1cff-45dc-9d0d-310114c5038b}"
+    "uuid": "{15a31549-1cff-45dc-9d0d-310114c5038b}",
+    "slug": "repository-slug"
   },
   "project": {
     "uuid": "{1860e69a-65c1-4ac2-8ab0-cbd2868e7573}"
@@ -285,7 +334,7 @@ This is an example payload of source code being pushed onto a repository.
   },
   "push": {
     "ref": "main",
-    "before": null,
+    "mainbranch": true,
     "after": "a37e0ad81173c7f6707d6b9f74dab4ce9938064d",
     "created": true,
     "closed": false,
@@ -309,7 +358,60 @@ This is an example payload of source code being pushed onto a repository.
       }
     ]
   },
-  "eventType": "avi:bitbucket:push:repository"
+  "eventType": "avi:bitbucket:push:repository",
+  "timestamp": "2026-03-23T06:03:12.361017Z"
+}
+```
+```
+
+This is an example payload of an annotated tag being pushed.
+
+```
+```
+1
+2
+```
+
+
+
+```
+{
+  "actor": {
+    "type": "user",
+    "accountId": "5ffed3379edf280075d75b20",
+    "uuid": "{cc8e193d-7603-4dfd-8771-fcc8960aa0fb}"
+  },
+  "repository": {
+    "uuid": "{15a31549-1cff-45dc-9d0d-310114c5038b}",
+    "slug": "repository-slug"
+  },
+  "project": {
+    "uuid": "{1860e69a-65c1-4ac2-8ab0-cbd2868e7573}"
+  },
+  "workspace": {
+    "uuid": "{4c16a397-8e48-479c-8ca2-442e46c90570}"
+  },
+  "push": {
+    "ref": "main",
+    "date": "2026-05-27T07:05:01.000000Z",
+    "after": "a37e0ad81173c7f6707d6b9f74dab4ce9938064d",
+    "created": true,
+    "closed": false,
+    "forced": false,
+    "author": {
+      "user": {
+        "type": "user",
+        "accountId": "712020:f44b4850-c6f6-44cb-9722-b800af116eb4",
+        "uuid": "{c0de26c1-c01f-4d70-a19c-dad5a5b2e531}"
+      }
+    },
+    "message": {
+      "truncated": false,
+      "value": "Release version 1.0\n"
+    }
+  },
+  "eventType": "avi:bitbucket:push:repository",
+  "timestamp": "2026-03-23T06:03:12.361017Z"
 }
 ```
 ```
@@ -325,11 +427,12 @@ The required OAuth scope is `read:repository:bitbucket`.
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:bitbucket:deleted:repository`. |
+| timestamp | `string` | The timestamp the event was emitted in ISO 8601 format. |
 | selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | actor | `Actor` | The user that has caused the event. |
-| repository | `BitbucketResource` | The repository the event is related to. |
-| project | `BitbucketResource` | The project of the repository the event is related to. |
-| workspace | `BitbucketResource` | The workspace of the repository the event is related to. |
+| repository | `Repository` | The repository the event is related to. |
+| project | `Project` | The project of the repository the event is related to. |
+| workspace | `Workspace` | The workspace of the repository the event is related to. |
 
 #### Type reference
 
@@ -348,7 +451,16 @@ interface Actor {
   uuid: string;
 }
 
-interface BitbucketResource {
+interface Repository {
+  uuid: string;
+  slug?: string;
+}
+
+interface Project {
+  uuid: string;
+}
+
+interface Workspace {
   uuid: string;
 }
 ```
@@ -382,7 +494,8 @@ This is an example payload of a repository being deleted.
   "workspace": {
     "uuid": "{4c16a397-8e48-479c-8ca2-442e46c90570}"
   },
-  "eventType": "avi:bitbucket:deleted:repository"
+  "eventType": "avi:bitbucket:deleted:repository",
+  "timestamp": "2026-03-23T06:03:12.361017Z"
 }
 ```
 ```
@@ -398,11 +511,12 @@ The required OAuth scope is `read:repository:bitbucket`.
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:bitbucket:created:build-status`. |
+| timestamp | `string` | The timestamp the event was emitted in ISO 8601 format. |
 | selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | actor | `Actor` | The user that has caused the event. |
-| repository | `BitbucketResource` | The repository the event is related to. |
-| project | `BitbucketResource` | The parent project of the repository that the event is related to. |
-| workspace | `BitbucketResource` | The workspace of the repository the event is related to. |
+| repository | `Repository` | The repository the event is related to. |
+| project | `Project` | The parent project of the repository that the event is related to. |
+| workspace | `Workspace` | The workspace of the repository the event is related to. |
 | buildStatus | `BuildStatus` | The build status the event is related to. |
 
 #### Type reference
@@ -422,7 +536,16 @@ interface Actor {
   uuid: string;
 }
 
-interface BitbucketResource {
+interface Repository {
+  uuid: string;
+  slug?: string;
+}
+
+interface Project {
+  uuid: string;
+}
+
+interface Workspace {
   uuid: string;
 }
 
@@ -496,11 +619,12 @@ The required OAuth scope is `read:repository:bitbucket`.
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:bitbucket:updated:build-status`. |
+| timestamp | `string` | The timestamp the event was emitted in ISO 8601 format. |
 | selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | actor | `Actor` | The user that has caused the event. |
-| repository | `BitbucketResource` | The repository the event is related to. |
-| project | `BitbucketResource` | The parent project of the repository that the event is related to. |
-| workspace | `BitbucketResource` | The workspace of the repository the event is related to. |
+| repository | `Repository` | The repository the event is related to. |
+| project | `Project` | The parent project of the repository that the event is related to. |
+| workspace | `Workspace` | The workspace of the repository the event is related to. |
 | buildStatus | `BuildStatus` | The build status the event is related to. |
 
 #### Type reference
@@ -520,7 +644,16 @@ interface Actor {
   uuid: string;
 }
 
-interface BitbucketResource {
+interface Repository {
+  uuid: string;
+  slug?: string;
+}
+
+interface Project {
+  uuid: string;
+}
+
+interface Workspace {
   uuid: string;
 }
 
@@ -559,7 +692,8 @@ This is an example payload of a build status being updated.
     "uuid": "{cc8e193d-7603-4dfd-8771-fcc8960aa0fb}"
   },
   "repository": {
-    "uuid": "{15a31549-1cff-45dc-9d0d-310114c5038b}"
+    "uuid": "{15a31549-1cff-45dc-9d0d-310114c5038b}",
+    "slug": "repository-slug"
   },
   "project": {
     "uuid": "{1860e69a-65c1-4ac2-8ab0-cbd2868e7573}"
@@ -592,11 +726,12 @@ The required OAuth scope is `read:repository:bitbucket`.
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:bitbucket:created:commit-comment`. |
+| timestamp | `string` | The timestamp the event was emitted in ISO 8601 format. |
 | selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | actor | `Actor` | The user that has caused the event. |
-| repository | `BitbucketResource` | The repository of the commit the event is related to. |
-| project | `BitbucketResource` | The project of the commit the event is related to. |
-| workspace | `BitbucketResource` | The workspace of the commit the event is related to. |
+| repository | `Repository` | The repository of the commit the event is related to. |
+| project | `Project` | The project of the commit the event is related to. |
+| workspace | `Workspace` | The workspace of the commit the event is related to. |
 | commit | `Commit` | The commit the comment is created on. |
 | comment | `Comment` | The commit comment that was created. |
 
@@ -617,7 +752,16 @@ interface Actor {
   uuid: string;
 }
 
-interface BitbucketResource {
+interface Repository {
+  uuid: string;
+  slug?: string;
+}
+
+interface Project {
+  uuid: string;
+}
+
+interface Workspace {
   uuid: string;
 }
 
@@ -651,7 +795,8 @@ This is an example payload of a commit comment being created.
     "uuid": "{f9a75168-ed8e-4998-8850-d49e0cde4917}"
   },
   "repository": {
-    "uuid": "{ea73e3cd-f7ee-4fac-aeaa-a4e4b77ba8c9}"
+    "uuid": "{ea73e3cd-f7ee-4fac-aeaa-a4e4b77ba8c9}",
+    "slug": "repository-slug"
   },
   "project": {
     "uuid": "{1000c478-a2f2-4f72-9b5f-cebbc2b5ba3d}"
@@ -665,7 +810,8 @@ This is an example payload of a commit comment being created.
   "comment": {
     "id": 78675
   },
-  "eventType": "avi:bitbucket:created:commit-comment"
+  "eventType": "avi:bitbucket:created:commit-comment",
+  "timestamp": "2026-03-23T06:03:12.361017Z"
 }
 ```
 ```
@@ -687,11 +833,12 @@ The required OAuth scope is `read:pullrequest:bitbucket`.
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:bitbucket:created:pullrequest`. |
+| timestamp | `string` | The timestamp the event was emitted in ISO 8601 format. |
 | selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | actor | `Actor` | The user that has caused the event. |
-| repository | `BitbucketResource` | The repository of the pull request the event is related to. |
-| project | `BitbucketResource` | The project of the pull request the event is related to. |
-| workspace | `BitbucketResource` | The workspace of the pull request the event is related to. |
+| repository | `Repository` | The repository of the pull request the event is related to. |
+| project | `Project` | The project of the pull request the event is related to. |
+| workspace | `Workspace` | The workspace of the pull request the event is related to. |
 | pullrequest | `PullRequest` | The pull request the event is related to. |
 
 #### Type reference
@@ -711,7 +858,16 @@ interface Actor {
   uuid: string;
 }
 
-interface BitbucketResource {
+interface Repository {
+  uuid: string;
+  slug?: string;
+}
+
+interface Project {
+  uuid: string;
+}
+
+interface Workspace {
   uuid: string;
 }
 
@@ -727,6 +883,10 @@ interface PullRequest {
   state: string;
   source: Branch;
   destination: Branch;
+  updatedOn?: string;
+  createdOn?: string;
+  commentCount?: number;
+  taskCount?: number;
 }
 ```
 ```
@@ -751,7 +911,8 @@ This is an example payload of a pull request being created.
     "uuid": "{cc8e193d-7603-4dfd-8771-fcc8960aa0fb}"
   },
   "repository": {
-    "uuid": "{15a31549-1cff-45dc-9d0d-310114c5038b}"
+    "uuid": "{15a31549-1cff-45dc-9d0d-310114c5038b}",
+    "slug": "repository-slug"
   },
   "project": {
     "uuid": "{1860e69a-65c1-4ac2-8ab0-cbd2868e7573}"
@@ -773,9 +934,14 @@ This is an example payload of a pull request being created.
       "commit": {
         "hash": "a37e0ad81173"
       }
-    }
+    },
+    "updatedOn": "2026-06-01T03:12:16.159643+00:00",
+    "createdOn": "2026-05-27T06:42:44.936130+00:00",
+    "commentCount": 2,
+    "taskCount": 2
   },
-  "eventType": "avi:bitbucket:created:pullrequest"
+  "eventType": "avi:bitbucket:created:pullrequest",
+  "timestamp": "2026-03-23T06:03:12.361017Z"
 }
 ```
 ```
@@ -791,11 +957,12 @@ The required OAuth scope is `read:pullrequest:bitbucket`.
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:bitbucket:updated:pullrequest`. |
+| timestamp | `string` | The timestamp the event was emitted in ISO 8601 format. |
 | selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | actor | `Actor` | The user that has caused the event. |
-| repository | `BitbucketResource` | The repository of the pull request the event is related to. |
-| project | `BitbucketResource` | The project of the pull request the event is related to. |
-| workspace | `BitbucketResource` | The workspace of the pull request the event is related to. |
+| repository | `Repository` | The repository of the pull request the event is related to. |
+| project | `Project` | The project of the pull request the event is related to. |
+| workspace | `Workspace` | The workspace of the pull request the event is related to. |
 | pullrequest | `PullRequest` | The pull request the event is related to. |
 
 #### Type reference
@@ -815,7 +982,16 @@ interface Actor {
   uuid: string;
 }
 
-interface BitbucketResource {
+interface Repository {
+  uuid: string;
+  slug?: string;
+}
+
+interface Project {
+  uuid: string;
+}
+
+interface Workspace {
   uuid: string;
 }
 
@@ -831,6 +1007,10 @@ interface PullRequest {
   state: string;
   source: Branch;
   destination: Branch;
+  updatedOn?: string;
+  createdOn?: string;
+  commentCount?: number;
+  taskCount?: number;
 }
 ```
 ```
@@ -855,7 +1035,8 @@ This is an example payload of a pull request being updated.
     "uuid": "{cc8e193d-7603-4dfd-8771-fcc8960aa0fb}"
   },
   "repository": {
-    "uuid": "{15a31549-1cff-45dc-9d0d-310114c5038b}"
+    "uuid": "{15a31549-1cff-45dc-9d0d-310114c5038b}",
+    "slug": "repository-slug"
   },
   "project": {
     "uuid": "{1860e69a-65c1-4ac2-8ab0-cbd2868e7573}"
@@ -877,9 +1058,14 @@ This is an example payload of a pull request being updated.
       "commit": {
         "hash": "a37e0ad81173"
       }
-    }
+    },
+    "updatedOn": "2026-06-01T03:12:16.159643+00:00",
+    "createdOn": "2026-05-27T06:42:44.936130+00:00",
+    "commentCount": 2,
+    "taskCount": 2
   },
-  "eventType": "avi:bitbucket:updated:pullrequest"
+  "eventType": "avi:bitbucket:updated:pullrequest",
+  "timestamp": "2026-03-23T06:03:12.361017Z"
 }
 ```
 ```
@@ -895,11 +1081,12 @@ The required OAuth scope is `read:pullrequest:bitbucket`.
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:bitbucket:fulfilled:pullrequest`. |
+| timestamp | `string` | The timestamp the event was emitted in ISO 8601 format. |
 | selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | actor | `Actor` | The user that has caused the event. |
-| repository | `BitbucketResource` | The repository of the pull request the event is related to. |
-| project | `BitbucketResource` | The project of the pull request the event is related to. |
-| workspace | `BitbucketResource` | The workspace of the pull request the event is related to. |
+| repository | `Repository` | The repository of the pull request the event is related to. |
+| project | `Project` | The project of the pull request the event is related to. |
+| workspace | `Workspace` | The workspace of the pull request the event is related to. |
 | pullrequest | `PullRequest` | The pull request the event is related to. |
 
 #### Type reference
@@ -919,7 +1106,16 @@ interface Actor {
   uuid: string;
 }
 
-interface BitbucketResource {
+interface Repository {
+  uuid: string;
+  slug?: string;
+}
+
+interface Project {
+  uuid: string;
+}
+
+interface Workspace {
   uuid: string;
 }
 
@@ -938,6 +1134,10 @@ interface PullRequest {
   source: Branch;
   destination: Branch;
   mergeCommit: Hash;
+  updatedOn?: string;
+  createdOn?: string;
+  commentCount?: number;
+  taskCount?: number;
 }
 ```
 ```
@@ -962,7 +1162,8 @@ This is an example payload of a pull request being merged.
     "uuid": "{cc8e193d-7603-4dfd-8771-fcc8960aa0fb}"
   },
   "repository": {
-    "uuid": "{15a31549-1cff-45dc-9d0d-310114c5038b}"
+    "uuid": "{15a31549-1cff-45dc-9d0d-310114c5038b}",
+    "slug": "repository-slug"
   },
   "project": {
     "uuid": "{1860e69a-65c1-4ac2-8ab0-cbd2868e7573}"
@@ -987,9 +1188,14 @@ This is an example payload of a pull request being merged.
     },
     "mergeCommit": {
       "hash": "71e4ecfcd2ba"
-    }
+    },
+    "updatedOn": "2026-06-01T03:12:16.159643+00:00",
+    "createdOn": "2026-05-27T06:42:44.936130+00:00",
+    "commentCount": 2,
+    "taskCount": 2
   },
-  "eventType": "avi:bitbucket:fulfilled:pullrequest"
+  "eventType": "avi:bitbucket:fulfilled:pullrequest",
+  "timestamp": "2026-03-23T06:03:12.361017Z"
 }
 ```
 ```
@@ -1005,11 +1211,12 @@ The required OAuth scope is `read:pullrequest:bitbucket`.
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:bitbucket:rejected:pullrequest`. |
+| timestamp | `string` | The timestamp the event was emitted in ISO 8601 format. |
 | selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | actor | `Actor` | The user that has caused the event. |
-| repository | `BitbucketResource` | The repository of the pull request the event is related to. |
-| project | `BitbucketResource` | The project of the pull request the event is related to. |
-| workspace | `BitbucketResource` | The workspace of the pull request the event is related to. |
+| repository | `Repository` | The repository of the pull request the event is related to. |
+| project | `Project` | The project of the pull request the event is related to. |
+| workspace | `Workspace` | The workspace of the pull request the event is related to. |
 | pullrequest | `PullRequest` | The pull request the event is related to. |
 
 #### Type reference
@@ -1029,7 +1236,16 @@ interface Actor {
   uuid: string;
 }
 
-interface BitbucketResource {
+interface Repository {
+  uuid: string;
+  slug?: string;
+}
+
+interface Project {
+  uuid: string;
+}
+
+interface Workspace {
   uuid: string;
 }
 
@@ -1048,6 +1264,10 @@ interface PullRequest {
   source: Branch;
   destination: Branch;
   mergeCommit: Hash;
+  updatedOn?: string;
+  createdOn?: string;
+  commentCount?: number;
+  taskCount?: number;
 }
 ```
 ```
@@ -1072,7 +1292,8 @@ This is an example payload of a pull request being declined.
     "uuid": "{cc8e193d-7603-4dfd-8771-fcc8960aa0fb}"
   },
   "repository": {
-    "uuid": "{15a31549-1cff-45dc-9d0d-310114c5038b}"
+    "uuid": "{15a31549-1cff-45dc-9d0d-310114c5038b}",
+    "slug": "repository-slug"
   },
   "project": {
     "uuid": "{1860e69a-65c1-4ac2-8ab0-cbd2868e7573}"
@@ -1094,9 +1315,14 @@ This is an example payload of a pull request being declined.
       "commit": {
         "hash": "a37e0ad81173"
       }
-    }
+    },
+    "updatedOn": "2026-06-01T03:12:16.159643+00:00",
+    "createdOn": "2026-05-27T06:42:44.936130+00:00",
+    "commentCount": 2,
+    "taskCount": 2
   },
-  "eventType": "avi:bitbucket:rejected:pullrequest"
+  "eventType": "avi:bitbucket:rejected:pullrequest",
+  "timestamp": "2026-03-23T06:03:12.361017Z"
 }
 ```
 ```
@@ -1110,11 +1336,12 @@ The required OAuth scope is `read:pullrequest:bitbucket`.
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:bitbucket:created:pullrequest-comment`. |
+| timestamp | `string` | The timestamp the event was emitted in ISO 8601 format. |
 | selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | actor | `Actor` | The user that has caused the event. |
-| repository | `BitbucketResource` | The repository of the pull request the event is related to. |
-| project | `BitbucketResource` | The project of the pull request the event is related to. |
-| workspace | `BitbucketResource` | The workspace of the pull request the event is related to. |
+| repository | `Repository` | The repository of the pull request the event is related to. |
+| project | `Project` | The project of the pull request the event is related to. |
+| workspace | `Workspace` | The workspace of the pull request the event is related to. |
 | pullrequest | `PullRequest` | The pull request the event is related to. |
 | comment | `Comment` | The pull request comment that was created. |
 
@@ -1135,7 +1362,16 @@ interface Actor {
   uuid: string;
 }
 
-interface BitbucketResource {
+interface Repository {
+  uuid: string;
+  slug?: string;
+}
+
+interface Project {
+  uuid: string;
+}
+
+interface Workspace {
   uuid: string;
 }
 
@@ -1153,6 +1389,10 @@ interface PullRequest {
   state: string;
   source: Branch;
   destination: Branch;
+  updatedOn?: string;
+  createdOn?: string;
+  commentCount?: number;
+  taskCount?: number;
 }
 
 interface Comment {
@@ -1182,7 +1422,8 @@ This is an example payload of a pull request comment being created.
       "uuid": "{b0670c4c-4b6c-4f89-b47c-be2de5a64d58}"
     },
     "repository": {
-      "uuid": "{30cbb1be-00da-425d-b3b1-29695ceb11f9}"
+      "uuid": "{30cbb1be-00da-425d-b3b1-29695ceb11f9}",
+      "slug": "repository-slug"
     },
     "project": {
       "uuid": "{7805fc96-8fee-4a5c-91e5-457368075853}"
@@ -1204,7 +1445,11 @@ This is an example payload of a pull request comment being created.
         "commit": {
           "hash": "ec8950c039c0"
         }
-      }
+      },
+      "updatedOn": "2026-06-01T03:12:16.159643+00:00",
+      "createdOn": "2026-05-27T06:42:44.936130+00:00",
+      "commentCount": 2,
+      "taskCount": 2
     },
     "comment": {
       "id": 406336310
@@ -1223,11 +1468,12 @@ The required OAuth scope is `read:pullrequest:bitbucket`.
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:bitbucket:updated:pullrequest-comment`. |
+| timestamp | `string` | The timestamp the event was emitted in ISO 8601 format. |
 | selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | actor | `Actor` | The user that has caused the event. |
-| repository | `BitbucketResource` | The repository of the pull request the event is related to. |
-| project | `BitbucketResource` | The project of the pull request the event is related to. |
-| workspace | `BitbucketResource` | The workspace of the pull request the event is related to. |
+| repository | `Repository` | The repository of the pull request the event is related to. |
+| project | `Project` | The project of the pull request the event is related to. |
+| workspace | `Workspace` | The workspace of the pull request the event is related to. |
 | pullrequest | `PullRequest` | The pull request the event is related to. |
 | comment | `Comment` | The pull request comment that was updated. |
 
@@ -1248,7 +1494,16 @@ interface Actor {
   uuid: string;
 }
 
-interface BitbucketResource {
+interface Repository {
+  uuid: string;
+  slug?: string;
+}
+
+interface Project {
+  uuid: string;
+}
+
+interface Workspace {
   uuid: string;
 }
 
@@ -1266,6 +1521,10 @@ interface PullRequest {
   state: string;
   source: Branch;
   destination: Branch;
+  updatedOn?: string;
+  createdOn?: string;
+  commentCount?: number;
+  taskCount?: number;
 }
 
 interface Comment {
@@ -1339,11 +1598,12 @@ The required OAuth scope is `read:pullrequest:bitbucket`.
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:bitbucket:deleted:pullrequest-comment`. |
+| timestamp | `string` | The timestamp the event was emitted in ISO 8601 format. |
 | selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | actor | `Actor` | The user that has caused the event. |
-| repository | `BitbucketResource` | The repository of the pull request the event is related to. |
-| project | `BitbucketResource` | The project of the pull request the event is related to. |
-| workspace | `BitbucketResource` | The workspace of the pull request the event is related to. |
+| repository | `Repository` | The repository of the pull request the event is related to. |
+| project | `Project` | The project of the pull request the event is related to. |
+| workspace | `Workspace` | The workspace of the pull request the event is related to. |
 | pullrequest | `PullRequest` | The pull request the event is related to. |
 | comment | `Comment` | The pull request comment that was deleted. |
 
@@ -1364,7 +1624,16 @@ interface Actor {
   uuid: string;
 }
 
-interface BitbucketResource {
+interface Repository {
+  uuid: string;
+  slug?: string;
+}
+
+interface Project {
+  uuid: string;
+}
+
+interface Workspace {
   uuid: string;
 }
 
@@ -1382,6 +1651,10 @@ interface PullRequest {
   state: string;
   source: Branch;
   destination: Branch;
+  updatedOn?: string;
+  createdOn?: string;
+  commentCount?: number;
+  taskCount?: number;
 }
 
 interface Comment {
@@ -1452,11 +1725,12 @@ The required OAuth scope is `read:pullrequest:bitbucket`.
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:bitbucket:resolved:pullrequest-comment`. |
+| timestamp | `string` | The timestamp the event was emitted in ISO 8601 format. |
 | selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | actor | `Actor` | The user that has caused the event. |
-| repository | `BitbucketResource` | The repository of the pull request the event is related to. |
-| project | `BitbucketResource` | The project of the pull request the event is related to. |
-| workspace | `BitbucketResource` | The workspace of the pull request the event is related to. |
+| repository | `Repository` | The repository of the pull request the event is related to. |
+| project | `Project` | The project of the pull request the event is related to. |
+| workspace | `Workspace` | The workspace of the pull request the event is related to. |
 | pullrequest | `PullRequest` | The pull request the event is related to. |
 | comment | `Comment` | The pull request comment that was resolved. |
 
@@ -1477,7 +1751,16 @@ interface Actor {
   uuid: string;
 }
 
-interface BitbucketResource {
+interface Repository {
+  uuid: string;
+  slug?: string;
+}
+
+interface Project {
+  uuid: string;
+}
+
+interface Workspace {
   uuid: string;
 }
 
@@ -1495,6 +1778,10 @@ interface PullRequest {
   state: string;
   source: Branch;
   destination: Branch;
+  updatedOn?: string;
+  createdOn?: string;
+  commentCount?: number;
+  taskCount?: number;
 }
 
 interface Comment {
@@ -1565,11 +1852,12 @@ The required OAuth scope is `read:pullrequest:bitbucket`.
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:bitbucket:reopened:pullrequest-comment`. |
+| timestamp | `string` | The timestamp the event was emitted in ISO 8601 format. |
 | selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | actor | `Actor` | The user that has caused the event. |
-| repository | `BitbucketResource` | The repository of the pull request the event is related to. |
-| project | `BitbucketResource` | The project of the pull request the event is related to. |
-| workspace | `BitbucketResource` | The workspace of the pull request the event is related to. |
+| repository | `Repository` | The repository of the pull request the event is related to. |
+| project | `Project` | The project of the pull request the event is related to. |
+| workspace | `Workspace` | The workspace of the pull request the event is related to. |
 | pullrequest | `PullRequest` | The pull request the event is related to. |
 | comment | `Comment` | The pull request comment that was reopened. |
 
@@ -1590,7 +1878,16 @@ interface Actor {
   uuid: string;
 }
 
-interface BitbucketResource {
+interface Repository {
+  uuid: string;
+  slug?: string;
+}
+
+interface Project {
+  uuid: string;
+}
+
+interface Workspace {
   uuid: string;
 }
 
@@ -1608,6 +1905,10 @@ interface PullRequest {
   state: string;
   source: Branch;
   destination: Branch;
+  updatedOn?: string;
+  createdOn?: string;
+  commentCount?: number;
+  taskCount?: number;
 }
 
 interface Comment {
@@ -1683,11 +1984,12 @@ The required OAuth scope is `read:pullrequest:bitbucket`.
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:bitbucket:updated:pullrequest-reviewer-status`. |
+| timestamp | `string` | The timestamp the event was emitted in ISO 8601 format. |
 | selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
 | actor | `Actor` | The user that has caused the event. |
-| repository | `BitbucketResource` | The repository of the pull request the event is related to. |
-| project | `BitbucketResource` | The project of the pull request the event is related to. |
-| workspace | `BitbucketResource` | The workspace of the pull request the event is related to. |
+| repository | `Repository` | The repository of the pull request the event is related to. |
+| project | `Project` | The project of the pull request the event is related to. |
+| workspace | `Workspace` | The workspace of the pull request the event is related to. |
 | pullrequest | `PullRequest` | The pull request the event is related to. |
 | reviewers | `Reviewers` | The reviewers and their review statuses. |
 
@@ -1709,7 +2011,16 @@ interface Actor {
   kind?: string;
 }
 
-interface BitbucketResource {
+interface Repository {
+  uuid: string;
+  slug?: string;
+}
+
+interface Project {
+  uuid: string;
+}
+
+interface Workspace {
   uuid: string;
 }
 
@@ -1727,6 +2038,10 @@ interface PullRequest {
   state: string;
   source: Branch;
   destination: Branch;
+  updatedOn?: string;
+  createdOn?: string;
+  commentCount?: number;
+  taskCount?: number;
 }
 
 interface Reviewer {
@@ -1763,7 +2078,8 @@ This is an example payload of a pull request reviewer status being updated.
         "uuid": "{b0670c4c-4b6c-4f89-b47c-be2de5a64d58}"
     },
     "repository": {
-        "uuid": "{30cbb1be-00da-425d-b3b1-29695ceb11f9}"
+        "uuid": "{30cbb1be-00da-425d-b3b1-29695ceb11f9}",
+        "slug": "repository-slug"
     },
     "project": {
         "uuid": "{7805fc96-8fee-4a5c-91e5-457368075853}"
@@ -1785,7 +2101,11 @@ This is an example payload of a pull request reviewer status being updated.
           "commit": {
               "hash": "ec8950c039c0"
           }
-        }
+        },
+        "updatedOn": "2026-06-01T03:12:16.159643+00:00",
+        "createdOn": "2026-05-27T06:42:44.936130+00:00",
+        "commentCount": 2,
+        "taskCount": 2
     },
     "eventType": "avi:bitbucket:updated:pullrequest-reviewer-status",
     "reviewers": {
@@ -1823,9 +2143,10 @@ The required OAuth scope is `read:pipeline:bitbucket`.
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:bitbucket:pending:deployment`. |
+| timestamp | `string` | The timestamp the event was emitted in ISO 8601 format. |
 | selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
-| repository | `BitbucketResource` | The repository of the deployment the event is related to. |
-| workspace | `BitbucketResource` | The workspace of the deployment the event is related to. |
+| repository | `Repository` | The repository of the deployment the event is related to. |
+| workspace | `Workspace` | The workspace of the deployment the event is related to. |
 | pipeline | `Pipeline` | The pipeline of the deployment the event is related to. |
 | deployment | `Deployment` | The deployment the event is related to. |
 | environment | `Environment` | The environment of the deployment the event is related to. |
@@ -1841,7 +2162,16 @@ The required OAuth scope is `read:pipeline:bitbucket`.
 
 
 ```
-interface BitbucketResource {
+interface Repository {
+  uuid: string;
+  slug?: string;
+}
+
+interface Project {
+  uuid: string;
+}
+
+interface Workspace {
   uuid: string;
 }
 interface Pipeline {
@@ -1894,7 +2224,8 @@ This is an example payload of a deployment step that is ready to be triggered.
     "type": "PRODUCTION",
     "name": "us-east-1"
   },
-  "eventType": "avi:bitbucket:pending:deployment"
+  "eventType": "avi:bitbucket:pending:deployment",
+  "timestamp": "2024-11-15T03:08:01.556468Z"
 }
 ```
 ```
@@ -1910,9 +2241,10 @@ The required OAuth scope is `read:pipeline:bitbucket`.
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:bitbucket:started:deployment`. |
+| timestamp | `string` | The timestamp the event was emitted in ISO 8601 format. |
 | selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
-| repository | `BitbucketResource` | The repository of the deployment the event is related to. |
-| workspace | `BitbucketResource` | The workspace of the deployment the event is related to. |
+| repository | `Repository` | The repository of the deployment the event is related to. |
+| workspace | `Workspace` | The workspace of the deployment the event is related to. |
 | pipeline | `Pipeline` | The pipeline of the deployment the event is related to. |
 | deployment | `Deployment` | The deployment the event is related to. |
 | environment | `Environment` | The environment of the deployment the event is related to. |
@@ -1928,7 +2260,16 @@ The required OAuth scope is `read:pipeline:bitbucket`.
 
 
 ```
-interface BitbucketResource {
+interface Repository {
+  uuid: string;
+  slug?: string;
+}
+
+interface Project {
+  uuid: string;
+}
+
+interface Workspace {
   uuid: string;
 }
 interface Pipeline {
@@ -1981,7 +2322,8 @@ This is an example payload of a deployment step being started.
     "type": "PRODUCTION",
     "name": "us-east-1"
   },
-  "eventType": "avi:bitbucket:started:deployment"
+  "eventType": "avi:bitbucket:started:deployment",
+  "timestamp": "2024-11-15T03:08:01.556468Z"
 }
 ```
 ```
@@ -1997,9 +2339,10 @@ The required OAuth scope is `read:pipeline:bitbucket`.
 | Name | Type | Description |
 | --- | --- | --- |
 | eventType | `string` | The event name `avi:bitbucket:completed:deployment`. |
+| timestamp | `string` | The timestamp the event was emitted in ISO 8601 format. |
 | selfGenerated | `boolean` | Whether the event was triggered by the app receiving it. See [Detect and filter self-generated events](/platform/forge/events-reference/product_events/#ignoreself). |
-| repository | `BitbucketResource` | The repository of the deployment the event is related to. |
-| workspace | `BitbucketResource` | The workspace of the deployment the event is related to. |
+| repository | `Repository` | The repository of the deployment the event is related to. |
+| workspace | `Workspace` | The workspace of the deployment the event is related to. |
 | pipeline | `Pipeline` | The pipeline of the deployment the event is related to. |
 | deployment | `Deployment` | The deployment the event is related to. |
 | environment | `Environment` | The environment of the deployment the event is related to. |
@@ -2015,7 +2358,16 @@ The required OAuth scope is `read:pipeline:bitbucket`.
 
 
 ```
-interface BitbucketResource {
+interface Repository {
+  uuid: string;
+  slug?: string;
+}
+
+interface Project {
+  uuid: string;
+}
+
+interface Workspace {
   uuid: string;
 }
 interface Pipeline {
@@ -2069,7 +2421,8 @@ This is an example payload of a deployment step being completed.
     "type": "PRODUCTION",
     "name": "us-east-1"
   },
-  "eventType": "avi:bitbucket:completed:deployment"
+  "eventType": "avi:bitbucket:completed:deployment",
+  "timestamp": "2024-11-15T03:08:01.556468Z"
 }
 ```
 ```
