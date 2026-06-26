@@ -34,6 +34,7 @@ App contributors can perform the following actions, no matter their role:
 6. View all app contributors
 7. View staging and development logs
 8. View deployment history
+9. View app builds
 
 ## Specific roles and permissions
 
@@ -63,7 +64,7 @@ The following table outlines the roles and permissions associated with app monit
 | View contributor history |  |  |  |  |
 | View and download production logs |  |  |  |  |
 
-![](https://dac-static.atlassian.com/platform/forge/images/dev-console-role-permissions/_EditorPanelIcon_.svg?_v=1.5800.2158)
+![](https://dac-static.atlassian.com/platform/forge/images/dev-console-role-permissions/_EditorPanelIcon_.svg?_v=1.5800.2160)
 
 Granted as an advanced permission to contributors of
 
