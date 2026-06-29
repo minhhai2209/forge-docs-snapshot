@@ -1,10 +1,7 @@
 # Authorizing Realtime channels
 
-Forge Realtime is now available as Preview capability. Preview capabilities are deemed stable; however, they remain under active development and may be subject to shorter deprecation windows. Preview capabilities are suitable for early adopters in production environments.
-
-We release preview features so partners and developers can study, test, and integrate them prior to General Availability (GA). For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#preview).
-
 Forge Realtime offers multiple options for restricting a channel's scope based on the Atlassian app context permissions or your own custom-defined permissions.
+
 Realtime channels are always restricted to an app installation at a minimum; however, it is important that you use the appropriate level of authorization within your
 app to prevent unprivileged users from gaining access to your channels in privileged contexts.
 
@@ -16,7 +13,7 @@ The default context for a channel will be the Atlassian app context of the modul
 
 We recommend using the default `publish()` and `subscribe()` methods if you don't need to send messages between Atlassian app contexts.
 
-![Atlassian app context as default channel context](https://dac-static.atlassian.com/platform/forge/images/realtime/realtime-atlassian-app-context-publish.png?_v=1.5800.2160)
+![Atlassian app context as default channel context](https://dac-static.atlassian.com/platform/forge/images/realtime/realtime-atlassian-app-context-publish.png?_v=1.5800.2167)
 
 #### Example
 
@@ -156,7 +153,7 @@ The properties in `contextOverrides` must match exactly in the `subscribe()` and
 a subscriber with overrides `[Jira.Project]` will not receive messages from a publisher with overrides `[Jira.Project, Jira.Issue]`, even
 though they have overlapping properties.
 
-![Atlassian app context with overrides as channel context](https://dac-static.atlassian.com/platform/forge/images/realtime/realtime-context-overrides-publish.png?_v=1.5800.2160)
+![Atlassian app context with overrides as channel context](https://dac-static.atlassian.com/platform/forge/images/realtime/realtime-context-overrides-publish.png?_v=1.5800.2167)
 
 #### Limitations
 
@@ -178,7 +175,7 @@ If an app is publishing messages to a global channel with `publishGlobal()`, the
 
 It is your responsibility to ensure you are scoping your channels appropriately, and only using global channels if absolutely necessary. Using channel tokens to enforce Atlassian app permissions is also encouraged when using global channels.
 
-![Global channels with no channel context](https://dac-static.atlassian.com/platform/forge/images/realtime/realtime-global-publish.png?_v=1.5800.2160)
+![Global channels with no channel context](https://dac-static.atlassian.com/platform/forge/images/realtime/realtime-global-publish.png?_v=1.5800.2167)
 
 #### Example
 
@@ -229,7 +226,7 @@ The custom claims will be added on top of the Atlassian app context that already
 the channel is secured by the Atlassian app context (or a subset if `contextOverrides` is provided) and your token's claims. If using the `subscribeGlobal`
 and `publishGlobal` methods, the channel is only secured by the token.
 
-![Atlassian app context with Realtime token as channel context](https://dac-static.atlassian.com/platform/forge/images/realtime/realtime-token-publish.png?_v=1.5800.2160)
+![Atlassian app context with Realtime token as channel context](https://dac-static.atlassian.com/platform/forge/images/realtime/realtime-token-publish.png?_v=1.5800.2167)
 
 #### Example
 
@@ -250,12 +247,12 @@ import { publish, signRealtimeToken } from '@forge/realtime';
 const resolver = new Resolver();
 const TOKEN_EXPIRY_BUFFER = 5000; // 5 seconds
 
-resolver.define('publishEvent', ({ payload, context }) => {
+resolver.define('publishEvent', async ({ payload, context }) => {
   const customClaims = {
     allowedUsers: ['accountId-1', 'accountId-2'],
   };
   
-  const { token, expiresAt } = signRealtimeToken('my-test-channel', customClaims);
+  const { token, expiresAt } = await signRealtimeToken('my-test-channel', customClaims);
 
   // expiresAt is an epoch timestamp expressed in seconds (in accordance with the JWT 
   // standard for the exp field), so it needs to be converted to milliseconds before 
@@ -266,5 +263,98 @@ resolver.define('publishEvent', ({ payload, context }) => {
 });
 
 export const handler = resolver.getDefinitions();
+```
+```
+
+## Distinct subscriber and publisher roles with Realtime tokens
+
+By default, any user with access to a channel can both subscribe to and publish events on that channel. In scenarios where these roles should be distinct, for example you only want to allow your Forge resolver to publish events, you can use the `permissions` argument in [signRealtimeToken](/platform/forge/runtime-reference/realtime-events-api/#realtime-token-api) to issue tokens that grant only subscribe or publish access.
+
+The `permissions` argument accepts an array of one or both of the values `'subscribe'` and `'publish'`.
+
+| `permissions` value | Subscribe | Publish |
+| --- | --- | --- |
+| `Omitted (default)` | Allowed | Allowed |
+| `['subscribe', 'publish']` | Allowed | Allowed |
+| `['subscribe']` | Allowed | Blocked |
+| `['publish']` | Blocked | Allowed |
+
+#### Example
+
+The example below issues a subscribe-only token to the frontend, while the resolver retains publish rights using a separate publish-only token.
+
+**Resolver**
+
+```
+```
+1
+2
+```
+
+
+
+```
+import Resolver from '@forge/resolver';
+import { publish, signRealtimeToken } from '@forge/realtime';
+
+const resolver = new Resolver();
+
+resolver.define('getSubscribeToken', async ({ context }) => {
+  const { token, expiresAt } = await signRealtimeToken(
+    'my-secure-channel', {}, ['subscribe']
+  );
+
+  return { token, expiresAt };
+});
+
+resolver.define('publishEvent', async ({ payload }) => {
+  const { token } = await signRealtimeToken(
+    'my-secure-channel', {}, ['publish']
+  );
+
+  await publish('my-secure-channel', payload, { token });
+  return;
+});
+
+export const handler = resolver.getDefinitions();
+```
+```
+
+**Frontend**
+
+```
+```
+1
+2
+```
+
+
+
+```
+import React, { useEffect } from 'react';
+import { invoke, realtime } from '@forge/bridge';
+import { Text } from '@forge/react';
+
+const App = () => {
+  useEffect(() => {
+    const setupSubscription = async () => {
+      const { token } = await invoke('getSubscribeToken');
+
+      const onEvent = (payload: string | Record<string, unknown>) => {
+        console.log('Received event with payload: ', payload);
+      };
+
+      const subscription = realtime.subscribe('my-secure-channel', onEvent, { token });
+
+      return () => {
+        subscription.then(s => s.unsubscribe());
+      };
+    };
+
+    setupSubscription();
+  }, []);
+
+  return <Text>Listening for events...</Text>;
+};
 ```
 ```

@@ -13,7 +13,7 @@ Forge uses a consumption-based pricing model, offering most capabilities for fre
 
 | Capability | Unit | Free usage allowance (monthly) | Overage price per unit ($USD) |
 | --- | --- | --- | --- |
-| Forge Functions: Duration | $/GB-seconds | 100,000 GB-seconds | 0.000025 |
+| Forge Functions: Duration | $/GB-seconds | 200,000 GB-seconds | 0.000025 |
 | Key-Value Store: Reads | $/GB | 0.1 GB | 0.055 |
 | Key-Value Store: Writes | $/GB | 0.1 GB | 1.090 |
 | Logs: Writes | $/GB | 1 GB | 1.005 |
@@ -32,7 +32,7 @@ Object Store pricing is currently in **Preview**, and charges for *requests* wil
 
 Suppose your Forge app uses the following in a single month:
 
-* **Compute functions:** 150,000 GB-seconds
+* **Compute functions:** 250,000 GB-seconds
 * **Key-Value Store Reads:** 0.15 GB
 * **SQL:** Data stored: Your app adds 2.73 MB of data every hour and does not delete any data during the month.
 * **LLM:** 2,000,000 input credits and 500,000 output credits
@@ -41,9 +41,9 @@ Here’s how your monthly charge would be calculated:
 
 1. **Compute functions (Forge Functions: Duration)**
 
-   * Free usage allowance: **100,000 GB-seconds**
-   * Your usage: **150,000 GB-seconds**
-   * Overage: 150,000 – 100,000 = **50,000 GB-seconds**
+   * Free usage allowance: **200,000 GB-seconds**
+   * Your usage: **250,000 GB-seconds**
+   * Overage: 250,000 – 200,000 = **50,000 GB-seconds**
    * Overage price: $0.000025 per GB-second
    * **Charge:** 50,000 × $0.000025 = **$1.25**
 2. **Key-Value Store Reads**
@@ -163,6 +163,14 @@ The following capabilities are also billable, but use different pricing models a
 * [Forge LLM](/platform/forge/runtime-reference/forge-llms-api-pricing/): tracked in credits, which correspond to model input and output tokens. Each model has a token-to-credit conversion ratio, and more powerful models use more credits per token.
 
 Other capabilities not listed here, such as using Connect on Forge modules or remote capabilities, will remain free.
+
+**How are functions that crash or run out of memory billed?**  
+Forge measures the duration of each invocation to calculate its compute cost. In a small number of cases — for example, when a function runs out of memory or the runtime crashes — the function is stopped abruptly and a reliable execution time cannot be recorded. When this happens, you are charged for the **lower of**:
+
+* the function's configured timeout (set via [`timeoutSeconds`](/platform/forge/manifest-reference/modules/function/)), or
+* the measured execution time, including platform overhead.
+
+To keep your compute costs predictable, set `timeoutSeconds` to the smallest value your function needs and avoid out-of-memory failures. See [Optimise Forge platform costs](/platform/forge/optimise-forge-costs/#right-size-timeouts-and-avoid-crashes) for guidance.
 
 **Will I be charged for the Rovo credits used by a Rovo agent in my Forge app?**  
 No. Rovo credits are paid by the customer's organization from their pooled Rovo allowance, not by the Forge app developer. As a developer, you are only billed for the Forge platform resources (compute, storage, and logs) used to execute any Forge actions your agent invokes. See [Billing for Rovo agents and actions](#billing-for-rovo-agents-and-actions) for details.

@@ -1,30 +1,9 @@
 # Forge changelog
 
-Forge SQL now inspects every query submitted by your app before it reaches the database. Queries that contain restricted functions, statements, or syntax are rejected with a new **SQL\_POLICY\_VIOLATION** error code *before* execution.
+Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
+When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our
 
-We’ve implemented this new policy to enforce the following:
+[Privacy Policy](https://www.atlassian.com/legal/privacy-policy#how-we-disclose-information-we-collect)
 
-* Stricter compliance with standard ANSI SQL syntax.
-* Pre-emptive protection against SQL-based resource exhaustion and exploits.
-* Stable, predictable performance across all Forge apps using SQL storage.
-
-**New error code: SQL\_POLICY\_VIOLATION**
-
-If your app submits a query that uses a restricted function or pattern, the `@forge/sql` package will return an error with a `code`, `message`, and `suggestion` field to help you resolve the violation.
-
-**Restricted functions and statements**
-
-The following are now monitored and may trigger rejection:
-
-* **Functions:** `SLEEP()`, `BENCHMARK()`, `COMPRESS()`, `UNCOMPRESS()`, `AES_ENCRYPT()`, `AES_DECRYPT()`, `SHA2()`
-* **Statements:** `ALTER USER`, `LOCK TABLES`, `USE <table>`
-* **Patterns:** Unsupported optimizer hints, `SET GLOBAL`/`SET INSTANCE`, most `SHOW` statements, SQL-level `PREPARE`/`EXECUTE`/`DEALLOCATE PREPARE`, and multi-statement queries.
-
-A subset of `SET`, `SHOW`, `USE` and optimizer hints remain permitted. See the [SQL query policy documentation](https://developer.atlassian.com/platform/forge/storage-reference/sql-query-policy/ "https://developer.atlassian.com/platform/forge/storage-reference/sql-query-policy/") for the full allowlist.
-
-**What you need to do**
-
-* **Review your queries:** If your app uses any restricted functions or syntax patterns, those queries will now be rejected at runtime.
-* **Update error handling:** Check for `errorCodes.SQL_POLICY_VIOLATION` alongside existing error codes to handle rejections gracefully.
-
-If your app requires a restricted function for a valid use case, request an exemption through the [Developer Support portal](https://ecosystem.atlassian.net/servicedesk/customer/portal/34/group/3534/create/4180 "https://ecosystem.atlassian.net/servicedesk/customer/portal/34/group/3534/create/4180") with your `app.id`, the query, and the use case.
+.
+You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt-out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.

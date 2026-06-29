@@ -516,7 +516,7 @@ Returns an object with the following properties:
 
 ### Example
 
-![Example rendered Custom UI bodied macro contents](https://dac-static.atlassian.com/platform/forge/apis-reference/ui-api-bridge/images/view/view-createAdfRendererIframeProps-custom-ui-bodied-macro.svg?_v=1.5800.2160)
+![Example rendered Custom UI bodied macro contents](https://dac-static.atlassian.com/platform/forge/apis-reference/ui-api-bridge/images/view/view-createAdfRendererIframeProps-custom-ui-bodied-macro.svg?_v=1.5800.2167)
 
 ```
 ```
@@ -581,7 +581,7 @@ You can split up the ADF document object inside `context.extension.macro.body` a
 | invokeRemote | yes |
 | modal | yes |
 | objectStore (EAP) | yes |
-| realtime (Preview) | yes |
+| realtime | yes |
 | requestBitbucket | N/A |
 | requestConfluence | yes |
 | requestJira | yes |

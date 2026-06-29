@@ -1,8 +1,4 @@
-# Realtime events API (Preview)
-
-Forge Realtime is now available as Preview capability. Preview capabilities are deemed stable; however, they remain under active development and may be subject to shorter deprecation windows. Preview capabilities are suitable for early adopters in production environments.
-
-We release preview features so partners and developers can study, test, and integrate them prior to General Availability (GA). For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#preview).
+# Realtime events API
 
 This API enables Forge apps to publish events to realtime channels. This is suited for scenarios where live updates are sent beyond the current page or to multiple users. Unlike the existing [Async events API](https://developer.atlassian.com/platform/forge/runtime-reference/async-events-api/), realtime events are emitted via WebSocket connections rather than on the window object.
 
@@ -33,14 +29,46 @@ Publishes events if there is an existing subscription for the same channel conte
 ### Method signature
 
 ```
-```
 1
 2
-```
-
-
-
-```
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
 const publish = (
     channel: string,
     payload: string | Record<string, unknown>,
@@ -53,7 +81,7 @@ const publishGlobal = (
     options?: PublishOptions
 ): Promise<PublishResult>
 
-enum Jira {
+export enum Jira {
   Board = 'board',
   Issue = 'issue',
   Project = 'project'
@@ -69,7 +97,7 @@ export enum Bitbucket {
   Repository = 'repository'
 }
 
-type ProductContext = Jira | Conflunece | Bitbucket;
+type ProductContext = Jira | Confluence | Bitbucket;
 
 interface PublishOptions {
   token?: string;
@@ -82,11 +110,10 @@ interface PublishResult {
   errors?: any[];
 }
 ```
-```
 
 ### Arguments
 
-* **channel**: A string identifier representing the name of the channel to subscribe to. This string should exactly match the channel parameter in the corresponding subscribe() function.
+* **channel**: A string identifier representing the name of the channel to publish to. This string should exactly match the channel parameter in the corresponding publish() function.
 * **payload**: The event payload as a string or serializable object.
 * **options**: An object containing configuration options.
   * **token**: A token returned from the `signRealtimeToken` method that is used to restrict a channel's scope. The published event will only be received by subscriptions that have been created with a token containing the same channel context claims.
@@ -144,7 +171,7 @@ The `token` argument allows for more fine-grained control over the permissions s
 
 ## Realtime token API
 
-To obtained a signed realtime token, import the `signRealtimeToken` function into your resolver:
+To obtain a signed realtime token, import the `signRealtimeToken` function into your resolver:
 
 ```
 ```
@@ -171,11 +198,14 @@ import { publishGlobal, signRealtimeToken } from '@forge/realtime';
 
 ```
 const signRealtimeToken = (
-    channel: string,
-    claims: object
+    channelName: string,
+    claims: object,
+    permissions?: [RealtimeTokenPermission, ...RealtimeTokenPermission[]]
 ): Promise<TokenResult>
 
-interface TokenResult = {
+type RealtimeTokenPermission = 'subscribe' | 'publish';
+
+interface TokenResult {
     token: string | null;
     expiresAt: number | null;
     errors?: any[];
@@ -185,8 +215,9 @@ interface TokenResult = {
 
 ### Arguments
 
-* **channel**: A string identifier representing the name of the channel to sign the token against. This string should exactly match the channel parameter in the corresponding subscribe() or publish() function.
+* **channelName**: A string identifier representing the name of the channel to sign the token against. This string should exactly match the channel parameter in the corresponding subscribe() or publish() function.
 * **claims**: An object containing token claims. This can take any shape, but for events to be communicated on the same channel the claims object must match exactly between the publisher and subscriber.
+* **permissions**: An optional array of permission types to grant to the token. Accepted values are `'subscribe'` and `'publish'`. If omitted or set to `['subscribe', 'publish']`, the token grants both subscribe and publish permissions. Use this to restrict a token to read-only (`['subscribe']`) or write-only (`['publish']`) access on the channel.
 
 ### Returns
 
@@ -212,12 +243,12 @@ import { publish, signRealtimeToken } from '@forge/realtime';
 const resolver = new Resolver();
 const TOKEN_EXPIRY_BUFFER = 5000; // 5 seconds
 
-resolver.define('publishEvent', () => {
+resolver.define('publishEvent', async () => {
   const customClaims = {
     allowedUsers: ['accountId-1', 'accountId-2'],
   };
   
-  const { token, expiresAt } = signRealtimeToken('my-test-channel', customClaims);
+  const { token, expiresAt } = await signRealtimeToken('my-test-channel', customClaims);
 
   // expiresAt is an epoch timestamp expressed in seconds (in accordance with the JWT 
   // standard for the exp field), so it needs to be converted to milliseconds before 

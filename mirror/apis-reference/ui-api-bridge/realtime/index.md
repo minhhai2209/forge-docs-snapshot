@@ -1,8 +1,4 @@
-# realtime (Preview)
-
-Forge Realtime is now available as Preview capability. Preview capabilities are deemed stable; however, they remain under active development and may be subject to shorter deprecation windows. Preview capabilities are suitable for early adopters in production environments.
-
-We release preview features so partners and developers can study, test, and integrate them prior to General Availability (GA). For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#preview).
+# Realtime
 
 Forge Realtime allows Forge apps to subscribe and publish to realtime channels. Unlike the existing [Events API](/platform/forge/apis-reference/ui-api-bridge/events/), realtime events are broadcast beyond the current window. This means that it can be used for scenarios where live updates need to propagate to multiple users.
 
@@ -21,14 +17,17 @@ See the [in-depth guide](/platform/forge/realtime/authorizing-realtime-channels/
 ### Function signature
 
 ```
-```
 1
 2
-```
-
-
-
-```
+3
+4
+5
+6
+7
+8
+9
+10
+11
 const subscribe = (
   channel: string,
   callback: (payload?: string) => any,
@@ -40,7 +39,6 @@ interface SubscriptionOptions {
   token?: string;
   contextOverrides?: ProductContext[];
 }
-```
 ```
 
 ```

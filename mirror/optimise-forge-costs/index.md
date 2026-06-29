@@ -12,7 +12,7 @@ See [Forge platform pricing](/platform/forge/forge-platform-pricing/) for the au
 
 | Capability | Unit | Free usage allowance (monthly) | Overage price per unit ($USD) |
 | --- | --- | --- | --- |
-| Forge Functions: Duration | $/GB-seconds | 100,000 GB-seconds | 0.000025 |
+| Forge Functions: Duration | $/GB-seconds | 200,000 GB-seconds | 0.000025 |
 | Key-Value Store: Reads | $/GB | 0.1 GB | 0.055 |
 | Key-Value Store: Writes | $/GB | 0.1 GB | 1.090 |
 | Logs: Writes | $/GB | 1 GB | 1.005 |
@@ -832,6 +832,19 @@ functions:
 * **Avoid over-provisioning** — allocating 1024 MB to a function that only uses 100 MB wastes 4× the compute allowance per second of runtime.
 
 The cost formula is: **GB-seconds = (memoryMiB ÷ 1024) × duration in seconds**. A function using 512 MB for 1 second costs the same as a function using 256 MB for 2 seconds — so reducing duration is just as valuable as reducing memory.
+
+**References:** [Function manifest reference](/platform/forge/manifest-reference/modules/function/) | [Forge platform pricing](/platform/forge/forge-platform-pricing/)
+
+### Right-size timeouts and avoid crashes
+
+Set [`timeoutSeconds`](/platform/forge/manifest-reference/modules/function/) to the smallest value your function actually needs, rather than defaulting to the maximum. Beyond avoiding wasted runtime, this also makes your compute costs more predictable when a function crashes.
+
+When a function runs out of memory or the runtime crashes, Forge may be unable to record a reliable execution time. In these cases you are billed for the **lower of** the function's configured timeout or the measured execution time including platform overhead. A tighter timeout therefore caps the cost of an invocation that fails this way. See [How are functions that crash or run out of memory billed?](/platform/forge/forge-platform-pricing/#crashed-functions-billing) for details.
+
+To keep these costs down:
+
+* **Right-size `timeoutSeconds`** to your function's realistic worst-case duration.
+* **Avoid out-of-memory failures** by tuning `memoryMiB` (see above) and processing large datasets in batches rather than loading everything into memory at once.
 
 **References:** [Function manifest reference](/platform/forge/manifest-reference/modules/function/) | [Forge platform pricing](/platform/forge/forge-platform-pricing/)
 

@@ -20,17 +20,15 @@ Where you configure `auth` depends on where your remote is invoked from:
 
 When your remote is called, the authentication token for calling Atlassian app and Forge storage APIs is sent in either the `x-forge-oauth-system` HTTP header (for `appSystemToken`) or the `x-forge-oauth-user` HTTP header (for `appUserToken`).
 
-### Token Expiry
+### Token expiry
 
 Tokens sent in either the `x-forge-oauth-system` header or the `x-forge-oauth-user` header are encoded in JWT. The [`exp` claim](https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.4) in their payload represents the expiration time.
 
-* We recommend adding a [lifecycle events](/platform/forge/events-reference/life-cycle/#installation)
-  trigger for the installation and upgrade events to ensure that your app starts off with a token available.
-* If your app needs to ensure the access token is periodically refreshed, consider utilizing a [scheduled trigger](/platform/forge/remote/scheduled-triggers/).
-  There is no endpoint for proactively refreshing the access token.
-* As there is no lifecycle event sent upon app uninstallation yet ([FRGE-1246](https://ecosystem.atlassian.net/browse/FRGE-1246)),
-  Atlassian app APIs returning 4xx can indicate the app is no longer installed on the tenant.
-  You can infer the app was uninstalled if it stopped receiving a scheduled trigger.
+Both the app system token (`x-forge-oauth-system`) and the app user token (`x-forge-oauth-user`) have a max [TTL of 4 hours](https://developer.atlassian.com/changelog/#CHANGE-2160). Forge caches these tokens, so the same token may be delivered across multiple invocations. Since a cached token is rotated before it expires, a delivered token won't usually have the full 4 hours remaining, but it will always be valid for another ~2 to ~4 hours. Use the token's `exp` claim to determine its remaining validity. Your remote can safely cache and reuse a token until the expiry time.
+
+* We recommend adding a [lifecycle events](/platform/forge/events-reference/life-cycle/#installation) trigger for the installation and upgrade events to ensure that your app starts off with a token available.
+* If your app needs to ensure the access token is periodically refreshed, consider utilizing a [scheduled trigger](/platform/forge/remote/scheduled-triggers/). There is no endpoint for proactively refreshing the access token. For guidance on choosing an interval, see [choosing an interval](/platform/forge/remote/scheduled-triggers/#token-expiry-and-choosing-an-interval).
+* As there is no lifecycle event sent upon app uninstallation yet ([FRGE-1246](https://ecosystem.atlassian.net/browse/FRGE-1246)), Atlassian app APIs returning 4xx can indicate the app is no longer installed on the tenant. You can infer the app was uninstalled if it stopped receiving a scheduled trigger.
 
 ## Getting started
 

@@ -26,11 +26,11 @@ Credentials and configuration should be stored securely using a [Forge storage A
 
 ### Import experience
 
-Use the [customerServiceManagement:crmImport](/platform/forge/manifest-reference/modules/customer-service-management-crm-import/) module to render the import experience as a modal triggered from the **Manage** dropdown on the **Customers**, **Organizations**, and **Products** pages of a Customer Service Management space.
+Use the [customerServiceManagement:crmImport](/platform/forge/manifest-reference/modules/customer-service-management-crm-import/) module to render the import experience as a modal triggered from the **Manage** dropdown on the **Customers**, **Organizations**, and **Products** pages within the customer directory of the Customer Service Management (CSM) app.
 
 The modal reads the credentials and configuration saved by the admin page, fetches data from the external source, and invokes the [Customer Service Management](/cloud/customer-service-management/) bulk APIs to write that data to the destination.
 
-![CRM Import modal triggered from the Manage dropdown on the Organizations page](https://dac-static.atlassian.com/platform/forge/snippets/images/csm-crm-import-demo-modal.png?_v=1.5800.2160)
+![CRM Import modal triggered from the Manage dropdown on the Organizations page](https://dac-static.atlassian.com/platform/forge/snippets/images/csm-crm-import-demo-modal.png?_v=1.5800.2167)
 
 ## What the app needs to do
 

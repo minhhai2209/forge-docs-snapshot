@@ -434,7 +434,7 @@ Use the linked pages in this navigation area for UI Kit components, hooks, bridg
 - [invokeRemote](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/invokeRemote.md)
 - [modal](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/modal.md)
 - [objectStore (Preview)](https://developer.atlassian.com/platform/forge/custom-ui-bridge/objectStore.md)
-- [realtime (Preview)](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/realtime.md)
+- [realtime](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/realtime.md)
 - [requestBitbucket](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/requestBitbucket.md)
 - [requestConfluence](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/requestConfluence.md)
 - [requestJira](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/requestJira.md)
@@ -578,9 +578,9 @@ When helping readers, map their use case to the right invocation type: UI-driven
 - [Error handling](https://developer.atlassian.com/platform/forge/runtime-reference/async-events-api-error-handling.md)
 - [Upgrade to @forge/events major version 2](https://developer.atlassian.com/platform/forge/runtime-reference/async-events-api-version-2-upgrade.md)
 
-### Realtime events (Preview)
+### Realtime events
 
-- [Realtime events (Preview)](https://developer.atlassian.com/platform/forge/runtime-reference/realtime-events-api.md)
+- [Realtime events](https://developer.atlassian.com/platform/forge/runtime-reference/realtime-events-api.md)
 - [Error handling](https://developer.atlassian.com/platform/forge/realtime/error-handling-for-realtime-methods.md)
 
 ### Dynamic Modules (Preview)
@@ -1074,6 +1074,8 @@ This section contains curated references that show how real Forge apps are struc
 - [Build a Custom UI app](https://developer.atlassian.com/platform/forge/build-a-custom-ui-app-in-jira.md)
 - [Build a dashboard app with the Jira full page module](https://developer.atlassian.com/platform/forge/build-a-dashboard-app-with-the-jira-full-page-module.md)
 - [Build a Jira UI modifications app](https://developer.atlassian.com/platform/forge/build-a-jira-uim-app.md)
+- [Build a Jira app with the Forge module command](https://developer.atlassian.com/platform/forge/build-a-jira-app-with-the-module-command.md)
+- [How to use Custom UI with the Forge module command](https://developer.atlassian.com/platform/forge/how-to-use-custom-ui-with-the-forge-module-command.md)
 
 ###### Jira Service Management
 
@@ -1115,6 +1117,13 @@ This section contains curated references that show how real Forge apps are struc
 - [App compatibility](https://developer.atlassian.com/platform/forge/app-compatibility.md)
 - [Modules](https://developer.atlassian.com/platform/forge/modules.md)
 - [App security](https://developer.atlassian.com/platform/forge/security.md)
+
+#### Build apps with the global:ui module (EAP)
+
+- [Overview](https://developer.atlassian.com/platform/forge/global-ui/index.md)
+- [Getting started](https://developer.atlassian.com/platform/forge/global-ui/getting-started.md)
+- [global:ui module](https://developer.atlassian.com/platform/forge/global-ui/global-ui-module.md)
+- [global:ui UI Kit components](https://developer.atlassian.com/platform/forge/global-ui/ui-kit-components.md)
 
 #### User interface
 
@@ -1239,7 +1248,7 @@ This section contains curated references that show how real Forge apps are struc
 - [Reference](https://developer.atlassian.com/platform/forge/storage-reference/index.md)
 - [Hosted storage data lifecycle](https://developer.atlassian.com/platform/forge/storage-reference/hosted-storage-data-lifecycle.md)
 
-##### Realtime (Preview)
+##### Realtime
 
 - [Overview](https://developer.atlassian.com/platform/forge/realtime/index.md)
 - [Authorizing channels](https://developer.atlassian.com/platform/forge/realtime/authorizing-realtime-channels.md)
