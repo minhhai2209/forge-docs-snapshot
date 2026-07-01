@@ -35,7 +35,7 @@ When your user visits the link, an installation screen appears, similar to the o
 It displays information about your app, including the permissions your app is requesting.
 From here, your user can choose a site and an Atlassian app to install your app onto.
 
-![User installation screen](https://dac-static.atlassian.com/platform/forge/images/user-installation-screen.png?_v=1.5800.2167)
+![User installation screen](https://dac-static.atlassian.com/platform/forge/images/user-installation-screen.png?_v=1.5800.2170)
 
 ## Restrict installation links
 
@@ -81,11 +81,29 @@ using the Forge CLI, users can:
 
 If needed, you can copy the installation link from the developer console and send it to them again.
 
+If your app uses [Rolling releases](/platform/forge/rolling-releases/), you can view your rollouts from
+Developer Console after deploying the new version to production. This helps customers receive safe code
+updates sooner, including bug fixes, security fixes, performance improvements, and features that do not
+depend on new permissions.
+
+Permission changes remain subject to admin approval. Until admins approve the new permissions, the app
+continues running with its previously approved permission set. This lets you ship the compatible parts of
+an update while gracefully skipping permission-dependent features until approval is complete.
+
+To start or monitor a code rollout, open **Rollouts** in Developer Console. From there, you can start a
+rollout for an environment, view rollout progress and failure rates, cancel an in-flight rollout, restart
+a cancelled rollout, and open rollout details. See [View app rollouts](/platform/forge/view-app-rollouts/)
+for more information.
+
 ## Distributing an app update to existing installations
 
 After deploying a new major version of your app, you might want to upgrade all installations of the app on an eligible older major version to the newer one.
 
-You can use the `forge version bulk-upgrade` [CLI](/platform/forge/cli-reference/version/) to start, cancel and track major version updates in large batches, without site admin approval (as long as your change doesn't require any escalation in privilege). For more information, see [version bulk-upgrade](/platform/forge/cli-reference/version-bulk-upgrade/).
+For apps using [Rolling releases](/platform/forge/rolling-releases/), use Developer Console to start and monitor code rollouts. Permission changes remain subject to admin approval.
+
+For eligible major version updates that don't require an escalation in privilege, you can use the `forge version bulk-upgrade` [CLI](/platform/forge/cli-reference/version/) to start, cancel, and track updates in large batches without site admin approval. For more information, see [version bulk-upgrade](/platform/forge/cli-reference/version-bulk-upgrade/).
+
+If your app uses [Rolling releases](/platform/forge/rolling-releases/), use Developer Console to roll out app code and monitor, cancel, or restart rollouts while permission approval remains separate. See [View app rollouts](/platform/forge/view-app-rollouts/) for details.
 
 Records from the Forge CLI are time-limited and may not be available indefinitely. It is advisable to document or monitor these records promptly if they are needed for future reference.
 

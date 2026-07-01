@@ -64,7 +64,7 @@ The following table outlines the roles and permissions associated with app monit
 | View contributor history |  |  |  |  |
 | View and download production logs |  |  |  |  |
 
-![](https://dac-static.atlassian.com/platform/forge/images/dev-console-role-permissions/_EditorPanelIcon_.svg?_v=1.5800.2167)
+![](https://dac-static.atlassian.com/platform/forge/images/dev-console-role-permissions/_EditorPanelIcon_.svg?_v=1.5800.2170)
 
 Granted as an advanced permission to contributors of
 
@@ -103,7 +103,7 @@ The following table outlines the permissions associated with app and contributor
 | Share distribution links |  |  |  |  |
 | Manage a bulk upgrade (Production) |  |  |  |  |
 | Manage a bulk upgrade (Non-production) |  |  |  |  |
-|
+| View and manage rollouts in permitted environments (view rollout details, start rollouts, cancel in-flight rollouts, and restart cancelled rollouts) |  |  |  |  |
 
 ## Default environments
 

@@ -1,14 +1,12 @@
 # Create an app supporting rolling releases
 
-Forge rolling releases is available through Forge's Early Access Program (EAP). This feature is currently only available in Jira and Confluence.
+Forge rolling releases is now in Preview, and therefore fully supported. However, it remains under active development and may be subject to shorter deprecation windows. Preview features are suitable for early adopters in production environments.
 
-EAP grants selected users early testing access for feedback. APIs and features in EAP are experimental, unsupported, and subject to change without notice. To participate in the rolling releases EAP, [sign up here](https://ecosystem.atlassian.net/servicedesk/customer/portal/1040/group/3496/create/18974).
+We release preview features so partners and developers can study, test, and integrate them prior to General Availability (GA). For more details, see [Forge EAP, Preview, and GA](https://developer.atlassian.com/platform/forge/whats-coming/#forge-preview).
 
-For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/).
+This tutorial walks you through preparing an app for rolling releases, so compatible code changes can reach installations before admins approve new permissions. You'll use the frontend and backend permissions SDK to keep permission-dependent features guarded while the rest of the app continues to update.
 
-This tutorial walks you through onboarding your app to rolling releases, using the frontend and backend permissions SDK, and testing how your app behaves in a decoupled state.
-
-By completing this guide, you will build an app for which you can upgrade only the code version in your test installation.
+By completing this guide, you will build an app that can receive a code-only upgrade in a test installation and gracefully skip features that depend on permissions that have not been approved yet.
 
 ## Before you begin
 
@@ -16,8 +14,8 @@ Before you begin, ensure you have the following:
 
 * A configured Forge development environment ([Getting Started Guide](/platform/forge/getting-started/))
 * Access to an Atlassian site for app installation (create one if needed)
-* You have been onboarded to the [EAP](https://ecosystem.atlassian.net/servicedesk/customer/portal/1040/group/3496/create/18974)
-* Install the `next` version of CLI and authenticate
+* Access to the Rolling Releases Preview
+* Install the latest version of CLI and authenticate
 
   ```
   1
@@ -28,8 +26,8 @@ Before you begin, ensure you have the following:
   6
   7
   8
-  # Install next (pre-release) version of CLI
-  npm i -g @forge/cli@next
+  # Install the latest version of CLI
+  npm i -g @forge/cli@latest
 
   # Ensure you are authenticated by running 
   forge whoami
@@ -63,8 +61,7 @@ Use the Forge CLI to create your app. In this example, we'll name it `rolling-re
    # ? Select a template: confluence-macro
    ```
    ```
-3. Raise a request to enable rolling releases for your test app.
-4. Navigate to your app directory:
+3. Navigate to your app directory:
 
    ```
    ```
@@ -341,7 +338,7 @@ return (
 
 Deploy the app with the new scope:
 
-At this point, your app is in a state where the latest version requires new permissions. App installations will invoke the older version until admins manually update the app and grant permissions.
+At this point, your app is in a state where the latest version requires new permissions. App code can roll out before admins approve the new permissions.
 
 Let's see how rolling releases will help us handle such upgrades.
 
@@ -478,6 +475,52 @@ ForgeReconciler.render(
 
 We renamed `isLoading` to `permissionsLoading` to avoid naming conflicts with the `isLoading` state in the `ShowSpaces` component.
 
+## Optional: check backend permissions
+
+If your app checks permissions in backend resolver code, use the `permissions` export from `@forge/api`.
+
+1. Install the latest version of `@forge/api`:
+
+   ```
+   ```
+   1
+   2
+   ```
+
+
+
+   ```
+   npm install --save @forge/api@latest
+   ```
+   ```
+2. Open the resolver file for your app and check the scope before running code that depends on it:
+
+```
+```
+1
+2
+```
+
+
+
+```
+import Resolver from '@forge/resolver';
+import { permissions } from '@forge/api';
+
+const resolver = new Resolver();
+
+resolver.define('getText', async () => {
+  if (!permissions.hasScope('read:space:confluence')) {
+    return 'The read:space:confluence scope is not approved yet.';
+  }
+
+  return 'The read:space:confluence scope is approved.';
+});
+
+export const handler = resolver.getDefinitions();
+```
+```
+
 ## Test code-only upgrade
 
 Deploy the new version of the app:
@@ -511,6 +554,14 @@ The **Major version** in the table is the permission version for the installatio
 
 This demonstrates rolling releases in action: your code updated without requiring admin approval for the new permission!
 
+## Optional: view rollout in Developer Console
+
+After deploying and running `forge install --upgrade code`, you can view the rollout in Developer Console. Open **Rollouts** for your app, filter by environment or status if needed, and check the rollout card for the target version, rollout status, progress, and any failure rate.
+
+Select **View details** to open the rollout details page for an in-progress or completed rollout. The details page shows the rollout status, installation and error metrics, installation eligibility, ineligible versions, and rollout timeline.
+
+For more information, see [View app rollouts](/platform/forge/view-app-rollouts/).
+
 ## Upgrade app permissions
 
 To upgrade the permission version of the app on your test instance, run the forge install command with the upgrade flag:
@@ -527,6 +578,8 @@ To upgrade the permission version of the app on your test instance, run the forg
 forge install --upgrade
 ```
 ```
+
+In production, admins approve new permissions in Admin Hub. The CLI method shown here is for developer testing.
 
 This will:
 

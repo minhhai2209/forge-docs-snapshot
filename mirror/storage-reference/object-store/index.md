@@ -4,7 +4,7 @@ Forge Object Store is now in Preview, and therefore fully supported. However, it
 
 We release preview features so partners and developers can study, test, and integrate them prior to General Availability (GA). For more details, see [Forge EAP, Preview, and GA](https://developer.atlassian.com/platform/forge/whats-coming/#forge-preview).
 
-The Forge Object Store is a hosted storage solution that let you manage large items such as data objects or media files. It provides you with a seamless way to efficiently store, retrieve, and manage objects directly from your Forge apps.
+The Forge Object Store is a hosted storage solution that lets you manage large items such as data objects or media files. It provides a seamless way to efficiently store, retrieve, and manage objects directly from your Forge apps.
 
 The Forge Object Store integrates tightly with the Forge platform, enabling secure and reliable file management.
 

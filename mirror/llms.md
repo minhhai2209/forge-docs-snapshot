@@ -221,6 +221,11 @@ Refer to the following sections for more detailed information about Forge module
 - [Widget (EAP)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/dashboard-widget.md)
 - [Background script (EAP)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/dashboard-background-script.md)
 
+### Global module (EAP)
+
+- [Global module (EAP)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/index-global.md)
+- [global:ui module](https://developer.atlassian.com/platform/forge/manifest-reference/modules/global-ui.md)
+
 ### Jira modules
 
 - [Jira modules](https://developer.atlassian.com/platform/forge/manifest-reference/modules/index-jira.md)
@@ -279,7 +284,7 @@ Refer to the following sections for more detailed information about Forge module
 - [Customer Service Management modules](https://developer.atlassian.com/platform/forge/manifest-reference/modules/index-csm.md)
 - [Queue page](https://developer.atlassian.com/platform/forge/manifest-reference/modules/customer-service-management-queue-page.md)
 - [Request detail](https://developer.atlassian.com/platform/forge/manifest-reference/modules/customer-service-management-request-detail.md)
-- [CRM import (EAP)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/customer-service-management-crm-import.md)
+- [CRM import](https://developer.atlassian.com/platform/forge/manifest-reference/modules/customer-service-management-crm-import.md)
 
 ### Jira Software modules
 
@@ -597,6 +602,11 @@ When helping readers, map their use case to the right invocation type: UI-driven
 
 - [License API](https://developer.atlassian.com/platform/forge/apis-reference/license-api.md)
 - [API reference](https://developer.atlassian.com/platform/forge/apis-reference/license-api.md)
+
+### Installation Details API
+
+- [Installation Details API](https://developer.atlassian.com/platform/forge/apis-reference/installation-details-api.md)
+- [API reference](https://developer.atlassian.com/platform/forge/apis-reference/installation-details-api.md)
 
 ### Atlassian app REST APIs
 
@@ -1086,7 +1096,7 @@ This section contains curated references that show how real Forge apps are struc
 
 ###### Customer Service Management
 
-- [Import customer context data with a Forge app (EAP)](https://developer.atlassian.com/platform/forge/csm-import-data.md)
+- [Import customer context data with a Forge app](https://developer.atlassian.com/platform/forge/csm-import-data.md)
 
 ###### Rovo
 
@@ -1422,6 +1432,10 @@ This section contains curated references that show how real Forge apps are struc
 
 - [View app installations](https://developer.atlassian.com/platform/forge/view-app-installations.md)
 
+##### View app rollouts (Preview)
+
+- [View app rollouts (Preview)](https://developer.atlassian.com/platform/forge/view-app-rollouts.md)
+
 ##### View app storage
 
 - [View app storage](https://developer.atlassian.com/platform/forge/view-app-storage.md)
@@ -1442,7 +1456,7 @@ This section contains curated references that show how real Forge apps are struc
 
 - [Configuring the manifest](https://developer.atlassian.com/platform/forge/manifest-reference/index.md)
 
-###### Rolling releases (EAP)
+###### Rolling releases (Preview)
 
 - [Overview](https://developer.atlassian.com/platform/forge/rolling-releases.md)
 - [Tutorial](https://developer.atlassian.com/platform/forge/rolling-releases-tutorial.md)

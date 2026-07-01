@@ -186,6 +186,49 @@ const context = await view.getContext();
 ```
 ```
 
+## getFrameDispatch
+
+The `getFrameDispatch` method enables you to retrieve the [dispatch](/platform/forge/ui-kit/components/frame/#props) prop that was passed to a `Frame` component from inside the `Frame` resource. This function is intended to be used in the [global:ui](/platform/forge/global-ui/#build-apps-with-the-global:ui-module-(eap)) module for dispatching state updates to the module's navigation components.
+
+### Function signature
+
+```
+```
+1
+2
+```
+
+
+
+```
+type Dispatch = (...args: any[]) => void;
+function getFrameDispatch<T extends Dispatch>(): Promise<T>;
+```
+```
+
+### Returns
+
+* **dispatch:** The function that was passed in the `dispatch` prop to `Frame`.
+
+### Example
+
+```
+```
+1
+2
+```
+
+
+
+```
+import { view } from "@forge/bridge";
+
+const dispatch = await view.getFrameDispatch();
+```
+```
+
+For a more detailed example, see how it is used in a `global:ui` module [here](/platform/forge/global-ui/ui-kit-components/#using-dispatch-to-update-state).
+
 ## createHistory
 
 The `createHistory` method enables your UI Kit and Custom UI app to manipulate the current page URL for routing
@@ -516,7 +559,7 @@ Returns an object with the following properties:
 
 ### Example
 
-![Example rendered Custom UI bodied macro contents](https://dac-static.atlassian.com/platform/forge/apis-reference/ui-api-bridge/images/view/view-createAdfRendererIframeProps-custom-ui-bodied-macro.svg?_v=1.5800.2167)
+![Example rendered Custom UI bodied macro contents](https://dac-static.atlassian.com/platform/forge/apis-reference/ui-api-bridge/images/view/view-createAdfRendererIframeProps-custom-ui-bodied-macro.svg?_v=1.5800.2170)
 
 ```
 ```

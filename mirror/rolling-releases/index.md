@@ -1,16 +1,16 @@
 # Rolling releases
 
-Forge rolling releases is available through Forge's Early Access Program (EAP). This feature is currently only available in Jira, Confluence, and Bitbucket.
+Forge rolling releases is now in Preview, and therefore fully supported. However, it remains under active development and may be subject to shorter deprecation windows. Preview features are suitable for early adopters in production environments.
 
-EAP grants selected users early testing access for feedback; APIs and features in EAP are experimental, unsupported, subject to change without notice, and not recommended for production. To join the EAP, please complete the [sign-up form](https://ecosystem.atlassian.net/servicedesk/customer/portal/1040/group/3496/create/18974).
+To use Rolling Releases, you must adopt Decoupled Permissions in your app and flag it in your manifest.
 
-For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/).
+We release preview features so partners and developers can study, test, and integrate them prior to General Availability (GA). For more details, see [Forge EAP, Preview, and GA](https://developer.atlassian.com/platform/forge/whats-coming/#forge-preview).
 
 ## What are rolling releases?
 
-Rolling releases decouple **permissions** (scopes, egress, and remotes) from **app code versions**. This means you can deploy new code without waiting for admin approval of new permissions.
+Rolling releases decouple **permissions** (scopes and egress) from **app code versions**. This means you can deploy new code without waiting for admin approval of new permissions.
 
-Currently, when permissions change, the app remains on the old version of the code for all existing installations, and admins are sometimes slow to update the apps, causing version fragmentation.
+Currently, when permissions change, the app remains on the old version of the code for all existing installations, and admins are often slow to update the apps, causing version fragmentation.
 
 With rolling releases, when you deploy a new version with permission changes:
 
@@ -20,13 +20,15 @@ With rolling releases, when you deploy a new version with permission changes:
 
 ## Why rolling releases?
 
-One of the drivers for this change is developers having many customers not getting the latest version of the code, and developers need to back-port fixes and security patches to old major versions, increasing the load on developers to support old major versions. Some developers have expressed that they do not have the capacity to maintain old versions.
+Rolling releases help you get compatible code changes to existing installations without waiting for admins to approve new permissions. This means security fixes, bug fixes, performance improvements, and permission-independent features can reach customers sooner, while permission-dependent features stay guarded until approval.
 
 **Key benefits:**
 
-* **Reduce version fragmentation**: All customers get the latest code sooner, eliminating the need to maintain multiple versions
-* **Ship faster**: Deploy bug fixes, performance improvements, and new features continuously without waiting for approvals
-* **Lower maintenance costs**: No need to backport fixes to multiple versions, reducing development overhead and infrastructure costs
+* **Get safe updates to customers sooner**: Roll out compatible code changes while new permissions wait for admin approval
+* **Reduce version fragmentation**: Keep more installations on the latest code version and reduce the need to maintain multiple major versions
+* **Ship faster**: Deploy bug fixes, security fixes, performance improvements, and permission-independent features without waiting for approvals
+* **Keep admin approval intact**: New scopes and egress permissions are still approved by admins before permission-dependent features run
+* **Monitor and control production rollouts**: Use Developer Console to start, track, cancel, restart, and inspect rollout progress across environments
 
 ## How it works
 
@@ -40,15 +42,25 @@ When an installation is upgraded with a code-only upgrade:
 
 This state is called "decoupled" because the code version is ahead of the permission version.
 
+**Graceful handling of missing permissions is the developer's responsibility.** Once a rollout is initiated, Atlassian will not roll back the upgrade if issues arise. You must thoroughly test your app in decoupled states before rolling out, and ensure it degrades gracefully when permissions are unavailable. See [Developer testing](#developer-testing) and [Permissions SDK](#permissions-sdk).
+
+### Admin approval
+
+When a code upgrade creates a decoupled state, admins approve new permissions in Admin Hub. The pending approval view shows the permissions already approved for the installation and the new permissions requested by the latest app version.
+
+If an admin does not approve the new permissions, the app continues running with the old permission set. Your app should skip or gracefully degrade features that require permissions the installation does not have yet.
+
 ### Exiting decoupled state
 
-When an admin approves new permissions, the permissions will then match the manifest of that version, and is no longer considered "decoupled".
+When an admin approves new permissions in the Admin Hub "Connected Apps" page, the permissions will then match the manifest of that version, and are no longer considered "decoupled".
 
-## EAP scope
+## Preview scope
 
-This EAP focuses on adopting the SDK and testing the decoupled state, it does *not* support rolling out code versions to end-users, only test sites you control.
+The Rolling Releases Preview supports rolling out code versions to production installations. Permission changes remain governed by admin approval, so apps must continue to handle decoupled states where code is newer than the approved permission set.
 
 ## Getting started
+
+Rolling releases are always on for apps that adopt Decoupled Permissions. You do not need to enable a separate Developer Console toggle, but your app must opt in to decoupled behavior by adding `permissions.enforcement: app-managed` to the manifest, and using the permission SDK.
 
 ## Opt into decoupled permissions
 
@@ -74,7 +86,9 @@ permissions:
 ```
 ```
 
-When the enforcement is set to app-managed, the app will be eligible to enter a decoupled state, and will encounter a permission denied error, or have their external request blocked if the app attempts to perform some action that requires a new permission that is not granted yet. It is up to the app to use the SDK to prevent crashes.
+When enforcement is set to `app-managed`, your app becomes eligible to enter a decoupled state. In this state, if the app attempts an action that requires a permission not yet granted, it will encounter a permission denied error or have its external request blocked.
+
+**It is the developer's responsibility** to use the Permissions SDK to check for missing permissions at runtime and handle them gracefully. Atlassian will not roll back your app if issues arise - you must ensure your app degrades gracefully when permissions are unavailable.
 
 Please see [Permissions SDK](#permissions-sdk) to check for missing permissions at runtime.
 
@@ -210,7 +224,7 @@ You can disable or show an alternative module in the frontend if permissions are
 
 ### Backend SDK
 
-Install the `next` version of the `@forge/api` package:
+Install the latest version of the `@forge/api` package:
 
 ```
 ```
@@ -221,7 +235,7 @@ Install the `next` version of the `@forge/api` package:
 
 
 ```
-npm install --save @forge/api@next
+npm install --save @forge/api@latest
 ```
 ```
 
@@ -375,6 +389,14 @@ When an admin consents to the new permissions for your Forge app, the [upgrade e
 
 The upgrade event is not triggered for code-only upgrades (when only your app’s code changes, and there are no changes to the manifest or permissions).
 
+### Containers
+
+For apps using Forge Containers, use the [Get app installations](/platform/forge/rest/v2/api-group-app-installations/#api-v1-installations-get) endpoint to fetch installation details and check the installation's current permission state before running code that depends on newly requested scopes or egress permissions.
+
+### Remotes
+
+For apps using Forge Remote, use the `permissions` object returned by the [Installation Details API](/platform/forge/apis-reference/installation-details-api/) to check the scopes and egress permissions approved for an installation. Check this object before running code that depends on permissions that may not be approved yet.
+
 ## Developer testing
 
 For a developer to ensure their app will work when apps upgrade from previous versions, and they have checked the correct permissions in the correct places, they need to enter a decoupled state with various permission combinations from previous major versions.
@@ -403,25 +425,40 @@ forge install --upgrade --major-version 4
 ```
 ```
 
+## Rollout monitoring
+
+In Developer Console, the **Rollouts** page lists rollouts for your app across environments. You can filter the list by environment and status. Each rollout shows the target version, rollout status, environment, rollout progress, failure rate where applicable, and available actions.
+
+For step-by-step navigation, see [View app rollouts](/platform/forge/view-app-rollouts/).
+
+To start a rollout, select **Start rollout**. Rollouts are managed per environment, so confirm you are starting the rollout for the intended development, staging, or production environment.
+
+To inspect an in-progress or completed rollout, select **View details**. The rollout details page shows the rollout status, percentage of installations receiving the update, installation and error metrics, installation eligibility, ineligible versions, and the rollout timeline.
+
+![Rollout details page showing in-progress rollout status, installation metrics, installation eligibility, ineligible versions, and rollout timeline](https://dac-static.atlassian.com/platform/forge/images/rolling-releases/rollout-details-page.png?_v=1.5800.2170)
+
+## Controlling rollouts
+
+You can cancel an in-flight rollout from Developer Console. A cancelled rollout stops progressing to additional installations, while installations that already received the target code version remain on that version.
+
+Atlassian cannot roll back a rollout to a buggy version of your app.
+The easiest way to fix the issue would be to roll forward using a [build tag](/platform/forge/cli-reference/build/) of a last known good version.
+
+You can restart a cancelled rollout when you are ready to continue. Developer Console records rollout activity in the rollout timeline, including queued, started, completed, cancelled, or failed states and their timestamps.
+
 ## License changes
 
-You can now roll out a decoupled state when you enable licensing. This allows you to migrate users who are still on the free version of your app.
+You can roll out a decoupled state when you enable licensing. Auto-upgrading an installation does not create, extend, or change customer entitlements. If an app was unlicensed before the upgrade, it remains unlicensed after the upgrade, and this state is observable through the [Forge License API](/platform/forge/apis-reference/license-api/).
 
-## EAP limitations
+Admins can start a trial or subscription independently through the existing billing flows. Until they do, your app should continue to provide non-breaking unlicensed behavior, such as preserving existing free functionality, showing a clear upgrade path for paid features, or gracefully disabling newly paid capabilities.
 
-The following features are under development, therefore are not offered as part of EAP:
+## Preview limitations
 
-* Code auto-upgrade on customer site not supported.
-* Only Jira, Confluence, and Bitbucket are supported.
-* Forge Containers not supported.
+The following features are under development and are not supported as part of the Rolling Releases Preview:
+
 * Upgrading from version without storage to a version with storage (KVS and SQL) is not supported.
 * Upgrading from a version without any dynamic webtriggers to a version with a dynamic webtrigger is not supported.
 * Upgrading from a version without [Forge LLMs](/platform/forge/runtime-reference/forge-llms-api/) to a version with [Forge LLMs](/platform/forge/runtime-reference/forge-llms-api/) is not supported.
-
-## Known issues
-
-* Forge [Remote Compute](/platform/forge/runtime-reference/invoke-remote-api/) endpoints cannot use the permissions encoded in the Forge Invocation Token (FIT).
-  * **Workaround:** Listen to the [lifecycle event](#app-upgrade-event) to monitor the current state of the permissions as they change.
 
 ## Tutorials and guides
 

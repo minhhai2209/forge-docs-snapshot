@@ -27,7 +27,7 @@ Bleed allows child elements to visually extend beyond the bounds of their parent
 
 Use the `inline` prop to allow the child element to bleed along the horizontal axis, extending beyond the left and right bounds of its parent container.
 
-![Example image of a rendered Bleed component with inline bleed](https://dac-static.atlassian.com/platform/forge/ui-kit/images/bleed/bleed-inline.png?_v=1.5800.2167)
+![Example image of a rendered Bleed component with inline bleed](https://dac-static.atlassian.com/platform/forge/ui-kit/images/bleed/bleed-inline.png?_v=1.5800.2170)
 
 ```
 ```
@@ -76,7 +76,7 @@ const BleedInlineExample = () => {
 
 Use the `block` prop to allow the child element to bleed along the vertical axis, extending beyond the top and bottom bounds of its parent container.
 
-![Example image of a rendered Bleed component with block bleed](https://dac-static.atlassian.com/platform/forge/ui-kit/images/bleed/bleed-block.png?_v=1.5800.2167)
+![Example image of a rendered Bleed component with block bleed](https://dac-static.atlassian.com/platform/forge/ui-kit/images/bleed/bleed-block.png?_v=1.5800.2170)
 
 ```
 ```

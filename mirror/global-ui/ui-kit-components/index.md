@@ -335,3 +335,142 @@ ForgeReconciler.render(
 );
 ```
 ```
+
+## Using dispatch to update state
+
+If using a [Frame](/platform/forge/ui-kit/components/frame/) component in the `Main` content area of your app, there may be scenarios where you want to update the app state from within the `Frame` resource. You can use the [dispatch](/platform/forge/ui-kit/components/frame/#props) prop to define a function that can be called inside the resource to dispatch updates to its parent.
+
+The implementation of the function is up to you, although the most common pattern will be to use a reducer and its associated dispatch function. This is a pattern that will be familiar to developers who have used React’s [useReducer](https://react.dev/reference/react/useReducer) hook or React Redux for complex state management.
+
+### Example
+
+#### Main app
+
+In the main app, the sidebar state is defined as a list of items that can be dynamically updated, with each item mapping to a `LinkMenuItem` component. The `reducer` is a pure function that updates the state based on a provided action, which it receives when `dispatch` is called.
+
+```
+```
+1
+2
+```
+
+
+
+```
+import React, { useReducer } from "react";
+import ForgeReconciler, { Frame } from "@forge/react";
+import {
+  Global,
+  Sidebar,
+  LinkMenuItem,
+  LinkMenuItemProps,
+  Main,
+} from "@forge/react/global";
+
+interface GlobalState {
+  sidebar: LinkMenuItemProps[];
+}
+
+type AddSidebarItemAction = { type: 'ADD_SIDEBAR_ITEM', item: LinkMenuItemProps };
+const initialState: GlobalState = {
+  sidebar: [
+    { id: "home", label: "Home", href: "/" },
+    { id: "bugs", label: "Bugs", href: "/bugs" },
+    {
+      id: "reports",
+      label: "Reports",
+      type: "expandable",
+      children: [
+        { id: "weekly", label: "Weekly", href: "/reports/weekly" },
+        { id: "monthly", label: "Monthly", href: "/reports/monthly" },
+      ],
+    },
+  ]
+};
+
+const reducer = (state: GlobalState, action: Action) => {
+  switch (action.type) {
+    case "ADD_SIDEBAR_ITEM":
+      return {
+        ...state,
+        sidebar: [...state.sidebar, action.item]
+      };
+    default:
+      return state;
+  }
+};
+
+const App = () => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  return (
+    <Global>
+      <Sidebar>
+        {state.sidebar.map((item) => (
+          <LinkMenuItem key={item.id} {...item} />
+        ))}
+      </Sidebar>
+      <Main>
+        <Frame resource="my-resource" dispatch={dispatch} />
+      </Main>
+    </Global>
+  );
+};
+
+ForgeReconciler.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+```
+```
+
+#### my-resource
+
+Inside the resource, the dispatch function can be retrieved by calling [view.getFrameDispatch()](/platform/forge/apis-reference/ui-api-bridge/view/#getframedispatch). It can then be used to dispatch actions to the parent to trigger state updates. In this example, it adds a new `Settings` item to the sidebar menu.
+
+```
+```
+1
+2
+```
+
+
+
+```
+import React, { useEffect, useState } from 'react';
+import { view } from '@forge/bridge';
+
+const App = () => {
+  const [dispatch, setDispatch] = useState(undefined);
+
+  useEffect(() => {
+    view
+      .getFrameDispatch()
+      // If using React to set the dispatch function in state to use, make sure to 
+      // wrap it in a callback. Otherwise React treats dispatch as a functional updater 
+      // and tries to execute it.
+      .then((dispatch) => setDispatch(() => dispatch));
+  }, []);
+
+  return (
+    <div>
+      <button
+        onClick={() => dispatch?.({
+          type: "ADD_SIDEBAR_ITEM",
+          item: {
+            id: "settings",
+            label: "Settings",
+            href: "/settings",
+          } 
+        })}
+      >
+        Add Settings menu item
+      </button>
+    </div>
+  );
+}
+
+export default App;
+```
+```

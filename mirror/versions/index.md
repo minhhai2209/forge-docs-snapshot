@@ -6,10 +6,12 @@ create more versions. Each app version can be major or minor, depending on the a
 
 | Major version | Minor version |
 | --- | --- |
-| Major versions involve significant app changes that require site admins to review them first. A new major version won’t be applied to a site until its admin consents to the upgrade. | Minor versions are incremental improvements to major versions. Forge automatically updates all installed apps to the latest minor version of their major version (without requiring admin consent).    By default, Forge creates new minor versions of the latest major version. However, you can also [backport](#backporting) new minor versions of older major versions. |
+| Major versions involve significant app changes that may require site admins to review them first. By default, a new major version won’t be applied to a site until its admin consents to the upgrade. | Minor versions are incremental improvements to major versions. Forge automatically updates all installed apps to the latest minor version of their major version (without requiring admin consent).    By default, Forge creates new minor versions of the latest major version. However, you can also [backport](#backporting) new minor versions of older major versions. |
 | See [Major version upgrades](#major-version-upgrades) for more details about what changes result in a new major version. | See [Minor version upgrades](#minor-version-upgrades) for more information. |
 
 Forge handles versioning automatically, and creates major or minor versions depending on the app change you’re deploying.
+
+Apps using [Rolling releases](/platform/forge/rolling-releases/) can roll out app code before admins approve new permissions. The installation keeps its previously approved permission set until an admin approves the new permissions.
 
 ## Versioning
 
@@ -29,13 +31,13 @@ will initially have a version of `1.1` (major version `1`, minor version `1`).
 There are different ways to see what version of your app is installed on each site, in each environment:
 
 * The `forge install list` [command](/platform/forge/cli-reference/install-list/) will display the major version installed on each site:
-  ![forge install list](https://dac-static.atlassian.com/platform/forge/images/app-version/cli.png?_v=1.5800.2167)
+  ![forge install list](https://dac-static.atlassian.com/platform/forge/images/app-version/cli.png?_v=1.5800.2170)
 * In the [developer console](https://developer.atlassian.com/console/myapps/), your app's **Installations** page (under **MONITOR**) will display the major and minor version. The first segment of the version is the major version
   number. All sites on the same major version will also be on the same minor version:
-  ![Developer Console > MONITOR > Installations](https://dac-static.atlassian.com/platform/forge/images/app-version/dev-cons-install.png?_v=1.5800.2167)
+  ![Developer Console > MONITOR > Installations](https://dac-static.atlassian.com/platform/forge/images/app-version/dev-cons-install.png?_v=1.5800.2170)
 * In the [developer console](https://developer.atlassian.com/console/myapps/), your app's
   **Deployments** page (under **BUILD**) will show who performed each deployment (**Contributor**), and when. It’ll also show which major version each deployment targeted within an environment:
-  ![Developer Console > BUILD > Deployments](https://dac-static.atlassian.com/platform/forge/images/app-version/dev-cons-deploy.png?_v=1.5800.2167)
+  ![Developer Console > BUILD > Deployments](https://dac-static.atlassian.com/platform/forge/images/app-version/dev-cons-deploy.png?_v=1.5800.2170)
 
 Each site’s admin can also see and upgrade their installed app’s version. See
 [Manage app upgrades](https://support.atlassian.com/security-and-access-policies/docs/manage-your-users-third-party-apps/#Manage-app-upgrades) for more details.
@@ -269,7 +271,7 @@ The output should look similar to the following:
 
 ## Major version upgrades
 
-Major version upgrades are not applied to an app installation immediately. This is because
+By default, major version upgrades are not applied to an app installation immediately. This is because
 major versions involve significant changes that may require users and admins to re-consent or
 review the changes before continuing.
 
@@ -308,7 +310,11 @@ The following `manifest.yml` file changes are considered major version upgrades:
 You can use the [Forge CLI](/platform/forge/cli-reference/) to complete a major upgrade with `forge install --upgrade`.
 Site admins can select **upgrade** from the manage apps screen to complete the app upgrade.
 
-You can use the `forge version bulk-upgrade` [CLI](/platform/forge/cli-reference/version/) to start, cancel and track major version updates in large batches, without site admin approval (as long as your change doesn't require any escalation in privilege). For more information, see [version bulk-upgrade](/platform/forge/cli-reference/version-bulk-upgrade/).
+Apps using [Rolling releases](/platform/forge/rolling-releases/) can use Developer Console to roll out app code while admins approve new permissions separately. See [View app rollouts](/platform/forge/view-app-rollouts/) for details.
+
+For eligible major version updates that don't require an escalation in privilege, you can use the `forge version bulk-upgrade` [CLI](/platform/forge/cli-reference/version/) to start, cancel, and track updates in large batches without site admin approval. For more information, see [version bulk-upgrade](/platform/forge/cli-reference/version-bulk-upgrade/).
+
+If your app uses [Rolling releases](/platform/forge/rolling-releases/), use Developer Console to roll out app code and monitor, cancel, or restart rollouts while permission approval remains separate. See [View app rollouts](/platform/forge/view-app-rollouts/) for details.
 
 ## Minor version upgrades
 
@@ -450,8 +456,8 @@ permissions:
 
 ## Backporting
 
-In some cases, a site admin can’t or won’t upgrade from an older major version of your app. You can
-still backport `minor version upgrades` to their app. When you do, Forge will:
+In some cases, a site admin can’t or won’t approve a major version upgrade, or your app needs to
+support installations that remain on an older major version. You can still backport `minor version upgrades` to their app. When you do, Forge will:
 
 * Automatically apply that minor version upgrade to all sites running the same major version.
 * Create a new [app version build number](/platform/marketplace/knowledge-base/changing-the-app-version-build-number/) for your Marketplace listing.

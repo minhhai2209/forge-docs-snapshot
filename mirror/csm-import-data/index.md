@@ -1,13 +1,5 @@
 # Import customer context data with a Forge app
 
-Forge’s EAP offers experimental features to selected users for testing and feedback purposes.
-These features are unsupported and not recommended for use in production environments. They
-are also subject to change without notice.
-
-For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
-
-The [customerServiceManagement:crmImport](/platform/forge/manifest-reference/modules/customer-service-management-crm-import/) module described in this guide is currently in EAP.
-
 This guide provides a high-level overview of building a Forge app that imports customer context data (such as organizations, customers, and entitlements) from external systems (for example, HubSpot, Zendesk, or Salesforce) into Customer Service Management on the installation's site.
 
 It explains the core responsibilities of the app and how Forge supports them. It does not provide step-by-step implementation instructions.
@@ -30,7 +22,7 @@ Use the [customerServiceManagement:crmImport](/platform/forge/manifest-reference
 
 The modal reads the credentials and configuration saved by the admin page, fetches data from the external source, and invokes the [Customer Service Management](/cloud/customer-service-management/) bulk APIs to write that data to the destination.
 
-![CRM Import modal triggered from the Manage dropdown on the Organizations page](https://dac-static.atlassian.com/platform/forge/snippets/images/csm-crm-import-demo-modal.png?_v=1.5800.2167)
+![CRM Import modal triggered from the Manage dropdown on the Organizations page](https://dac-static.atlassian.com/platform/forge/snippets/images/csm-crm-import-demo-modal.png?_v=1.5800.2170)
 
 ## What the app needs to do
 

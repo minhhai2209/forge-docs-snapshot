@@ -60,6 +60,8 @@ cancel [options]  cancels a version upgrade that is in progress.
 The `forge version bulk-upgrade` command lets you upgrade a maximum of 1800 installations in 1 request.
 This allows you to safely migrate large sets of customers simultaneously, and verify that the app is working correctly for them.
 
+The `forge version bulk-upgrade` command is separate from [Rolling releases](/platform/forge/rolling-releases/). For rolling release code rollouts, use Developer Console. See [View app rollouts](/platform/forge/view-app-rollouts/) for details.
+
 For example, to initiate a bulk migration on all apps in `production`:
 
 1. Run the following command.
@@ -102,7 +104,7 @@ Once a batch of 1800 installations is upgraded, you can verify that the upgrade 
 
 ## Setting upgrade limits
 
-To control how many installations are upgraded in a single rollout:
+To control how many installations are upgraded in a single bulk-upgrade request:
 
 ```
 ```
@@ -119,7 +121,7 @@ forge version bulk-upgrade start --environment production --limit 500
 
 If you do not specify a limit parameter, you will be prompted as part of the CLI's interactive flow.
 
-If you specify a limit higher than the maximum allowed per rollout, it will be automatically reduced to the maximum allowed value. You'll receive a warning showing the adjusted limit.
+If you specify a limit higher than the maximum allowed per bulk-upgrade request, it will be automatically reduced to the maximum allowed value. You'll receive a warning showing the adjusted limit.
 
 ## Limitations
 
