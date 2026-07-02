@@ -1,11 +1,5 @@
 # Part 1: Build a Jira hello world app
 
-#### Having trouble?
-
-Ask for help on our Developer Community
-
-[Get help](https://community.developer.atlassian.com/session/sso?return_path=%2Fnew-topic%3Fcategory_id%3D45%26tags%3Dforge-build-a-hello-world-app-in-jira)
-
 This tutorial will walk you through creating a sample Forge app for Jira.
 There are three parts to the tutorial:
 
@@ -174,7 +168,7 @@ With your app installed, it's time to see the app on an issue.
    [Learn more about Jira issues](https://support.atlassian.com/jira-software-cloud/docs/create-and-work-with-issues/).
 2. Open the issue. In the issue view, select the **Apps** button (shown as a grid icon in the top-right area of the issue) and select your app from the list. Your app should display like the example below.
 
-![An issue panel showing in a Jira issue view](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-panel-demo-with-show-hide-from-work-item.png?_v=1.5800.2170)
+![An issue panel showing in a Jira issue view](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-panel-demo-with-show-hide-from-work-item.png?_v=1.5800.2172)
 
 3. To view new changes in your app, run `forge deploy` again, or run `forge tunnel`.
    This is explained fully in the next section.
@@ -251,7 +245,7 @@ For important caveats on how `forge tunnel` works, see
 In the next tutorial, you'll learn how to make API calls to Jira using Forge. This tutorial
 uses the `forge tunnel`, so make sure you are familiar with using this command.
 
-[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.2170)](/platform/forge/call-a-jira-api/)
+[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.2172)](/platform/forge/call-a-jira-api/)
 
 ## Developing for Atlassian Government Cloud
 

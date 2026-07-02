@@ -1,11 +1,5 @@
 # Build a Custom UI app in Jira
 
-#### Having trouble?
-
-Ask for help on our Developer Community
-
-[Get help](https://community.developer.atlassian.com/session/sso?return_path=%2Fnew-topic%3Fcategory_id%3D45%26tags%3Dforge-build-a-custom-ui-app-in-jira)
-
 Tunneling with Custom UI apps is only supported on Chrome and Firefox browsers.
 
 This tutorial walks you through creating a Forge app that displays Custom UI content in a Jira issue.
@@ -211,7 +205,7 @@ With your app installed, it’s time to see the app on an issue.
 
 The app should display on the page with the content of your Custom UI, like the image below.
 
-![A Jira issue displaying a Custom UI forge app](https://dac-static.atlassian.com/platform/forge/images/forge-getting-started-jira-custom-ui.png?_v=1.5800.2170)
+![A Jira issue displaying a Custom UI forge app](https://dac-static.atlassian.com/platform/forge/images/forge-getting-started-jira-custom-ui.png?_v=1.5800.2172)
 
 While your app is deployed to either a development or staging environment, `(DEVELOPMENT)` or
 `(STAGING)` will appear in your app title.

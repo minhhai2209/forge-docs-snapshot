@@ -14,7 +14,7 @@ The **insights dashboard** gives you aggregated visibility across all Forge apps
 
 ## Dashboard charts
 
-![Screenshot of the Developer Space insights dashboard](https://dac-static.atlassian.com/platform/forge/images/developer-space-insights-dashboard.png?_v=1.5800.2170)
+![Screenshot of the Developer Space insights dashboard](https://dac-static.atlassian.com/platform/forge/images/developer-space-insights-dashboard.png?_v=1.5800.2172)
 
 ### Log volume by level
 

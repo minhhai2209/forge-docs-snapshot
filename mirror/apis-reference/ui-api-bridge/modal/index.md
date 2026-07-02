@@ -41,8 +41,11 @@ class Modal {
 
 ## Arguments
 
-* **resource**: The key of the static resource to open in the modal dialog. If not provided, resource
-  defaults current resource.
+* **resource**: The key of the static resource to open in the modal dialog. If not provided, the resource
+  defaults to the current resource. If your resource defines multiple entry points, you can target a specific
+  entry using the `<resource-key>/<entry-key>` syntax. Only Custom UI entries are supported, and the
+  entry's HTML file must be named `<entry-key>.html` (for example, an entry key of `settings` resolves
+  to `settings.html`). See [Resources — Multiple entry points (Preview)](/platform/forge/manifest-reference/resources/#multiple-entry-points-preview).
 * **onClose**: A callback function to run when the modal dialog is closed. The function accepts an
   optional payload that is passed when calling `view.close(payload)` from inside the modal resource.
 * **size**: The size of the modal dialog.

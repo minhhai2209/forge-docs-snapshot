@@ -2,8 +2,6 @@
 
 There are some key considerations and responsibilities when using Forge Remote.
 
-# Increased responsibility
-
 If you decide to integrate remote services with Forge you take on additional responsibilities under the Forge [Shared responsibility model](/platform/forge/shared-responsibility-model/).
 
 ## Remote contract
@@ -111,6 +109,8 @@ The Forge Invocation Token contains a JSON object with the following properties:
 | `app.installation.contexts` | `[object]` | Yes | The list of contexts where the app is installed. Each item in the list is an object as defined below. |
 | `app.installation.contexts.name` | `string` | Yes | Name of the context where app is installed. |
 | `app.installation.contexts.apiBaseUrl` | `url` | Yes | API base URL where all Atlassian app API requests should be routed. Example: `https://api.atlassian.com/ex/confluence/4c822e2f-510f-48b9-b8d2-8419d0932949` |
+| `app.installation.contexts.cloudId` | `string` | No | Identifies the cloud site (a.k.a. tenant) for this context. Only present for Jira and Confluence contexts, and not for Bitbucket contexts.  It is a stable identifier and does not change upon app re-installation or site data recovery.  Example: `d0d52620-3203-4cfa-8db5-f2587155f0dd` |
+| `app.installation.contexts.workspaceId` | `string` | No | Identifies the Bitbucket workspace for this context. Only present for Bitbucket contexts.  It is a stable identifier and does not change upon app re-installation or site data recovery.  Example: `b7ea02c9-0871-4858-a2a6-a190d7de977c` |
 | `context` | `object` | No | The context depends on how the app is using Forge Remote. When invoked from a frontend function, it will contain context describing the module that invoked it. When invoked from a backend function, no context is currently provided. |
 | `context.cloudId` | `string` | No | Identifies a single cloud site (a.k.a. tenant) in Forge. Sometimes referred to as `siteId` or `tenantId`. Sits below the organisation ID but above the workspace ID.  Applicable only to Jira and Confluence apps.  It is a stable identifier and does not change upon app re-installation or site data recovery.  Example: `d0d52620-3203-4cfa-8db5-f2587155f0dd` |
 | `context.workspaceId` | `string` | No | Identifies a single Bitbucket workspace and is only applicable to Bitbucket apps.  It is a stable identifier and does not change upon app re-installation or site data recovery.  Example: `{b7ea02c9-0871-4858-a2a6-a190d7de977c}` |
@@ -136,6 +136,21 @@ Example:
     "appVersion": "16.0.1",
     "installationId": "ari:cloud:ecosystem::installation/0a3a7799-53ae-4a5b-9e7e-03338980abb5",
     "apiBaseUrl": "https://api.stg.atlassian.com/ex/confluence/d0d52620-3203-4cfa-8db5-f2587155f0dd",
+    "installation": {
+      "id": "ari:cloud:ecosystem::installation/0a3a7799-53ae-4a5b-9e7e-03338980abb5",
+      "contexts": [
+        {
+          "name": "confluence",
+          "apiBaseUrl": "https://api.stg.atlassian.com/ex/confluence/d0d52620-3203-4cfa-8db5-f2587155f0dd",
+          "cloudId": "d0d52620-3203-4cfa-8db5-f2587155f0dd"
+        },
+        {
+          "name": "bitbucket",
+          "apiBaseUrl": "https://api.bitbucket.org",
+          "workspaceId": "b7ea02c9-0871-4858-a2a6-a190d7de977c"
+        }
+      ]
+    },
     "environment": {
       "type": "DEVELOPMENT",
       "id": "ari:cloud:ecosystem::environment/8db33809-1f32-48bb-8c52-5877dab48107/aa911f10-c54b-4b93-9e27-dd2947840b9e"
@@ -246,12 +261,15 @@ Example code in Javascript:
 
 ```
 export const validateContextToken = async (invocationToken, appId) => {
-  const jwksUrl = 'https://forge.cdn.prod.atlassian-dev.net/.well-known/jwks.json';
+  const jwksUrl =
+    "https://forge.cdn.prod.atlassian-dev.net/.well-known/jwks.json";
   const JWKS = jose.createRemoteJWKSet(new URL(jwksUrl));
 
-  const payload = await jose.jwtVerify(invocationToken, JWKS, {audience: appId});
+  const payload = await jose.jwtVerify(invocationToken, JWKS, {
+    audience: appId,
+  });
   return payload;
-}
+};
 ```
 ```
 
@@ -284,10 +302,10 @@ To support IC, add `isolatedCloud` URL templates alongside your existing commerc
 ```
 export default [
   {
-    appId: 'ari:cloud:ecosystem::app/COMMERCIAL_APP_ID',
+    appId: "ari:cloud:ecosystem::app/COMMERCIAL_APP_ID",
     isolatedCloud: {
-      jwksUrlTemplate: 'https://some-domain.{IC_LABEL}.net/some-path.json',
-      storageUrlTemplate: 'https://some-domain.{IC_LABEL}.net/some-path',
+      jwksUrlTemplate: "https://some-domain.{IC_LABEL}.net/some-path.json",
+      storageUrlTemplate: "https://some-domain.{IC_LABEL}.net/some-path",
     },
   },
 ];
