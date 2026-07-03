@@ -1,14 +1,13 @@
 {
   "root_url": "https://developer.atlassian.com/platform/forge",
-  "generated_at": "2026-07-02T19:04:18.562300+00:00",
-  "discovered_urls": 764,
-  "downloaded_pages": 762,
-  "skipped_pages": 2,
-  "duration_seconds": 1975.4,
+  "generated_at": "2026-07-03T19:43:59.445247+00:00",
+  "discovered_urls": 765,
+  "downloaded_pages": 764,
+  "skipped_pages": 1,
+  "duration_seconds": 2024.28,
   "user_agent": "ForgeDocsMirror/1.0 (+https://github.com/minhhai2209/forge-docs-snapshot)",
   "delay_seconds": 0.25,
   "failures": [
-    "timeout: https://developer.atlassian.com/platform/forge/installing-forge-on-macos",
     "playwright: https://developer.atlassian.com/platform/forge/resources/Forge-Data-Processing-Addendum.pdf"
   ]
 }

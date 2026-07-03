@@ -453,10 +453,14 @@ const App = () => {
       .then((dispatch) => setDispatch(() => dispatch));
   }, []);
 
+  if (!dispatch) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div>
       <button
-        onClick={() => dispatch?.({
+        onClick={() => dispatch({
           type: "ADD_SIDEBAR_ITEM",
           item: {
             id: "settings",

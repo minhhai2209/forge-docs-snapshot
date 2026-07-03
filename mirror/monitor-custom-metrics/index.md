@@ -24,11 +24,13 @@ To register a custom metric:
 3. Enter a name and description for your metric. For example, `jira-actions-success`.
 4. Select **Register**.
 
-![Custom metrics registration](https://dac-static.atlassian.com/platform/forge/images/custom-metrics-registration.png?_v=1.5800.2172)
+![Custom metrics registration](https://dac-static.atlassian.com/platform/forge/images/custom-metrics-registration.png?_v=1.5800.2175)
 
 After a custom metric is registered, it may take up to 15 minutes before the metric is ingested into the system.
 
 ## Instrument a custom metric
+
+There are two ways to emit a registered custom metric: from your app's backend code using [@forge/metrics](https://www.npmjs.com/package/@forge/metrics) (described below), or from your app's frontend (browser) code using [@forge/bridge](https://www.npmjs.com/package/@forge/bridge) (see [Instrument a frontend custom metric](#instrument-a-frontend-custom-metric)). For the full frontend API, see the [frontendCustomMetrics bridge API reference](/platform/forge/custom-ui-bridge/frontendCustomMetrics/).
 
 Before proceeding further, ensure you have [registered](#register-a-custom-metric) the custom metric for your app already.
 
@@ -87,9 +89,68 @@ Before proceeding further, ensure you have [registered](#register-a-custom-metri
 
    The metric name in your app code must match the metric name registered in the developer console.
 4. Deploy your app using the Forge CLI by running:
-5. View the instrumented custom metric in the developer console.
 
-   ![View custom metrics](https://dac-static.atlassian.com/platform/forge/images/view-custom-metrics.png?_v=1.5800.2172)
+## Instrument a frontend custom metric
+
+Frontend (browser-side) code emits custom metrics with the `frontendCustomMetrics` API from [@forge/bridge](https://www.npmjs.com/package/@forge/bridge). The Forge platform attaches your app's identity and context for you, so you don't pass any tokens. Ensure you have [registered](#register-a-custom-metric) the custom metric first.
+
+Frontend custom metrics work even for apps with no resolver. You don't need a backend function to emit them.
+
+1. Install the [@forge/bridge](https://www.npmjs.com/package/@forge/bridge) package by running this command in your terminal:
+
+   ```
+   ```
+   1
+   2
+   ```
+
+
+
+   ```
+   npm install @forge/bridge
+   ```
+   ```
+2. Use the package installed above in your app code:
+
+   ```
+   ```
+   1
+   2
+   ```
+
+
+
+   ```
+   import { frontendCustomMetrics } from '@forge/bridge';
+   ```
+   ```
+3. Get a counter for your registered metric and increment it where the tracked event occurs. For example:
+
+   ```
+   ```
+   1
+   2
+   ```
+
+
+
+   ```
+   const onButtonClick = () => {
+     const counter = frontendCustomMetrics.counter('jira-actions-success'); // Name should exactly match as registered in developer console
+
+     counter.incr(); // Increment by 1
+     // Or increment by a specific value
+     counter.incrBy(5);
+   };
+   ```
+   ```
+
+   The metric name in your app code must match the metric name registered in the developer console.
+4. Deploy your app using the Forge CLI by running:
+
+Your instrumented custom metric appears in the developer console.
+
+![View custom metrics](https://dac-static.atlassian.com/platform/forge/images/view-custom-metrics.png?_v=1.5800.2175)
 
 ## Delete a custom metric
 
@@ -101,7 +162,7 @@ To delete a custom metric:
 2. Select **Delete** in the menu.
 3. Select **Delete** in the confirmation dialog to confirm.
 
-![Custom metrics unregistration](https://dac-static.atlassian.com/platform/forge/images/custom-metrics-unregistration.png?_v=1.5800.2172)
+![Custom metrics unregistration](https://dac-static.atlassian.com/platform/forge/images/custom-metrics-unregistration.png?_v=1.5800.2175)
 
 ### Filters
 
@@ -115,7 +176,7 @@ Use these filters to refine your metrics:
 * **Sites**: Narrows down the metrics based on the sites that your app is installed onto, for example,
   `<your-site>.atlassian.net`. You can select multiple sites.
 * **Major App Versions**: Narrows down the metrics based on the major version of your app.
-* **Function names**: Narrows down the metrics based on the function name from where the custom metric is emitted.
+* **Functions/Module**: Narrows down the metrics based on where the custom metric is emitted. For backend metrics, this is the function name. For frontend metrics, which aren't emitted from a function, this is the module key.
 
 * Metrics are only shown for sites with at least one invocation in the past 14 days.
 * All dates are in Coordinated Universal Time (UTC).
@@ -141,4 +202,4 @@ Give customer the following instructions:
    Your user sees a screen like this, showing the details of your app and the controls for
    enabling or disabling access to their site's custom metrics.
 
-   ![The admin hub app details page, showing details, and the section to enable custom metrics](https://dac-static.atlassian.com/platform/forge/images/admin-hub-access-custom-metrics-section.png?_v=1.5800.2172)
+   ![The admin hub app details page, showing details, and the section to enable custom metrics](https://dac-static.atlassian.com/platform/forge/images/admin-hub-access-custom-metrics-section.png?_v=1.5800.2175)

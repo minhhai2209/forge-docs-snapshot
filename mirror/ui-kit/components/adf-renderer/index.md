@@ -44,7 +44,8 @@ See [@atlaskit/renderer](https://atlaskit.atlassian.com/packages/editor/renderer
 | --- | --- | --- |
 | `media` | Partial | Only supports media hosted by Atlassian when used in a Confluence macro module. You can identify Atlassian hosted `media` nodes as they have an `attrs.id` property, instead of `attrs.url` |
 | `emoji` | Partial | Only standard Unicode emoji are supported, not [custom user-provided emoji](https://support.atlassian.com/confluence-cloud/docs/use-symbols-emojis-and-special-characters/#Add-your-own-emoji) |
-| `bodiedExtension` | None | All types of Forge macros are supported, except for Forge bodied macros; see [Rendering a UI Kit bodied macro](/platform/forge/ui-kit/components/adf-renderer/#rendering-a-ui-kit-bodied-macro) for guidance on rendering embedded macros. However, core Confluence macros and Connect macros are not supported. |
+| `extension` | Partial | All types of Forge macros are supported. However, core Confluence macros, Connect, and Connect-on-Forge macros are not supported. |
+| `bodiedExtension` | None | Bodied macros are not supported. See [Rendering non-bodied embedded macros](/platform/forge/ui-kit/components/adf-renderer/#rendering-a-ui-kit-bodied-macro) for what is supported. |
 
 ## Examples
 
@@ -57,7 +58,7 @@ This demonstrates how to render the contents of a UI Kit bodied macro, including
 * Your app must be a [Confluence bodied macro](/platform/forge/using-rich-text-bodied-macros/#step-3--render-rich-body-content) with [layout:bodied enabled](/platform/forge/using-rich-text-bodied-macros/#step-1--configure-the-manifest) in the macro module properties of the manifest file.
 * This approach is for **UI Kit** apps only. For Custom UI, use `view.createAdfRendererIframeProps` instead.
 
-![Screenshot showing a UI Kit bodied macro with "Hello world!" text above and below the rendered macro body content](https://dac-static.atlassian.com/platform/forge/ui-kit/images/adfRenderer/adfRenderer-ui-kit-bodied-macro.png?_v=1.5800.2172)
+![Screenshot showing a UI Kit bodied macro with "Hello world!" text above and below the rendered macro body content](https://dac-static.atlassian.com/platform/forge/ui-kit/images/adfRenderer/adfRenderer-ui-kit-bodied-macro.png?_v=1.5800.2175)
 
 ```
 ```
@@ -105,7 +106,7 @@ If the UI Kit bodied macro contains multiple Forge embedded macro apps, you can 
 
 This demonstrates how a simple ADF document is rendered.
 
-![Example image of a rendered valid basic ADF document](https://dac-static.atlassian.com/platform/forge/ui-kit/images/adfRenderer/adfRenderer-basic.png?_v=1.5800.2172)
+![Example image of a rendered valid basic ADF document](https://dac-static.atlassian.com/platform/forge/ui-kit/images/adfRenderer/adfRenderer-basic.png?_v=1.5800.2175)
 
 ```
 ```
@@ -144,7 +145,7 @@ export const AdfRendererBasicExample = () => {
 
 This demonstrates how unsupported content might render by default, without any explicit replacement logic defined.
 
-![Example image of a rendered valid ADF document with unsupported content](https://dac-static.atlassian.com/platform/forge/ui-kit/images/adfRenderer/adfRenderer-unsupported-content-basic.png?_v=1.5800.2172)
+![Example image of a rendered valid ADF document with unsupported content](https://dac-static.atlassian.com/platform/forge/ui-kit/images/adfRenderer/adfRenderer-unsupported-content-basic.png?_v=1.5800.2175)
 
 ```
 ```
@@ -187,7 +188,7 @@ export const AdfRendererUnsupportedExample = () => {
 
 This demonstrates a simple replacement function that just replaces unsupported content with a paragraph.
 
-![Example image of a rendered valid ADF document with unsupported content replaced](https://dac-static.atlassian.com/platform/forge/ui-kit/images/adfRenderer/adfRenderer-unsupported-content-replaced-basic.png?_v=1.5800.2172)
+![Example image of a rendered valid ADF document with unsupported content replaced](https://dac-static.atlassian.com/platform/forge/ui-kit/images/adfRenderer/adfRenderer-unsupported-content-replaced-basic.png?_v=1.5800.2175)
 
 ```
 ```
@@ -247,7 +248,7 @@ export const AdfRendererUnsupportedContentExample = () => {
 
 This demonstrates a more complex replacement function that either replaces content, removes it, and or leaves it as-is, depending on the node type.
 
-![Example image of a rendered valid ADF document with unsupported content replaced](https://dac-static.atlassian.com/platform/forge/ui-kit/images/adfRenderer/adfRenderer-unsupported-content-replaced-complex.png?_v=1.5800.2172)
+![Example image of a rendered valid ADF document with unsupported content replaced](https://dac-static.atlassian.com/platform/forge/ui-kit/images/adfRenderer/adfRenderer-unsupported-content-replaced-complex.png?_v=1.5800.2175)
 
 ```
 ```

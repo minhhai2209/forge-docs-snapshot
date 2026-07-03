@@ -435,7 +435,7 @@ To start a rollout, select **Start rollout**. Rollouts are managed per environme
 
 To inspect an in-progress or completed rollout, select **View details**. The rollout details page shows the rollout status, percentage of installations receiving the update, installation and error metrics, installation eligibility, ineligible versions, and the rollout timeline.
 
-![Rollout details page showing in-progress rollout status, installation metrics, installation eligibility, ineligible versions, and rollout timeline](https://dac-static.atlassian.com/platform/forge/images/rolling-releases/rollout-details-page.png?_v=1.5800.2172)
+![Rollout details page showing in-progress rollout status, installation metrics, installation eligibility, ineligible versions, and rollout timeline](https://dac-static.atlassian.com/platform/forge/images/rolling-releases/rollout-details-page.png?_v=1.5800.2175)
 
 ## Controlling rollouts
 

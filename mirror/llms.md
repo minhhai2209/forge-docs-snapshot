@@ -438,6 +438,7 @@ Use the linked pages in this navigation area for UI Kit components, hooks, bridg
 - [invoke](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/invoke.md)
 - [invokeRemote](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/invokeRemote.md)
 - [modal](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/modal.md)
+- [frontendCustomMetrics](https://developer.atlassian.com/platform/forge/custom-ui-bridge/frontendCustomMetrics.md)
 - [objectStore (Preview)](https://developer.atlassian.com/platform/forge/custom-ui-bridge/objectStore.md)
 - [realtime](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/realtime.md)
 - [requestBitbucket](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/requestBitbucket.md)
