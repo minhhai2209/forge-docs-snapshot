@@ -20,13 +20,11 @@ Forge uses a consumption-based pricing model, offering most capabilities for fre
 | SQL: Compute duration | $/hr | 1 hr | 0.143 |
 | SQL: Compute requests | $/1M-requests | 100,000 requests | 1.929 |
 | SQL: Data stored | $/GB-hours | 730 GB-hours | 0.00076850 |
-| Object Store: Requests (starting July 1, 2026) | $/1k-requests | 5,000 requests | 0.001353 |
+| Object Store: Requests | $/1k-requests | 5,000 requests | 0.001353 |
 | LLM: Input | $/credits | 0 credits | 0.0000001 |
 | LLM: Output | $/credits | 0 credits | 0.0000005 |
 
 Empty KVS reads count as 1KB towards your usage, whereas non-empty reads are based on actual size. While we may consider a future update to apply this 1KB minimum to all reads under 1KB, the current policy applies only to empty reads. We will provide advance notice prior to adopting any changes.
-
-Object Store pricing is currently in **Preview**, and charges for *requests* will take effect on July 1, 2026.
 
 ### Example: Calculating your monthly bill
 
@@ -155,7 +153,7 @@ At launch, the following capabilities will be charged above the free threshold:
 * SQL: Compute (duration and request) and Data Stored
 * Logs: Data Written
 * LLM: Input and Output (billed per credit, with no free usage allowance)
-* Object Store: Requests (pricing takes effect July 1, 2026; see note above)
+* Object Store: Requests
 
 The following capabilities are also billable, but use different pricing models and provide no free usage allowance:
 

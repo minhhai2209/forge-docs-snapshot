@@ -18,6 +18,8 @@ for its frontend. Refer to the app's README for additional guidance on exploring
 
 The Forge Object Store is subject to following limitations:
 
+Forge Object Store is not supported on Bitbucket apps.
+
 ### Rate limits per installation
 
 If the following rate limits are exceeded, Forge will return a `TOO_MANY_REQUESTS` error.
@@ -64,8 +66,6 @@ We may also implement additional measures to screen stored content.
 Learn more about Forge’s pricing structure, allowances, and billing by visiting [Forge platform pricing](/platform/forge/forge-platform-pricing/).
 
 Estimate your app’s monthly costs using the [cost estimator](https://developer.atlassian.com/forge-cost-estimator), which lets you model usage and see potential charges.
-
-Object Store pricing is currently in **Preview**, and charges for *requests* will take effect on July 1, 2026.
 
 ## Partitioning
 

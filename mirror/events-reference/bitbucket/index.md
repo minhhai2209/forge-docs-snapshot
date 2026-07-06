@@ -87,7 +87,8 @@ This is an example payload of a newly created repository.
     "uuid": "{cc8e193d-7603-4dfd-8771-fcc8960aa0fb}"
   },
   "repository": {
-    "uuid": "{15a31549-1cff-45dc-9d0d-310114c5038b}"
+    "uuid": "{15a31549-1cff-45dc-9d0d-310114c5038b}",
+    "slug": "repository-slug"
   },
   "project": {
     "uuid": "{1860e69a-65c1-4ac2-8ab0-cbd2868e7573}"
@@ -878,11 +879,25 @@ interface Branch {
   };
 }
 
+interface Title {
+  truncated: boolean;
+  value: string;
+}
+
+interface Author {
+  type: string;
+  accountId: string;
+  uuid: string;
+  displayName: string;
+}
+
 interface PullRequest {
   id: number;
   state: string;
   source: Branch;
   destination: Branch;
+  title?: Title;
+  author?: Author;
   updatedOn?: string;
   createdOn?: string;
   commentCount?: number;
@@ -937,6 +952,16 @@ This is an example payload of a pull request being created.
     },
     "updatedOn": "2026-06-01T03:12:16.159643+00:00",
     "createdOn": "2026-05-27T06:42:44.936130+00:00",
+    "title": {
+      "truncated": false,
+      "value": "PR title"
+    },
+    "author": {
+      "accountId": "712020:f44b4850-c6f6-54ce-9722-b800af117eb4",
+      "type": "user",
+      "uuid": "{c0de26c1-c01f-4d70-a19c-dac5a7b2e531}",
+      "displayName": "Jane Smith"
+    },
     "commentCount": 2,
     "taskCount": 2
   },
@@ -1002,11 +1027,25 @@ interface Branch {
   };
 }
 
+interface Title {
+  truncated: boolean;
+  value: string;
+}
+
+interface Author {
+  type: string;
+  accountId: string;
+  uuid: string;
+  displayName: string;
+}
+
 interface PullRequest {
   id: number;
   state: string;
   source: Branch;
   destination: Branch;
+  title?: Title;
+  author?: Author;
   updatedOn?: string;
   createdOn?: string;
   commentCount?: number;
@@ -1061,6 +1100,16 @@ This is an example payload of a pull request being updated.
     },
     "updatedOn": "2026-06-01T03:12:16.159643+00:00",
     "createdOn": "2026-05-27T06:42:44.936130+00:00",
+    "title": {
+      "truncated": false,
+      "value": "PR title"
+    },
+    "author": {
+      "accountId": "712020:f44b4850-c6f6-54ce-9722-b800af117eb4",
+      "type": "user",
+      "uuid": "{c0de26c1-c01f-4d70-a19c-dac5a7b2e531}",
+      "displayName": "Jane Smith"
+    },
     "commentCount": 2,
     "taskCount": 2
   },
@@ -1128,11 +1177,25 @@ interface Branch {
   commit: Hash;
 }
 
+interface Title {
+  truncated: boolean;
+  value: string;
+}
+
+interface Author {
+  type: string;
+  accountId: string;
+  uuid: string;
+  displayName: string;
+}
+
 interface PullRequest {
   id: number;
   state: string;
   source: Branch;
   destination: Branch;
+  title?: Title;
+  author?: Author;
   mergeCommit: Hash;
   updatedOn?: string;
   createdOn?: string;
@@ -1191,6 +1254,16 @@ This is an example payload of a pull request being merged.
     },
     "updatedOn": "2026-06-01T03:12:16.159643+00:00",
     "createdOn": "2026-05-27T06:42:44.936130+00:00",
+    "title": {
+      "truncated": false,
+      "value": "PR title"
+    },
+    "author": {
+      "accountId": "712020:f44b4850-c6f6-54ce-9722-b800af117eb4",
+      "type": "user",
+      "uuid": "{c0de26c1-c01f-4d70-a19c-dac5a7b2e531}",
+      "displayName": "Jane Smith"
+    },
     "commentCount": 2,
     "taskCount": 2
   },
@@ -1258,11 +1331,25 @@ interface Branch {
   commit: Hash;
 }
 
+interface Title {
+  truncated: boolean;
+  value: string;
+}
+
+interface Author {
+  type: string;
+  accountId: string;
+  uuid: string;
+  displayName: string;
+}
+
 interface PullRequest {
   id: number;
   state: string;
   source: Branch;
   destination: Branch;
+  title?: Title;
+  author?: Author;
   mergeCommit: Hash;
   updatedOn?: string;
   createdOn?: string;
@@ -1318,6 +1405,16 @@ This is an example payload of a pull request being declined.
     },
     "updatedOn": "2026-06-01T03:12:16.159643+00:00",
     "createdOn": "2026-05-27T06:42:44.936130+00:00",
+    "title": {
+      "truncated": false,
+      "value": "PR title"
+    },
+    "author": {
+      "accountId": "712020:f44b4850-c6f6-54ce-9722-b800af117eb4",
+      "type": "user",
+      "uuid": "{c0de26c1-c01f-4d70-a19c-dac5a7b2e531}",
+      "displayName": "Jane Smith"
+    },
     "commentCount": 2,
     "taskCount": 2
   },
@@ -1384,11 +1481,25 @@ interface Branch {
   commit: Hash;
 }
 
+interface Title {
+  truncated: boolean;
+  value: string;
+}
+
+interface Author {
+  type: string;
+  accountId: string;
+  uuid: string;
+  displayName: string;
+}
+
 interface PullRequest {
   id: number;
   state: string;
   source: Branch;
   destination: Branch;
+  title?: Title;
+  author?: Author;
   updatedOn?: string;
   createdOn?: string;
   commentCount?: number;
@@ -1448,6 +1559,16 @@ This is an example payload of a pull request comment being created.
       },
       "updatedOn": "2026-06-01T03:12:16.159643+00:00",
       "createdOn": "2026-05-27T06:42:44.936130+00:00",
+      "title": {
+        "truncated": false,
+        "value": "PR title"
+      },
+      "author": {
+        "accountId": "712020:f44b4850-c6f6-54ce-9722-b800af117eb4",
+        "type": "user",
+        "uuid": "{c0de26c1-c01f-4d70-a19c-dac5a7b2e531}",
+        "displayName": "Jane Smith"
+      },
       "commentCount": 2,
       "taskCount": 2
     },
@@ -1516,11 +1637,25 @@ interface Branch {
   commit: Hash;
 }
 
+interface Title {
+  truncated: boolean;
+  value: string;
+}
+
+interface Author {
+  type: string;
+  accountId: string;
+  uuid: string;
+  displayName: string;
+}
+
 interface PullRequest {
   id: number;
   state: string;
   source: Branch;
   destination: Branch;
+  title?: Title;
+  author?: Author;
   updatedOn?: string;
   createdOn?: string;
   commentCount?: number;
@@ -1646,11 +1781,25 @@ interface Branch {
   commit: Hash;
 }
 
+interface Title {
+  truncated: boolean;
+  value: string;
+}
+
+interface Author {
+  type: string;
+  accountId: string;
+  uuid: string;
+  displayName: string;
+}
+
 interface PullRequest {
   id: number;
   state: string;
   source: Branch;
   destination: Branch;
+  title?: Title;
+  author?: Author;
   updatedOn?: string;
   createdOn?: string;
   commentCount?: number;
@@ -1773,11 +1922,25 @@ interface Branch {
   commit: Hash;
 }
 
+interface Title {
+  truncated: boolean;
+  value: string;
+}
+
+interface Author {
+  type: string;
+  accountId: string;
+  uuid: string;
+  displayName: string;
+}
+
 interface PullRequest {
   id: number;
   state: string;
   source: Branch;
   destination: Branch;
+  title?: Title;
+  author?: Author;
   updatedOn?: string;
   createdOn?: string;
   commentCount?: number;
@@ -1900,11 +2063,25 @@ interface Branch {
   commit: Hash;
 }
 
+interface Title {
+  truncated: boolean;
+  value: string;
+}
+
+interface Author {
+  type: string;
+  accountId: string;
+  uuid: string;
+  displayName: string;
+}
+
 interface PullRequest {
   id: number;
   state: string;
   source: Branch;
   destination: Branch;
+  title?: Title;
+  author?: Author;
   updatedOn?: string;
   createdOn?: string;
   commentCount?: number;
@@ -2033,11 +2210,25 @@ interface Branch {
   commit: Hash;
 }
 
+interface Title {
+  truncated: boolean;
+  value: string;
+}
+
+interface Author {
+  type: string;
+  accountId: string;
+  uuid: string;
+  displayName: string;
+}
+
 interface PullRequest {
   id: number;
   state: string;
   source: Branch;
   destination: Branch;
+  title?: Title;
+  author?: Author;
   updatedOn?: string;
   createdOn?: string;
   commentCount?: number;
@@ -2104,6 +2295,16 @@ This is an example payload of a pull request reviewer status being updated.
         },
         "updatedOn": "2026-06-01T03:12:16.159643+00:00",
         "createdOn": "2026-05-27T06:42:44.936130+00:00",
+        "title": {
+          "truncated": false,
+          "value": "PR title"
+        },
+        "author": {
+          "accountId": "712020:f44b4850-c6f6-54ce-9722-b800af117eb4",
+          "type": "user",
+          "uuid": "{c0de26c1-c01f-4d70-a19c-dac5a7b2e531}",
+          "displayName": "Jane Smith"
+        },
         "commentCount": 2,
         "taskCount": 2
     },
@@ -2114,7 +2315,7 @@ This is an example payload of a pull request reviewer status being updated.
           "user": {
             "type": "user",
             "accountId": "5d5353ed-743a-4f0a-8a86-1234567890ab",
-            "uuid": "{87654321-4321-4321-4321-cba987654321}",
+            "uuid": "{87654321-4321-4321-4321-cba987654321}"
           },
           "status": "changes_requested",
           "timestamp": "2023-06-27T11:45:00Z"

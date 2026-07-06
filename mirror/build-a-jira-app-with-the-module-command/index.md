@@ -11,7 +11,7 @@ working Forge app running inside a real Jira issue, and you'll understand *how* 
 You'll create an empty Forge app and then use the new `forge module` command to add a
 **Jira issue panel** to it. The finished app looks like this:
 
-![An issue panel showing in a Jira issue view](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-panel-demo-with-show-hide-from-work-item.png?_v=1.5800.2175)
+![An issue panel showing in a Jira issue view](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-panel-demo-with-show-hide-from-work-item.png?_v=1.5800.2179)
 
 ## A few words before we start
 
@@ -287,7 +287,7 @@ With your app installed, it's time to see it on a Jira issue.
    top-right area of the issue) and select your app from the list. Your app should display like
    the example below.
 
-![An issue panel showing in a Jira issue view](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-panel-demo-with-show-hide-from-work-item.png?_v=1.5800.2175)
+![An issue panel showing in a Jira issue view](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-panel-demo-with-show-hide-from-work-item.png?_v=1.5800.2179)
 
 While your app is deployed to either a development or staging environment, `(development)` or
 `(staging)` will appear in your app title. This suffix is removed once you've

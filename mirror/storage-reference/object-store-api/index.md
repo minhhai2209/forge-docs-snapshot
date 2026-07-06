@@ -26,6 +26,8 @@ To integrate the Forge Object Store with your app's frontend, use the [objectSto
 
 The Forge Object Store has the following limitations:
 
+Forge Object Store is not supported on Bitbucket apps.
+
 ### Rate limits per installation
 
 If the following rate limits are exceeded, Forge will return a `TOO_MANY_REQUESTS` error.

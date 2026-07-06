@@ -1,25 +1,9 @@
 # Forge changelog
 
-We've added a new Forge module (`devops:securityInfoProvider`) that lets your app send security information (such as vulnerabilities and security containers) to Jira and associate it with issues. This is now available in **preview**.
+Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
+When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our
 
-**What's new**
+[Privacy Policy](https://www.atlassian.com/legal/privacy-policy#additional-disclosures-for-ca-residents)
 
-The `devops:securityInfoProvider` module surfaces your app's security data directly in the development panel of Jira issues. Apps can write and delete security information using the <https://developer.atlassian.com/cloud/jira/software/rest/> via the `requestJira` function.
-
-To register a provider, declare the module in your `manifest.yml` and configure the required endpoint handlers:
-
-* `fetchWorkspaces`: returns the list of workspaces available to the user
-* `fetchContainers`: returns security containers within a workspace
-* `searchContainers`: searches containers matching a query
-
-Two optional lifecycle hooks are also available: `onEntityAssociated` and `onEntityDisassociated`, invoked when a container is linked or unlinked from a Jira entity.
-
-**Important behaviour to note**
-
-When a user uninstalls your app, all security data your app sent to Jira is deleted after a grace period.
-
-There is currently a limitation, where your Forge app must define a Connect app key in order to be able to link workspaces. See [https://jira.atlassian.com/browse/ECO-1602](https://jira.atlassian.com/browse/ECO-1602 "https://jira.atlassian.com/browse/ECO-1602")
-
-**Get started**
-
-See the <https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-software-security-info/> for the full manifest schema, example requests/responses, and property details.
+.
+You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
