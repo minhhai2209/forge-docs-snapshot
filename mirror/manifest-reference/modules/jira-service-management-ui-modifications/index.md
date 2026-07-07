@@ -34,7 +34,8 @@ modules {}
 └─ jira:uiModifications []
    ├─ key (string) [Mandatory]
    ├─ title (string | i18n) [Mandatory]
-   └─ resource (string) [Mandatory]
+   ├─ resource (string) [Mandatory]
+   └─ unlicensedAccess (List<string>)
 
 resources []
 ├─ key (string) [Mandatory]
@@ -51,6 +52,7 @@ resources []
 | `resource` | `string` | Required if using [Custom UI](/platform/forge/custom-ui/) or the latest version of [UI Kit.](/platform/forge/ui-kit/) | A reference to the static `resources` entry that your context menu app wants to display. See [resources](/platform/forge/manifest-reference/resources) for more details. |
 | `title` | `string` or `i18n object` | Yes | A title for the module.  The `i18n object` allows for translation. See [i18n object](#i18n-object). |
 | `resolver` | `{ function: string }` or `{ endpoint: string }` | Yes | Set the `function` property if you are using a hosted `function` module for your resolver.  Set the `endpoint` property if you are using [Forge Remote](/platform/forge/forge-remote-overview) to integrate with a remote back end. |
+| `unlicensedAccess` | List<string> |  | A list of unlicensed user types that can access this module. Valid values are: `unlicensed`, `customer`, and `anonymous`. For more information, see [Access to Forge apps for unlicensed users](/platform/forge/access-to-forge-apps-for-unlicensed-users). |
 
 ### i18n object
 
@@ -203,7 +205,7 @@ If you install and configure multiple UIM apps to run for a given combination of
 
 There may be conflicts when multiple apps attempt to modify the same field using the same [FieldAPI](/platform/forge/apis-reference/jira-api-bridge/uiModifications/#common-fieldapi) method. In such cases, app developers will receive conflict errors via the [onError](/platform/forge/apis-reference/jira-api-bridge/uiModifications/#error-handling) handler, and users will see corresponding notifications:
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/multi-app-conflict-notification.png?_v=1.5800.2179)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/multi-app-conflict-notification.png?_v=1.5800.2184)
 
 If the conflict happens, the changes applied by the app which finished running last will override changes from other apps.
 

@@ -90,7 +90,7 @@ When enforcement is set to `app-managed`, your app becomes eligible to enter a d
 
 **It is the developer's responsibility** to use the Permissions SDK to check for missing permissions at runtime and handle them gracefully. Atlassian will not roll back your app if issues arise - you must ensure your app degrades gracefully when permissions are unavailable.
 
-Please see [Permissions SDK](#permissions-sdk) to check for missing permissions at runtime.
+Use the [Permissions SDK](#permissions-sdk) to check for missing permissions at runtime.
 
 ## Permissions SDK
 
@@ -252,7 +252,7 @@ npm install --save @forge/api@latest
 ```
 import { permissions } from '@forge/api';
 
-const isPermitted = permissions.hasScope('storage:app')
+const isPermitted = permissions.hasScope('write:confluence-content')
 ```
 ```
 
@@ -304,7 +304,7 @@ const isPermitted = permissions.canLoadResource('images', 'https://api.example.c
 import { permissions } from '@forge/api';
 
 const { granted, missing } = permissions.hasPermission({ 
-    scopes: ['storage:app'],
+    scopes: ['write:confluence-content'],
     external: {
         fetch: {
             backend: ["https://api.example.com", "https://blah.com", "https://www.google.com"]
@@ -435,7 +435,7 @@ To start a rollout, select **Start rollout**. Rollouts are managed per environme
 
 To inspect an in-progress or completed rollout, select **View details**. The rollout details page shows the rollout status, percentage of installations receiving the update, installation and error metrics, installation eligibility, ineligible versions, and the rollout timeline.
 
-![Rollout details page showing in-progress rollout status, installation metrics, installation eligibility, ineligible versions, and rollout timeline](https://dac-static.atlassian.com/platform/forge/images/rolling-releases/rollout-details-page.png?_v=1.5800.2179)
+![Rollout details page showing in-progress rollout status, installation metrics, installation eligibility, ineligible versions, and rollout timeline](https://dac-static.atlassian.com/platform/forge/images/rolling-releases/rollout-details-page.png?_v=1.5800.2184)
 
 ## Controlling rollouts
 

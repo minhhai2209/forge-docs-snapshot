@@ -31,7 +31,7 @@ It relies on events, Forge realtime events APIs, Forge background scripts, and t
 
 The app is composed of triggers, a secure [realtime channel](https://developer.atlassian.com/platform/forge/runtime-reference/realtime-events-api/), and a [Jira issue view background script](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-issue-view-background-script/) that work together to deliver timely, context-aware notifications to users:
 
-![In-app notifications from events](https://dac-static.atlassian.com/platform/forge/images/in-app-notifications-from-events.svg?_v=1.5800.2179)
+![In-app notifications from events](https://dac-static.atlassian.com/platform/forge/images/in-app-notifications-from-events.svg?_v=1.5800.2184)
 
 This architecture leverages Forge triggers, background scripts, realtime channels, and bridge APIs to provide a seamless, secure, and highly targeted notification experience directly within Jira or Confluence.
 

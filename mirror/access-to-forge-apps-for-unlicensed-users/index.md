@@ -11,7 +11,7 @@ This guide covers unlicensed access for:
 * **Jira and Jira Service Management** - modules rendered on Jira Service Management.
 * **Jira Service Management** - unlicensed users in portals
 * **Confluence** - guest users and anonymous users
-* **Jira** - anonymous users for select modules
+* **Jira** - unlicensed and anonymous users for select modules
 
 By default, only licensed, authenticated users of the Atlassian app within which an
 app runs, can use that app. For Jira Service Management, these licensed users

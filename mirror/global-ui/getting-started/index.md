@@ -52,7 +52,7 @@ by running:
 
 
 ```
-npm install -g @forge/cli@13.1.0-next.4-experimental-9423de1
+npm install -g @forge/cli@latest
 ```
 ```
 

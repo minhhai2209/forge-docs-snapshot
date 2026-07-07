@@ -2,7 +2,7 @@
 
 You can call your remote backend from your frontend (Custom UI and UI Kit) using the `@forge/bridge` package. The diagram below illustrates the data flow.
 
-![Forge Remote diagram describing the flow of data and auth between Forge and remote application](https://dac-static.atlassian.com/platform/forge/images/remote/remote-calling-backend-from-frontend.png?_v=1.5800.2179)
+![Forge Remote diagram describing the flow of data and auth between Forge and remote application](https://dac-static.atlassian.com/platform/forge/images/remote/remote-calling-backend-from-frontend.png?_v=1.5800.2184)
 
 ## Setting up the manifest
 
