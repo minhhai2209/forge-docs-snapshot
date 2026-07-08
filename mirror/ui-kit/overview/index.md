@@ -163,7 +163,7 @@ resources:
 ```
 ```
 
-If your app has multiple modules or views, you can define multiple named entry points within a single resource using the optional `entry` property (Preview), rather than declaring a separate resource for each view. See [Resources — Multiple entry points (Preview)](/platform/forge/manifest-reference/resources/#multiple-entry-points-preview) for details.
+If your app has multiple modules or views, you can define multiple named entry points within a single resource using the optional `entry` property, rather than declaring a separate resource for each view. See [Resources — Multiple entry points](/platform/forge/manifest-reference/resources/#multiple-entry-points) for details.
 
 ## Resolver
 

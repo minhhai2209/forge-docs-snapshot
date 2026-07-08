@@ -153,6 +153,8 @@ interface TextPart {
 ```
 ```
 
+The `temperature` and `top_p` fields are not supported by the `claude-opus-4-7` model. When using `claude-opus-4-7`, omit both fields. For more information, see the [validation rules](#validation-rules).
+
 ### Response schema
 
 ```
@@ -274,6 +276,7 @@ try {
 
 The following request validation rules apply:
 
-| Rule |
-| --- |
-| `temperature` and `top_p` cannot be specified together. Provide only one of these, not both. |
+| Parameters | Applies to | Rule |
+| --- | --- | --- |
+| `temperature`, `top_p` | All models | `temperature` and `top_p` cannot be specified together. Provide only one, not both. |
+| `temperature`, `top_p` | `claude-opus-4-7` | The `claude-opus-4-7` model does not support these parameters. Omit both from the request. |

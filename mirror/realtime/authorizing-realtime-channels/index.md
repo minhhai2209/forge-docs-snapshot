@@ -13,7 +13,7 @@ The default context for a channel will be the Atlassian app context of the modul
 
 We recommend using the default `publish()` and `subscribe()` methods if you don't need to send messages between Atlassian app contexts.
 
-![Atlassian app context as default channel context](https://dac-static.atlassian.com/platform/forge/images/realtime/realtime-atlassian-app-context-publish.png?_v=1.5800.2184)
+![Atlassian app context as default channel context](https://dac-static.atlassian.com/platform/forge/images/realtime/realtime-atlassian-app-context-publish.png?_v=1.5800.2186)
 
 #### Example
 
@@ -153,7 +153,7 @@ The properties in `contextOverrides` must match exactly in the `subscribe()` and
 a subscriber with overrides `[Jira.Project]` will not receive messages from a publisher with overrides `[Jira.Project, Jira.Issue]`, even
 though they have overlapping properties.
 
-![Atlassian app context with overrides as channel context](https://dac-static.atlassian.com/platform/forge/images/realtime/realtime-context-overrides-publish.png?_v=1.5800.2184)
+![Atlassian app context with overrides as channel context](https://dac-static.atlassian.com/platform/forge/images/realtime/realtime-context-overrides-publish.png?_v=1.5800.2186)
 
 #### Limitations
 
@@ -175,7 +175,7 @@ If an app is publishing messages to a global channel with `publishGlobal()`, the
 
 It is your responsibility to ensure you are scoping your channels appropriately, and only using global channels if absolutely necessary. Using channel tokens to enforce Atlassian app permissions is also encouraged when using global channels.
 
-![Global channels with no channel context](https://dac-static.atlassian.com/platform/forge/images/realtime/realtime-global-publish.png?_v=1.5800.2184)
+![Global channels with no channel context](https://dac-static.atlassian.com/platform/forge/images/realtime/realtime-global-publish.png?_v=1.5800.2186)
 
 #### Example
 
@@ -226,7 +226,7 @@ The custom claims will be added on top of the Atlassian app context that already
 the channel is secured by the Atlassian app context (or a subset if `contextOverrides` is provided) and your token's claims. If using the `subscribeGlobal`
 and `publishGlobal` methods, the channel is only secured by the token.
 
-![Atlassian app context with Realtime token as channel context](https://dac-static.atlassian.com/platform/forge/images/realtime/realtime-token-publish.png?_v=1.5800.2184)
+![Atlassian app context with Realtime token as channel context](https://dac-static.atlassian.com/platform/forge/images/realtime/realtime-token-publish.png?_v=1.5800.2186)
 
 #### Example
 
