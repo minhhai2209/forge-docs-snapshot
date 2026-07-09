@@ -20,7 +20,7 @@ At present, Forge Containers has the following limitations:
 
 * An app can only have one containerised service, and this service can only have one defined container.
   For a complete list of EAP limitations (along with our plans to address and mitigate each one), refer to [Roadmap](/platform/forge/containers-reference/roadmap).
-* Containerised services can't be de-provisioned. Once your app is deployed and installed, its service instance can't be deleted, even if you delete its definiton from the manifest file and re-deploy.
+* Containerised services can't be de-provisioned. Once your app is deployed and installed, its service instance can't be deleted, even if you delete its definition from the manifest file and re-deploy.
 
 ## Container lifecycle
 
@@ -28,7 +28,7 @@ Your app’s containerised service lifecycle begins when you upload the service�
 
 The following diagram provides a high-level view of the container lifecycle:
 
-![Forge Containers lifecycle overview](https://dac-static.atlassian.com/platform/forge/images/containers-lifecycle-overview.png?_v=1.5800.2186)
+![Forge Containers lifecycle overview](https://dac-static.atlassian.com/platform/forge/images/containers-lifecycle-overview.png?_v=1.5800.2189)
 
 This lifecycle involves the following major phases:
 
@@ -208,7 +208,7 @@ Images used by your apps are subject to our [image security guidelines](/platfor
 
 ## Upload an image
 
-You’ll need to authenticate your image upload tool before using it to push images to your container repository. To do this with Docker CLI, run `forge containers docker-login`. This command creates a temporary API token scoped to this specific Forge pp and adds it to the Docker CLI.
+You’ll need to authenticate your image upload tool before using it to push images to your container repository. To do this with Docker CLI, run `forge containers docker-login`. This command creates a temporary API token scoped to this specific Forge app and adds it to the Docker CLI.
 
 If you use a different image upload tool, run `forge containers get-login` to retrieve your temporary API token instead.
 Once authenticated, you can upload images to your container repository (through its URI). For example:
@@ -244,9 +244,11 @@ You can use `forge tunnel` to test your containerised service locally before pus
 
 ## Monitor your service
 
-You can monitor the following through the Developer Console:
+You can monitor the following through the developer console:
 
-You can also view logs for service invocations using the `forge logs --containers` command.
+You can also [export container metrics](/platform/forge/export-app-metrics/) to third-party observability tools using the App metrics API.
+
+You can also view logs for service invocations using the `forge logs --containers` command from the CLI.
 For example:
 
 ```

@@ -22,6 +22,8 @@ See [Forge platform pricing](/platform/forge/forge-platform-pricing/) for the au
 | Object Store: Requests | $/1k-requests | 5,000 requests | 0.001353 |
 | LLM: Input | $/credits | 0 credits | 0.0000001 |
 | LLM: Output | $/credits | 0 credits | 0.0000005 |
+| Containers: Compute (starting August 1, 2026) | $/vCPU-hour | 0 vCPU-hours | 0.07177 |
+| Containers: Memory (starting August 1, 2026) | $/GiB-hour | 0 GiB-hours | 0.00786 |
 
 Capabilities not listed above — including UI modules, Jira expressions, and Forge Remote — are **free** and do not contribute to your bill.
 

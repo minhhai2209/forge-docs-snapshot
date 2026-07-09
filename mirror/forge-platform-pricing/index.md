@@ -23,6 +23,8 @@ Forge uses a consumption-based pricing model, offering most capabilities for fre
 | Object Store: Requests | $/1k-requests | 5,000 requests | 0.001353 |
 | LLM: Input | $/credits | 0 credits | 0.0000001 |
 | LLM: Output | $/credits | 0 credits | 0.0000005 |
+| Containers: Compute (starting August 1, 2026) | $/vCPU-hour | 0 vCPU-hours | 0.07177 |
+| Containers: Memory (starting August 1, 2026) | $/GiB-hour | 0 GiB-hours | 0.00786 |
 
 Empty KVS reads count as 1KB towards your usage, whereas non-empty reads are based on actual size. While we may consider a future update to apply this 1KB minimum to all reads under 1KB, the current policy applies only to empty reads. We will provide advance notice prior to adopting any changes.
 

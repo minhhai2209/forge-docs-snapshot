@@ -121,7 +121,7 @@ query Ecosystem($appId: ID!, $query: ForgeMetricsOtlpQueryInput!) {
         "start": "2023-06-18T02:55:00.000Z",
         "end": "2023-06-18T02:57:00.000Z"
       },
-      "metrics": ["FORGE_API_REQUEST_COUNT", "FORGE_API_REQUEST_LATENCY", "FORGE_BACKEND_INVOCATION_LATENCY", "FORGE_BACKEND_INVOCATION_COUNT", "FORGE_BACKEND_INVOCATION_ERRORS"]
+      "metrics": ["FORGE_API_REQUEST_COUNT", "FORGE_API_REQUEST_LATENCY", "FORGE_BACKEND_INVOCATION_LATENCY", "FORGE_BACKEND_INVOCATION_COUNT", "FORGE_BACKEND_INVOCATION_ERRORS", "CONTAINER_CPU_USAGE_PERCENTAGE", "CONTAINER_MEMORY_USAGE_PERCENTAGE", "SERVICE_INSTANCE_COUNT"]
     }
   }
 }
@@ -157,191 +157,335 @@ query Ecosystem($appId: ID!, $query: ForgeMetricsOtlpQueryInput!) {
 
 ```
 {
-    "data": {
-        "ecosystem": {
-            "forgeMetrics": {
-                "appMetrics": {
-                    "resourceMetrics": [
-                        {
-                            "resource": {},
-                            "schemaUrl": "https://opentelemetry.io/schemas/1.9.0",
-                            "scopeMetrics": [
-                                {
-                                    "metrics": [
-                                        {
-                                            "name": "forge_api_request_count",
-                                            "description": "",
-                                            "sum": {
-                                                "aggregationTemporality": 1,
-                                                "dataPoints": [
-                                                    {
-                                                        "asInt": 8,
-                                                        "attributes": [
-                                                            {
-                                                                "key": "appId",
-                                                                "value": {
-                                                                    "stringValue": "a11dfa0b-cf2c-44d1-9080-5c3944961223"
-                                                                }
-                                                            },
-                                                            {
-                                                                "key": "contextAri",
-                                                                "value": {
-                                                                    "stringValue": "ari:cloud:compass::site/04c5a385-0899-4edc-93a8-ada653b7c534"
-                                                                }
-                                                            },
-                                                            {
-                                                                "key": "environmentId",
-                                                                "value": {
-                                                                    "stringValue": "6f5f56e9-55c0-4551-9247-ee1484340f64"
-                                                                }
-                                                            },
-                                                            {
-                                                                "key": "provider",
-                                                                "value": {
-                                                                    "stringValue": "app"
-                                                                }
-                                                            },
-                                                            {
-                                                                "key": "remote",
-                                                                "value": {
-                                                                    "stringValue": "stargate"
-                                                                }
-                                                            },
-                                                            {
-                                                                "key": "status",
-                                                                "value": {
-                                                                    "stringValue": "2xx"
-                                                                }
-                                                            },
-                                                            {
-                                                                "key": "url",
-                                                                "value": {
-                                                                    "stringValue": "/forge/entities/graphql"
-                                                                }
-                                                            }
-                                                        ],
-                                                        "startTimeUnixNano": "1698720840000000000",
-                                                        "timeUnixNano": "1698720900000000000"
-                                                    }
-                                                ]
-                                            },
-                                            "unit": "s"
-                                        },
-                                        {
-                                            "name": "forge_backend_invocation_count",
-                                            "description": "",
-                                            "sum": {
-                                                "aggregationTemporality": 1,
-                                                "dataPoints": [
-                                                    {
-                                                        "asInt": 70,
-                                                        "attributes": [
-                                                            {
-                                                                "key": "appId",
-                                                                "value": {
-                                                                    "stringValue": "8ce114f4-d82c-45e2-b4fb-c6a0751d7d57"
-                                                                }
-                                                            },
-                                                            {
-                                                                "key": "appVersion",
-                                                                "value": {
-                                                                    "stringValue": "4.64.0"
-                                                                }
-                                                            },
-                                                            {
-                                                                "key": "contextAri",
-                                                                "value": {
-                                                                    "stringValue": "ari:cloud:confluence::site/13095d29-407d-47ec-aa57-76764a470f36"
-                                                                }
-                                                            },
-                                                            {
-                                                                "key": "environmentId",
-                                                                "value": {
-                                                                    "stringValue": "8cb293d5-be08-47ae-a75c-95b89da5ad1d"
-                                                                }
-                                                            },
-                                                            {
-                                                                "key": "functionKey",
-                                                                "value": {
-                                                                    "stringValue": "updateStatusTitle"
-                                                                }
-                                                            }
-                                                        ],
-                                                        "startTimeUnixNano": "1687497375656000000",
-                                                        "timeUnixNano": "1687497375662000000"
-                                                    }
-                                                ]
-                                            },
-                                            "unit": "s"
-                                        },
-                                        {
-                                            "name": "forge_backend_invocation_errors",
-                                            "description": "",
-                                            "sum": {
-                                                "aggregationTemporality": 1,
-                                                "dataPoints": [
-                                                    {
-                                                        "asInt": 0,
-                                                        "attributes": [
-                                                            {
-                                                                "key": "appId",
-                                                                "value": {
-                                                                    "stringValue": "8ce114f4-d82c-45e2-b4fb-c6a0751d7d57"
-                                                                }
-                                                            },
-                                                            {
-                                                                "key": "appVersion",
-                                                                "value": {
-                                                                    "stringValue": "5.1.0"
-                                                                }
-                                                            },
-                                                            {
-                                                                "key": "contextAri",
-                                                                "value": {
-                                                                    "stringValue": "ari:cloud:compass::site/6a9ea14f-759d-4f4a-b3ac-11395d8bf519"
-                                                                }
-                                                            },
-                                                            {
-                                                                "key": "environmentId",
-                                                                "value": {
-                                                                    "stringValue": "8cb293d5-be08-47ae-a75c-95b89da5ad1d"
-                                                                }
-                                                            },
-                                                            {
-                                                                "key": "errorType",
-                                                                "value": {
-                                                                    "stringValue": "UNHANDLED_EXCEPTION"
-                                                                }
-                                                            },
-                                                            {
-                                                                "key": "functionKey",
-                                                                "value": {
-                                                                    "stringValue": "process-app-event"
-                                                                }
-                                                            },
-                                                            {
-                                                                "key": "moduleKey",
-                                                                "value": {
-                                                                    "stringValue": "app-event-webtrigger"
-                                                                }
-                                                            }
-                                                        ],
-                                                        "startTimeUnixNano": "1687488960000000000",
-                                                        "timeUnixNano": "1687489020000000000"
-                                                    }
-                                                ]
-                                            },
-                                            "unit": "s"
-                                        }
-                                    ]
+  "data": {
+    "ecosystem": {
+      "forgeMetrics": {
+        "appMetrics": {
+          "resourceMetrics": [
+            {
+              "resource": {},
+              "schemaUrl": "https://opentelemetry.io/schemas/1.9.0",
+              "scopeMetrics": [
+                {
+                  "metrics": [
+                    {
+                      "name": "forge_api_request_count",
+                      "description": "",
+                      "sum": {
+                        "aggregationTemporality": 1,
+                        "dataPoints": [
+                          {
+                            "asInt": 8,
+                            "attributes": [
+                              {
+                                "key": "appId",
+                                "value": {
+                                  "stringValue": "a11dfa0b-cf2c-44d1-9080-5c3944961223"
                                 }
-                            ]
-                        }
-                    ]
+                              },
+                              {
+                                "key": "contextAri",
+                                "value": {
+                                  "stringValue": "ari:cloud:compass::site/04c5a385-0899-4edc-93a8-ada653b7c534"
+                                }
+                              },
+                              {
+                                "key": "environmentId",
+                                "value": {
+                                  "stringValue": "6f5f56e9-55c0-4551-9247-ee1484340f64"
+                                }
+                              },
+                              {
+                                "key": "provider",
+                                "value": {
+                                  "stringValue": "app"
+                                }
+                              },
+                              {
+                                "key": "remote",
+                                "value": {
+                                  "stringValue": "stargate"
+                                }
+                              },
+                              {
+                                "key": "status",
+                                "value": {
+                                  "stringValue": "2xx"
+                                }
+                              },
+                              {
+                                "key": "url",
+                                "value": {
+                                  "stringValue": "/forge/entities/graphql"
+                                }
+                              }
+                            ],
+                            "startTimeUnixNano": "1698720840000000000",
+                            "timeUnixNano": "1698720900000000000"
+                          }
+                        ]
+                      },
+                      "unit": "s"
+                    },
+                    {
+                      "name": "forge_backend_invocation_count",
+                      "description": "",
+                      "sum": {
+                        "aggregationTemporality": 1,
+                        "dataPoints": [
+                          {
+                            "asInt": 70,
+                            "attributes": [
+                              {
+                                "key": "appId",
+                                "value": {
+                                  "stringValue": "8ce114f4-d82c-45e2-b4fb-c6a0751d7d57"
+                                }
+                              },
+                              {
+                                "key": "appVersion",
+                                "value": {
+                                  "stringValue": "4.64.0"
+                                }
+                              },
+                              {
+                                "key": "contextAri",
+                                "value": {
+                                  "stringValue": "ari:cloud:confluence::site/13095d29-407d-47ec-aa57-76764a470f36"
+                                }
+                              },
+                              {
+                                "key": "environmentId",
+                                "value": {
+                                  "stringValue": "8cb293d5-be08-47ae-a75c-95b89da5ad1d"
+                                }
+                              },
+                              {
+                                "key": "functionKey",
+                                "value": {
+                                  "stringValue": "updateStatusTitle"
+                                }
+                              }
+                            ],
+                            "startTimeUnixNano": "1687497375656000000",
+                            "timeUnixNano": "1687497375662000000"
+                          }
+                        ]
+                      },
+                      "unit": "s"
+                    },
+                    {
+                      "name": "forge_backend_invocation_errors",
+                      "description": "",
+                      "sum": {
+                        "aggregationTemporality": 1,
+                        "dataPoints": [
+                          {
+                            "asInt": 0,
+                            "attributes": [
+                              {
+                                "key": "appId",
+                                "value": {
+                                  "stringValue": "8ce114f4-d82c-45e2-b4fb-c6a0751d7d57"
+                                }
+                              },
+                              {
+                                "key": "appVersion",
+                                "value": {
+                                  "stringValue": "5.1.0"
+                                }
+                              },
+                              {
+                                "key": "contextAri",
+                                "value": {
+                                  "stringValue": "ari:cloud:compass::site/6a9ea14f-759d-4f4a-b3ac-11395d8bf519"
+                                }
+                              },
+                              {
+                                "key": "environmentId",
+                                "value": {
+                                  "stringValue": "8cb293d5-be08-47ae-a75c-95b89da5ad1d"
+                                }
+                              },
+                              {
+                                "key": "errorType",
+                                "value": {
+                                  "stringValue": "UNHANDLED_EXCEPTION"
+                                }
+                              },
+                              {
+                                "key": "functionKey",
+                                "value": {
+                                  "stringValue": "process-app-event"
+                                }
+                              },
+                              {
+                                "key": "moduleKey",
+                                "value": {
+                                  "stringValue": "app-event-webtrigger"
+                                }
+                              }
+                            ],
+                            "startTimeUnixNano": "1687488960000000000",
+                            "timeUnixNano": "1687489020000000000"
+                          }
+                        ]
+                      },
+                      "unit": "s"
+                    },
+                    {
+                      "name": "container_cpu_usage_percentage",
+                      "description": "",
+                      "gauge": {
+                        "dataPoints": [
+                          {
+                            "asDouble": 1.1210,
+                            "attributes": [
+                              {
+                                "key": "appId",
+                                "value": {
+                                  "stringValue": "a11dfa0b-cf2c-44d1-9080-5c3944961223"
+                                }
+                              },
+                              {
+                                "key": "container",
+                                "value": {
+                                  "stringValue": "java-service-container-001"
+                                }
+                              },
+                              {
+                                "key": "environmentId",
+                                "value": {
+                                  "stringValue": "8cb293d5-be08-47ae-a75c-95b89da5ad1d"
+                                }
+                              },
+                              {
+                                "key": "pod",
+                                "value": {
+                                  "stringValue": "eco-deployment-65db68664c-8vg5v"
+                                }
+                              },
+                              {
+                                "key": "region",
+                                "value": {
+                                  "stringValue": "us-west-2"
+                                }
+                              },
+                              {
+                                "key": "serviceKey",
+                                "value": {
+                                  "stringValue": "java-service"
+                                }
+                              }
+                            ],
+                            "startTimeUnixNano": "1687488960000000000",
+                            "timeUnixNano": "1687489020000000000"
+                          }
+                        ]
+                      },
+                      "unit": "%"
+                    },
+                    {
+                      "name": "container_memory_usage_percentage",
+                      "description": "",
+                      "gauge": {
+                        "dataPoints": [
+                          {
+                            "asDouble": 21.7125,
+                            "attributes": [
+                              {
+                                "key": "appId",
+                                "value": {
+                                  "stringValue": " a11dfa0b-cf2c-44d1-9080-5c3944961223"
+                                }
+                              },
+                              {
+                                "key": "container",
+                                "value": {
+                                  "stringValue": "java-service-container-001"
+                                }
+                              },
+                              {
+                                "key": "environmentId",
+                                "value": {
+                                  "stringValue": "8cb293d5-be08-47ae-a75c-95b89da5ad1d"
+                                }
+                              },
+                              {
+                                "key": "pod",
+                                "value": {
+                                  "stringValue": "eco-deployment-65db68664c-8vg5v"
+                                }
+                              },
+                              {
+                                "key": "region",
+                                "value": {
+                                  "stringValue": "us-west-2"
+                                }
+                              },
+                              {
+                                "key": "serviceKey",
+                                "value": {
+                                  "stringValue": "java-service"
+                                }
+                              }
+                            ],
+                            "startTimeUnixNano": "1687488960000000000",
+                            "timeUnixNano": "1687489020000000000"
+                          }
+                        ]
+                      },
+                      "unit": "%"
+                    },
+                    {
+                      "name": "service_instance_count",
+                      "description": "",
+                      "gauge": {
+                        "dataPoints": [
+                          {
+                            "asDouble": 2,
+                            "attributes": [
+                              {
+                                "key": "appId",
+                                "value": {
+                                  "stringValue": " a11dfa0b-cf2c-44d1-9080-5c3944961223"
+                                }
+                              },
+                              {
+                                "key": "environmentId",
+                                "value": {
+                                  "stringValue": "8cb293d5-be08-47ae-a75c-95b89da5ad1d"
+                                }
+                              },
+                              {
+                                "key": "region",
+                                "value": {
+                                  "stringValue": "us-west-2"
+                                }
+                              },
+                              {
+                                "key": "serviceKey",
+                                "value": {
+                                  "stringValue": "java-service"
+                                }
+                              }
+                            ],
+                            "startTimeUnixNano": "1687488960000000000",
+                            "timeUnixNano": "1687489020000000000"
+                          }
+                        ]
+                      },
+                      "unit": "1"
+                    }
+                  ]
                 }
+              ]
             }
+          ]
         }
+      }
     }
+  }
 }
 ```
 ```
@@ -359,7 +503,7 @@ query Ecosystem($appId: ID!, $query: ForgeMetricsOtlpQueryInput!) {
 | --- | --- | --- | --- |
 | `environments` | `Array<string>` | Yes | A list of environment UUIDs for which metrics needs to be fetched. *Regex:* `[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}` |
 | `interval` | [Interval](#interval) | Yes | Time range for which metrics needs to be fetched. |
-| `metrics` | `Array<enum>` | Yes | A list of enums of metrics to be fetched. Possible values are: `FORGE_API_REQUEST_COUNT` , `FORGE_API_REQUEST_LATENCY` , `FORGE_BACKEND_INVOCATION_COUNT` , `FORGE_BACKEND_INVOCATION_ERRORS`, and `FORGE_BACKEND_INVOCATION_LATENCY` |
+| `metrics` | `Array<enum>` | Yes | A list of enums of metrics to be fetched. Possible values are: `FORGE_API_REQUEST_COUNT` , `FORGE_API_REQUEST_LATENCY` , `FORGE_BACKEND_INVOCATION_COUNT` , `FORGE_BACKEND_INVOCATION_ERRORS`, `FORGE_BACKEND_INVOCATION_LATENCY`, `CONTAINER_CPU_USAGE_PERCENTAGE`, `CONTAINER_MEMORY_USAGE_PERCENTAGE`, and `SERVICE_INSTANCE_COUNT` |
 
 #### Interval
 
@@ -379,7 +523,7 @@ five calls per minute per user is enforced.
 To consume the Atlassian GraphQL API and ingest metrics in real-time into observability tools,
 we recommend having the following components in your infrastructure:
 
-![Partner Server View](https://dac-static.atlassian.com/platform/forge/images/partner-server-arch.svg?_v=1.5800.2186)
+![Partner Server View](https://dac-static.atlassian.com/platform/forge/images/partner-server-arch.svg?_v=1.5800.2189)
 
 ### CronJob service
 

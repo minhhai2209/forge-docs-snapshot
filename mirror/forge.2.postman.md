@@ -1,7 +1,7 @@
 ```
 {
   "info": {
-    "_postman_id": "e8235b69-c50c-46a7-958b-73d7e724a0c4",
+    "_postman_id": "7f0c3e5d-d565-4bcd-a0b3-a9c7997c90b9",
     "name": "Forge Containers API",
     "description": "The Forge Containers Public API\n\n**Important:** The API base URL should be read from the `FORGE_EGRESS_PROXY_URL` environment variable.\nThe localhost URL in the servers section is for documentation purposes only.\n",
     "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
@@ -80,7 +80,7 @@
                 "value": "application/json"
               }
             ],
-            "description": "Returns detailed information about a single installation for the given installation ID. This endpoint has a rate limit of 1 request per minute per `installationId`.\n\n**Limit:** [1 request per minute per `installationId`](/platform/forge/limits-containers/#limits). If a single `appId` has multiple installations, this rate limit will be applied separately to each `installationId`.\n",
+            "description": "Returns detailed information about a single installation for the given installation ID. This endpoint has a rate limit of 10 requests per minute per `appId`.\n\n**Limit:** [10 requests per minute per `appId`](/platform/forge/limits-containers/#limits).\n",
             "auth": {
               "type": "bearer",
               "bearer": {

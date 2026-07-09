@@ -61,6 +61,15 @@ Specifically, with this release, you can only build and run Forge Container serv
 
 See [Forge Containers roadmap](/platform/forge/containers-reference/roadmap) for more details about current limitations and our plans to address them in upcoming milestones.
 
+## Observability
+
+Forge Containers provides built-in observability features to help you monitor the health and performance of your containerised services:
+
+* **[Service Health metrics](/platform/forge/monitor-service-health/)**: View real-time CPU usage, memory usage, service availability, and instance counts in the developer console.
+* **[Invocation metrics](/platform/forge/monitor-invocation-metrics/)**: Monitor container invocation response times.
+* **[Logs](/platform/forge/monitor-app-logs/)**: View logs for your container services.
+* **[Export metrics](/platform/forge/export-app-metrics/)**: Export container metrics to third-party observability tools using the App metrics API.
+
 ## Learning resources
 
 **GLOSSARY**

@@ -1418,6 +1418,7 @@ This section contains curated references that show how real Forge apps are struc
 - [Monitor API metrics](https://developer.atlassian.com/platform/forge/monitor-api-metrics.md)
 - [Monitor custom metrics](https://developer.atlassian.com/platform/forge/monitor-custom-metrics.md)
 - [Monitor SQL](https://developer.atlassian.com/platform/forge/monitor-sql-metrics.md)
+- [Monitor container metrics (EAP)](https://developer.atlassian.com/platform/forge/monitor-service-health.md)
 - [Monitor usage metrics and costs](https://developer.atlassian.com/platform/forge/monitor-usage-metrics.md)
 - [Export app metrics](https://developer.atlassian.com/platform/forge/export-app-metrics.md)
 - [Export app resource usage](https://developer.atlassian.com/platform/forge/developer-space/export-app-resource-usage.md)

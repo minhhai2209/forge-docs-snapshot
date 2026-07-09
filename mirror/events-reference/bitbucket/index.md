@@ -2382,7 +2382,7 @@ interface Deployment {
   uuid: string;
   state: string;
   status?: string;
-  updatedTimestamp: string
+  updatedTimestamp: string;
 }
 interface Environment {
   uuid: string;
@@ -2480,7 +2480,7 @@ interface Deployment {
   uuid: string;
   state: string;
   status?: string;
-  updatedTimestamp: string
+  updatedTimestamp: string;
 }
 interface Environment {
   uuid: string;
@@ -2578,7 +2578,7 @@ interface Deployment {
   uuid: string;
   state: string;
   status?: string;
-  updatedTimestamp: string
+  updatedTimestamp: string;
 }
 interface Environment {
   uuid: string;
