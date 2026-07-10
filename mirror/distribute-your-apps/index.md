@@ -2,6 +2,10 @@
 
 If you want to use your Forge app on your own Atlassian site, you can install it directly using the Forge CLI without enabling sharing. See [Promote an app to staging or production](/platform/forge/staging-and-production-apps/) for instructions.
 
+Apps with distribution status set to **Not sharing** can only be accessed by contributors of the app (developers listed in the developer console). All other users - including licensed users and Jira Service Management portal-only (customer) accounts - will not be able to install the app.
+
+If your app is accessed by any non-contributor users (including Jira Service Management portal-only users), you **must** set the distribution status to **Sharing**. See [Start sharing your app](/platform/forge/distribute-your-apps/#start-sharing-your-app) for instructions.
+
 When you're ready to share your Forge app with other users, you'll need to enable sharing for your app
 in the [developer console](/console/myapps/). This generates a link that you
 can share with users to install your app on their Atlassian site (they must be the admin of that site to do that).
@@ -35,7 +39,7 @@ When your user visits the link, an installation screen appears, similar to the o
 It displays information about your app, including the permissions your app is requesting.
 From here, your user can choose a site and an Atlassian app to install your app onto.
 
-![User installation screen](https://dac-static.atlassian.com/platform/forge/images/user-installation-screen.png?_v=1.5800.2189)
+![User installation screen](https://dac-static.atlassian.com/platform/forge/images/user-installation-screen.png?_v=1.5800.2192)
 
 ## Restrict installation links
 
@@ -65,7 +69,7 @@ in the developer console.
 Your app is no longer being shared. This has the following effects:
 
 * Users with the installation link will no longer be able to install your app.
-* Users who have already installed your app can continue to use it.
+* Users who have already installed your app can generally continue to use it, though in some cases the app might stop working for existing users.
 
 You can start sharing your app again any time.
 

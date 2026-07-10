@@ -166,8 +166,8 @@ resources:
 | `edit.parser.expression` | `string` |  | A Jira expression that parses strings into valid values of this field. See [parser](#parser) for more details. |
 | `schema` | `object` | Allowed only for the `object` type | A [JSON schema](https://json-schema.org/) that desribes values stored in the field. |
 | `displayConditions` | `object` |  | The object that defines whether or not the field is displayed on the issue view or global issue create (GIC) (other views or REST APIs are not affected). See [display conditions](#display-conditions). |
-| `searchSuggestions.expression` | `string` | Requires either `function` or `expression`. Only one of the two properties must be present. | A [Jira expression](/cloud/jira/platform/jira-expressions/) that provides value suggestions in advanced search. See [search suggestions](#search-suggestions) for more details. |
-| `searchSuggestions.function` | `string` | Requires either `function` or `expression`. Only one of the two properties must be present. | A reference to the `function` module that provides value suggestions in advanced search. See [search suggestions](#search-suggestions) for more details. |
+| `searchSuggestions.expression` | `string` | Requires either `function` or `expression`. Only one of the two properties must be present. | A [Jira expression](/cloud/jira/platform/jira-expressions/) that provides value suggestions in advanced search. For `object` fields, this can also provide suggestions for field properties that set `searchSuggestionsEnabled` to `true` in the schema. See [search suggestions](#search-suggestions) for more details. |
+| `searchSuggestions.function` | `string` | Requires either `function` or `expression`. Only one of the two properties must be present. | A reference to the `function` module that provides value suggestions in advanced search. For `object` fields, this can also provide suggestions for field properties that set `searchSuggestionsEnabled` to `true` in the schema. See [search suggestions](#search-suggestions) for more details. |
 | `unlicensedAccess` | List<string> |  | A list of unlicensed user types that can access this module. Valid values are: `unlicensed`, `customer`, and `anonymous`. For more information, see [Access to Forge apps for unlicensed users](/platform/forge/access-to-forge-apps-for-unlicensed-users). |
 
 ## Rendering
@@ -501,7 +501,7 @@ const Edit = () => {
 ```
 
 Outcome:
-![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.2189)
+![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.2192)
 
 ##### Updated files
 
@@ -577,7 +577,7 @@ const Edit = () => {
 ```
 
 Outcome:
-![Updated experience to inline edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-inline.png?_v=1.5800.2189)
+![Updated experience to inline edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-inline.png?_v=1.5800.2192)
 
 
 How to edit custom fields in the modal (for more complex UI)
@@ -690,7 +690,7 @@ const Edit = () => {
 ```
 
 Outcome:
-![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.2189)
+![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.2192)
 
 ##### Updated files
 
@@ -800,7 +800,7 @@ ForgeReconciler.render(
 ```
 
 Outcome:
-![Updated experience to modal edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-new-modal.png?_v=1.5800.2189)
+![Updated experience to modal edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-new-modal.png?_v=1.5800.2192)
 
 ### Issue creation and issue transition dialog
 
@@ -1093,6 +1093,9 @@ This means that, for a field named `X`:
 * by defining a field property, such as `Y`, in the schema with `searchAlias`,
   you can search that field property using `X.Y = value`.
 
+By default, JQL search suggestions for field properties use indexed values.
+To use the `searchSuggestions` provider for a field property, set `searchSuggestionsEnabled` to `true`.
+
 The JQL type of each property created with `searchAlias` is derived from the schema type, using these rules:
 
 * `string` schema type becomes a `string` in JQL.
@@ -1126,6 +1129,7 @@ This is an example of a field that stores money. It showcases the use of:
 
 * the `formatter` and `schema` properties.
 * JQL search aliases.
+* search suggestions for a JQL search alias.
 
 ```
 ```
@@ -1141,6 +1145,8 @@ This is an example of a field that stores money. It showcases the use of:
       name: Development cost
       description: Tracks the development cost of features, in different currencies
       type: object
+      searchSuggestions:
+        expression: "searchAlias == 'Currency' ? [{'value': 'USD', 'label': 'US Dollar'}, {'value': 'EURO', 'label': 'Euro'}, {'value': 'AUD', 'label': 'Australian Dollar'}] : [{'value': '100', 'label': '100'}, {'value': '200', 'label': '200'}, {'value': '500', 'label': '500'}]"
       view:
         formatter: 
           expression: "`${value.amount} ${value.currency}`"
@@ -1153,6 +1159,7 @@ This is an example of a field that stores money. It showcases the use of:
             type: string
             enum: [ "USD", "EURO", "AUD" ]
             searchAlias: Currency
+            searchSuggestionsEnabled: true
           spender:
             type: string
             searchType: user
@@ -1187,6 +1194,8 @@ In addition to the default text search of the entire field value, more fine-grai
 * **Amount** (JQL type: `number`),
 * **Currency** (JQL type: `string`),
 * **Spender** (JQL type: `user`).
+
+Because the **Currency** property sets `searchSuggestionsEnabled` to `true`, JQL suggestions for the **Currency** field property use the `searchSuggestions` provider.
 
 ### Collection types
 
@@ -1697,6 +1706,9 @@ This is achieved by adding the `searchSuggestions` section into the field defini
 The suggestion provider can be either a [Jira expression](/cloud/jira/platform/jira-expressions/),
 or a Forge [function](/platform/forge/manifest-reference/modules/function/).
 
+For fields of type `object`, the same `searchSuggestions` provider can also provide suggestions for properties with a `searchAlias`.
+To enable this behavior for a property, set `searchSuggestionsEnabled` to `true` in the field schema.
+
 In the search suggestions function, calls to an Atlassian API must be done as the app developer by using [api.asApp()](https://developer.atlassian.com/platform/forge/runtime-reference/product-fetch-api/).
 Making requests on behalf of a user with `api.asUser()` won’t work.
 
@@ -1708,8 +1720,8 @@ The Jira expression has access to the following [context variables](/cloud/jira/
 * `fieldType` ([String](/cloud/jira/platform/jira-expressions-type-reference#string)): The type of the field. For example, `ari:cloud:ecosystem::extension/4211172c-5e6b-4170-9fce-f3314107517e/3b0cdefc-4f24-4696-a7dd-1092d95637f9/static/module-key`.
 * `fieldName` ([String](/cloud/jira/platform/jira-expressions-type-reference#string)): The name of the field. For example, `Issue progress`.
 * `user` ([User](/cloud/jira/platform/jira-expressions-type-reference#user)): The user who is receiving the suggestions.
-* `query` ([String](/cloud/jira/platform/jira-expressions-type-reference#string)): The string that the user already typed into the editor as the value of the field.
-  Use it to narrow down the list of suggestions.
+* `query` ([String](/cloud/jira/platform/jira-expressions-type-reference#string)): The string that the user already typed into the editor as the value of the field. Use it to narrow down the list of suggestions.
+* `searchAlias` ([String](/cloud/jira/platform/jira-expressions-type-reference#string)): The alias defined in the schema. Available only when called for a `searchAlias`.
 
 Similarly, the function receives an argument object with the same set of information:
 
@@ -1727,6 +1739,7 @@ Similarly, the function receives an argument object with the same set of informa
   "fieldType": "<The type of the field>",
   "fieldName": "<The name of the field>",
   "query": "<the value entered by the user>",
+  "searchAlias": "<the alias defined in the schema. Available only when called for a searchAlias>",
   "user": {
     "accountId": "<the ID of the user that is requesting the suggestions>"
   },
@@ -1748,7 +1761,7 @@ The following example shows a signature that can serve as a starting point for y
 
 
 ```
-export function generateSearchSuggestions({ fieldId, fieldType, query, user: { accountId }, context: { cloudId }}) {
+export function generateSearchSuggestions({ fieldId, fieldType, query, searchAlias, user: { accountId }, context: { cloudId }}) {
     // your implementation goes here
 }
 ```
@@ -1776,7 +1789,7 @@ or an object that contains the value that’s used in JQL when the user selects 
   },
   {
     "value": "771617fc-7417-4a4a-8b47-9230bbac47a0",
-    "label": "Value2 2"
+    "label": "Value 2"
   }
 ]
 ```
@@ -1956,7 +1969,7 @@ Most apps use one or the other, not both together.
 
 #### How do I make object fields searchable in JQL?
 
-For `jira:customField` with `type: object`, you must include the `view.formatter.expression` property to enable JQL search functionality and proper field display. Without the formatter expression, the app cannnot be deployed and the object field will not be searchable via JQL.
+For `jira:customField` with `type: object`, you must include the `view.formatter.expression` property to enable JQL search functionality and proper field display. Without the formatter expression, the app cannot be deployed and the object field will not be searchable via JQL.
 
 #### What data types can I use?
 

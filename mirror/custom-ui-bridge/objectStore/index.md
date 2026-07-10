@@ -7,7 +7,7 @@ We release preview features so partners and developers can study, test, and inte
 The `objectStore` bridge API provides methods for integrating your app's frontend with the
 [Forge Object Store](/platform/forge/storage-reference/object-store/). This diagram outlines a typical integration between the `upload` method and backend resolver:
 
-![Diagram of how the upload bridge calls the resolver](https://dac-static.atlassian.com/platform/forge/custom-ui-bridge/images/objectStore.png?_v=1.5800.2189)
+![Diagram of how the upload bridge calls the resolver](https://dac-static.atlassian.com/platform/forge/custom-ui-bridge/images/objectStore.png?_v=1.5800.2192)
 
 [Example app
 

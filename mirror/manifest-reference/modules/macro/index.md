@@ -19,7 +19,7 @@ from the quick insert menu of the editor. The `macro` module is implemented by a
 
 On apps that use Custom UI, module content is displayed inside a [special Forge iframe](/platform/forge/custom-ui/iframe/) which has the [sandbox](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#sandbox) attribute configured. This means that HTML links (for example, `<a href="https://domain.tld/path">...</a>`) in this iframe won't be clickable. To make them clickable, use the [router.navigate](/platform/forge/custom-ui-bridge/router/#navigate) API from the `@forge/bridge` package.
 
-![Example of a macro](https://dac-static.atlassian.com/platform/forge/snippets/images/macro-example.png?_v=1.5800.2189)
+![Example of a macro](https://dac-static.atlassian.com/platform/forge/snippets/images/macro-example.png?_v=1.5800.2192)
 
 ## Manifest structure
 
@@ -51,7 +51,12 @@ modules {}
      ├─ resource (string) [Mandatory]
      ├─ render (string) [Optional]
      ├─ viewportSize (string) [Optional]
-     └─ openOnInsert (boolean) [Optional]
+     ├─ openOnInsert (boolean) [Optional]
+     └─ parameters [] [Optional]
+        ├─ identifier (string) [Mandatory]
+        ├─ type (string) [Mandatory]
+        └─ indexing {} [Optional]
+           └─ enabled (boolean) [Optional]
    ├─ adfExport {} [Optional]
    ├─ layout (string) [Optional]
    └─ autoConvert [] [Optional]
@@ -85,6 +90,11 @@ resources []
 | `config.render` | `'native'` | Yes for [UI Kit](/platform/forge/ui-kit/components/) | Indicates the module uses [UI Kit](/platform/forge/ui-kit/components/). |
 | `config.viewportSize` | `'small'`, `'medium'`, `'large'`, `'xlarge'`, `'max'`, `'fullscreen'`, `'resizable'` (Preview) or `{ width: string; height: string }` (Preview) |  | The [display size](/platform/forge/manifest-reference/resources) of `resource`. Can only be set if the module is using the `resource` property. For `fullscreen` viewports, the `config.title` and `config.icon` will be displayed in the header. Refer to [resizable design guidelines](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/modal/#resizable-design-guidelines) for more direction. For the custom dimensions object, it accepts any common CSS size string for width and height,, e.g. `'500px'`, `'60vh'`. |
 | `config.openOnInsert` | `boolean` |  | Defaults to `false` for classic configuration, defaults to `true` for custom configuration. An optional configuration to control if the classic configuration sidepanel or the custom configuration modal is automatically opened when first inserted. |
+| `config.parameters` | `[parameter, ...]` |  | An optional list of parameters that describe the configuration values your macro expects. Supported for both classic configuration (using `openOnInsert`) and custom configuration (using the `resource` property). |
+| `config.parameters.identifier` | `string` | Yes, if using `parameters` | A unique identifier for the parameter. Must start with a letter and contain only alphanumeric characters, dashes, and underscores. Between 1 and 255 characters. |
+| `config.parameters.type` | `'string'`, `'confluence-content'`, `'attachment'` or `'spacekey'` | Yes, if using `parameters` | The type of the parameter value. This determines how Confluence stores and returns the value. See [Config parameter types and value formats](#config-parameter-types-and-value-formats) for the meaning of each type and its value format. |
+| `config.parameters.indexing` | `{ enabled: boolean }` |  | Optional indexing configuration for the parameter. |
+| `config.parameters.indexing.enabled` | `boolean` |  | Defaults to `false`. When set to `true`, the macro parameter value is added to the Confluence search index. |
 | `adfExport` | `{ function: string }` |  | Defines how your macro appears when a Confluence page is exported.  Contains a `function` property which references a `function` module that returns the macro content in [Atlassian document format](/cloud/jira/platform/apis/document/structure/).  The specified function can consume the `exportType` directly from the function's payload in order to specify different views per export type. The `exportType` can be one of `pdf`, `word`, or `other`. See this [tutorial](/platform/forge/change-%0Athe-confluence-frontend-with-the-ui-kit/#specify-the-export-view) for more information.  The `adfExport` function is invoked once per macro instance during export operations. Pages with many macro instances can trigger a large number of invocations in a single export, potentially causing rate limiting and performance issues. Consider minimizing backend work within the function and informing customers about potential limitations when using many macros on pages that will be exported. |
 | `layout` | `'block'`, `'inline'` or `'bodied'` |  | `'block'` type is used by default.  `'inline'` shows the element inline with existing text.   * For UI Kit apps, inline macros dynamically resize to wrap the content. * Custom UI inline macros have a minimum rendered width of approximately 300px due to the browser's default iframe sizing. To allow your macro to render at a smaller width, set `width: fit-content` on the `body` element of your Custom UI app's HTML. See [Notes on layout and sizing](#notes-on-layout-and-sizing) for details.     `'bodied'` sets the macro to have a rich text body.   * This allows users to insert and edit rich content (such as images and tables) within the macro using the Confluence editor, and allows your app to insert a body using a custom editor. * Please see the link to the tutorial [here](/platform/forge/using-rich-text-bodied-macros). |
 | `autoConvert` | `autoConvert object` |  | Inserts a macro into the editor when a recognised URL is pasted in by the user. See [Macro autoconvert.](#macro-autoconvert) |
@@ -378,6 +388,178 @@ There are two additional extension context parameters available when you are in 
 | --- | --- | --- |
 | `macro.isConfiguring` | `boolean` | `true` if the currently rendered resource is the `config` resource, `false` if it is the macro's default resource |
 | `macro.isInserting` | `boolean` | `true` if a new macro is being inserted, `false` if an existing macro is being edited |
+
+### Config parameter types and value formats
+
+Each entry in `config.parameters` declares a `type` that determines how Confluence stores the value and what format your app receives.
+
+Values are always returned from [`useConfig()`](/platform/forge/apis-reference/ui-kit-hooks-reference/use-config/) (and must be sent to [`view.submit()`](/platform/forge/apis-reference/ui-api-bridge/view/#submit)) as **strings**. For `confluence-content` (single and multiple) and all multi-value parameters, the string is a stringified JSON object or array that follows a special format described in the table below. For single `attachment` and `spacekey` values, the string is the raw filename or space key and does not need to be parsed.
+
+Using `confluence-content`, `attachment`, or `spacekey` stores the value as a structured Confluence reference (rather than plain text), which lets Confluence automatically update the reference if the linked content is renamed or moved.
+
+For example, this macro declares three config parameters, each with a unique `identifier` and a `type`:
+
+```
+```
+1
+2
+```
+
+
+
+```
+modules:
+  macro:
+    - key: my-macro
+      resource: main
+      render: native
+      resolver:
+        function: resolver
+      title: My Macro
+      config:
+        resource: config
+        render: native
+        parameters:
+          - identifier: message
+            type: string
+          - identifier: targetPage
+            type: confluence-content
+          - identifier: relatedSpaces
+            type: spacekey
+```
+```
+
+The `identifier` you choose is the key you use to read the value back from [`useConfig()`](/platform/forge/apis-reference/ui-kit-hooks-reference/use-config/):
+
+```
+```
+1
+2
+```
+
+
+
+```
+import { useConfig } from "@forge/react";
+
+const config = useConfig();
+const message = config.message; // value of the "message" parameter
+```
+```
+
+| Type | Meaning | Forge format — single | Forge format — multiple |
+| --- | --- | --- | --- |
+| `string` | A plain text value. | The raw string, e.g. `"my value"`. | A JSON array string, e.g. `["a", "b"]`. |
+| `confluence-content` | A reference to a Confluence page or blog post. | A JSON object string. `space-key` is omitted when the content is in the current space; blog posts also include `posting-day`. See the [`confluence-content` object reference](#confluence-content-object-reference) for all fields. | A JSON array string of objects. `[{"content-title":"page 1"},{"content-title":"page 2","space-key":"ENG"},{"content-title":"my blog","posting-day":"2026/05/25","space-key":"OTHER"}]` |
+| `attachment` | A reference to an attachment, by filename. This attachment is attached to the current content. | A bare string (the filename) — not JSON. `"doc.pdf"` | A JSON array string of filenames. `["file1.pdf", "file2.docx"]` |
+| `spacekey` | A reference to a Confluence space, by key. | A bare string (the space key) — not JSON. `"OTHER"` | A JSON array string of space keys. `["ENG", "OTHER"]` |
+
+The **Forge format — multiple** column shows the runtime value format your app receives and sends (a stringified JSON array) — it is not a manifest declaration. You do not declare "multiple" in the manifest; a parameter accepts multiple values based on how the field is configured, and the value is then serialized as a JSON array string at runtime.
+
+#### `confluence-content` object reference
+
+Each `confluence-content` value (single, or each item in a multiple array) is a JSON object with the following fields:
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `content-title` | `string` | Yes | The title of the referenced page or blog post. |
+| `space-key` | `string` | No | The key of the space containing the content. Omitted when the content is in the same space as the macro; if omitted, the current space is inferred. |
+| `posting-day` | `string` | No | The publish date of a blog post, formatted as `YYYY/MM/DD`. Present only for blog posts — when this field is present the value is treated as a blog post reference; when it is absent, the value is treated as a page reference. |
+
+Example of a page reference (same space):
+
+```
+```
+1
+2
+```
+
+
+
+```
+{ "content-title": "hello world" }
+```
+```
+
+Example of a page reference in another space:
+
+```
+```
+1
+2
+```
+
+
+
+```
+{ "content-title": "hello world", "space-key": "OTHER" }
+```
+```
+
+Example of a blog post reference:
+
+```
+```
+1
+2
+```
+
+
+
+```
+{
+  "content-title": "my blog",
+  "posting-day": "2026/04/27",
+  "space-key": "OTHER"
+}
+```
+```
+
+For any value stored as JSON (all `confluence-content` values, and any multi-value parameter), parse the string before using it:
+
+```
+```
+1
+2
+```
+
+
+
+```
+import { useConfig } from "@forge/react";
+
+const config = useConfig();
+// e.g. a `confluence-content` parameter named "targetPage"
+const targetPage = JSON.parse(config.targetPage);
+// { "content-title": "hello world", "space-key": "OTHER" }
+```
+```
+
+Conversely, when you set one of these JSON-valued typed parameters (any `confluence-content` value, or any multi-value parameter), build the object (or array) and serialize it with `JSON.stringify()` before passing it to [`view.submit()`](/platform/forge/apis-reference/ui-api-bridge/view/#submit). The value must be sent as a string:
+
+```
+```
+1
+2
+```
+
+
+
+```
+import { view } from "@forge/bridge";
+
+// e.g. a `confluence-content` parameter named "targetPage"
+const targetPage = { "content-title": "hello world", "space-key": "OTHER" };
+
+view.submit({
+  config: {
+    targetPage: JSON.stringify(targetPage),
+  },
+});
+```
+```
+
+Single `attachment` and `spacekey` values are the exception — send them as the raw filename or space key string, without `JSON.stringify()`. For plain (non-typed) config parameters, you can pass values in their native form (strings, numbers, booleans, objects, and arrays); see [Supported config payload format](#supported-config-payload-format).
 
 ### Options for submitting the configuration
 

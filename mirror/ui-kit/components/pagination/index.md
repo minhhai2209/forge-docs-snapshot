@@ -32,7 +32,7 @@ Pagination allows you to divide large amounts of content into chunks across mult
 
 The default pagination with a list of pages.
 
-![Example image of rendered default pagination](https://dac-static.atlassian.com/platform/forge/ui-kit/images/pagination/pagination-default.png?_v=1.5800.2189)
+![Example image of rendered default pagination](https://dac-static.atlassian.com/platform/forge/ui-kit/images/pagination/pagination-default.png?_v=1.5800.2192)
 
 ```
 ```
@@ -53,7 +53,7 @@ const PaginationDefaultExample = () => {
 
 Use `defaultSelectedIndex` to pre-select a page on initial render. The index is zero-based, so `defaultSelectedIndex={2}` selects the third page.
 
-![Example image of rendered pagination with selected index](https://dac-static.atlassian.com/platform/forge/ui-kit/images/pagination/pagination-selected-index.png?_v=1.5800.2189)
+![Example image of rendered pagination with selected index](https://dac-static.atlassian.com/platform/forge/ui-kit/images/pagination/pagination-selected-index.png?_v=1.5800.2192)
 
 ```
 ```

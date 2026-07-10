@@ -1,7 +1,5 @@
 # Access to Forge apps for unlicensed users
 
-## Introduction
-
 If the Atlassian app module you're using supports unlicensed access, you can optionally
 allow one or more types of these unlicensed users to run your Forge app. This is
 done by adding permissions in your app's `manifest.yml` file.
@@ -20,8 +18,10 @@ Forge apps won't work for unlicensed users in portals/views, such as the Jira
 Service Management portal, that support unlicensed use cases unless you
 configure your app to allow it.
 
-To allow unlicensed users to access your app, set the distribution status to `Sharing` in the developer console.
-To learn more about app distribution, refer to [distributing your apps](/platform/forge/distribute-your-apps)
+Apps with distribution status set to **Not sharing** are accessible only to app contributors.
+To allow unlicensed users to access your app, you **must** set the distribution status to **Sharing** in the
+[developer console](/console/myapps/).
+To learn more about app distribution, see [Distribute your apps](/platform/forge/distribute-your-apps).
 
 ## Overview of Forge unlicensed access
 
