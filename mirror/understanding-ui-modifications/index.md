@@ -21,9 +21,9 @@ Below are some key terms you need to learn to understand UIM better:
 | UIM app mounting context | **Jira:** A combination of a `project`, `issueType`, and `viewType`. UIM supports the following view types:   * Global issue create * Issue view * Issue transition     **Jira Service Management:** A combination of a `portal`, `requestType`, and `viewType`. UIM supports the following view types: |
 | UIM data | An array of UIM entities for a given UIM app invocation context. The interpretation of UIM data is the responsibility of the UIM app. UIM data can be accessed through the invocation argument within the `initCallback` and the `changeCallback`. |
 | UIM entity | A single mapping of custom textual data and a UIM app mounting context. It can be created and obtained using the UIM REST API. |
-| UIM Forge bridge API | The API provided to the UIM app through the `@forge/jira-bridge` module. For more details, see the [documentation](http://localhost:9191/platform/forge/custom-ui-jira-bridge/uiModifications/). |
+| UIM Forge bridge API | The API provided to the UIM app through the `@forge/jira-bridge` module. For more details, see the [documentation](/platform/forge/custom-ui-jira-bridge/uiModifications/). |
 | UIM Forge module | A UI modifications Forge module (`jira:uiModifications`) declared in the manifest. |
-| UIM REST API | The back-end REST API used to assign and retrieve specific data (related to `project`, `issueType`,`portal`,`requestType` and `viewType`) to be consumed by the UIM app through the UIM app invocation context. For more details, see the [API documentation](http://localhost:9191/cloud/jira/platform/rest/v3/api-group-ui-modifications--apps-/). |
+| UIM REST API | The back-end REST API used to assign and retrieve specific data (related to `project`, `issueType`,`portal`,`requestType` and `viewType`) to be consumed by the UIM app through the UIM app invocation context. For more details, see the [API documentation](/cloud/jira/platform/rest/v3/api-group-ui-modifications--apps-/). |
 
 ## Why is it different?
 
