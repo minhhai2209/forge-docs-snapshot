@@ -20,28 +20,14 @@ We recommend using the default `publish()` and `subscribe()` methods if you don'
 **Frontend**
 
 ```
+```
 1
 2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
+```
+
+
+
+```
 import { useEffect } from 'react';
 import { realtime } from '@forge/bridge';
 
@@ -64,6 +50,7 @@ const App = () => {
     </Button>
   );
 };
+```
 ```
 
 ### Using context overrides
