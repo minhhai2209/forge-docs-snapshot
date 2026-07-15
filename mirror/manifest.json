@@ -1,13 +1,13 @@
 {
   "root_url": "https://developer.atlassian.com/platform/forge",
-  "generated_at": "2026-07-14T19:44:59.936612+00:00",
-  "discovered_urls": 767,
-  "downloaded_pages": 766,
+  "generated_at": "2026-07-15T19:02:12.887289+00:00",
+  "discovered_urls": 1,
+  "downloaded_pages": 0,
   "skipped_pages": 1,
-  "duration_seconds": 2086.62,
+  "duration_seconds": 21.34,
   "user_agent": "ForgeDocsMirror/1.0 (+https://github.com/minhhai2209/forge-docs-snapshot)",
   "delay_seconds": 0.25,
   "failures": [
-    "playwright: https://developer.atlassian.com/platform/forge/resources/Forge-Data-Processing-Addendum.pdf"
+    "timeout: https://developer.atlassian.com/platform/forge"
   ]
 }
