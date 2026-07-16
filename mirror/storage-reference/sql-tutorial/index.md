@@ -235,7 +235,7 @@ JSON data types may not be supported in future versions of Forge SQL.
 ### Inserting Date values
 
 Forge SQL lets you store multiple `Date` objects based on data types supported by ANSI SQL.
-Ensure that each date type adheres to the specified input format.
+Ensure that each date type adheres to the specified input format. For a full reference on all supported types and how they are returned, see [Forge SQL data types](/platform/forge/storage-reference/sql-data-types/).
 
 | Date type | Format | Example |
 | --- | --- | --- |

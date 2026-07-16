@@ -172,7 +172,7 @@ The `EgressPermission` type has the following properties:
 | --- | --- | --- | --- |
 | `address` | `string` | Yes | The address to which egress is allowed.  [Valid domain formats](/platform/forge/manifest-reference/permissions/#valid-domain-formats) are listed below. |
 | `category` | `enum` | No | The category in which egress falls under. Only `analytics` is supported, but only for pre-approved domains (refer to [Analytics tools policy for Forge apps](/platform/forge/analytics-tool-policy) for more information).  If set to `analytics`, the property `inScopeEUD` (below) defaults to `true`, unless specified otherwise. |
-| `inScopeEUD` | `boolean` | No | Defines whether any [in-scope End-User Data](/platform/forge/data-residency/#in-scope-end-user-data) is egressing from the app for the purpose of analytics.  Defaults to `true` if not specified in the configuration.  If `inScopeEUD` is set to `true`, then the app is ineligible for Runs on Atlassian. Refer to [eligibility requirements](/platform/forge/runs-on-atlassian/#eligibilty-requirements) for further details. |
+| `inScopeEUD` | `boolean` | No | Defines whether any [in-scope End-User Data](/platform/forge/in-scope-end-user-data/) is egressing from the app for the purpose of analytics.  Defaults to `true` if not specified in the configuration.  If `inScopeEUD` is set to `true`, then the app is ineligible for Runs on Atlassian. Refer to [eligibility requirements](/platform/forge/runs-on-atlassian/#eligibility-requirements) for further details. |
 
 Apps use analytics data to identify trends and insights, which can be used to improve
 app performance. These trends and insights can fall under different categories, such as

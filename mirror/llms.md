@@ -239,6 +239,7 @@ Refer to the following sections for more detailed information about Forge module
 - [Dashboard background script](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-dashboard-background-script.md)
 - [Dashboard gadget](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-dashboard-gadget.md)
 - [Entity property](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-entity-property.md)
+- [Entity property set](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-entity-property-set.md)
 - [Full page (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-full-page.md)
 - [Global background script (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-global-background-script.md)
 - [Global page](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-global-page.md)
@@ -700,6 +701,7 @@ When recommending an option: start from the **shape of the data** (key/value vs 
 - [Tutorial](https://developer.atlassian.com/platform/forge/storage-reference/sql-tutorial.md)
 - [Manage schemas](https://developer.atlassian.com/platform/forge/storage-reference/sql-api-schema.md)
 - [Execute SQL operations](https://developer.atlassian.com/platform/forge/storage-reference/sql-api.md)
+- [Data types](https://developer.atlassian.com/platform/forge/storage-reference/sql-data-types.md)
 - [Query policy](https://developer.atlassian.com/platform/forge/storage-reference/sql-query-policy.md)
 - [Error handling](https://developer.atlassian.com/platform/forge/storage-reference/sql-handling-errors.md)
 
@@ -1135,6 +1137,7 @@ This section contains curated references that show how real Forge apps are struc
 - [Getting started](https://developer.atlassian.com/platform/forge/global-ui/getting-started.md)
 - [global:ui module](https://developer.atlassian.com/platform/forge/global-ui/global-ui-module.md)
 - [global:ui UI Kit components](https://developer.atlassian.com/platform/forge/global-ui/ui-kit-components.md)
+- [Add custom content using Frame](https://developer.atlassian.com/platform/forge/global-ui/frame-routing.md)
 
 #### User interface
 
@@ -1333,6 +1336,10 @@ This section contains curated references that show how real Forge apps are struc
 
 - [Data residency](https://developer.atlassian.com/platform/forge/data-residency.md)
 
+##### In-scope End-User Data
+
+- [In-scope End-User Data](https://developer.atlassian.com/platform/forge/in-scope-end-user-data.md)
+
 ##### Tenant data isolation
 
 - [Tenant data isolation](https://developer.atlassian.com/platform/forge/tenant-data-isolation.md)
@@ -1428,6 +1435,7 @@ This section contains curated references that show how real Forge apps are struc
 - [Overview](https://developer.atlassian.com/platform/forge/monitor-app-logs.md)
 - [View app logs](https://developer.atlassian.com/platform/forge/view-app-logs.md)
 - [Export app logs](https://developer.atlassian.com/platform/forge/export-app-logs.md)
+- [Point-to-point logs export (EAP)](https://developer.atlassian.com/platform/forge/point-to-point-logs-export.md)
 - [Access app logs](https://developer.atlassian.com/platform/forge/access-app-logs.md)
 
 ##### View app installations

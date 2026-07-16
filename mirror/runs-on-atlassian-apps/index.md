@@ -14,7 +14,7 @@ The Forge CLI provides a programmatic way to verify the above requirements.
 
 While controls that limit external data egress are in place, these controls do not prevent misuse of access granted to the app during installation or abuse of the app runtime. The boundaries of tenant safety and data handling are defined in the [Shared responsibility model](/platform/forge/shared-responsibility-model/#tenant-safety).
 
-![Runs on Atlassian page on app listing page](https://dac-static.atlassian.com/platform/forge/images/app-listing.svg?_v=1.5800.2193)
+![Runs on Atlassian page on app listing page](https://dac-static.atlassian.com/platform/forge/images/app-listing.svg?_v=1.5800.2203)
 
 See [Runs on Atlassian](/platform/forge/runs-on-atlassian/) for more details.
 
@@ -80,9 +80,9 @@ permissions:
   external:
     fetch:
       backend:
-        - 'https://backend.example.com.com'
+        - 'https://backend.example.com'
     images:
-      - address: *.atlassian.com' # non-analytics egress
+      - address: '*.atlassian.com' # non-analytics egress
 ```
 ```
 
@@ -102,7 +102,7 @@ permissions:
     fetch:
       backend:
         - address: 'baconipsum.com'
-          category: ANALYTICS
+          category: analytics
           inScopeEUD: true # in-scope end user data egress
 ```
 ```
@@ -309,7 +309,7 @@ them in your app manifest.
 
 Your app should not be egressing data. If your app must egress data, then the egress should only be
 for the purpose of analytics, and the app should not egress any
-[in-scope End-User Data](/platform/forge/data-residency/#in-scope-end-user-data).
+[in-scope End-User Data](/platform/forge/in-scope-end-user-data/).
 See [External permissions](/platform/forge/manifest-reference/permissions/#external-permissions)
 to know more.
 
@@ -328,7 +328,7 @@ eligible for Runs on Atlassian:
 * Existing web triggers without a type defined
 * Web triggers explicitly defined as `dynamic`
 
-However, these web triggers can be migrated to `static` web triggers. Consider your use case for your web trrigger
+However, these web triggers can be migrated to `static` web triggers. Consider your use case for your web trigger
 module and whether it can be defined as `static`. Find out more about web trigger types in the
 [web trigger manifest reference](/platform/forge/manifest-reference/modules/web-trigger/#web-trigger-types).
 

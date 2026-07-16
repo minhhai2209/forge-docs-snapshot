@@ -31,13 +31,13 @@ will initially have a version of `1.1` (major version `1`, minor version `1`).
 There are different ways to see what version of your app is installed on each site, in each environment:
 
 * The `forge install list` [command](/platform/forge/cli-reference/install-list/) will display the major version installed on each site:
-  ![forge install list](https://dac-static.atlassian.com/platform/forge/images/app-version/cli.png?_v=1.5800.2193)
+  ![forge install list](https://dac-static.atlassian.com/platform/forge/images/app-version/cli.png?_v=1.5800.2203)
 * In the [developer console](https://developer.atlassian.com/console/myapps/), your app's **Installations** page (under **MONITOR**) will display the major and minor version. The first segment of the version is the major version
   number. All sites on the same major version will also be on the same minor version:
-  ![Developer Console > MONITOR > Installations](https://dac-static.atlassian.com/platform/forge/images/app-version/dev-cons-install.png?_v=1.5800.2193)
+  ![Developer Console > MONITOR > Installations](https://dac-static.atlassian.com/platform/forge/images/app-version/dev-cons-install.png?_v=1.5800.2203)
 * In the [developer console](https://developer.atlassian.com/console/myapps/), your app's
   **Deployments** page (under **BUILD**) will show who performed each deployment (**Contributor**), and when. It’ll also show which major version each deployment targeted within an environment:
-  ![Developer Console > BUILD > Deployments](https://dac-static.atlassian.com/platform/forge/images/app-version/dev-cons-deploy.png?_v=1.5800.2193)
+  ![Developer Console > BUILD > Deployments](https://dac-static.atlassian.com/platform/forge/images/app-version/dev-cons-deploy.png?_v=1.5800.2203)
 
 Each site’s admin can also see and upgrade their installed app’s version. See
 [Manage app upgrades](https://support.atlassian.com/security-and-access-policies/docs/manage-your-users-third-party-apps/#Manage-app-upgrades) for more details.
@@ -296,7 +296,8 @@ The following `manifest.yml` file changes are considered major version upgrades:
 * Adding or modifying the category of an existing [egress permission](/platform/forge/manifest-reference/permissions#egress-permissions).
 * Modifying `inScopeEUD` from `false` to `true` for an
   [egress permission](/platform/forge/manifest-reference/permissions#egress-permissions) element for
-  the first time.
+  the first time. See [In-scope End-User Data](/platform/forge/in-scope-end-user-data/#impact-on-app-versioning)
+  for examples.
 * Enabling [licensing](/platform/marketplace/listing-forge-apps/#enabling-licensing-for-your-app):
   * Enabling licensing creates a new version that requires approval of the Marketplace listing, making it a major version upgrade.
 * Adding or removing [providers](/platform/forge/manifest-reference/providers/).
@@ -365,94 +366,12 @@ forge install --site https://example.atlassian.net --product jira --major-versio
 ```
 ```
 
-## Examples
+## `inScopeEUD` versioning examples
 
-The property `inScopeEUD` determines whether or not an app is compliant with data residency, as well as
-whether or not an app is eligible for [Runs on Atlassian](/platform/forge/runs-on-atlassian/).
-
-The examples below show different scenarios involving changes to `inScopeEUD` and how such changes
-could result in either a major or a minor version upgrade.
-
-### Example 1: Major version upgrade
-
-This example shows a change to the `inScopeEUD` value, which is from `false` to `true`.
-This change leads to a major version upgrade.
-
-```
-```
-1
-2
-```
-
-
-
-```
-permissions:
-  external:
-    fetch:
-      backend:
-        - address: '*.example-dev.com'
-          category: analytics
-          inScopeEUD: true # inScopeEUD value was previously false
-```
-```
-
-### Example 2: Major version upgrade
-
-This example shows a change to one of the `inScopeEUD` values, from `false` to `true`, where in the
-previous version of the app, all `inScopeEUD` values were `false`. This change leads to a
-major version upgrade.
-
-```
-```
-1
-2
-```
-
-
-
-```
-permissions:
-  external:
-    fetch:
-      backend:
-        - address: '*.example-dev.com'
-          category: analytics
-          inScopeEUD: true # inScopeEUD value was previously false, with all values previously false
-        - address: '*.example-prod.com'
-          category: analytics
-          inScopeEUD: false # no change in value
-```
-```
-
-### Example 3: Minor version upgrade
-
-This example shows a change to one of the `inScopeEUD` values, from `false` to `true`, where in the
-previous version of the app, there is already an existing `inScopeEUD` value that's set to `true`.
-Because the previous version is already egressing in-scope End-User data, this change only leads
-to a minor version upgrade.
-
-```
-```
-1
-2
-```
-
-
-
-```
-permissions:
-  external:
-    fetch:
-      backend:
-        - address: '*.example-dev.com'
-          category: analytics
-          inScopeEUD: true # no change in value
-        - address: '*.example-prod.com'
-          category: analytics
-          inScopeEUD: true # inScopeEUD value was previously false
-```
-```
+Changes to the `inScopeEUD` property in your manifest file can trigger major or minor version
+upgrades. For a detailed explanation of `inScopeEUD`, including examples of how changes affect
+versioning, data residency, and Runs on Atlassian eligibility, see
+[In-scope End-User Data](/platform/forge/in-scope-end-user-data/#impact-on-app-versioning).
 
 ## Backporting
 

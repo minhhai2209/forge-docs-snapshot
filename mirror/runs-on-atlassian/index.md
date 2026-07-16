@@ -14,7 +14,7 @@ The Forge CLI provides a programmatic way to verify the above requirements.
 
 While controls that limit external data egress are in place, these controls do not prevent misuse of access granted to the app during installation or abuse of the app runtime. The boundaries of tenant safety and data handling are defined in the [Shared responsibility model](/platform/forge/shared-responsibility-model/#tenant-safety).
 
-![Runs on Atlassian page on app listing page](https://dac-static.atlassian.com/platform/forge/images/app-listing.svg?_v=1.5800.2193)
+![Runs on Atlassian page on app listing page](https://dac-static.atlassian.com/platform/forge/images/app-listing.svg?_v=1.5800.2203)
 
 ## Eligibility requirements
 
@@ -27,7 +27,7 @@ your [manifest file](/platform/forge/manifest/) for egress permissions. You can 
 
 Your app must not egress data, with the exception of egress for analytics purposes. If your app
 sends data for analytics and does not send
-[in-scope End-User Data](/platform/forge/data-residency/#in-scope-end-user-data), then it is eligible
+[in-scope End-User Data](/platform/forge/in-scope-end-user-data/), then it is eligible
 for Runs on Atlassian.
 
 Apps use analytics data to identify trends and insights, which can be used to improve

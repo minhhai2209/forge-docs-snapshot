@@ -29,7 +29,7 @@ This returns a `SqlStatement` instance, which provides two methods:
 
 `DataType` refers to a [Typescript Generic](#typescript-support) that you can optionally supply to type the query response.
 
-Forge SQL encodes and decodes responses in JSON, and doesn’t do any translation back to a specific field type. You will need to handle this in your code. For example, Dates will be returned as strings.
+Forge SQL encodes and decodes responses in JSON, and doesn’t do any translation back to a specific field type. You will need to handle this in your code. For example, Dates will be returned as strings. For a full list of how each type is returned, see [Forge SQL data types](/platform/forge/storage-reference/sql-data-types/).
 
 To prevent SQL injection attacks, use `?` in place of values which will be substituted in order when you use `bindParams(param1, param2)`.
 
@@ -106,7 +106,7 @@ This method is shorthand for `sql.prepare(query).execute()` (that is, preparing 
 
 ## Typescript Support
 
-The `sql` SDK supports [Typescript Generics](https://www.typescriptlang.org/docs/handbook/2/generics.html#generic-types) for the result type, as indicated by `<DataType>`. This assumes the response will be an array format `Array<DataType>`, and does not validate whether the type you supply matches the response. Additionally, all types returned from our API are normalised via JSON, and will need to be converted to a specific object type.
+The `sql` SDK supports [Typescript Generics](https://www.typescriptlang.org/docs/handbook/2/generics.html#generic-types) for the result type, as indicated by `<DataType>`. This assumes the response will be an array format `Array<DataType>`, and does not validate whether the type you supply matches the response. Additionally, all types returned from our API are normalised via JSON, and will need to be converted to a specific object type. See [Forge SQL data types](/platform/forge/storage-reference/sql-data-types/) for conversion guidance.
 
 If you are making a DML or DDL query, you can supply `UpdateQueryResponse` as the generic type.
 These types are exported and available from the main import:

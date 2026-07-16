@@ -11,6 +11,8 @@ Forge SQL to comply with standard ANSI-compliant SQL. To allow for optimal data
 portability outcomes, we strongly encourage you use standard ANSI SQL syntax when
 interacting with the database.
 
+For details on supported data types and how Forge SQL returns query results, see [Forge SQL data types](/platform/forge/storage-reference/sql-data-types/).
+
 Forge SQL is currently based on a
 [self-hosted TiDB](https://docs.pingcap.com/tidb/stable/dev-guide-overview) implementation, and we impose limitations on how the database can be used to support Forge use cases.
 

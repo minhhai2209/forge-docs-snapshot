@@ -12,7 +12,7 @@ see [Forge release phases: EAP, Preview, and GA](/platform/forge/whats-coming/#p
 
 The [@forge/llm SDK](https://www.npmjs.com/package/@forge/llm?activeTab=readme) gives you a lightweight, purpose-built client for invoking Atlassian-hosted LLMs directly from Forge runtime functions.
 
-Use `chat()` for structured multi-turn exchanges. Use `stream()` to incrementally receive LLM responses as smaller chunks. Provide 'tool' definitions so the model can call typed functions, and inspect returned usage to guide adaptive behaviour.
+Use `chat()` for structured multi-turn exchanges. Use `stream()` to incrementally receive LLM responses as smaller chunks. Provide `tool` definitions so the model can call typed functions, and inspect returned usage to guide adaptive behaviour.
 
 For runnable examples (tool wiring, retries, error handling), see the [Forge LLMs tutorials and example apps](/platform/forge/runtime-reference/forge-llms-api/#tutorials-and-example-apps) section.
 
@@ -153,7 +153,7 @@ interface TextPart {
 ```
 ```
 
-The `temperature` and `top_p` fields are not supported by the `claude-opus-4-7` model. When using `claude-opus-4-7`, omit both fields. For more information, see the [validation rules](#validation-rules).
+The `temperature` and `top_p` fields are not supported by all models. Omit both fields when using a model that doesn't support them. For the list of affected models, see the [validation rules](#validation-rules).
 
 ### Response schema
 
@@ -279,4 +279,11 @@ The following request validation rules apply:
 | Parameters | Applies to | Rule |
 | --- | --- | --- |
 | `temperature`, `top_p` | All models | `temperature` and `top_p` cannot be specified together. Provide only one, not both. |
-| `temperature`, `top_p` | `claude-opus-4-7` | The `claude-opus-4-7` model does not support these parameters. Omit both from the request. |
+| `temperature`, `top_p` | Selected models | Some models do not support these parameters. Omit both from requests to any model listed below. |
+
+### Models that do not support `temperature` and `top_p`
+
+The following models do not support the `temperature` and `top_p` sampling parameters. Omit both parameters from requests to these models:
+
+* `claude-opus-4-7`
+* `claude-sonnet-5`

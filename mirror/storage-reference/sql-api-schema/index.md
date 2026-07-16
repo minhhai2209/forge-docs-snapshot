@@ -223,6 +223,8 @@ The **Table data** tab within the **Schema viewer** won't display fields with th
 These field are hidden to prevent the display of possibly large data payloads. These fields won't be included in the records
 provided through the **Download** button either.
 
+For a complete reference of supported data types and how they are returned by the Forge SQL API, see [Forge SQL data types](/platform/forge/storage-reference/sql-data-types/).
+
 ## Recommendations
 
 * Ensure that each change to your SQL database is backwards compatible to all schema versions that are currently in use. Every DDL operation you define should introduce schema changes that won’t block data migrations from previous versions.

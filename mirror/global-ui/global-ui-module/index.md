@@ -1,6 +1,6 @@
 # global:ui module (EAP)
 
-By signing up for this Early Access Program (“EAP”), you acknowledge that use of the Forge global:ui module and Global component is governed by the Atlassian Developer Terms. The Forge `global:ui` module and Global component are considered Early Access Materials", as set forth in Section 12 of the Atlassian Developer Terms and are subject to applicable terms, conditions, and disclaimers. The Forge `global:ui` module, Global component, and any related documentation are provided solely for testing purposes and are considered Atlassian Confidential Information.
+By signing up for this Early Access Program (“EAP”), you acknowledge that use of the Forge global:ui module and Global component is governed by the Atlassian Developer Terms. The Forge `global:ui` module and Global component are considered Early Access Materials and currently support only UI Kit (`render: native`), as set forth in Section 12 of the Atlassian Developer Terms and are subject to applicable terms, conditions, and disclaimers. The Forge `global:ui` module, Global component, and any related documentation are provided solely for testing purposes and are considered Atlassian Confidential Information.
 As conditions on your right to use the Forge global:ui module and Global component during this EAP, you agree not to (and not to authorize any third party to) deploy any Marketplace App using the Forge global:ui module or Global component in a Production environment.
 
 To join the EAP for `global:ui`, [complete the sign up form](https://ecosystem.atlassian.net/servicedesk/customer/portal/1040/group/3496/create/19016?xpis=eyJicmlkZ2UiOiJzbWFydExpbmtzIiwiaWQiOiIxNzgyMzUxNTgzNDkwIiwic291cmNlIjoiY29uZmx1ZW5jZSJ9).
@@ -113,7 +113,7 @@ app:
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| `render` | `string` | Yes | The rendering method for the module. Must be set to `native`. |
+| `render` | `string` | Yes | The rendering method for the module. Must be set to `native`, which enables UI Kit rendering. Custom UI is not supported for `global:ui`. The platform enforces a UI chrome around the module and UI Kit is the public API that lets you control it. To embed custom web content in the main content area, use the [`Frame`](/platform/forge/ui-kit/components/frame/) component inside `<Main>`. |
 
 ### `resolver`
 
