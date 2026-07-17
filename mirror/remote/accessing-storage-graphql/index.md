@@ -16,7 +16,7 @@ To do this, you’ll need need to configure the following properties in your `ma
 
 | Property | Setting | Description |
 | --- | --- | --- |
-| `endpoint.auth.appSystemToken` | Set to `true` | This setting ensures that requests to your remote contain an `x-forge-oauth-system header`. This header contains a token (valid between ~2 to ~[4 hours](https://developer.atlassian.com/changelog/#CHANGE-2160)) that you can use to call this REST API. See [Endpoint](/platform/forge/manifest-reference/endpoint/) for reference. |
+| `endpoint.auth.appSystemToken` | Set to `true` | This setting ensures that requests to your remote contain an `x-forge-oauth-system header`. This header contains a token (guaranteed to be valid for a min TTL of 2 hours) that you can use to call this REST API. See [Endpoint](/platform/forge/manifest-reference/endpoint/) for reference. |
 | permissions.scopes | Must contain:  * storage:app * read:app-system-token | Forge requires these scopes to allow access to this REST API from remotes. See [Forge scopes](/platform/forge/manifest-reference/scopes-forge/) for reference. |
 
 ## Calling the Forge Storage GraphQL APIs

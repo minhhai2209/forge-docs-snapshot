@@ -17,7 +17,7 @@ The screen shows rollouts across environments. Use the **Environment** and **Sta
 refine the list. Each rollout shows its version, environment, rollout status, rollout progress,
 available actions, and a **View details** link for in-progress or completed rollouts.
 
-![The Rollouts page in Developer Console showing rollout status cards, filters, and actions](https://dac-static.atlassian.com/platform/forge/images/app-rollouts-screen.png?_v=1.5800.2203)
+![The Rollouts page in Developer Console showing rollout status cards, filters, and actions](https://dac-static.atlassian.com/platform/forge/images/app-rollouts-screen.png?_v=1.5800.2204)
 
 ## View rollout details
 

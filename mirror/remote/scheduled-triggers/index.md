@@ -64,11 +64,11 @@ remotes:
 
 ## Token expiry and choosing an interval
 
-When you request a system token in the endpoint's `auth` property, each scheduled trigger invocation includes an app system token in the `x-forge-oauth-system` header. This token has a max [TTL of 4 hours](https://developer.atlassian.com/changelog/#CHANGE-2160); see [Token expiry](/platform/forge/remote/calling-product-apis/#token-expiry) for how tokens are cached, rotated, and validated using the `exp` claim.
+When you request a system token in the endpoint's `auth` property, each scheduled trigger invocation includes an app system token in the `x-forge-oauth-system` header. This token is guaranteed to be valid for at least 2 hours; see [Token expiry](/platform/forge/remote/calling-product-apis/#token-expiry) for how tokens are cached, rotated, and validated using the `exp` claim.
 
 Scheduled triggers run without a user in session, so only the **app system token** is delivered. The app user token (`x-forge-oauth-user`) requires an active user and is **not** sent to scheduled trigger invocations. If your remote needs to act on behalf of a specific user offline, exchange the system token for a user token using [offline user impersonation](/platform/forge/remote/calling-product-apis/#offline-user-impersonation).
 
-Choose an interval shorter than 4 hours so your remote always holds a valid token. The `hour` interval is a good default: the trigger fires several times within each token's lifetime, so your remote always holds a token with plenty of remaining validity and gets multiple delivery attempts if an invocation is delayed or fails. Avoid relying on the `day` or `week` intervals as your only mechanism for refreshing tokens, since the token will expire well before the next invocation and your remote will be left without a valid token in between.
+Choose an interval shorter than 2 hours so your remote always holds a valid token. The `hour` interval is a good default: the trigger fires several times within each token's guaranteed lifetime, so your remote always holds a token with plenty of remaining validity and gets multiple delivery attempts if an invocation is delayed or fails. Avoid relying on the `day` or `week` intervals as your only mechanism for refreshing tokens, since the token will expire well before the next invocation and your remote will be left without a valid token in between.
 
 ## Verifying requests
 

@@ -5,9 +5,9 @@ blogs. When the menu item is clicked, the module’s function renders a modal di
 
 On apps that use Custom UI, module content is displayed inside a [special Forge iframe](/platform/forge/custom-ui/iframe/) which has the [sandbox](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#sandbox) attribute configured. This means that HTML links (for example, `<a href="https://domain.tld/path">...</a>`) in this iframe won't be clickable. To make them clickable, use the [router.navigate](/platform/forge/custom-ui-bridge/router/#navigate) API from the `@forge/bridge` package.
 
-![Example of a Content action button](https://dac-static.atlassian.com/platform/forge/snippets/images/content-action-location.png?_v=1.5800.2203)
+![Example of a Content action button](https://dac-static.atlassian.com/platform/forge/snippets/images/content-action-location.png?_v=1.5800.2204)
 
-![Example of a Content action with the above sample code](https://dac-static.atlassian.com/platform/forge/snippets/images/content-action-demo.png?_v=1.5800.2203)
+![Example of a Content action with the above sample code](https://dac-static.atlassian.com/platform/forge/snippets/images/content-action-demo.png?_v=1.5800.2204)
 
 ## Properties
 

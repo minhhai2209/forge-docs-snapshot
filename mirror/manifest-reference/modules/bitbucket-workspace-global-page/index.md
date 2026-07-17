@@ -7,7 +7,7 @@ Kit](/platform/forge/ui-kit/) or [Custom UI](/platform/forge/custom-ui/) to crea
 
 The page URL is constructed in the form of: `/{workspaceSlug}/workspace/forge/{forgeAppId}/{forgeEnvironmentKey}/{forgeAppModuleKey}`
 
-![Example of a workspace global page](https://dac-static.atlassian.com/platform/forge/images/bitbucket-workspace-global-page.png?_v=1.5800.2203)
+![Example of a workspace global page](https://dac-static.atlassian.com/platform/forge/images/bitbucket-workspace-global-page.png?_v=1.5800.2204)
 
 ## Properties
 

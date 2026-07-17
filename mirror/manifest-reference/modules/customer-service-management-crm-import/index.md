@@ -4,9 +4,9 @@ The `customerServiceManagement:crmImport` module adds an item under the **Manage
 
 This module can be used in Customer Service Management.
 
-![Item under the Manage dropdown on the Customers page](https://dac-static.atlassian.com/platform/forge/snippets/images/csm-crm-import-demo-dropdown.png?_v=1.5800.2203)
+![Item under the Manage dropdown on the Customers page](https://dac-static.atlassian.com/platform/forge/snippets/images/csm-crm-import-demo-dropdown.png?_v=1.5800.2204)
 
-![Modal opened by clicking the item, rendering the Forge app content](https://dac-static.atlassian.com/platform/forge/snippets/images/csm-crm-import-demo-modal.png?_v=1.5800.2203)
+![Modal opened by clicking the item, rendering the Forge app content](https://dac-static.atlassian.com/platform/forge/snippets/images/csm-crm-import-demo-modal.png?_v=1.5800.2204)
 
 For a high-level guide and pointers to product-specific integration patterns, see [Import customer context data with a Forge app](/platform/forge/csm-import-data/).
 
