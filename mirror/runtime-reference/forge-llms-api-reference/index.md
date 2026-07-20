@@ -286,4 +286,5 @@ The following request validation rules apply:
 The following models do not support the `temperature` and `top_p` sampling parameters. Omit both parameters from requests to these models:
 
 * `claude-opus-4-7`
+* `claude-opus-4-8`
 * `claude-sonnet-5`

@@ -19,7 +19,7 @@ typically a small React app), and Forge serves it. This gives you full control o
 looks and behaves. The simpler alternative, [UI Kit](/platform/forge/ui-kit/), uses Atlassian's
 ready-made components instead.
 
-![A Jira issue displaying a Custom UI Forge app](https://dac-static.atlassian.com/platform/forge/images/forge-getting-started-jira-custom-ui.png?_v=1.5800.2204)
+![A Jira issue displaying a Custom UI Forge app](https://dac-static.atlassian.com/platform/forge/images/forge-getting-started-jira-custom-ui.png?_v=1.5800.2207)
 
 ## How Custom UI differs from UI Kit
 

@@ -19,7 +19,7 @@ from the quick insert menu of the editor. The `macro` module is implemented by a
 
 On apps that use Custom UI, module content is displayed inside a [special Forge iframe](/platform/forge/custom-ui/iframe/) which has the [sandbox](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#sandbox) attribute configured. This means that HTML links (for example, `<a href="https://domain.tld/path">...</a>`) in this iframe won't be clickable. To make them clickable, use the [router.navigate](/platform/forge/custom-ui-bridge/router/#navigate) API from the `@forge/bridge` package.
 
-![Example of a macro](https://dac-static.atlassian.com/platform/forge/snippets/images/macro-example.png?_v=1.5800.2204)
+![Example of a macro](https://dac-static.atlassian.com/platform/forge/snippets/images/macro-example.png?_v=1.5800.2207)
 
 ## Manifest structure
 
@@ -269,7 +269,7 @@ modules:
           - pattern: https://*.example.com/*/movies/*
           - pattern: https://example.com/gifs/*/
           - pattern: http://*.example.com/media/*/.gif
-          - pattern: customScheme:\\example:custom
+          - pattern: customScheme://example:custom
           - pattern: customScheme:example:*
   function:
     - key: resolver
@@ -289,7 +289,7 @@ Use a new `*` for each segment in the URL you want a wildcard for. For example, 
 
 You'll need to define a separate `matcher` for each relevant internet protocol, such as `http` and `https`.
 
-Creating custom URL schemes is also supported. For example, `customScheme:*` can be used to match any URL that starts with that custom scheme such as`customScheme:\\example:custom`. Any custom schemes will have to be registered on the system they will be used on, such as iOS, Windows or Android. Either `:\\` or just `:` can be used as the initial separator in the URL scheme then `:` thereon.
+Creating custom URL schemes is also supported. For example, `customScheme:*` can be used to match any URL that starts with that custom scheme such as `customScheme://example:custom`. Any custom schemes will have to be registered on the system they will be used on, such as iOS, Windows or Android. Either `://` or just `:` can be used as the initial separator in the URL scheme then `:` thereon.
 
 ### Example patterns
 
@@ -350,7 +350,7 @@ Creating custom URL schemes is also supported. For example, `customScheme:*` can
 
 ```
 - "pattern": "customScheme:example:custom"
-- "pattern": "customScheme:\\example:custom"
+- "pattern": "customScheme://example:custom"
 ```
 ```
 
@@ -366,7 +366,7 @@ Creating custom URL schemes is also supported. For example, `customScheme:*` can
 
 ```
 - "pattern": "customScheme:example:*"
-- "pattern": "customScheme:\\example:*"
+- "pattern": "customScheme://example:*"
 ```
 ```
 
