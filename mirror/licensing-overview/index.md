@@ -1,51 +1,74 @@
-# Overview
+# Billing models
 
-Marketplace Partners can choose between two billing models to license their apps.
+Forge apps support two billing models for licensing on the Atlassian Marketplace:
 
-They can either adopt a user-based billing model that allows customers to pay for a Marketplace app
-for only a specific subset of users within an Atlassian app instance. Alternatively, they can adopt
-a billing model where customers purchase an Marketplace app for all users associated with the parent Atlassian app
-instance.
+* **Standard billing** — customers pay for all users in their Atlassian app instance, regardless of how many actually use the app.
+* **User-based billing** — customers pay only for the users granted access to the app. Admins control who has access, so organizations are billed for a targeted subset of users rather than the entire instance.
 
-Marketplace Partners have the option to use the billing model that covers all users,
-or switch to the user-based billing model. However, both billing models cannot be used for the same app.
+You must choose one billing model per app. Both models cannot be active for the same app at the same time.
 
-To get started with user-based billing, see [Adopt user-based billing for your app](/platform/forge/adopt-user-based-billing/).
-For details on listing your app and setting up pricing on Marketplace, see
-[Listing Forge apps on the Atlassian Marketplace](/platform/marketplace/listing-forge-apps/).
+The following sections illustrate the key differences between the two billing models.
 
-## How user-based billing works
+## Standard billing (all users)
 
-User-based billing is exclusively for Forge apps, which includes Forge apps with Connect module.
-Instead of paying for the entire user base of the parent Atlassian app, user-based billing allows
-customers to buy Marketplace apps for a more targeted subset of users.
+With the standard billing model, customers pay for all users in their Atlassian app instance,
+regardless of how many users actually use the Marketplace app.
 
-Marketplace Partners who transition an existing app to the user-based billing model can adjust their
-pricing accordingly. While this change is optional, we recommend that Marketplace Partners choose
-the billing model that best aligns with their overall business strategy.
+### Example
 
-If a partner transitions their app to the user-based billing model, all existing customers on the previous
-billing model will be transitioned to the new billing model.
+An organization has a Jira instance with 500 users. An org admin installs an app that charges $2 per user per month under the standard billing model. The organization pays for all 500
+users ($1,000/month), even if only 50 people actively use the app.
 
-## Benefits of user-based billing
+To enable standard billing, set `licensing.enabled` to `true` in your
+[app manifest](/platform/forge/manifest-reference/#app):
 
-Marketplace Partners should consider adopting user-based billing for several strategic advantages.
-This model aligns with Atlassian's objective of reaching both technical and non-technical teams,
-as well as larger enterprises. Here’s why:
+```
+1
+2
+3
+4
+app:
+  id: ari:cloud:ecosystem::app/your-app-id
+  licensing:
+    enabled: true
+```
 
-* **Broader market reach**: With user-based pricing, partners can target a wider audience,
-  including non-technical teams, thus tapping into new market segments and increasing potential
-  user adoption.
-* **Reduces customer friction & facilitates growth**: The user-based billing model can help
-  alleviate the friction associated with both user and app expansion. Organizations can add users or
-  adopt new apps in a flexible manner, making it easier to integrate Atlassian apps and other apps into
-  their workflow. This allows apps to grow organically within an organization as more teams find
-  value in them, leading to increased adoption rates.
-* **Flexible pricing models**: By charging based on the number of users, partners can offer more
-  tailored pricing strategies that align with customer needs, enhancing the value proposition for
-  potential customers.
-* **Facilitates growth**: This feature supports incremental and broader app adoption within
-  organizations over time. Additionally, it enables customers to procure more apps as they
-  pay per user, justifying the need and cost when utilized by business-critical teams.
+## User-based billing (EAP)
+
+User-based billing is currently available as an Early Access Program (EAP), allowing app developers
+to build, deploy and test an app via Forge CLI on non-production environments.
+
+Future EAP updates for user-based billing will enable app publishing, pricing setup,
+app revision, and app approval to be available on Atlassian Marketplace.
+
+With user-based billing, customers pay only for the users who are granted access to the app.
+Admins control which users have access, and the organization is billed only for those users.
+
+### Example
+
+An organization has a Jira instance with 500 users. An org admin installs an app that charges $3 per user per month under the user-based billing model. The admin grants only 50 users access to the app. The organization pays for those 50 users ($150/month) instead of all 500.
+
+To enable user-based billing, set both `licensing.enabled` and `access.userAccess` to `true` in your
+[app manifest](/platform/forge/manifest-reference/#app):
+
+```
+```
+1
+2
+```
+
+
+
+```
+app:
+  id: ari:cloud:ecosystem::app/your-app-id
+  licensing:
+    enabled: true
+  access:
+    userAccess: true
+```
+```
+
+For implementation details, see [User-based billing (EAP)](/platform/forge/adopt-user-based-billing/).
 
 ## Next steps

@@ -4,6 +4,9 @@ You can retrieve license information for your Forge app through the License REST
 
 No OAuth 2.0 scopes are required.
 
+To query your own app's license status, make sure `licensing.enabled` is set to `true` in your [app manifest](/platform/forge/manifest-reference/#app).
+For an overview of billing models, see [Billing models](/platform/forge/licensing-overview/).
+
 ## requestAtlassian
 
 The Forge SDK code examples on this page use the `requestAtlassian` module, which is available from the `@forge/api` package.

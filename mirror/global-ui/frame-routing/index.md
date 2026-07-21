@@ -289,8 +289,8 @@ import { Global, Sidebar, LinkMenuItem, Main } from "@forge/react/global";
 const App = () => (
   <Global>
     <Sidebar>
-      <LinkMenuItem label="Dashboard" href="/dashboard" />
-      <LinkMenuItem label="Settings" href="/settings" />
+      <LinkMenuItem label="Dashboard" href="/dashboard" icon="chart-bar" />
+      <LinkMenuItem label="Settings" href="/settings" icon="settings" />
     </Sidebar>
     <Main>
       <Frame resource="main-content" />
@@ -305,6 +305,8 @@ ForgeReconciler.render(
 );
 ```
 ```
+
+For icon guidelines and a list of icons to avoid in global navigation, see [Using icons](/platform/forge/global-ui/ui-kit-components/#using-icons).
 
 The `resource` prop on `Frame` must match a key in the `resources` section of your
 `manifest.yml` — you'll add that in the next step.

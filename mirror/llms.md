@@ -1173,8 +1173,8 @@ This section contains curated references that show how real Forge apps are struc
 
 ##### Licensing
 
-- [Overview](https://developer.atlassian.com/platform/forge/licensing-overview.md)
-- [Adopt user-based billing (EAP)](https://developer.atlassian.com/platform/forge/adopt-user-based-billing.md)
+- [Billing models](https://developer.atlassian.com/platform/forge/licensing-overview.md)
+- [User-based billing (EAP)](https://developer.atlassian.com/platform/forge/adopt-user-based-billing.md)
 
 #### Programs
 
@@ -1259,6 +1259,7 @@ This section contains curated references that show how real Forge apps are struc
 - [Key value store](https://developer.atlassian.com/platform/forge/storage-reference/kvs.md)
 - [Entity store](https://developer.atlassian.com/platform/forge/storage-reference/entities.md)
 - [SQL](https://developer.atlassian.com/platform/forge/storage-reference/sql.md)
+- [Object Store (Preview)](https://developer.atlassian.com/platform/forge/storage-reference/object-store.md)
 - [Reference](https://developer.atlassian.com/platform/forge/storage-reference/index.md)
 - [Hosted storage data lifecycle](https://developer.atlassian.com/platform/forge/storage-reference/hosted-storage-data-lifecycle.md)
 

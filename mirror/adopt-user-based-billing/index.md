@@ -1,4 +1,4 @@
-# Adopt user-based billing for Forge apps
+# User-based billing (EAP)
 
 User-based billing is currently available as an Early Access Program (EAP), allowing app developers
 to build, deploy and test an app via Forge CLI on non-production environments.
@@ -7,8 +7,41 @@ Future EAP updates for user-based billing will enable app publishing, pricing se
 app revision, and app approval to be available on Atlassian Marketplace.
 
 The user-based billing model allows developers to separate user tiers, offering a more flexible
-and tailored approach to app billing. This model allows customers to pay only for a specific subset
-of users within an Atlassian app instance, rather than covering all users.
+and tailored approach to app billing. With this model, customers pay only for a specific subset of users within an Atlassian app instance, rather than covering all users.
+
+## How user-based billing works
+
+User-based billing is exclusively for Forge apps.
+Instead of paying for the entire user base of the parent Atlassian app, user-based billing allows
+customers to buy Marketplace apps for a more targeted subset of users.
+
+Marketplace Partners who transition an existing app to the user-based billing model can adjust their
+pricing accordingly. While this change is optional, we recommend that Marketplace Partners choose
+the billing model that best aligns with their overall business strategy.
+
+If a partner transitions their app to the user-based billing model, all existing customers on the previous
+billing model transition to the new billing model.
+
+## Benefits of user-based billing
+
+Marketplace Partners should consider adopting user-based billing for several strategic advantages.
+This model aligns with Atlassian's objective of reaching both technical and non-technical teams,
+as well as larger enterprises. Here's why:
+
+* **Broader market reach**: With user-based pricing, partners can target a wider audience,
+  including non-technical teams, thus tapping into new market segments and increasing potential
+  user adoption.
+* **Reduces customer friction & facilitates growth**: The user-based billing model can help
+  alleviate the friction associated with both user and app expansion. Organizations can add users or
+  adopt new apps in a flexible manner, making it easier to integrate Atlassian apps and other apps into
+  their workflow. This allows apps to grow organically within an organization as more teams find
+  value in them, leading to increased adoption rates.
+* **Flexible pricing models**: By charging based on the number of users, partners can offer more
+  tailored pricing strategies that align with customer needs, enhancing the value proposition for
+  potential customers.
+* **Incremental adoption**: This feature supports incremental and broader app adoption within
+  organizations over time. Additionally, it enables customers to procure more apps as they
+  pay per user, justifying the need and cost when utilized by business-critical teams.
 
 ## Prerequisites
 
@@ -20,7 +53,7 @@ environments only.
 
 To use the user-based billing feature, Connect apps must [adopt Forge](/platform/adopting-forge-from-connect/).
 After a Connect app transitions to Forge and enables user-based billing, older versions of the
-app will need to be upgraded to support this feature.
+app need to be upgraded to support this feature.
 This transition ensures that all app versions align with the new billing model.
 
 ## Changes to the app manifest
@@ -54,11 +87,11 @@ app:
 ```
 
 You **must** set `licensing.enabled` to `true` if you've set `userAccess` to `true`.
-Attempting `userAccess: true` with licensing set to `false` will result in a deployment failure.
+Attempting `userAccess: true` with licensing set to `false` results in a deployment failure.
 
 After declaring user-based billing in the manifest, you can no longer remove or change this
-declaration. You can no longer convert the app into a free app as well. We recommend taking
-this into serious consideration before deciding to use user-based billing for your app.
+declaration, or convert the app to a free app. We recommend taking this into serious
+consideration before deciding to use user-based billing for your app.
 
 After deploying an app to production with `userAccess` set to `true`, you can no longer change
 this declaration. This is because the Atlassian Marketplace does not support transitions from
@@ -155,7 +188,7 @@ We also provide a new Forge display condition on Jira and Confluence. It is name
 whose value is resolved based on whether the user has access to the app. You can use this display
 condition to show or hide the extension, based on whether the user has access to the app.
 
-Refer our documentation for details about [display conditions](/platform/forge/manifest-reference/display-conditions/).
+Refer to our documentation for details about [display conditions](/platform/forge/manifest-reference/display-conditions/).
 
 In the backend, developers can access the `userAccess` property in the Lambda context.
 Here's how you can define a resolver to check user access:
@@ -198,7 +231,7 @@ Developers can access `userAccess` in the Forge Invocation Token’s (FIT) conte
 This is applicable if the [Forge Remote Compute (FRC)](/platform/forge/remote/) is a resolver.
 
 * If Forge Remote Compute is initiated from the Forge UI, `userAccess` will be provided.
-* If Forge Remote Compute is initiated via Forge Lambda, `userAccess` is not provided directly,
+* If Forge Remote Compute is initiated via Forge Lambda, `userAccess` is not provided directly.
 
 ### Sample FIT
 
@@ -261,12 +294,12 @@ non-backported versions will have access to the Marketplace app without being ch
 
 **Step 2**: Implement user access checks in the code.
 
-**Note that you will not be able to backport Connect versions of Connect on Forge apps.**
+You will not be able to backport prior versions of Connect on Forge apps.
 
 ## Testing your changes
 
 This section provides guidelines about how to install a Forge app with user-based billing being
-enabled. Note that you can only do this with non-production environments.
+enabled. You can only do this with non-production environments.
 
 **Prerequisites**
 
@@ -281,8 +314,7 @@ Overwriting the license of the Forge CLI only works on non-production environmen
 ## Install the app with user-based billing mode
 
 After successfully modifying and deploying your app, use the Forge CLI to install it with the
-user-access license mode. The command must include the `--license-modes` and `--users-with-acces`s
-options.
+user-access license mode. The command must include the `--license-modes` and `--users-with-access` options.
 
 Here’s the command format:
 
@@ -336,8 +368,8 @@ it with the updated settings.
 ### Result
 
 When testing, if you have created and deployed your app using the `userAccess` flag without
-installing the Forge app with the `--license-modes` override;
-the userAccess attributes in your code will automatically default to true.
+installing the Forge app with the `--license-modes` override,
+the `userAccess` attributes in your code will automatically default to `true`.
 This happens because user-based billing will not be in effect.
 
 The app should function as expected, with the specified users granted access under the

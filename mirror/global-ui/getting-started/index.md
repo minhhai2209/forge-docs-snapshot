@@ -163,8 +163,8 @@ const App = () => {
   return (
     <Global>
       <Sidebar>
-        <LinkMenuItem label="Dashboard" href="/dashboard" />
-        <LinkMenuItem label="Settings" href="/settings" />
+        <LinkMenuItem label="Dashboard" href="/dashboard" icon="chart-bar" />
+        <LinkMenuItem label="Settings" href="/settings" icon="settings" />
       </Sidebar>
       <Main>
         <Text>Welcome to your global app!</Text>
@@ -176,6 +176,8 @@ const App = () => {
 ForgeReconciler.render(<App />);
 ```
 ```
+
+For icon guidelines and a list of icons to avoid in global navigation, see [Using icons](/platform/forge/global-ui/ui-kit-components/#using-icons).
 
 For all available `global:ui` components, see [global:ui UI Kit components](/platform/forge/global-ui/ui-kit-components/).
 

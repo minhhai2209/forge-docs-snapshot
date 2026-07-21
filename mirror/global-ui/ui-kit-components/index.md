@@ -123,6 +123,50 @@ A clickable navigation link in the sidebar.
 | --- | --- | --- | --- |
 | `label` | `string` | Yes | The text displayed for the menu item. |
 | `href` | `string` | Yes | The route this item navigates to. |
+| `icon` | `string` | No | The name of an Atlassian Design System (ADS) icon glyph to display alongside the label. For example, `"chart-bar"` or `"settings"`. The platform controls the icon size and color. Always use with a visible `label`. |
+
+#### Using icons
+
+The `icon` prop accepts an ADS icon glyph name as a string. The platform renders the icon at the correct size and color for the sidebar context. Browse all available glyph names in the [ADS icon explorer](https://atlassian.design/components/icon/icon-explorer).
+
+```
+```
+1
+2
+```
+
+
+
+```
+<LinkMenuItem label="Reports" href="/reports" icon="chart-bar" />
+```
+```
+
+Use icons to help users identify destinations more quickly. Icons work alongside labels — they don't replace them.
+
+##### Icon guidelines
+
+Follow these guidelines when choosing icons for sidebar navigation:
+
+1. **Use icons that represent destinations, not actions.** Choose icons for places your users navigate to, such as a dashboard, a reports area, or a settings section. Avoid icons that suggest transient actions like create, edit, or run — those belong in buttons and menus.
+2. **Always pair icons with labels.** The `icon` prop should always appear alongside a `label`. Don't rely on an icon alone to communicate a destination — very few icons are universally understood, especially in a custom app context.
+3. **Maintain a one-to-one relationship between icons and destinations.** Each icon should represent exactly one destination, and each destination should use exactly one icon. Duplicating an icon across two items, or swapping icons for the same item in different parts of the navigation, weakens recognition.
+4. **Be mindful of Atlassian's existing navigation icons.** Some ADS icons are already associated with specific Atlassian products and navigation areas. Reusing them for unrelated destinations in your app can mislead users into thinking they are navigating to an Atlassian-native area.
+
+##### Recommended icons to avoid in unrelated contexts
+
+The following icons are used in Atlassian's own global navigation for specific primary objects and areas. We recommend avoiding them for destinations that are unrelated to the Atlassian product they represent.
+
+| ADS glyph name | ADS icon | Meaning | Guidance |
+| --- | --- | --- | --- |
+| `"spaces"` | spaces icon | Spaces directory in Confluence | Avoid if your destination isn't related to Confluence Spaces. |
+| `"project"` | project icon | Projects directory in Jira | Avoid if your destination isn't related to Jira Projects. |
+| `"goal"` | goal icon | Goal object in the Goals app | Avoid if your destination isn't related to Atlassian Goals. |
+| `"dashboard"` | dashboard icon | Dashboard object in the Home app | Avoid if your destination isn't related to Atlassian Dashboards. |
+| `"teams"` | teams icon | Teams object in the Teams app | Avoid if your destination isn't related to Atlassian Teams. |
+| `"person"` | person icon | "For you" landing page in Atlassian navigation | Avoid reusing this icon to prevent confusion with Atlassian's "For you" navigation item. |
+| `"clock"` | clock icon | "Recent" flyout in Atlassian navigation | Avoid to prevent confusion with Atlassian's "Recent" navigation item. |
+| `"star-starred"`, `"star-unstarred"` | star-starred icon star-unstarred icon | "Starred" flyout in Atlassian navigation | Avoid unless your destination represents starred or favourited content. |
 
 ### `ExpandableMenuItem`
 
@@ -145,7 +189,7 @@ navigation order.
 
 | Name | Type | Required | Description |
 | --- | --- | --- | --- |
-| `items` | `{ id: string; label: string; href: string }[]` | Yes | An array of sidebar menu items that the user can reorder. Each item must include a unique `id`, a display `label`, and a navigation `href`. |
+| `items` | `{ id: string; label: string; href: string, icon: string }[]` | Yes | An array of sidebar menu items that the user can reorder. Each item must include a unique `id`, a display `label`, and a navigation `href`. An optional ADS `icon` glyph name from [ADS icon explorer](https://atlassian.design/components/icon/icon-explorer) can also be included to render the corresponding icon. |
 | `onReorder` | `(items: Item[]) => void` | Yes | A callback invoked after the user changes the item order. Receives the reordered items so the app can update local state or persist the new order. |
 | `onError` | `(error: Error, currentItems: Item[], nextItems: Item[]) => void` | No | A callback invoked when reordering fails. Receives the error, the current items before the attempted reorder, and the next items from the attempted reorder. |
 
@@ -269,7 +313,7 @@ const initialNotes = [
 const App = () => {
   const [notes, setNotes] = useState(initialNotes);
   const [message, setMessage] = useState(
-    "Select an action from the header or sidebar."
+    "Select an action from the header or sidebar.",
   );
 
   const handleCreateDocument = () => {
@@ -301,7 +345,7 @@ const App = () => {
       </PersonalSettings>
 
       <Sidebar>
-        <LinkMenuItem label="Dashboard" href="/dashboard" />
+        <LinkMenuItem label="Reports" href="/reports" icon="chart-bar" />
         <LinkMenuItem label="Recent" href="/recent" />
 
         <ExpandableMenuItem label="Projects">
@@ -339,7 +383,7 @@ const App = () => {
 ForgeReconciler.render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>
+  </React.StrictMode>,
 );
 ```
 ```
@@ -446,8 +490,8 @@ Inside the resource, the dispatch function can be retrieved by calling [view.get
 
 
 ```
-import React, { useEffect, useState } from 'react';
-import { view } from '@forge/bridge';
+import React, { useEffect, useState } from "react";
+import { view } from "@forge/bridge";
 
 const App = () => {
   const [dispatch, setDispatch] = useState(undefined);
@@ -455,8 +499,8 @@ const App = () => {
   useEffect(() => {
     view
       .getFrameDispatch()
-      // If using React to set the dispatch function in state to use, make sure to 
-      // wrap it in a callback. Otherwise React treats dispatch as a functional updater 
+      // If using React to set the dispatch function in state to use, make sure to
+      // wrap it in a callback. Otherwise React treats dispatch as a functional updater
       // and tries to execute it.
       .then((dispatch) => setDispatch(() => dispatch));
   }, []);
@@ -468,20 +512,22 @@ const App = () => {
   return (
     <div>
       <button
-        onClick={() => dispatch({
-          type: "ADD_SIDEBAR_ITEM",
-          item: {
-            id: "settings",
-            label: "Settings",
-            href: "/settings",
-          } 
-        })}
+        onClick={() =>
+          dispatch({
+            type: "ADD_SIDEBAR_ITEM",
+            item: {
+              id: "settings",
+              label: "Settings",
+              href: "/settings",
+            },
+          })
+        }
       >
         Add Settings menu item
       </button>
     </div>
   );
-}
+};
 
 export default App;
 ```
