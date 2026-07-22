@@ -1,11 +1,5 @@
 # Part 2: Call a Confluence API
 
-#### Having trouble?
-
-Ask for help on our Developer Community
-
-[Get help](https://community.developer.atlassian.com/session/sso?return_path=%2Fnew-topic%3Fcategory_id%3D45%26tags%3Dforge-call-a-confluence-api)
-
 Using the `@forge/bridge` package, you'll learn how to make REST calls to an authenticated Confluence endpoint.
 
 ## Make an API call

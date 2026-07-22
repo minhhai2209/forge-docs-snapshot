@@ -1,11 +1,5 @@
 # Part 1: Build a Jira hello world app
 
-#### Having trouble?
-
-Ask for help on our Developer Community
-
-[Get help](https://community.developer.atlassian.com/session/sso?return_path=%2Fnew-topic%3Fcategory_id%3D45%26tags%3Dforge-build-a-hello-world-app-in-jira)
-
 This tutorial will walk you through creating a sample Forge app for Jira.
 There are three parts to the tutorial:
 
