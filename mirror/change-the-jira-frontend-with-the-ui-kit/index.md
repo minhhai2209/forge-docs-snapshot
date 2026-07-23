@@ -1,5 +1,11 @@
 # Part 3: Change the front end with UI Kit
 
+#### Having trouble?
+
+Ask for help on our Developer Community
+
+[Get help](https://community.developer.atlassian.com/session/sso?return_path=%2Fnew-topic%3Fcategory_id%3D45%26tags%3Dforge-change-the-jira-frontend-with-the-ui-kit)
+
 This section describes how to use tools in UI Kit, including [UI Kit components](/platform/forge/ui-kit/components/).
 You'll use these components to build dynamic and interactive interfaces for your app's front end. When your app is complete, you'll learn how to continue monitoring the Forge environment using the `forge logs` command.
 
