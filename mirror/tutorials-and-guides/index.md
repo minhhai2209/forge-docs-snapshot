@@ -88,15 +88,15 @@ This tutorial describes how to create a Forge app with two modules, where an adm
 
 See [Use space settings and content byline item to implement space news](/platform/forge/space-news/).
 
-### Use the app storage API in a Confluence macro
+### Use the Key-Value Store in a Confluence macro
 
-This tutorial describes how to build Forge app that can display a list of acronyms
+This tutorial describes how to build a Forge app that can display a list of acronyms
 and associated definitions in a Confluence macro. Definitions for the acronyms are
-stored within the app storage service and shared with other macros across the whole
-Confluence site. You'll learn about using the storage API from a Forge function and
-how to integrate storage with a UI Kit app.
+stored in the [Key-Value Store (KVS)](/platform/forge/storage-reference/kvs/) and shared with other macros across the whole
+Confluence site. You'll learn about using the KVS from a Forge function and
+how to integrate it with a UI Kit app.
 
-See [Use the app storage API in a Confluence macro](/platform/forge/create-confluence-macro-with-storage-api)
+See [Use the Key-Value Store in a Confluence macro](/platform/forge/create-confluence-macro-with-storage-api/)
 
 ### Use an external OAuth 2.0 API with fetch
 

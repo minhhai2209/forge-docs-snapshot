@@ -26,7 +26,7 @@ You must also update to the latest Forge CLI version. To do this:
 
 Additionally, ensure that you are using the latest version of `@forge/bridge` and `@forge/react`:
 
-1. Install the latest `@forge/bridge` package to the project by running:
+1. Install the latest version of the [`@forge/bridge` package](/platform/forge/apis-reference/ui-api-bridge/bridge/) by running:
 
    ```
    1

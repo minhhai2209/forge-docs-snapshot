@@ -1,4 +1,4 @@
-# Use Forge hosted storage in a Confluence macro
+# Use the Key-Value Store in a Confluence macro
 
 #### Having trouble?
 
@@ -8,11 +8,10 @@ Ask for help on our Developer Community
 
 This tutorial describes how to build an app for sharing definitions for
 terminology and acronyms across an entire Confluence site.
-The app uses Forge hostes storage to store definitions, which allows them to be
+The app uses the [Key-Value Store (KVS)](/platform/forge/storage-reference/kvs/) to store definitions, which allows them to be
 shared between several macros and accessed from the site administration.
 
-In this tutorial you will learn how to persist and retrieve data from Forge hosted storage
-(specifically, the [Key-Value Store](/platform/forge/storage-reference/))
+In this tutorial you learn how to persist and retrieve data from the Key-Value Store
 and display the results in a table.
 
 This tutorial has an accompanying [Bitbucket repository](https://bitbucket.org/atlassian/definitions-macro-tutorial/src/master/).
@@ -62,7 +61,7 @@ the following:
 6. Select the *confluence-macro* template.
 7. Your app has been created in a directory with the same name as your app, for example
    *definitions-macro*. Open the app directory to see the files associated with your app.
-8. Install the latest version of the Forge KVS package to be able to use Forge Storage features.
+8. Install the latest version of the `@forge/kvs` package to interact with the Key-Value Store.
 
    ```
    ```
@@ -356,7 +355,7 @@ interface Term {
 
 ## Step 5: Create the definitions table
 
-![The definition table](https://dac-static.atlassian.com/platform/forge/images/definition-macro-step-5.png?_v=1.5800.2211)
+![The definition table](https://dac-static.atlassian.com/platform/forge/images/definition-macro-step-5.png?_v=1.5800.2215)
 
 In this step, you'll add a [Dynamic Table](/platform/forge/ui-kit/components/dynamic-table/) to the definitions macro to show the list of terms side by side with a list of definitions.
 
@@ -493,7 +492,7 @@ For reference, a finished version of the `src/frontend/definition-table.jsx` fil
 
 ## Step 6: Allow a user to add a definition
 
-![The usable definition table](https://dac-static.atlassian.com/platform/forge/images/definition-macro-step-6a.png?_v=1.5800.2211)
+![The usable definition table](https://dac-static.atlassian.com/platform/forge/images/definition-macro-step-6a.png?_v=1.5800.2215)
 
 At this stage, there's still no data stored for the app. In this step, you'll add the
 ability to store a definition for a term.
@@ -726,7 +725,7 @@ ability to store a definition for a term.
        ],
      })
    },
-   [setTerm, setDefinition, openInputModal, openDeleteModal, createKey, setTerm, setDefinition, openInputModal, openDeleteModal]);
+   [setTerm, setDefinition, openInputModal, openDeleteModal, createKey]);
    ```
    ```
 8. Add `generateRow` function to the rows variable, so it will be rendered in `<DynamicTable>`.
@@ -749,17 +748,17 @@ ability to store a definition for a term.
 
 ## Next steps
 
-At this point your app is able display a list of terms and their associated definitions.
-The app stores definitions in the storage service, and shares these across all
+At this point your app is able to display a list of terms and their associated definitions.
+The app stores definitions in the Key-Value Store, and shares these across all
 the instances of the macro in the site.
 
-Explore Forge storage in further detail over the following pages:
+Explore the Key-Value Store in further detail over the following pages:
 
 * Read [App storage options](/platform/forge/storage/) for an overview of the different ways Forge
-  apps can store data
-* Read about the [Key-Value Store](/platform/forge/storage-reference/) which
+  apps can store data.
+* Read about the [Key-Value Store](/platform/forge/storage-reference/kvs/) which
   details the JavaScript API.
 * Learn more about how [Queries](/platform/forge/storage-reference/kvs-api-query) can
   be run against data stored in the Key-Value Store.
 * View the [Limits](/platform/forge/platform-quotas-and-limits/#storage-quotas) that apply
-  to apps using Forge hosted storage.
+  to apps using the Key-Value Store.

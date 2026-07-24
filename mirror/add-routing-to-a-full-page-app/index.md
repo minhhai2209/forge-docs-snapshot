@@ -95,7 +95,7 @@ Follow these steps to use React Router in your Custom UI app:
    npm install react-router@latest
    ```
    ```
-3. Ensure you have the latest `@forge/bridge` version installed:
+3. Install the latest version of the [`@forge/bridge` package](/platform/forge/apis-reference/ui-api-bridge/bridge/) by running:
 
    ```
    ```
@@ -233,4 +233,4 @@ export default App;
 
 You now have a full page app with routing:
 
-![Example app with routing](https://dac-static.atlassian.com/platform/forge/images/custom-ui-routing.gif?_v=1.5800.2211)
+![Example app with routing](https://dac-static.atlassian.com/platform/forge/images/custom-ui-routing.gif?_v=1.5800.2215)

@@ -10,18 +10,9 @@ Feature flags are not available in Atlassian Government Cloud or FedRAMP environ
 
 This tutorial assumes you have experience with basic Forge development. If you're new to Forge, complete the [hello world tutorial](/platform/forge/build-a-hello-world-app-in-confluence/) first.
 
-You need:
+You need to:
 
-* Forge CLI installed and configured
-* A Confluence Forge app already deployed (the hello world app is sufficient)
-* Access to [Atlassian Developer Console](https://developer.atlassian.com/console)
-
-Install the `@forge/bridge` package:
-
-```
-1
-npm install @forge/bridge@latest
-```
+You will also need:
 
 Feature flags in the client SDK require `@forge/bridge` version `5.15.0` or later.
 

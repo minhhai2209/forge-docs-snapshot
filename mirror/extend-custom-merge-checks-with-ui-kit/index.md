@@ -196,7 +196,7 @@ We render a form on the repository settings page for repository admins to config
 a string they expect to appear in the title of pull requests in the repository.
 The UI will invoke our resolver methods from the earlier section using [Forge bridge APIs](/platform/forge/apis-reference/ui-api-bridge/bridge/).
 
-1. In the app's top-level directory, install the `react`, `@forge/react` and `@forge/bridge` packages by running:
+1. In the app's top-level directory, install the `react` and `@forge/react` packages by running:
 
    ```
    ```
@@ -207,10 +207,24 @@ The UI will invoke our resolver methods from the earlier section using [Forge br
 
 
    ```
-   npm install react @forge/react @forge/bridge
+   npm install react @forge/react
    ```
    ```
-2. Create a `src/frontend` directory and a `src/frontend/index.jsx` file to contain the frontend code.
+2. Install the latest version of the [`@forge/bridge` package](/platform/forge/apis-reference/ui-api-bridge/bridge/) by running:
+
+   ```
+   ```
+   1
+   2
+   ```
+
+
+
+   ```
+   npm install @forge/bridge@latest
+   ```
+   ```
+3. Create a `src/frontend` directory and a `src/frontend/index.jsx` file to contain the frontend code.
 
    Your app should have the following structure:
 
@@ -238,7 +252,7 @@ The UI will invoke our resolver methods from the earlier section using [Forge br
            └── index.js
    ```
    ```
-3. Open `src/frontend/index.js` and create a `TitleSubstringForm` component that will invoke the resolver method to store the substring when the form is submitted.
+4. Open `src/frontend/index.js` and create a `TitleSubstringForm` component that will invoke the resolver method to store the substring when the form is submitted.
 
    ```
    ```
@@ -301,7 +315,7 @@ The UI will invoke our resolver methods from the earlier section using [Forge br
    };
    ```
    ```
-4. Add an `App` component that will invoke the resolver method to retrieve the stored substring
+5. Add an `App` component that will invoke the resolver method to retrieve the stored substring
    and pass it as a `defaultValue` to the `TitleSubstringForm` component.
 
    ```
@@ -342,7 +356,7 @@ The UI will invoke our resolver methods from the earlier section using [Forge br
    };
    ```
    ```
-5. Render the `App` component using the `ForgeReconciler`.
+6. Render the `App` component using the `ForgeReconciler`.
 
    ```
    ```
@@ -692,7 +706,7 @@ app:
    ```
 3. Navigate to your repository settings and open the "Check pull request title" menu item under the `FORGE APPS` section.
 
-   ![Check pull request title repository settings page](https://dac-static.atlassian.com/platform/forge/images/bitbucket-merge-check-configuration-page.png?_v=1.5800.2211)
+   ![Check pull request title repository settings page](https://dac-static.atlassian.com/platform/forge/images/bitbucket-merge-check-configuration-page.png?_v=1.5800.2215)
 4. Set the pull request title substring value. For example, *TICKET-*.
 5. Ensure the merge check is enabled via the Repository settings → Custom merge checks page if it is not already enabled.
 6. Create a pull request without the substring in the title.
@@ -704,4 +718,4 @@ app:
 
 Check out an example app, continue to one of the other tutorials, or read through the reference pages to learn more.
 
-[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.2211)](/platform/forge/build-a-pull-request-title-validator-with-custom-merge-checks/)
+[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.2215)](/platform/forge/build-a-pull-request-title-validator-with-custom-merge-checks/)

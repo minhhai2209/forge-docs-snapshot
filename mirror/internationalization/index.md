@@ -25,7 +25,7 @@ You must also update to the latest Forge CLI version. To do this:
 
 Additionally, if you'd like to add internationalization support to your app frontend code using the [i18n](/platform/forge/apis-reference/ui-api-bridge/i18n/) functions or the [useTranslation](/platform/forge/ui-kit/hooks/use-translation/) UI Kit hook, ensure that you are using the latest version of `@forge/bridge` and `@forge/react`.
 
-1. Install the latest `@forge/bridge` package to the project by running:
+1. Install the latest version of the [`@forge/bridge` package](/platform/forge/apis-reference/ui-api-bridge/bridge/) by running:
 
    ```
    ```

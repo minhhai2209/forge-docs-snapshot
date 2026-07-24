@@ -1027,9 +1027,9 @@ This section contains curated references that show how real Forge apps are struc
 
 - [Add routing to a full-page app in Jira](https://developer.atlassian.com/platform/forge/add-routing-to-a-full-page-app.md)
 
-###### Use the storage API in Confluence
+###### Use the Key-Value Store in Confluence
 
-- [Use the storage API in Confluence](https://developer.atlassian.com/platform/forge/create-confluence-macro-with-storage-api.md)
+- [Use the Key-Value Store in Confluence](https://developer.atlassian.com/platform/forge/create-confluence-macro-with-storage-api.md)
 
 ###### Add custom configuration to a macro
 

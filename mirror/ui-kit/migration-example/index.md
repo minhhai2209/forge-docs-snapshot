@@ -16,14 +16,24 @@ Make sure to do the following before you start migrating your app:
 
 ## Install required packages
 
-1. UI Kit requires a few new packages to be installed. Install the following packages from the root of the project by running the following command:
+1. UI Kit requires a few new packages to be installed. Install the `@forge/react` and `@forge/resolver` packages from the root of the project by running:
 
-   `npm install @forge/react @forge/resolver @forge/bridge --save`
+   ```
+   1
+   npm install @forge/react @forge/resolver --save
+   ```
 
-* `@forge/react` is a package that contains all UI Kit components.
-* `@forge/resolver` is a package that allows you to define backend functions.
-* `@forge/bridge` is a package that allows you to invoke Atlassian app specific capabilities and resolver functions from the frontend.
-* `@forge/ui` can be uninstalled as it is no longer required.
+   * `@forge/react` is a package that contains all UI Kit components.
+   * `@forge/resolver` is a package that allows you to define backend functions.
+   * `@forge/ui` can be uninstalled as it is no longer required.
+2. Install the latest version of the [`@forge/bridge` package](/platform/forge/apis-reference/ui-api-bridge/bridge/) by running:
+
+   ```
+   1
+   npm install @forge/bridge@latest
+   ```
+
+   `@forge/bridge` allows you to invoke Atlassian app-specific capabilities and resolver functions from the frontend.
 
 ## Structuring frontend (UI) and backend code for UI Kit
 
@@ -242,98 +252,95 @@ We now need to wire up the frontend and backend and also update our app to use U
 
 1. Add the `render: native` property to your app so that it will now render using UI Kit instead of UI Kit 1.
 
-```
-```
-1
-2
-```
+   ```
+   ```
+   1
+   2
+   ```
 
 
 
-```
-modules:
-  jira:issuePanel:
-    - key: translate
-      render: native
-      ...
-```
-```
-
+   ```
+   modules:
+     jira:issuePanel:
+       - key: translate
+         render: native
+         ...
+   ```
+   ```
 2. Remove the `function` property in your app as this is no longer required for UI Kit.
 3. Replace the existing UI Kit 1 `function`'s `key` and `handler` properties with a new `key` and `handler` that points to our new resolver.
 
-```
-```
-1
-2
-```
+   ```
+   ```
+   1
+   2
+   ```
 
 
 
-```
-function:
-  - key: resolver
-    handler: index.handler
-```
-```
-
+   ```
+   function:
+     - key: resolver
+       handler: index.handler
+   ```
+   ```
 4. Add a new `resources` property and set a unique `key` and `path` to our frontend file.
 
-```
-```
-1
-2
-```
+   ```
+   ```
+   1
+   2
+   ```
 
 
 
-```
-resources:
-  - key: main
-    path: src/frontend/index.jsx
-```
-```
-
+   ```
+   resources:
+     - key: main
+       path: src/frontend/index.jsx
+   ```
+   ```
 5. The full manifest file should look like this:
 
-```
-```
-1
-2
-```
+   ```
+   ```
+   1
+   2
+   ```
 
 
 
-```
-modules:
-  jira:issuePanel:
-    - key: translate
-      resource: main
-      resolver:
-        function: resolver
-      render: native
-      title: Translate
-      icon: https://developer.atlassian.com/platform/forge/images/icons/issue-translation-icon.svg
-      description: Translate issue fields into other languages
-  function:
-    - key: resolver
-      handler: index.handler
-resources:
-  - key: main
-    path: src/frontend/index.jsx
-app:
-  id: "ari:cloud:ecosystem::app/764f9c2d-fac3-493f-b9fe-aabda3c639a2"
-  runtime:
-    name: nodejs24.x
-permissions:
-  scopes:
-    - "read:jira-work"
-  external:
-    fetch:
-      backend:
-        - "https://api.cognitive.microsofttranslator.com"
-```
-```
+   ```
+   modules:
+     jira:issuePanel:
+       - key: translate
+         resource: main
+         resolver:
+           function: resolver
+         render: native
+         title: Translate
+         icon: https://developer.atlassian.com/platform/forge/images/icons/issue-translation-icon.svg
+         description: Translate issue fields into other languages
+     function:
+       - key: resolver
+         handler: index.handler
+   resources:
+     - key: main
+       path: src/frontend/index.jsx
+   app:
+     id: "ari:cloud:ecosystem::app/764f9c2d-fac3-493f-b9fe-aabda3c639a2"
+     runtime:
+       name: nodejs24.x
+   permissions:
+     scopes:
+       - "read:jira-work"
+     external:
+       fetch:
+         backend:
+           - "https://api.cognitive.microsofttranslator.com"
+   ```
+   ```
 
 That's it! To test, set up Forge variables, then deploy and install the app in to your instance.
 

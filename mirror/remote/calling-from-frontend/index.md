@@ -2,7 +2,7 @@
 
 You can call your remote backend from your frontend (Custom UI and UI Kit) using the `@forge/bridge` package. The diagram below illustrates the data flow.
 
-![Forge Remote diagram describing the flow of data and auth between Forge and remote application](https://dac-static.atlassian.com/platform/forge/images/remote/remote-calling-backend-from-frontend.png?_v=1.5800.2211)
+![Forge Remote diagram describing the flow of data and auth between Forge and remote application](https://dac-static.atlassian.com/platform/forge/images/remote/remote-calling-backend-from-frontend.png?_v=1.5800.2215)
 
 ## Setting up the manifest
 
@@ -146,6 +146,79 @@ To call your remote from a Forge frontend, use one of these APIs from the [`@for
 | Supports FormData/file uploads | No | Yes |
 
 Use `invokeRemote` when you need OAuth tokens to call Atlassian APIs from your remote. Use `requestRemote` when you need lower latency and don't need OAuth tokens.
+
+### Calling multiple endpoints or remotes
+
+Each UI module's `resolver.endpoint` connects it to a single endpoint (and therefore a single remote). However, you can still call multiple API routes on that remote by varying the `path` in your `invokeRemote` calls:
+
+```
+```
+1
+2
+```
+
+
+
+```
+import { invokeRemote } from '@forge/bridge';
+
+async function fetchData() {
+  try {
+    // Call different paths on the same remote backend
+    const users = await invokeRemote({ path: '/users', method: 'GET' });
+    const tasks = await invokeRemote({ path: '/tasks', method: 'GET' });
+    // use users and tasks
+  } catch (error) {
+    console.error('Remote invocation failed:', error.message);
+  }
+}
+```
+```
+
+If you need to call **multiple remote backends** from a single module, use `requestRemote`. Unlike `invokeRemote`, `requestRemote` accepts a remote key as its first argument, so you can target any remote defined in your manifest:
+
+```
+```
+1
+2
+```
+
+
+
+```
+remotes:
+  - key: auth-service
+    baseUrl: https://auth.example.com
+  - key: data-service
+    baseUrl: https://data.example.com
+```
+```
+
+```
+```
+1
+2
+```
+
+
+
+```
+import { requestRemote } from '@forge/bridge';
+
+// Call different remote backends by key
+const authResponse = await requestRemote('auth-service', {
+  path: '/verify',
+  method: 'GET',
+});
+
+const dataResponse = await requestRemote('data-service', {
+  path: '/records',
+  method: 'GET',
+});
+```
+```
+
+`requestRemote` does not include OAuth tokens, even if configured on the endpoint. If you need OAuth tokens for multiple backends, define separate modules, each with its own `resolver.endpoint` pointing to a different endpoint and remote.
 
 ### Example using `invokeRemote`
 
