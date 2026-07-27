@@ -220,7 +220,7 @@ on an existing site hostname using the following URL format:
 
 
 ```
-{site-hostname}/apps/a/{app-id}/e/{env-id}
+{site-hostname}/apps/{installation-id}
 ```
 ```
 

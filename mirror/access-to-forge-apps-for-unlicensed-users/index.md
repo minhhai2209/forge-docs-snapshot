@@ -72,7 +72,8 @@ Unlicensed access is currently supported for the following Jira modules:
 #### Authenticated Atlassian app API calls
 
 Only JSM customer users can make `asUser()` API calls from frontend and backend contexts. Other `unlicensed` user types can't make these calls because they are unauthorized and don't have full Jira Service Management project access.
-Making `asUser()` calls from a backend function on behalf of a user without an active session is currently not supported for unlicensed users.
+
+For JSM customer users, `asUser()` calls are possible with (online impersonation) or without (offline impersonation) an active user session. For more information on online and offline impersonation, see our [scope declaration documentation](/platform/forge/manifest-reference/permissions/#Scopes).
 
 Apps with the necessary permissions are able to make `asApp()`
 API calls. Bear in mind that `asApp()` authenticates as your app's service account

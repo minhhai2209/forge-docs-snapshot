@@ -54,7 +54,7 @@ from the environment in which they execute. By running apps in isolated environm
 
 To understand how this works in detail, see the diagram and notes on the Forge app environment below:
 
-![Forge app environment diagram](https://dac-static.atlassian.com/platform/forge/images/forge-app-environment-diagram.svg?_v=1.5800.2215)
+![Forge app environment diagram](https://dac-static.atlassian.com/platform/forge/images/forge-app-environment-diagram.svg?_v=1.5800.2218)
 
 * App bundle: The app bundle is the packaged app code.
 * Forge runtime: Forge apps run in AWS as lambdas. [AWS Lambda](https://aws.amazon.com/lambda/features/)
@@ -78,8 +78,7 @@ context where it is installed, with some restrictions:
 * An app cannot impersonate any user that doesn't have access to the app. This means the app can only impersonate app contributors if the app is
   not being shared through the Marketplace or direct distribution.
 
-There are also some limitations on the current implementation of offline user impersonation. Currently, this cannot be used to impersonate anonymous
-users or customer accounts. This may change in future.
+There are also some limitations on the current implementation of offline user impersonation. Currently, this cannot be used to impersonate anonymous users. This may change in the future.
 
 ## Data management
 

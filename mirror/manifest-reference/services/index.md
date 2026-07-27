@@ -80,6 +80,37 @@ The following table describes the `default` profile’s scaling behavior:
 
 Forge Containers checks average resource usage every 15 seconds.
 
+### Scale to zero
+
+You can configure a container service to scale down to zero running instances when it is idle. This can help reduce costs for containers used in non-production environments by ensuring that no instances are running when there is no traffic. Scaling a container service to zero is supported in `DEVELOPMENT` and `STAGING` [environments](/platform/forge/environments-and-versions/).
+
+To enable this, set `min` to `0` in your service's `scaling` configuration:
+
+```
+```
+1
+2
+```
+
+
+
+```
+services:
+  - key: example-service
+    scaling:
+      min: 0
+      max: 2
+```
+```
+
+With scale to zero enabled, a container service scales down to 0 running instances if it receives no traffic for 15 minutes.
+When the next request arrives, Forge returns a `503` response and begins scaling the service back up. The service typically becomes available within a few minutes, and subsequent requests are processed normally once the container has scaled up.
+
+When enabling scale to zero, consider the following differences in behavior:
+
+* Scheduled triggers have a short retry window of around 2 minutes. If the container service does not come online within that window, Forge may silently drop the scheduled trigger invocation. If scheduled trigger delivery is important, we recommend handling the scheduled trigger with a Forge function that [creates an async event](/platform/forge/events/).
+* Product events and async events have longer retry windows, so Forge processes them after the container service comes online.
+
 ## Tunnel
 
 The `tunnel` property lets you configure settings for running the container locally, including which port service invocations should be made to.

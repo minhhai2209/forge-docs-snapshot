@@ -201,23 +201,10 @@ using the following URL format:
 
 
 ```
-{site-hostname}/apps/a/{app-id}/e/{env-id}
+{site-hostname}/apps/{installation-id}
 ```
 ```
 
-To find your environment ID, run:
-
-```
-```
-1
-2
-```
-
-
-
-```
-forge environments list
-```
-```
+To find your installation ID, run:
 
 ## Next steps
