@@ -24,6 +24,10 @@ Check out
 for example code and resources for configuring observability tools
 to consume Forge app logs.
 
+For **Isolated Cloud (IC)**, customers don't have the option to enable or disable log sharing access to developers in [Admin Hub](https://admin.atlassian.com), and app developers can't access IC logs in the developer console. IC customers can still download the app logs from Admin Hub and share them with the developer. This is the only way for developers to get access to logs of an IC customer.
+
+For **Atlassian Government Cloud (AGC) or FedRAMP**, customers can enable or disable log sharing access to developers in [Admin Hub](https://admin.atlassian.com), with sharing enabled by default. For more information, see [Access app logs](/platform/forge/access-app-logs/).
+
 ## Authenticate with the Atlassian Gateway
 
 You must first authenticate with the Atlassian Gateway to consume the API and export app logs
@@ -309,7 +313,7 @@ fetchLogs(startDate, endDate, cursor);
 To use the App logs API and ingest logs into observability tools, we recommend fetching logs in
 OTLP format from the API, and having the following components in your infrastructure:
 
-![Partner Server View](https://dac-static.atlassian.com/platform/forge/images/partner-server-arch-logs.svg?_v=1.5800.2218)
+![Partner Server View](https://dac-static.atlassian.com/platform/forge/images/partner-server-arch-logs.svg?_v=1.5800.2222)
 
 ### CronJob service
 
@@ -322,7 +326,7 @@ When setting up the service, you can use either a **serverless framework** or **
 #### Serverless framework
 
 If using Amazon Web Services (AWS) infrastructure, you can configure a Lambda to be executed
-every “x” minutes or so. You can also use a similar configuration for Google Cloud Platform (GCP)
+every "x" minutes or so. You can also use a similar configuration for Google Cloud Platform (GCP)
 , Microsoft Azure infrastructure or any other cloud provider
 
 A sample Lambda configuration should look like the following:
@@ -408,7 +412,7 @@ Resources:
 #### Server framework
 
 If using AWS infrastructure, you can set up a dedicated EC2 resource running a server that polls
-the REST API every “x” minutes or so. This can be a virtual machine (VM) if running an on-premise
+the REST API every "x" minutes or so. This can be a virtual machine (VM) if running an on-premise
 data center.
 
 ### OTEL Collector

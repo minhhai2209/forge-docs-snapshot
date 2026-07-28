@@ -55,9 +55,10 @@ modules {}
    │  └─ product (string)
    └─ protocols [] [Mandatory]
       └─ agent2Agent
+         ├─ version (string) [Mandatory]
          └─ jsonRpcTransport
             ├─ streaming (boolean)
-            └─ endpoint (string)
+            └─ endpoint (string) [Mandatory]
 
 remotes []
 └─ key (string) [Mandatory]
@@ -99,6 +100,7 @@ In this structure:
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
 | `agent2Agent` | `object` | Yes | Configures communication using the Agent2Agent (A2A) protocol. Currently, only `jsonRpcTransport` is supported. |
+| `agent2Agent` `.version` | `string` | Yes | The version of the A2A protocol to use.  Valid values are `0.3` or `1.0`  See [A2A protocol versioning](https://a2a-protocol.org/latest/whats-new-v1/) for more details. |
 | `agent2Agent` `.jsonRpcTransport` | `object` | Yes | Enables Agent2Agent protocol over JSON-RPC 2.0 transport.  See [Transport properties](#transport-properties) for more configuration details |
 
 ### Transport properties
@@ -133,6 +135,7 @@ modules:
         - jira
       protocols:
         agent2Agent:
+          version: '0.3'
           jsonRpcTransport:
             endpoint: a2a-json-rpc-endpoint
             streaming: true

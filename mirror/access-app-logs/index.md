@@ -4,7 +4,11 @@ To help you troubleshoot faster, app log sharing is now enabled automatically du
 installation. This means that when a user installs your app on their site, you will now
 automatically get access to the app logs for that site.
 
-Once you’ve [shared your Forge app](/platform/forge/distribute-your-apps/#start-sharing-your-app) or
+For **Isolated Cloud (IC)**, customers don't have the option to enable or disable log sharing access to developers in [Admin Hub](https://admin.atlassian.com), and app developers can't access IC logs in the developer console. IC customers can still download the app logs from Admin Hub and share them with the developer. This is the only way for developers to get access to logs of an IC customer.
+
+For **Atlassian Government Cloud (AGC) or FedRAMP**, customers can enable or disable log sharing access to developers in [Admin Hub](https://admin.atlassian.com), with sharing enabled by default.
+
+Once you've [shared your Forge app](/platform/forge/distribute-your-apps/#start-sharing-your-app) or
 [listed it on the Atlassian Marketplace](platform/forge/distribute-your-apps/#listing-forge-apps-on-the-atlassian-marketplace),
 users may experience issues using it on their Atlassian site. To help you
 [fix the issue](/platform/forge/debugging/), you can access the logs for your app
@@ -13,11 +17,11 @@ app. You can [view these logs](/platform/forge/view-app-logs-and-installations/)
 
 However, a user may disable log access to their site, which means their logs will no
 longer appear in the developer console. If your user is experiencing a problem with your
-app, and you can’t resolve it by analyzing the logs that you currently have access to,
-you’ll need to ask the user to re-enable access to the logs, or download the logs and send
+app, and you can't resolve it by analyzing the logs that you currently have access to,
+you'll need to ask the user to re-enable access to the logs, or download the logs and send
 them to you.
 
-To find the user’s email address, follow the steps on
+To find the user's email address, follow the steps on
 [how to contact your customer](/platform/marketplace/sales-and-evaluations-reports/#how-do-i-contact-a-customer-).
 You must collect and use data in accordance with the privacy
 rights that you've obtained from your user. For more information, see the
@@ -45,7 +49,7 @@ Either tell them to follow the same method that they used for
    Your user sees a screen like this, showing the details of your app and the controls for
    enabling or disabling access to their site's logs.
 
-   ![The admin hub app details page, showing details, and the section to enable logs](https://dac-static.atlassian.com/platform/forge/images/admin-hub-access-prod-logs-section.png?_v=1.5800.2218)
+   ![The admin hub app details page, showing details, and the section to enable logs](https://dac-static.atlassian.com/platform/forge/images/admin-hub-access-prod-logs-section.png?_v=1.5800.2222)
 
 Once your user has enabled access, you'll be able to see their logs and
 [monitor your app on their site](/platform/forge/monitor-your-apps) in the

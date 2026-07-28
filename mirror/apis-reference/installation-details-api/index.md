@@ -204,7 +204,7 @@ You can call the Installation Details REST API from a remote backend. For more i
 | Scope | Limit |
 | --- | --- |
 | Per `installationId` | 1 request per 5 minutes |
-| Per `appId` | 10 requests per minute |
+| Per `appId` | 50 requests per minute |
 
 Because all installations of an app share the per-`appId` limit, your app may hit a `429 Too Many Requests` response even if it hasn't reached the per-installation limit. When this happens, wait for the number of seconds specified in the `Retry-After` response header before retrying.
 
