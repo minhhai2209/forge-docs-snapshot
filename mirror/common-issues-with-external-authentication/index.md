@@ -1,60 +1,9 @@
 # Common issues with external authentication
 
-Working with OAuth 2.0 providers involves more complexity in your app, as you manage
-multiple places to configure things correctly. This page covers ways to solve common error
-conditions, helping you to successfully develop a Forge app with external authentication.
+Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
+When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our
 
-## Token exchange issues
+[Privacy Policy](https://www.atlassian.com/legal/privacy-policy#how-we-disclose-information-we-collect)
 
-**Error message**:
-
-* `could not retrieve access token from the provider`
-* `could not retrieve access token from the provider: Unexpected response status code 502 from api.atlassian.com`
-* `could not retrieve access token from the provider: Birdy Timeout Error`
-
-**Action**:
-
-1. Ensure the client secret has been set using the
-   [configure providers](/platform/forge/cli-reference/providers/) CLI command.
-2. Confirm the [exchange](/platform/forge/manifest-reference/providers/#exchange) URL is correct in
-   the `manifest.yml` file.
-3. If it’s still not working, try again later. The provider might be having connection issues.
-
-## Profile retriever issues
-
-**Error message**:
-
-* `could not retrieve profile information`
-* `could not retrieve profile information: Birdy Timeout Error`
-
-**Action**:
-
-1. Confirm the [profileRetriever](/platform/forge/manifest-reference/providers/#profile-retriever)
-   URL is correct in the `manifest.yml` file.
-2. If it’s still not working, try again later. The provider might be having connection issues.
-
-**Error message**:
-
-* `could not retrieve profile information: Authorization Failed: Could not extract internalAccountId from the response`
-
-**Action**:
-
-The `id` parameter in the [static profile retriever](/platform/forge/manifest-reference/providers/#static-profile-retriever)
-is incorrect. Check the identity provider's documentation for the endpoint you are using to
-ensure the field name is correct and is a string.
-
-## Function issues
-
-**Error message**:
-
-* `There was an error invoking the function - Authentication required`
-
-**Action**:
-
-Ensure this function's manifest entry has the `providers` reference on it.
-
-## Unsupported cases
-
-### Different OAuth 2.0 types
-
-External authentication only supports [authorization code grants](https://tools.ietf.org/html/rfc6749#section-4.1).
+.
+You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt-out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
