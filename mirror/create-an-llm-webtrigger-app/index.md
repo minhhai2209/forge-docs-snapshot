@@ -1,20 +1,10 @@
 # Create an LLM web trigger app using Forge LLMs
 
-Forge LLMs is now available as *preview* feature.
-
-Preview features are deemed stable;
-however, they remain under active development and may be subject to shorter deprecation
-windows. Preview features are suitable for early adopters in production environments.
-
-We release preview features so partners and developers can study, test, and integrate
-them prior to General Availability (GA). For more information,
-see [Forge release phases: EAP, Preview, and GA](/platform/forge/whats-coming/#preview).
-
 This tutorial walks you through integrating the `llm` [module](/platform/forge/manifest-reference/modules/llm/) with the `webtrigger` module, enabling dynamic, user-driven LLM interactions in your Forge app.
 
 By completing this guide, you’ll build a Forge app with a Web trigger endpoint using `@forge/llm`. The endpoint receives user input, forwards it to the LLM provider, and returns the generated response—all within the Forge platform.
 
-If you're new to Web triggers, think of them as HTTP endpoints that let your Forge app interact with external systems or receive dynamic input from events or users. Please refer to the [Web trigger Module Documentation](https://developer.atlassian.com/platform/forge/manifest-reference/modules/web-trigger/) for more details.
+If you're new to Web triggers, think of them as HTTP endpoints that let your Forge app interact with external systems or receive dynamic input from events or users. For more details, see the [web trigger module documentation](/platform/forge/manifest-reference/modules/web-trigger/).
 
 ---
 
@@ -35,34 +25,23 @@ Before you begin, ensure you have the following:
 Use the Forge CLI to create your app. In this example, we’ll name it `llm-webtrigger-app`:
 
 ```
-```
 1
 2
-```
-
-
-
-```
 # First, authenticate with Forge if you haven’t already:
 forge login
 ```
-```
 
-```
 ```
 1
 2
-```
-
-
-
-```
+3
+4
+5
 forge create
 # ? Enter a name for your app: llm-webtrigger-app
 # ? Select an Atlassian app or platform tool: Show All
 # ? Select a category: Show All
 # ? Select a template: webtrigger
-```
 ```
 
 Navigate to your app directory:
@@ -106,11 +85,6 @@ app:
   id: ari:cloud:ecosystem::app/<your-unique-app-uuid>
 ```
 ```
-
-# Important
-
-* Ensure you have your Application ID correctly set in the `app.id` field, and not the `<your-unique-app-uuid>` placeholder.
-* Register your app for the FORGE LLMs [Early Access Program (EAP)](https://go.atlassian.com/signup-forge-llms) before general availability.
 
 ---
 
@@ -328,7 +302,7 @@ First create a `request.json` file with the following content:
 
 ```
 {
-  "model": "claude-3-5-haiku-20241022",
+  "model": "claude-haiku-4-5-20251001",
   "messages": [
     {
       "role": "system",
@@ -513,7 +487,7 @@ You have now built a Forge app that leverages LLMs with dynamic Web triggers. By
 
 ## Source code
 
-Please find the complete code for this tutorial in the [llm-webtrigger-app Bitbucket repository](https://bitbucket.org/atlassian/forge-llm-examples/src/main/llm-webtrigger-app/)
+Find the complete code for this tutorial in the [llm-webtrigger-app Bitbucket repository](https://bitbucket.org/atlassian/forge-llm-examples/src/main/llm-webtrigger-app/)
 
 ## Next steps
 

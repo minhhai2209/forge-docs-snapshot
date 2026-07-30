@@ -42,7 +42,7 @@ stored in the repository, then the repository level `bitbucket:dynamicPipelinesP
 the workspace level `bitbucket:dynamicPipelinesProvider`. This ensures that policies and rules put
 in place “higher” in the hierarchy are able to take precedence over ones implemented “lower” in the hierarchy.
 
-![Dynamic Pipeline execution hierarchy](https://dac-static.atlassian.com/platform/forge/images/bitbucket-dynamic-pipelines-provider-execution-hierarchy.png?_v=1.5800.2222)
+![Dynamic Pipeline execution hierarchy](https://dac-static.atlassian.com/platform/forge/images/bitbucket-dynamic-pipelines-provider-execution-hierarchy.png?_v=1.5800.2228)
 
 * initial workflow is read from the static `bitbucket-pipelines.yml` file.
 * if [shared workflow](https://support.atlassian.com/bitbucket-cloud/docs/share-pipelines-configurations/)
@@ -123,7 +123,7 @@ in such case.
 This scenario is triggered, for example, when user opens the **Run pipeline** dialog in the UI and
 selects a branch.
 
-![The list of pipeline definitions in the Run pipeline dialog](https://dac-static.atlassian.com/platform/forge/images/bitbucket-dynamic-pipelines-provider-run-pipeline-dialog.png?_v=1.5800.2222)
+![The list of pipeline definitions in the Run pipeline dialog](https://dac-static.atlassian.com/platform/forge/images/bitbucket-dynamic-pipelines-provider-run-pipeline-dialog.png?_v=1.5800.2228)
 
 The Dynamic Pipelines provider is expected to return all pipeline definitions applicable for the
 provided context. From this set of results, the user can then select a definition to run.
@@ -1052,6 +1052,8 @@ with no matching definitions.
 | `trigger_context` | [`TriggerContext`](#triggercontext) | Additional information relating to the trigger that initiated the request to run a pipeline. |
 | `target` | [`PipelineTargetWithSelector`](#pipelinetarget-with-selector) | The information about the entity the pipeline configuration is being requested against: commit, ref (branch or tag), or pull request. |
 | `pipeline` | `string` | The Bitbucket UUID of the pipeline the configuration is being requested for. |
+| `variables` | [`DynamicPipelineVariable[]`](#dynamicpipelinevariable) | The Bitbucket Pipelines variables available before pipeline YAML parsing, passed in the Dynamic Pipelines provider invocation payload.  *Optional, present when variables are passed to the Dynamic Pipelines provider.* |
+| `variables_truncated` | `boolean` | Indicates whether the `variables` list was truncated before being included in the invocation payload.  *Optional, present only when `true`.* |
 | `build_number`  *Only for **manual** and **schedule** trigger* | `integer` | The build number of the pipeline.  *Not included when `trigger` equals `push`.* |
 | `created_on` | `date-time` | The date and time when the pipeline was created, in ISO 8601 timestamp format. |
 | `pipelines_configuration` | [`PipelinesConfiguration`](#filtered-pipelinesconfiguration) | The pipelines configuration filtered down to just the pipeline definition matching the specified `target`. It is possible for this to be empty if there are no existing pipeline configurations that match the specified `target`. |
@@ -1078,6 +1080,19 @@ discovered configuration (e.g. in the static `bitbucket-pipelines.yml` file):
   "trigger": "push",
   "build_number": 239,
   "pipeline": "{0ac5e5c0-a233-4cb5-88b9-bcffc5fa4925}",
+  "variables": [
+    {
+      "key": "SERVICE_NAME",
+      "value": "test-service",
+      "scope": "PIPELINE"
+    },
+    {
+      "key": "BITBUCKET_WORKSPACE",
+      "value": "dynamic-pipeline-test",
+      "scope": "WORKSPACE"
+    }
+  ],
+  "variables_truncated": true,
   "created_on": "2024-04-22T02:42:19.807Z",
   "target": {
     "type": "pipeline_ref_target",
@@ -1108,6 +1123,70 @@ discovered configuration (e.g. in the static `bitbucket-pipelines.yml` file):
     }
   }
 }
+```
+```
+
+#### `DynamicPipelineVariable`
+
+Each item in the `variables` array is a `DynamicPipelineVariable`.
+
+If the payload exceeds the limit for variables, Bitbucket Pipelines may truncate the array, preserve
+variables in scope priority order, and set `variables_truncated` to `true`.
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `key` | `string` | The name of the variable. |
+| `value` | `string` | The resolved value of the variable. |
+| `scope` | [`DynamicPipelineVariableScope`](#dynamicpipelinevariablescope) | The scope at which the variable is defined. |
+
+#### `DynamicPipelineVariableScope`
+
+| Value | Description |
+| --- | --- |
+| `PIPELINE` | The variable is defined at the pipeline level. |
+| `REPOSITORY` | The variable is defined at the repository level. |
+| `WORKSPACE` | The variable is defined at the workspace level. |
+| `STEP` | The variable is defined at the step level. |
+| `DEPLOYMENT` | The variable is defined at the deployment environment level. |
+
+#### Example
+
+```
+```
+1
+2
+```
+
+
+
+```
+[
+  {
+    "key": "SERVICE_NAME",
+    "value": "test-service",
+    "scope": "PIPELINE"
+  },
+  {
+    "key": "key1",
+    "value": "val1",
+    "scope": "REPOSITORY"
+  },
+  {
+    "key": "BITBUCKET_WORKSPACE",
+    "value": "dynamic-pipeline-test",
+    "scope": "WORKSPACE"
+  },
+  {
+    "key": "BITBUCKET_GIT_HTTP_ORIGIN",
+    "value": "https://bitbucket.org/dynamic-pipeline-test/forge-bbc-dynamic-pipelines-provider",
+    "scope": "STEP"
+  },
+  {
+    "key": "BITBUCKET_DEPLOYMENT_ENVIRONMENT",
+    "value": "production",
+    "scope": "DEPLOYMENT"
+  }
+]
 ```
 ```
 
@@ -1197,7 +1276,7 @@ and display a “failed” pipeline run.
 
 If provided, the error message will be shown to the user in the UI on the pipeline result screen.
 
-![The custom error message returned by the Dynamic Pipelines provider](https://dac-static.atlassian.com/platform/forge/images/bitbucket-dynamic-pipelines-provider-error-message.png?_v=1.5800.2222)
+![The custom error message returned by the Dynamic Pipelines provider](https://dac-static.atlassian.com/platform/forge/images/bitbucket-dynamic-pipelines-provider-error-message.png?_v=1.5800.2228)
 
 | Parameter | Type | Description |
 | --- | --- | --- |

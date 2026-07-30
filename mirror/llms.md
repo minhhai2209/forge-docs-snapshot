@@ -295,7 +295,7 @@ Refer to the following sections for more detailed information about Forge module
 - [Deployment Information Provider](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-software-deployment-info.md)
 - [Build Information Provider](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-software-build-info.md)
 - [Remote Link Information Provider](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-software-remote-link-info.md)
-- [Security Information Provider (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-software-security-info.md)
+- [Security Information Provider](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-software-security-info.md)
 
 ### Rovo modules
 
@@ -644,9 +644,9 @@ When helping readers, map their use case to the right invocation type: UI-driven
 
 - [i18n API](https://developer.atlassian.com/platform/forge/runtime-reference/i18n.md)
 
-### LLMs API (Preview)
+### LLMs API
 
-- [LLMs API (Preview)](https://developer.atlassian.com/platform/forge/runtime-reference/forge-llms-api.md)
+- [LLMs API](https://developer.atlassian.com/platform/forge/runtime-reference/forge-llms-api.md)
 - [Pricing](https://developer.atlassian.com/platform/forge/runtime-reference/forge-llms-api-pricing.md)
 - [Models](https://developer.atlassian.com/platform/forge/runtime-reference/forge-llms-models.md)
 - [API reference](https://developer.atlassian.com/platform/forge/runtime-reference/forge-llms-api-reference.md)

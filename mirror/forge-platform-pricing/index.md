@@ -21,8 +21,8 @@ Forge uses a consumption-based pricing model, offering most capabilities for fre
 | SQL: Compute requests | $/1M-requests | 100,000 requests | 1.929 |
 | SQL: Data stored | $/GB-hours | 730 GB-hours | 0.00076850 |
 | Object Store: Requests | $/1k-requests | 5,000 requests | 0.001353 |
-| LLM: Input | $/credits | 0 credits | 0.0000001 |
-| LLM: Output | $/credits | 0 credits | 0.0000005 |
+| LLM: Input | $/credits | 0 credits | Credit pricing varies by model. See [Forge LLMs pricing](/platform/forge/runtime-reference/forge-llms-api-pricing/). |
+| LLM: Output |
 | Containers: Compute (starting August 1, 2026) | $/vCPU-hour | 0 vCPU-hours | 0.07177 |
 | Containers: Memory (starting August 1, 2026) | $/GiB-hour | 0 GiB-hours | 0.00786 |
 
@@ -35,7 +35,7 @@ Suppose your Forge app uses the following in a single month:
 * **Compute functions:** 250,000 GB-seconds
 * **Key-Value Store Reads:** 0.15 GB
 * **SQL:** Data stored: Your app adds 2.73 MB of data every hour and does not delete any data during the month.
-* **LLM:** 2,000,000 input credits and 500,000 output credits
+* **LLM (Haiku 4.5):** 2,000,000 input tokens and 500,000 output tokens
 
 Here’s how your monthly charge would be calculated:
 
@@ -66,24 +66,29 @@ Here’s how your monthly charge would be calculated:
    * Free usage allowance: **730 GB-hours**
    * Overage: 694.3 – 730 = **0 GB-hours** (no overage, so no charge)
 
-SQL storage is billed based on the total amount of data stored, measured hourly and summed over the month (GB-hours). You are not billed based on the amount of data read or written, but on the cumulative storage held each hour.
+   SQL storage is billed based on the total amount of data stored, measured hourly and summed over the month (GB-hours). You are not billed based on the amount of data read or written, but on the cumulative storage held each hour.
 
-At the start of each new month, your SQL storage usage calculation continues from the amount of data stored at the end of the previous month. If you have not deleted any data, your hourly storage “snapshots” will begin at this higher baseline, and your total GB-hours for the new month will accumulate more quickly. To reduce future charges, consider deleting unneeded data before the next billing cycle begins.
-
+   At the start of each new month, your SQL storage usage calculation continues from the amount of data stored at the end of the previous month. If you have not deleted any data, your hourly storage “snapshots” will begin at this higher baseline, and your total GB-hours for the new month will accumulate more quickly. To reduce future charges, consider deleting unneeded data before the next billing cycle begins.
 4. **LLM: Input and Output**
+
+   This example uses conversion rates for the Haiku 4.5 model. Different models have different token-to-credit conversion rates. See [Forge LLMs pricing](/platform/forge/runtime-reference/forge-llms-api-pricing/) for the full list of model rates.
+
    * Free usage allowance: **0 credits** (no free allowance)
+   * Token-to-credit conversion: 10 credits per 1M tokens
    * **Input:**
-     * Your usage: **2,000,000 credits**
-     * Overage price: $0.0000001 per credit
-     * **Charge:** 2,000,000 × $0.0000001 = **$0.20**
+     * Your usage: **2,000,000 tokens**
+     * Credits: (2,000,000 ÷ 1,000,000) × 10 = **20 input credits**
+     * Credit price: $0.10 per credit
+     * **Charge:** 20 × $0.10 = **$2.00**
    * **Output:**
-     * Your usage: **500,000 credits**
-     * Overage price: $0.0000005 per credit
-     * **Charge:** 500,000 × $0.0000005 = **$0.25**
-   * **Total LLM charge:** $0.20 + $0.25 = **$0.45**
+     * Your usage: **500,000 tokens**
+     * Credits: (500,000 ÷ 1,000,000) × 10 = **5 output credits**
+     * Credit price: $0.50 per credit
+     * **Charge:** 5 × $0.50 = **$2.50**
+   * **Total LLM charge:** $2.00 + $2.50 = **$4.50**
 
 **Total monthly charge:**  
-$1.25 (compute) + $0.00275 (KVS reads) + $0 (SQL data stored) + $0.45 (LLM) = **$1.70275**
+$1.25 (compute) + $0.00275 (KVS reads) + $0 (SQL data stored) + $4.50 (LLM) = **$5.75275**
 
 This example shows how charges are only applied to usage above the free monthly allowance for each capability, and how multiple capabilities can contribute to your total bill.
 

@@ -1,15 +1,5 @@
 # Handling long-running LLM processes with Forge Realtime
 
-Forge LLMs is now available as *preview* feature.
-
-Preview features are deemed stable;
-however, they remain under active development and may be subject to shorter deprecation
-windows. Preview features are suitable for early adopters in production environments.
-
-We release preview features so partners and developers can study, test, and integrate
-them prior to General Availability (GA). For more information,
-see [Forge release phases: EAP, Preview, and GA](/platform/forge/whats-coming/#preview).
-
 ## Overview
 
 When building Forge apps with large language models (LLMs), some prompts or agentic workflows may exceed the default [function timeout (55s)](/platform/forge/platform-quotas-and-limits/). To handle these, offload work to a queue consumer (up to 15 minutes) and stream results back to the user interface (UI) using [Realtime publish/subscribe](/platform/forge/realtime/). This pattern avoids storage-polling latency, reduces client/server round-trips, and keeps your macro responsive.

@@ -1,15 +1,5 @@
 # Create an agentic LLM web trigger using Forge LLMs
 
-Forge LLMs is now available as *preview* feature.
-
-Preview features are deemed stable;
-however, they remain under active development and may be subject to shorter deprecation
-windows. Preview features are suitable for early adopters in production environments.
-
-We release preview features so partners and developers can study, test, and integrate
-them prior to General Availability (GA). For more information,
-see [Forge release phases: EAP, Preview, and GA](/platform/forge/whats-coming/#preview).
-
 This tutorial demonstrates how enabling tool usage unlocks agentic capabilities in Forge apps, without relying on advanced frameworks like Langchain.
 
 By following this guide, you will:
@@ -36,13 +26,6 @@ Before you begin, ensure you have the following:
 
 ### 2.1 Complete our first tutorial
 
-# Important
-
-As mentioned in the **Prerequisites**, please complete [our first tutorial here](https://developer.atlassian.com/platform/forge/create-an-llm-webtrigger-app/).
-
-* Ensure you have your Application ID correctly set in the `app.id` field, and not the `<your-unique-app-uuid>` placeholder.
-* Register your app for the FORGE LLMs [Early Access Program (EAP)](https://go.atlassian.com/signup-forge-llms) before general availability.
-
 **Overview**:
 In this step, you'll extend your Forge LLMs app to support “agentic” behavior—enabling the LLM to call external functions (tools) as part of its reasoning process. This allows your app to dynamically execute code (such as fetching weather data) in response to user prompts, making your LLM integration far more powerful and interactive.
 
@@ -51,7 +34,7 @@ In this step, you'll extend your Forge LLMs app to support “agentic” behavio
 1. **Send the initial prompt**: Pass the user’s prompt to the LLM, including the available tool(s) in the request.
 2. **Inspect the LLM’s response**: Check if the LLM wants to use a tool (via a tool\_use message).
 3. **Execute the tool and follow up**: If a tool is called, run it, then send the result back to the LLM in a follow-up prompt to get the final answer.
-4. **Implement the tool function**: It's important to define the external function (e.g., get\_current\_weather) that the LLM can call.
+4. **Implement the tool function**: It's important to define the external function that the LLM can call, for example, `get_current_weather`.
 5. **(Optional) Repeat as needed**: In more complex agentic flows, the LLM may call multiple tools before producing a final response.
 
 Let's get started!
@@ -222,7 +205,7 @@ Before we call the endpoint, let's create or update the `request.json` file with
 
 ```
 {
-  "model": "claude-3-5-haiku-20241022",
+  "model": "claude-haiku-4-5-20251001",
   "messages": [
     { "role": "user", "content": "What is the weather like in Melbourne?" },
     {
@@ -250,9 +233,9 @@ Before we call the endpoint, let's create or update the `request.json` file with
 ```
 ```
 
-We are providing `tools` block, with relevant tool's context such as description, name and parameters etc.
+We're providing a `tools` block with the tool's name, description, parameters, and other context the LLM needs.
 
-Now we call the Web trigger endpoint with initial prompt:
+Now we call the Web trigger endpoint with the initial prompt:
 
 ```
 ```
@@ -433,7 +416,7 @@ You have now built a Forge app that combines LLMs with agentic capabilities and 
 
 ## Source code
 
-Please find the complete code for this tutorial in the [llm-agentic-webtrigger-app Bitbucket repository](https://bitbucket.org/atlassian/forge-llm-examples/src/main/llm-agentic-webtrigger-app/)
+Find the complete code for this tutorial in the [llm-agentic-webtrigger-app Bitbucket repository](https://bitbucket.org/atlassian/forge-llm-examples/src/main/llm-agentic-webtrigger-app/)
 
 ## Next steps
 

@@ -99,7 +99,7 @@ Both queries return the same results.
 
 While `jira:entityPropertySet` removes the per-app limit on entity properties, there are platform-wide constraints to be aware of:
 
-There is a platform-wide limit of **1,000 searchable entity properties per entity type** (for example, `issue`), shared across all apps installed on the tenant. If your app registers a large number of properties, it reduces the available capacity for other apps on the same tenant. Plan your property usage accordingly.
+There is a platform-wide limit of **1,000 entity properties per entity instance** (for example, a single issue like `PROJ-123`), shared across all apps installed on the tenant. If the combined entity properties written by all apps to a single entity instance reach 1,000, additional properties on that entity will not be indexed and won't be searchable via JQL. Plan your property usage accordingly.
 
 * **Manifest file size**: The manifest YAML file must be under 256 KB. A manifest with ~1,000 entity properties is approximately 165 KB, well within this limit.
 

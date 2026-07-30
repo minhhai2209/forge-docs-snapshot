@@ -9,6 +9,8 @@ security vulnerabilities, critical reliability issues, or data integrity issues.
 
 Deprecation notices are announced through the [Forge changelog](/platform/forge/changelog/).
 
+For Forge LLM model deprecations, we aim to provide at least six months' notice where possible. Because model availability can change quickly - including due to changes from upstream providers - a shorter notice period may occasionally be required.
+
 ## GA feature deprecation
 
 Features released under GA are subject to a 6-month deprecation period.
