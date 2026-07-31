@@ -85,10 +85,14 @@ interface ObjectReference {
   size: number;
   createdAt?: string;
   updatedAt?: string;
+  /** @deprecated Use `createdAt` instead. This field will be removed on September 1, 2026. */
+
   currentVersion?: string;
 }
 ```
 ```
+
+**Deprecation notice:** The `currentVersion` field in the `ObjectReference` response is deprecated and will be removed on September 1, 2026. Use the `createdAt` field instead for features that rely on version tracking.
 
 This method accepts the following properties:
 

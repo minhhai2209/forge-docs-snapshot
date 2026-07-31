@@ -1833,7 +1833,8 @@ This is an example payload of a pull request comment being deleted.
         "uuid": "{b0670c4c-4b6c-4f89-b47c-be2de5a64d58}"
     },
     "repository": {
-        "uuid": "{30cbb1be-00da-425d-b3b1-29695ceb11f9}"
+        "uuid": "{30cbb1be-00da-425d-b3b1-29695ceb11f9}",
+        "slug": "repository-slug"
     },
     "project": {
         "uuid": "{7805fc96-8fee-4a5c-91e5-457368075853}"
@@ -1845,17 +1846,31 @@ This is an example payload of a pull request comment being deleted.
         "id": 4,
         "state": "OPEN",
         "source": {
-          "branch": "testbranch1",
-          "commit": {
-              "hash": "ea92ba633eac"
-          }
+            "branch": "testbranch1",
+            "commit": {
+                "hash": "ea92ba633eac"
+            }
         },
         "destination": {
-          "branch": "master",
-          "commit": {
-              "hash": "ec8950c039c0"
-          }
-        }
+            "branch": "master",
+            "commit": {
+                "hash": "ec8950c039c0"
+            }
+        },
+        "updatedOn": "2026-06-01T03:12:16.159643+00:00",
+        "createdOn": "2026-05-27T06:42:44.936130+00:00",
+        "title": {
+            "truncated": false,
+            "value": "PR title"
+        },
+        "author": {
+            "accountId": "712020:f44b4850-c6f6-54ce-9722-b800af117eb4",
+            "type": "user",
+            "uuid": "{c0de26c1-c01f-4d70-a19c-dac5a7b2e531}",
+            "displayName": "Jane Smith"
+        },
+        "commentCount": 2,
+        "taskCount": 2
     },
     "comment": {
         "id": 406336310

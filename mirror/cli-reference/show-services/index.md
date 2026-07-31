@@ -1,9 +1,65 @@
-# Command: show services
+# show services
 
-Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
-When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our
+## Description
 
-[Privacy Policy](https://www.atlassian.com/legal/privacy-policy#additional-disclosures-for-ca-residents)
+display information about deployed app services
 
-.
-You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
+## Usage
+
+```
+1
+Usage: forge show services [options]
+```
+
+## Options
+
+```
+1
+2
+3
+4
+5
+6
+7
+8
+--verbose                        enable verbose mode
+-e, --environment [environment]  specify the environment (see your default
+                                 environment by running forge settings list)
+-s, --service [service]          specify the name of the service
+-w, --watch                      watch for changes to selected services
+--json                           output service information in JSON format
+                                 (default: false)
+-h, --help                       display help for command
+```
+
+## Operation
+
+This command is used with Forge Containers, which is currently available under
+[Forge's Early Access Program (EAP)](/platform/forge/whats-coming/#eap).
+EAPs are offered to selected users for testing and feedback purposes.
+
+APIs and features under EAP are:
+
+* Unsupported and subject to change without notice
+* Not recommended for use in production environments
+
+Use the `forge show services` command to display details about all services, or a specific service. This command provides the following service details:
+
+| **Column** | **Type** | **Purpose** |
+| --- | --- | --- |
+| **Service** | string | Name of the service, as defined in the manifest. This column only appears if the `-s` option is *not* used. |
+| **Service Status** | `Available` `Unavailable` | Whether the service is receiving production traffic. |
+| **Running Count** | integer | Number of available service instances. |
+| **Pending Count** | integer | Number of service instances being created but not yet `Healthy` (Status). |
+| **Min** | integer | Minimum number of service instances. |
+| **Max** | integer | Maximum number of service instances. |
+| **Created At** | timestamp | When the service was created. |
+| **Updated At** | timestamp | When the service definition was last updated. |
+| **Version Status** | `Updating` `Up-to-date` | `Updating`: Indicated the service is in the process of being replaced with a new version. `Up-to-date`: Indicates the service is at the latest deployed version. |
+
+When you use the `-s <service-name>` option, you'll only see details for that service. The `<service-name>` must map to the
+same `service.key` value used in the [manifest](/platform/forge/containers-reference/ref-manifest/).
+
+If you don't use this option, the command will display details about *all* services defined in the manifest.
+
+## Further information

@@ -130,6 +130,7 @@ When using this command, it's important to be aware of several limitations that 
 * Apps are limited to one concurrent bulk upgrade per environment.
 * Developers will be limited to one concurrent bulk upgrade per Atlassian account.
 * A global limit will be enforced on global concurrent bulk upgrades.
+* For apps that use [Forge Containers](/platform/forge/containers-reference/), some installations may not upgrade successfully. If this happens, retry to complete the upgrade.
 
 If you find that you've hit the global limit for concurrent bulk upgrades, wait 30 minutes and retry.
 
