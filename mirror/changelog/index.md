@@ -1,9 +1,15 @@
 # Forge changelog
 
-Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
-When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our
+**What's changing**  
+Forge now supports offline impersonation for Jira Service Management (JSM) portal-only users. This follows our June 12, 2026 release of online impersonation support.
 
-[Privacy Policy](https://www.atlassian.com/legal/privacy-policy#how-we-disclose-information-we-collect)
+You can now use `asUser(accountId)` to make asynchronous or background API calls on behalf of portal-only users (also known as customer accounts). For apps using Forge remotes, offline impersonation is supported via the `offlineUserAuthToken` mutation.
 
-.
-You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt-out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
+This allows your apps to perform background actions, such as processing data or updating requests, in the context of the portal-only user, while maintaining the appropriate permission checks.
+
+Note that portal-only users can only make `asUser()` calls to Jira/JSM APIs using corresponding scopes declared in the manifest file.
+
+**What you need to do**  
+To use offline impersonation for portal-only users in your app:
+
+For more information on how Forge handles access for unlicensed users, see our [documentation](https://developer.atlassian.com/platform/forge/access-to-forge-apps-for-unlicensed-users/ "https://developer.atlassian.com/platform/forge/access-to-forge-apps-for-unlicensed-users/").

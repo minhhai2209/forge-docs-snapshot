@@ -1,9 +1,37 @@
 # Custom UI iframe
 
-Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
-When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our
+All [Custom UI](/platform/forge/custom-ui/) apps are run within an iframe. This provides a secure and isolated hosting environment for custom-built
+user interfaces. This page describes the preset permissions of the iframe.
 
-[Privacy Policy](https://www.atlassian.com/legal/privacy-policy#how-we-disclose-information-we-collect)
+## iframe permissions
 
-.
-You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt-out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
+The following permissions are applied to the iframe by default and cannot be modified by the developer of the Forge application.
+
+### Feature policies
+
+A number of feature policies are specified for the Custom UI iframe. These policies define the features that are available to the iframe based on the origin of the request.
+
+The following table lists the feature policies configured for the Custom UI iframe.
+
+| Feature policy | Description |
+| --- | --- |
+| camera | Allows the use of video input devices. |
+| clipboard-write | Allows data to be written to the clipboard. |
+| display-capture | Allows the use of the [Screen Capture API](https://developer.mozilla.org/en-US/docs/Web/API/Screen_Capture_API). |
+| fullscreen | Allows the use of the [Element.requestFullscreen()](https://developer.mozilla.org/en-US/docs/Web/API/Element/requestFullscreen) function. |
+| microphone | Allows the use of audio input devices. |
+
+### Sandbox restrictions
+
+The iframe also has a set of `sandbox` attributes that enable extra restrictions for the content in the iframe.
+
+The following table lists the `sandbox` attributes applied to the Custom UI iframe.
+
+| Sandbox attribute | Description |
+| --- | --- |
+| allow-downloads | Allows downloads to be started via a user gesture. |
+| allow-forms | Allows the resource to submit forms. |
+| allow-modals | Allows the resource to open modal windows. |
+| allow-pointer-lock | Allows the resource to use the [Pointer Lock API](https://developer.mozilla.org/en-US/docs/Web/API/Pointer_Lock_API). |
+| allow-same-origin | Allows the iframe content to be treated as being from the same origin as its parent. |
+| allow-scripts | Allows the resource to run scripts, but not create pop-up windows. |
