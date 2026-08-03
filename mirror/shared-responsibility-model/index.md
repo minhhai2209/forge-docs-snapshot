@@ -18,6 +18,30 @@ This page is intended to help you understand your responsibilities when
 building and supporting a Forge app, and what responsibilities Atlassian
 takes care of. Also make sure you have read and are adhering to the [Developer terms](/platform/marketplace/atlassian-developer-terms/) and [Marketplace partner agreement](https://www.atlassian.com/licensing/marketplace/partneragreement).
 
+The following matrix covers front-end and invocation capabilities (Custom UI, UI kit, and web
+triggers). Responsibilities that vary by runtime execution environment are described in
+[Runtime execution environments](#runtime-execution-environments) and the sections below the matrix.
+
+## Runtime execution environments
+
+The division of responsibilities also depends on *where your app's back end runs*. A Forge app can
+execute its back-end logic in one or more of the following runtime execution environments, and the
+responsibilities shift depending on who supplies the runtime and where it executes.
+
+* [Forge Functions](/platform/forge/runtime-reference/), which run your back-end code on
+  Atlassian-managed serverless compute. Atlassian supplies and operates the runtime.
+* [Forge Remote](/platform/forge/remote/), which lets your app invoke back-end services that you
+  host on your own infrastructure. You supply and operate the runtime.
+* [Forge Container services](/platform/forge/containers-reference/), which run a container image you
+  build on Atlassian-hosted compute. You supply the image; Atlassian supplies and operates the
+  runtime that executes it.
+
+Because Forge Container services introduce a runtime where you supply the executable image but
+Atlassian hosts it, some responsibilities that are wholly Atlassian's for Forge Functions become
+shared. These differences are called out in the relevant sections below. Forge Container services are
+a [Runs on Atlassian](/platform/forge/runs-on-atlassian/) capability, so they inherit the Runs on
+Atlassian responsibilities described throughout this page.
+
 ## App elements
 
 ### Authentication of requests to the app
@@ -87,12 +111,22 @@ Ensure that data is appropriately stored and read by your app.
 * Ensure that sensitive security data, such as pre-shared keys, API keys, or
   encryption keys are not hardcoded in the source code. Secure storage,
   such as encrypted environment variables, should be used to supply keys
-  at runtime.
+  at runtime. For [Forge Container services](/platform/forge/containers-reference/), supply secrets as
+  encrypted environment variables at deployment time (using `forge variables set`), or through the
+  [Forge KVS secret store](/platform/forge/storage-reference/kvs-api-secret/) at runtime. Never bake
+  secrets into a container image.
 * Ensure that keys are rotated on a regular basis. You should rotate
   sensitive API keys at least every 90 days.
 * Ensure that authorisation controls exist to segregate data access between
   different user roles within the same tenant.
 * Define and implement app-level data retention and deletion timelines.
+* Do not use container instances as a persistence mechanism. For example, do not run your own
+  database inside a [Forge container service](/platform/forge/containers-reference/). Container
+  instances are stateless and ephemeral, so they provide no durable persistence. Data held inside a
+  container is also outside Forge's data-residency controls and cannot participate in data-residency
+  migrations. Persist data instead in [Forge hosted storage](/platform/forge/storage-reference/) or a
+  remote data store that you operate, so it remains durable and consistent with your app's data
+  residency and lifecycle commitments.
 
 **Atlassian's responsibilities**
 
@@ -110,26 +144,77 @@ Ensure that data is appropriately stored and read by your app.
 * Perform regular [threat modeling](https://cheatsheetseries.owasp.org/cheatsheets/Threat_Modeling_Cheat_Sheet.html)
   to identify and prioritize threats that may impact the security of your app.
 * Perform static analysis of your app to identify patterns of insecure code.
+* For [Forge Container services](/platform/forge/containers-reference/), apply supply-chain hygiene to
+  your container images. Use multi-stage builds to keep build tools out of the runtime image, scan
+  your own images (Forge does not scan them during `forge lint` or `forge deploy`), and rebuild images
+  at least every 180 days to avoid stale base layers. See the
+  [container image security guidelines](/platform/forge/containers-reference/ref-image-security/).
+
+### Deployment artifacts
+
+The *deployment artifact* is the packaged unit that Forge runs when your app is deployed. For most
+Forge apps, the artifact is your back-end source code, which Atlassian bundles and validates. When
+you supply your own pre-built artifact, some of this responsibility becomes shared.
+
+**Atlassian's responsibilities**
+
+* For source-based apps, bundle and validate your back-end code so that the deployed artifact is
+  runnable.
+* Enforce runtime security controls on all deployed artifacts. For container services, this includes
+  the Kubernetes *Restricted* policy and a read-only root file system. See
+  [Forge Container services: Security](/platform/forge/containers-reference/#security).
+* Use a [canary](/platform/forge/containers-reference/#deployments) and blue/green deployment strategy so that a
+  failed deployment does not disrupt the currently running service version.
+* Review artifacts used by your app during
+  [Marketplace approval](/platform/marketplace/app-approval-guidelines/), including container images
+  against the image security guidelines.
+
+**Your responsibilities**
+
+*For [Forge Container services](/platform/forge/containers-reference/):*
+
+* Build a hardened container image: use a minimal or distroless base image, run as a non-root user
+  (`UID 1000`, `GID 1000`), and keep images free of embedded secrets. See the
+  [container image security guidelines](/platform/forge/containers-reference/ref-image-security/) for
+  the full mandatory requirements and recommendations.
+* Ensure the image is a valid, runnable container that starts correctly and responds to health
+  checks. Because you supply a pre-built image, Forge does not scan or validate it during
+  `forge lint` or `forge deploy`, so an image that fails to start will fail its deployment at runtime.
 
 ### Tenant safety
 
-Developers and Atlassian are jointly responsible for tenant safety. If your app is deployed on this runtime, the following responsibilities apply:
+Developers and Atlassian are jointly responsible for tenant safety. Your responsibilities depend on
+the [runtime execution environment](#runtime-execution-environments) your app uses.
 
 **Your responsibilities**
+
+*For all runtime execution environments:*
+
+* If you use in-memory caches, always partition them by a tenant identifier such as `cloudId`. Do
+  not use identifiers that are not globally unique (such as Jira issue keys) as global cache keys,
+  because the same key can exist in multiple tenants' instances.
+* Prefer [Forge Storage](/platform/forge/storage/) for any data that must persist beyond a single
+  request. Forge Storage is automatically scoped per app installation, making it inherently
+  tenant-safe.
+
+*For [Forge Functions](/platform/forge/runtime-reference/):*
 
 * Keep data in memory only within an invocation context. **Do not write tenant-specific data to
   module-level (global) variables** — the Forge runtime may reuse a warm execution process across
   multiple tenant invocations without clearing module-level state. Data stored in global variables
   during one tenant's invocation can persist into the next invocation, which may belong to a
   different tenant.
-* If you use in-memory caches, always partition them by a tenant identifier such as `cloudId`. Do
-  not use identifiers that are not globally unique (such as Jira issue keys) as global cache keys,
-  because the same key can exist in multiple tenants' instances.
 * Do not write tenant-specific data to the local filesystem in a way that persists after the
   invocation finishes.
-* Prefer [Forge Storage](/platform/forge/storage/) for any data that must persist across
-  invocations. Forge Storage is automatically scoped per app installation, making it inherently
-  tenant-safe.
+
+*For [Forge Container services](/platform/forge/containers-reference/):*
+
+* A container service is a long-lived process that serves many tenants over its lifetime, so scope
+  every request to its installation or invocation context. Avoid holding tenant-specific data in
+  process memory or on local disk across requests unless you have a genuine need to; if you do, key
+  it strictly by tenant and clear it appropriately so it can never be served to another tenant. See
+  the [container image security guidelines](/platform/forge/containers-reference/ref-image-security/)
+  for tenant-scoping requirements.
 
 **Atlassian's responsibilities**
 
@@ -165,6 +250,15 @@ declaring your app’s eligibility and data collection policy.
 
 * Ensure your application does not log personally identifiable information (PII),
   authentication tokens, and user-generated content (UGC), or confidential data.
+* For [Forge Container services](/platform/forge/containers-reference/), attach the invocation
+  metadata supplied on each inbound request to every log line your service emits that is associated
+  with a specific invocation or installation. (Logs that are not tied to an invocation, such as
+  container startup output, cannot carry this metadata.) Because a container is a single long-lived,
+  multi-threaded process that serves many invocations concurrently, Atlassian cannot correlate your
+  logs to invocations on your behalf as it does for Forge Functions. Add the
+  `x-forge-invocation-log-attributes` value to structured logs under a `forge_invocation` key to keep
+  logs filterable per invocation. See the
+  [container services logging reference](/platform/forge/containers-reference/ref-logging/#invocation-metadata).
 
 **Atlassian's responsibilities**
 
@@ -195,11 +289,28 @@ declaring your app’s eligibility and data collection policy.
 
 ### Runtime/Server security
 
+For Forge Functions, the runtime and its contents are wholly Atlassian's responsibility. For
+[Forge Container services](/platform/forge/containers-reference/), Atlassian operates and hardens the
+hosting runtime, but you supply and are responsible for the contents and behavior of the container
+process that runs inside it.
+
 **Atlassian's responsibilities**
 
 * Ensure the platform infrastructure is hardened.
 * Scan for security misconfiguration vulnerabilities.
 * Provide a secure runtime for apps that prevents bypassing security controls.
+* For Forge Container services, operate the container runtime under the Kubernetes *Restricted* policy
+  with a read-only root file system, and manage container scheduling, health-based routing, and
+  restarts. See [Forge Container services: Security](/platform/forge/containers-reference/#security).
+
+**Your responsibilities**
+
+* For Forge Container services, run your process as a non-root user (`UID 1000`, `GID 1000`);
+  root-owned processes will fail to deploy.
+* Handle the `SIGTERM` signal so your process shuts down gracefully within the termination grace
+  period, and ensure your process runs as `PID 1` (for example, by using `exec` in an entrypoint
+  script) so it receives the signal directly. See
+  [Managing a service: Termination behavior](/platform/forge/containers-reference/managing-service/).
 
 ### Vulnerability management and disclosure
 
@@ -265,12 +376,22 @@ It is your responsibility to notify customers of incidents involving your app. F
 
 * Establish a disaster recovery and business continuity plan to minimize or
   eliminate interruptions to the functioning of your apps during an incident.
+* For [Forge Container services](/platform/forge/containers-reference/), run a minimum of **2 container
+  instances per service, per region, in production** so your service remains available if an instance
+  fails. Running fewer than 2 instances per region in production is not advised.
+* For Forge Container services, be prepared to redeploy your app to restore full operation. After some
+  recovery, platform lifecycle, or suspension events, your container service may need to be
+  re-provisioned by running `forge deploy`. This differs from Forge Functions, which Atlassian
+  restores without developer involvement.
 
 **Atlassian's responsibilities**
 
 * Ensure data stored by Atlassian on behalf of your app (in Forge data storage)
   is backed up, and can be restored in an incident.
 * Maintain incident response plans.
+* For Forge Container services, provide an availability-capable platform, including multi-region
+  deployment, blue/green deployments, health-based traffic routing, and automatic restart of
+  unhealthy instances.
 
 ## Security features
 

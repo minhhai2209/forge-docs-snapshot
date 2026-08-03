@@ -12,7 +12,7 @@ To implement custom functionality in your Forge app using a remote resolver, spe
 | --- | --- | --- | --- |
 | `key` | `string` | Yes | A key for the endpoint, which other modules can refer to. Must be unique within the list of endpoints and have a maximum of 23 characters.  *Regex:* `^[a-zA-Z0-9_-]+$` |
 | `remote` | `string` | Yes (for `remotes`) | The remote key that defines the base portion of the path for this endpoint.  This is required if your endpoint is targeting a [Forge Remote](/platform/forge/remote/). |
-| `service` (EAP) | `string` | Yes (for `services`) | The key of the containerised service that defines the base portion of this endpoint's path.  This is required if your endpoint is targeting a containerised service provisioned through [Forge Containers](/platform/forge/containers-reference/). |
+| `service` (Preview) | `string` | Yes (for `services`) | The key of the containerised service that defines the base portion of this endpoint's path.  This is required if your endpoint is targeting a containerised service provisioned through [Forge Container services](/platform/forge/containers-reference/). |
 | `route` | `{path:string}` | No | The path appended to the `baseUrl` property of the `remote` object when invoking this endpoint.  This property is only required for backend module endpoints.  UI module remote resolver endpoint paths are always specified in [invokeRemote](/platform/forge/apis-reference/ui-api-bridge/invokeRemote) requests in the app's front end. |
 | `auth` | `object` | No | An object that defines the authentication tokens to include when invoking this endpoint's remote backend.  This property applies when the endpoint is invoked from a **frontend** module (via [invokeRemote](/platform/forge/apis-reference/ui-api-bridge/invokeRemote) from `@forge/bridge`) or from a **trigger** (such as a lifecycle event, product event, or scheduled trigger).  It does **not** apply when calling a remote from a Forge function using [invokeRemote](/platform/forge/runtime-reference/invoke-remote-api/) from `@forge/api`. For function-to-remote calls, configure `auth` on the [remotes](/platform/forge/manifest-reference/remotes) entry instead. |
 | `auth.appUserToken.enabled` | `boolean` | No | If `true` and the remote endpoint is invoked within a user's login session, Forge includes an `appUserToken` in the Forge Invocation Token it sends to the remote app.  This token can be used by the remote app when invoking an Atlassian app API, to invoke the API with the permissions of the user in whose login session the app is running.  Specifically, the API will have only as much access to the site's data as that user does. For example, if the user does not have permission to see pages in a particular space or issues in a particular project, the API won't provide them access to that space or page, either.  Forge modules that run outside of a user's login session, such as an app lifecycle event or product event are not associated with a user and cannot send an `appUserToken` to the remote app.  If an endpoint opts to enable remote user token access, the `read:app-user-token` scope must also be specified in the [Permissions](/platform/forge/manifest-reference/permissions) section of the manifest. |
@@ -52,16 +52,11 @@ modules:
 ```
 ```
 
-## Example: Forge Containers (EAP)
+## Example: Forge Container services (Preview)
 
-Forge Containers are now available through Forge's Early Access Program (EAP). To start testing this feature,
-submit your app's ID to our team [through this link](https://ecosystem.atlassian.net/servicedesk/customer/portal/1040/create/18884).
+Forge Container services is now in Preview, and therefore fully supported. However, it remains under active development and may be subject to shorter deprecation windows. Preview features are suitable for early adopters in production environments.
 
-EAPs are offered to selected users for testing and feedback purposes. APIs and features under EAP
-are unsupported and subject to change without notice. APIs and features under EAP are not recommended
-for use in production environments.
-
-For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
+We release preview features so partners and developers can study, test, and integrate them prior to General Availability (GA). For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#forge-preview).
 
 The following snippet shows a service named `java-service`, which is backed by a container of the same name. The service is accessible via the `/webtrigger` route on the `webtrigger-ep` [endpoint module](/platform/forge/manifest-reference/endpoint/#endpoint).
 

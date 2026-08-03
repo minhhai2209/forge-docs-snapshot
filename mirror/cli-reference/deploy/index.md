@@ -24,12 +24,14 @@ Usage: forge deploy [options] [command]
 8
 9
 10
+11
 --verbose                        enable verbose mode
 -f, --no-verify                  disable pre-deployment checks
 -v, --major-version [version]    specify a major version to update (Preview)
 -t, --tag <tag>                  specify a build tag to deploy (from forge
                                  build)
 --skip-rollout                   Skip rolling release rollout after deployment
+--approve <rule...>              list of validation rules to approve
 -e, --environment [environment]  specify the environment (see your default
                                  environment by running forge settings list)
 --non-interactive                run the command without input prompts
@@ -100,6 +102,46 @@ By default, this command:
 
 1. Runs pre-deployment checks (like `forge lint`) and reports any compilation errors.
 2. Deploys app changes to your [default environment](/platform/forge/environments-and-versions/#default-environments).
+
+## Pre-approval
+
+The `forge deploy` command relies on pre-deployment checks (via `forge lint`). Some of those checks may require a developer approval before being able to continue the deployment flow.
+
+Such an example is related to the detection of a major app version bump, which may require admins to manually approve the upgrade of your app (see [major versions](/platform/forge/versions/#major-version-upgrades) for more details).
+
+If this happens, the CLI linter blocks the deployment and asks for your approval, for example:
+
+```
+```
+1
+2
+```
+
+
+
+```
+forge deploy -e production
+Deploying your app to the production environment.
+Press Ctrl+C to cancel.
+
+Running forge lint...
+
+./manifest.yml
+0:0     approval  This deployment triggers a major version upgrade in the production environment because: Change due to scope modification.
+For more information, see: https://go.atlassian.com/forge-major-app-version-upgrades  MAJOR_VERSION_RULE
+
+⚠ 1 issue (0 error, 0 warnings, 1 approval)
+  Issue found is not automatically fixable with forge lint.
+  
+The deployment failed due to 1 approval requested. Run forge deploy --approve MAJOR_VERSION_RULE to acknowledge and proceed.
+```
+```
+
+To continue the deployment, run `forge deploy --approve [ruleName]` to approve the rule.
+
+Note that bypassing the linter at deployment time (via `forge deploy --no-verify`) also bypasses the pre-deployment approval checks.
+
+This CLI feature is only available from version `13.3` onwards.
 
 ## Backporting
 

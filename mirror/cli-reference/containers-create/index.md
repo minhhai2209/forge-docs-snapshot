@@ -24,22 +24,13 @@ Usage: forge containers create [options]
 
 ## Operation
 
-This command is used with Forge Containers, which is currently available under
-[Forge's Early Access Program (EAP)](/platform/forge/whats-coming/#eap).
-EAPs are offered to selected users for testing and feedback purposes.
+This command is used with Forge Container services, which is now in [Preview](/platform/forge/whats-coming/#forge-preview). Preview features are fully supported but remain under active development and may be subject to shorter deprecation windows.
 
-APIs and features under EAP are:
-
-* Unsupported and subject to change without notice
-* Not recommended for use in production environments
-
-Use `forge containers create` to register a new container for your app, as well as a corresponding image repository (with its own repository URI).
+Use `forge containers create` to register a new container for your app, as well as a corresponding image repository (with its own repository URI). Each app can have a maximum of 10 container repositories.
 
 The `key` you provide with this command will be the key used for the container's *image repository*. You'll also use this value as your
 `container.key` value in the [manifest](/platform/forge/containers-reference/ref-manifest/#containers).
 
 For a complete list of `forge containers` subcommands, refer to the command's [reference](/platform/forge/cli-reference/containers/#operation).
-
-For more details, see Forge EAP, Preview, and GA.
 
 ## Further information

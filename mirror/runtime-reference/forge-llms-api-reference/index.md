@@ -277,4 +277,5 @@ The following models do not support the `temperature` and `top_p` sampling param
 
 * `claude-opus-4-7`
 * `claude-opus-4-8`
+* `claude-opus-5`
 * `claude-sonnet-5`

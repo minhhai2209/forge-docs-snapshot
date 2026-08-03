@@ -1,13 +1,8 @@
-# Forge Containers reference: manifest (EAP)
+# Forge Container services reference: manifest (Preview)
 
-Forge Containers are now available through Forge's Early Access Program (EAP). To start testing this feature,
-submit your app's ID to our team [through this link](https://ecosystem.atlassian.net/servicedesk/customer/portal/1040/create/18884).
+Forge Container services is now in Preview, and therefore fully supported. However, it remains under active development and may be subject to shorter deprecation windows. Preview features are suitable for early adopters in production environments.
 
-EAPs are offered to selected users for testing and feedback purposes. APIs and features under EAP
-are unsupported and subject to change without notice. APIs and features under EAP are not recommended
-for use in production environments.
-
-For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
+We release preview features so partners and developers can study, test, and integrate them prior to General Availability (GA). For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#forge-preview).
 
 The `endpoint` module described on this page is also documented in the [Endpoint manifest reference](/platform/forge/manifest-reference/endpoint/).
 
@@ -21,7 +16,7 @@ It supports the following properties:
 | `tunnel` | No | Defines the local port that invocations of the service should be made to whilst tunnelling. If undefined, requests will be made to port `7071`. See [Property: tunnel](/platform/forge/containers-reference/ref-manifest/#tunnel) for details. |
 | `scaling` | No | Horizontal scaling configuration defining the min & max number of container instances to run. See [Property: scaling](/platform/forge/containers-reference/ref-manifest/#scaling) for details. |
 
-The ability to configure multiple services and containers per app is available behind a feature flag. Contact us if your app requires multiple services. See [Roadmap](/platform/forge/containers-reference/roadmap) for details on upcoming updates.
+The ability to configure multiple services and containers per app is available behind a feature flag. Contact us if your app requires multiple services. See [Roadmap](https://ecosystem.atlassian.net/browse/ROADMAP-228) for details on upcoming updates.
 
 ## Containers
 
@@ -41,8 +36,24 @@ The `resources` property defines what compute resources are allocated to the con
 
 | **Property** | **Required?** | **Description** |
 | --- | --- | --- |
-| `cpu` | Yes | Reserved amount of CPU units for the container in either *cpu* or *millicpu*, for example `"1"` or `"1000m"`. |
-| `memory` | Yes | Reserved amount of memory units for the container in either *mebibytes* or *gibibytes*, for example `"2048Mi"` or `"2Gi"`. |
+| `cpu` | Yes | Reserved amount of CPU units for the container in either *cpu* or *millicpu*, for example `"1"` or `"1000m"`. Must be one of the valid resource size combinations listed below. |
+| `memory` | Yes | Reserved amount of memory units for the container in either *mebibytes* or *gibibytes*, for example `"2048Mi"` or `"2Gi"`. Must be one of the valid resource size combinations listed below. |
+
+#### Valid resource size combinations
+
+The `cpu` and `memory` values must be one of the following supported combinations. Deployments with unsupported combinations will fail.
+
+| **CPU** | **Memory** |
+| --- | --- |
+| `4000m` | `16Gi` |
+| `4000m` | `8Gi` |
+| `2000m` | `4Gi` |
+| `1000m` | `2Gi` |
+| `500m` | `1Gi` |
+| `250m` | `512Mi` |
+| `125m` | `256Mi` |
+| `60m` | `128Mi` |
+| `30m` | `64Mi` |
 
 ### Health
 
@@ -80,7 +91,7 @@ The following table describes the `default` profile’s scaling behavior:
 | Scale Up | 100% | Instances reached the average usage threshold. |
 | Scale Down | 50% | Instances stay under the average usage threshold for a full 300 seconds. |
 
-Forge Containers checks average resource usage every 15 seconds.
+Forge Container services checks average resource usage every 15 seconds.
 
 ### Scale to zero
 

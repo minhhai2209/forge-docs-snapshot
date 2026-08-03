@@ -32,6 +32,19 @@ During the EAP, apps using Rovo Agent Connector:
 
 Note that in case of timeouts during the streaming requests, the product (ie, Jira) will attempt to reconnect automatically to the remote agent.
 
+## System User implications
+
+Adding a `rovo:agentConnector` to a Forge app leads to modifying the behavior of the system user associated with the Forge app:
+
+**The app system user will no longer be mentionable.**
+
+This means that users won't be able to @-mention the app in comments or fields. This change affects all app versions in the current environment.
+
+Instead, the agent connector user is available for @-mention.
+
+The Forge CLI warns about this behavior change at deployment time and asks you to approve before proceeding.
+This warning feature requires the Forge CLI version `13.3` or higher. For more details about the deployment approval flow, refer to [deploy](/platform/forge/cli-reference/deploy/).
+
 ## Manifest structure
 
 ```

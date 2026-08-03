@@ -39,14 +39,7 @@ help [command]          display help for command
 
 ## Operation
 
-This command is used with Forge Containers, which is currently available under
-[Forge's Early Access Program (EAP)](/platform/forge/whats-coming/#eap).
-EAPs are offered to selected users for testing and feedback purposes.
-
-APIs and features under EAP are:
-
-* Unsupported and subject to change without notice
-* Not recommended for use in production environments
+This command is used with Forge Container services, which is now in [Preview](/platform/forge/whats-coming/#forge-preview). Preview features are fully supported but remain under active development and may be subject to shorter deprecation windows.
 
 Use the `forge containers` command with any of the following subcommands to manage container instances and images for your service:
 

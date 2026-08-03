@@ -1,14 +1,9 @@
-# Forge Containers (EAP)
+# Forge Container services (Preview)
 
-Forge Containers are now available through Forge's Early Access Program (EAP). To start testing this feature,
-submit your app's ID to our team [through this link](https://ecosystem.atlassian.net/servicedesk/customer/portal/1040/create/18884).
+Forge Container services is now in Preview, and therefore fully supported. However, it remains under active development and may be subject to shorter deprecation windows. Preview features are suitable for early adopters in production environments.
 
-EAPs are offered to selected users for testing and feedback purposes. APIs and features under EAP
-are unsupported and subject to change without notice. APIs and features under EAP are not recommended
-for use in production environments.
+We release preview features so partners and developers can study, test, and integrate them prior to General Availability (GA). For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#forge-preview).
 
-For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
+Forge Container services are a set of tools and capabilities for managing containerised services for Forge apps. You can use Forge Container services to package a service’s code and dependencies, opening up a wider range of programming languages and frameworks.
 
-Forge Containers are a [set of tools and capabilities](/platform/forge/containers-reference/) for managing containerised services for Forge apps. You can use Forge Containers to package a service’s code and dependencies, opening up a wider range of programming languages and frameworks.
-
-With Forge Containers, you can run services from container images directly on Forge infrastructure. You can update, launch, scale, and otherwise manage the lifecycle of these services using Forge Container tools. In addition, hosted container services unblock important use cases like long-running compute, which were previously not possible with [Forge functions](/platform/forge/function-reference/).
+With Forge Container services, you can run services from container images directly on Forge infrastructure. You can update, launch, scale, and otherwise manage the lifecycle of these services using Forge Container tools. In addition, hosted container services unblock important use cases like long-running compute, which were previously not possible with [Forge functions](/platform/forge/function-reference/).

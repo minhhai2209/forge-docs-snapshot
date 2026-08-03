@@ -1,15 +1,10 @@
-# Forge Containers reference: API contract (EAP)
+# Forge Container services reference: API contract (Preview)
 
-Forge Containers are now available through Forge's Early Access Program (EAP). To start testing this feature,
-submit your app's ID to our team [through this link](https://ecosystem.atlassian.net/servicedesk/customer/portal/1040/create/18884).
+Forge Container services is now in Preview, and therefore fully supported. However, it remains under active development and may be subject to shorter deprecation windows. Preview features are suitable for early adopters in production environments.
 
-EAPs are offered to selected users for testing and feedback purposes. APIs and features under EAP
-are unsupported and subject to change without notice. APIs and features under EAP are not recommended
-for use in production environments.
+We release preview features so partners and developers can study, test, and integrate them prior to General Availability (GA). For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#forge-preview).
 
-For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
-
-Forge Containers uses a *sidecar* service to act as a proxy and handle your containerised service’s inbound and outbound requests. This sidecar authenticates invocation requests to your service.
+Forge Container services uses a *sidecar* service to act as a proxy and handle your containerised service’s inbound and outbound requests. This sidecar authenticates invocation requests to your service.
 
 ## Inbound requests
 
@@ -69,7 +64,7 @@ GET <FORGE_EGRESS_PROXY_URL>/invocation/context
 ```
 ```
 
-All `@forge/*` packages are *not currently supported* in Forge Containers, including:
+All `@forge/*` packages are *not currently supported* in Forge Container services, including:
 
 ## Environment Variables
 
@@ -80,7 +75,7 @@ When your container is started it will be injected with the following environmen
 | `SERVER_PORT` | The port at which the container service should listen for incoming requests.  For example:   `8080` |
 | `FORGE_APP_ARI` | A unique Atlassian resource identifier (`ari`) assigned to your app. The Forge CLI supplies this identifier when you [create](/platform/forge/cli-reference/create/) or [register](/platform/forge/cli-reference/register/) an app for the first time. For example:`ari:cloud:ecosystem::app/d60dfafb-a14d-4d56-bf03-0c3823d39e2b` |
 | `FORGE_CONTAINER_KEY` | The key of the container, which is the value of the `services:container:key` field in the Forge manifest.  For example:   `java-service` |
-| `FORGE_EGRESS_PROXY_URL` | The URL to the Forge Containers sidecar service. For example: `http://localhost:7072` |
+| `FORGE_EGRESS_PROXY_URL` | The URL to the Forge Container services sidecar service. For example: `http://localhost:7072` |
 | `FORGE_ENV_ARI` | A unique Atlassian resource identifier (`ari`) assigned to your app environment.  For example:   `ari:cloud:ecosystem::environment/d60dfafb-a14d-4d56-bf03-0c3823d39e2b/d67ce878-3e91-404b-b523-9e1d9bf867d5` |
 | `FORGE_IMAGE_TAG` | The tag of the image that is currently running.  For example:   `1.0.0` |
 | `FORGE_SERVICE_KEY` | The key of the service, which is the value of the `services:key` field in the Forge manifest.  For example:   `java-service` |

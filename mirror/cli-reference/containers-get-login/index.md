@@ -24,7 +24,7 @@ Usage: forge containers get-login [options]
 
 ## Operation
 
-This command is used with Forge Containers, which is currently available under
+This command is used with Forge Container services, which is currently available under
 [Forge's Early Access Program (EAP)](/platform/forge/whats-coming/#eap).
 EAPs are offered to selected users for testing and feedback purposes.
 
@@ -33,10 +33,10 @@ APIs and features under EAP are:
 * Unsupported and subject to change without notice
 * Not recommended for use in production environments
 
-Use `forge containers get-login` to retrieve a temporary API token, which can be used for authenticating with the Forge Containers registry
-(namely, `forge-ecr.services.atlassian.com`).
+Use `forge containers get-login` to retrieve a temporary API token, which can be used for authenticating with the Forge Container services registry
+(namely, `forge-registry.services.atlassian.com`).
 
-Use this token with your image management tools. For example, use the token with `podman login` to `https://docs.podman.io/en/v5.1.0/markdown/podman-login.1.html` first with the Forge Containers registry; afterwards, you can use `podman push` to `https://docs.podman.io/en/v2.1.1/markdown/podman-push.1.html`.
+Use this token with your image management tools. For example, use the token with `podman login` to `https://docs.podman.io/en/v5.1.0/markdown/podman-login.1.html` first with the Forge Container services registry; afterwards, you can use `podman push` to `https://docs.podman.io/en/v2.1.1/markdown/podman-push.1.html`.
 
 The `forge containers get-login` command must be run in the app's *root folder* (that is, where the manifest file is located).
 
@@ -63,7 +63,7 @@ With `podman login`:
 
 
 ```
-forge containers get-login --password-only | podman login --username AWS --password-stdin forge-ecr.services.atlassian.com
+forge containers get-login --password-only | podman login --username _token --password-stdin forge-registry.services.atlassian.com
 ```
 ```
 

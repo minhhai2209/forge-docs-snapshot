@@ -155,16 +155,11 @@ When running `forge tunnel` with non-UI functions, such as
 code triggers a rebundle from the Forge CLI. Once that rebundling is completed successfully,
 you can see your changes reflected in the next invocation of the function.
 
-## Tunneling with Forge Containers (EAP)
+## Tunneling with Forge Container services (Preview)
 
-Forge Containers are now available through Forge's Early Access Program (EAP). To start testing this feature,
-submit your app's ID to our team [through this link](https://ecosystem.atlassian.net/servicedesk/customer/portal/1040/create/18884).
+Forge Container services is now in Preview, and therefore fully supported. However, it remains under active development and may be subject to shorter deprecation windows. Preview features are suitable for early adopters in production environments.
 
-EAPs are offered to selected users for testing and feedback purposes. APIs and features under EAP
-are unsupported and subject to change without notice. APIs and features under EAP are not recommended
-for use in production environments.
-
-For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
+We release preview features so partners and developers can study, test, and integrate them prior to General Availability (GA). For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#forge-preview).
 
 After [defining a containerised service](/platform/forge/containers-reference/managing-service), you can test it locally before you push its image to your container’s repository. You can then use `forge tunnel` to redirect app invocations from your development site to your local instance of the service.
 

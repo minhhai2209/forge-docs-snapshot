@@ -1,5 +1,11 @@
 # Jira full page (Preview)
 
+# Product-specific full page modules are being deprecated on September 30, 2026
+
+The `jira:fullPage` and `confluence:fullPage` modules are being deprecated in favor of the new product-agnostic `global:fullPage` module. Please migrate to `global:fullPage` to build full-page experiences that work across multiple Atlassian products with a single module definition.
+
+For migration guidance and information about the new `global:fullPage` module, see the [Global full page module](/platform/forge/manifest-reference/modules/global-full-page/) documentation.
+
 This section describes a Forge *preview* feature. Preview features are deemed stable;
 however, they remain under active development and may be subject to shorter deprecation
 windows. Preview features are suitable for early adopters in production environments.

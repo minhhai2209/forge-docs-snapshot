@@ -1,34 +1,44 @@
-# Managing containerised services (EAP)
+# Managing containerised services (Preview)
 
-Forge Containers are now available through Forge's Early Access Program (EAP). To start testing this feature,
-submit your app's ID to our team [through this link](https://ecosystem.atlassian.net/servicedesk/customer/portal/1040/create/18884).
+Forge Container services is now in Preview, and therefore fully supported. However, it remains under active development and may be subject to shorter deprecation windows. Preview features are suitable for early adopters in production environments.
 
-EAPs are offered to selected users for testing and feedback purposes. APIs and features under EAP
-are unsupported and subject to change without notice. APIs and features under EAP are not recommended
-for use in production environments.
+We release preview features so partners and developers can study, test, and integrate them prior to General Availability (GA). For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#forge-preview).
 
-For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
+Forge Container services let you package, deploy, and operate services as part of your app, leveraging container technology directly on Atlassian’s infrastructure. This unlocks a broader range of languages, frameworks, and architectures for parts of your app workflow.
 
-Forge Containers let you package, deploy, and operate services as part of your app, leveraging container technology directly on Atlassian’s infrastructure. This unlocks a broader range of languages, frameworks, and architectures for parts of your app workflow.
+The primary goal of Forge Container services is to provide capabilities for hosting and managing the lifecycle of containerised services used by your app.
 
-The primary goal of Forge Containers is to provide capabilities for hosting and managing the lifecycle of containerised services used by your app.
+## Preview limitations
 
-## EAP limitations
+Forge Container services is now in [Preview](/platform/forge/whats-coming/#forge-preview). We will continue updating Forge Container services to fix bugs, add functionality, and address developer feedback.
+At present, Forge Container services has the following limitations:
 
-Forge Containers is available as part of our [Early Access Program (EAP)](https://developer.atlassian.com/platform/forge/whats-coming/#forge-early-access-program--eap-). While in EAP, we will be continuously updating Forge Containers to fix bugs, add functionality, and address developer feedback.
-At present, Forge Containers has the following limitations:
+* An app can only have one defined service, and this service can only have one defined container.
+* Containerised services can't be de-provisioned through self-service. Once your app is deployed and installed, its service instance can't be deleted or renamed through the CLI or developer console. To delete or rename a service, [open a support ticket](https://support.atlassian.com/). The service will remain visible in the developer console and you will continue to incur charges until it is de-provisioned.
+  For a complete list of Preview limitations (along with our plans to address and mitigate each one), refer to [Roadmap](https://ecosystem.atlassian.net/browse/ROADMAP-228).
 
-* An app can only have one containerised service, and this service can only have one defined container.
-  For a complete list of EAP limitations (along with our plans to address and mitigate each one), refer to [Roadmap](/platform/forge/containers-reference/roadmap).
-* Containerised services can't be de-provisioned. Once your app is deployed and installed, its service instance can't be deleted, even if you delete its definition from the manifest file and re-deploy.
+## Provisioning and de-provisioning
+
+Container services are provisioned on demand. When your app is installed on a site, the container service infrastructure is provisioned automatically for that installation. Similarly, when an app is uninstalled from all sites in a given environment, the container service infrastructure is de-provisioned.
+
+Adding a `services` definition to an existing app's manifest for the first time triggers a major version upgrade on the next deployment. This is because container services require additional infrastructure provisioning that is tied to the major version lifecycle.
+
+### Major version behavior
+
+Container service instances are shared across all app versions. Only the latest major version of your app can modify the service definition (such as resource allocation, scaling configuration, or container image). If you attempt to deploy changes to the service definition in an older major version, the deployment will be blocked.
+
+This means:
+
+* Backporting code changes to an older major version is supported, as long as the service definition remains unchanged.
+* To update the service definition (for example, to change CPU or memory allocation), you must deploy to the latest major version.
 
 ## Container lifecycle
 
-Your app’s containerised service lifecycle begins when you upload the service’s container image to a Forge Containers private repository (identified by URI). Each repository stores all images related to a specific container, and each image has a tag for identification. You can use tags to specify which one to use for specific environments.
+Your app’s containerised service lifecycle begins when you upload the service’s container image to a Forge Container services private repository (identified by URI). Each repository stores all images related to a specific container, and each image has a tag for identification. You can use tags to specify which one to use for specific environments.
 
 The following diagram provides a high-level view of the container lifecycle:
 
-![Forge Containers lifecycle overview](https://dac-static.atlassian.com/platform/forge/images/containers-lifecycle-overview.png?_v=1.5800.2232)
+![Forge Container services lifecycle overview](https://dac-static.atlassian.com/platform/forge/images/containers-lifecycle-overview.png?_v=1.5800.2245)
 
 This lifecycle involves the following major phases:
 
@@ -39,7 +49,7 @@ This lifecycle involves the following major phases:
 
 ### Runtime command restrictions
 
-The Forge Containers [security](/platform/forge/containers-reference/#security) standard only allows *non-root* users with a UID and GID of `1000`
+The Forge Container services [security](/platform/forge/containers-reference/#security) standard only allows *non-root* users with a UID and GID of `1000`
 to execute container runtime commands.
 
 Any containers with runtime commands executed by root will fail to deploy.
@@ -67,7 +77,11 @@ USER appuser
 
 ### Versioning
 
-Running container instances are shared across all app versions. If you have multiple installations of your app with different major versions, only a *single* container service is run. Your code may need to defensively handle situations where an installation does not have grants for scopes added in newer major versions.
+Running container instances are shared across all app versions. If you have multiple installations of your app with different major versions, only a *single* container service is run. Your code may need to defensively handle situations where an installation does not have grants for scopes added in newer major versions. To access additional details of a single installation, see [Query a single installation](/platform/forge/containers-reference/int-installbased/#query-a-single-installation).
+
+### Service naming constraints
+
+The combined length of your service `key` and the environment ID must be fewer than 64 characters. Choose concise service key names to avoid deployment failures caused by this constraint.
 
 ### Tagging
 
@@ -142,7 +156,7 @@ Create a new container.
 Creating new container with key 'java-service'.
 Press Ctrl+C to cancel.
 ✔ Container created.
-New repository URI: forge-ecr.services.atlassian.com/forge/5175c066-7f18-474e-9137-19e6718a8c99/java-service
+New repository URI: forge-registry.services.atlassian.com/forge/5175c066-7f18-474e-9137-19e6718a8c99/java-service
 ```
 ```
 
@@ -200,7 +214,7 @@ When building your container’s image, specify the following:
 
 
 ```
-docker build . -t "forge-ecr.services.atlassian.com/forge/5175c066-7f18-474e-9137-19e6718a8c99/java-service:latest" --platform linux/amd64
+docker build . -t "forge-registry.services.atlassian.com/forge/5175c066-7f18-474e-9137-19e6718a8c99/java-service:latest" --platform linux/amd64
 ```
 ```
 
@@ -222,7 +236,7 @@ Once authenticated, you can upload images to your container repository (through 
 
 
 ```
-docker push "forge-ecr.services.atlassian.com/forge/5175c066-7f18-474e-9137-19e6718a8c99/java-service:latest"
+docker push "forge-registry.services.atlassian.com/forge/5175c066-7f18-474e-9137-19e6718a8c99/java-service:latest"
 ```
 ```
 

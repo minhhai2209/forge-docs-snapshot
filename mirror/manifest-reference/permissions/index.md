@@ -583,3 +583,33 @@ permissions:
         inScopeEUD: false
 ```
 ```
+
+## Sandbox policies
+
+The `sandbox` list declares additional sandbox policy directives for your app's Custom UI iframe.
+By default, Forge applies a restrictive sandbox policy to Custom UI iframes — see
+[Sandbox restrictions](/platform/forge/custom-ui/iframe/#sandbox-restrictions) for details.
+You can opt in to specific sandbox permissions by declaring them here.
+
+| Value | Description |
+| --- | --- |
+| `allow-storage-access-by-user-activation` | Allows the app to request access to unpartitioned cookies via the [Storage Access API](https://developer.mozilla.org/en-US/docs/Web/API/Storage_Access_API) (`document.requestStorageAccess()`) after a user gesture. This is useful for apps that need access to browser storage in contexts where third-party storage is blocked by default. |
+
+### Example
+
+In the example below, the app opts in to the Storage Access API:
+
+```
+```
+1
+2
+```
+
+
+
+```
+permissions:
+  sandbox:
+    - "allow-storage-access-by-user-activation"
+```
+```

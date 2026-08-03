@@ -7,7 +7,16 @@ The `trigger` module invokes a function or calls a remote backend when an
 or [data security policy event](/platform/forge/events-reference/data-security-policy-events/)
 is fired.
 
-Event delivery for `trigger` modules may be delayed by up to **3** minutes.
+**Event delivery delay:** Events for `trigger` modules may take up to **3 minutes** to reach
+your app after the triggering action occurs. This delay is part of how the Atlassian platform
+processes events internally — events are placed into a queue and delivered asynchronously rather
+than in real time. The delay is **not** caused by the Forge app or its developer; it is a
+platform-level behavior that applies to all Forge apps using triggers.
+
+If your app's behavior appears slow to respond after a user action (for example, updating an
+issue), this delivery delay is the most likely cause. Design your app to handle this latency
+gracefully — for example, by informing users that automated actions may take a few minutes to
+complete.
 
 ## Dynamic module - Jira & Confluence (EAP)
 
@@ -26,25 +35,14 @@ The following examples show Dynamic Module implementations specific to this modu
 #### Create a dynamic trigger module
 
 ```
+```
 1
 2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
+```
+
+
+
+```
 import { asApp } from "@forge/api";
 const payload = {
   type: "trigger",
@@ -64,6 +62,7 @@ const response = await asApp().requestAtlassian(`/forge/installation/v2/dynamic/
 });
 const body = await response.text(); 
 console.log(`Response: ${response.status} ${body}`);
+```
 ```
 
 #### Update a dynamic trigger module

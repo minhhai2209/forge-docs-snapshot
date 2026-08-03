@@ -391,7 +391,7 @@ The upgrade event is not triggered for code-only upgrades (when only your app’
 
 ### Containers
 
-For apps using Forge Containers, use the [Get app installations](/platform/forge/rest/v2/api-group-app-installations/#api-v1-installations-get) endpoint to fetch installation details and check the installation's current permission state before running code that depends on newly requested scopes or egress permissions.
+For apps using Forge Container services, use the [Get app installations](/platform/forge/rest/v2/api-group-app-installations/#api-v1-installations-get) endpoint to fetch installation details and check the installation's current permission state before running code that depends on newly requested scopes or egress permissions.
 
 ### Remotes
 
@@ -435,7 +435,7 @@ To start a rollout, select **Start rollout**. Rollouts are managed per environme
 
 To inspect an in-progress or completed rollout, select **View details**. The rollout details page shows the rollout status, percentage of installations receiving the update, installation and error metrics, installation eligibility, ineligible versions, and the rollout timeline.
 
-![Rollout details page showing in-progress rollout status, installation metrics, installation eligibility, ineligible versions, and rollout timeline](https://dac-static.atlassian.com/platform/forge/images/rolling-releases/rollout-details-page.png?_v=1.5800.2232)
+![Rollout details page showing in-progress rollout status, installation metrics, installation eligibility, ineligible versions, and rollout timeline](https://dac-static.atlassian.com/platform/forge/images/rolling-releases/rollout-details-page.png?_v=1.5800.2245)
 
 ## Controlling rollouts
 
@@ -459,7 +459,7 @@ While already in Preview, Rolling releases is still under active development. Th
 * Upgrading from version without storage to a version with storage (KVS and SQL) is not supported.
 * Upgrading from a version without any dynamic webtriggers to a version with a dynamic webtrigger is not supported.
 * Upgrading from a version without [Forge LLMs](/platform/forge/runtime-reference/forge-llms-api/) to a version with [Forge LLMs](/platform/forge/runtime-reference/forge-llms-api/) is not supported.
-* For apps that use [Forge Containers](/platform/forge/containers-reference/), some installations may not upgrade successfully. If this happens, retry to complete the upgrade.
+* For apps that use [Forge Container services](/platform/forge/containers-reference/), some installations may not upgrade successfully. If this happens, retry to complete the upgrade.
 
 ## Tutorials and guides
 

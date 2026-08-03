@@ -1,13 +1,8 @@
-# Integrating containerised services (EAP)
+# Integrating containerised services (Preview)
 
-Forge Containers are now available through Forge's Early Access Program (EAP). To start testing this feature,
-submit your app's ID to our team [through this link](https://ecosystem.atlassian.net/servicedesk/customer/portal/1040/create/18884).
+Forge Container services is now in Preview, and therefore fully supported. However, it remains under active development and may be subject to shorter deprecation windows. Preview features are suitable for early adopters in production environments.
 
-EAPs are offered to selected users for testing and feedback purposes. APIs and features under EAP
-are unsupported and subject to change without notice. APIs and features under EAP are not recommended
-for use in production environments.
-
-For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
+We release preview features so partners and developers can study, test, and integrate them prior to General Availability (GA). For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#forge-preview).
 
 To enable invocations, your container service must have an exposed API. You can invoke this API from an *event,* the app’s front end, or the app’s back end.
 
@@ -60,7 +55,7 @@ modules:
         path: /event-invocation
 ```
 
-App components such as such as events, webtriggers, and `invokeService` can then invoke your app’s API through these endpoints.
+App components such as events, webtriggers, and `invokeService` can then invoke your app’s API through these endpoints.
 
 ## Build service integration
 

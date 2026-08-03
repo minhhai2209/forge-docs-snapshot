@@ -18,7 +18,7 @@ To view app logs:
 
 The screen shows logs for all sites that users have granted you access to.
 
-![A list of logs and the associated filters](https://dac-static.atlassian.com/platform/forge/images/logs-screen-new.png?_v=1.5800.2232)
+![A list of logs and the associated filters](https://dac-static.atlassian.com/platform/forge/images/logs-screen-new.png?_v=1.5800.2245)
 
 A maximum of 20 log events are displayed by default. To view more log events, select **Load more logs**
 at the bottom of the page.
@@ -83,7 +83,7 @@ You can use filters to further refine your logs.
 * **Time range**: Narrows down the logs for a specific time range that you set. Choose from
   a range of predefined values, such as the **Last 24 hours**, or choose a more specific time interval
   using the **Custom** option.
-* **Container**: Narrows down the logs for a specific [container](/platform/forge/containers-reference/ref-manifest/#containers). This option only appears for apps that use [Forge Containers](/platform/forge/containers-reference/).
+* **Container**: Narrows down the logs for a specific [container](/platform/forge/containers-reference/ref-manifest/#containers). This option only appears for apps that use [Forge Container services](/platform/forge/containers-reference/).
 * **Log level**: Narrows down the logs based on the log level type that you set.
 * **Atlassian app**: Narrows down the metrics to show data from a specific Atlassian app if your Forge app supports multiple Atlassian apps.
 * **More filters**:

@@ -1,5 +1,11 @@
 # Confluence full page (Preview)
 
+# Product-specific full page modules are being deprecated on September 30, 2026
+
+The `jira:fullPage` and `confluence:fullPage` modules are being deprecated in favor of the new product-agnostic `global:fullPage` module. Please migrate to `global:fullPage` to build full-page experiences that work across multiple Atlassian products with a single module definition.
+
+For migration guidance and information about the new `global:fullPage` module, see the [Global full page module](/platform/forge/manifest-reference/modules/global-full-page/) documentation.
+
 This section describes a Forge *preview* feature. Preview features are deemed stable;
 however, they remain under active development and may be subject to shorter deprecation
 windows. Preview features are suitable for early adopters in production environments.
@@ -28,7 +34,6 @@ such as specialised content views or internal tools that reflect your own brandi
 11
 12
 13
-14
 modules []
 └─ confluence:fullPage {}
    ├─ key (string) [Mandatory]
@@ -37,8 +42,7 @@ modules []
    ├─ render (string) [Mandatory for UI Kit only]
    ├─ resolver {} [Optional]
    ├─ title {} [Optional]
-   ├─ icon {} [Optional]
-   └─ unlicesedAccess (string[]) [Optional]
+   └─ icon {} [Optional]
 
 resources []
 ├─ key (string) [Mandatory]
@@ -56,7 +60,6 @@ resources []
 | `routePrefix` | `string` | Yes | Unique route identifier for a module. This serves as the entry point for each module. Within an app, each full page module must have a distinct `routePrefix`.  *Regex:* `^[a-z0-9\\-]+$` |
 | `title` | `string` or `i18n object` | No | The title of the full page, which is displayed in the tab title.  The `i18n object` allows for translation. See [i18n object](#i18n-object). |
 | `icon` | `string` | No | The icon to use as the favicon for the page.  For Custom UI and UI Kit apps, the `icon` property accepts a relative path from a declared resource. See [Icons](/platform/forge/custom-ui/#icons) for more information.  If no icon is provided, or if there's an issue preventing the icon from loading, a generic app icon will be displayed. |
-| `unlicensedAccess` | List<string> |  | A list of unlicensed user types that can access this module. Valid values are: `unlicensed` (Guests Users), and `anonymous`. For more information, see [Access to Forge apps for unlicensed Confluence users](/platform/forge/access-to-forge-apps-for-unlicensed-users/#confluence-forge-modules). |
 
 ### i18n object
 

@@ -27,16 +27,9 @@ Usage: forge containers delete [options]
 
 ## Operation
 
-This command is used with Forge Containers, which is currently available under
-[Forge's Early Access Program (EAP)](/platform/forge/whats-coming/#eap).
-EAPs are offered to selected users for testing and feedback purposes.
+This command is used with Forge Container services, which is now in [Preview](/platform/forge/whats-coming/#forge-preview). Preview features are fully supported but remain under active development and may be subject to shorter deprecation windows.
 
-APIs and features under EAP are:
-
-* Unsupported and subject to change without notice
-* Not recommended for use in production environments
-
-Use `forge containers delete` to delete an existing Forge Containers registry, along with its associated image repository (this includes all stored images). This command cannot be undone.
+Use `forge containers delete` to delete an existing Forge Container services registry, along with its associated image repository (this includes all stored images). This command cannot be undone.
 
 For a complete list of `forge containers` subcommands, refer to the command's [reference](/platform/forge/cli-reference/containers/#operation).
 

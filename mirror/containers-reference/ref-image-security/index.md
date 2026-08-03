@@ -1,13 +1,8 @@
-# Container image security guidelines (EAP)
+# Container image security guidelines (Preview)
 
-Forge Containers are now available through Forge's Early Access Program (EAP). To start testing this feature,
-submit your app's ID to our team [through this link](https://ecosystem.atlassian.net/servicedesk/customer/portal/1040/create/18884).
+Forge Container services is now in Preview, and therefore fully supported. However, it remains under active development and may be subject to shorter deprecation windows. Preview features are suitable for early adopters in production environments.
 
-EAPs are offered to selected users for testing and feedback purposes. APIs and features under EAP
-are unsupported and subject to change without notice. APIs and features under EAP are not recommended
-for use in production environments.
-
-For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
+We release preview features so partners and developers can study, test, and integrate them prior to General Availability (GA). For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#forge-preview).
 
 This page sets out the mandatory security **requirements** and strongly recommended **recommendations** for building container images used by your app. Following these guidelines ensures your app is hardened against infrastructure attacks, maintains [strict tenant isolation](/platform/forge/tenant-data-isolation/), and meets the transparency standards required for Marketplace approval.
 
@@ -15,7 +10,7 @@ During the [Marketplace approval process](/platform/marketplace/app-approval-gui
 
 ## Summary
 
-These guidelines complement the platform-level controls described in [Forge Containers overview: Security](/platform/forge/containers-reference/#security). They map to controls in the [NIST SP 800-190 Container Security Guide](https://nvlpubs.nist.gov/nistpubs/specialpublications/nist.sp.800-190.pdf).
+These guidelines complement the platform-level controls described in [Forge Container services overview: Security](/platform/forge/containers-reference/#security). They map to controls in the [NIST SP 800-190 Container Security Guide](https://nvlpubs.nist.gov/nistpubs/specialpublications/nist.sp.800-190.pdf).
 
 | Requirement | Summary | NIST SP 800-190 reference |
 | --- | --- | --- |
@@ -66,7 +61,7 @@ For more details, see [Tenant data isolation](/platform/forge/tenant-data-isolat
 
 ### Data egress
 
-**Deny-by-default.** The Forge Containers environment always operates under a deny-by-default network architecture.
+**Deny-by-default.** The Forge Container services environment always operates under a deny-by-default network architecture.
 
 * **Egress proxy:** All outbound traffic must be routed through the `FORGE_EGRESS_PROXY_URL` environment variable. Connections that bypass the proxy will be blocked.
 * **Inbound traffic:** Your app must listen **only** on the port specified by the `SERVER_PORT` environment variable.
@@ -79,7 +74,7 @@ For more details, see [API contract](/platform/forge/containers-reference/ref-ap
 
 **No hardcoded credentials.** Hardcoded credentials are a major security risk.
 
-API keys, tokens and other app secrets must not be stored staticaly in the image definition. Secrets and credentials can be injected as [encrypted environment variables at build time](/platform/forge/environments-and-versions/#environment-variables) or the [Forge KVS secret store](/platform/forge/storage-reference/kvs-api-secret/) at runtime.
+API keys, tokens and other app secrets must not be stored statically in the image definition. Secrets and credentials can be injected as [encrypted environment variables at build time](/platform/forge/environments-and-versions/#environment-variables) or the [Forge KVS secret store](/platform/forge/storage-reference/kvs-api-secret/) at runtime.
 
 For more details, see [Manage environment variables with the Forge CLI](/platform/forge/cli-reference/variables/).
 

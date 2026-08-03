@@ -34,7 +34,7 @@ Usage: forge show containers [options]
 
 ## Operation
 
-This command is used with Forge Containers, which is currently available under
+This command is used with Forge Container services, which is currently available under
 [Forge's Early Access Program (EAP)](/platform/forge/whats-coming/#eap).
 EAPs are offered to selected users for testing and feedback purposes.
 

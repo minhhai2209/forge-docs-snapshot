@@ -22,17 +22,10 @@ Usage: forge containers docker-login [options]
 
 ## Operation
 
-This command is used with Forge Containers, which is currently available under
-[Forge's Early Access Program (EAP)](/platform/forge/whats-coming/#eap).
-EAPs are offered to selected users for testing and feedback purposes.
+This command is used with Forge Container services, which is now in [Preview](/platform/forge/whats-coming/#forge-preview). Preview features are fully supported but remain under active development and may be subject to shorter deprecation windows.
 
-APIs and features under EAP are:
-
-* Unsupported and subject to change without notice
-* Not recommended for use in production environments
-
-Use `forge containers docker-login` to retrieve a temporary API token, which can be used for authenticating with the Forge Containers registry
-(namely, `forge-ecr.services.atlassian.com`).
+Use `forge containers docker-login` to retrieve a temporary API token, which can be used for authenticating with the Forge Container services registry
+(namely, `forge-registry.services.atlassian.com`).
 
 You can use this token specifically for authenticating a *locally installed docker CLI*; if you use a different image management tool, [use `forge containers get-login` instead](/platform/forge/cli-reference/containers-get-login/).
 

@@ -1,20 +1,15 @@
-# Monitor container metrics (EAP)
+# Monitor container metrics (Preview)
 
-Forge Containers are now available through Forge's Early Access Program (EAP). To start testing this feature,
-submit your app's ID to our team [through this link](https://ecosystem.atlassian.net/servicedesk/customer/portal/1040/create/18884).
+Forge Container services is now in Preview, and therefore fully supported. However, it remains under active development and may be subject to shorter deprecation windows. Preview features are suitable for early adopters in production environments.
 
-EAPs are offered to selected users for testing and feedback purposes. APIs and features under EAP
-are unsupported and subject to change without notice. APIs and features under EAP are not recommended
-for use in production environments.
-
-For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
+We release preview features so partners and developers can study, test, and integrate them prior to General Availability (GA). For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#forge-preview).
 
 Service Health monitoring provides real-time visibility into the health and performance of your
 [Forge Container](/platform/forge/containers-reference/) services. You can view these metrics in the
 developer console to monitor resource usage and service availability.
 
 Service Health metrics are available only for apps that use
-[Forge Containers](/platform/forge/containers-reference/). These metrics are not available for
+[Forge Container services](/platform/forge/containers-reference/). These metrics are not available for
 standard Forge function-based apps.
 
 ## View Service Health metrics
@@ -22,7 +17,7 @@ standard Forge function-based apps.
 To view Service Health metrics for your container services:
 
 1. Access the [developer console](/console/myapps).
-2. Select the Forge app that uses Forge Containers.
+2. Select the Forge app that uses Forge Container services.
 3. Select **Metrics** in the left menu.
 4. Select **Service Health** in the left menu.
 
@@ -66,6 +61,8 @@ The following Service Health metrics are available for Forge Container services:
 | `container_cpu_usage_percentage` | Gauge | Container CPU usage as a percentage of the container's CPU limit. |
 | `container_memory_usage_percentage` | Gauge | Container memory working-set usage as a percentage of the container's memory limit. Working set is the memory used for out-of-memory (OOM) decisions. |
 | `service_instance_count` | Gauge | The number of running instances for a container service in a given region. |
+| `container_uptime_seconds` | Gauge | The number of seconds a container has been running since it last started. |
+| `container_status_restarts_total` | Cumulative Counter | The total number of times a container has restarted. This counter resets to zero when the pod is replaced. |
 
 ## Export container metrics
 
@@ -76,6 +73,8 @@ include the following values in the `query.filters.metrics` array of your API re
 * `CONTAINER_CPU_USAGE_PERCENTAGE`
 * `CONTAINER_MEMORY_USAGE_PERCENTAGE`
 * `SERVICE_INSTANCE_COUNT`
+* `CONTAINER_UPTIME_SECONDS`
+* `CONTAINER_STATUS_RESTARTS_TOTAL`
 
 For details on setting up metrics export, see
 [Export app metrics](/platform/forge/export-app-metrics/).
@@ -88,5 +87,6 @@ The following tags and dimensions are available with container metrics when usin
 | `environmentId` | The environment UUID. | All container metrics |
 | `serviceKey` | The service key as defined in the manifest. | All container metrics |
 | `region` | The region where the service instance is running. | All container metrics |
-| `container` | The container name. | `container_cpu_usage_percentage`, `container_memory_usage_percentage` |
-| `pod` | The pod identifier for the container instance. | `container_cpu_usage_percentage`, `container_memory_usage_percentage` |
+| `cluster_uid` | The cluster where the service instance is running. | All container metrics |
+| `container` | The container name. | `container_cpu_usage_percentage`, `container_memory_usage_percentage`, `container_uptime_seconds`, `container_status_restarts_total` |
+| `pod` | The pod identifier for the container instance. | `container_cpu_usage_percentage`, `container_memory_usage_percentage`, `container_uptime_seconds`, `container_status_restarts_total` |

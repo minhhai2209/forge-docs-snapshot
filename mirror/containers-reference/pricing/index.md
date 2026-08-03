@@ -1,23 +1,18 @@
-# Forge Containers pricing (EAP)
+# Forge Container services pricing (Preview)
 
-Forge Containers are now available through Forge's Early Access Program (EAP). To start testing this feature,
-submit your app's ID to our team [through this link](https://ecosystem.atlassian.net/servicedesk/customer/portal/1040/create/18884).
+Forge Container services is now in Preview, and therefore fully supported. However, it remains under active development and may be subject to shorter deprecation windows. Preview features are suitable for early adopters in production environments.
 
-EAPs are offered to selected users for testing and feedback purposes. APIs and features under EAP
-are unsupported and subject to change without notice. APIs and features under EAP are not recommended
-for use in production environments.
+We release preview features so partners and developers can study, test, and integrate them prior to General Availability (GA). For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#forge-preview).
 
-For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
+Unlike other Forge capabilities that use a [consumption-based pricing model](/platform/forge/forge-platform-pricing/), Forge Container services use a **reservation-based pricing model**. You pay for the CPU and memory capacity reserved for each container instance, regardless of whether that instance is actively handling requests. This reflects the always-on nature of container services, which must remain running to serve traffic at any time.
 
-Unlike other Forge capabilities that use a [consumption-based pricing model](/platform/forge/forge-platform-pricing/), Forge Containers use a **reservation-based pricing model**. You pay for the CPU and memory capacity reserved for each container instance, regardless of whether that instance is actively handling requests. This reflects the always-on nature of container services, which must remain running to serve traffic at any time.
+Forge Container services pricing is now active. See the unit pricing below for details.
 
-Containers are free to use during EAP. Pricing will apply from the point at which Forge Containers enters [Preview](/platform/forge/whats-coming/#forge-early-access-program--eap-). During the current EAP phase, billing is not yet enabled.
-
-**No free usage allowance:** Unlike other Forge capabilities, Forge Containers do not include a free monthly usage allowance. All reserved CPU and memory capacity is billed from the moment billing is enabled at Preview.
+**No free usage allowance:** Unlike other Forge capabilities, Forge Container services do not include a free monthly usage allowance. All reserved CPU and memory capacity is billed from the moment billing is enabled at Preview.
 
 ## Unit pricing
 
-Forge Containers are billed based on two dimensions: compute (vCPU) and memory (GiB), measured per hour.
+Forge Container services are billed based on two dimensions: compute (vCPU) and memory (GiB), measured per hour.
 
 | Metric | Unit | Price (USD) |
 | --- | --- | --- |
@@ -28,9 +23,9 @@ Charges are calculated based on the CPU and memory values declared in your [serv
 
 ## Multi-region deployment model
 
-Forge Containers are deployed across multiple Atlassian regions to deliver adequate performance for your app's users and to support [data residency](/platform/forge/data-residency/) requirements. Because each region runs its own container instances, **your costs scale with the number of regions your service is deployed in**.
+Forge Container services are deployed across multiple Atlassian regions to deliver adequate performance for your app's users and to support [data residency](/platform/forge/data-residency/) requirements. Because each region runs its own container instances, **your costs scale with the number of regions your service is deployed in**.
 
-When Forge Containers enters Preview with billing enabled, your container services will be automatically deployed in the following 6 Atlassian regions:
+When Forge Container services enters Preview with billing enabled, your container services will be automatically deployed in the following 6 Atlassian regions:
 
 | Region | Location |
 | --- | --- |

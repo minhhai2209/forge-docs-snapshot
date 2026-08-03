@@ -39,7 +39,7 @@ When your user visits the link, an installation screen appears, similar to the o
 It displays information about your app, including the permissions your app is requesting.
 From here, your user can choose a site and an Atlassian app to install your app onto.
 
-![User installation screen](https://dac-static.atlassian.com/platform/forge/images/user-installation-screen.png?_v=1.5800.2232)
+![User installation screen](https://dac-static.atlassian.com/platform/forge/images/user-installation-screen.png?_v=1.5800.2245)
 
 ## Restrict installation links
 
@@ -109,7 +109,7 @@ For eligible major version updates that don't require an escalation in privilege
 
 If your app uses [Rolling releases](/platform/forge/rolling-releases/), use Developer Console to roll out app code and monitor, cancel, or restart rollouts while permission approval remains separate. See [View app rollouts](/platform/forge/view-app-rollouts/) for details.
 
-For apps that use [Forge Containers](/platform/forge/containers-reference/), some installations may not upgrade successfully. If this happens, retry to complete the upgrade.
+For apps that use [Forge Container services](/platform/forge/containers-reference/), some installations may not upgrade successfully. If this happens, retry to complete the upgrade.
 
 Records from the Forge CLI are time-limited and may not be available indefinitely. It is advisable to document or monitor these records promptly if they are needed for future reference.
 

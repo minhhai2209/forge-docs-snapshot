@@ -1,13 +1,8 @@
-# Testing a containerised service locally (EAP)
+# Testing a containerised service locally (Preview)
 
-Forge Containers are now available through Forge's Early Access Program (EAP). To start testing this feature,
-submit your app's ID to our team [through this link](https://ecosystem.atlassian.net/servicedesk/customer/portal/1040/create/18884).
+Forge Container services is now in Preview, and therefore fully supported. However, it remains under active development and may be subject to shorter deprecation windows. Preview features are suitable for early adopters in production environments.
 
-EAPs are offered to selected users for testing and feedback purposes. APIs and features under EAP
-are unsupported and subject to change without notice. APIs and features under EAP are not recommended
-for use in production environments.
-
-For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
+We release preview features so partners and developers can study, test, and integrate them prior to General Availability (GA). For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#forge-preview).
 
 After [defining a containerised service](/platform/forge/containers-reference/managing-service), you can test it locally before you push its image to your container’s repository. You can then use `forge tunnel` to redirect app invocations from your development site to your local instance of the service.
 
@@ -57,7 +52,7 @@ tunnel:
       - '8080:8080'
 ```
 
-Running `forge tunnel` will then create a docker compose stack using the container’s `tunnel` configuration and the latest Forge Containers proxy sidecar. Terminating the tunnel will also clean up the compose stack.
+Running `forge tunnel` will then create a docker compose stack using the container’s `tunnel` configuration and the latest Forge Container services proxy sidecar. Terminating the tunnel will also clean up the compose stack.
 
 You can add `tunnel` configurations for only a subset of containers. This lets you test and run some containers locally without the overhead of starting up all containers.
 If you do this, however, any invocations to containers that *don’t* have a `tunnel` configuration set up will fail. We’re working on addressing this in a future milestone: <https://ecosystem.atlassian.net/browse/OIC-192>
@@ -75,7 +70,7 @@ You can refer to our sample app for an implementation that uses this approach:
 * The [docker-compose.yml](https://bitbucket.org/atlassian/forge-containers-app/src/main/docker-compose.yml) file configures the stack for the container that should be run locally.
 * The [dev-loop.sh](https://bitbucket.org/atlassian/forge-containers-app/src/main/dev-loop.sh) script runs all the necessary steps to set up the tunnel. These include exporting the necessary environment variables, pulling the latest sidecar image, and launching `forge tunnel`.
 
-To start, download the Forge Containers platform sidecar, available from the following repository: `forge-ecr.services.atlassian.com/forge-platform/proxy-sidecar:latest`
+To start, download the Forge Container services platform sidecar, available from the following repository: `forge-registry.services.atlassian.com/forge-platform/proxy-sidecar:latest`
 
 For example, to use `docker pull` (you may need to re-authenticate the Docker CLI first):
 
@@ -89,7 +84,7 @@ For example, to use `docker pull` (you may need to re-authenticate the Docker CL
 
 ```
 forge containers docker-login
-docker pull forge-ecr.services.atlassian.com/forge-platform/proxy-sidecar:latest
+docker pull forge-registry.services.atlassian.com/forge-platform/proxy-sidecar:latest
 ```
 ```
 

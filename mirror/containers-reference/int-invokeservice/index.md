@@ -1,19 +1,14 @@
-# Call a containerised service directly from the frontend/backend (EAP)
+# Call a containerised service directly from the frontend or backend (Preview)
 
-Forge Containers are now available through Forge's Early Access Program (EAP). To start testing this feature,
-submit your app's ID to our team [through this link](https://ecosystem.atlassian.net/servicedesk/customer/portal/1040/create/18884).
+Forge Container services is now in Preview, and therefore fully supported. However, it remains under active development and may be subject to shorter deprecation windows. Preview features are suitable for early adopters in production environments.
 
-EAPs are offered to selected users for testing and feedback purposes. APIs and features under EAP
-are unsupported and subject to change without notice. APIs and features under EAP are not recommended
-for use in production environments.
-
-For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
+We release preview features so partners and developers can study, test, and integrate them prior to General Availability (GA). For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#forge-preview).
 
 Use the `invokeService` method to invoke a container service's functionality directly from the frontend or backend.
 
 ## Frontend invocation
 
-When making an invocation from the front end, the `invokeService` method must use a container service’s [endpoint](/platform/forge/containers-reference/ref-manifest/). The service endpoint must also be defined as an endpoint module. See [Define endpoints](/platform/forge/containers-reference/integrating-service/#define-endpoints) for details.
+When making an invocation from the frontend, the `invokeService` method must use a container service’s [endpoint](/platform/forge/containers-reference/ref-manifest/). The service endpoint must also be defined as an endpoint module. See [Define endpoints](/platform/forge/containers-reference/integrating-service/#define-endpoints) for details.
 
 To use the `invokeService` method, import it from `@forge/bridge`:
 
@@ -88,7 +83,7 @@ A `Promise` that resolves with the data returned from the invoked endpoint:
 
 ## Backend invocation
 
-You can also use `invokeService` to call a container service directly from a back end function. You won’t need a pre-defined endpoint for this. To do this, you’ll need to import `invokeService` from `@forge/api` first:
+You can also use `invokeService` to call a container service directly from a backend function. You won’t need a pre-defined endpoint for this. To do this, you’ll need to import `invokeService` from `@forge/api` first:
 
 ```
 ```

@@ -82,11 +82,7 @@ Data in Forge hosted storage is namespaced. The namespace includes all metadata 
 
 ## APIs
 
-The Forge Object Store's capabilities are currently available only via Forge methods. See [Managing objects](/platform/forge/storage-reference/object-store-api/) for detailed information.
-
-Currently, an experimental Forge Object Store [REST API](/platform/forge/rest/v2/api-group-forge-object-store/#api-group-forge-object-store) is available, but only accessible via
-[Forge Containers](/platform/forge/containers-reference/). This REST API will also remain in EAP as
-long as Forge Containers remains in EAP.
+The Forge Object Store is accessible via two interfaces:
 
 ## Frontend components
 

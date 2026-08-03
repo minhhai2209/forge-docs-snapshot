@@ -10,7 +10,7 @@ is retrieved using the [useProductContext](/platform/forge/ui-kit-hooks-referenc
 
 On apps that use Custom UI, module content is displayed inside a [special Forge iframe](/platform/forge/custom-ui/iframe/) which has the [sandbox](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#sandbox) attribute configured. This means that HTML links (for example, `<a href="https://domain.tld/path">...</a>`) in this iframe won't be clickable. To make them clickable, use the [router.navigate](/platform/forge/custom-ui-bridge/router/#navigate) API from the `@forge/bridge` package.
 
-![Example of a Context menu](https://dac-static.atlassian.com/platform/forge/images/context-menu-location.png?_v=1.5800.2232)
+![Example of a Context menu](https://dac-static.atlassian.com/platform/forge/images/context-menu-location.png?_v=1.5800.2245)
 
 ## Properties
 
@@ -25,7 +25,7 @@ On apps that use Custom UI, module content is displayed inside a [special Forge 
 | `description` | `string` or `i18n object` |  | The description of the context menu app.  The `i18n object` allows for translation. See [i18n object](#i18n-object). |
 | `displayConditions` | `object` |  | The object that defines whether or not a module is displayed in the UI of the app. See [display conditions](/platform/forge/manifest-reference/display-conditions). |
 | `keyboardShortcut` | `object` |  | The object that defines a keyboard shortcut to trigger this module. See [keyboard shortcuts](/platform/forge/manifest-reference/keyboard-shortcuts). |
-| `unlicensedAccess` | List<string> |  | A list of unlicensed user types that can access this module. Valid values are: `unlicensed` (Guests Users), and `anonymous`. For more information, see [Access to Forge apps for unlicensed Confluence users](/platform/forge/access-to-forge-apps-for-unlicensed-users/#confluence-forge-modules). |
+| `unlicensedAccess` | `List<string>` |  | A list of unlicensed user types that can access this module. Valid values are: `unlicensed` (Guests Users), and `anonymous`. For more information, see [Access to Forge apps for unlicensed Confluence users](/platform/forge/access-to-forge-apps-for-unlicensed-users/#confluence-forge-modules). |
 
 ### i18n object
 

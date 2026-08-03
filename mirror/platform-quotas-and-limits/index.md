@@ -58,11 +58,11 @@ Details limits for Forge LLMs such as context window size and requests per minut
 
 For more information, see [Forge LLM limits](/platform/forge/limits-llm/).
 
-### Forge Containers REST API
+### Forge Container services REST API
 
-Details limits for using the Forge Containers REST API, such as the number of allowed requests per minute for a given API, helping ensure fair use and reliable performance.
+Details limits for using the Forge Container services REST API, such as the number of allowed requests per minute for a given API, helping ensure fair use and reliable performance.
 
-For more information, see [Forge Containers REST API limits](/platform/forge/limits-containers/).
+For more information, see [Forge Container services REST API limits](/platform/forge/limits-containers/).
 
 ### Web Trigger
 

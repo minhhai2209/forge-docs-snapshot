@@ -121,7 +121,18 @@ query Ecosystem($appId: ID!, $query: ForgeMetricsOtlpQueryInput!) {
         "start": "2023-06-18T02:55:00.000Z",
         "end": "2023-06-18T02:57:00.000Z"
       },
-      "metrics": ["FORGE_API_REQUEST_COUNT", "FORGE_API_REQUEST_LATENCY", "FORGE_BACKEND_INVOCATION_LATENCY", "FORGE_BACKEND_INVOCATION_COUNT", "FORGE_BACKEND_INVOCATION_ERRORS", "CONTAINER_CPU_USAGE_PERCENTAGE", "CONTAINER_MEMORY_USAGE_PERCENTAGE", "SERVICE_INSTANCE_COUNT"]
+      "metrics": [
+        "FORGE_API_REQUEST_COUNT", 
+        "FORGE_API_REQUEST_LATENCY", 
+        "FORGE_BACKEND_INVOCATION_LATENCY", 
+        "FORGE_BACKEND_INVOCATION_COUNT", 
+        "FORGE_BACKEND_INVOCATION_ERRORS", 
+        "CONTAINER_CPU_USAGE_PERCENTAGE", 
+        "CONTAINER_MEMORY_USAGE_PERCENTAGE", 
+        "CONTAINER_UPTIME_SECONDS",
+        "CONTAINER_STATUS_RESTARTS_TOTAL",
+        "SERVICE_INSTANCE_COUNT"
+      ]
     }
   }
 }
@@ -339,7 +350,7 @@ query Ecosystem($appId: ID!, $query: ForgeMetricsOtlpQueryInput!) {
                       "gauge": {
                         "dataPoints": [
                           {
-                            "asDouble": 1.1210,
+                            "asDouble": 1.121,
                             "attributes": [
                               {
                                 "key": "appId",
@@ -357,6 +368,12 @@ query Ecosystem($appId: ID!, $query: ForgeMetricsOtlpQueryInput!) {
                                 "key": "environmentId",
                                 "value": {
                                   "stringValue": "8cb293d5-be08-47ae-a75c-95b89da5ad1d"
+                                }
+                              },
+                              {
+                                "key": "cluster_uid",
+                                "value": {
+                                  "stringValue": "8ffs"
                                 }
                               },
                               {
@@ -396,7 +413,7 @@ query Ecosystem($appId: ID!, $query: ForgeMetricsOtlpQueryInput!) {
                               {
                                 "key": "appId",
                                 "value": {
-                                  "stringValue": " a11dfa0b-cf2c-44d1-9080-5c3944961223"
+                                  "stringValue": "a11dfa0b-cf2c-44d1-9080-5c3944961223"
                                 }
                               },
                               {
@@ -409,6 +426,12 @@ query Ecosystem($appId: ID!, $query: ForgeMetricsOtlpQueryInput!) {
                                 "key": "environmentId",
                                 "value": {
                                   "stringValue": "8cb293d5-be08-47ae-a75c-95b89da5ad1d"
+                                }
+                              },
+                              {
+                                "key": "cluster_uid",
+                                "value": {
+                                  "stringValue": "8ffs"
                                 }
                               },
                               {
@@ -448,7 +471,7 @@ query Ecosystem($appId: ID!, $query: ForgeMetricsOtlpQueryInput!) {
                               {
                                 "key": "appId",
                                 "value": {
-                                  "stringValue": " a11dfa0b-cf2c-44d1-9080-5c3944961223"
+                                  "stringValue": "a11dfa0b-cf2c-44d1-9080-5c3944961223"
                                 }
                               },
                               {
@@ -468,10 +491,379 @@ query Ecosystem($appId: ID!, $query: ForgeMetricsOtlpQueryInput!) {
                                 "value": {
                                   "stringValue": "java-service"
                                 }
+                              },
+                              {
+                                "key": "cluster_uid",
+                                "value": {
+                                  "stringValue": "8ffs"
+                                }
                               }
                             ],
                             "startTimeUnixNano": "1687488960000000000",
                             "timeUnixNano": "1687489020000000000"
+                          }
+                        ]
+                      },
+                      "unit": "1"
+                    },
+                    {
+                      "name": "container_uptime_seconds",
+                      "description": "",
+                      "gauge": {
+                        "dataPoints": [
+                          {
+                            "asDouble": 388626.6037724018,
+                            "attributes": [
+                              {
+                                "key": "appId",
+                                "value": {
+                                  "stringValue": "a11dfa0b-cf2c-44d1-9080-5c3944961223"
+                                }
+                              },
+                              {
+                                "key": "cluster_uid",
+                                "value": {
+                                  "stringValue": "8ffs"
+                                }
+                              },
+                              {
+                                "key": "container",
+                                "value": {
+                                  "stringValue": "java-service-container-001"
+                                }
+                              },
+                              {
+                                "key": "environmentId",
+                                "value": {
+                                  "stringValue": "8cb293d5-be08-47ae-a75c-95b89da5ad1d"
+                                }
+                              },
+                              {
+                                "key": "pod",
+                                "value": {
+                                  "stringValue": "eco-deployment-65db68664c-g5m2g"
+                                }
+                              },
+                              {
+                                "key": "region",
+                                "value": {
+                                  "stringValue": "us-west-2"
+                                }
+                              },
+                              {
+                                "key": "serviceKey",
+                                "value": {
+                                  "stringValue": "java-service"
+                                }
+                              }
+                            ],
+                            "startTimeUnixNano": "1785240860000000000",
+                            "timeUnixNano": "1785240920000000000"
+                          },
+                          {
+                            "asDouble": 388626.60381031036,
+                            "attributes": [
+                              {
+                                "key": "appId",
+                                "value": {
+                                  "stringValue": "a11dfa0b-cf2c-44d1-9080-5c3944961223"
+                                }
+                              },
+                              {
+                                "key": "cluster_uid",
+                                "value": {
+                                  "stringValue": "8ffs"
+                                }
+                              },
+                              {
+                                "key": "container",
+                                "value": {
+                                  "stringValue": "java-service-container-001"
+                                }
+                              },
+                              {
+                                "key": "environmentId",
+                                "value": {
+                                  "stringValue": "8cb293d5-be08-47ae-a75c-95b89da5ad1d"
+                                }
+                              },
+                              {
+                                "key": "pod",
+                                "value": {
+                                  "stringValue": "eco-deployment-65db68664c-rhvk8"
+                                }
+                              },
+                              {
+                                "key": "region",
+                                "value": {
+                                  "stringValue": "us-west-2"
+                                }
+                              },
+                              {
+                                "key": "serviceKey",
+                                "value": {
+                                  "stringValue": "java-service"
+                                }
+                              }
+                            ],
+                            "startTimeUnixNano": "1785240860000000000",
+                            "timeUnixNano": "1785240920000000000"
+                          }
+                        ]
+                      },
+                      "unit": "s"
+                    },
+                    {
+                      "name": "container_status_restarts_total",
+                      "description": "",
+                      "sum": {
+                        "aggregationTemporality": 2,
+                        "isMonotonic": true,
+                        "dataPoints": [
+                          {
+                            "asInt": 0,
+                            "attributes": [
+                              {
+                                "key": "appId",
+                                "value": {
+                                  "stringValue": "a11dfa0b-cf2c-44d1-9080-5c3944961223"
+                                }
+                              },
+                              {
+                                "key": "cluster_uid",
+                                "value": {
+                                  "stringValue": "8ffs"
+                                }
+                              },
+                              {
+                                "key": "container",
+                                "value": {
+                                  "stringValue": "java-service-container-001"
+                                }
+                              },
+                              {
+                                "key": "environmentId",
+                                "value": {
+                                  "stringValue": "8cb293d5-be08-47ae-a75c-95b89da5ad1d"
+                                }
+                              },
+                              {
+                                "key": "pod",
+                                "value": {
+                                  "stringValue": "eco-deployment-65db68664c-g5m2g"
+                                }
+                              },
+                              {
+                                "key": "region",
+                                "value": {
+                                  "stringValue": "us-west-2"
+                                }
+                              },
+                              {
+                                "key": "serviceKey",
+                                "value": {
+                                  "stringValue": "java-service"
+                                }
+                              }
+                            ],
+                            "startTimeUnixNano": "1785409740000000000",
+                            "timeUnixNano": "1785409800000000000"
+                          },
+                          {
+                            "asInt": 0,
+                            "attributes": [
+                              {
+                                "key": "appId",
+                                "value": {
+                                  "stringValue": "a11dfa0b-cf2c-44d1-9080-5c3944961223"
+                                }
+                              },
+                              {
+                                "key": "cluster_uid",
+                                "value": {
+                                  "stringValue": "8ffs"
+                                }
+                              },
+                              {
+                                "key": "container",
+                                "value": {
+                                  "stringValue": "java-service-container-001"
+                                }
+                              },
+                              {
+                                "key": "environmentId",
+                                "value": {
+                                  "stringValue": "8cb293d5-be08-47ae-a75c-95b89da5ad1d"
+                                }
+                              },
+                              {
+                                "key": "pod",
+                                "value": {
+                                  "stringValue": "eco-deployment-65db68664c-g5m2g"
+                                }
+                              },
+                              {
+                                "key": "region",
+                                "value": {
+                                  "stringValue": "us-west-2"
+                                }
+                              },
+                              {
+                                "key": "serviceKey",
+                                "value": {
+                                  "stringValue": "java-service"
+                                }
+                              }
+                            ],
+                            "startTimeUnixNano": "1785409800000000000",
+                            "timeUnixNano": "1785409860000000000"
+                          },
+                          {
+                            "asInt": 1,
+                            "attributes": [
+                              {
+                                "key": "appId",
+                                "value": {
+                                  "stringValue": "a11dfa0b-cf2c-44d1-9080-5c3944961223"
+                                }
+                              },
+                              {
+                                "key": "cluster_uid",
+                                "value": {
+                                  "stringValue": "8ffs"
+                                }
+                              },
+                              {
+                                "key": "container",
+                                "value": {
+                                  "stringValue": "java-service-container-001"
+                                }
+                              },
+                              {
+                                "key": "environmentId",
+                                "value": {
+                                  "stringValue": "8cb293d5-be08-47ae-a75c-95b89da5ad1d"
+                                }
+                              },
+                              {
+                                "key": "pod",
+                                "value": {
+                                  "stringValue": "eco-deployment-65db68664c-g5m2g"
+                                }
+                              },
+                              {
+                                "key": "region",
+                                "value": {
+                                  "stringValue": "us-west-2"
+                                }
+                              },
+                              {
+                                "key": "serviceKey",
+                                "value": {
+                                  "stringValue": "java-service"
+                                }
+                              }
+                            ],
+                            "startTimeUnixNano": "1785409800000000000",
+                            "timeUnixNano": "1785409860000000000"
+                          },
+                          {
+                            "asInt": 1,
+                            "attributes": [
+                              {
+                                "key": "appId",
+                                "value": {
+                                  "stringValue": "a11dfa0b-cf2c-44d1-9080-5c3944961223"
+                                }
+                              },
+                              {
+                                "key": "cluster_uid",
+                                "value": {
+                                  "stringValue": "8ffs"
+                                }
+                              },
+                              {
+                                "key": "container",
+                                "value": {
+                                  "stringValue": "java-service-container-001"
+                                }
+                              },
+                              {
+                                "key": "environmentId",
+                                "value": {
+                                  "stringValue": "8cb293d5-be08-47ae-a75c-95b89da5ad1d"
+                                }
+                              },
+                              {
+                                "key": "pod",
+                                "value": {
+                                  "stringValue": "eco-deployment-65db68664c-g5m2g"
+                                }
+                              },
+                              {
+                                "key": "region",
+                                "value": {
+                                  "stringValue": "us-west-2"
+                                }
+                              },
+                              {
+                                "key": "serviceKey",
+                                "value": {
+                                  "stringValue": "java-service"
+                                }
+                              }
+                            ],
+                            "startTimeUnixNano": "1785409800000000000",
+                            "timeUnixNano": "1785409860000000000"
+                          },
+                          {
+                            "asInt": 2,
+                            "attributes": [
+                              {
+                                "key": "appId",
+                                "value": {
+                                  "stringValue": "a11dfa0b-cf2c-44d1-9080-5c3944961223"
+                                }
+                              },
+                              {
+                                "key": "cluster_uid",
+                                "value": {
+                                  "stringValue": "8ffs"
+                                }
+                              },
+                              {
+                                "key": "container",
+                                "value": {
+                                  "stringValue": "java-service-container-001"
+                                }
+                              },
+                              {
+                                "key": "environmentId",
+                                "value": {
+                                  "stringValue": "8cb293d5-be08-47ae-a75c-95b89da5ad1d"
+                                }
+                              },
+                              {
+                                "key": "pod",
+                                "value": {
+                                  "stringValue": "eco-deployment-65db68664c-g5m2g"
+                                }
+                              },
+                              {
+                                "key": "region",
+                                "value": {
+                                  "stringValue": "us-west-2"
+                                }
+                              },
+                              {
+                                "key": "serviceKey",
+                                "value": {
+                                  "stringValue": "java-service"
+                                }
+                              }
+                            ],
+                            "startTimeUnixNano": "1785409800000000000",
+                            "timeUnixNano": "1785409860000000000"
                           }
                         ]
                       },
@@ -503,7 +895,7 @@ query Ecosystem($appId: ID!, $query: ForgeMetricsOtlpQueryInput!) {
 | --- | --- | --- | --- |
 | `environments` | `Array<string>` | Yes | A list of environment UUIDs for which metrics needs to be fetched. *Regex:* `[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}` |
 | `interval` | [Interval](#interval) | Yes | Time range for which metrics needs to be fetched. |
-| `metrics` | `Array<enum>` | Yes | A list of enums of metrics to be fetched. Possible values are: `FORGE_API_REQUEST_COUNT` , `FORGE_API_REQUEST_LATENCY` , `FORGE_BACKEND_INVOCATION_COUNT` , `FORGE_BACKEND_INVOCATION_ERRORS`, `FORGE_BACKEND_INVOCATION_LATENCY`, `CONTAINER_CPU_USAGE_PERCENTAGE`, `CONTAINER_MEMORY_USAGE_PERCENTAGE`, and `SERVICE_INSTANCE_COUNT` |
+| `metrics` | `Array<enum>` | Yes | A list of enums of metrics to be fetched. Possible values are: `FORGE_API_REQUEST_COUNT` , `FORGE_API_REQUEST_LATENCY` , `FORGE_BACKEND_INVOCATION_COUNT` , `FORGE_BACKEND_INVOCATION_ERRORS`, `FORGE_BACKEND_INVOCATION_LATENCY`, `CONTAINER_CPU_USAGE_PERCENTAGE`, `CONTAINER_MEMORY_USAGE_PERCENTAGE`, `CONTAINER_UPTIME_SECONDS`, `CONTAINER_STATUS_RESTARTS_TOTAL`, and `SERVICE_INSTANCE_COUNT` |
 
 #### Interval
 
@@ -523,7 +915,7 @@ five calls per minute per user is enforced.
 To consume the Atlassian GraphQL API and ingest metrics in real-time into observability tools,
 we recommend having the following components in your infrastructure:
 
-![Partner Server View](https://dac-static.atlassian.com/platform/forge/images/partner-server-arch.svg?_v=1.5800.2232)
+![Partner Server View](https://dac-static.atlassian.com/platform/forge/images/partner-server-arch.svg?_v=1.5800.2245)
 
 ### CronJob service
 

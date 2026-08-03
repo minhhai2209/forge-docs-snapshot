@@ -15,7 +15,7 @@ The `confluence:backgroundScript` module adds an invisible container across vari
 | `render` | `'native'` | Yes for UI Kit. | Indicates the module uses UI Kit. |
 | `resolver` | `{ function: string }` or `{ endpoint: string }` |  | Set the `function` property if you are using a hosted `function` module for your resolver.  Set the `endpoint` property if you are using [Forge remote](/platform/forge/forge-remote-overview) to integrate with a remote back end. |
 | `displayConditions` | `object` |  | The object that defines whether or not the background script executes on a page. See [display conditions](/platform/forge/manifest-reference/display-conditions). |
-| `unlicensedAccess` | List<string> |  | A list of unlicensed user types that can access this module. Valid values are: `unlicensed` (Guests Users), and `anonymous`. For more information, see [Access to Forge apps for unlicensed Confluence users](/platform/forge/access-to-forge-apps-for-unlicensed-users/#confluence-forge-modules). |
+| `unlicensedAccess` | `List<string>` |  | A list of unlicensed user types that can access this module. Valid values are: `unlicensed` (Guests Users), and `anonymous`. For more information, see [Access to Forge apps for unlicensed Confluence users](/platform/forge/access-to-forge-apps-for-unlicensed-users/#confluence-forge-modules). |
 
 ## Extension context
 

@@ -31,13 +31,13 @@ will initially have a version of `1.1` (major version `1`, minor version `1`).
 There are different ways to see what version of your app is installed on each site, in each environment:
 
 * The `forge install list` [command](/platform/forge/cli-reference/install-list/) will display the major version installed on each site:
-  ![forge install list](https://dac-static.atlassian.com/platform/forge/images/app-version/cli.png?_v=1.5800.2232)
+  ![forge install list](https://dac-static.atlassian.com/platform/forge/images/app-version/cli.png?_v=1.5800.2245)
 * In the [developer console](https://developer.atlassian.com/console/myapps/), your app's **Installations** page (under **MONITOR**) will display the major and minor version. The first segment of the version is the major version
   number. All sites on the same major version will also be on the same minor version:
-  ![Developer Console > MONITOR > Installations](https://dac-static.atlassian.com/platform/forge/images/app-version/dev-cons-install.png?_v=1.5800.2232)
+  ![Developer Console > MONITOR > Installations](https://dac-static.atlassian.com/platform/forge/images/app-version/dev-cons-install.png?_v=1.5800.2245)
 * In the [developer console](https://developer.atlassian.com/console/myapps/), your app's
   **Deployments** page (under **BUILD**) will show who performed each deployment (**Contributor**), and when. It’ll also show which major version each deployment targeted within an environment:
-  ![Developer Console > BUILD > Deployments](https://dac-static.atlassian.com/platform/forge/images/app-version/dev-cons-deploy.png?_v=1.5800.2232)
+  ![Developer Console > BUILD > Deployments](https://dac-static.atlassian.com/platform/forge/images/app-version/dev-cons-deploy.png?_v=1.5800.2245)
 
 Each site’s admin can also see and upgrade their installed app’s version. See
 [Manage app upgrades](https://support.atlassian.com/security-and-access-policies/docs/manage-your-users-third-party-apps/#Manage-app-upgrades) for more details.
@@ -308,6 +308,10 @@ The following `manifest.yml` file changes are considered major version upgrades:
   [minor](/platform/forge/manifest-reference/remotes/#minor-upgrades) versions.
 * Adding `permissions.external.configurable.enabled` to enable [Customer-managed Egress](/platform/forge/customer-managed-egress-and-remotes/#for-customer-managed-egress).
 
+The CLI linter detects such major changes and warns you before triggering the deployment. You can approve the deployment (effectively acknowledging the major app version bump) by running `forge deploy --approve MAJOR_VERSION_RULE`.
+
+This feature requires the Forge CLI version `13.3` or higher. For more details about the deployment approval flow, refer to [deploy](/platform/forge/cli-reference/deploy/).
+
 You can use the [Forge CLI](/platform/forge/cli-reference/) to complete a major upgrade with `forge install --upgrade`.
 Site admins can select **upgrade** from the manage apps screen to complete the app upgrade.
 
@@ -317,7 +321,7 @@ For eligible major version updates that don't require an escalation in privilege
 
 If your app uses [Rolling releases](/platform/forge/rolling-releases/), use Developer Console to roll out app code and monitor, cancel, or restart rollouts while permission approval remains separate. See [View app rollouts](/platform/forge/view-app-rollouts/) for details.
 
-For apps that use [Forge Containers](/platform/forge/containers-reference/), some installations may not upgrade successfully. If this happens, retry to complete the upgrade.
+For apps that use [Forge Container services](/platform/forge/containers-reference/), some installations may not upgrade successfully. If this happens, retry to complete the upgrade.
 
 ## Minor version upgrades
 
