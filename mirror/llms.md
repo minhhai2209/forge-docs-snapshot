@@ -111,9 +111,9 @@ For more information about the Forge manifest, refer to the following sections.
 
 - [Resources](https://developer.atlassian.com/platform/forge/manifest-reference/resources.md)
 
-### Services (EAP)
+### Services (Preview)
 
-- [Services (EAP)](https://developer.atlassian.com/platform/forge/manifest-reference/services.md)
+- [Services (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/services.md)
 
 ### Translations
 
@@ -1535,6 +1535,7 @@ This section contains curated references that show how real Forge apps are struc
 - [Reference](https://developer.atlassian.com/platform/forge/containers-reference/reference.md)
 - [Glossary](https://developer.atlassian.com/platform/forge/containers-reference/ref-glossary.md)
 - [Manifest](https://developer.atlassian.com/platform/forge/containers-reference/ref-manifest.md)
+- [Manifest overrides](https://developer.atlassian.com/platform/forge/containers-reference/ref-manifest/overrides.md)
 - [CLI tools](https://developer.atlassian.com/platform/forge/containers-reference/ref-cli.md)
 - [API contract](https://developer.atlassian.com/platform/forge/containers-reference/ref-api.md)
 - [Logging format](https://developer.atlassian.com/platform/forge/containers-reference/ref-logging.md)

@@ -6,6 +6,9 @@ We release preview features so partners and developers can study, test, and inte
 
 The `endpoint` module described on this page is also documented in the [Endpoint manifest reference](/platform/forge/manifest-reference/endpoint/).
 
+To customize Forge Container services configuration by environment type and placement, see
+[Manifest overrides](/platform/forge/containers-reference/ref-manifest/overrides/).
+
 Forge features a top-level manifest property named `services` that lets you define a service and its corresponding container.
 It supports the following properties:
 

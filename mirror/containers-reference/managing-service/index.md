@@ -15,7 +15,8 @@ At present, Forge Container services has the following limitations:
 
 * An app can only have one defined service, and this service can only have one defined container.
 * Containerised services can't be de-provisioned through self-service. Once your app is deployed and installed, its service instance can't be deleted or renamed through the CLI or developer console. To delete or rename a service, [open a support ticket](https://support.atlassian.com/). The service will remain visible in the developer console and you will continue to incur charges until it is de-provisioned.
-  For a complete list of Preview limitations (along with our plans to address and mitigate each one), refer to [Roadmap](https://ecosystem.atlassian.net/browse/ROADMAP-228).
+
+For a complete list of Preview limitations (along with our plans to address and mitigate each one), refer to [this roadmap ticket](https://ecosystem.atlassian.net/browse/ROADMAP-228).
 
 ## Provisioning and de-provisioning
 
@@ -38,7 +39,7 @@ Your appâ€™s containerised service lifecycle begins when you upload the serviceâ
 
 The following diagram provides a high-level view of the container lifecycle:
 
-![Forge Container services lifecycle overview](https://dac-static.atlassian.com/platform/forge/images/containers-lifecycle-overview.png?_v=1.5800.2245)
+![Forge Container services lifecycle overview](https://dac-static.atlassian.com/platform/forge/images/containers-lifecycle-overview.png?_v=1.5800.2249)
 
 This lifecycle involves the following major phases:
 
@@ -81,7 +82,7 @@ Running container instances are shared across all app versions. If you have mult
 
 ### Service naming constraints
 
-The combined length of your service `key` and the environment ID must be fewer than 64 characters. Choose concise service key names to avoid deployment failures caused by this constraint.
+Your service `key` is limited to 19 characters due to infrastructure constraints. Choose concise service key names to avoid deployment failures.
 
 ### Tagging
 

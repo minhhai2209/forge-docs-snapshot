@@ -30,6 +30,7 @@ Command palette shortcuts are only fetched after the user opens the palette for 
 13
 14
 15
+16
 modules {}
 └─ jira:command []
    ├─ key (string) [Mandatory]
@@ -40,7 +41,8 @@ modules {}
    └─ target {} [Mandatory]
       ├─ page (string) [Optional]
       ├─ resource (string) [Optional]
-      └─ render (string) [Optional]
+      ├─ render (string) [Optional]
+      └─ viewportSize (string) [Optional]
 
 resources []
 ├─ key (string) [Mandatory]
@@ -73,6 +75,7 @@ The `target` object defines the action that occurs when a user invokes the comma
 | `page` | `string` | Either `page` or `resource` | The key of a `jira:globalPage` module defined in the manifest. When the command is invoked, the user is redirected to this page. |
 | `resource` | `string` | Either `page` or `resource` | The key of a static [resource](/platform/forge/manifest-reference/resources) entry. When the command is invoked, a modal dialog opens displaying the resource content. |
 | `render` | `'native'` | Yes, if using [UI Kit](/platform/forge/ui-kit/components/) | Indicates the resource uses [UI Kit](/platform/forge/ui-kit/components/). Required when using UI Kit with `resource`. |
+| `viewportSize` | `'small'`, `'medium'`, `'large'`, `'xlarge'`, `'max'`, `'resizable'` (Preview) or `{ width: string; height: string }` (Preview) |  | The [display size](/platform/forge/manifest-reference/resources) of `resource`. Can only be set if the module is using the `resource` property. See [resizable design guidelines](/platform/forge/apis-reference/ui-api-bridge/modal/#resizable-design-guidelines) for guidance and constraints. For the custom dimensions object, it accepts any common CSS size string for width and height, e.g. `'500px'`, `'60vh'`. |
 
 ## Available icons
 
@@ -119,9 +122,19 @@ modules:
       target:
         resource: main-resource
         render: native
+        viewportSize: large
       keywords:
         - my search term
         - another search term
+    - key: command-to-open-custom-sized-modal
+      title: Open my app's custom sized modal
+      shortcut: e x
+      target:
+        resource: main-resource
+        render: native
+        viewportSize:
+          width: '500px'
+          height: '60vh'
   jira:globalPage:
     - key: global-page
       resource: main-resource
@@ -137,4 +150,5 @@ resources:
 In this example:
 
 * The `command-to-open-global-page` command navigates to a global page when invoked via the shortcut `e e` or by selecting it from the command palette.
-* The `command-to-open-modal` command opens a modal dialog displaying the content from `main-resource` when invoked via `e z` or selected from the palette. The `keywords` property helps users find this command by searching for "my search term" or "another search term".
+* The `command-to-open-modal` command opens a large modal dialog displaying the content from `main-resource` when invoked via `e z` or selected from the palette. The `keywords` property helps users find this command by searching for "my search term" or "another search term".
+* The `command-to-open-custom-sized-modal` command opens a modal with custom dimensions (`500px` wide and `60vh` tall) when invoked via `e x` or selected from the palette.
