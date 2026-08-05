@@ -1,16 +1,9 @@
 # Forge changelog
 
-The `forge deploy` command now includes pre-deployment approval checks. Some changes, such as those triggering a major version upgrade, now require explicit developer acknowledgment before the deployment can proceed.
+Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
+When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our
 
-**What's changing**  
-When you run `forge deploy`, the CLI linter (`forge lint`) now checks for conditions that require manual approval. A common example is a **major version upgrade**, which occurs when you modify app scopes. Because major upgrades require site administrators to manually approve the update, the CLI now asks you to acknowledge this impact.
+[Privacy Policy](https://www.atlassian.com/legal/privacy-policy#additional-disclosures-for-ca-residents)
 
-If an approval is required, the deployment will pause and display the specific rule to approve (for example, `MAJOR_VERSION_RULE`).
-
-To proceed with the deployment, you must run:
-
-`forge deploy --approve <ruleName>`
-
-**What you need to do**
-
-For more information on why these approvals are required, see the documentation on [major version upgrades](https://developer.atlassian.com/platform/forge/versions/#major-version-upgrades "https://developer.atlassian.com/platform/forge/versions/#major-version-upgrades").
+.
+You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.

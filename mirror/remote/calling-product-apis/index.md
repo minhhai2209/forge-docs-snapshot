@@ -193,7 +193,7 @@ subject to the constraints of offline user impersonation.
 The `ttl` is the token lifetime in seconds. This can be used to cache a particular user token for a given installation and user ID, we
 recommend doing this if your app will make multiple impersonation calls for the same user.
 
-The rate limit for requesting user impersonation tokens using this mutation is 10,000 requests per minute, per app.
+This mutation has a rate limit for requesting user impersonation tokens. For details, see [Invocation limits](/platform/forge/limits-invocation/).
 
 ### Node.js example
 

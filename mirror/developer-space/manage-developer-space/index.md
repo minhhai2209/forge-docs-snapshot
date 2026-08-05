@@ -1,56 +1,9 @@
-# Manage Developer Space settings
+# Manage settings
 
-As a Developer Space admin, you can update your space’s profile, manage billing, copy its unique ID, and delete the space if needed. These settings help keep your workspace organized, branded, and secure.
+Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
+When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our
 
-## Accessing Developer Space settings
+[Privacy Policy](https://www.atlassian.com/legal/privacy-policy#additional-disclosures-for-ca-residents)
 
-1. In the [Developer Console](https://developer.atlassian.com/console/myapps/), select your Developer Space.
-2. From the navigation menu, select **Settings**.
-
-**Permissions:**
-
-* Only Admins can make changes in settings.
-* Developers and Viewers can view the settings page, but all options are disabled and no actions can be taken.
-
-## Developer Space profile
-
-Personalize your Developer Space to make it easier for your team to identify and manage.
-
-### Edit name and avatar
-
-Avatar uploading and editing is coming soon.
-
-* You can only edit the space name or avatar if the space has not been published on the Atlassian Marketplace.
-* If the space has been published, these details can only be updated from the [Marketplace Partner profile](https://marketplace.atlassian.com/).
-
-**To edit (if eligible):**
-
-1. Select the **edit** icon next to the name or avatar.
-2. Update the text or upload a new image (PNG, JPG, GIF, SVG, max 2MB, recommended 144x144px).
-3. Select **Save** to confirm or **Cancel** to discard changes.
-
-If no avatar is uploaded, a default avatar with the first letter of the space name is shown.
-
-## Developer Space ID
-
-Each Developer Space has a unique ID.
-
-* Select the **copy** icon to copy the ID.
-* Use this ID when transferring apps into your Developer Space.
-
-## Billing account
-
-The billing section is enabled for each developer space and displays a link to the [Billing Console](https://billing.atlassian.com/) for managing billing details.
-
-## Delete a Developer Space
-
-You can only delete a Developer Space if it has **no assigned apps**.
-
-1. If eligible, the **Delete Developer Space** button will be enabled.
-2. Select it to open the confirmation dialog.
-3. Review the warning message.
-4. Select **Delete** to confirm, or **Cancel** to abort.
-
-Deleting a Developer Space is permanent and can't be undone.
-
-If there are apps assigned, the delete button is disabled. Remove or transfer all apps first.
+.
+You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.

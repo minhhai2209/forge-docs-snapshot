@@ -8,20 +8,21 @@ It works in the
 [new issue view](https://support.atlassian.com/jira-core-cloud/docs/what-is-the-new-jira-issue-view/)
 but not the old issue view.
 
-![Example of an Issue panel](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-panel-demo-with-show-hide-from-work-item.png?_v=1.5800.2249)
+![Example of an Issue panel](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-panel-demo-with-show-hide-from-work-item.png?_v=1.5800.2253)
+
+Only Jira administrators can see the **Show for all work items** and **Hide from all work items** options in the issue panel menu.
 
 ## Manifest example
 
 ```
+```
 1
 2
-3
-4
-5
-6
-7
-8
-9
+```
+
+
+
+```
 modules:
   jira:issuePanel:
     - key: hello-world-issue-panel
@@ -31,6 +32,7 @@ modules:
       render: native
       title: Hello World!
       icon: https://developer.atlassian.com/platform/forge/images/icons/issue-panel-icon.svg
+```
 ```
 
 ## Properties

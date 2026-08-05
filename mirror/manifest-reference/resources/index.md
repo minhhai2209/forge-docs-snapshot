@@ -11,6 +11,12 @@ For Custom UI apps, the Forge platform hosts your static resources, enabling you
 The `resources` section of your `manifest.yml` controls the configuration of assets that
 you want to display in your app.
 
+This is an experimental [Early Access Program (EAP)](/platform/forge/whats-coming/#eap) feature, offered to selected users for testing and feedback purposes. EAP features are unsupported, not usable in production environments, and subject to change without notice.
+
+An optional flag to opt-out of the default bundling behavior of the Forge CLI for UI Kit resources, and provide a pre-built resource directory as the `path` instead. It accepts `manual@2026` as a value. See [packaging](/platform/forge/manifest-reference/packaging/standard/#ui-kit) for more details.
+
+-->
+
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
 | `key` | `string` | Yes | A key for the resource, which other modules can refer to. Must be unique within the manifest and have a maximum of 23 characters.  *Regex:* `^[a-zA-Z0-9_-]+$` |

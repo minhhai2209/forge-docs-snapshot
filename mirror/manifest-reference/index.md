@@ -74,10 +74,21 @@ If your app is running on the Javascript sandbox runtime, we strongly advise tha
 The `package` property lets you configure how the application's source code is
 packaged during deployment.
 
+This is an experimental [Early Access Program (EAP)](/platform/forge/whats-coming/#eap) feature, offered to selected users for testing
+and feedback purposes. EAP features are unsupported, not usable in production environments, and subject to change without notice.
+
+By default, Forge uses Webpack to bundle your application code
+together with its dependencies.
+To provide compiled application code yourself instead, set this to
+`manual@2026`. See <packaging> for
+more details.
+
+-->
+
 | Setting | Type | Description |
 | --- | --- | --- |
 | `extraFiles` | `string[]` | Extra files to copy to the deployed application. These can include application data, configuration files or additional programs the application might want to read or launch.  Each item in this list can point to a single file or a [glob pattern](https://www.npmjs.com/package/glob).  When the Forge function runs, the files matching the specified patterns are available in the application directory. |
-| `bundler` (EAP) | `string` | This is an experimental [Early Access Program (EAP)](/platform/forge/whats-coming/#eap) feature, offered to selected users for testing and feedback purposes. EAP features are unsupported, not usable in production environments, and subject to change without notice.  To start testing this feature, [register your app here](https://ecosystem.atlassian.net/servicedesk/customer/portal/1040/group/3496/create/18837).  By default, Forge uses Webpack to bundle your application code together with its dependencies. To compile your app code with TypeScript instead, specify `typescript` as your `bundler`. When you do:     * Forge will use the TypeScript version and configuration from   your application's dependencies; you can upgrade the TypeScript version   separately from the Forge CLI. * All `dependencies` of the application will be   packaged together with the application code, including all their   data files. This allows your Forge application to use, for   example, modules written in WebAssembly, or ones including   native binaries. * Including all dependencies might result in a larger package size   (compared to the default Webpack bundling). If the package size   exceeds the   [limits](/platform/forge/platform-quotas-and-limits/#app-limits),   the deployment will fail. * The app's `devDependencies` will not be packaged. In   addition, `@forge/react` and `@forge/bridge` packages will never   be packaged, as they are only used for UI Kit (and therefore not used by   back-end Forge functions). |
+| `path` (EAP) | `string` | This is an experimental [Early Access Program (EAP)](/platform/forge/whats-coming/#eap) feature, offered to selected users for testing and feedback purposes. EAP features are unsupported, not usable in production environments, and subject to change without notice.  Path where the compiled application code resides when using manual packaging. See <packaging> for details. |
 
 #### Reading packaged files
 
