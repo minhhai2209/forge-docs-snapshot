@@ -49,7 +49,7 @@ Unlike other Atlassian app APIs, the Teamwork Graph API is a GraphQL API. If you
 
 ## Example
 
-The following example shows a Jira full-page app that retrieves all Confluence pages and Jira work items created by the currently logged-in user.
+The following example shows a [Jira global page](/platform/forge/manifest-reference/modules/jira-global-page/) app that retrieves all Confluence pages and Jira work items created by the currently logged-in user.
 
 ### Manifest example
 
@@ -66,8 +66,8 @@ The following manifest declares the `read:graph:jira` scope to enable access to 
 ```
 # manifest.yml
 modules:
-  jira:fullPage:
-    - key: jira-full-page
+  jira:globalPage:
+    - key: jira-global-page
       resource: custom-ui-resource
       title: "My Teamwork Graph App"
 resources:

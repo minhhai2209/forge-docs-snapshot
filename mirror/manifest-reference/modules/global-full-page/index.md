@@ -173,7 +173,7 @@ Full page modules can be accessed using this URL format:
 **Where to find each value:**
 
 * **`<site-hostname>`**: Your site name
-* **`<installation-id>`**: The UUID of the app installation. Run `forge installations list` to find the UUID of the desired installation.
+* **`<installation-id>`**: The UUID of the app installation. Run `forge install list` to find the UUID of the desired installation.
 * **`<route-prefix>`**: Defined in your manifest under `routePrefix`
 * **`<app-route>`**: Optional — if your app code contains routing, it will appear under the `<app-route>` section of the URL.
 

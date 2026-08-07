@@ -181,11 +181,15 @@ import { WhereConditions } from '@forge/kvs';
 
 The `where` filtering method supports the following conditions:
 
-* `beginsWith`
-* `between`
-* `equalTo`
-* `greaterThan`, `lessThan`
-* `greaterThanEqualTo`, `lessThanEqualTo`
+| Condition | Supported attribute types |
+| --- | --- |
+| `beginsWith` | `string` |
+| `between` | `string`, `integer`, `float` |
+| `equalTo` | `string`, `integer`, `float`, `boolean` |
+| `greaterThan`, `lessThan` | `string`, `integer`, `float` |
+| `greaterThanEqualTo`, `lessThanEqualTo` | `string`, `integer`, `float` |
+
+Attributes declared as type `any` are not supported in filter conditions. Only typed attributes (`string`, `integer`, `float`, `boolean`) are supported. Using them results in a `422 Unprocessable Entity` error.
 
 ### beginsWith condition
 
@@ -267,13 +271,17 @@ In addition, the `and` and `or` methods are *in-memory* filters. Using them can 
 
 Both filtering methods support the following conditions:
 
-* `beginsWith`
-* `between`
-* `equalTo`, `notEqualTo`
-* `greaterThan`, `lessThan`
-* `greaterThanEqualTo`, `lessThanEqualTo`
-* `exists`, `notExists`
-* `contains`, `notContains`
+| Condition | Supported attribute types |
+| --- | --- |
+| `beginsWith` | `string` |
+| `between` | `string`, `integer`, `float` |
+| `equalTo`, `notEqualTo` | `string`, `integer`, `float`, `boolean` |
+| `greaterThan`, `lessThan` | `string`, `integer`, `float` |
+| `greaterThanEqualTo`, `lessThanEqualTo` | `string`, `integer`, `float` |
+| `exists`, `notExists` | `string`, `integer`, `float`, `boolean` |
+| `contains`, `notContains` | `string` |
+
+Attributes declared as type `any` are not supported in filter conditions. Only typed attributes (`string`, `integer`, `float`, `boolean`) are supported. Using them results in a `422 Unprocessable Entity` error.
 
 ## sort
 

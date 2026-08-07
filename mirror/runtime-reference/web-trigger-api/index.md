@@ -100,7 +100,7 @@ Deletes the provided web trigger URL. Deleted URLs, if reused, will not be able 
 
 
 ```
-await webTrigger.deleteUrl("example-web-trigger-key");
+await webTrigger.deleteUrl("https://1234.webtrigger.atlassian.app/public/5678");
 ```
 ```
 
