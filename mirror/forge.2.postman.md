@@ -1,7 +1,7 @@
 ```
 {
   "info": {
-    "_postman_id": "f8bb8b2e-8cf4-4857-ba96-bf12f88c3622",
+    "_postman_id": "35713ec6-591e-4f40-b9c2-2f87b4a24fc8",
     "name": "Forge Containers API",
     "description": "The Forge Containers Public API\n\n**Important:** The API base URL should be read from the `FORGE_EGRESS_PROXY_URL` environment variable.\nThe localhost URL in the servers section is for documentation purposes only.\n",
     "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
@@ -43,7 +43,7 @@
                 "value": "application/json"
               }
             ],
-            "description": "Returns all installations for the given app Id and environment.\n\nThis endpoint has a rate limit of 100 requests per minute per `appId`.\n\nSupports optional pagination via query parameters.\n\n**Example requests:**\n```\n# Returns up to the first 100 installations (default page size)\nGET /v1/installations\n\n# Returns up to the first 50 installations\nGET /v1/installations?pageSize=50\n\n# Returns up to the next 50 installations after the given cursor\nGET /v1/installations?pageSize=50&cursor=eyJhbGciOi...\n\n# Returns up to the next 100 installations after the given cursor (default page size)\nGET /v1/installations?cursor=eyJhbGciOi...\n```\n",
+            "description": "Returns all installations for the given app Id and environment. \nThis endpoint has a rate limit of 100 requests per minute per `appId`.\nSupports optional pagination via query parameters.\n\n**Limit:** [100 requests per minute per `appId`](/platform/forge/limits-containers/#limits).\n\n**Example requests:**\n```\n# Returns up to the first 100 installations (default page size)\nGET /v1/installations\n\n# Returns up to the first 50 installations\nGET /v1/installations?pageSize=50\n\n# Returns up to the next 50 installations after the given cursor\nGET /v1/installations?pageSize=50&cursor=eyJhbGciOi...\n\n# Returns up to the next 100 installations after the given cursor (default page size)\nGET /v1/installations?cursor=eyJhbGciOi...\n```\n",
             "auth": {
               "type": "bearer",
               "bearer": {
@@ -80,7 +80,7 @@
                 "value": "application/json"
               }
             ],
-            "description": "Returns detailed information about a single installation for the given installation ID. This endpoint has a rate limit of 10 requests per minute per `appId`.\n",
+            "description": "Returns detailed information about a single installation for the given installation ID. This endpoint has a rate limit of 10 requests per minute per `appId`.\n\n**Limit:** [10 requests per minute per `appId`](/platform/forge/limits-containers/#limits).\n",
             "auth": {
               "type": "bearer",
               "bearer": {
@@ -558,7 +558,7 @@
             "url": {
               "protocol": "{{protocol}}",
               "host": "{{host}}",
-              "path": "{{basePath}}atlassian/forge/installation/v1/dynamic/module",
+              "path": "{{basePath}}atlassian/forge/installation/v2/dynamic/module",
               "query": [
                 {
                   "key": "nextPageToken",
@@ -606,7 +606,7 @@
             "url": {
               "protocol": "{{protocol}}",
               "host": "{{host}}",
-              "path": "{{basePath}}atlassian/forge/installation/v1/dynamic/module",
+              "path": "{{basePath}}atlassian/forge/installation/v2/dynamic/module",
               "query": [],
               "variable": []
             },
@@ -631,6 +631,7 @@
                 "value": "application/json"
               }
             ],
+            "description": "Updates an existing dynamic module. The `key` in the URL path is authoritative; the request body does not include `key`.",
             "auth": {
               "type": "bearer",
               "bearer": {
@@ -651,7 +652,7 @@
             "url": {
               "protocol": "{{protocol}}",
               "host": "{{host}}",
-              "path": "{{basePath}}atlassian/forge/installation/v1/dynamic/module",
+              "path": "{{basePath}}atlassian/forge/installation/v2/dynamic/module",
               "query": [],
               "variable": []
             },
@@ -670,6 +671,7 @@
                 "value": "application/json"
               }
             ],
+            "description": "Creates a dynamic module. The module `key` is generated server-side as a UUID v4 and returned in the response.",
             "auth": {
               "type": "bearer",
               "bearer": {
@@ -690,7 +692,7 @@
             "url": {
               "protocol": "{{protocol}}",
               "host": "{{host}}",
-              "path": "{{basePath}}atlassian/forge/installation/v1/dynamic/module/:key",
+              "path": "{{basePath}}atlassian/forge/installation/v2/dynamic/module/:key",
               "query": [],
               "variable": [
                 {
@@ -732,7 +734,7 @@
             "url": {
               "protocol": "{{protocol}}",
               "host": "{{host}}",
-              "path": "{{basePath}}atlassian/forge/installation/v1/dynamic/module/:key",
+              "path": "{{basePath}}atlassian/forge/installation/v2/dynamic/module/:key",
               "query": [],
               "variable": [
                 {
@@ -805,7 +807,7 @@
                 "value": "application/json"
               }
             ],
-            "description": "Submit asynchronous events to the Forge events system.\nEvents are queued for processing and will be delivered to the specified queue.\n\n\nFor information on error types and handling, see [Async events API error handling](https://developer.atlassian.com/platform/forge/runtime-reference/async-events-api-error-handling/).\n",
+            "description": "Submit asynchronous events to the Forge events system.\nEvents are queued for processing and will be delivered to the specified queue.\n\nFor information on error types and handling, see [Async events API error handling](https://developer.atlassian.com/platform/forge/runtime-reference/async-events-api-error-handling/).\n",
             "auth": {
               "type": "bearer",
               "bearer": {
@@ -1437,7 +1439,7 @@
                 "value": "application/json"
               }
             ],
-            "description": "Retrieves custom entities matching the provided list of criteria using query conditions. See [Querying the Custom Entity Store](https://developer.atlassian.com/platform/forge/runtime-reference/storage-api-query-complex/) for more information about building complex queries.",
+            "description": "Retrieves custom entities matching the provided list of criteria using query conditions. See [Querying the Custom Entity Store](https://developer.atlassian.com/platform/forge/storage-reference/entities-api-query/) for more information about building complex queries.",
             "auth": {
               "type": "bearer",
               "bearer": {
@@ -2269,7 +2271,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"channelName\": \"forge-container-realtime-channel\",\n  \"claims\": {\n    \"allowedUsers\": [\n      \"user1\",\n      \"user2\"\n    ]\n  },\n  \"permissions\": [\n    \"subscribe\"\n  ]\n}"
+              "raw": "{\n  \"channelName\": \"forge-container-realtime-channel\",\n  \"claims\": {\n    \"allowedUsers\": [\n      \"user1\",\n      \"user2\"\n    ]\n  }\n}"
             }
           },
           "response": []

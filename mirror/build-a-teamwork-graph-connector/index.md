@@ -1022,6 +1022,8 @@ save objects.
 Use `forge tunnel` for debugging any issue while developing the app. This command displays your
 app’s logs in your terminal.
 
+For recommended development patterns, see [Development best practices](/platform/teamwork-graph/connector-requirements-and-best-practices/#development-best-practices).
+
 ## Get help
 
 Teamwork Graph connectors are under active development. If you hit a bug while following this tutorial, want to request a feature, or have a question about the Forge connector module or Connector SDK, [submit feedback, report an issue, or ask a question](https://ecosystem.atlassian.net/servicedesk/customer/portal/3763/group/-1) in the Atlassian Ecosystem Help Center.

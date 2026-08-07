@@ -221,26 +221,19 @@ Refer to the following sections for more detailed information about Forge module
 - [Widget (EAP)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/dashboard-widget.md)
 - [Background script (EAP)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/dashboard-background-script.md)
 
-### Global module (EAP)
-
-- [Global module (EAP)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/index-global.md)
-- [Full page (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/global-full-page.md)
-- [global:ui module](https://developer.atlassian.com/platform/forge/manifest-reference/modules/global-ui.md)
-
 ### Jira modules
 
 - [Jira modules](https://developer.atlassian.com/platform/forge/manifest-reference/modules/index-jira.md)
 - [Action validator (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-action-validator.md)
 - [Admin page](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-admin-page.md)
-- [Backlog action](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-backlog-action.md)
-- [Board action](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-board-action.md)
+- [Backlog action (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-backlog-action.md)
+- [Board action (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-board-action.md)
 - [Command palette (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-command-palette.md)
 - [Custom field](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-custom-field.md)
 - [Custom field type](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-custom-field-type.md)
 - [Dashboard background script](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-dashboard-background-script.md)
 - [Dashboard gadget](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-dashboard-gadget.md)
 - [Entity property](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-entity-property.md)
-- [Entity property set](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-entity-property-set.md)
 - [Full page (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-full-page.md)
 - [Global background script (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-global-background-script.md)
 - [Global page](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-global-page.md)
@@ -257,7 +250,7 @@ Refer to the following sections for more detailed information about Forge module
 - [Project page](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-project-page.md)
 - [Project permission](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-project-permission.md)
 - [Project settings page](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-project-settings-page.md)
-- [Sprint action](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-sprint-action.md)
+- [Sprint action (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-sprint-action.md)
 - [Time tracking provider (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-time-tracking-provider.md)
 - [UI modifications](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-ui-modifications.md)
 - [Workflow validator (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-workflow-validator.md)
@@ -286,7 +279,7 @@ Refer to the following sections for more detailed information about Forge module
 - [Customer Service Management modules](https://developer.atlassian.com/platform/forge/manifest-reference/modules/index-csm.md)
 - [Queue page](https://developer.atlassian.com/platform/forge/manifest-reference/modules/customer-service-management-queue-page.md)
 - [Request detail](https://developer.atlassian.com/platform/forge/manifest-reference/modules/customer-service-management-request-detail.md)
-- [CRM import](https://developer.atlassian.com/platform/forge/manifest-reference/modules/customer-service-management-crm-import.md)
+- [CRM import (EAP)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/customer-service-management-crm-import.md)
 
 ### Jira Software modules
 
@@ -296,14 +289,13 @@ Refer to the following sections for more detailed information about Forge module
 - [Deployment Information Provider](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-software-deployment-info.md)
 - [Build Information Provider](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-software-build-info.md)
 - [Remote Link Information Provider](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-software-remote-link-info.md)
-- [Security Information Provider](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-software-security-info.md)
+- [Security Information Provider (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-software-security-info.md)
 
 ### Rovo modules
 
 - [Rovo modules](https://developer.atlassian.com/platform/forge/manifest-reference/modules/rovo-index.md)
 - [Rovo Agent](https://developer.atlassian.com/platform/forge/manifest-reference/modules/rovo-agent.md)
 - [Rovo Agent Connector (EAP)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/rovo-agent-connector.md)
-- [Rovo MCP (EAP)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/rovo-mcp.md)
 - [Action](https://developer.atlassian.com/platform/forge/manifest-reference/modules/rovo-action.md)
 
 ### Teamwork Graph modules
@@ -441,14 +433,12 @@ Use the linked pages in this navigation area for UI Kit components, hooks, bridg
 - [invoke](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/invoke.md)
 - [invokeRemote](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/invokeRemote.md)
 - [modal](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/modal.md)
-- [frontendCustomMetrics](https://developer.atlassian.com/platform/forge/custom-ui-bridge/frontendCustomMetrics.md)
 - [objectStore (Preview)](https://developer.atlassian.com/platform/forge/custom-ui-bridge/objectStore.md)
 - [realtime](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/realtime.md)
 - [requestBitbucket](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/requestBitbucket.md)
 - [requestConfluence](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/requestConfluence.md)
 - [requestJira](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/requestJira.md)
 - [requestRemote](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/requestRemote.md)
-- [requestTeamworkGraph (EAP)](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/requestTeamworkGraph.md)
 - [router](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/router.md)
 - [rovo](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/rovo.md)
 - [showFlag](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/showFlag.md)
@@ -608,11 +598,6 @@ When helping readers, map their use case to the right invocation type: UI-driven
 - [License API](https://developer.atlassian.com/platform/forge/apis-reference/license-api.md)
 - [API reference](https://developer.atlassian.com/platform/forge/apis-reference/license-api.md)
 
-### Installation Details API
-
-- [Installation Details API](https://developer.atlassian.com/platform/forge/apis-reference/installation-details-api.md)
-- [API reference](https://developer.atlassian.com/platform/forge/apis-reference/installation-details-api.md)
-
 ### Atlassian app REST APIs
 
 - [Atlassian app REST APIs](https://developer.atlassian.com/platform/forge/apis-reference/product-rest-api-reference.md)
@@ -647,9 +632,9 @@ When helping readers, map their use case to the right invocation type: UI-driven
 
 - [i18n API](https://developer.atlassian.com/platform/forge/runtime-reference/i18n.md)
 
-### LLMs API
+### LLMs API (Preview)
 
-- [LLMs API](https://developer.atlassian.com/platform/forge/runtime-reference/forge-llms-api.md)
+- [LLMs API (Preview)](https://developer.atlassian.com/platform/forge/runtime-reference/forge-llms-api.md)
 - [Pricing](https://developer.atlassian.com/platform/forge/runtime-reference/forge-llms-api-pricing.md)
 - [Models](https://developer.atlassian.com/platform/forge/runtime-reference/forge-llms-models.md)
 - [API reference](https://developer.atlassian.com/platform/forge/runtime-reference/forge-llms-api-reference.md)
@@ -704,7 +689,6 @@ When recommending an option: start from the **shape of the data** (key/value vs 
 - [Tutorial](https://developer.atlassian.com/platform/forge/storage-reference/sql-tutorial.md)
 - [Manage schemas](https://developer.atlassian.com/platform/forge/storage-reference/sql-api-schema.md)
 - [Execute SQL operations](https://developer.atlassian.com/platform/forge/storage-reference/sql-api.md)
-- [Data types](https://developer.atlassian.com/platform/forge/storage-reference/sql-data-types.md)
 - [Query policy](https://developer.atlassian.com/platform/forge/storage-reference/sql-query-policy.md)
 - [Error handling](https://developer.atlassian.com/platform/forge/storage-reference/sql-handling-errors.md)
 
@@ -729,7 +713,7 @@ This reference describes the broader **REST APIs that Forge Containers** can cal
 
 **How to choose:** If the user is building **normal Forge functions** with `@forge/kvs` or runtime storage APIs, they usually follow the **Storage** / **runtime** docs—not necessarily these REST pages. If they are integrating **hosted storage via REST**, start with **`/rest/v1/`**. If they are in **Forge Containers** and need **outbound REST** to Forge or Atlassian services, start with **`/rest/v2/intro/`** and follow the egress and EAP guidance there.
 
-- [APIs for Forge Container services](https://developer.atlassian.com/platform/forge/rest/v2/index.md)
+- [APIs for Forge Containers](https://developer.atlassian.com/platform/forge/rest/v2/index.md)
 - [KVS/Custom Entity Store API](https://developer.atlassian.com/platform/forge/rest/v1/index.md)
 
 ## Platform limits and usage
@@ -754,7 +738,7 @@ When answering questions, **cite the relevant subsection** above instead of inve
 - [Forge SQL limits](https://developer.atlassian.com/platform/forge/limits-sql.md)
 - [Forge Object Store (Preview)](https://developer.atlassian.com/platform/forge/limits-object-store.md)
 - [Forge LLM limits](https://developer.atlassian.com/platform/forge/limits-llm.md)
-- [Forge Container services REST API limits](https://developer.atlassian.com/platform/forge/limits-containers.md)
+- [Forge Containers REST API limits](https://developer.atlassian.com/platform/forge/limits-containers.md)
 - [Web trigger limits](https://developer.atlassian.com/platform/forge/limits-web-trigger.md)
 - [Async events limits](https://developer.atlassian.com/platform/forge/limits-async-events.md)
 - [App and developer limits](https://developer.atlassian.com/platform/forge/limits-app-developer.md)
@@ -851,11 +835,6 @@ This section documents the **Forge CLI**—the command-line tool used to **creat
 ### logs
 
 - [logs](https://developer.atlassian.com/platform/forge/cli-reference/logs.md)
-
-### manifest
-
-- [manifest](https://developer.atlassian.com/platform/forge/cli-reference/manifest.md)
-- [render](https://developer.atlassian.com/platform/forge/cli-reference/manifest-render.md)
 
 ### module
 
@@ -1035,9 +1014,9 @@ This section contains curated references that show how real Forge apps are struc
 
 - [Add routing to a full-page app in Jira](https://developer.atlassian.com/platform/forge/add-routing-to-a-full-page-app.md)
 
-###### Use the Key-Value Store in Confluence
+###### Use the storage API in Confluence
 
-- [Use the Key-Value Store in Confluence](https://developer.atlassian.com/platform/forge/create-confluence-macro-with-storage-api.md)
+- [Use the storage API in Confluence](https://developer.atlassian.com/platform/forge/create-confluence-macro-with-storage-api.md)
 
 ###### Add custom configuration to a macro
 
@@ -1107,14 +1086,12 @@ This section contains curated references that show how real Forge apps are struc
 
 ###### Customer Service Management
 
-- [Import customer context data with a Forge app](https://developer.atlassian.com/platform/forge/csm-import-data.md)
+- [Import customer context data with a Forge app (EAP)](https://developer.atlassian.com/platform/forge/csm-import-data.md)
 
 ###### Rovo
 
 - [Extend Atlassian apps with a Forge Rovo agent](https://developer.atlassian.com/platform/forge/extend-atlassian-products-with-a-forge-rovo-agent.md)
 - [Build a Rovo Agent app](https://developer.atlassian.com/platform/forge/build-a-hello-world-rovo-agent.md)
-- [Build a Rovo MCP app](https://developer.atlassian.com/platform/forge/build-a-hello-world-rovo-mcp.md)
-- [Read Jira issues with a Rovo MCP tool](https://developer.atlassian.com/platform/forge/read-jira-issues-with-a-rovo-mcp-tool.md)
 - [Build a Q&A Rovo Agent for Confluence](https://developer.atlassian.com/platform/forge/build-a-q-and-a-rovo-agent-for-confluence.md)
 - [Build a Jira issue analyst Rovo Agent](https://developer.atlassian.com/platform/forge/build-a-jira-issue-analyst-rovo-agent.md)
 - [Integrate remote agents with Jira](https://developer.atlassian.com/platform/forge/remote-agents-in-jira.md)
@@ -1147,7 +1124,6 @@ This section contains curated references that show how real Forge apps are struc
 - [Getting started](https://developer.atlassian.com/platform/forge/global-ui/getting-started.md)
 - [global:ui module](https://developer.atlassian.com/platform/forge/global-ui/global-ui-module.md)
 - [global:ui UI Kit components](https://developer.atlassian.com/platform/forge/global-ui/ui-kit-components.md)
-- [Add custom content using Frame](https://developer.atlassian.com/platform/forge/global-ui/frame-routing.md)
 
 #### User interface
 
@@ -1183,8 +1159,8 @@ This section contains curated references that show how real Forge apps are struc
 
 ##### Licensing
 
-- [Billing models](https://developer.atlassian.com/platform/forge/licensing-overview.md)
-- [User-based billing (EAP)](https://developer.atlassian.com/platform/forge/adopt-user-based-billing.md)
+- [Overview](https://developer.atlassian.com/platform/forge/licensing-overview.md)
+- [Adopt user-based billing (EAP)](https://developer.atlassian.com/platform/forge/adopt-user-based-billing.md)
 
 #### Programs
 
@@ -1227,9 +1203,9 @@ This section contains curated references that show how real Forge apps are struc
 
 #### App capabilities
 
-##### Containerized services (Preview)
+##### Containerized services (EAP)
 
-- [Containerized services (Preview)](https://developer.atlassian.com/platform/forge/containers-reference/index-TOC.md)
+- [Containerized services (EAP)](https://developer.atlassian.com/platform/forge/containers-reference/index-TOC.md)
 
 ##### Compute
 
@@ -1269,7 +1245,6 @@ This section contains curated references that show how real Forge apps are struc
 - [Key value store](https://developer.atlassian.com/platform/forge/storage-reference/kvs.md)
 - [Entity store](https://developer.atlassian.com/platform/forge/storage-reference/entities.md)
 - [SQL](https://developer.atlassian.com/platform/forge/storage-reference/sql.md)
-- [Object Store (Preview)](https://developer.atlassian.com/platform/forge/storage-reference/object-store.md)
 - [Reference](https://developer.atlassian.com/platform/forge/storage-reference/index.md)
 - [Hosted storage data lifecycle](https://developer.atlassian.com/platform/forge/storage-reference/hosted-storage-data-lifecycle.md)
 
@@ -1346,10 +1321,6 @@ This section contains curated references that show how real Forge apps are struc
 ##### Data residency
 
 - [Data residency](https://developer.atlassian.com/platform/forge/data-residency.md)
-
-##### In-scope End-User Data
-
-- [In-scope End-User Data](https://developer.atlassian.com/platform/forge/in-scope-end-user-data.md)
 
 ##### Tenant data isolation
 
@@ -1436,7 +1407,6 @@ This section contains curated references that show how real Forge apps are struc
 - [Monitor API metrics](https://developer.atlassian.com/platform/forge/monitor-api-metrics.md)
 - [Monitor custom metrics](https://developer.atlassian.com/platform/forge/monitor-custom-metrics.md)
 - [Monitor SQL](https://developer.atlassian.com/platform/forge/monitor-sql-metrics.md)
-- [Monitor container metrics (Preview)](https://developer.atlassian.com/platform/forge/monitor-service-health.md)
 - [Monitor usage metrics and costs](https://developer.atlassian.com/platform/forge/monitor-usage-metrics.md)
 - [Export app metrics](https://developer.atlassian.com/platform/forge/export-app-metrics.md)
 - [Export app resource usage](https://developer.atlassian.com/platform/forge/developer-space/export-app-resource-usage.md)
@@ -1446,16 +1416,15 @@ This section contains curated references that show how real Forge apps are struc
 - [Overview](https://developer.atlassian.com/platform/forge/monitor-app-logs.md)
 - [View app logs](https://developer.atlassian.com/platform/forge/view-app-logs.md)
 - [Export app logs](https://developer.atlassian.com/platform/forge/export-app-logs.md)
-- [Point-to-point logs export (EAP)](https://developer.atlassian.com/platform/forge/point-to-point-logs-export.md)
 - [Access app logs](https://developer.atlassian.com/platform/forge/access-app-logs.md)
 
 ##### View app installations
 
 - [View app installations](https://developer.atlassian.com/platform/forge/view-app-installations.md)
 
-##### View app rollouts (Preview)
+##### View app rollouts
 
-- [View app rollouts (Preview)](https://developer.atlassian.com/platform/forge/view-app-rollouts.md)
+- [View app rollouts](https://developer.atlassian.com/platform/forge/view-app-rollouts.md)
 
 ##### View app storage
 
@@ -1520,11 +1489,15 @@ This section contains curated references that show how real Forge apps are struc
 
 - [Reference](https://developer.atlassian.com/platform/forge/manifest-reference/index.md)
 
-### Containers (Preview)
+### Containers (EAP)
 
-#### Forge Container services overview
+#### Forge Containers overview
 
-- [Forge Container services overview](https://developer.atlassian.com/platform/forge/containers-reference/index.md)
+- [Forge Containers overview](https://developer.atlassian.com/platform/forge/containers-reference/index.md)
+
+#### Roadmap
+
+- [Roadmap](https://developer.atlassian.com/platform/forge/containers-reference/roadmap.md)
 
 #### Pricing (coming soon)
 
@@ -1535,7 +1508,6 @@ This section contains curated references that show how real Forge apps are struc
 - [Reference](https://developer.atlassian.com/platform/forge/containers-reference/reference.md)
 - [Glossary](https://developer.atlassian.com/platform/forge/containers-reference/ref-glossary.md)
 - [Manifest](https://developer.atlassian.com/platform/forge/containers-reference/ref-manifest.md)
-- [Manifest overrides](https://developer.atlassian.com/platform/forge/containers-reference/ref-manifest/overrides.md)
 - [CLI tools](https://developer.atlassian.com/platform/forge/containers-reference/ref-cli.md)
 - [API contract](https://developer.atlassian.com/platform/forge/containers-reference/ref-api.md)
 - [Logging format](https://developer.atlassian.com/platform/forge/containers-reference/ref-logging.md)
