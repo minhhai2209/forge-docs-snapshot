@@ -14,14 +14,16 @@ but not the old issue view.
 ## Manifest example
 
 ```
-```
 1
 2
-```
-
-
-
-```
+3
+4
+5
+6
+7
+8
+9
+10
 modules:
   jira:issueContext:
     - key: hello-world-issue-context
@@ -32,7 +34,6 @@ modules:
       title: Hello World!
       description: A hello world issue context.
       label: Hello World!
-```
 ```
 
 ## Properties
