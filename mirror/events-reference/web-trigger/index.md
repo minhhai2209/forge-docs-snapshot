@@ -110,7 +110,7 @@ When no path parameters are provided, `userPath` is an empty string `""`.
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
 | `body` | `string` |  | HTTP response body sent back to the caller. |
-| `headers` | `object` |  | HTTP headers sent by the caller.  **Format**`nameOfTheHeader: array of strings`  **Example**`"Content-Type": ["application/json"]` |
+| `headers` | `object` |  | HTTP headers sent by the caller.  **Format**`nameOfTheHeader: array of strings`  **Example**`"Content-Type": ["application/json"]`  The following response headers are included by default in web trigger responses sent back to the caller:   * **X-Ratelimit-Limit**: The maximum number of requests allowed in the current window * **X-Ratelimit-Remaining**: The number of requests remaining in the current window * **X-Ratelimit-Reset**: The time (in seconds since epoch) when the rate limit window resets |
 | `statusCode` | `integer` | Yes | HTTP status code returned to the caller. |
 | `statusText` | `string` |  | Text returned to communicate status. The text provides context to the status code. |
 | `*` | `any` |  | Additional properties are provided to support forward compatibility. |

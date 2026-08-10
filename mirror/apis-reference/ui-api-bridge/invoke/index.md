@@ -14,10 +14,22 @@ Invocations from users, webtriggers, or scheduled triggers are subject to Forge'
 2
 3
 4
+5
+6
+7
+8
+9
+10
 function invoke(
   functionKey: string,
   payload?: { [key in number | string]: any }
 ): Promise<{ [key: string]: any } | void>;
+
+function invoke(
+  functionKey: string,
+  payload: { [key in number | string]: any } | undefined,
+  metadata: { rateLimitProperties?: boolean }
+): Promise<{ body: { [key: string]: any }; metadata: { rateLimitProperties?: object } } | void>;
 ```
 
 ## Arguments
@@ -25,10 +37,19 @@ function invoke(
 * **functionKey**: A string identifier for the resolver function to invoke with this method.
   This string should exactly match the `functionKey` in one of your resolver function definitions.
 * **payload**: Data that is passed into the resolver function.
+* **metadata**: Maps desired metadata fields to a boolean indicating whether the field should be included in the response metadata. Currently, the fields which can be specified are:
+  * `rateLimitProperties`: When set to `true`, rate limit information for the current invocation window is included in the response `metadata`.
 
 ## Returns
 
-* A `Promise` that resolves with the data returned from the invoked function.
+* If metadata is not requested: a `Promise` that resolves with the data returned from the invoked function.
+* If metadata is requested: a `Promise` that resolves to an object containing:
+  * **body**: The data returned from the invoked function.
+  * **metadata**: Requested metadata fields. Currently, this can include:
+    * `rateLimitProperties`: rate limit information for the current invocation window, containing:
+      * `rateLimitValue`: The maximum number of requests allowed in the current window
+      * `rateLimitRemaining`: The number of requests remaining in the current window
+      * `rateLimitReset`: The time (in seconds since epoch) when the rate limit window resets
 
 ## Example
 
@@ -43,7 +64,16 @@ function invoke(
 ```
 import { invoke } from '@forge/bridge';
 
+// Without metadata
 invoke('getText', { example: 'my-invoke-variable' }).then((data) => console.log(data));
+
+// With metadata
+invoke('getText', { example: 'my-invoke-variable' }, { rateLimitProperties: true }).then(({ body, metadata }) => {
+  // Log metadata for debugging purposes
+  console.log(JSON.stringify(metadata));
+
+  return body;
+});
 ```
 ```
 

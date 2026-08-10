@@ -1526,9 +1526,9 @@ This section contains curated references that show how real Forge apps are struc
 
 - [Forge Container services overview](https://developer.atlassian.com/platform/forge/containers-reference/index.md)
 
-#### Pricing (coming soon)
+#### Pricing
 
-- [Pricing (coming soon)](https://developer.atlassian.com/platform/forge/containers-reference/pricing.md)
+- [Pricing](https://developer.atlassian.com/platform/forge/containers-reference/pricing.md)
 
 #### Reference
 
