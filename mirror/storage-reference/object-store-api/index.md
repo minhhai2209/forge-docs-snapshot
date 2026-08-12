@@ -373,7 +373,7 @@ When generating a pre-signed upload URL through `createUploadUrl`, your request 
 | `length` | number | Yes | The byte size of the object. |
 | `checksum` | string | Yes | Hash digest of the file content, encoded as base64. Used to verify data integrity. |
 | `checksumType` | string | Yes | Algorithm used to generate the checksum. |
-| `ttlSeconds` | number | No | Allows you to set a custom TTL for an object. |
+| `ttlSeconds` | number | No | Allows you to set a custom TTL for an object. If omitted, the object won't expire. |
 | `overwrite` | boolean | No | Indicates whether to replace an existing object with the same key. Defaults to `true`. |
 | `cdn` | boolean | No | Whether to upload the object to the CDN bucket. Objects in the CDN bucket may be cached (defaults to `false`). |
 
@@ -480,7 +480,7 @@ When generating a pre-signed upload URL through `createPublicUploadUrl`, your re
 | `length` | number | Yes | The byte size of the object. |
 | `checksum` | string | Yes | Hash digest of the file content, encoded as base64. Used to verify data integrity. |
 | `checksumType` | string | Yes | Algorithm used to generate the checksum. |
-| `ttlSeconds` | number | No | Allows you to set a custom TTL for an object. |
+| `ttlSeconds` | number | No | Allows you to set a custom TTL for an object. If omitted, the object doesn't expire. |
 | `overwrite` | boolean | No | Indicates whether to replace an existing object with the same key. Defaults to `true`. |
 | `cdn` | boolean | No | Whether to upload the object to the CDN bucket. Objects in the CDN bucket may be cached (defaults to `false`). |
 

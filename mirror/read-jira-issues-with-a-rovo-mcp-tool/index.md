@@ -208,20 +208,20 @@ With your app installed, your tool is available to custom agents in Rovo Studio.
 1. In Jira, access Rovo by selecting **Ask Rovo** on the top menu.
 2. In the Rovo side panel, select the agent selector and go to **Create agent**.
 
-   ![example of the Rovo agent selector](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-mcp-agent-selector.png?_v=1.5800.2262)
+   ![example of the Rovo agent selector](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-mcp-agent-selector.png?_v=1.5800.2263)
 3. Select **skip to manual step** to open the agent configuration.
 
-   ![example of the create agent configuration screen](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-mcp-create-agent.png?_v=1.5800.2262)
+   ![example of the create agent configuration screen](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-mcp-create-agent.png?_v=1.5800.2263)
 4. In the agent configuration, find the **Tools** section and select **Add tools**.
 5. Scroll down to the **Connected apps** section, select your app, then select the **Get a Jira issue** tool exposed by your MCP module, and select **Add**.
 
-   ![example of adding the Get a Jira issue tool exposed by your app](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-mcp-issue-reader-add-tools.png?_v=1.5800.2262)
+   ![example of adding the Get a Jira issue tool exposed by your app](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-mcp-issue-reader-add-tools.png?_v=1.5800.2263)
 6. Your tool now appears under the agent's **Tools** section. Give your agent a name, for example *Issue lookup agent*, then select **Publish**.
 
-   ![example of the agent with the Get a Jira issue tool added](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-mcp-issue-reader-agent-with-tool.png?_v=1.5800.2262)
+   ![example of the agent with the Get a Jira issue tool added](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-mcp-issue-reader-agent-with-tool.png?_v=1.5800.2263)
 7. Use the agent selector to find and select your published agent.
 
-   ![example of selecting your published agent](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-mcp-select-agent.png?_v=1.5800.2262)
+   ![example of selecting your published agent](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-mcp-select-agent.png?_v=1.5800.2263)
 8. Chat with the agent and invoke your tool. Ask the agent to summarize an issue, for example, *Summarize KAN-3*, using a real issue key from your site.
 
 The agent calls your `get-issue` tool to fetch the issue's summary and status, then presents a summary. Rovo can enrich the reply with other issue details it has access to, such as the reporter and description. You should see a reply like:
@@ -245,7 +245,7 @@ The Jira issue KAN-3: "Rovo MCP test issue - issue reader tool" is a Task in the
 ```
 ```
 
-![example of the agent replying with the Jira issue summary and status](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-mcp-issue-reader-reply.png?_v=1.5800.2262)
+![example of the agent replying with the Jira issue summary and status](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-mcp-issue-reader-reply.png?_v=1.5800.2263)
 
 The value your function returns is what the agent shows the user, so returning more detail makes the tool
 more useful. For example, add the assignee to the response.
