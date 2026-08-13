@@ -586,13 +586,14 @@ If a path cannot be resolved (for example, the property doesn't exist on that en
 
 ### Supported entities
 
-Entity property filtering and enrichment currently supports properties on three Jira entity types:
+Entity property filtering and enrichment currently supports properties on four Jira entity types:
 
 | Entity | Expression path example |
 | --- | --- |
 | **Issue** | `event.runtime.issue.properties['key'].path` |
 | **Project** | `event.runtime.project.properties['key'].path` |
 | **User** | `event.runtime.user.properties['key'].path` |
+| **Issue type** | `event.runtime.issuetype.properties['key'].path` |
 
 ### Supported events
 
@@ -613,6 +614,8 @@ Entity property filtering and enrichment is supported for the following Jira For
 * `avi:jira:assigned:issue`
 
 For `issuelink` events, filtering is based on the **source** issue or project properties.
+
+Issue type properties (`event.runtime.issuetype.properties[...]`) are available for issue events (including `assigned`) and comment events. They aren't supported for worklog, issuelink, or attachment events because those payloads don't include issue type information.
 
 ### Limits and constraints
 

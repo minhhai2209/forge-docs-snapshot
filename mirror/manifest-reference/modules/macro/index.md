@@ -19,7 +19,7 @@ from the quick insert menu of the editor. The `macro` module is implemented by a
 
 On apps that use Custom UI, module content is displayed inside a [special Forge iframe](/platform/forge/custom-ui/iframe/) which has the [sandbox](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#sandbox) attribute configured. This means that HTML links (for example, `<a href="https://domain.tld/path">...</a>`) in this iframe won't be clickable. To make them clickable, use the [router.navigate](/platform/forge/custom-ui-bridge/router/#navigate) API from the `@forge/bridge` package.
 
-![Example of a macro](https://dac-static.atlassian.com/platform/forge/snippets/images/macro-example.png?_v=1.5800.2263)
+![Example of a macro](https://dac-static.atlassian.com/platform/forge/snippets/images/macro-example.png?_v=1.5800.2266)
 
 ## Manifest structure
 
@@ -42,9 +42,12 @@ modules {}
    ├─ title (string | i18n) [Mandatory]
    ├─ icon (string) [Optional]
    ├─ categories (string[]) [Optional]
-   ├─ unlicesedAccess (List<string>) [Optional]
+   ├─ unlicensedAccess (List<string>) [Optional]
    ├─ description (string | i18n) [Optional]
    ├─ hidden (boolean) [Optional]
+   ├─ static {} [Optional]
+      ├─ endpoint (string) [Optional]
+      └─ function (string) [Optional]
    └─ config (boolean | {} | config object) [Optional]
      ├─ icon (string) [Optional]
      ├─ title (string | i18n) [Optional]
@@ -102,6 +105,7 @@ resources []
 | `autoConvert.matchers.pattern` | `string` | Yes, if using `autoConvert` | A string that defines a specific URL pattern to be matched, using wildcards for variable parts of the URL, such as unique IDs.  * Use multiple wildcards to match multiple sub-paths. Do not include all sub-paths with a single wildcard. * Ensure URLs do not contain whitespace unless it is URL encoded. * Wildcards cannot be used in place of a protocol. Custom URL Schemes are supported See [examples](#matching-custom-url-schemes) * Maximum length of the pattern is 1024 characters. |
 | `emitsReadyEvent` | boolean | No | Defaults to `false`. An optional configuration to notify Confluence that the macro will send a `emitReadyEvent` when it has completed loading and is ready for export or further processing. This should be used with `view.emitReadyEvent()`. See the [view bridge function](/platform/forge/apis-reference/ui-api-bridge/view/#emitreadyevent) for more information. |
 | `unlicensedAccess` | `List<string>` |  | A list of unlicensed user types that can access this module. Valid values are: `unlicensed` (Guests Users), and `anonymous`. For more information, see [Access to Forge apps for unlicensed Confluence users](/platform/forge/access-to-forge-apps-for-unlicensed-users/#confluence-forge-modules). |
+| `static` | `{ function: string }` or `{ endpoint: string }` | No | Set the `function` property to specify the Forge function that handles static rendering.  Set the `endpoint` property if you are using [Forge Remote](/platform/forge/forge-remote-overview) to handle static rendering from a remote back end. |
 
 ### i18n object
 
@@ -653,5 +657,123 @@ permissions:
 Using a `<style>` tag or external stylesheet does not require this permission.
 
 This limitation only applies to Custom UI apps. UI Kit inline macros automatically resize to wrap their content without any additional configuration.
+
+## Static macros (EAP)
+
+Static macros are currently available through Forge's Early Access Program (EAP). EAP capabilities are experimental, unsupported, and subject to change without notice, and are not recommended for production use.
+
+For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
+
+Static macros are a performance-focused approach to rendering a macro. Instead of rendering the macro in an iframe, your app returns a set of [Atlassian Document Format (ADF)](/cloud/jira/platform/apis/document/structure) or [Confluence Storage Format](https://confluence.atlassian.com/doc/confluence-storage-format-790796544.html) nodes that will be converted to HTML and rendered view-only in a Confluence page.
+
+The rendering flow for a static macro works differently from other macros. Normally, Confluence places an iframe on the page to invoke your Forge app. For static macros, your Forge app will receive an array of `macros` to render. This minimizes Forge app invocations, particularly for pages with a large number of static macros.
+
+The Forge app receives a request in this format:
+
+### Request
+
+| Property | Type | Description |
+| --- | --- | --- |
+| `localId` | `string` | The ID of the Confluence page node |
+| `context` | `object` | An object containing information about the Confluence location the macro is rendered in |
+| `context.content.id` | `string` | The ID of the Confluence content |
+| `context.content.type` | `string` | The type of the Confluence content, for example, a page or space |
+| `context.content.version` | `string` | The version number of the Confluence content |
+| `context.space` | `object` | An object containing information about the space the Confluence content resides in |
+| `context.space.id` | `string` | The ID of the space |
+| `context.space.key` | `string` | The key of the space |
+| `config` | `object` | An object containing any [configuration](/platform/forge/ui-kit/hooks/use-config) set for the macro |
+| `extensionPayload` | `object` | If the macro is `bodied` then `extensionPayload` returns the configured body |
+
+The app must return a `{ renderedMacros }` object containing an array of objects matching this format:
+
+### Response
+
+| Property | Type | Required? | Description |
+| --- | --- | --- | --- |
+| `localId` | `string` | Yes | The ID of the Confluence page node. This must match what was sent in the request. If the `localId` returned is not recognized, the Confluence page will use the standard iframe render method. |
+| `contentType` | `string` | Yes | The content type being returned. This must be either `xhtml` or `adf`. |
+| `value` | `string` | Yes | The content that should be added to the page. It must match the specified `contentType`. |
+| `cache` | `object` | No | The cache configuration for the rendered response. If omitted, Confluence caches the response for 600 seconds (10 minutes) by default. |
+| `cache.ttlSeconds` | `number` | Yes, if using `cache` | The number of seconds to cache the rendered response. Set this to `0` if you don't want the response to be cached. (Required when `cache` is specified; there is no per-field default.) |
+
+### Example
+
+#### manifest.yml
+
+```
+```
+1
+2
+```
+
+
+
+```
+...
+modules:
+  macro:
+    - key: my-static-macro
+      resource: main
+      render: native
+      resolver:
+        function: regularIframeRender
+      static:
+        function: staticRender
+  function:
+    - key: regularIframeRender
+      handler: index.handler
+    - key: staticRender
+      handler: functions/macro.staticRender
+...
+```
+```
+
+```
+```
+1
+2
+```
+
+
+
+```
+// src/functions/macro.js
+
+export const staticRender = async (payload) => {
+  const renderedMacros = [];
+
+  payload?.macros?.forEach((macro) => {
+    const presetName = macro?.config?.presetName ?? "Default Name";
+
+    const value = {
+      version: 1,
+      type: "doc",
+      content: [
+        {
+          type: "paragraph",
+          content: [
+            {
+              type: "text",
+              text: `Hello to you, ${presetName}, which has been saved previously while editing the macro.`,
+            },
+          ],
+        },
+      ],
+    };
+
+    renderedMacros.push({
+      localId: macro.localId,
+      contentType: "adf",
+      value: JSON.stringify(value),
+      cache: {
+        ttlSeconds: 300,
+      },
+    });
+  });
+  return { renderedMacros };
+};
+```
+```
 
 ## Tutorials
