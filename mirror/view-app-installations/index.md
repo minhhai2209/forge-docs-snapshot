@@ -1,5 +1,7 @@
 # View app installations
 
+The installations page is being improved as part of an Early Access Program (EAP). Improvements include performance at scale, configurable columns, and an enhanced filter and search experience. To participate, [sign up for the EAP](https://ecosystem.atlassian.net/servicedesk/customer/portal/38/group/136/create/19578).
+
 You can view the sites onto which your app is installed. This helps you see the following details
 about your app:
 
@@ -16,7 +18,7 @@ To view app installations:
 
 The screen shows a list of all the sites and Atlassian apps that your app is currently connected to.
 
-![A list of sites the app is installed onto](https://dac-static.atlassian.com/platform/forge/images/installation-screen.svg?_v=1.5800.2266)
+![A list of sites the app is installed onto](https://dac-static.atlassian.com/platform/forge/images/installation-screen.svg?_v=1.5800.2271)
 
 You can sort the sites by **version** or **installation date** in ascending or descending order
 by clicking on the corresponding column header.

@@ -2,8 +2,10 @@
 
 The `jira:uiModifications` module is shared between Jira and Jira Service Management. It allows you to change the look and behavior of:
 
-* **Jira:** *Jira global issue create*, *Jira issue view* (Preview), and *Jira issue transition* (Preview)(the [new experience](https://community.atlassian.com/t5/Jira-articles/Now-GA-try-the-new-issue-transition-experience-in-Jira/ba-p/2734436))
-* **Jira Service Management:** *Jira Service Management request create portal* (Preview)
+* **Jira:** *Jira global issue create*, *Jira issue view* (Preview), and *Jira issue transition* (Preview) (the [new experience](https://community.atlassian.com/t5/Jira-articles/Now-GA-try-the-new-issue-transition-experience-in-Jira/ba-p/2734436))
+* **Jira Service Management:**
+  * *Jira Service Management request create portal* (Preview)
+  * *Jira Service Management agent view* (Preview), which covers the *global issue create*, *issue view*, and *issue transition* experiences in service projects
 
 This page documents how `jira:uiModifications` works for Jira. The module itself is the same but for Jira Service Management-specific views, see [Jira Service Management UI modifications](/platform/forge/manifest-reference/modules/jira-service-management-ui-modifications/).
 
@@ -14,16 +16,14 @@ The module is designed to be used in conjunction with the [UI modifications (app
 ## Manifest structure
 
 ```
+```
 1
 2
-3
-4
-5
-6
-7
-8
-9
-10
+```
+
+
+
+```
 modules {}
 └─ jira:uiModifications []
    ├─ key (string) [Mandatory]
@@ -34,6 +34,7 @@ modules {}
 resources []
 ├─ key (string) [Mandatory]
 └─ path (string) [Mandatory]
+```
 ```
 
 ## Properties
@@ -202,7 +203,7 @@ If you install and configure multiple UIM apps to run for a given combination of
 
 There may be conflicts when multiple apps attempt to modify the same field using the same [FieldAPI](/platform/forge/apis-reference/jira-api-bridge/uiModifications/#common-fieldapi) method. In such cases, app developers will receive conflict errors via the [onError](/platform/forge/apis-reference/jira-api-bridge/uiModifications/#error-handling) handler, and users will see corresponding notifications:
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/multi-app-conflict-notification.png?_v=1.5800.2266)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/multi-app-conflict-notification.png?_v=1.5800.2271)
 
 If the conflict happens, the changes applied by the app which finished running last will override changes from other apps.
 

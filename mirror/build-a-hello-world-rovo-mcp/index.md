@@ -1,8 +1,8 @@
 # Build a Rovo MCP hello world app
 
-Rovo MCP is available through Forge's Early Access Program (EAP). The EAP allows all Forge developers for testing and feedback. APIs and features in EAP are experimental, unsupported, subject to change without notice, and not recommended for production use.
+Rovo MCP is now in Preview, and therefore fully supported. However, it remains under active development and may be subject to shorter deprecation windows. Preview features are suitable for early adopters in production environments.
 
-For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
+Atlassian releases preview features so partners and developers can study, test, and integrate them before General Availability (GA). For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#forge-preview).
 
 When you use Rovo APIs, you must comply with the [Atlassian Acceptable Use Policy](https://www.atlassian.com/legal/acceptable-use-policy#disruption), including the section titled “Artificial intelligence offerings and features.” For the protection of our customers, Atlassian performs safety screening on Agents at our sole discretion. If we identify any issues with your Agent, we may take protective actions, such as preventing the Agent from being deployed or suspending your use of Rovo APIs. Where possible we will notify you of the nature of the issue, and you must use reasonable commercial efforts to correct the issue before deploying your Agent again.
 
@@ -189,17 +189,17 @@ With your app installed, your tool is available to custom agents in Rovo Studio.
 
 1. Access Rovo by selecting **Ask Rovo** on the top menu within the Atlassian app where you have installed your Forge app.
 2. In the Rovo side panel, select the agent selector and go to **Create agent**.
-   ![example of the Rovo agent selector](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-mcp-agent-selector.png?_v=1.5800.2266)
+   ![example of the Rovo agent selector](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-mcp-agent-selector.png?_v=1.5800.2271)
 3. Select **skip to manual step** to open the agent configuration.
-   ![example of the create agent configuration screen](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-mcp-create-agent.png?_v=1.5800.2266)
+   ![example of the create agent configuration screen](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-mcp-create-agent.png?_v=1.5800.2271)
 4. In the agent configuration, find the **Tools** section and select **Add tools**.
 5. Scroll down to the **Connected apps** section, select your app, then select the **Log a message** tool exposed by your MCP module, and select **Add**.
-   ![example of adding the tool exposed by your app](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-mcp-add-tools.png?_v=1.5800.2266)
+   ![example of adding the tool exposed by your app](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-mcp-add-tools.png?_v=1.5800.2271)
 6. Your tool now appears under the agent's **Tools** section. Give your agent a name, for example
    *Hello world logger agent*, then select **Publish**.
-   ![example of the agent with the tool added](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-mcp-agent-with-tool.png?_v=1.5800.2266)
+   ![example of the agent with the tool added](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-mcp-agent-with-tool.png?_v=1.5800.2271)
 7. Use the agent selector to find and select your published agent.
-   ![example of selecting your published agent](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-mcp-select-agent.png?_v=1.5800.2266)
+   ![example of selecting your published agent](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-mcp-select-agent.png?_v=1.5800.2271)
 8. Chat with the agent and invoke your tool. Ask the agent to log a message for you, for example,
    *Log the message "hello world"*.
      
@@ -209,7 +209,7 @@ With your app installed, your tool is available to custom agents in Rovo Studio.
 
 You should see a Forge log with your message:
 
-![example of your tool creating a Forge log](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-mcp-log.png?_v=1.5800.2266)
+![example of your tool creating a Forge log](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-mcp-log.png?_v=1.5800.2271)
 
 The Forge function in the `src/hello-world-mcp.js` file shapes the behavior of the tool:
 

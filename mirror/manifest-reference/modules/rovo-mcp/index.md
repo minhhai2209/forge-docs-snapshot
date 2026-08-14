@@ -1,8 +1,8 @@
-# Rovo MCP (EAP)
+# Rovo MCP (Preview)
 
-Rovo MCP is available through Forge's Early Access Program (EAP). The EAP allows all Forge developers for testing and feedback. APIs and features in EAP are experimental, unsupported, subject to change without notice, and not recommended for production use.
+Rovo MCP is now in Preview, and therefore fully supported. However, it remains under active development and may be subject to shorter deprecation windows. Preview features are suitable for early adopters in production environments.
 
-For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
+Atlassian releases preview features so partners and developers can study, test, and integrate them before General Availability (GA). For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#forge-preview).
 
 When you use Rovo APIs, you must comply with the [Atlassian Acceptable Use Policy](https://www.atlassian.com/legal/acceptable-use-policy#disruption), including the section titled “Artificial intelligence offerings and features.” For the protection of our customers, Atlassian performs safety screening on Agents at our sole discretion. If we identify any issues with your Agent, we may take protective actions, such as preventing the Agent from being deployed or suspending your use of Rovo APIs. Where possible we will notify you of the nature of the issue, and you must use reasonable commercial efforts to correct the issue before deploying your Agent again.
 

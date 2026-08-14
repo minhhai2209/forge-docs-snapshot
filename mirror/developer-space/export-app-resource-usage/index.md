@@ -225,3 +225,7 @@ query AppResourceUsageGroupedByContext(
 }
 ```
 ```
+
+## Extend usage metrics to cost-based insights
+
+The app resource usage API gives you usage metrics. To translate this into cost-based insights, you can query the [Commerce public APIs](/platform/commerce/rest/api-group-offerings/#api-group-offerings) using the Forge App Hosting offering ID: `59f614dc-f9d0-4fad-924d-bb9d707d33ab`.
