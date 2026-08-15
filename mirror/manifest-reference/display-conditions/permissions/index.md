@@ -1,56 +1,9 @@
 # Permissions
 
-You can control when a module is shown based on its permission state. Use this feature on modules that support `displayConditions.permissions`.
+Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
+When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our
 
-## What it does
+[Privacy Policy](https://www.atlassian.com/legal/privacy-policy#additional-disclosures-for-ca-residents)
 
-Permission-based display conditions let you show a module only when specific permissions are in effect. Each condition maps to a corresponding section in the [Permissions](/platform/forge/manifest-reference/permissions/) manifest reference.
-
-| Type | Description |
-| --- | --- |
-| `scopes` | Shows the module only when the app has (or the user is in a context that implies) certain OAuth scopes. |
-| `external.fetch.backend` | Shows the module only when the specified egress addresses are allowed (e.g. `*.example.com`, or an object with `address`). |
-| `external.fetch.client` | Shows the module only when the specified egress addresses are allowed (e.g. `*.example.com`, or an object with `address`). |
-| `external.fonts` | Shows the module only when the specified font sources are allowed. |
-| `external.images` | Shows the module only when the specified image sources are allowed. |
-| `external.scripts` | Shows the module only when the specified script sources are allowed. |
-| `external.styles` | Shows the module only when the specified style sources are allowed. |
-| `external.frames` | Shows the module only when the specified frame sources are allowed. |
-| `external.media` | Shows the module only when the specified media sources are allowed. |
-
-Values can be a string (for a single scope or address) or an array (for multiple values). For `backend` and `client`, you can also use an object with an `address` property, matching the [manifest permissions](/platform/forge/manifest-reference/permissions/#egress-permissions) format.
-
-## Example
-
-In the example below, two Jira issue panel modules use permission-based display conditions: one for a scope, and one for external fetch (backend and client).
-
-```
-```
-1
-2
-```
-
-
-
-```
-modules:
-  jira:issuePanel:
-    - key: panel-with-scope
-      title: Panel with scope condition
-      function: panel-func
-      displayConditions:
-        permissions:
-          scopes: "read:jira-work"
-    - key: panel-with-fetch-backend
-      title: Panel with fetch backend condition
-      function: panel-func
-      displayConditions:
-        permissions:
-          external:
-            fetch:
-              backend: "*.example.com"
-              client: "https://client.example.com"
-```
-```
-
-## More information
+.
+You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
