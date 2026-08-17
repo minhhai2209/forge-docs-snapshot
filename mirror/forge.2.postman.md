@@ -1,7 +1,7 @@
 ```
 {
   "info": {
-    "_postman_id": "7f7c2e40-e857-4c1d-87af-28c8ec9229dc",
+    "_postman_id": "21873405-944c-4126-8d6e-10d49e8522dd",
     "name": "Forge Containers API",
     "description": "The Forge Containers Public API\n\n**Important:** The API base URL should be read from the `FORGE_EGRESS_PROXY_URL` environment variable.\nThe localhost URL in the servers section is for documentation purposes only.\n",
     "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
@@ -2270,6 +2270,112 @@
             "body": {
               "mode": "raw",
               "raw": "{\n  \"channelName\": \"forge-container-realtime-channel\",\n  \"claims\": {\n    \"allowedUsers\": [\n      \"user1\",\n      \"user2\"\n    ]\n  },\n  \"permissions\": [\n    \"subscribe\"\n  ]\n}"
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Forge WebTriggers",
+      "description": "APIs for creating, listing, and deleting Forge web trigger URLs.",
+      "item": [
+        {
+          "name": "Create a web trigger URL",
+          "request": {
+            "url": {
+              "protocol": "{{protocol}}",
+              "host": "{{host}}",
+              "path": "{{basePath}}forge/webtrigger/url",
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "header": [
+              {
+                "description": "",
+                "disabled": false,
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "description": "",
+                "disabled": false,
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "description": "Creates a public invocation URL for the supplied web trigger module key.",
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "type": "string"
+              }
+            },
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete a web trigger URL",
+          "request": {
+            "url": {
+              "protocol": "{{protocol}}",
+              "host": "{{host}}",
+              "path": "{{basePath}}forge/webtrigger/url",
+              "query": [
+                {
+                  "key": "url",
+                  "value": "{{url}}",
+                  "disabled": false,
+                  "description": "The complete public web trigger URL to delete."
+                }
+              ],
+              "variable": []
+            },
+            "method": "DELETE",
+            "header": [],
+            "description": "Deletes a web trigger URL using the complete public URL returned when it was created.",
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "type": "string"
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "List web trigger URLs",
+          "request": {
+            "url": {
+              "protocol": "{{protocol}}",
+              "host": "{{host}}",
+              "path": "{{basePath}}forge/webtrigger/urls",
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "header": [
+              {
+                "description": "",
+                "disabled": false,
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "description": "Returns all web trigger URLs available to the app.",
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "type": "string"
+              }
             }
           },
           "response": []

@@ -1118,6 +1118,7 @@ This section contains curated references that show how real Forge apps are struc
 - [Build a Q&A Rovo Agent for Confluence](https://developer.atlassian.com/platform/forge/build-a-q-and-a-rovo-agent-for-confluence.md)
 - [Build a Jira issue analyst Rovo Agent](https://developer.atlassian.com/platform/forge/build-a-jira-issue-analyst-rovo-agent.md)
 - [Integrate remote agents with Jira](https://developer.atlassian.com/platform/forge/remote-agents-in-jira.md)
+- [Integrate remote agents with Jira (A2A 0.3)](https://developer.atlassian.com/platform/forge/remote-agents-in-jira-a2a-0.3.md)
 - [Migrate remote agents in Jira from A2A 0.3 to 1.0](https://developer.atlassian.com/platform/forge/migrate-remote-agents-in-jira-from-a2a-0.3-to-1.0.md)
 
 ###### Teamwork Graph

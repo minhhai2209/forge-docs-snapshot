@@ -6,7 +6,7 @@ For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/
 
 The `rovo:agentConnector` module allows you to integrate remote AI agents hosted on external infrastructure into Jira. Once a remote agent is registered, users can interact with them in a similar manner to other users and Rovo agents: assigning them work items, @mentioning them in comments, and chatting with them via the Rovo Chat panel.
 
-Use this module to integrate Jira with AI agents residing outside of the Atlassian platform (such as GitHub Copilot, Cursor Background Agents, or Box AI Agents).
+Use this module to integrate Jira with AI agents residing outside of the Atlassian platform (such as GitHub Copilot, Cursor Background Agents, or Box AI Agents). New integrations should target A2A 1.0. For implementation guidance, see [Integrate remote agents with Jira](/platform/forge/remote-agents-in-jira/).
 
 ## Requirement: Agent2Agent protocol server
 
@@ -30,7 +30,7 @@ During the EAP, apps using Rovo Agent Connector:
 | `streaming=false` (sync invocation) | 55s |
 | `streaming=true` (SSE stream) | 900s (15min) |
 
-Note that in case of timeouts during the streaming requests, the product (ie, Jira) will attempt to reconnect automatically to the remote agent.
+Note that in case of timeouts during the streaming requests, Jira will attempt to reconnect automatically to the remote agent.
 
 ## System User implications
 
@@ -110,10 +110,12 @@ In this structure:
 
 ### A2A Protocols
 
+For new integrations, set `agent2Agent.version` to `1.0`. Use `0.3` only for deprecated A2A 0.3-era integrations or temporary migration scenarios.
+
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
 | `agent2Agent` | `object` | Yes | Configures communication using the Agent2Agent (A2A) protocol. Currently, only `jsonRpcTransport` is supported. |
-| `agent2Agent` `.version` | `string` | Yes | The version of the A2A protocol to use.  Valid values are `0.3` or `1.0`  See [A2A protocol versioning](https://a2a-protocol.org/latest/whats-new-v1/) for more details. |
+| `agent2Agent` `.version` | `string` | Yes | The version of the A2A protocol to use.  Valid values are `1.0` and `0.3`. Use `1.0` for new integrations. Use `0.3` only to preserve compatibility with existing A2A 0.3-era implementations during migration.  See [A2A protocol versioning](https://a2a-protocol.org/latest/whats-new-v1/) for more details. |
 | `agent2Agent` `.jsonRpcTransport` | `object` | Yes | Enables Agent2Agent protocol over JSON-RPC 2.0 transport.  See [Transport properties](#transport-properties) for more configuration details |
 
 ### Transport properties
@@ -148,7 +150,7 @@ modules:
         - jira
       protocols:
         agent2Agent:
-          version: '0.3'
+          version: '1.0'
           jsonRpcTransport:
             endpoint: a2a-json-rpc-endpoint
             streaming: true
