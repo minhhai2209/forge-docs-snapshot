@@ -10,7 +10,7 @@ This tutorial describes how to make a Forge app that uses highlighted text from 
 You might use this technique in a dictionary app, a custom glossary, or any app that requires users
 to highlight text on a page.
 
-![Confluence context menu](https://dac-static.atlassian.com/platform/forge/images/context-menu.png?_v=1.5800.2272)
+![Confluence context menu](https://dac-static.atlassian.com/platform/forge/images/context-menu.png?_v=1.5800.2279)
 
 To create the app, you'll learn how to:
 
@@ -30,10 +30,19 @@ To complete this tutorial, you need the following:
 * The latest version of UI Kit. To update your version, navigate to the app's top-level
   directory, and run `npm install @forge/ui@latest --save` on the command line.
 
-### Set up a cloud developer site
+### Set up a development site
 
-An Atlassian cloud developer site lets you install and test your app on
-Atlassian apps including Confluence and Jira. If you don't have one yet, set it up now:
+You need an Atlassian site where you can install and test your app.
+
+You can provision a Forge demo development site from the CLI. Demo sites include realistic seeded
+data and enterprise editions of Jira, Confluence, Jira Service Management, and Rovo.
+
+To provision a demo site before installing an app, run:
+
+Alternatively, deploy your app and run `forge install --demo-site`. The CLI reuses your latest
+active demo site, or offers to provision one if none exists.
+
+Alternatively, create a traditional Atlassian cloud developer site:
 
 1. Go to <http://go.atlassian.com/cloud-dev> and
    create a site using the email address associated with your Atlassian account.
@@ -43,7 +52,7 @@ You can install your app to multiple Atlassian sites. However, app
 data won't be shared between separate Atlassian apps, sites,
 or Forge environments.
 
-The limits on the numbers of users you can create are as follows:
+The following user limits apply to traditional cloud developer sites:
 
 * Confluence: 5 users
 * Jira Service Management: 1 agent
@@ -109,9 +118,28 @@ about the manifest file.
 Build, deploy, and install the app to see it in your Confluence site.
 
 1. Navigate to the app's top-level directory and deploy your app by running:
-2. Install your app by running:
-3. Select your Atlassian context using the arrow keys and press the enter key.
-4. Enter the URL for your development site. For example, *example.atlassian.net*.
+2. Install your app using one of the following commands:
+
+   To install to your latest active Forge demo development site, or provision one if needed:
+
+   ```
+   ```
+   1
+   2
+   ```
+
+
+
+   ```
+   forge install --demo-site
+   ```
+   ```
+
+   Demo sites include realistic seeded data and are active for 90 days by default.
+
+   To select an existing Atlassian site:
+3. If prompted, select your Atlassian context using the arrow keys and press the enter key.
+4. If prompted, enter the URL for your development site. For example, *example.atlassian.net*.
    [View a list of your active sites at Atlassian administration](https://admin.atlassian.com/).
 
 Once the *successful installation* message appears, your app is installed and ready
@@ -172,7 +200,7 @@ use the [useProductContext](https://developer.atlassian.com/platform/forge/ui-ki
 4. Open a Confluence page and select some text. When the menu appears, click the dropdown
    button and select your app.
 
-   ![App displaying selected text](https://dac-static.atlassian.com/platform/forge/images/context-menu-highlighted-text.png?_v=1.5800.2272)
+   ![App displaying selected text](https://dac-static.atlassian.com/platform/forge/images/context-menu-highlighted-text.png?_v=1.5800.2279)
 
    In the code from this step:
 

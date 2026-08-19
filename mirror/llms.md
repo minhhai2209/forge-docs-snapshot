@@ -514,6 +514,7 @@ When advising readers: pick the **right source** (product event vs schedule vs H
 - [Compass events](https://developer.atlassian.com/platform/forge/events-reference/compass.md)
 - [Confluence events](https://developer.atlassian.com/platform/forge/events-reference/confluence.md)
 - [Jira events](https://developer.atlassian.com/platform/forge/events-reference/jira.md)
+- [Jira Service Management events](https://developer.atlassian.com/platform/forge/events-reference/jira-service-management.md)
 - [Jira Software events](https://developer.atlassian.com/platform/forge/events-reference/jira-software.md)
 - [Expressions playground](https://developer.atlassian.com/platform/forge/events-reference/expressions-playground.md)
 
@@ -796,6 +797,14 @@ This section documents the **Forge CLI**—the command-line tool used to **creat
 - [build](https://developer.atlassian.com/platform/forge/cli-reference/build.md)
 - [list](https://developer.atlassian.com/platform/forge/cli-reference/build-list.md)
 
+### containers
+
+- [containers](https://developer.atlassian.com/platform/forge/cli-reference/containers.md)
+- [create](https://developer.atlassian.com/platform/forge/cli-reference/containers-create.md)
+- [get-login](https://developer.atlassian.com/platform/forge/cli-reference/containers-get-login.md)
+- [delete](https://developer.atlassian.com/platform/forge/cli-reference/containers-delete.md)
+- [docker-login](https://developer.atlassian.com/platform/forge/cli-reference/containers-docker-login.md)
+
 ### create
 
 - [create](https://developer.atlassian.com/platform/forge/cli-reference/create.md)
@@ -878,6 +887,12 @@ This section documents the **Forge CLI**—the command-line tool used to **creat
 - [settings](https://developer.atlassian.com/platform/forge/cli-reference/settings.md)
 - [list](https://developer.atlassian.com/platform/forge/cli-reference/settings-list.md)
 - [set](https://developer.atlassian.com/platform/forge/cli-reference/settings-set.md)
+- [delete](https://developer.atlassian.com/platform/forge/cli-reference/settings-delete.md)
+
+### site
+
+- [site](https://developer.atlassian.com/platform/forge/cli-reference/site.md)
+- [provision](https://developer.atlassian.com/platform/forge/cli-reference/site-provision.md)
 
 ### storage
 
@@ -937,7 +952,8 @@ This section contains curated references that show how real Forge apps are struc
 
 #### Getting started
 
-- [Getting started](https://developer.atlassian.com/platform/forge/getting-started.md)
+- [Overview](https://developer.atlassian.com/platform/forge/getting-started.md)
+- [Provision a demo development site](https://developer.atlassian.com/platform/forge/provision-a-demo-development-site.md)
 
 #### Introduction to Forge
 

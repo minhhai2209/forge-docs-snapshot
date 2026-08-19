@@ -26,10 +26,19 @@ this tutorial.
 Forge apps can't be viewed by anonymous users. When testing a Forge app, you should be logged in to your
 Atlassian cloud developer site.
 
-### Set up a cloud developer site
+### Set up a development site
 
-An Atlassian cloud developer site lets you install and test your app on
-Atlassian apps including Confluence and Jira. If you don't have one yet, set it up now:
+You need an Atlassian site where you can install and test your app.
+
+You can provision a Forge demo development site from the CLI. Demo sites include realistic seeded
+data and enterprise editions of Jira, Confluence, Jira Service Management, and Rovo.
+
+To provision a demo site before installing an app, run:
+
+Alternatively, deploy your app and run `forge install --demo-site`. The CLI reuses your latest
+active demo site, or offers to provision one if none exists.
+
+Alternatively, create a traditional Atlassian cloud developer site:
 
 1. Go to <http://go.atlassian.com/cloud-dev> and
    create a site using the email address associated with your Atlassian account.
@@ -39,7 +48,7 @@ You can install your app to multiple Atlassian sites. However, app
 data won't be shared between separate Atlassian apps, sites,
 or Forge environments.
 
-The limits on the numbers of users you can create are as follows:
+The following user limits apply to traditional cloud developer sites:
 
 * Confluence: 5 users
 * Jira Service Management: 1 agent
@@ -157,9 +166,28 @@ You must run the `forge deploy` command before `forge install` because an instal
 links your deployed app to an Atlassian site.
 
 1. Navigate to the app's top-level directory and deploy your app by running:
-2. Install your app by running:
-3. Select your Atlassian context using the arrow keys and press the enter key.
-4. Enter the URL for your development site. For example, *example.atlassian.net*.
+2. Install your app using one of the following commands:
+
+   To install to your latest active Forge demo development site, or provision one if needed:
+
+   ```
+   ```
+   1
+   2
+   ```
+
+
+
+   ```
+   forge install --demo-site
+   ```
+   ```
+
+   Demo sites include realistic seeded data and are active for 90 days by default.
+
+   To select an existing Atlassian site:
+3. If prompted, select your Atlassian context using the arrow keys and press the enter key.
+4. If prompted, enter the URL for your development site. For example, *example.atlassian.net*.
    [View a list of your active sites at Atlassian administration](https://admin.atlassian.com/).
 
 Once the *successful installation* message appears, your app is installed and ready
@@ -174,7 +202,7 @@ With your app installed, it's time to see the app on an issue.
    [Learn more about Jira issues](https://support.atlassian.com/jira-software-cloud/docs/create-and-work-with-issues/).
 2. Open the issue. In the issue view, select the **Apps** button (shown as a grid icon in the top-right area of the issue) and select your app from the list. Your app should display like the example below.
 
-![An issue panel showing in a Jira issue view](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-panel-demo-with-show-hide-from-work-item.png?_v=1.5800.2272)
+![An issue panel showing in a Jira issue view](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-panel-demo-with-show-hide-from-work-item.png?_v=1.5800.2279)
 
 3. To view new changes in your app, run `forge deploy` again, or run `forge tunnel`.
    This is explained fully in the next section.
@@ -251,7 +279,7 @@ For important caveats on how `forge tunnel` works, see
 In the next tutorial, you'll learn how to make API calls to Jira using Forge. This tutorial
 uses the `forge tunnel`, so make sure you are familiar with using this command.
 
-[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.2272)](/platform/forge/call-a-jira-api/)
+[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.2279)](/platform/forge/call-a-jira-api/)
 
 ## Developing for Atlassian Government Cloud
 

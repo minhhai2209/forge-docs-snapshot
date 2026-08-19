@@ -9,7 +9,7 @@ Ask for help on our Developer Community
 This tutorial describes how to create a Forge app that checks Jira issues are assigned when the
 issue transitions. You'll do this using a Jira workflow validator.
 
-![Jira board showing a notification message "The issue must have an assignee before transitioning."](https://dac-static.atlassian.com/platform/forge/images/jira-validator-block-transition.png?_v=1.5800.2272)
+![Jira board showing a notification message "The issue must have an assignee before transitioning."](https://dac-static.atlassian.com/platform/forge/images/jira-validator-block-transition.png?_v=1.5800.2279)
 
 If you prefer learning by looking at code, see the [Open Pull Requests Validator]
 (<https://bitbucket.org/atlassian/forge-open-pull-requests-validator/>) example app for a more complex
@@ -27,10 +27,19 @@ To complete this tutorial, you need the following:
 * A Jira Cloud company-managed project. You need to be an admin on the project to configure the workflow. We
   use a Jira Software Kanban project in this tutorial.
 
-### Set up a cloud developer site
+### Set up a development site
 
-An Atlassian cloud developer site lets you install and test your app on
-Atlassian apps including Confluence and Jira. If you don't have one yet, set it up now:
+You need an Atlassian site where you can install and test your app.
+
+You can provision a Forge demo development site from the CLI. Demo sites include realistic seeded
+data and enterprise editions of Jira, Confluence, Jira Service Management, and Rovo.
+
+To provision a demo site before installing an app, run:
+
+Alternatively, deploy your app and run `forge install --demo-site`. The CLI reuses your latest
+active demo site, or offers to provision one if none exists.
+
+Alternatively, create a traditional Atlassian cloud developer site:
 
 1. Go to <http://go.atlassian.com/cloud-dev> and
    create a site using the email address associated with your Atlassian account.
@@ -40,7 +49,7 @@ You can install your app to multiple Atlassian sites. However, app
 data won't be shared between separate Atlassian apps, sites,
 or Forge environments.
 
-The limits on the numbers of users you can create are as follows:
+The following user limits apply to traditional cloud developer sites:
 
 * Confluence: 5 users
 * Jira Service Management: 1 agent
@@ -228,9 +237,28 @@ Requests here can be made with `api.asUser()` construct subject to conditions ou
 ## Deploy and install your app
 
 1. Navigate to the app's top-level directory and deploy your app by running:
-2. Install your app by running:
-3. Select your Atlassian context using the arrow keys and press the enter key.
-4. Enter the URL for your development site. For example, *example.atlassian.net*.
+2. Install your app using one of the following commands:
+
+   To install to your latest active Forge demo development site, or provision one if needed:
+
+   ```
+   ```
+   1
+   2
+   ```
+
+
+
+   ```
+   forge install --demo-site
+   ```
+   ```
+
+   Demo sites include realistic seeded data and are active for 90 days by default.
+
+   To select an existing Atlassian site:
+3. If prompted, select your Atlassian context using the arrow keys and press the enter key.
+4. If prompted, enter the URL for your development site. For example, *example.atlassian.net*.
    [View a list of your active sites at Atlassian administration](https://admin.atlassian.com/).
 
 Once the *successful installation* message appears, your app is installed and ready
@@ -244,7 +272,7 @@ Start using the app by adding it as a validator in the workflow of a Jira Softwa
 1. Open [Advanced workflow
    configuration](https://confluence.atlassian.com/adminjiracloud/advanced-workflow-configuration-776636620.html#Advancedworkflowconfiguration-validators) and follow the instructions to add a
    validator. Select the validator that matches the `name` you defined in the manifest (1).
-   ![The add validator to transition screen showing the Forge app is selected from a list](https://dac-static.atlassian.com/platform/forge/images/jira-add-validator.png?_v=1.5800.2272)
+   ![The add validator to transition screen showing the Forge app is selected from a list](https://dac-static.atlassian.com/platform/forge/images/jira-add-validator.png?_v=1.5800.2279)
 2. Publish the workflow updates.
 
 ## View your app
@@ -258,7 +286,7 @@ With your app installed and in your workflow, see it in action.
 
 You'll see the following error message display.
 
-![Jira board showing a notification message "The issue must have an assignee before transitioning."](https://dac-static.atlassian.com/platform/forge/images/jira-validator-block-transition.png?_v=1.5800.2272)
+![Jira board showing a notification message "The issue must have an assignee before transitioning."](https://dac-static.atlassian.com/platform/forge/images/jira-validator-block-transition.png?_v=1.5800.2279)
 
 The location of the error depends on how you transition the issue. For example, when you transition
 the issue using the controls on the issue view, the error displays on the issue view.

@@ -19,7 +19,7 @@ from the quick insert menu of the editor. The `macro` module is implemented by a
 
 On apps that use Custom UI, module content is displayed inside a [special Forge iframe](/platform/forge/custom-ui/iframe/) which has the [sandbox](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#sandbox) attribute configured. This means that HTML links (for example, `<a href="https://domain.tld/path">...</a>`) in this iframe won't be clickable. To make them clickable, use the [router.navigate](/platform/forge/custom-ui-bridge/router/#navigate) API from the `@forge/bridge` package.
 
-![Example of a macro](https://dac-static.atlassian.com/platform/forge/snippets/images/macro-example.png?_v=1.5800.2272)
+![Example of a macro](https://dac-static.atlassian.com/platform/forge/snippets/images/macro-example.png?_v=1.5800.2279)
 
 ## Manifest structure
 
@@ -47,7 +47,9 @@ modules {}
    ├─ hidden (boolean) [Optional]
    ├─ static {} [Optional]
       ├─ endpoint (string) [Optional]
-      └─ function (string) [Optional]
+      ├─ function (string) [Optional]
+      └─ cacheConfiguration {} [Optional]
+         └─ keyComposition (string[]) [Mandatory]
    └─ config (boolean | {} | config object) [Optional]
      ├─ icon (string) [Optional]
      ├─ title (string | i18n) [Optional]
@@ -105,7 +107,9 @@ resources []
 | `autoConvert.matchers.pattern` | `string` | Yes, if using `autoConvert` | A string that defines a specific URL pattern to be matched, using wildcards for variable parts of the URL, such as unique IDs.  * Use multiple wildcards to match multiple sub-paths. Do not include all sub-paths with a single wildcard. * Ensure URLs do not contain whitespace unless it is URL encoded. * Wildcards cannot be used in place of a protocol. Custom URL Schemes are supported See [examples](#matching-custom-url-schemes) * Maximum length of the pattern is 1024 characters. |
 | `emitsReadyEvent` | boolean | No | Defaults to `false`. An optional configuration to notify Confluence that the macro will send a `emitReadyEvent` when it has completed loading and is ready for export or further processing. This should be used with `view.emitReadyEvent()`. See the [view bridge function](/platform/forge/apis-reference/ui-api-bridge/view/#emitreadyevent) for more information. |
 | `unlicensedAccess` | `List<string>` |  | A list of unlicensed user types that can access this module. Valid values are: `unlicensed` (Guests Users), and `anonymous`. For more information, see [Access to Forge apps for unlicensed Confluence users](/platform/forge/access-to-forge-apps-for-unlicensed-users/#confluence-forge-modules). |
-| `static` | `{ function: string }` or `{ endpoint: string }` | No | Set the `function` property to specify the Forge function that handles static rendering.  Set the `endpoint` property if you are using [Forge Remote](/platform/forge/forge-remote-overview) to handle static rendering from a remote back end. |
+| `static` | `{ function: string }` or `{ endpoint: string }` | No | Set the `function` property to specify the Forge function that handles static rendering.  Set the `endpoint` property if you are using [Forge Remote](/platform/forge/forge-remote-overview) to handle static rendering from a remote back end.  Can also include `cacheConfiguration` to specify the caching behavior. |
+| `static.cacheConfiguration` | `object` | No | Defines which runtime inputs are used to construct the cache key for the static macro's rendered output. This property is supported for both function-backed and endpoint-backed static macros.  If omitted, the cache key uses `macro.id`, `macro.body`, and `macro.params` by default. |
+| `static.cacheConfiguration.keyComposition` | `string[]` | Yes, if using `cacheConfiguration` | A non-empty list of unique runtime inputs used to construct the cache key. When the value of a selected input changes, the cached output is not reused.  Supported values are:   * `macro.id`: The macro instance identifier * `macro.body`: The complete macro body * `macro.params`: The parameters supplied to the macro * `content.id`: The Confluence content identifier * `content.type`: The Confluence content type * `content.version`: The Confluence content version * `space.id`: The Confluence space identifier |
 
 ### i18n object
 
@@ -720,6 +724,10 @@ modules:
         function: regularIframeRender
       static:
         function: staticRender
+        cacheConfiguration:
+          keyComposition:
+            - macro.params
+            - content.id
   function:
     - key: regularIframeRender
       handler: index.handler

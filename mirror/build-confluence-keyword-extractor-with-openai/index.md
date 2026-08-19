@@ -19,10 +19,19 @@ The tutorial uses these components to build the app:
 [useProductContext](/platform/forge/ui-kit/hooks/use-product-context/),
 and [invoke](/platform/forge/apis-reference/ui-api-bridge/invoke/).
 
-### Set up a cloud developer site
+### Set up a development site
 
-An Atlassian cloud developer site lets you install and test your app on
-Atlassian apps including Confluence and Jira. If you don't have one yet, set it up now:
+You need an Atlassian site where you can install and test your app.
+
+You can provision a Forge demo development site from the CLI. Demo sites include realistic seeded
+data and enterprise editions of Jira, Confluence, Jira Service Management, and Rovo.
+
+To provision a demo site before installing an app, run:
+
+Alternatively, deploy your app and run `forge install --demo-site`. The CLI reuses your latest
+active demo site, or offers to provision one if none exists.
+
+Alternatively, create a traditional Atlassian cloud developer site:
 
 1. Go to <http://go.atlassian.com/cloud-dev> and
    create a site using the email address associated with your Atlassian account.
@@ -32,7 +41,7 @@ You can install your app to multiple Atlassian sites. However, app
 data won't be shared between separate Atlassian apps, sites,
 or Forge environments.
 
-The limits on the numbers of users you can create are as follows:
+The following user limits apply to traditional cloud developer sites:
 
 * Confluence: 5 users
 * Jira Service Management: 1 agent
@@ -42,7 +51,7 @@ The limits on the numbers of users you can create are as follows:
 
 ### Demo of the finished app
 
-![Animation showing the Confluence keyword extractor app in action](https://dac-static.atlassian.com/platform/forge/images/confluence-keyword-extractor-demo.gif?_v=1.5800.2272)
+![Animation showing the Confluence keyword extractor app in action](https://dac-static.atlassian.com/platform/forge/images/confluence-keyword-extractor-demo.gif?_v=1.5800.2279)
 
 The GIF above is an example of how the app will work. When a user clicks Keyword extractor
 in the three dots menu, the extracted keywords will be added to the page as Confluence labels.
@@ -51,7 +60,7 @@ You can find the source code for this demo [here](https://bitbucket.org/atlassia
 
 ### How does the app work?
 
-![Confluence keyword extractor high level diagram](https://dac-static.atlassian.com/platform/forge/images/confluence-keyword-extractor-diagram.png?_v=1.5800.2272)
+![Confluence keyword extractor high level diagram](https://dac-static.atlassian.com/platform/forge/images/confluence-keyword-extractor-diagram.png?_v=1.5800.2279)
 
 A high-level outline of how the app works is:
 
@@ -79,7 +88,7 @@ Assuming your development environment is set up, you can get right to it. Follow
    *keyword-extractor(DEVELOPMENT)*. This is part of the behavior of the
    [ContentAction](/platform/forge/manifest-reference/modules/confluence-content-action/) module.
 
-![Confluence keyword extractor in three dots menu](https://dac-static.atlassian.com/platform/forge/images/confluence-keyword-extractor-menu.png?_v=1.5800.2272)
+![Confluence keyword extractor in three dots menu](https://dac-static.atlassian.com/platform/forge/images/confluence-keyword-extractor-menu.png?_v=1.5800.2279)
 
 ## Step 2: Get all the content of a Confluence page via REST API
 

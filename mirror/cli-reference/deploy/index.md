@@ -25,11 +25,13 @@ Usage: forge deploy [options] [command]
 9
 10
 11
+12
 --verbose                        enable verbose mode
 -f, --no-verify                  disable pre-deployment checks
 -v, --major-version [version]    specify a major version to update (Preview)
 -t, --tag <tag>                  specify a build tag to deploy (from forge
                                  build)
+--inspect                        save application bundle for inspection
 --skip-rollout                   Skip rolling release rollout after deployment
 --approve <rule...>              list of validation rules to approve
 -e, --environment [environment]  specify the environment (see your default

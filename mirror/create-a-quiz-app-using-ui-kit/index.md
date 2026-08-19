@@ -10,7 +10,7 @@ and [stack](/platform/forge/ui-kit/components/stack/) to build the user interfac
 The purpose of this tutorial is to get familiar with using
 [UI Kit components](/platform/forge/ui-kit/components/), so it is a purely frontend app.
 
-![A gif is added to a Confluence page](https://dac-static.atlassian.com/platform/forge/images/quiz-app.gif?_v=1.5800.2272)
+![A gif is added to a Confluence page](https://dac-static.atlassian.com/platform/forge/images/quiz-app.gif?_v=1.5800.2279)
 
 ## Before you begin
 
@@ -19,10 +19,19 @@ If this is your first time using Forge, see [Getting started](/platform/forge/ge
 
 To complete this tutorial, you need the latest version of the Forge CLI. To update your CLI version, run `npm install -g @forge/cli@latest` on the command line.
 
-### Set up a cloud developer site
+### Set up a development site
 
-An Atlassian cloud developer site lets you install and test your app on
-Atlassian apps including Confluence and Jira. If you don't have one yet, set it up now:
+You need an Atlassian site where you can install and test your app.
+
+You can provision a Forge demo development site from the CLI. Demo sites include realistic seeded
+data and enterprise editions of Jira, Confluence, Jira Service Management, and Rovo.
+
+To provision a demo site before installing an app, run:
+
+Alternatively, deploy your app and run `forge install --demo-site`. The CLI reuses your latest
+active demo site, or offers to provision one if none exists.
+
+Alternatively, create a traditional Atlassian cloud developer site:
 
 1. Go to <http://go.atlassian.com/cloud-dev> and
    create a site using the email address associated with your Atlassian account.
@@ -32,7 +41,7 @@ You can install your app to multiple Atlassian sites. However, app
 data won't be shared between separate Atlassian apps, sites,
 or Forge environments.
 
-The limits on the numbers of users you can create are as follows:
+The following user limits apply to traditional cloud developer sites:
 
 * Confluence: 5 users
 * Jira Service Management: 1 agent
@@ -168,11 +177,11 @@ We are going to build a basic UI to layout our components. The layout of the app
 (which shows the question), an associated image, buttons to display the four multi-choice options,
 and a button to go to the next question.
 
-![A diagram of the quiz app is added to a Confluence page](https://dac-static.atlassian.com/platform/forge/images/quiz-app-diagram.png?_v=1.5800.2272)
+![A diagram of the quiz app is added to a Confluence page](https://dac-static.atlassian.com/platform/forge/images/quiz-app-diagram.png?_v=1.5800.2279)
 
 We are also going to use `Inline` and `Stack` components to layout our components:
 
-![A diagram showing the inline and stack components is added to a Confluence page](https://dac-static.atlassian.com/platform/forge/images/quiz-app-diagram-inline-stack.png?_v=1.5800.2272)
+![A diagram showing the inline and stack components is added to a Confluence page](https://dac-static.atlassian.com/platform/forge/images/quiz-app-diagram-inline-stack.png?_v=1.5800.2279)
 
 Install the latest versions of the following packages in the top-level directory of the app:
 
@@ -265,9 +274,28 @@ You must run the `forge deploy` command before `forge install` because an instal
 links your deployed app to an Atlassian site.
 
 1. Navigate to the app's top-level directory and deploy your app by running:
-2. Install your app by running:
-3. Select your Atlassian context using the arrow keys and press the enter key.
-4. Enter the URL for your development site. For example, *example.atlassian.net*.
+2. Install your app using one of the following commands:
+
+   To install to your latest active Forge demo development site, or provision one if needed:
+
+   ```
+   ```
+   1
+   2
+   ```
+
+
+
+   ```
+   forge install --demo-site
+   ```
+   ```
+
+   Demo sites include realistic seeded data and are active for 90 days by default.
+
+   To select an existing Atlassian site:
+3. If prompted, select your Atlassian context using the arrow keys and press the enter key.
+4. If prompted, enter the URL for your development site. For example, *example.atlassian.net*.
    [View a list of your active sites at Atlassian administration](https://admin.atlassian.com/).
 
 Once the *successful installation* message appears, your app is installed and ready
@@ -280,7 +308,7 @@ To view the quiz app:
 1. Go the site where your app is installed.
 2. Select the **Apps** tab on the top navigation bar and select your app to view.
 
-![The app is inserted into a Confluence page](https://dac-static.atlassian.com/platform/forge/images/quiz-app-part-1.png?_v=1.5800.2272)
+![The app is inserted into a Confluence page](https://dac-static.atlassian.com/platform/forge/images/quiz-app-part-1.png?_v=1.5800.2279)
 
 ## Step 6: Importing questions and adding states
 
@@ -417,7 +445,7 @@ that toggles whether to display the explanation.
 
 Your app should now look like this and can be playable:
 
-![A gif is added to a Confluence page](https://dac-static.atlassian.com/platform/forge/images/quiz-app-before-ending-screen.gif?_v=1.5800.2272)
+![A gif is added to a Confluence page](https://dac-static.atlassian.com/platform/forge/images/quiz-app-before-ending-screen.gif?_v=1.5800.2279)
 
 ## Step 7: Adding an ending screen
 

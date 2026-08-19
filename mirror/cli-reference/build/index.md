@@ -19,9 +19,11 @@ Usage: forge build [options] [command]
 3
 4
 5
+6
 --verbose          enable verbose mode
 -f, --no-verify    disable pre-build checks
 -t, --tag <tag>    specify a custom build tag for build
+--inspect          save application bundle for inspection
 --non-interactive  run the command without input prompts
 -h, --help         display help for command
 ```

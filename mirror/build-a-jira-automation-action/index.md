@@ -12,10 +12,19 @@ If this is your first time using Forge, see [Getting started](/platform/forge/ge
 To complete this tutorial, you need the latest version of Forge CLI. To update your CLI version, run `npm install -g @forge/cli@latest`
 on the command line.
 
-### Set up a cloud developer site
+### Set up a development site
 
-An Atlassian cloud developer site lets you install and test your app on
-Atlassian apps including Confluence and Jira. If you don't have one yet, set it up now:
+You need an Atlassian site where you can install and test your app.
+
+You can provision a Forge demo development site from the CLI. Demo sites include realistic seeded
+data and enterprise editions of Jira, Confluence, Jira Service Management, and Rovo.
+
+To provision a demo site before installing an app, run:
+
+Alternatively, deploy your app and run `forge install --demo-site`. The CLI reuses your latest
+active demo site, or offers to provision one if none exists.
+
+Alternatively, create a traditional Atlassian cloud developer site:
 
 1. Go to <http://go.atlassian.com/cloud-dev> and
    create a site using the email address associated with your Atlassian account.
@@ -25,7 +34,7 @@ You can install your app to multiple Atlassian sites. However, app
 data won't be shared between separate Atlassian apps, sites,
 or Forge environments.
 
-The limits on the numbers of users you can create are as follows:
+The following user limits apply to traditional cloud developer sites:
 
 * Confluence: 5 users
 * Jira Service Management: 1 agent
@@ -66,7 +75,7 @@ cd {your-preferred-location}
 
 **Step 1i**: Verify you see output similar to the following:
 
-![Initial Forge CLI commands](https://dac-static.atlassian.com/platform/forge/images/forge-automation-action-tutorial/forge-automation-tutorial-initial-commands.png?_v=1.5800.2272)
+![Initial Forge CLI commands](https://dac-static.atlassian.com/platform/forge/images/forge-automation-action-tutorial/forge-automation-tutorial-initial-commands.png?_v=1.5800.2279)
 
 **Step 1j**: This will have created a directory named `Requirement-Resolver` and files within it that is the initial version of your app. You could deploy and install your app as it is, but the app doesn’t do anything yet so we will make changes first. All future Forge CLI command for the app need to be done in the app’s root directory so run the command `cd Requirement-Resolver`.
 
@@ -559,15 +568,15 @@ The app’s action should now be available for use within an automation rule.
 
 **Step 7c**: Select the “Work item created” trigger.
 
-![Select the Work Item Created trigger](https://dac-static.atlassian.com/platform/forge/images/forge-automation-action-tutorial/forge-automation-tutorial-rule-work-item-created-trigger.png?_v=1.5800.2272)
+![Select the Work Item Created trigger](https://dac-static.atlassian.com/platform/forge/images/forge-automation-action-tutorial/forge-automation-tutorial-rule-work-item-created-trigger.png?_v=1.5800.2279)
 
 **Step 7d**: Add the action “Requirement Info Provider”.
 
-![Add the action Requirement Info Provider](https://dac-static.atlassian.com/platform/forge/images/forge-automation-action-tutorial/forge-automation-tutorial-rule-requirement-infor-provider.png?_v=1.5800.2272)
+![Add the action Requirement Info Provider](https://dac-static.atlassian.com/platform/forge/images/forge-automation-action-tutorial/forge-automation-tutorial-rule-requirement-infor-provider.png?_v=1.5800.2279)
 
 **Step 7e**: To configure the action, you need to enter `{{issue.key}}` into the text field so the automation engine passes the work item key to the action when it is invoked. This form is rendered by your app’s code in `src/frontend/AutomationConfig.jsx` and `src/frontend/AutomationInputsForm.jsx`.
 
-![Add the work item key](https://dac-static.atlassian.com/platform/forge/images/forge-automation-action-tutorial/forge-automation-tutorial-rule-issue-key.png?_v=1.5800.2272)
+![Add the work item key](https://dac-static.atlassian.com/platform/forge/images/forge-automation-action-tutorial/forge-automation-tutorial-rule-issue-key.png?_v=1.5800.2279)
 
 **Step 7f**: Add another step such as “Comment on work item” and enter the following into the “Comment” text field to configure the step:
 
@@ -586,7 +595,7 @@ Found requirement:
 ```
 ```
 
-![Add the comment to the rule](https://dac-static.atlassian.com/platform/forge/images/forge-automation-action-tutorial/forge-automation-tutorial-rule-add-comment.png?_v=1.5800.2272)
+![Add the comment to the rule](https://dac-static.atlassian.com/platform/forge/images/forge-automation-action-tutorial/forge-automation-tutorial-rule-add-comment.png?_v=1.5800.2279)
 
 Note that the fields `requirementId` and `requirementStatus` are defined by the outputs section in the app’s manifest, `manifest.yml` and effectively forms a contract with the rules that use the app’s action so you need to be mindful of this when changing it.
 
@@ -613,7 +622,7 @@ Found requirement:
 ```
 ```
 
-![Test the automation rule](https://dac-static.atlassian.com/platform/forge/images/forge-automation-action-tutorial/forge-automation-tutorial-test-rule.png?_v=1.5800.2272)
+![Test the automation rule](https://dac-static.atlassian.com/platform/forge/images/forge-automation-action-tutorial/forge-automation-tutorial-test-rule.png?_v=1.5800.2279)
 
 ## Wrapping up
 

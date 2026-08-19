@@ -11,7 +11,7 @@ responds to issue created events in Jira and adds a comment to the created issue
 
 You'll learn about Atlassian app events, the Runtime API, and tunneling.
 
-![The final app displays on a Jira issue](https://dac-static.atlassian.com/platform/forge/images/jira-triggers-tutorial-final-state.png?_v=1.5800.2272)
+![The final app displays on a Jira issue](https://dac-static.atlassian.com/platform/forge/images/jira-triggers-tutorial-final-state.png?_v=1.5800.2279)
 
 ## Before you begin
 
@@ -21,10 +21,19 @@ on the command line.
 We recommend that you complete all the steps in [Getting started](/platform/forge/getting-started)
 so that you’re familiar with the Forge development process.
 
-### Set up a cloud developer site
+### Set up a development site
 
-An Atlassian cloud developer site lets you install and test your app on
-Atlassian apps including Confluence and Jira. If you don't have one yet, set it up now:
+You need an Atlassian site where you can install and test your app.
+
+You can provision a Forge demo development site from the CLI. Demo sites include realistic seeded
+data and enterprise editions of Jira, Confluence, Jira Service Management, and Rovo.
+
+To provision a demo site before installing an app, run:
+
+Alternatively, deploy your app and run `forge install --demo-site`. The CLI reuses your latest
+active demo site, or offers to provision one if none exists.
+
+Alternatively, create a traditional Atlassian cloud developer site:
 
 1. Go to <http://go.atlassian.com/cloud-dev> and
    create a site using the email address associated with your Atlassian account.
@@ -34,7 +43,7 @@ You can install your app to multiple Atlassian sites. However, app
 data won't be shared between separate Atlassian apps, sites,
 or Forge environments.
 
-The limits on the numbers of users you can create are as follows:
+The following user limits apply to traditional cloud developer sites:
 
 * Confluence: 5 users
 * Jira Service Management: 1 agent
@@ -151,7 +160,7 @@ running locally is invoked.
    restart the tunnel (`forge tunnel`).
 4. Create a new issue in your Jira site. Make sure to create the issue in a project where you can view and comment on issues.
 5. Verify `Hello World!` appears in your tunnel.
-   ![The tunnel command is displayed in the terminal](https://dac-static.atlassian.com/platform/forge/images/jira-triggers-tutorial-tunnel.png?_v=1.5800.2272)
+   ![The tunnel command is displayed in the terminal](https://dac-static.atlassian.com/platform/forge/images/jira-triggers-tutorial-tunnel.png?_v=1.5800.2279)
 
 In [Step 3](#step-3--use-a-tunnel-to-test-the-app), we demonstrated how creating a new issue invoked the `run` method in `src/index.js`.
 
@@ -289,9 +298,9 @@ in response to the issue created event.
 8. Create an issue in the site where you installed your app, and verify the following:
 
    1. You receive a response message in the tunnel.
-      ![The terminal displaying a message](https://dac-static.atlassian.com/platform/forge/images/jira-triggers-tutorial-terminal-message.png?_v=1.5800.2272)
+      ![The terminal displaying a message](https://dac-static.atlassian.com/platform/forge/images/jira-triggers-tutorial-terminal-message.png?_v=1.5800.2279)
    2. The issue you created now has a comment.
-      ![A Jira issue with a comment](https://dac-static.atlassian.com/platform/forge/images/jira-triggers-tutorial-final-state.png?_v=1.5800.2272)
+      ![A Jira issue with a comment](https://dac-static.atlassian.com/platform/forge/images/jira-triggers-tutorial-final-state.png?_v=1.5800.2279)
 
 Your `index.js` should look like the following:
 

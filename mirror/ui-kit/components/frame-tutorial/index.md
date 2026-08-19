@@ -4,7 +4,7 @@ The app in this example showcases a logo designer and renders a preview of the d
 
 The result will look like this:
 
-![Logo Designer app](https://dac-static.atlassian.com/platform/forge/ui-kit/images/frame/frame-tutorial.gif?_v=1.5800.2272)
+![Logo Designer app](https://dac-static.atlassian.com/platform/forge/ui-kit/images/frame/frame-tutorial.gif?_v=1.5800.2279)
 
 This example illustrates the following:
 
@@ -716,7 +716,7 @@ Now, we are ready to include the Logo Display Frame Component into the main UI K
 
 You can use the [Events API](/platform/forge/custom-ui-bridge/events) on `@forge/bridge` to communicate between the UI Kit (main app) and the Frame component. The communication mechanism is utilised in this example to enable the logo design controls (logo picker, radius slider, and so on) to modify the logo preview component within the `Frame` component.
 
-![Example image of a logo designer app using Frame component](https://dac-static.atlassian.com/platform/forge/ui-kit/images/frame/frame-logo-designer.png?_v=1.5800.2272)
+![Example image of a logo designer app using Frame component](https://dac-static.atlassian.com/platform/forge/ui-kit/images/frame/frame-logo-designer.png?_v=1.5800.2279)
 
 1. Create the React hooks to abstract the underlying communication implementation. Copy the following `hooks.js` implementation into both UI Kit and Frame component sides:
 
@@ -1165,9 +1165,28 @@ You must run the `forge deploy` command before `forge install` because an instal
 links your deployed app to an Atlassian site.
 
 1. Navigate to the app's top-level directory and deploy your app by running:
-2. Install your app by running:
-3. Select your Atlassian context using the arrow keys and press the enter key.
-4. Enter the URL for your development site. For example, *example.atlassian.net*.
+2. Install your app using one of the following commands:
+
+   To install to your latest active Forge demo development site, or provision one if needed:
+
+   ```
+   ```
+   1
+   2
+   ```
+
+
+
+   ```
+   forge install --demo-site
+   ```
+   ```
+
+   Demo sites include realistic seeded data and are active for 90 days by default.
+
+   To select an existing Atlassian site:
+3. If prompted, select your Atlassian context using the arrow keys and press the enter key.
+4. If prompted, enter the URL for your development site. For example, *example.atlassian.net*.
    [View a list of your active sites at Atlassian administration](https://admin.atlassian.com/).
 
 Once the *successful installation* message appears, your app is installed and ready

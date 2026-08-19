@@ -21,9 +21,6 @@ Consequently, Atlassian may not be able to provide comprehensive support for tro
 The list of outbound connections on this page is updated periodically and may not always reflect the exact behavior
 of the latest version of the Forge CLI.
 
-Using the `global-agent` module to enable the Forge CLI to work with a network proxy is an unsupported modification
-to the Forge CLI.
-
 Check out this video for troubleshooting tips when using the Forge CLI on a corporate network:
 
 ## Configuring NPM to use a local repository
@@ -96,9 +93,8 @@ for this information if you are unsure.
 ### Configuring NPM to use the proxy
 
 NPM is the package manager for Node.js, which is used to download dependencies. By default, NPM downloads packages from the
-[central NPM repository](https://registry.npmjs.org). Therefore, to install the Forge CLI,
-and the additional packages required for the CLI to work with a proxy, you also need to configure NPM to use your
-proxy configuration.
+[central NPM repository](https://registry.npmjs.org). Therefore, to install the Forge CLI and app dependencies from behind
+a proxy, you also need to configure NPM to use your proxy configuration.
 
 This can be done by running the following command in your terminal:
 
@@ -132,67 +128,78 @@ npm config set proxy http://proxy.example.com:8888
 
 ### Configuring Forge CLI to use the proxy
 
-The Forge CLI can be configured to work with a proxy server by modifying it to use the `global-agent` NPM package.
-This can be done by performing the following steps:
+You can configure the Forge CLI to use an HTTP or HTTPS proxy.
 
-1. Install the package by running:
+To save a proxy configuration for Forge CLI commands, run:
 
-   ```
-   ```
-   1
-   2
-   ```
-
-
-
-   ```
-   npm install -g global-agent
-   ```
-   ```
-2. Set the HTTP URL for connecting to your proxy as an environment variable by running:
-
-   ```
-   ```
-   1
-   2
-   ```
+```
+```
+1
+2
+```
 
 
 
-   ```
-   export GLOBAL_AGENT_HTTP_PROXY=${yourProxyServer}
-   ```
-   ```
-3. Insert the following line of JavaScript to the third line of Forge's `cli.js`:
+```
+forge settings set proxy ${yourProxyServer}
+```
+```
 
-   ```
-   ```
-   1
-   2
-   ```
+Replace `${yourProxyServer}` with the URL of your proxy server. For example:
+
+```
+```
+1
+2
+```
 
 
 
-   ```
-   require('global-agent/bootstrap');
-   ```
-   ```
+```
+forge settings set proxy http://proxy.example.com:8888
+```
+```
 
-**Finding cli.js**
+Authenticated proxy endpoints are also supported:
 
-`cli.js` will be located in the 'lib' folder of your Node.js installation.
+```
+```
+1
+2
+```
 
-For example:
-`%YOUR_NODE_INSTALLATION%/lib/node_modules/@forge/cli/out/bin/cli.js`
 
-* **Changes will be overwritten on upgrade**  
-  These configuration steps include modifying a file that is distributed with the Forge CLI. If you upgrade your
-  installation of the Forge CLI to a newer version, your changes will be overwritten and will need to be re-applied.
-* **Making HTTPS connections through your proxy**  
-  Depending on your proxy configuration, HTTPS connections may not work as expected. In this circumstance, you can
-  try setting `export NODE_TLS_REJECT_UNAUTHORIZED=0` to temporarily disable server certificate validation as a way
-  to troubleshoot or workaround this issue. Setting this value is not recommended as a permanent solution as it is
-  inherently insecure and can make your Node.js development environment susceptible to man-in-the-middle attacks.
+
+```
+forge settings set proxy http://username:password@proxy.example.com:8888
+```
+```
+
+You can also configure the proxy for the current terminal session by setting the `FORGE_PROXY` environment variable:
+
+```
+```
+1
+2
+```
+
+
+
+```
+export FORGE_PROXY=${yourProxyServer}
+```
+```
+
+`FORGE_PROXY` takes precedence over the proxy value saved with `forge settings set proxy`.
+
+**Making HTTPS connections through your proxy**
+
+Depending on your proxy configuration, HTTPS connections may not work as expected. In this circumstance, you can
+try setting `export NODE_TLS_REJECT_UNAUTHORIZED=0` to temporarily disable server certificate validation as a way
+to troubleshoot or workaround this issue. Setting this value is not recommended as a permanent solution as it is
+inherently insecure and can make your Node.js development environment susceptible to man-in-the-middle attacks.
+
+For command syntax, see the [Forge CLI settings command reference](/platform/forge/cli-reference/settings-set/).
 
 ### Configuring forge tunnel to work with self-signed certificates
 

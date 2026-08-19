@@ -11,7 +11,7 @@ working Forge app running inside a real Jira issue, and you'll understand *how* 
 You'll create an empty Forge app and then use the new `forge module` command to add a
 **Jira issue panel** to it. The finished app looks like this:
 
-![An issue panel showing in a Jira issue view](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-panel-demo-with-show-hide-from-work-item.png?_v=1.5800.2272)
+![An issue panel showing in a Jira issue view](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-panel-demo-with-show-hide-from-work-item.png?_v=1.5800.2279)
 
 ## A few words before we start
 
@@ -263,9 +263,28 @@ You must run the `forge deploy` command before `forge install` because an instal
 links your deployed app to an Atlassian site.
 
 1. Navigate to the app's top-level directory and deploy your app by running:
-2. Install your app by running:
-3. Select your Atlassian context using the arrow keys and press the enter key.
-4. Enter the URL for your development site. For example, *example.atlassian.net*.
+2. Install your app using one of the following commands:
+
+   To install to your latest active Forge demo development site, or provision one if needed:
+
+   ```
+   ```
+   1
+   2
+   ```
+
+
+
+   ```
+   forge install --demo-site
+   ```
+   ```
+
+   Demo sites include realistic seeded data and are active for 90 days by default.
+
+   To select an existing Atlassian site:
+3. If prompted, select your Atlassian context using the arrow keys and press the enter key.
+4. If prompted, enter the URL for your development site. For example, *example.atlassian.net*.
    [View a list of your active sites at Atlassian administration](https://admin.atlassian.com/).
 
 Once the *successful installation* message appears, your app is installed and ready
@@ -287,7 +306,7 @@ With your app installed, it's time to see it on a Jira issue.
    top-right area of the issue) and select your app from the list. Your app should display like
    the example below.
 
-![An issue panel showing in a Jira issue view](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-panel-demo-with-show-hide-from-work-item.png?_v=1.5800.2272)
+![An issue panel showing in a Jira issue view](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-panel-demo-with-show-hide-from-work-item.png?_v=1.5800.2279)
 
 While your app is deployed to either a development or staging environment, `(development)` or
 `(staging)` will appear in your app title. This suffix is removed once you've

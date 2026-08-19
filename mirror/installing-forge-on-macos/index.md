@@ -8,8 +8,8 @@ Ask for help on our Developer Community
 
 Welcome to developing with the Forge platform for Atlassian cloud apps. Work through
 the steps below to set up your development environment. To get started using Forge,
-you’ll install the CLI, log in with an Atlassian API scoped token, and create an Atlassian
-developer site that has Confluence and all of the Jira applications installed.
+you’ll install the CLI, log in with an Atlassian API scoped token, and prepare an Atlassian
+site where you can install and test your app.
 
 After setting up, you'll go through a three-part tutorial to create a simple hello world app
 for Bitbucket, Confluence, Jira, or Jira Service Management.
@@ -120,14 +120,8 @@ With the CLI installed, view the complete list of Forge commands by running `for
 After installing the Forge CLI, follow the prompts in the terminal, or use the steps outlined below to build a hello world app.
 
 1. Log in with your Atlassian account and API token. [Token generation instructions below](#log-in-with-an-atlassian-api-scoped-token).
-2. Set up a cloud developer site.
-
-   A free Atlassian cloud developer site lets you install and test your app on Atlassian apps including Confluence and Jira. If you don't have one yet, set it up now:
-
-   1. Go to <http://go.atlassian.com/cloud-dev> and create a site using the email address associated with your Atlassian account.
-   2. Once your site is ready, log in and complete the setup wizard.
-3. Create a new Forge app from a template, or follow one of the [detailed tutorials](#next-steps) for a guided walkthrough.
-4. Deploy your app code to Forge.
+2. Create a new Forge app from a template, or follow one of the [detailed tutorials](#next-steps) for a guided walkthrough.
+3. Deploy your app code to Forge.
 
    ```
    ```
@@ -142,8 +136,33 @@ After installing the Forge CLI, follow the prompts in the terminal, or use the s
    forge deploy
    ```
    ```
-5. Install the app to your Atlassian site. You can now view and test your app.
-6. Run a local tunnel for hot reload and log streams while developing.
+4. Install the app to an Atlassian site. You can now view and test your app.
+
+   You can install to a Forge demo development site. The CLI reuses your active demo site, or
+   offers to provision one if you don't have one yet:
+
+   ```
+   ```
+   1
+   2
+   ```
+
+
+
+   ```
+   forge install --demo-site
+   ```
+   ```
+
+   A demo site includes realistic seeded data and is active for 90 days by default. For details,
+   see [Provision a demo development site](/platform/forge/provision-a-demo-development-site/).
+
+   To use an existing Atlassian site instead, run:
+
+   If you need a traditional development site, create one at
+   [Atlassian cloud developer site](http://go.atlassian.com/cloud-dev), then log in and complete
+   its setup wizard.
+5. Run a local tunnel for hot reload and log streams while developing.
 
 ## Log in with an Atlassian API scoped token
 

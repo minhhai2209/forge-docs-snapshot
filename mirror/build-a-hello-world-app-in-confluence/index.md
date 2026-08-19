@@ -26,10 +26,19 @@ this tutorial.
 Forge apps can't be viewed by anonymous users. When testing a Forge app, you should be logged in to your
 Atlassian cloud developer site.
 
-### Set up a cloud developer site
+### Set up a development site
 
-An Atlassian cloud developer site lets you install and test your app on
-Atlassian apps including Confluence and Jira. If you don't have one yet, set it up now:
+You need an Atlassian site where you can install and test your app.
+
+You can provision a Forge demo development site from the CLI. Demo sites include realistic seeded
+data and enterprise editions of Jira, Confluence, Jira Service Management, and Rovo.
+
+To provision a demo site before installing an app, run:
+
+Alternatively, deploy your app and run `forge install --demo-site`. The CLI reuses your latest
+active demo site, or offers to provision one if none exists.
+
+Alternatively, create a traditional Atlassian cloud developer site:
 
 1. Go to <http://go.atlassian.com/cloud-dev> and
    create a site using the email address associated with your Atlassian account.
@@ -39,7 +48,7 @@ You can install your app to multiple Atlassian sites. However, app
 data won't be shared between separate Atlassian apps, sites,
 or Forge environments.
 
-The limits on the numbers of users you can create are as follows:
+The following user limits apply to traditional cloud developer sites:
 
 * Confluence: 5 users
 * Jira Service Management: 1 agent
@@ -153,9 +162,28 @@ You must run the `forge deploy` command before `forge install` because an instal
 links your deployed app to an Atlassian site.
 
 1. Navigate to the app's top-level directory and deploy your app by running:
-2. Install your app by running:
-3. Select your Atlassian context using the arrow keys and press the enter key.
-4. Enter the URL for your development site. For example, *example.atlassian.net*.
+2. Install your app using one of the following commands:
+
+   To install to your latest active Forge demo development site, or provision one if needed:
+
+   ```
+   ```
+   1
+   2
+   ```
+
+
+
+   ```
+   forge install --demo-site
+   ```
+   ```
+
+   Demo sites include realistic seeded data and are active for 90 days by default.
+
+   To select an existing Atlassian site:
+3. If prompted, select your Atlassian context using the arrow keys and press the enter key.
+4. If prompted, enter the URL for your development site. For example, *example.atlassian.net*.
    [View a list of your active sites at Atlassian administration](https://admin.atlassian.com/).
 
 Once the *successful installation* message appears, your app is installed and ready
@@ -173,7 +201,7 @@ With your app installed, it’s time to see the app on a page.
 
 Your hello world app is now installed into your development site. The app should display on the page like the image below.
 
-![The app displayed in a Confluence page](https://dac-static.atlassian.com/platform/forge/images/forge-getting-started-initial-state.png?_v=1.5800.2272)
+![The app displayed in a Confluence page](https://dac-static.atlassian.com/platform/forge/images/forge-getting-started-initial-state.png?_v=1.5800.2279)
 
 While your app is deployed to either a development or staging environment, `(development)` or
 `(staging)` will appear in your app title. This suffix is removed once you've
@@ -246,7 +274,7 @@ For important caveats on how `forge tunnel` works, see
 
 In the next tutorial, you'll learn how to make API calls to Confluence using Forge. This tutorial uses the `forge tunnel`, so make sure you are familiar with using this command.
 
-[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.2272)](/platform/forge/call-a-confluence-api)
+[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.2279)](/platform/forge/call-a-confluence-api)
 
 ## Developing for Atlassian Government Cloud
 

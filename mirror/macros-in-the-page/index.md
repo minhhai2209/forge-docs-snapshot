@@ -12,7 +12,7 @@ in a modal dialog. A user triggers the action from an entry in the more actions 
 
 The final app looks like the following:
 
-![Confluence page showing a modal dialog with macros used in this page.](https://dac-static.atlassian.com/platform/forge/images/content-action-macro-count.gif?_v=1.5800.2272)
+![Confluence page showing a modal dialog with macros used in this page.](https://dac-static.atlassian.com/platform/forge/images/content-action-macro-count.gif?_v=1.5800.2279)
 
 ## Before you begin
 
@@ -24,10 +24,19 @@ To complete this tutorial, you need the following:
 * The latest version of Forge CLI. To update your CLI version, run `npm install -g @forge/cli@latest`
   on the command line.
 
-### Set up a cloud developer site
+### Set up a development site
 
-An Atlassian cloud developer site lets you install and test your app on
-Atlassian apps including Confluence and Jira. If you don't have one yet, set it up now:
+You need an Atlassian site where you can install and test your app.
+
+You can provision a Forge demo development site from the CLI. Demo sites include realistic seeded
+data and enterprise editions of Jira, Confluence, Jira Service Management, and Rovo.
+
+To provision a demo site before installing an app, run:
+
+Alternatively, deploy your app and run `forge install --demo-site`. The CLI reuses your latest
+active demo site, or offers to provision one if none exists.
+
+Alternatively, create a traditional Atlassian cloud developer site:
 
 1. Go to <http://go.atlassian.com/cloud-dev> and
    create a site using the email address associated with your Atlassian account.
@@ -37,7 +46,7 @@ You can install your app to multiple Atlassian sites. However, app
 data won't be shared between separate Atlassian apps, sites,
 or Forge environments.
 
-The limits on the numbers of users you can create are as follows:
+The following user limits apply to traditional cloud developer sites:
 
 * Confluence: 5 users
 * Jira Service Management: 1 agent
@@ -142,9 +151,28 @@ permissions:
 Build, deploy, and install the app to see it in your Confluence site.
 
 1. Navigate to the app's top-level directory and deploy your app by running:
-2. Install your app by running:
-3. Select your Atlassian context using the arrow keys and press the enter key.
-4. Enter the URL for your development site. For example, *example.atlassian.net*.
+2. Install your app using one of the following commands:
+
+   To install to your latest active Forge demo development site, or provision one if needed:
+
+   ```
+   ```
+   1
+   2
+   ```
+
+
+
+   ```
+   forge install --demo-site
+   ```
+   ```
+
+   Demo sites include realistic seeded data and are active for 90 days by default.
+
+   To select an existing Atlassian site:
+3. If prompted, select your Atlassian context using the arrow keys and press the enter key.
+4. If prompted, enter the URL for your development site. For example, *example.atlassian.net*.
    [View a list of your active sites at Atlassian administration](https://admin.atlassian.com/).
 
 Once the *successful installation* message appears, your app is installed and ready
@@ -162,7 +190,7 @@ You'll see the *Macro Count* entry from the app.
 
 When you select the menu item you will see, the following modal.
 
-![Confluence page showing a modal dialog with the default content from the macro count template](https://dac-static.atlassian.com/platform/forge/images/content-action-macro-count-initial.png?_v=1.5800.2272)
+![Confluence page showing a modal dialog with the default content from the macro count template](https://dac-static.atlassian.com/platform/forge/images/content-action-macro-count-initial.png?_v=1.5800.2279)
 
 ## Implement the front end
 
