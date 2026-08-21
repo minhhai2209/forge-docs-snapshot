@@ -10,8 +10,6 @@ By contrast,
 [Custom Entity Store transactions](/platform/forge/storage-reference/entities-transactions/) will succeed or fail *all* operations
 included in the transaction. That is, if any operation in the transaction cannot be completed, then all other operations will also fail.
 
-Batch operations are not available through the legacy `storage` module of `@forge/api`.
-
 ## Limitations
 
 Data stored through batch operations is still subject to the defined

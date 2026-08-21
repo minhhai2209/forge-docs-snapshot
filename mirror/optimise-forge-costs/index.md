@@ -240,9 +240,11 @@ If you must use a scheduled trigger, add a lightweight guard at the start of you
 
 
 ```
+import { kvs } from '@forge/kvs';
+
 export async function run(event, context) {
   // Read a lightweight flag from storage before doing expensive work
-  const lastProcessedAt = await storage.get('lastProcessedAt');
+  const lastProcessedAt = await kvs.get('lastProcessedAt');
   const dataChangedAt = await getDataLastChangedTimestamp();
 
   if (dataChangedAt <= lastProcessedAt) {
@@ -252,7 +254,7 @@ export async function run(event, context) {
 
   // Only now do the expensive processing
   await processData();
-  await storage.set('lastProcessedAt', Date.now());
+  await kvs.set('lastProcessedAt', Date.now());
 }
 ```
 ```
@@ -406,7 +408,7 @@ Forge provides built-in storage options that can help you avoid redundant API ca
 
 ### Forge Storage (Key-Value Store and Custom Entities)
 
-The [Forge Storage API](/platform/forge/runtime-reference/storage-api-basic-api/) provides a hosted key-value store available to all Forge apps. Note that **KVS reads and writes are billable above the free tier** (0.1 GB free per month for reads and writes respectively — see the pricing table above). That said, KVS storage does not incur function invocation costs, and storing data here can help you avoid redundant API calls to Atlassian products.
+The [Forge Storage API](/platform/forge/storage-reference/kvs/) provides a hosted key-value store available to all Forge apps. Note that **KVS reads and writes are billable above the free tier** (0.1 GB free per month for reads and writes respectively — see the pricing table above). That said, KVS storage does not incur function invocation costs, and storing data here can help you avoid redundant API calls to Atlassian products.
 
 Good use cases for Forge Storage include:
 
@@ -424,19 +426,19 @@ Good use cases for Forge Storage include:
 
 
 ```
-import { storage } from '@forge/api';
+import { kvs } from '@forge/kvs';
 
 // Cache an expensive API result for 1 hour
 const CACHE_TTL_MS = 60 * 60 * 1000;
 
 export async function getCachedData(key) {
-  const cached = await storage.get(`cache:${key}`);
+  const cached = await kvs.get(`cache:${key}`);
   if (cached && Date.now() - cached.timestamp < CACHE_TTL_MS) {
     return cached.value; // serve from cache — no extra API call needed
   }
 
   const freshData = await fetchExpensiveData(key);
-  await storage.set(`cache:${key}`, { value: freshData, timestamp: Date.now() });
+  await kvs.set(`cache:${key}`, { value: freshData, timestamp: Date.now() });
   return freshData;
 }
 ```
@@ -478,9 +480,9 @@ await asApp().requestJira(route`/rest/api/3/issue/${issueId}/properties/my-app-d
 
 ### Avoid excessive storage reads/writes
 
-KVS reads and writes are billed by data volume once you exceed the free tier. Avoid patterns that perform dozens of individual storage reads/writes in a loop — batch your reads and writes where possible, and use the [Custom Entities API](/platform/forge/runtime-reference/custom-entities/) for structured querying rather than iterating over many keys.
+KVS reads and writes are billed by data volume once you exceed the free tier. Avoid patterns that perform dozens of individual storage reads/writes in a loop — batch your reads and writes where possible, and use the [Custom Entities API](/platform/forge/storage-reference/entities-api-query/) for structured querying rather than iterating over many keys.
 
-**References:** [Storage API](/platform/forge/runtime-reference/storage-api-basic-api/) | [Jira entity properties](https://developer.atlassian.com/cloud/jira/platform/jira-entity-properties/) | [Confluence content properties](https://developer.atlassian.com/cloud/confluence/content-properties/)
+**References:** [Storage API](/platform/forge/storage-reference/kvs-api/) | [Jira entity properties](https://developer.atlassian.com/cloud/jira/platform/jira-entity-properties/) | [Confluence content properties](https://developer.atlassian.com/cloud/confluence/content-properties/)
 
 ### Cache app-level data with a TTL
 
@@ -495,13 +497,13 @@ Some data fetched via `asApp()` API calls is the same for all users and changes 
 
 
 ```
-import { storage } from '@forge/api';
+import { kvs } from '@forge/kvs';
 
 const CACHE_TTL_MS = 60 * 60 * 1000; // 1 hour
 
 async function getCustomFieldId(fieldName) {
   const cacheKey = `field-id:${fieldName}`;
-  const cached = await storage.get(cacheKey);
+  const cached = await kvs.get(cacheKey);
 
   if (cached && Date.now() - cached.cachedAt < CACHE_TTL_MS) {
     return cached.fieldId; // serve from cache — no API call needed
@@ -511,7 +513,7 @@ async function getCustomFieldId(fieldName) {
   const fields = await fetchAllFields();
   const field = fields.find(f => f.name === fieldName);
 
-  await storage.set(cacheKey, { fieldId: field.id, cachedAt: Date.now() });
+  await kvs.set(cacheKey, { fieldId: field.id, cachedAt: Date.now() });
   return field.id;
 }
 ```
@@ -521,11 +523,11 @@ This pattern is particularly effective for data that is read on every invocation
 
 Because KVS writes are ~20× more expensive than reads, prefer longer TTLs where the data allows. A 1-hour TTL means 1 write per hour; a 1-minute TTL means 60 writes per hour — at 20× the cost.
 
-**References:** [Storage API](/platform/forge/runtime-reference/storage-api-basic-api/)
+**References:** [Storage API](/platform/forge/storage-reference/kvs-api/)
 
-### Use `storage.query()` instead of iterating over keys
+### Use `kvs.entity().query()` instead of iterating over keys
 
-When working with the Forge Storage Custom Entities API, avoid patterns that fetch all stored items into memory and then filter them in your function code. Instead, use `storage.query()` to push filtering, sorting, and pagination down to the storage layer — this reduces both the volume of data read (lowering KVS read costs) and the amount of work your function has to do.
+When working with the Forge Storage Custom Entities API, avoid patterns that fetch all stored items into memory and then filter them in your function code. Instead, use `kvs.entity().query()` to push filtering, sorting, and pagination down to the storage layer — this reduces both the volume of data read (lowering KVS read costs) and the amount of work your function has to do.
 
 ```
 ```
@@ -536,17 +538,17 @@ When working with the Forge Storage Custom Entities API, avoid patterns that fet
 
 
 ```
-import { storage, startsWith } from '@forge/api';
+import { kvs, WhereConditions } from '@forge/kvs';
 
-// ❌ Anti-pattern: fetch all items and filter in code
-const allItems = await storage.query().getMany();
-const activeItems = allItems.results.filter(item => item.value.status === 'active');
+// ❌ Anti-pattern: read every entity, then filter in application code
+const allItems = await getAllItems();
+const activeItems = allItems.filter(item => item.status === 'active');
 
 // ✅ Better: use index-based querying to fetch only what you need
 // (requires defining an index on the 'status' field in your entity schema)
-const activeItems = await storage.query()
+const activeItems = await kvs.entity('items').query()
   .index('by-status')
-  .where('status', startsWith('active'))
+  .where(WhereConditions.equalTo('active'))
   .limit(50)
   .getMany();
 ```
@@ -554,7 +556,7 @@ const activeItems = await storage.query()
 
 Even without custom indexes, always pass a `.limit()` to bound the maximum number of items returned per call, and use cursor-based pagination rather than loading all pages at once.
 
-**References:** [Custom Entities API](/platform/forge/runtime-reference/storage-api-custom-entities/)
+**References:** [Custom Entities API](/platform/forge/storage-reference/entities-api-query/)
 
 ---
 
@@ -728,8 +730,10 @@ For scheduled jobs that process "all items that need attention", use a timestamp
 
 
 ```
+import { kvs } from '@forge/kvs';
+
 export async function run(event, context) {
-  const lastRunAt = await storage.get('lastRunAt') || '2000-01-01';
+  const lastRunAt = await kvs.get('lastRunAt') || '2000-01-01';
 
   // Only fetch issues updated since the last run
   const issues = await searchIssues(
@@ -740,7 +744,7 @@ export async function run(event, context) {
     await processIssue(issue);
   }
 
-  await storage.set('lastRunAt', new Date().toISOString().split('T')[0]);
+  await kvs.set('lastRunAt', new Date().toISOString().split('T')[0]);
 }
 ```
 ```

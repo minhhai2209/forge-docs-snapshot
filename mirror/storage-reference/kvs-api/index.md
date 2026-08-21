@@ -38,16 +38,6 @@ Batch operations allow you to perform multiple SET, GET, or DELETE operations in
 
 See [Batch operations](/platform/forge/storage-reference/kvs-batch/) and [Batch operations for custom entities](/platform/forge/storage-reference/entities-batch/) for more information.
 
-## Legacy version
-
-Legacy versions of the [Key-Value Store](/platform/forge/storage-reference/kvs/) and [Custom Entity Store](/platform/forge/storage-reference/entities/) were originally provided through the `storage` module of the `@forge/api` package. For now, we will continue supporting the legacy `storage` module.
-
-However, as of [March 17, 2025](/platform/forge/changelog/#CHANGE-2399), no further feature updates will be provided through this module. Instead, all new KVS and Custom Entity Store feature updates will only be built on modules in the @forge/kvs package. For example,
-[KVS transactions](/platform/forge/storage-reference/kvs-transactions/) and
-[Custom Entity Store transactions](/platform/forge/storage-reference/entities-transactions/) are only available through `@forge/kvs`.
-
-We strongly recommend using `@forge/kvs`. Migrating to this package will only change the interface to your app’s data; all data stored through the legacy module will remain intact.
-
 ## kvs.set
 
 Stores a JSON value with a specified key.
@@ -511,5 +501,3 @@ This will return a list of objects containing the `key`, `value`, and the reques
 }
 ```
 ```
-
-The legacy `storage` module from the `@forge/api` package use the condition `startsWith` instead of `beginsWith`.

@@ -61,7 +61,7 @@ The Forge runtime allows your app to run directly on a secure VM environment. Yo
 At invocation time, Forge calls a context function. Each module receives different [request parameters](/platform/forge/function-reference/arguments/) based on
 the module type.
 
-![A code editor showing the invocation context](https://dac-static.atlassian.com/platform/forge/images/invocation-context.png?_v=1.5800.2279)
+![A code editor showing the invocation context](https://dac-static.atlassian.com/platform/forge/images/invocation-context.png?_v=1.5800.2282)
 
 You can also explicitly request a Forge function’s context details (for example, the
 [environments and versions](/platform/forge/environments-and-versions/) an app is executing in). See
@@ -85,7 +85,7 @@ To comply with these responsibilities, review your app code to ensure that:
 
 ### Runtime context
 
-When calling Atlassian APIs like `storage`(legacy),`kvs`, `requestJira`, `requestConfluence`, the Forge runtime
+When calling Atlassian APIs like `kvs`, `requestJira`, `requestConfluence`, the Forge runtime
 automatically provides the context of the current request. This ensures that operations are executed
 against the correct tenant.
 

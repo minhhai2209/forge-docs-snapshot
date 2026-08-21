@@ -8,7 +8,7 @@ It works in the
 [new issue view](https://support.atlassian.com/jira-core-cloud/docs/what-is-the-new-jira-issue-view/)
 but not the old issue view.
 
-![Example of an Issue panel](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-panel-demo-with-show-hide-from-work-item.png?_v=1.5800.2279)
+![Example of an Issue panel](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-panel-demo-with-show-hide-from-work-item.png?_v=1.5800.2282)
 
 Only Jira administrators can see the **Show for all work items** and **Hide from all work items** options in the issue panel menu.
 

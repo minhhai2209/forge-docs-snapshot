@@ -589,8 +589,6 @@ The `@forge/api` package cannot be used in frontend code, so some API calls in U
 
 For example, to call the [Key-Value Store](/platform/forge/storage-reference/kvs/), define a function in the resolver that uses the `kvs` module from the `@forge/kvs` package, and have the frontend invoke the resolver with the `invoke` function on `@forge/bridge`.
 
-Use `@forge/kvs` for key-value storage instead of the legacy `storage` module from `@forge/api`.
-
 **src/resolvers/index.js**
 
 ```

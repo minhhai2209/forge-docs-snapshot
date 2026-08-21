@@ -1,4 +1,4 @@
-# Migrating to @forge/kvs from legacy storage module
+# Migrating to @forge/kvs from unsupported storage module
 
 This page provides guidance on updating any functions that still use the `@forge/api` package's `storage` module to use the new `@forge/kvs` package instead. If you're building a new app, use the `@forge/kvs` package from the start; see the [Storage overview](/platform/forge/storage-reference/) for the recommended package and capabilities.
 

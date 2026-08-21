@@ -40,9 +40,6 @@ instead.
 
 This page discusses KVS transactions. For Custom Entity Store transactions, see [here](/platform/forge/storage-reference/entities-transactions/).
 
-KVS and Custom Entity Store transactions are not available through the
-legacy `storage` module of `@forge/api`.
-
 ## Limitations
 
 Data stored through transactions is still subject to the limits defined in [Forge hosted storage key and object size limits](/platform/forge/platform-quotas-and-limits/#forge-hosted-storage-key-and-object-size-limits). Transactions are also subject to additional limits, namely:

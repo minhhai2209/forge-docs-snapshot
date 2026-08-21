@@ -91,7 +91,7 @@ Last, create the handler function that calls the storage API for the event consu
 
 ```
 import { InvocationError, InvocationErrorCode } from '@forge/events';
-import { storage as kvs } from '@forge/api';
+import { kvs } from '@forge/kvs';
 
 // Async event handler
 export async function handler(event, context) {
@@ -137,7 +137,7 @@ Refer to the following sample for the complete contents of this guide's `index.j
 
 ```
 import { InvocationError, InvocationErrorCode, Queue } from '@forge/events';
-import { storage as kvs } from '@forge/api';
+import { kvs } from '@forge/kvs';
 
 const storageAsyncQueue = new Queue({ key: 'storage-async-queue' });
 

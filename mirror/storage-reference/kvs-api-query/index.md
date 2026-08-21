@@ -78,16 +78,6 @@ The `Query` object is immutable.
 Each installation of your app is subject to the Storage API's quotas and limits.
 See [Storage quotas](/platform/forge/platform-quotas-and-limits/#storage-quotas) and [Storage limits](/platform/forge/platform-quotas-and-limits/#storage-limits) for more details.
 
-## Legacy version
-
-Legacy versions of the [Key-Value Store](/platform/forge/storage-reference/kvs/) and [Custom Entity Store](/platform/forge/storage-reference/entities/) were originally provided through the `storage` module of the `@forge/api` package. For now, we will continue supporting the legacy `storage` module.
-
-However, as of [March 17, 2025](/platform/forge/changelog/#CHANGE-2399), no further feature updates will be provided through this module. Instead, all new KVS and Custom Entity Store feature updates will only be built on modules in the @forge/kvs package. For example,
-[KVS transactions](/platform/forge/storage-reference/kvs-transactions/) and
-[Custom Entity Store transactions](/platform/forge/storage-reference/entities-transactions/) are only available through `@forge/kvs`.
-
-We strongly recommend using `@forge/kvs`. Migrating to this package will only change the interface to your app’s data; all data stored through the legacy module will remain intact.
-
 ## query.cursor
 
 Returns a new `Query` that will start after the provided
@@ -334,5 +324,3 @@ This condition lets you construct a predicate that filters fields starting with 
 beginsWith(value: string): Predicate
 ```
 ```
-
-The legacy `storage` module from the `@forge/api` package used the condition `startsWith` instead of `beginsWith`.

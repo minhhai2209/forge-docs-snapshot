@@ -660,7 +660,7 @@ When helping readers, map their use case to the right invocation type: UI-driven
 
 This section describes **Forge hosted storage**—durable, platform-managed persistence scoped per app installation (quotas and limits apply). The overview page is [Storage](https://developer.atlassian.com/platform/forge/storage-reference/). Use the pages linked from there and from this navigation area for APIs, migrations, and product-specific limits.
 
-Forge offers **four** hosted storage capabilities. They differ mainly by **data model**, **query shape**, and **typical payload size**—not by “which is newest.” For **Key-value store** and **Custom Entity Store**, new apps should use the **`@forge/kvs`** package; the legacy `storage` module on `@forge/api` is still supported but does not receive new features—see migration docs when advising upgrades.
+Forge offers **four** hosted storage capabilities. They differ mainly by **data model**, **query shape**, and **typical payload size**—not by “which is newest.” For **Key-value store** and **Custom Entity Store**, use the **`@forge/kvs`** package and point migration requests to [Migrating to @forge/kvs from legacy storage](https://developer.atlassian.com/platform/forge/storage-reference/kvs-migration-from-legacy/).
 
 **How they differ:**
 
@@ -694,7 +694,6 @@ When recommending an option: start from the **shape of the data** (key/value vs 
 - [Defining entities](https://developer.atlassian.com/platform/forge/storage-reference/entities-manifest.md)
 - [Storing entities](https://developer.atlassian.com/platform/forge/storage-reference/entities-api.md)
 - [Querying data](https://developer.atlassian.com/platform/forge/storage-reference/entities-api-query.md)
-- [Querying data (legacy)](https://developer.atlassian.com/platform/forge/storage-reference/entities-api-query-legacy.md)
 - [Running batch operations](https://developer.atlassian.com/platform/forge/storage-reference/entities-batch.md)
 - [Running transactions](https://developer.atlassian.com/platform/forge/storage-reference/entities-transactions.md)
 - [Error handling](https://developer.atlassian.com/platform/forge/storage-reference/entities-errorhandling.md)
@@ -975,7 +974,7 @@ This section contains curated references that show how real Forge apps are struc
 - [Migrating a Connect macro to Forge](https://developer.atlassian.com/platform/forge/adopting-forge-from-connect-migrate-macro.md)
 - [Upgrading to latest UI Kit version](https://developer.atlassian.com/platform/forge/ui-kit/upgrade-to-ui-kit-latest.md)
 - [Migrating to Forge SQL](https://developer.atlassian.com/platform/forge/storage-reference/sql-migration-guide.md)
-- [Migrating from legacy KVS module](https://developer.atlassian.com/platform/forge/storage-reference/kvs-migration-from-legacy.md)
+- [Migrating from unsupported KVS module](https://developer.atlassian.com/platform/forge/storage-reference/kvs-migration-from-legacy.md)
 - [Upgrading from legacy runtime](https://developer.atlassian.com/platform/forge/runtime-reference/legacy-runtime-migrating.md)
 - [Migrating a Forge app to support multiple Atlassian apps](https://developer.atlassian.com/platform/forge/migrating-a-forge-app-to-support-multiple-atlassian-apps.md)
 

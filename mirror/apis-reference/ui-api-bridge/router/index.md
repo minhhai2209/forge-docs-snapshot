@@ -78,6 +78,13 @@ router.navigate({ target: "contentEdit", contentId: "12345" });
 // To navigate to the page of the given module key:
 router.navigate({ target: "module", moduleKey: "my-global-page" });
 
+// Append a sub-route or query parameters using the optional `path` property:
+router.navigate({
+  target: "module",
+  moduleKey: "my-global-page",
+  path: "/settings?tab=general",
+});
+
 // To navigate to the issue view page of an issue in Jira:
 router.navigate({ target: "issue", issueKey: "TEST-1" });
 
@@ -249,10 +256,18 @@ To navigate to `/${workspace}/workspace/forge/${appId}/${environmentKey}/${modul
 router.navigate({
   target: "module",
   moduleKey: "my-workspace-global-page-module-key",
-  workspaceId: "my-workspace"
+  workspaceId: "my-workspace",
 });
 ```
 ```
+
+| Property | Required | Description |
+| --- | --- | --- |
+| `moduleKey` | Yes | The module key of the page. |
+| `workspaceId` | Yes | The slug or UUID wrapped in `{}` of the workspace. |
+| `projectKey` | Yes, if using:* [Project settings menu page](/platform/forge/manifest-reference/modules/bitbucket-project-settings-menu-page/) | The key of the project. |
+| `repositoryId` | Yes, if using:* [Repository main menu page](/platform/forge/manifest-reference/modules/bitbucket-repository-main-menu-page/) * [Repository settings menu page](/platform/forge/manifest-reference/modules/bitbucket-repository-settings-menu-page/) | The slug or UUID wrapped in `{}` of the repository. |
+| `path` | No | If provided, this is appended to the module route. Use it to navigate to a sub-route or to include query parameters, for example `/settings?tab=general`. |
 
 ### Confluence
 
@@ -405,10 +420,30 @@ router.navigate({ target: "module", moduleKey: "my-global-page" });
 ```
 ```
 
+To navigate to `/wiki/apps/${appId}/${environmentId}/${route}/settings?tab=general`:
+
+```
+```
+1
+2
+```
+
+
+
+```
+router.navigate({
+  target: "module",
+  moduleKey: "my-global-page",
+  path: "/settings?tab=general",
+});
+```
+```
+
 | Property | Required | Description |
 | --- | --- | --- |
 | `moduleKey` | Yes | The module key of the page. |
 | `spaceKey` | Yes, if using:* [Space page](/platform/forge/manifest-reference/modules/confluence-space-page) * [Space settings](/platform/forge/manifest-reference/modules/confluence-space-settings) | The key of the space. |
+| `path` | No | If provided, this is appended to the module route. Use it to navigate to a sub-route or to include query parameters, for example `/settings?tab=general`. |
 
 ### Jira
 
@@ -507,6 +542,31 @@ To navigate to `/jira/settings/apps/${appId}/${environmentId}`:
 router.navigate({ target: "module", moduleKey: "my-admin-page" });
 ```
 ```
+
+To navigate to `/jira/settings/apps/${appId}/${environmentId}/settings?tab=general`:
+
+```
+```
+1
+2
+```
+
+
+
+```
+router.navigate({
+  target: "module",
+  moduleKey: "my-admin-page",
+  path: "/settings?tab=general",
+});
+```
+```
+
+| Property | Required | Description |
+| --- | --- | --- |
+| `moduleKey` | Yes | The module key of the page. |
+| `projectKey` | Yes, if using:* [Project page](/platform/forge/manifest-reference/modules/jira-project-page) * [Project settings page](/platform/forge/manifest-reference/modules/jira-project-settings-page) | The key of the project. |
+| `path` | No | If provided, this is appended to the module route. Use it to navigate to a sub-route or to include query parameters, for example `/settings?tab=general`. |
 
 ### Directory
 
