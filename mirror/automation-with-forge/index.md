@@ -100,6 +100,9 @@ adds labels to the issue that relate to the keywords found.
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -127,6 +130,10 @@ const validated = headerSecret && headerSecret === process.env.SHARED_SECRET;
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -200,6 +207,11 @@ To check the status of a request, use status as shown below:
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -224,6 +236,10 @@ Forge apps can also make authenticated requests to external APIs using the fetch
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -247,6 +263,19 @@ Invoking an Atlassian app automation trigger involves a simple fetch request:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
 ```
 
 

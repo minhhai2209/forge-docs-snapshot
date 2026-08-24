@@ -7,8 +7,8 @@ method.
 To start, import the Forge KVS package in your app, as follows:
 
 ```
-1
-import { kvs } from '@forge/kvs';
+1import { kvs } from '@forge/kvs';
+2
 ```
 
 Each installation of your app is subject to the API's quotas and limits.
@@ -20,12 +20,10 @@ See [Storage quotas](/platform/forge/platform-quotas-and-limits/#storage-quotas)
 Using the `@forge/kvs` package requires the `storage:app` scope in your manifest file:
 
 ```
-1
-2
-3
-permissions:
-  scopes:
-    - storage:app
+1permissions:
+2  scopes:
+3    - storage:app
+4
 ```
 
 See [Permissions](/platform/forge/manifest-reference/permissions/#scopes) for more information about scopes.
@@ -56,6 +54,11 @@ To set a TTL, provide the following option:
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -107,6 +110,22 @@ Specify whether a write request should also return metadata. Use the following o
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
 ```
 
 
@@ -140,6 +159,19 @@ Sets the key `example-key` to one of the supported value types.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
 ```
 
 
@@ -170,6 +202,11 @@ You can also set a *relative* [time-to-live (TTL)](#ttl) for the secret value:
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -192,6 +229,14 @@ Use the `keyPolicy` [property](#write-conflict) to specify how to handle write c
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -218,6 +263,14 @@ Use `returnValue` to return the written or overwritten value with the `kvs.setSe
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -241,6 +294,12 @@ You can also request the key's relevant metadata by including `returnMetadataFie
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -262,6 +321,12 @@ This will return an object containing the `key`, `value`, and the requested meta
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -291,6 +356,16 @@ When requested, the API returns an `expireTime` attribute in ISO-8601 format.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -318,6 +393,12 @@ Gets the secret value associated with the key `example-key`.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -360,6 +441,7 @@ Deletes the value associated with the key `example-key`, if it hasn't already be
 ```
 1
 2
+3
 ```
 
 

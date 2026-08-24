@@ -23,14 +23,11 @@ To enable standard billing, set `licensing.enabled` to `true` in your
 [app manifest](/platform/forge/manifest-reference/#app):
 
 ```
-1
-2
-3
-4
-app:
-  id: ari:cloud:ecosystem::app/your-app-id
-  licensing:
-    enabled: true
+1app:
+2  id: ari:cloud:ecosystem::app/your-app-id
+3  licensing:
+4    enabled: true
+5
 ```
 
 ## User-based billing (EAP)
@@ -55,6 +52,11 @@ To enable user-based billing, set both `licensing.enabled` and `access.userAcces
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 

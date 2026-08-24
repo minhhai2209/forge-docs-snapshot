@@ -9,7 +9,7 @@ Ask for help on our Developer Community
 This tutorial describes how to create a Forge app that checks Jira issues are assigned when the
 issue transitions. You'll do this using a Jira workflow validator.
 
-![Jira board showing a notification message "The issue must have an assignee before transitioning."](https://dac-static.atlassian.com/platform/forge/images/jira-validator-block-transition.png?_v=1.5800.2282)
+![Jira board showing a notification message "The issue must have an assignee before transitioning."](https://dac-static.atlassian.com/platform/forge/images/jira-validator-block-transition.png?_v=1.5800.2283)
 
 If you prefer learning by looking at code, see the [Open Pull Requests Validator]
 (<https://bitbucket.org/atlassian/forge-open-pull-requests-validator/>) example app for a more complex
@@ -78,6 +78,10 @@ registers the details in Jira and the `function` contains the validation logic.
    ```
    1
    2
+   3
+   4
+   5
+   6
    ```
 
 
@@ -100,6 +104,14 @@ Your `modules` inside `manifest.yml` should look like the following:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -130,6 +142,8 @@ transition is blocked, Jira displays the value of `errorMessage`.
    ```
    1
    2
+   3
+   4
    ```
 
 
@@ -176,6 +190,8 @@ transition is blocked, Jira displays the value of `errorMessage`.
       ```
       1
       2
+      3
+      4
       ```
 
 
@@ -192,6 +208,9 @@ transition is blocked, Jira displays the value of `errorMessage`.
    ```
    1
    2
+   3
+   4
+   5
    ```
 
 
@@ -212,6 +231,17 @@ Your `index.js` file should look like the following:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
 ```
 
 
@@ -272,7 +302,7 @@ Start using the app by adding it as a validator in the workflow of a Jira Softwa
 1. Open [Advanced workflow
    configuration](https://confluence.atlassian.com/adminjiracloud/advanced-workflow-configuration-776636620.html#Advancedworkflowconfiguration-validators) and follow the instructions to add a
    validator. Select the validator that matches the `name` you defined in the manifest (1).
-   ![The add validator to transition screen showing the Forge app is selected from a list](https://dac-static.atlassian.com/platform/forge/images/jira-add-validator.png?_v=1.5800.2282)
+   ![The add validator to transition screen showing the Forge app is selected from a list](https://dac-static.atlassian.com/platform/forge/images/jira-add-validator.png?_v=1.5800.2283)
 2. Publish the workflow updates.
 
 ## View your app
@@ -286,7 +316,7 @@ With your app installed and in your workflow, see it in action.
 
 You'll see the following error message display.
 
-![Jira board showing a notification message "The issue must have an assignee before transitioning."](https://dac-static.atlassian.com/platform/forge/images/jira-validator-block-transition.png?_v=1.5800.2282)
+![Jira board showing a notification message "The issue must have an assignee before transitioning."](https://dac-static.atlassian.com/platform/forge/images/jira-validator-block-transition.png?_v=1.5800.2283)
 
 The location of the error depends on how you transition the issue. For example, when you transition
 the issue using the controls on the issue view, the error displays on the issue view.

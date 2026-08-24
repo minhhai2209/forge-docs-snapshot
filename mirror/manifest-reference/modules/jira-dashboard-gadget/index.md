@@ -17,8 +17,8 @@ Dashboard Gadgets can be refreshed manually by your users and automatically. The
 When using Custom UI and UI Kit to work with the Dashboard Gadget module, use the [submit API](/platform/forge/apis-reference/ui-api-bridge/view/#submit) as part of your edit view to provide a `refresh` field to the submit function:
 
 ```
-1
-await view.submit({ ...otherFieldsToSubmit, refresh: 15 });
+1await view.submit({ ...otherFieldsToSubmit, refresh: 15 });
+2
 ```
 
 ##### Overriding default gadget refresh behavior
@@ -28,46 +28,27 @@ await view.submit({ ...otherFieldsToSubmit, refresh: 15 });
 3. Optionally, apply the refresh logic only when the `origin` and `gadgetId` properties of the payload satisfy a condition.
 
 ```
-1
-2
+1import { events } from '@forge/bridge';
+2import { useEffect } from 'react';
 3
-4
-5
-6
-7
-8
-9
+4function App() {
+5  useEffect(() => {
+6    const subscription = events.on('JIRA_DASHBOARD_GADGET_REFRESH', (payload) => {
+7      // the payload contains the following properties:
+8      // - payload.origin - either 'dashboard' or 'gadget' depending on which refresh button was clicked
+9      // - payload.gadgetId - the ID of the gadget initiating the refresh (only available if payload.origin === 'gadget')
 10
-11
-12
+11      // you can obtain the ID of the currently rendered gadget using the view.getContext() function
+12    });
 13
-14
-15
-16
-17
+14    return () => {
+15      subscription.then(({ unsubscribe }) => unsubscribe());
+16    };
+17  }, []);
 18
-19
-20
-import { events } from '@forge/bridge';
-import { useEffect } from 'react';
-
-function App() {
-  useEffect(() => {
-    const subscription = events.on('JIRA_DASHBOARD_GADGET_REFRESH', (payload) => {
-      // the payload contains the following properties:
-      // - payload.origin - either 'dashboard' or 'gadget' depending on which refresh button was clicked
-      // - payload.gadgetId - the ID of the gadget initiating the refresh (only available if payload.origin === 'gadget')
-
-      // you can obtain the ID of the currently rendered gadget using the view.getContext() function
-    });
-
-    return () => {
-      subscription.then(({ unsubscribe }) => unsubscribe());
-    };
-  }, []);
-
-  // render the gadget
-}
+19  // render the gadget
+20}
+21
 ```
 
 > When the user clicks the refresh button of any Forge dashboard gadget that has overridden the default refresh
@@ -84,6 +65,19 @@ First, define your manifest:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
 ```
 
 
@@ -112,6 +106,26 @@ Then in your Custom UI, use the view API to determine whether to display the vie
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
 ```
 
 

@@ -21,14 +21,41 @@ function, known as the `t` function, which is bound to a specified [locale code]
 To add the `useTranslation` hook to your app:
 
 ```
-1
-import { useTranslation, I18nProvider } from "@forge/react";
+1import { useTranslation, I18nProvider } from "@forge/react";
+2
 ```
 
 Ensure that the `useTranslation` hook is used within components that have the [I18nProvider](#i18nprovider) correctly configured at the top of the component hierarchy.
 
 Here is an example of an app that displays translated content with `useTranslation`:
 
+```
+1import React from 'react';
+2import ForgeReconciler, { Text, useTranslation, I18nProvider } from '@forge/react';
+3
+4const App = () => {
+5  const { ready, t } = useTranslation();
+6  if (!ready) {
+7    return null;
+8  }
+9
+10  // usage of the `t` function to resolve translation for 'app.message'
+11  return <Text>{t('app.message')}</Text>;
+12};
+13
+14ForgeReconciler.render(
+15  <React.StrictMode>
+16    <I18nProvider>
+17      <App />
+18    </I18nProvider>
+19  </React.StrictMode>
+20);
+21
+```
+
+### Function signature
+
+```
 ```
 1
 2
@@ -45,39 +72,6 @@ Here is an example of an app that displays translated content with `useTranslati
 13
 14
 15
-16
-17
-18
-19
-20
-import React from 'react';
-import ForgeReconciler, { Text, useTranslation, I18nProvider } from '@forge/react';
-
-const App = () => {
-  const { ready, t } = useTranslation();
-  if (!ready) {
-    return null;
-  }
-
-  // usage of the `t` function to resolve translation for 'app.message'
-  return <Text>{t('app.message')}</Text>;
-};
-
-ForgeReconciler.render(
-  <React.StrictMode>
-    <I18nProvider>
-      <App />
-    </I18nProvider>
-  </React.StrictMode>
-);
-```
-
-### Function signature
-
-```
-```
-1
-2
 ```
 
 
@@ -137,6 +131,9 @@ making them accessible to any components that consume this context.
 ```
 1
 2
+3
+4
+5
 ```
 
 

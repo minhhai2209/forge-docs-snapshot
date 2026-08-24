@@ -7,36 +7,22 @@ The Modal bridge API is exclusive to Custom UI; If you are using UI Kit, you can
 ## Class signature
 
 ```
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
+1interface ModalOptions {
+2  resource?: string | null;
+3  onClose?: (payload?: any) => any;
+4  size?: 'small' | 'medium' | 'large' | 'xlarge' | 'max' | 'fullscreen' | 'resizable' | { width: string; height: string };
+5  context?: any;
+6  closeOnEscape?: boolean;
+7  closeOnOverlayClick?: boolean;
+8  title?: string;
+9  icon?: string;
+10}
 11
-12
-13
-14
-15
-interface ModalOptions {
-  resource?: string | null;
-  onClose?: (payload?: any) => any;
-  size?: 'small' | 'medium' | 'large' | 'xlarge' | 'max' | 'fullscreen' | 'resizable' | { width: string; height: string };
-  context?: any;
-  closeOnEscape?: boolean;
-  closeOnOverlayClick?: boolean;
-  title?: string;
-  icon?: string;
-}
-
-class Modal {
-  constructor(opts?: ModalOptions);
-  open(): Promise<void>;
-}
+12class Modal {
+13  constructor(opts?: ModalOptions);
+14  open(): Promise<void>;
+15}
+16
 ```
 
 ## Arguments
@@ -79,6 +65,7 @@ If your app imports `@atlaskit/css-reset`, be aware that it sets `width: 100%` o
 ```
 1
 2
+3
 ```
 
 
@@ -103,6 +90,21 @@ Implementing a Custom UI modal requires two files:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
 ```
 
 
@@ -133,6 +135,13 @@ modal.open();
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 

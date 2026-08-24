@@ -17,16 +17,12 @@ Forge apps can publish custom backend events. Other apps installed on the same s
 Apps must declare their intent to publish events by using the [event](/platform/forge/manifest-reference/modules/event/) module:
 
 ```
-1
-2
-3
-4
-5
-modules:
-  event:
-    - key: event-key
-      name: Event name
-      allowedRecipients: ['*']
+1modules:
+2  event:
+3    - key: event-key
+4      name: Event name
+5      allowedRecipients: ['*']
+6
 ```
 
 #### Restricting the list of recipients
@@ -44,6 +40,12 @@ For example, the following declaration allows only two specified apps to receive
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -105,6 +107,17 @@ Here is a simple template for inspecting what happened and acting accordingly:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
 ```
 
 
@@ -153,6 +166,14 @@ For example, to subscribe to the event defined in the [Manifest declaration](#ma
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -181,6 +202,11 @@ Here is a handy template for such a function:
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -203,6 +229,21 @@ The payload for app events (the `event` argument of the [trigger function](#trig
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
 ```
 
 

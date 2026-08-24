@@ -3,8 +3,8 @@
 To add the `DynamicTable` component to your app:
 
 ```
-1
-import { DynamicTable } from "@forge/react";
+1import { DynamicTable } from "@forge/react";
+2
 ```
 
 ## Description
@@ -102,6 +102,49 @@ Unless specified otherwise, examples below use the following data model in their
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
 ```
 
 
@@ -160,6 +203,73 @@ Data used are as below:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
 ```
 
 
@@ -240,12 +350,19 @@ export const presidents = [
 
 Dynamic table manages sorting, pagination, loading, and drag and drop state management by default.
 
-![Example image of a rendered dynamic table](https://dac-static.atlassian.com/platform/forge/ui-kit/images/dynamic-table/dynamic-table-uncontrolled.png?_v=1.5800.2282)
+![Example image of a rendered dynamic table](https://dac-static.atlassian.com/platform/forge/ui-kit/images/dynamic-table/dynamic-table-uncontrolled.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -268,12 +385,17 @@ Sorting a dynamic table is done based on the `key` set on each cell. You can sor
 
 The content of a cell does not affect its sorted order. The below example is sorted by parties after clicking on the "Party" header.
 
-![Example image of a rendered sorted dynamic table](https://dac-static.atlassian.com/platform/forge/ui-kit/images/dynamic-table/dynamic-table-sorting.png?_v=1.5800.2282)
+![Example image of a rendered sorted dynamic table](https://dac-static.atlassian.com/platform/forge/ui-kit/images/dynamic-table/dynamic-table-sorting.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -294,12 +416,19 @@ Dynamic table uses a spinner to denote loading state. This is toggled by the `is
 
 Table content is set to 20% opacity in this loading state.
 
-![Example image of a rendered loading dynamic table with a toggle button](https://dac-static.atlassian.com/platform/forge/ui-kit/images/dynamic-table/dynamic-table-loading-states.png?_v=1.5800.2282)
+![Example image of a rendered loading dynamic table with a toggle button](https://dac-static.atlassian.com/platform/forge/ui-kit/images/dynamic-table/dynamic-table-loading-states.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -320,12 +449,17 @@ export default function TableLoading() {
 
 Use the `emptyView` prop to show an empty view in the dynamic table. Empty views communicate that the table has no content to show. If there is an action that a user must take to create or show table content, add this to the empty view.
 
-![Example image of a rendered empty dynamic table with an empty view](https://dac-static.atlassian.com/platform/forge/ui-kit/images/dynamic-table/dynamic-table-empty.png?_v=1.5800.2282)
+![Example image of a rendered empty dynamic table with an empty view](https://dac-static.atlassian.com/platform/forge/ui-kit/images/dynamic-table/dynamic-table-empty.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -344,12 +478,17 @@ export default function TableEmpty() {
 
 Dynamic table can render without a table header if no `head` is supplied.
 
-![Example image of a rendered dynamic table with no header](https://dac-static.atlassian.com/platform/forge/ui-kit/images/dynamic-table/dynamic-table-headless.png?_v=1.5800.2282)
+![Example image of a rendered dynamic table with no header](https://dac-static.atlassian.com/platform/forge/ui-kit/images/dynamic-table/dynamic-table-headless.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -366,12 +505,17 @@ export default function TableHeadless() {
 
 Pagination is enabled or disabled by setting or unsetting the `rowsPerPage` prop. If the `rowsPerPage` prop is set and there is more than one page of content, the pagination component is added below the table.
 
-![Example image of a rendered paginated dynamic table](https://dac-static.atlassian.com/platform/forge/ui-kit/images/dynamic-table/dynamic-table-pagination.png?_v=1.5800.2282)
+![Example image of a rendered paginated dynamic table](https://dac-static.atlassian.com/platform/forge/ui-kit/images/dynamic-table/dynamic-table-pagination.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -390,12 +534,17 @@ export default function TableSorted() {
 
 Drag and drop functionality is built into dynamic table and is enabled using the `isRankable` prop. This allows you to drag rows and rank them in different orders.
 
-![Example image of a rendered dynamic table with a row dragged out](https://dac-static.atlassian.com/platform/forge/ui-kit/images/dynamic-table/dynamic-table-drag-and-drop.png?_v=1.5800.2282)
+![Example image of a rendered dynamic table with a row dragged out](https://dac-static.atlassian.com/platform/forge/ui-kit/images/dynamic-table/dynamic-table-drag-and-drop.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -416,12 +565,31 @@ Larger tables or tables that cannot be constrained easily can use horizontal scr
 
 Be mindful that horizontally scrolling tables can cause accessibility issues if there isn't enough visual affordance to indicate that the table has a scroll. For this reason, we recommend finding ways to simplify the table before opting for a horizontal scroll solution.
 
-![Example image of a rendered dynamic table with overflow](https://dac-static.atlassian.com/platform/forge/ui-kit/images/dynamic-table/dynamic-table-overflow.png?_v=1.5800.2282)
+![Example image of a rendered dynamic table with overflow](https://dac-static.atlassian.com/platform/forge/ui-kit/images/dynamic-table/dynamic-table-overflow.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
 ```
 
 
@@ -454,12 +622,64 @@ export default function TableOverflow() {
 
 Individual cells can utilise `colSpan` to allow them to spill into other columns.
 
-![Example image of a rendered dynamic table with custom colSpans](https://dac-static.atlassian.com/platform/forge/ui-kit/images/dynamic-table/dynamic-table-custom-column-span.png?_v=1.5800.2282)
+![Example image of a rendered dynamic table with custom colSpans](https://dac-static.atlassian.com/platform/forge/ui-kit/images/dynamic-table/dynamic-table-custom-column-span.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
 ```
 
 
@@ -525,12 +745,24 @@ const CustomColSpanExample = () => (
 
 Rows can be highlighted to provide additional visual prominence to a row. For example, use highlighted rows when rows are added. This should not be used to reflect selection.
 
-![Example image of a rendered dynamic table with highlighted rows](https://dac-static.atlassian.com/platform/forge/ui-kit/images/dynamic-table/dynamic-table-highlighted-row.png?_v=1.5800.2282)
+![Example image of a rendered dynamic table with highlighted rows](https://dac-static.atlassian.com/platform/forge/ui-kit/images/dynamic-table/dynamic-table-highlighted-row.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
 ```
 
 

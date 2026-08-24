@@ -17,8 +17,8 @@ For example, redeploying a new version of your app to the Forge production envir
 Import the Forge API package in your app as follows:
 
 ```
-1
-import { webTrigger } from "@forge/api";
+1import { webTrigger } from "@forge/api";
+2
 ```
 
 ## Get a URL
@@ -26,15 +26,15 @@ import { webTrigger } from "@forge/api";
 Obtain the URL for the web trigger module specified by the given module key.
 
 ```
-1
-await webTrigger.getUrl("example-web-trigger-key");
+1await webTrigger.getUrl("example-web-trigger-key");
+2
 ```
 
 ### Method signature
 
 ```
-1
-webTrigger.getUrl(moduleKey: string, forceCreate?: boolean) => Promise<string>;
+1webTrigger.getUrl(moduleKey: string, forceCreate?: boolean) => Promise<string>;
+2
 ```
 
 ### Parameters
@@ -52,6 +52,7 @@ Retrieve all web trigger URLs for the specified `moduleKey`. Returns all active 
 ```
 1
 2
+3
 ```
 
 
@@ -68,6 +69,10 @@ await webTrigger.queryUrls(); // returns all URLs for the app
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 

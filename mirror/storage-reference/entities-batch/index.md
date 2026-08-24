@@ -59,6 +59,38 @@ kvs.batchSet(items: BatchSetItem[]): Promise<BatchResult>;
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
 ```
 
 
@@ -108,6 +140,30 @@ The following batch operation sets multiple entities across different data struc
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
 ```
 
 
@@ -171,6 +227,38 @@ kvs.batchGet(items: BatchGetItem[]): Promise<BatchGetResult<T>>;
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
 ```
 
 
@@ -220,6 +308,17 @@ The following batch operation gets multiple entities across different data struc
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
 ```
 
 
@@ -270,6 +369,29 @@ kvs.batchDelete(items: BatchDeleteItem[]): Promise<BatchResult>;
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
 ```
 
 
@@ -310,6 +432,14 @@ The following batch operation deletes multiple entities across different data st
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 

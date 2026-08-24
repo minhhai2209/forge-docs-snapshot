@@ -19,8 +19,8 @@ Use the `put` method to upload an object with the following parameters:
 ### Method signature
 
 ```
-1
-os.put(key: string, object: any, ttlSeconds?: number): Promise<void>;
+1os.put(key: string, object: any, ttlSeconds?: number): Promise<void>;
+2
 ```
 
 ### Example
@@ -29,6 +29,13 @@ os.put(key: string, object: any, ttlSeconds?: number): Promise<void>;
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -75,6 +82,16 @@ os.download(key: string): Promise<Buffer | undefined>;
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 

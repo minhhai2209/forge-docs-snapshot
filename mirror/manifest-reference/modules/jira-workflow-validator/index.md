@@ -43,6 +43,12 @@ A validator that checks if the work item is assigned would look like this:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -104,6 +110,30 @@ To create a validator that displays the [Custom UI](/platform/forge/custom-ui), 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
 ```
 
 
@@ -143,6 +173,18 @@ To get the Atlassian app context in the `create`, `edit`, and `view` resources d
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
 ```
 
 
@@ -170,6 +212,28 @@ To save the user input to the `config` context variable, pass the callback funct
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
 ```
 
 
@@ -210,6 +274,12 @@ To do that, include the `expression` property in the returned JSON. For example:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -240,6 +310,20 @@ An example of `transitionContext`:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
 ```
 
 
@@ -269,6 +353,11 @@ The maximum length of configuration saved via the new editor is limited to 32KB.
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -293,6 +382,44 @@ information about the transition:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
 ```
 
 
@@ -359,6 +486,12 @@ Specific details about certain fields include:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -427,6 +560,14 @@ declare it like this in the manifest:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -450,6 +591,13 @@ To implement the actual logic in the `src/status.js` file:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 

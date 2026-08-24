@@ -25,12 +25,10 @@ The invocation will have a timeout of 55 seconds.
 When your trigger function is invoked, it receives two arguments:
 
 ```
-1
-2
-3
-export async function myTriggerFunction(payload, context) {
-  // handle the payload
-}
+1export async function myTriggerFunction(payload, context) {
+2  // handle the payload
+3}
+4
 ```
 
 ### Arguments
@@ -55,6 +53,12 @@ Your function receives a request object with the following structure:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -88,6 +92,12 @@ The `context` object contains information about the environment and installation
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -109,6 +119,11 @@ Handler function in `index.js`
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 

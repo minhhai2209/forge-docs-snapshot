@@ -20,20 +20,14 @@ Invocations from users, webtriggers, or scheduled triggers are subject to Forge'
 Your handler should be defined as a [function](/platform/forge/runtime-reference/).
 
 ```
-1
-2
-3
-4
-5
-6
-7
-export const trigger = (payload, context) => {
-  return {
-    statusCode: 200,
-    headers: {},
-    body: "Hello, world!",
-  };
-};
+1export const trigger = (payload, context) => {
+2  return {
+3    statusCode: 200,
+4    headers: {},
+5    body: "Hello, world!",
+6  };
+7};
+8
 ```
 
 ### Manifest definition
@@ -44,6 +38,15 @@ A [web trigger module](/platform/forge/manifest-reference/modules/web-trigger/) 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -108,6 +111,24 @@ The following example shows a request to `/x1/XUBR5WnG2Hk2V52APDdGaRSDm/hello/wo
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
 ```
 
 
@@ -149,6 +170,24 @@ The following example shows a request to `/x1/XUBR5WnG2Hk2V52APDdGaRSDm?apples=g
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
 ```
 
 

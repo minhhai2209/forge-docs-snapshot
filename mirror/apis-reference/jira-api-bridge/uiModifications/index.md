@@ -3,8 +3,8 @@
 To consume the UI modifications (UIM) API, your app needs to import the `@forge/jira-bridge` package:
 
 ```
-1
-import { uiModificationsApi } from '@forge/jira-bridge';
+1import { uiModificationsApi } from '@forge/jira-bridge';
+2
 ```
 
 ## Initialization
@@ -12,8 +12,8 @@ import { uiModificationsApi } from '@forge/jira-bridge';
 ### onInit method signature
 
 ```
-1
-onInit(<initCallback>, <registerFieldsCallback>): void
+1onInit(<initCallback>, <registerFieldsCallback>): void
+2
 ```
 
 ### onInit method description
@@ -62,6 +62,24 @@ The `registerFieldsCallback` function receives an object containing:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
 ```
 
 
@@ -96,6 +114,14 @@ That means that consecutive modifications applied by the same `FieldAPI/ScreenTa
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -171,6 +197,27 @@ The `registerFieldsCallback` function receives an object containing:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
 ```
 
 
@@ -208,6 +255,14 @@ That means that consecutive modifications applied by the same `FieldAPI/ScreenTa
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -265,6 +320,25 @@ This object contains the following attributes:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
 ```
 
 
@@ -299,6 +373,12 @@ uiModificationsApi.onError(({ errors }) => {
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -320,6 +400,9 @@ uiModificationsApi.onError(({ errors }) => {
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -338,6 +421,14 @@ uiModificationsApi.onError(({ errors }) => {
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -361,6 +452,11 @@ uiModificationsApi.onError(({ errors }) => {
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -407,6 +503,11 @@ Example usage with regular field:
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -427,6 +528,11 @@ Example usage with custom field:
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -468,6 +574,12 @@ Example usage:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -544,7 +656,7 @@ setName(value: string): FieldAPI
 
 Changes the field's name.
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/set-name.png?_v=1.5800.2282)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/set-name.png?_v=1.5800.2283)
 
 Example:
 
@@ -582,7 +694,7 @@ setDescription(value: string): FieldAPI
 
 Changes the field's description.
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/set-description.png?_v=1.5800.2282)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/set-description.png?_v=1.5800.2283)
 
 Example:
 
@@ -771,6 +883,13 @@ Example:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -863,6 +982,9 @@ getValue(): IssueTypeField
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -877,7 +999,7 @@ getValue(): IssueTypeField
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-issue-type.png?_v=1.5800.2282)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-issue-type.png?_v=1.5800.2283)
 
 ### priority
 
@@ -919,6 +1041,10 @@ getValue(): PriorityField
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -934,7 +1060,7 @@ getValue(): PriorityField
 
 #### Reference screenshot
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-priority.png?_v=1.5800.2282)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-priority.png?_v=1.5800.2283)
 
 ### project picker
 
@@ -978,6 +1104,8 @@ getValue(): ProjectPickerField
 ```
 1
 2
+3
+4
 ```
 
 
@@ -991,7 +1119,7 @@ getValue(): ProjectPickerField
 
 #### Reference screenshot
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-project.png?_v=1.5800.2282)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-project.png?_v=1.5800.2283)
 
 ### Resolution
 
@@ -1035,6 +1163,9 @@ getValue(): ResolutionField
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -1049,7 +1180,7 @@ getValue(): ResolutionField
 
 #### Reference screenshot
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-resolution.png?_v=1.5800.2282)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-resolution.png?_v=1.5800.2283)
 
 ### summary
 
@@ -1089,7 +1220,7 @@ getValue(): SummaryField
 
 #### Reference screenshot
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-summary.png?_v=1.5800.2282)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-summary.png?_v=1.5800.2283)
 
 ### assignee
 
@@ -1131,6 +1262,8 @@ getValue(): AssigneeField
 ```
 1
 2
+3
+4
 ```
 
 
@@ -1150,7 +1283,7 @@ This means that all calls to `setValue` for user-based fields performed in a sin
 
 #### Reference screenshot
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-assignee.png?_v=1.5800.2282)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-assignee.png?_v=1.5800.2283)
 
 ### reporter
 
@@ -1211,7 +1344,7 @@ This means that all calls to `setValue` for user-based fields performed in a sin
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-reporter.png?_v=1.5800.2282)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-reporter.png?_v=1.5800.2283)
 
 ### labels
 
@@ -1251,7 +1384,7 @@ getValue(): LabelsField
 
 #### Reference screenshot
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-labels.png?_v=1.5800.2282)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-labels.png?_v=1.5800.2283)
 
 ### description
 
@@ -1296,6 +1429,13 @@ getValue(): DescriptionField
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -1318,6 +1458,11 @@ type ADF = {
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -1334,8 +1479,8 @@ type ADF = {
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-description.png?_v=1.5800.2282)
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-description-plain-text.png?_v=1.5800.2282)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-description.png?_v=1.5800.2283)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-description-plain-text.png?_v=1.5800.2283)
 
 ### components
 
@@ -1379,6 +1524,16 @@ getValue(): ComponentsField
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -1400,7 +1555,7 @@ getValue(): ComponentsField
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-components.png?_v=1.5800.2282)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-components.png?_v=1.5800.2283)
 
 ### fix versions
 
@@ -1444,6 +1599,16 @@ getValue(): FixVersionsField
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -1471,7 +1636,7 @@ This means that each supported field has its own limit of 100 IDs.
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-fix-versions.png?_v=1.5800.2282)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-fix-versions.png?_v=1.5800.2283)
 
 ### affects versions
 
@@ -1515,6 +1680,16 @@ getValue(): VersionsField
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -1542,7 +1717,7 @@ This means that each field of this type has its own limit of 100 IDs.
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-affects-versions.png?_v=1.5800.2282)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-affects-versions.png?_v=1.5800.2283)
 
 ### single select
 
@@ -1586,6 +1761,9 @@ getValue(): SelectField
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -1600,7 +1778,7 @@ null | {
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-select.png?_v=1.5800.2282)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-select.png?_v=1.5800.2283)
 
 ### multi select
 
@@ -1644,6 +1822,16 @@ getValue(): MultiSelectField
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -1671,7 +1859,7 @@ This means that each supported field has its own limit of 100 IDs.
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-multi-select.png?_v=1.5800.2282)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-multi-select.png?_v=1.5800.2283)
 
 ### Cascading select
 
@@ -1685,6 +1873,9 @@ Use `null` to unset the value.
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -1718,6 +1909,9 @@ getValue(): CascadingSelectField
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -1732,7 +1926,7 @@ null | {
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-cascading-select.png?_v=1.5800.2282)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-cascading-select.png?_v=1.5800.2283)
 
 ### checkboxes
 
@@ -1776,6 +1970,16 @@ getValue(): MultiCheckboxesField
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -1803,7 +2007,7 @@ This means that each supported field has its own limit of 100 IDs.
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-multi-check-boxes.png?_v=1.5800.2282)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-multi-check-boxes.png?_v=1.5800.2283)
 
 ### radio buttons
 
@@ -1847,6 +2051,9 @@ getValue(): RadioButtonsField
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -1861,7 +2068,7 @@ null | {
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/radio-buttons.png?_v=1.5800.2282)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/radio-buttons.png?_v=1.5800.2283)
 
 ### paragraph
 
@@ -1903,6 +2110,13 @@ getValue(): ParagraphField
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -1921,8 +2135,8 @@ type ADF = {
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-paragraph.png?_v=1.5800.2282)
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-paragraph-plain-text.png?_v=1.5800.2282)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-paragraph.png?_v=1.5800.2283)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-paragraph-plain-text.png?_v=1.5800.2283)
 
 ### text field
 
@@ -1962,7 +2176,7 @@ string // Plain-text editor
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-text.png?_v=1.5800.2282)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-text.png?_v=1.5800.2283)
 
 ### user picker
 
@@ -2006,6 +2220,8 @@ getValue(): UserPickerField
 ```
 1
 2
+3
+4
 ```
 
 
@@ -2025,7 +2241,7 @@ This means that all calls to `setValue` for user-based fields performed in a sin
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-user-picker.png?_v=1.5800.2282)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-user-picker.png?_v=1.5800.2283)
 
 ### multi user picker
 
@@ -2069,6 +2285,14 @@ getValue(): MultiUserPickerField
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -2094,7 +2318,7 @@ This means that all calls to `setValue` for user-based fields performed in a sin
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-multi-user-picker.png?_v=1.5800.2282)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-multi-user-picker.png?_v=1.5800.2283)
 
 ### people
 
@@ -2142,6 +2366,14 @@ getValue(): PeopleField
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -2167,7 +2399,7 @@ This means that all calls to `setValue` for user-based fields performed in a sin
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-people-picker.png?_v=1.5800.2282)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-people-picker.png?_v=1.5800.2283)
 
 ### url
 
@@ -2194,7 +2426,7 @@ setValue(url: string): FieldAPI
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-url.png?_v=1.5800.2282)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-url.png?_v=1.5800.2283)
 
 ### date picker
 
@@ -2238,7 +2470,7 @@ getValue(): DatePickerField
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-date-picker.png?_v=1.5800.2282)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-date-picker.png?_v=1.5800.2283)
 
 ### date time picker
 
@@ -2282,7 +2514,7 @@ getValue(): DatePickerField
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-date-time.png?_v=1.5800.2282)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-date-time.png?_v=1.5800.2283)
 
 ### due date
 
@@ -2326,7 +2558,7 @@ getValue(): DatePickerField
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-due-date.png?_v=1.5800.2282)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-due-date.png?_v=1.5800.2283)
 
 ### target start
 
@@ -2370,7 +2602,7 @@ getValue(): DatePickerField
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-target-start.png?_v=1.5800.2282)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-target-start.png?_v=1.5800.2283)
 
 ### target end
 
@@ -2414,7 +2646,7 @@ getValue(): DatePickerField
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-target-end.png?_v=1.5800.2282)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-target-end.png?_v=1.5800.2283)
 
 ### number
 
@@ -2456,7 +2688,7 @@ getValue(): NumberField
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-number.png?_v=1.5800.2282)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-number.png?_v=1.5800.2283)
 
 ### parent
 
@@ -2498,6 +2730,9 @@ getValue(): ParentField
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -2512,7 +2747,7 @@ getValue(): ParentField
 
 #### Reference screenshot
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-parent.png?_v=1.5800.2282)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-parent.png?_v=1.5800.2283)
 
 ### status
 
@@ -2558,6 +2793,9 @@ getValue(): StatusField | null
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -2572,7 +2810,7 @@ getValue(): StatusField | null
 
 #### Reference screenshot
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-status.png?_v=1.5800.2282)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-status.png?_v=1.5800.2283)
 
 ### original estimate
 
@@ -2616,7 +2854,7 @@ getValue(): OriginalEstimateField
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-original-estimate.png?_v=1.5800.2282)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-original-estimate.png?_v=1.5800.2283)
 
 ## Querying screen tabs
 
@@ -2649,6 +2887,11 @@ Example usage with a regular screen tab:
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -2690,6 +2933,13 @@ Example usage:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 

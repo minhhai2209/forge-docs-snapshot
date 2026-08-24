@@ -10,24 +10,16 @@ If you need to call the Teamwork Graph API as the app itself, use the [`requestT
 ## Function signature
 
 ```
-1
-2
-3
-4
+1type TeamworkGraphResult = {
+2  data?: Record<string, unknown> | null;
+3  errors?: Array<Record<string, unknown>>;
+4};
 5
-6
-7
-8
-9
-type TeamworkGraphResult = {
-  data?: Record<string, unknown> | null;
-  errors?: Array<Record<string, unknown>>;
-};
-
-const requestTeamworkGraph = (
-  query: string,
-  variables?: Record<string, unknown>,
-): Promise<TeamworkGraphResult>
+6const requestTeamworkGraph = (
+7  query: string,
+8  variables?: Record<string, unknown>,
+9): Promise<TeamworkGraphResult>
+10
 ```
 
 ## Arguments
@@ -59,6 +51,17 @@ The following manifest declares the `read:graph:jira` scope to enable access to 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
 ```
 
 
@@ -89,6 +92,62 @@ The following component calls `requestTeamworkGraph` with the user's account ID 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
 ```
 
 
@@ -162,6 +221,37 @@ The following defines the Cypher query and the wrapping GraphQL query used to re
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
 ```
 
 

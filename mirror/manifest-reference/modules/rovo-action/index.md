@@ -7,38 +7,23 @@ An `action` module lets a Rovo Agent perform a specific task, like calling an AP
 ## Manifest structure
 
 ```
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-modules {}
-└─ action []
-   ├─ key (string) [Mandatory]
-   ├─ name (string) [Mandatory]
-   ├─ function (string) [Mandatory]
-   ├─ actionVerb (string) [Mandatory]
-   ├─ description (string) [Mandatory]
-   ├─ inputs {} [Mandatory]
-   │  └─ inputName {}
-   │     ├─ title (string) [Mandatory]
-   │     ├─ type (string) [Mandatory]
-   │     ├─ required (boolean) [Mandatory]
-   │     └─ description (string) [Optional]
-function []
-└─ key (string) [Mandatory]
-└─ handler (string) [Mandatory]
+1modules {}
+2└─ action []
+3   ├─ key (string) [Mandatory]
+4   ├─ name (string) [Mandatory]
+5   ├─ function (string) [Mandatory]
+6   ├─ actionVerb (string) [Mandatory]
+7   ├─ description (string) [Mandatory]
+8   ├─ inputs {} [Mandatory]
+9   │  └─ inputName {}
+10   │     ├─ title (string) [Mandatory]
+11   │     ├─ type (string) [Mandatory]
+12   │     ├─ required (boolean) [Mandatory]
+13   │     └─ description (string) [Optional]
+14function []
+15└─ key (string) [Mandatory]
+16└─ handler (string) [Mandatory]
+17
 ```
 
 In this structure:
@@ -79,6 +64,22 @@ Each input must have a unique user-defined name, referred to as `inputName`, whi
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
 ```
 
 
@@ -110,6 +111,37 @@ modules:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
 ```
 
 
@@ -166,6 +198,23 @@ The `context` contains the user's `accountId`.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
 ```
 
 
@@ -198,6 +247,20 @@ The `context` contains the user's `accountId`.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
 ```
 
 
@@ -243,6 +306,18 @@ The `logTime` function from the previous example might look like this:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
 ```
 
 
@@ -276,6 +351,14 @@ For example, the following `rovo:mcp` module exposes the `log-time` action as a 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 

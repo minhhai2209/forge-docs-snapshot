@@ -6,35 +6,24 @@ can be used to display information, notifications, or other content relevant to 
 Confluence page banner is supported on Confluence pages, live docs, and spaces. It is not supported on whiteboards,
 databases, smart links, or pages that are embedded within another Confluence page.
 
-![Example of a Confluence page banner](https://dac-static.atlassian.com/platform/forge/snippets/images/confluence-page-banner.png?_v=1.5800.2282)
+![Example of a Confluence page banner](https://dac-static.atlassian.com/platform/forge/snippets/images/confluence-page-banner.png?_v=1.5800.2283)
 
 ## Manifest structure
 
 ```
-1
-2
-3
-4
-5
-6
-7
-8
+1modules {}
+2└─ confluence:pageBanner []
+3   ├─ key (string) [Mandatory]
+4   ├─ resource (string) [Mandatory]
+5   ├─ render (string) [Optional]
+6   ├─ resolver {} [Optional]
+7   └─ displayConditions {} [Optional]
+8   └─ unlicensedAccess (string[]) [Optional]
 9
-10
-11
-12
-modules {}
-└─ confluence:pageBanner []
-   ├─ key (string) [Mandatory]
-   ├─ resource (string) [Mandatory]
-   ├─ render (string) [Optional]
-   ├─ resolver {} [Optional]
-   └─ displayConditions {} [Optional]
-   └─ unlicensedAccess (string[]) [Optional]
-
-resources []
-├─ key (string) [Mandatory]
-└─ path (string) [Mandatory]
+10resources []
+11├─ key (string) [Mandatory]
+12└─ path (string) [Mandatory]
+13
 ```
 
 ## Properties
@@ -75,6 +64,10 @@ This example shows how to create a simple page banner that displays a message an
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -94,6 +87,31 @@ modules:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
 ```
 
 

@@ -4,22 +4,15 @@ To add the `Modal`, `ModalBody`, `ModalTransition`, `ModalTitle`, `ModalFooter`,
 components to your app:
 
 ```
-1
-2
-3
-4
-5
-6
-7
-8
-import {
-  Modal,
-  ModalBody,
-  ModalTransition,
-  ModalTitle,
-  ModalFooter, 
-  ModalHeader,
-} from "@forge/react";
+1import {
+2  Modal,
+3  ModalBody,
+4  ModalTransition,
+5  ModalTitle,
+6  ModalFooter, 
+7  ModalHeader,
+8} from "@forge/react";
+9
 ```
 
 ## Description
@@ -72,12 +65,49 @@ A modal dialog displays content that requires user interaction, in a layer above
 
 The default form of a modal dialog.
 
-![Example image of a rendered default modal](https://dac-static.atlassian.com/platform/forge/ui-kit/images/modal/modal-dialog-default.png?_v=1.5800.2282)
+![Example image of a rendered default modal](https://dac-static.atlassian.com/platform/forge/ui-kit/images/modal/modal-dialog-default.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
 ```
 
 
@@ -130,12 +160,48 @@ const ModalDefaultExample = () => {
 
 A modal dialog is available in two other variations. The appearance needs to be set on both the modal title and the primary button. Warning modals appear in anticipation of a significant change. If the warning comes before an action, clearly communicate what will happen if the user proceeds, also provide an alternative or an opt-out where possible.
 
-![Example image of a rendered modal warning appearance](https://dac-static.atlassian.com/platform/forge/ui-kit/images/modal/modal-dialog-warning.png?_v=1.5800.2282)
+![Example image of a rendered modal warning appearance](https://dac-static.atlassian.com/platform/forge/ui-kit/images/modal/modal-dialog-warning.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
 ```
 
 
@@ -185,12 +251,52 @@ const ModalWarningAppearanceExample = () => {
 
 Use danger modals to inform people that something potentially destructive will happen if they continue. Explain the problem and provide a next step or an alternative.
 
-![Example image of a rendered modal danger appearance](https://dac-static.atlassian.com/platform/forge/ui-kit/images/modal/modal-dialog-danger.png?_v=1.5800.2282)
+![Example image of a rendered modal danger appearance](https://dac-static.atlassian.com/platform/forge/ui-kit/images/modal/modal-dialog-danger.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
 ```
 
 
@@ -248,12 +354,45 @@ There are multiple ways to specify the width of a modal. We recommend using name
 * If you provide a number instead, the width is set to that number of pixels.
 * If you provide a string including pixels or a percentage, the width will be directly applied as a style.
 
-![Example image of a rendered modal with small width](https://dac-static.atlassian.com/platform/forge/ui-kit/images/modal/modal-dialog-width-small.png?_v=1.5800.2282)
+![Example image of a rendered modal with small width](https://dac-static.atlassian.com/platform/forge/ui-kit/images/modal/modal-dialog-width-small.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
 ```
 
 
@@ -300,12 +439,86 @@ While you can set the width of the modal, the content determines the height of t
 
 You can configure the scroll behavior of modals so that scrolling happens inside the modal body instead of the viewport by setting the `shouldScrollInViewport` prop to `false`.
 
-![Example image of a rendered modal scrolling behaviour](https://dac-static.atlassian.com/platform/forge/ui-kit/images/modal/modal-dialog-scrolling-behaviour.png?_v=1.5800.2282)
+![Example image of a rendered modal scrolling behaviour](https://dac-static.atlassian.com/platform/forge/ui-kit/images/modal/modal-dialog-scrolling-behaviour.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
 ```
 
 
@@ -393,12 +606,73 @@ const ModalScrollingBehaviourExample = () => {
 
 These internal components can be wrapped in a `form` element to support having buttons of type `submit` in the footer.
 
-![Example image of a rendered modal form](https://dac-static.atlassian.com/platform/forge/ui-kit/images/modal/modal-dialog-form.png?_v=1.5800.2282)
+![Example image of a rendered modal form](https://dac-static.atlassian.com/platform/forge/ui-kit/images/modal/modal-dialog-form.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
 ```
 
 
@@ -471,12 +745,71 @@ const ModalFormExample = () => {
 
 Modal header accepts any valid Forge Element as children, so you can use modal title in conjunction with other elements in the top right.
 
-![Example image of a rendered modal header](https://dac-static.atlassian.com/platform/forge/ui-kit/images/modal/modal-dialog-header.png?_v=1.5800.2282)
+![Example image of a rendered modal header](https://dac-static.atlassian.com/platform/forge/ui-kit/images/modal/modal-dialog-header.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
 ```
 
 
@@ -547,12 +880,74 @@ const ModalHeaderExample = () => {
 
 Modal footer accepts any valid Forge Element as children.
 
-![Example image of a rendered modal footer](https://dac-static.atlassian.com/platform/forge/ui-kit/images/modal/modal-dialog-modal-footer.png?_v=1.5800.2282)
+![Example image of a rendered modal footer](https://dac-static.atlassian.com/platform/forge/ui-kit/images/modal/modal-dialog-modal-footer.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
 ```
 
 

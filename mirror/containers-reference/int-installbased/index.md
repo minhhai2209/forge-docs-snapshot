@@ -17,6 +17,24 @@ This endpoint uses cursor-based pagination with a default and maximum page size 
 You can pass `pageSize` and `cursor` as query parameters. For example:
 
 ```
+1# Returns up to the first 100 installations (default page size)
+2GET <FORGE_EGRESS_PROXY_URL>/v1/installations
+3
+4# Returns up to the first 50 installations
+5GET <FORGE_EGRESS_PROXY_URL>/v1/installations?pageSize=50
+6
+7# Returns up to the next 50 installations after the given cursor
+8GET <FORGE_EGRESS_PROXY_URL>/v1/installations?pageSize=50&cursor=eyJhbGciOi...
+9
+10# Returns up to the next 100 installations after the given cursor (default page size)
+11GET <FORGE_EGRESS_PROXY_URL>/v1/installations?cursor=eyJhbGciOi...
+12
+```
+
+Sample response:
+
+```
+```
 1
 2
 3
@@ -28,25 +46,19 @@ You can pass `pageSize` and `cursor` as query parameters. For example:
 9
 10
 11
-# Returns up to the first 100 installations (default page size)
-GET <FORGE_EGRESS_PROXY_URL>/v1/installations
-
-# Returns up to the first 50 installations
-GET <FORGE_EGRESS_PROXY_URL>/v1/installations?pageSize=50
-
-# Returns up to the next 50 installations after the given cursor
-GET <FORGE_EGRESS_PROXY_URL>/v1/installations?pageSize=50&cursor=eyJhbGciOi...
-
-# Returns up to the next 100 installations after the given cursor (default page size)
-GET <FORGE_EGRESS_PROXY_URL>/v1/installations?cursor=eyJhbGciOi...
-```
-
-Sample response:
-
-```
-```
-1
-2
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
 ```
 
 
@@ -107,6 +119,24 @@ Sample response:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
 ```
 
 
@@ -145,6 +175,7 @@ For example, to call the Jira REST API on an installation's behalf:
 ```
 1
 2
+3
 ```
 
 

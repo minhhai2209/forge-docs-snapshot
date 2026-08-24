@@ -9,32 +9,20 @@ Content properties can be set against multiple Confluence content types via the 
 ## Manifest structure
 
 ```
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-modules {}
-└─ confluence:contentProperty []
-   ├─ key (string) [Mandatory]
-   ├─ propertyKey (string) [Mandatory]
-   ├─ values [] [Mandatory]
-     ├─ path (string) [Mandatory]
-     ├─ type (string) [Mandatory]
-     ├─ searchAlias (string) [Mandatory]
-     ├─ uiSupport {} [optional]
-       ├─ name (string) [Mandatory]
-       ├─ valueType (string) [Mandatory]
-       ├─ defaultOperator (string) [Optional]
-       ├─ tooltip (string) [Optional]
+1modules {}
+2└─ confluence:contentProperty []
+3   ├─ key (string) [Mandatory]
+4   ├─ propertyKey (string) [Mandatory]
+5   ├─ values [] [Mandatory]
+6     ├─ path (string) [Mandatory]
+7     ├─ type (string) [Mandatory]
+8     ├─ searchAlias (string) [Mandatory]
+9     ├─ uiSupport {} [optional]
+10       ├─ name (string) [Mandatory]
+11       ├─ valueType (string) [Mandatory]
+12       ├─ defaultOperator (string) [Optional]
+13       ├─ tooltip (string) [Optional]
+14
 ```
 
 The `propertyKey` and the `searchAlias` must both be globally unique. Prefixing both with a unique representation for your Forge app is the best way to ensure this.
@@ -79,6 +67,28 @@ The following examples show Dynamic Module implementations specific to this modu
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
 ```
 
 
@@ -116,6 +126,29 @@ console.log(`Response: ${response.status} ${body}`);
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
 ```
 
 
@@ -156,6 +189,11 @@ This example uses a content property with the key of `myApp_extraMetaData`, whic
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -176,6 +214,32 @@ Using the `confluence:contentProperty` module you request that fields of a conte
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
 ```
 
 
@@ -217,6 +281,9 @@ Now, indexed data is available to search in CQL, as in this example:
 ```
 1
 2
+3
+4
+5
 ```
 
 

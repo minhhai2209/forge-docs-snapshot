@@ -3,8 +3,8 @@
 To add the `Image` component to your app:
 
 ```
-1
-import { Image } from '@forge/react';
+1import { Image } from '@forge/react'; 
+2
 ```
 
 ## Description
@@ -32,6 +32,9 @@ For more information on how to declare image sources in an application's manifes
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -51,7 +54,7 @@ permissions:
 The image `size` property is relative to the container.
 Here's an example with different image `size` props, to help illustrate how to use the image component in an app.
 
-![Examples of different image sizes that include xsmall, small, medium, large, xlarge to optimize images for different devices](https://dac-static.atlassian.com/platform/forge/images/ui-kit-2/image-sizes.png?_v=1.5800.2282)
+![Examples of different image sizes that include xsmall, small, medium, large, xlarge to optimize images for different devices](https://dac-static.atlassian.com/platform/forge/images/ui-kit-2/image-sizes.png?_v=1.5800.2283)
 
 If using percentage values for `width` and `height`, the image size will also be relative to the container, whereas
 using pixel values for `width` and `height` will change the size of the image to the pixel values provided.
@@ -62,6 +65,16 @@ using pixel values for `width` and `height` will change the size of the image to
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -81,7 +94,7 @@ export const App = () => (
 ```
 ```
 
-![black and white cat sitting on a bamboo chair, smirking as if to say, "This room is my fluffy kingdom"](https://dac-static.atlassian.com/platform/forge/images/ui-kit-2/image-default.png?_v=1.5800.2282)
+![black and white cat sitting on a bamboo chair, smirking as if to say, "This room is my fluffy kingdom"](https://dac-static.atlassian.com/platform/forge/images/ui-kit-2/image-default.png?_v=1.5800.2283)
 
 ### Static image
 
@@ -89,6 +102,14 @@ export const App = () => (
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -106,7 +127,7 @@ export const App = () => (
 ```
 ```
 
-![black and white cat sitting on a bamboo chair, smirking as if to say, "This room is my fluffy kingdom"](https://dac-static.atlassian.com/platform/forge/images/ui-kit-2/image-default.png?_v=1.5800.2282)
+![black and white cat sitting on a bamboo chair, smirking as if to say, "This room is my fluffy kingdom"](https://dac-static.atlassian.com/platform/forge/images/ui-kit-2/image-default.png?_v=1.5800.2283)
 
 ### GIF
 
@@ -114,6 +135,14 @@ export const App = () => (
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -131,7 +160,7 @@ export const App = () => (
 ```
 ```
 
-![Example of an animated GIF depicting Homer Simpson retreating into bushes, referencing the popular 'Homer Simpson disappearing' meme](https://dac-static.atlassian.com/platform/forge/images/homer.gif?_v=1.5800.2282)
+![Example of an animated GIF depicting Homer Simpson retreating into bushes, referencing the popular 'Homer Simpson disappearing' meme](https://dac-static.atlassian.com/platform/forge/images/homer.gif?_v=1.5800.2283)
 
 ## Accessibility considerations
 

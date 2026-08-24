@@ -3,88 +3,48 @@
 Transactions allow you to perform multiple conditional operations in a single transaction, ensuring that all operations are either committed if all conditions are met or rolled back together. This works with data stored through the [Custom Entity Store](/platform/forge/storage-reference/entities-api/).
 
 ```
-1
+1import { kvs, Filter, Conditions } from '@forge/kvs';
 2
-3
-4
+3// Pre define conditions for performing a transaction operation 
+4const conditions = new Filter().and('surname', FilterConditions.beginsWith('S'))
 5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-import { kvs, Filter, Conditions } from '@forge/kvs';
-
-// Pre define conditions for performing a transaction operation 
-const conditions = new Filter().and('surname', FilterConditions.beginsWith('S'))
-
-await kvs
-   .transact()
-   
-   // set key with a value for employee entity
-   .set('employee1', {
-    surname:"Davis",
-    age: 30,
-    employmentyear: 2022,
-    gender: "male",
-    nationality: "Australian"
-    }, { entityName: 'employee', ttl: { unit: 'DAYS', value: 7 } })
-   
-   // conditionally set key with value with inline conditions
-   .set('employee2', {
-    surname:"Scott",
-    age: 30,
-    employmentyear: 2022,
-    gender: "male",
-    nationality: "Australian"
-    }, {
-     entityName: 'employee',
-     conditions: new Filter().and('surname', FilterConditions.beginsWith('S'))
-       .and('nationality', FilterConditions.beginsWith('A'))
-   })
-   
-   // delete value for key
-   .delete('employee3', { entityName: 'employee' })
-   
-    // delete value with premade conditions
-   .delete('employee4', { entityName: 'employee', conditions }) 
-   
-   // check if key exists and meets conditions
-   .check('employee5', filter, { entityName: 'author', conditions })
-   
-   // Commit the transaction
-   .execute();
+6await kvs
+7   .transact()
+8   
+9   // set key with a value for employee entity
+10   .set('employee1', {
+11    surname:"Davis",
+12    age: 30,
+13    employmentyear: 2022,
+14    gender: "male",
+15    nationality: "Australian"
+16    }, { entityName: 'employee', ttl: { unit: 'DAYS', value: 7 } })
+17   
+18   // conditionally set key with value with inline conditions
+19   .set('employee2', {
+20    surname:"Scott",
+21    age: 30,
+22    employmentyear: 2022,
+23    gender: "male",
+24    nationality: "Australian"
+25    }, {
+26     entityName: 'employee',
+27     conditions: new Filter().and('surname', FilterConditions.beginsWith('S'))
+28       .and('nationality', FilterConditions.beginsWith('A'))
+29   })
+30   
+31   // delete value for key
+32   .delete('employee3', { entityName: 'employee' })
+33   
+34    // delete value with premade conditions
+35   .delete('employee4', { entityName: 'employee', conditions }) 
+36   
+37   // check if key exists and meets conditions
+38   .check('employee5', filter, { entityName: 'author', conditions })
+39   
+40   // Commit the transaction
+41   .execute();
+42
 ```
 
 Use transactions to execute multiple requests that must either succeed or fail together. If you want to
@@ -173,6 +133,19 @@ You can also set a *relative* time-to-live (TTL) for all keys in your transactio
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
 ```
 
 
@@ -201,6 +174,29 @@ transact().set(
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
 ```
 
 
@@ -258,6 +254,12 @@ Deletes a value by key for a custom entity, this succeeds whether the key exists
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -298,6 +300,8 @@ Checks a key meets the specified conditions for a custom entity. Conditions are 
 ```
 1
 2
+3
+4
 ```
 
 

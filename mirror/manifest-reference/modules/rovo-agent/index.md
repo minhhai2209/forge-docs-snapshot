@@ -13,38 +13,23 @@ To enable your Agent to access data from multiple Atlassian apps, configure your
 ## Manifest structure
 
 ```
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
+1modules {}
+2└─ rovo:agent []
+3   ├─ key (string) [Mandatory]
+4   ├─ name (string) [Mandatory]
+5   ├─ description (string) [Optional]
+6   ├─ icon (string) [Optional]
+7   ├─ prompt (string) [Mandatory]
+8   ├─ conversationStarters [] [Optional]
+9   │  └─ conversationStarter (string)
+10   ├─ actions [] [Optional]
+11   │  └─ action (string)
+12   └─ followUpPrompt (string) [Optional]
 13
-14
-15
-16
-modules {}
-└─ rovo:agent []
-   ├─ key (string) [Mandatory]
-   ├─ name (string) [Mandatory]
-   ├─ description (string) [Optional]
-   ├─ icon (string) [Optional]
-   ├─ prompt (string) [Mandatory]
-   ├─ conversationStarters [] [Optional]
-   │  └─ conversationStarter (string)
-   ├─ actions [] [Optional]
-   │  └─ action (string)
-   └─ followUpPrompt (string) [Optional]
-
-resources []
-└─ key (string) [Mandatory]
-└─ path (string) [Mandatory]
+14resources []
+15└─ key (string) [Mandatory]
+16└─ path (string) [Mandatory]
+17
 ```
 
 In this structure:
@@ -74,6 +59,26 @@ Here is an example manifest file for creating an Agent that assists with managin
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
 ```
 
 
@@ -109,6 +114,26 @@ resources:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
 ```
 
 
@@ -144,6 +169,7 @@ Here `agent:prompt` refers to following string resource: `resource/agent/prompts
 ```
 1
 2
+3
 ```
 
 
@@ -164,22 +190,22 @@ Using the [Forge bridge rovo API](/platform/forge/apis-reference/ui-api-bridge/r
 
 Accessed by clicking the **Chat** button in the top navigation bar
 
-![Example of a chat button](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-chat-side.png?_v=1.5800.2282)
+![Example of a chat button](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-chat-side.png?_v=1.5800.2283)
 
 Accessed using the /ai command in the editor
 
-![Example of a chat button](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-ai-toolbar.png?_v=1.5800.2282)
+![Example of a chat button](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-ai-toolbar.png?_v=1.5800.2283)
 
 Accessed using the /ai command in the Jira issues editor
 
-![Example of a chat button](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-ai-toolbar-jira.png?_v=1.5800.2282)
+![Example of a chat button](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-ai-toolbar-jira.png?_v=1.5800.2283)
 
 ### Automation (Confluence and Jira)
 
 You can add Agents to Automation rules. This will invoke the Agent to act asynchronously in response to Atlassian app events or schedules.
 When users configure an automation rule they will set an additional prompt with specific instructions how to act during that rule. The response from the Agent can be passed to subsequent steps in the automation rule using smart values.
 
-![Example of a chat button](https://dac-static.atlassian.com/platform/forge/images/rovo/automations.png?_v=1.5800.2282)
+![Example of a chat button](https://dac-static.atlassian.com/platform/forge/images/rovo/automations.png?_v=1.5800.2283)
 
 ## Writing effective prompts
 
@@ -214,6 +240,11 @@ Outline the various jobs that the Agent can assist users with. The list does not
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -236,6 +267,15 @@ Add logic/structure to longer prompts using delimiters. This improves instructio
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -261,6 +301,12 @@ Instruct your Agent on how to execute more complex jobs by defining the actions 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -284,6 +330,9 @@ Define how your Agent will structure its responses when performing certain jobs.
 ```
 1
 2
+3
+4
+5
 ```
 
 

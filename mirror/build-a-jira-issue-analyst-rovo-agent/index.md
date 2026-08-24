@@ -21,7 +21,7 @@ Before starting this tutorial, you must familiarize with the following:
 
 ## Understand how the Jira analyst Rovo Agent work
 
-![Jira issue analyst workflow](https://dac-static.atlassian.com/platform/forge/images/rovo/jira-issue-analyst-rovo.png?_v=1.5800.2282)
+![Jira issue analyst workflow](https://dac-static.atlassian.com/platform/forge/images/rovo/jira-issue-analyst-rovo.png?_v=1.5800.2283)
 
 * **User's Query**: The user initiates a query to the analyst using a prompt defined in the manifest
   or through conversation starters.
@@ -46,6 +46,48 @@ Before starting this tutorial, you must familiarize with the following:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
 ```
 
 
@@ -122,6 +164,28 @@ see [here](/platform/forge/manifest-reference/modules/rovo-agent/#manifest-struc
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
 ```
 
 
@@ -192,6 +256,72 @@ Your manifest file which includes `rovo:agent` and `action` modules should look 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
 ```
 
 
@@ -279,6 +409,31 @@ Replace the index.jsx with the following code:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
 ```
 
 
@@ -391,11 +546,11 @@ this bug and will be fixed soon.
 1. Access Rovo chat by clicking **Chat** on the top menu within the Atlassian app where you have
    installed your Forge app.
 2. In the Chat side panel, click the agent selector and go to Browse agents.
-   ![example of browsing rovo agent from the list](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-agent-browse.png?_v=1.5800.2282)
+   ![example of browsing rovo agent from the list](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-agent-browse.png?_v=1.5800.2283)
 3. Find the `Jira Analyst` agent and then select it.
-   ![example of selecting Jira issue analyst Rovo agent app from the Browse agents window](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-jira-issue-analyst-browse.png?_v=1.5800.2282)
+   ![example of selecting Jira issue analyst Rovo agent app from the Browse agents window](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-jira-issue-analyst-browse.png?_v=1.5800.2283)
 4. Chat with the agent and ask it to **Analyse Jira Issues** using conversation starters or prompts.
-   ![example of Rovo agent chat window](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-jira-issue-analyst-chat.png?_v=1.5800.2282)
+   ![example of Rovo agent chat window](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-jira-issue-analyst-chat.png?_v=1.5800.2283)
 
 ## Next steps
 

@@ -9,8 +9,8 @@ instead. This data, however, can't be queried through the [kvs.query](#kvs.query
 To start, import the Forge KVS package in your app, as follows:
 
 ```
-1
-import { kvs } from '@forge/kvs';
+1import { kvs } from '@forge/kvs';
+2
 ```
 
 Each installation of your app is subject to the API's quotas and limits.
@@ -22,12 +22,10 @@ See [Storage quotas](/platform/forge/platform-quotas-and-limits/#storage-quotas)
 Using the `@forge/kvs` package requires the `storage:app` scope in your manifest file:
 
 ```
-1
-2
-3
-permissions:
-  scopes:
-    - storage:app
+1permissions:
+2  scopes:
+3    - storage:app
+4
 ```
 
 See [Permissions](/platform/forge/manifest-reference/permissions/#scopes) for more information about scopes.
@@ -65,6 +63,11 @@ To set a TTL, provide the following option:
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -116,6 +119,22 @@ Specify whether a write request should also return metadata. Use the following o
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
 ```
 
 
@@ -149,6 +168,19 @@ Sets the key `example-key` to one of the supported value types.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
 ```
 
 
@@ -179,6 +211,11 @@ You can set a *relative* [time-to-live (TTL)](#ttl) for the value:
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -201,6 +238,14 @@ Use the `keyPolicy` [property](#write-conflict) to specify how to handle write c
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -227,6 +272,14 @@ Use `returnValue` to return the written or overwritten value with the `kvs.set()
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -250,6 +303,11 @@ You can also request the key's relevant metadata by including `metadataFields` i
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -270,6 +328,12 @@ This will return an object containing the `key`, `value`, and the requested meta
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -303,6 +367,16 @@ The first two fields will return a Unix timestamp, however, `EXPIRE_TIME` will r
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -330,6 +404,7 @@ Gets the value associated with the key `example-key`.
 ```
 1
 2
+3
 ```
 
 
@@ -346,6 +421,10 @@ You can also request the key's relevant metadata by including `metadataFields` i
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -365,6 +444,12 @@ This will return an object containing the `key`, `value`, and the requested meta
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -413,6 +498,7 @@ Deletes the value associated with the key `example-key`, if it hasn't already be
 ```
 1
 2
+3
 ```
 
 
@@ -437,6 +523,10 @@ on building and executing queries.
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -456,6 +546,19 @@ kvs.query(options?: QueryOptions): Query
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
 ```
 
 
@@ -484,6 +587,15 @@ This will return a list of objects containing the `key`, `value`, and the reques
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 

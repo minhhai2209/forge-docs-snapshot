@@ -7,12 +7,10 @@
 This example shows how to use `getMacroContent`.
 
 ```
-1
+1import { getMacroContent } from '@forge/confluence-bridge';
 2
-3
-import { getMacroContent } from '@forge/confluence-bridge';
-
-const macroContent = await getMacroContent(); // Use macroContent as desired
+3const macroContent = await getMacroContent(); // Use macroContent as desired
+4
 ```
 
 ## Response Type
@@ -26,69 +24,41 @@ The `getMacroContent` function returns an object with the following structure:
 ### Example Response
 
 ```
-1
-2
-3
-{
-    data: '{"type":"bodiedExtension","attrs":{"extensionKey":"cool-bodied-macro","extensionType":"com.atlassian.ecosystem","layout":"default","localId":"0","parameters":{"localId":"0","extensionId":"ari:cloud:ecosystem::extension/cool-bodied-macro","extensionTitle":"Cool bodied macro","forgeEnvironment":"DEVELOPMENT","render":"native"}},"content":[{"content":[{"text":"hello","type":"text"}],"type":"paragraph"}]}'
-}
+1{
+2    data: '{"type":"bodiedExtension","attrs":{"extensionKey":"cool-bodied-macro","extensionType":"com.atlassian.ecosystem","layout":"default","localId":"0","parameters":{"localId":"0","extensionId":"ari:cloud:ecosystem::extension/cool-bodied-macro","extensionTitle":"Cool bodied macro","forgeEnvironment":"DEVELOPMENT","render":"native"}},"content":[{"content":[{"text":"hello","type":"text"}],"type":"paragraph"}]}'
+3}
+4
 ```
 
 ### Example response after `data` goes through JSON.parse
 
 ```
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-{
-    "type": "bodiedExtension",
-    "attrs": {
-        "extensionKey": "cool-bodied-macro",
-        "extensionType": "com.atlassian.ecosystem",
-        "layout": "default",
-        "localId": "0",
-        "parameters": {
-            "localId": "0",
-            "extensionId": "ari:cloud:ecosystem::extension/cool-bodied-macro",
-            "extensionTitle": "Cool bodied macro",
-            "forgeEnvironment": "DEVELOPMENT",
-            "render": "native"
-        }
-    },
-    "content": [
-        {
-            "content": [
-                {
-                    "text": "hello",
-                    "type": "text"
-                }
-            ],
-            "type": "paragraph"
-        }
-    ]
-}
+1{
+2    "type": "bodiedExtension",
+3    "attrs": {
+4        "extensionKey": "cool-bodied-macro",
+5        "extensionType": "com.atlassian.ecosystem",
+6        "layout": "default",
+7        "localId": "0",
+8        "parameters": {
+9            "localId": "0",
+10            "extensionId": "ari:cloud:ecosystem::extension/cool-bodied-macro",
+11            "extensionTitle": "Cool bodied macro",
+12            "forgeEnvironment": "DEVELOPMENT",
+13            "render": "native"
+14        }
+15    },
+16    "content": [
+17        {
+18            "content": [
+19                {
+20                    "text": "hello",
+21                    "type": "text"
+22                }
+23            ],
+24            "type": "paragraph"
+25        }
+26    ]
+27}
+28
 ```

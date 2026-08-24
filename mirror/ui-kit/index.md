@@ -81,6 +81,7 @@ Retrieve Atlassian app context via the `getContext` method on `@forge/bridge`. S
 ```
 1
 2
+3
 ```
 
 

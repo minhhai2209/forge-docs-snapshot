@@ -10,20 +10,14 @@ the `manifest.yml` file using `required: false`.
 For this tutorial, we will be adding Jira:
 
 ```
-1
-2
-3
-4
-5
-6
-7
-app:
-  id: '<app id>'
-  compatibility:
-    confluence:
-      required: true
-    jira:
-      required: false
+1app:
+2  id: '<app id>'
+3  compatibility:
+4    confluence:
+5      required: true
+6    jira:
+7      required: false
+8
 ```
 
 ## Add a Jira module
@@ -34,22 +28,15 @@ enable the app to display 'Hello world' on the Jira issue view page.
 Copy the below code and paste it in the `modules` section of the `manifest.yml` file:
 
 ```
-1
-2
-3
-4
-5
-6
-7
-8
-  jira:issuePanel:
-    - key: hello-world-hello-world-issue-panel
-      resource: main
-      resolver:
-        function: resolver
-      render: native
-      title: <your app name>
-      icon: https://developer.atlassian.com/platform/forge/images/icons/issue-panel-icon.svg
+1  jira:issuePanel:
+2    - key: hello-world-hello-world-issue-panel
+3      resource: main
+4      resolver:
+5        function: resolver
+6      render: native
+7      title: <your app name>
+8      icon: https://developer.atlassian.com/platform/forge/images/icons/issue-panel-icon.svg
+9
 ```
 
 Your `manifest.yml` should now look like this:
@@ -58,6 +45,38 @@ Your `manifest.yml` should now look like this:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
 ```
 
 
@@ -129,6 +148,10 @@ The `@forge/bridge` package simplifies HTTP operations and contains other Forge 
    ```
    1
    2
+   3
+   4
+   5
+   6
    ```
 
 
@@ -170,6 +193,19 @@ need to add the required permissions first; this is covered later in the
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
+   14
+   15
    ```
 
 
@@ -203,6 +239,57 @@ Your `index.jsx` file should look like the following:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
 ```
 
 
@@ -304,7 +391,7 @@ install it in other Atlassian apps.
 1. Create a new Jira issue.
 2. In the issue panel of that issue, select the Apps button and select your app from the list.
 
-   ![Image of Cross-Context App in Jira](https://dac-static.atlassian.com/platform/forge/images/forge-getting-started-xpa-jira-initial-state.png?_v=1.5800.2282)
+   ![Image of Cross-Context App in Jira](https://dac-static.atlassian.com/platform/forge/images/forge-getting-started-xpa-jira-initial-state.png?_v=1.5800.2283)
 3. Add a comment to the Jira issue. For example, a comment with *Hello from the comments*.
 4. Refresh the Jira issue view.
 5. Check the output of the app in your browser's developer console. The number of comments on the issue displays as follows:
@@ -327,6 +414,7 @@ add the required scope to your `manifest.yml` file (in this case, `read:jira-wor
    ```
    1
    2
+   3
    ```
 
 
@@ -343,5 +431,5 @@ add the required scope to your `manifest.yml` file (in this case, `read:jira-wor
 In the next tutorial, you'll learn how to make changes to your app's frontend using the
 [UI Kit components](/platform/forge/ui-kit/components/) of Forge.
 
-[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.2282)](/platform/forge/call-a-confluence-api-in-a-confluence-jira-app/)
-[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.2282)](/platform/forge/change-the-frontend-with-ui-kit-for-a-confluence-jira-app/)
+[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.2283)](/platform/forge/call-a-confluence-api-in-a-confluence-jira-app/)
+[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.2283)](/platform/forge/change-the-frontend-with-ui-kit-for-a-confluence-jira-app/)

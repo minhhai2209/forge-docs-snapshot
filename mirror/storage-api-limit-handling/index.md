@@ -14,28 +14,18 @@ This guide documents the use of [Async event APIs](/platform/forge/runtime-refer
 Start by creating an [event consumer](/platform/forge/runtime-reference/async-events-api/#event-consumer) in the app manifest. The following snippet features a consumer with a queue for receiving batch calls, named `storage-async-queue`.
 
 ```
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-modules:
-  # Async events
-  consumer:
-    - key: queue-consumer
-      # Name of the queue for which this consumer will be invoked
-      queue: storage-async-queue
-      # Function to be called with payload
-      function: consumer-function
-  function:
-    - key: consumer-function
-      handler: index.handler
+1modules:
+2  # Async events
+3  consumer:
+4    - key: queue-consumer
+5      # Name of the queue for which this consumer will be invoked
+6      queue: storage-async-queue
+7      # Function to be called with payload
+8      function: consumer-function
+9  function:
+10    - key: consumer-function
+11      handler: index.handler        
+12
 ```
 
 ## Step 2: Push events to the queue
@@ -48,6 +38,24 @@ By calling `kvs.set` inside the consumer function, we can leverage the [retry me
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
 ```
 
 
@@ -85,6 +93,35 @@ Last, create the handler function that calls the storage API for the event consu
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
 ```
 
 
@@ -131,6 +168,53 @@ Refer to the following sample for the complete contents of this guide's `index.j
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
 ```
 
 

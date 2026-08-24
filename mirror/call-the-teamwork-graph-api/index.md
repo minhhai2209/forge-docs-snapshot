@@ -65,6 +65,8 @@ on which Atlassian app you are developing for:
 ```
 1
 2
+3
+4
 ```
 
 
@@ -82,6 +84,8 @@ permissions:
 ```
 1
 2
+3
+4
 ```
 
 
@@ -109,6 +113,17 @@ The simplest way to test connectivity is with the built-in `echo` query:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
 ```
 
 
@@ -183,6 +198,7 @@ belongs to with the relationship [User is in team](/platform/teamwork-graph/rela
 ```
 1
 2
+3
 ```
 
 
@@ -250,6 +266,31 @@ To execute the Cypher query and retrieve full object details, wrap it in a Graph
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
 ```
 
 
@@ -307,6 +348,11 @@ Pass the Cypher query and its parameters as GraphQL variables:
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -331,6 +377,17 @@ Now let's implement this query in a Forge app.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
 ```
 
 
@@ -357,6 +414,46 @@ export async function executeCypherGraphQL(graphqlQuery, variables, headers) {
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
 ```
 
 
@@ -411,6 +508,49 @@ export function getTeamsByUserRequestParams(userAri) {
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
 ```
 
 
@@ -488,6 +628,8 @@ For Jira apps:
 ```
 1
 2
+3
+4
 ```
 
 
@@ -505,6 +647,8 @@ For Confluence apps:
 ```
 1
 2
+3
+4
 ```
 
 

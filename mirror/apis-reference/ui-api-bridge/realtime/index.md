@@ -17,6 +17,22 @@ See the [in-depth guide](/platform/forge/realtime/authorizing-realtime-channels/
 ### Function signature
 
 ```
+1const subscribe = (
+2  channel: string,
+3  callback: (payload?: string) => any,
+4  options?: SubscriptionOptions
+5): Promise<Subscription>
+6
+7interface SubscriptionOptions {
+8  replaySeconds?: number;
+9  token?: string;
+10  contextOverrides?: ProductContext[];
+11}
+12
+```
+
+```
+```
 1
 2
 3
@@ -28,23 +44,13 @@ See the [in-depth guide](/platform/forge/realtime/authorizing-realtime-channels/
 9
 10
 11
-const subscribe = (
-  channel: string,
-  callback: (payload?: string) => any,
-  options?: SubscriptionOptions
-): Promise<Subscription>
-
-interface SubscriptionOptions {
-  replaySeconds?: number;
-  token?: string;
-  contextOverrides?: ProductContext[];
-}
-```
-
-```
-```
-1
-2
+12
+13
+14
+15
+16
+17
+18
 ```
 
 
@@ -90,6 +96,20 @@ type ProductContext = Jira | Confluence | Bitbucket;
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
 ```
 
 
@@ -129,6 +149,16 @@ It is your responsibility to ensure you are scoping your channels appropriately,
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -152,6 +182,22 @@ interface SubscriptionOptions {
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
 ```
 
 
@@ -197,6 +243,20 @@ type ProductContext = Jira | Confluence | Bitbucket;
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
 ```
 
 
@@ -232,6 +292,8 @@ Calling `Subscription.unsubscribe()` will remove the channel subscription for th
 ```
 1
 2
+3
+4
 ```
 
 
@@ -249,6 +311,29 @@ type Subscription = {
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
 ```
 
 
@@ -291,6 +376,21 @@ The `publish()` function will publish an event to the channel with the given pay
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
 ```
 
 
@@ -319,6 +419,22 @@ interface PublishResult {
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
 ```
 
 
@@ -366,6 +482,26 @@ type ProductContext = Jira | Confluence | Bitbucket;
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
 ```
 
 
@@ -405,6 +541,21 @@ The `publishGlobal()` function will publish an event to the channel with the giv
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
 ```
 
 
@@ -433,6 +584,22 @@ interface PublishResult {
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
 ```
 
 
@@ -480,6 +647,26 @@ type ProductContext = Jira | Confluence | Bitbucket;
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
 ```
 
 

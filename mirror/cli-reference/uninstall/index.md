@@ -7,29 +7,22 @@ uninstall the app from an Atlassian site
 ## Usage
 
 ```
-1
-Usage: forge uninstall [options]
+1Usage: forge uninstall [options]
+2
 ```
 
 ## Options
 
 ```
-1
-2
-3
-4
-5
-6
-7
-8
---verbose                               enable verbose mode
--s, --site [site]                       site URL (example.atlassian.net)
--p, --product [Atlassian app]           Atlassian app (Jira, Confluence, Compass, Bitbucket)
--e, --environment [environment]         specify the environment (see your default environment by running forge settings list)
---batch                                 select up to 10 installations to uninstall (default: false)
--i, --installation-id <installationId>  specify the installation ID
---app-id-override <appId>               App ID to use (skips reading from manifest)
--h, --help                              display help for command
+1--verbose                               enable verbose mode
+2-s, --site [site]                       site URL (example.atlassian.net)
+3-p, --product [Atlassian app]           Atlassian app (Jira, Confluence, Compass, Bitbucket)
+4-e, --environment [environment]         specify the environment (see your default environment by running forge settings list)
+5--batch                                 select up to 10 installations to uninstall (default: false)
+6-i, --installation-id <installationId>  specify the installation ID
+7--app-id-override <appId>               App ID to use (skips reading from manifest)
+8-h, --help                              display help for command
+9
 ```
 
 ## Operation
@@ -37,8 +30,8 @@ Usage: forge uninstall [options]
 This command lets you uninstall your app from a specified site. For example:
 
 ```
-1
-forge uninstall --site example.atlassian.net
+1forge uninstall --site example.atlassian.net
+2
 ```
 
 ### Batch uninstallation

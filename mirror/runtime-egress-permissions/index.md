@@ -36,6 +36,10 @@ following configuration:
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -57,6 +61,12 @@ You can also define external domains as objects with additional properties:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -90,6 +100,10 @@ add the missing entries in your manifest.
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -114,6 +128,10 @@ X 1 issue (1 error, 0 warnings)
    ```
    1
    2
+   3
+   4
+   5
+   6
    ```
 
 
@@ -132,6 +150,23 @@ X 1 issue (1 error, 0 warnings)
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
+   14
+   15
+   16
+   17
+   18
+   19
    ```
 
 
@@ -174,6 +209,7 @@ and a recommendation to fix it, as shown in the example below:
 ```
 1
 2
+3
 ```
 
 
@@ -222,6 +258,12 @@ To upgrade your app:
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
    ```
 
 
@@ -266,6 +308,9 @@ The app can use [customer-managed egress](/platform/forge/customer-managed-egres
 ```
 1
 2
+3
+4
+5
 ```
 
 

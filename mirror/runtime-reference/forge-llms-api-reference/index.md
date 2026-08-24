@@ -11,8 +11,8 @@ For runnable examples (tool wiring, retries, error handling), see the [Forge LLM
 The SDK requires the [`llm` module](/platform/forge/manifest-reference/modules/llm/) to be defined in your `manifest.yml`. If the SDK is used without declaring this module, linting will fail with an error like:
 
 ```
-1
-Error: LLM package is used but 'llm' module is not defined in the manifest
+1Error: LLM package is used but 'llm' module is not defined in the manifest
+2
 ```
 
 The SDK can automatically fix your manifest. After linting, the manifest will include:
@@ -20,16 +20,12 @@ The SDK can automatically fix your manifest. After linting, the manifest will in
 **Example of corrected manifest.yml:**
 
 ```
-1
-2
-3
-4
-5
-modules:
-  llm:
-    - key: llm-app
-      model:
-        - claude
+1modules:
+2  llm:
+3    - key: llm-app
+4      model:
+5        - claude
+6
 ```
 
 ### Versioning
@@ -44,6 +40,8 @@ The SDK supports the following methods:
 ```
 1
 2
+3
+4
 ```
 
 
@@ -63,6 +61,77 @@ Both methods support a `chat` and a `stream` interface available for all support
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
 ```
 
 
@@ -151,6 +220,38 @@ The `temperature` and `top_p` fields are not supported by all models. Omit both 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
 ```
 
 
@@ -198,6 +299,24 @@ interface ModelListResponse {
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
 ```
 
 
@@ -231,6 +350,28 @@ try {
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
 ```
 
 

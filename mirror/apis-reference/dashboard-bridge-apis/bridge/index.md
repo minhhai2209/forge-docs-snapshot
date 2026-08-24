@@ -23,20 +23,14 @@ directory. Use this directory as the resource path in the Forge app's `manifest.
 In the template, use the bridge in `static/hello-world/src/View.js` like this:
 
 ```
-1
+1import { widget } from "@forge/dashboards-bridge";
 2
-3
-4
-5
-6
-7
-import { widget } from "@forge/dashboards-bridge";
-
-// Set preview configuration for widget picker
-widget.setPreviewConfig({
-  title: "My Widget Preview",
-  description: "Preview description",
-});
+3// Set preview configuration for widget picker
+4widget.setPreviewConfig({
+5  title: "My Widget Preview",
+6  description: "Preview description",
+7});
+8
 ```
 
 For widget edit functionality, use the bridge in `static/hello-world-edit/src/Edit.js` like this:
@@ -45,6 +39,16 @@ For widget edit functionality, use the bridge in `static/hello-world-edit/src/Ed
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 

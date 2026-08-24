@@ -42,7 +42,7 @@ stored in the repository, then the repository level `bitbucket:dynamicPipelinesP
 the workspace level `bitbucket:dynamicPipelinesProvider`. This ensures that policies and rules put
 in place “higher” in the hierarchy are able to take precedence over ones implemented “lower” in the hierarchy.
 
-![Dynamic Pipeline execution hierarchy](https://dac-static.atlassian.com/platform/forge/images/bitbucket-dynamic-pipelines-provider-execution-hierarchy.png?_v=1.5800.2282)
+![Dynamic Pipeline execution hierarchy](https://dac-static.atlassian.com/platform/forge/images/bitbucket-dynamic-pipelines-provider-execution-hierarchy.png?_v=1.5800.2283)
 
 * initial workflow is read from the static `bitbucket-pipelines.yml` file.
 * if [shared workflow](https://support.atlassian.com/bitbucket-cloud/docs/share-pipelines-configurations/)
@@ -77,6 +77,14 @@ The snippet below defines a Dynamic Pipelines provider.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -123,7 +131,7 @@ in such case.
 This scenario is triggered, for example, when user opens the **Run pipeline** dialog in the UI and
 selects a branch.
 
-![The list of pipeline definitions in the Run pipeline dialog](https://dac-static.atlassian.com/platform/forge/images/bitbucket-dynamic-pipelines-provider-run-pipeline-dialog.png?_v=1.5800.2282)
+![The list of pipeline definitions in the Run pipeline dialog](https://dac-static.atlassian.com/platform/forge/images/bitbucket-dynamic-pipelines-provider-run-pipeline-dialog.png?_v=1.5800.2283)
 
 The Dynamic Pipelines provider is expected to return all pipeline definitions applicable for the
 provided context. From this set of results, the user can then select a definition to run.
@@ -147,6 +155,31 @@ Request to get pipeline definitions with a single resolved `default` definition:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
 ```
 
 
@@ -214,6 +247,11 @@ Commit target:
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -234,6 +272,13 @@ Ref target:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -256,6 +301,19 @@ Pull request target:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
 ```
 
 
@@ -324,6 +382,9 @@ Simple image:
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -342,6 +403,10 @@ Image with basic authentication:
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -361,6 +426,12 @@ AWS ECR image with credentials:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -382,6 +453,11 @@ AWS ECR image with OpenID Connect:
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -412,6 +488,10 @@ Global options allow to override the default values applied to all steps in all 
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -456,6 +536,11 @@ The properties of Git sparse checkout mode.
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -515,6 +600,20 @@ Definitions of caches:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
 ```
 
 
@@ -544,6 +643,31 @@ Definitions of services:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
 ```
 
 
@@ -606,6 +730,60 @@ A pipeline with a step, followed by a stage with two steps, followed by a parall
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
 ```
 
 
@@ -700,6 +878,38 @@ A custom pipeline with variables declaration and a step that uses these variable
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
 ```
 
 
@@ -798,6 +1008,21 @@ A manually triggered step which uses custom caches and services:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
 ```
 
 
@@ -828,6 +1053,23 @@ A step with custom size which makes use of a pipe and after-script:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
 ```
 
 
@@ -860,6 +1102,21 @@ A step which conditionally runs if certain files have been updated:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
 ```
 
 
@@ -897,6 +1154,28 @@ A step which conditionally runs if certain files have been updated:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
 ```
 
 
@@ -946,6 +1225,36 @@ A conditional deployment stage with two steps:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
 ```
 
 
@@ -999,6 +1308,15 @@ A 3 levels deep map declaring 4 labels.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -1068,6 +1386,55 @@ discovered configuration (e.g. in the static `bitbucket-pipelines.yml` file):
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
 ```
 
 
@@ -1155,6 +1522,32 @@ variables in scope priority order, and set `variables_truncated` to `true`.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
 ```
 
 
@@ -1221,6 +1614,20 @@ import metadata:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
 ```
 
 
@@ -1276,7 +1683,7 @@ and display a “failed” pipeline run.
 
 If provided, the error message will be shown to the user in the UI on the pipeline result screen.
 
-![The custom error message returned by the Dynamic Pipelines provider](https://dac-static.atlassian.com/platform/forge/images/bitbucket-dynamic-pipelines-provider-error-message.png?_v=1.5800.2282)
+![The custom error message returned by the Dynamic Pipelines provider](https://dac-static.atlassian.com/platform/forge/images/bitbucket-dynamic-pipelines-provider-error-message.png?_v=1.5800.2283)
 
 | Parameter | Type | Description |
 | --- | --- | --- |
@@ -1302,6 +1709,26 @@ A response with a modified pipeline definition:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
 ```
 
 
@@ -1337,6 +1764,11 @@ A response with an error:
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 

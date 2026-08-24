@@ -7,23 +7,19 @@ set an environment variable
 ## Usage
 
 ```
-1
-Usage: forge variables set [options] [key] [value]
+1Usage: forge variables set [options] [key] [value]
+2
 ```
 
 ## Options
 
 ```
-1
-2
-3
-4
-5
---verbose                        enable verbose mode
---encrypt                        encrypt variable (default: false)
--e, --environment [environment]  specify the environment (see your default
-                                 environment by running forge settings list)
--h, --help                       display help for command
+1--verbose                        enable verbose mode
+2--encrypt                        encrypt variable (default: false)
+3-e, --environment [environment]  specify the environment (see your default
+4                                 environment by running forge settings list)
+5-h, --help                       display help for command
+6
 ```
 
 ## Operation

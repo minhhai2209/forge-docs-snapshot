@@ -18,6 +18,29 @@ These UI Kit components are exported from the `@forge/react/global` entry point.
 ## Import
 
 ```
+1import {
+2  Global,
+3  Sidebar,
+4  LinkMenuItem,
+5  FlyOutMenuItem,
+6  ExpandableMenuItem,
+7  ReorderableMenuItems,
+8  HelpLink,
+9  PersonalSettings,
+10  PersonalSettingsItem,
+11  CreateButton,
+12  CreateMenuItem,
+13  Main,
+14} from "@forge/react/global";
+15
+```
+
+## Component hierarchy
+
+The `Global` component is composed of sub-components that work together to create the full layout:
+
+```
+```
 1
 2
 3
@@ -32,30 +55,15 @@ These UI Kit components are exported from the `@forge/react/global` entry point.
 12
 13
 14
-import {
-  Global,
-  Sidebar,
-  LinkMenuItem,
-  FlyOutMenuItem,
-  ExpandableMenuItem,
-  ReorderableMenuItems,
-  HelpLink,
-  PersonalSettings,
-  PersonalSettingsItem,
-  CreateButton,
-  CreateMenuItem,
-  Main,
-} from "@forge/react/global";
-```
-
-## Component hierarchy
-
-The `Global` component is composed of sub-components that work together to create the full layout:
-
-```
-```
-1
-2
+15
+16
+17
+18
+19
+20
+21
+22
+23
 ```
 
 
@@ -282,6 +290,103 @@ and main content:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
 ```
 
 
@@ -404,6 +509,70 @@ In the main app, the sidebar state is defined as a list of items that can be dyn
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
 ```
 
 
@@ -485,6 +654,45 @@ Inside the resource, the dispatch function can be retrieved by calling [view.get
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
 ```
 
 

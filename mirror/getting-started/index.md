@@ -38,6 +38,7 @@ the environment.
    ```
    1
    2
+   3
    ```
 
 
@@ -134,6 +135,7 @@ After installing the Forge CLI, follow the prompts in the terminal, or use the s
    ```
    1
    2
+   3
    ```
 
 
@@ -249,6 +251,10 @@ Otherwise, you can also set environment variables manually:
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 

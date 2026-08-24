@@ -9,14 +9,11 @@ in the manifest.
 Events are passed to your app via the `event` parameter.
 
 ```
-1
-2
-3
-4
-export async function handleEvent(event, context) {
-  console.log(`Event received: ${JSON.stringify(event)}`);
-  console.log(`Context: ${JSON.stringify(context)}`);
-}
+1export async function handleEvent(event, context) {
+2  console.log(`Event received: ${JSON.stringify(event)}`);
+3  console.log(`Context: ${JSON.stringify(context)}`);
+4}
+5
 ```
 
 Forge apps can receive Atlassian app events from both public and restricted Jira projects and Confluence spaces.
@@ -59,6 +56,17 @@ Additional options can be included in the `InvocationError` via a `RetryOptions`
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
 ```
 
 
@@ -104,6 +112,36 @@ In the following sample code, the app calls an upstream Jira API and is rate lim
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
 ```
 
 
@@ -164,6 +202,30 @@ There will be one extra object `retryContext` in the event payload for a retry. 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
 ```
 
 
@@ -261,6 +323,18 @@ available in expressions to return a custom error message that will be shown in 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
 ```
 
 
@@ -334,6 +408,15 @@ we can see that the `issue` object has a `fields` object that may contain the `i
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -360,6 +443,29 @@ for issue type is available under the `issue.fields.issueType.name` path.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
 ```
 
 
@@ -403,6 +509,21 @@ the [manifest](/platform/forge/manifest-reference) should look like this:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
 ```
 
 
@@ -452,6 +573,18 @@ Use the `filter.expression` field to filter events by entity property values, an
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
 ```
 
 
@@ -497,6 +630,12 @@ modules:
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
    ```
 
 
@@ -522,6 +661,7 @@ modules:
      ```
      1
      2
+     3
      ```
 
 
@@ -549,6 +689,11 @@ receives an event that contains:
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -569,6 +714,10 @@ You can access these values in your function like this:
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -631,6 +780,33 @@ Issue type properties (`event.runtime.issuetype.properties[...]`) are available 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
 ```
 
 
@@ -687,6 +863,16 @@ This automatically discards self-generated events before your function is invoke
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -717,6 +903,16 @@ Set `filter.appIsLicensed` to `true` to skip trigger invocations for sites where
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 

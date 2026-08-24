@@ -10,9 +10,9 @@ This module can be used in Jira and Jira Service Management.
 
 When adding this to your app, use it as a top-level component.
 
-![Example of a project page](https://dac-static.atlassian.com/platform/forge/snippets/images/project-page.jpg?_v=1.5800.2282)
+![Example of a project page](https://dac-static.atlassian.com/platform/forge/snippets/images/project-page.jpg?_v=1.5800.2283)
 
-![Example of a project page - JSM](https://dac-static.atlassian.com/platform/forge/snippets/images/project-page-jsm.jpg?_v=1.5800.2282)
+![Example of a project page - JSM](https://dac-static.atlassian.com/platform/forge/snippets/images/project-page-jsm.jpg?_v=1.5800.2283)
 
 ## Subpages
 
@@ -31,6 +31,13 @@ This subpage feature works only with Custom UI applications.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -76,6 +83,17 @@ modules:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
 ```
 
 
@@ -112,6 +130,19 @@ modules:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
 ```
 
 
@@ -167,6 +198,13 @@ Add the `jira:projectPage` module to your Forge app's manifest:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -225,6 +263,19 @@ For subpages to work properly, you need to:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
 ```
 
 

@@ -23,12 +23,39 @@ Import `@forge/hooks` using a bundler, such as [Webpack](https://webpack.js.org/
 To add the `useWidgetContext` hook to your app:
 
 ```
-1
-import { useWidgetContext } from "@forge/hooks/dashboards";
+1import { useWidgetContext } from "@forge/hooks/dashboards";
+2
 ```
 
 Here is an example of accessing widget context information:
 
+```
+1import React from "react";
+2import { useWidgetContext } from "@forge/hooks/dashboards";
+3
+4function MyWidget() {
+5  const context = useWidgetContext();
+6
+7  if (!context) return <div>Loading...</div>;
+8
+9  const { layout, widgetId, dashboardId } = context;
+10
+11  return (
+12    <div style={{ width: layout.width, height: layout.height }}>
+13      <p>Widget ID: {widgetId}</p>
+14      <p>Dashboard ID: {dashboardId}</p>
+15      <p>
+16        Size: {layout.width}x{layout.height}
+17      </p>
+18    </div>
+19  );
+20}
+21
+```
+
+## Function signature
+
+```
 ```
 1
 2
@@ -50,34 +77,13 @@ Here is an example of accessing widget context information:
 18
 19
 20
-import React from "react";
-import { useWidgetContext } from "@forge/hooks/dashboards";
-
-function MyWidget() {
-  const context = useWidgetContext();
-
-  if (!context) return <div>Loading...</div>;
-
-  const { layout, widgetId, dashboardId } = context;
-
-  return (
-    <div style={{ width: layout.width, height: layout.height }}>
-      <p>Widget ID: {widgetId}</p>
-      <p>Dashboard ID: {dashboardId}</p>
-      <p>
-        Size: {layout.width}x{layout.height}
-      </p>
-    </div>
-  );
-}
-```
-
-## Function signature
-
-```
-```
-1
-2
+21
+22
+23
+24
+25
+26
+27
 ```
 
 

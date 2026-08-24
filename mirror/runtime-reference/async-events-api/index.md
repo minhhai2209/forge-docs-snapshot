@@ -11,38 +11,27 @@ send events to a consumer function with a longer maximum runtime that allows mor
 To import the Forge events package and instantiate the queue in your app, run:
 
 ```
-1
+1import { Queue } from '@forge/events';
 2
-3
-import { Queue } from '@forge/events';
-
-const queue = new Queue({ key: 'queue-name' });
+3const queue = new Queue({ key: 'queue-name' });
+4
 ```
 
 `Queue` is generic and accepts an optional body type parameter. Pass your own type to constrain
 the events the queue accepts, so `Queue.push()` only allows events whose `body` matches that type:
 
 ```
-1
+1import { Queue } from '@forge/events';
 2
-3
-4
-5
+3interface IssueEventBody {
+4    issueKey: string;
+5}
 6
-7
+7const queue = new Queue<IssueEventBody>({ key: 'queue-name' });
 8
-9
-10
-import { Queue } from '@forge/events';
-
-interface IssueEventBody {
-    issueKey: string;
-}
-
-const queue = new Queue<IssueEventBody>({ key: 'queue-name' });
-
-await queue.push({ body: { issueKey: 'ABC-123' } }); // Allowed
-// await queue.push({ body: { foo: 'bar' } });        // Type error
+9await queue.push({ body: { issueKey: 'ABC-123' } }); // Allowed
+10// await queue.push({ body: { foo: 'bar' } });        // Type error
+11
 ```
 
 Use the same type for the [consumer function](/platform/forge/runtime-reference/async-events-api/#consumer-function)
@@ -60,6 +49,20 @@ combined payload of 200 KB.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
 ```
 
 
@@ -91,6 +94,19 @@ To push event(s) to the queue:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
 ```
 
 
@@ -128,6 +144,16 @@ To create an event consumer module in the app manifest, use:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -163,6 +189,12 @@ in the manifest `handler` property:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -188,6 +220,16 @@ to type the event from push to consumption:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -213,6 +255,10 @@ If you are using JavaScript instead of TypeScript, you can omit the import and t
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -245,6 +291,16 @@ When you push events to the queue, a new job is created. This job's `id` is retu
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -272,6 +328,19 @@ You can cancel a job that's in progress using its `JobProgress` instance. When a
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
 ```
 
 
@@ -306,6 +375,12 @@ so a specific key can be used to control concurrency across multiple queues.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -367,6 +442,16 @@ The retried Async Event delivered to the app includes a `RetryContext` object.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -411,6 +496,22 @@ exists before reading it. Otherwise, destructuring it on a first delivery throws
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
 ```
 
 
@@ -468,6 +569,10 @@ Additional options can be included in the `InvocationError` via the `RetryOption
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -504,6 +609,21 @@ In the following sample code, the app calls an external API and is rate limited.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
 ```
 
 

@@ -3,8 +3,8 @@
 To add the `Tag` component to your app:
 
 ```
-1
-import { Tag } from '@forge/react';
+1import { Tag } from '@forge/react';
+2
 ```
 
 ## Description
@@ -27,12 +27,16 @@ A tag labels UI objects for quick recognition and navigation.
 
 The default form of a tag, where text is required. Tags with static text can be used as a flag or as a reference to an object or attribute.
 
-![Example image of a tag](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tag/tag-default.png?_v=1.5800.2282)
+![Example image of a tag](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tag/tag-default.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -50,12 +54,19 @@ const TagDefaultExample = () => {
 
 A tag with an `href` can link to more information on the tagged item.
 
-![Example image of a tag link](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tag/tag-link.png?_v=1.5800.2282)
+![Example image of a tag link](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tag/tag-link.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -76,12 +87,19 @@ const TagLinkExample = () => {
 
 Once a tag has been removed, it cannot be re-rendered. Removable tags are visible in "edit" mode or in multi-select controls.
 
-![Example image of a removable tag](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tag/removable-tag.png?_v=1.5800.2282)
+![Example image of a removable tag](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tag/removable-tag.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -102,12 +120,20 @@ const TagRemovableExample = () => {
 
 A removable tag with an `href` can link to more information.
 
-![Example image of a removable link tag](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tag/removable-link.png?_v=1.5800.2282)
+![Example image of a removable link tag](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tag/removable-link.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -129,12 +155,28 @@ const TagRemovableLinkExample = () => {
 
 The color theme for background and text.
 
-![Example image of colored tags](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tag/tag-color.png?_v=1.5800.2282)
+![Example image of colored tags](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tag/tag-color.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
 ```
 
 
@@ -164,12 +206,19 @@ const TagColorExample = () => {
 
 The maximum width for a tag is 200px. If the text within the tag exceeds this width, it will be truncated and an ellipsis (...) will be added to indicate there is more text.
 
-![Example image of a tag](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tag/tag-max-length.png?_v=1.5800.2282)
+![Example image of a tag](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tag/tag-max-length.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 

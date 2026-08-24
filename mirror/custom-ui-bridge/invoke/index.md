@@ -10,26 +10,17 @@ Invocations from users, webtriggers, or scheduled triggers are subject to Forge'
 ## Function signature
 
 ```
-1
-2
-3
-4
+1function invoke(
+2  functionKey: string,
+3  payload?: { [key in number | string]: any }
+4): Promise<{ [key: string]: any } | void>;
 5
-6
-7
-8
-9
-10
-function invoke(
-  functionKey: string,
-  payload?: { [key in number | string]: any }
-): Promise<{ [key: string]: any } | void>;
-
-function invoke(
-  functionKey: string,
-  payload: { [key in number | string]: any } | undefined,
-  metadata: { rateLimitProperties?: boolean }
-): Promise<{ body: { [key: string]: any }; metadata: { rateLimitProperties?: object } } | void>;
+6function invoke(
+7  functionKey: string,
+8  payload: { [key in number | string]: any } | undefined,
+9  metadata: { rateLimitProperties?: boolean }
+10): Promise<{ body: { [key: string]: any }; metadata: { rateLimitProperties?: object } } | void>;
+11
 ```
 
 ## Arguments
@@ -57,6 +48,17 @@ function invoke(
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
 ```
 
 
@@ -93,6 +95,18 @@ Sensitive data should be validated separately.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
 ```
 
 
@@ -120,6 +134,10 @@ The following incorrect calls will be rejected by the compiler:
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 

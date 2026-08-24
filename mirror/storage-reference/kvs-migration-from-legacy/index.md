@@ -29,6 +29,8 @@ The `query.where` [operation](/platform/forge/storage-reference/kvs-api-query/#q
 ```
 1
 2
+3
+4
 ```
 
 
@@ -46,6 +48,8 @@ await storage.query().
 ```
 1
 2
+3
+4
 ```
 
 
@@ -107,6 +111,18 @@ The `andFilter` and `orFilter` methods have been replaced by a simpler `filters`
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
 ```
 
 
@@ -136,6 +152,29 @@ Some [where](/platform/forge/storage-reference/entities-api-query/#conditions) m
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
 ```
 
 

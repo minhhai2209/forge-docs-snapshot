@@ -51,7 +51,7 @@ The following user limits apply to traditional cloud developer sites:
 
 ### Demo of the finished app
 
-![Animation showing the Confluence keyword extractor app in action](https://dac-static.atlassian.com/platform/forge/images/confluence-keyword-extractor-demo.gif?_v=1.5800.2282)
+![Animation showing the Confluence keyword extractor app in action](https://dac-static.atlassian.com/platform/forge/images/confluence-keyword-extractor-demo.gif?_v=1.5800.2283)
 
 The GIF above is an example of how the app will work. When a user clicks Keyword extractor
 in the three dots menu, the extracted keywords will be added to the page as Confluence labels.
@@ -60,7 +60,7 @@ You can find the source code for this demo [here](https://bitbucket.org/atlassia
 
 ### How does the app work?
 
-![Confluence keyword extractor high level diagram](https://dac-static.atlassian.com/platform/forge/images/confluence-keyword-extractor-diagram.png?_v=1.5800.2282)
+![Confluence keyword extractor high level diagram](https://dac-static.atlassian.com/platform/forge/images/confluence-keyword-extractor-diagram.png?_v=1.5800.2283)
 
 A high-level outline of how the app works is:
 
@@ -88,7 +88,7 @@ Assuming your development environment is set up, you can get right to it. Follow
    *keyword-extractor(DEVELOPMENT)*. This is part of the behavior of the
    [ContentAction](/platform/forge/manifest-reference/modules/confluence-content-action/) module.
 
-![Confluence keyword extractor in three dots menu](https://dac-static.atlassian.com/platform/forge/images/confluence-keyword-extractor-menu.png?_v=1.5800.2282)
+![Confluence keyword extractor in three dots menu](https://dac-static.atlassian.com/platform/forge/images/confluence-keyword-extractor-menu.png?_v=1.5800.2283)
 
 ## Step 2: Get all the content of a Confluence page via REST API
 
@@ -100,6 +100,31 @@ Assuming your development environment is set up, you can get right to it. Follow
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
 ```
 
 
@@ -152,6 +177,61 @@ Navigate to `src/frontend/index.jsx`. This contains the top-level code which cal
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
 ```
 
 
@@ -238,6 +318,41 @@ Navigate to `src/resolvers/index.js`. This contains the backend functions, which
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
 ```
 
 
@@ -309,6 +424,29 @@ Here is the code for the `callOpenAI` function:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
 ```
 
 
@@ -357,6 +495,7 @@ To create an environment variable in Forge, enter the following command in your 
 ```
 1
 2
+3
 ```
 
 
@@ -381,6 +520,29 @@ We’re going to do that using the
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
 ```
 
 

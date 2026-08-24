@@ -19,14 +19,11 @@ Invocations from users, webtriggers, or scheduled triggers are subject to Forge'
 Your handler should be defined as a [function](/platform/forge/runtime-reference/).
 
 ```
-1
-2
-3
-4
-export const trigger = ({ context }) => {
-  console.log(context);
-  // Do something
-}
+1export const trigger = ({ context }) => {
+2  console.log(context);
+3  // Do something
+4}
+5
 ```
 
 ### Manifest definition
@@ -34,22 +31,15 @@ export const trigger = ({ context }) => {
 A [scheduled trigger module](/platform/forge/manifest-reference/modules/scheduled-trigger/) should be declared in the [app manifest](/platform/forge/manifest-reference/).
 
 ```
-1
-2
-3
-4
-5
-6
-7
-8
-modules:
-  scheduledTrigger:
-    - key: example
-      function: my-function
-      interval: hour # Runs hourly
-  function:
-    - key: my-function
-      handler: index.trigger
+1modules:
+2  scheduledTrigger:
+3    - key: example
+4      function: my-function
+5      interval: hour # Runs hourly
+6  function:
+7    - key: my-function
+8      handler: index.trigger
+9
 ```
 
 ## Parameters
@@ -71,6 +61,12 @@ Your function receives a request object with the following structure:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -101,6 +97,9 @@ Your function receives a request object with the following structure:
 ```
 1
 2
+3
+4
+5
 ```
 
 

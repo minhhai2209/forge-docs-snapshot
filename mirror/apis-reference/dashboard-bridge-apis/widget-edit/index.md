@@ -20,18 +20,13 @@ Registers a callback function that executes when the user saves the widget. Sinc
 #### Usage
 
 ```
-1
+1import { widgetEdit } from "@forge/dashboards-bridge";
 2
-3
-4
-5
-6
-import { widgetEdit } from "@forge/dashboards-bridge";
-
-widgetEdit.onSave(async (config, { widgetId }) => {
-  console.log("Widget saved!", config, widgetId);
-  // Perform custom save logic here
-});
+3widgetEdit.onSave(async (config, { widgetId }) => {
+4  console.log("Widget saved!", config, widgetId);
+5  // Perform custom save logic here
+6});
+7
 ```
 
 **Parameters:**
@@ -47,6 +42,12 @@ widgetEdit.onSave(async (config, { widgetId }) => {
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -72,6 +73,19 @@ Registers a callback that executes before the widget is saved in the product. Us
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
 ```
 
 
@@ -108,6 +122,13 @@ widgetEdit.onProductSave((config) => {
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -134,6 +155,11 @@ Registers a callback for handling save errors of the widget to the dashboard.
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -161,6 +187,12 @@ widgetEdit.onSaveError((error, widgetContext, context) => {
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 

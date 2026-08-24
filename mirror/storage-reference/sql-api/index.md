@@ -6,11 +6,16 @@ This page lists the different methods for retrieving, storing, and updating data
 
 The `sql` package provides the necessary methods for interacting with Forge SQL. To start using Forge SQL’s capabilities, you’ll need to install it in your project:
 
+```
+1npm install @forge/sql
+2
+```
+
 To import the package (including its [error handler](/platform/forge/storage-reference/sql-handling-errors/)) in your app:
 
 ```
-1
-import { sql, errorCodes } from '@forge/sql' ;
+1import { sql, errorCodes } from '@forge/sql' ;
+2
 ```
 
 ## Prepared statements
@@ -18,8 +23,8 @@ import { sql, errorCodes } from '@forge/sql' ;
 Use the `sql.prepare` method to prepare a Data Manipulation Language (DML) statement, which will be passed as a parameter and executed:
 
 ```
-1
-sql.prepare<DataType>(query: string): SqlStatement<Result<DataType>>;
+1sql.prepare<DataType>(query: string): SqlStatement<Result<DataType>>;
+2
 ```
 
 This returns a `SqlStatement` instance, which provides two methods:
@@ -41,6 +46,11 @@ The following example shows how to use `sql.prepare` to insert data into a table
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -61,6 +71,19 @@ This example shows how to use `sql.prepare` to query data from a table:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
 ```
 
 
@@ -130,6 +153,27 @@ The types as defined in our code are:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
 ```
 
 

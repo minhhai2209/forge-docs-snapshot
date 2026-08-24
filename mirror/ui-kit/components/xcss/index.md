@@ -4,8 +4,8 @@ With components support `xcss` prop, `xcss` utility function should be used to
 wrap the XCSS style definition before passing it to the component.
 
 ```
-1
-import { xcss } from "@forge/react";
+1import { xcss } from "@forge/react";
+2
 ```
 
 ## Description
@@ -172,12 +172,39 @@ and referring to [accessibility guidelines](https://atlassian.design/foundations
 
 XCSS can pull together different types of interactions and UI in a safer, more composable way.
 
-![Example of using basic xcss on box component](https://dac-static.atlassian.com/platform/forge/ui-kit/images/xcss/xcss-basic.png?_v=1.5800.2282)
+![Example of using basic xcss on box component](https://dac-static.atlassian.com/platform/forge/ui-kit/images/xcss/xcss-basic.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
 ```
 
 
@@ -218,12 +245,58 @@ export const Basic = () => (
 
 To enable interactivity, use familiar selectors like `:hover`.
 
-![Example of using xcss with hover on box component](https://dac-static.atlassian.com/platform/forge/ui-kit/images/xcss/xcss-interactivity.png?_v=1.5800.2282)
+![Example of using xcss with hover on box component](https://dac-static.atlassian.com/platform/forge/ui-kit/images/xcss/xcss-interactivity.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
 ```
 
 

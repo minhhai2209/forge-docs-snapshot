@@ -21,12 +21,10 @@ We will be adding more resources and functions to the app. Let's refactor it so 
 4. Create a `src/index.js` and export the `checkPullRequest` function.
 
    ```
-   1
+   1import { checkPullRequest } from "./merge-checks";
    2
-   3
-   import { checkPullRequest } from "./merge-checks";
-
-   export { checkPullRequest };
+   3export { checkPullRequest };
+   4
    ```
 
 Your app should have the following structure:
@@ -35,6 +33,14 @@ Your app should have the following structure:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -66,6 +72,23 @@ Your `manifest.yml` should look like the following:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
 ```
 
 
@@ -127,6 +150,16 @@ The resolver methods will interact with [Forge's storage API](/platform/forge/st
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
    ```
 
 
@@ -151,6 +184,20 @@ The resolver methods will interact with [Forge's storage API](/platform/forge/st
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
+   14
+   15
+   16
    ```
 
 
@@ -179,6 +226,8 @@ The resolver methods will interact with [Forge's storage API](/platform/forge/st
    ```
    1
    2
+   3
+   4
    ```
 
 
@@ -232,6 +281,18 @@ The UI will invoke our resolver methods from the earlier section using [Forge br
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
+   14
    ```
 
 
@@ -258,6 +319,55 @@ The UI will invoke our resolver methods from the earlier section using [Forge br
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
+   14
+   15
+   16
+   17
+   18
+   19
+   20
+   21
+   22
+   23
+   24
+   25
+   26
+   27
+   28
+   29
+   30
+   31
+   32
+   33
+   34
+   35
+   36
+   37
+   38
+   39
+   40
+   41
+   42
+   43
+   44
+   45
+   46
+   47
+   48
+   49
+   50
+   51
    ```
 
 
@@ -322,6 +432,32 @@ The UI will invoke our resolver methods from the earlier section using [Forge br
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
+   14
+   15
+   16
+   17
+   18
+   19
+   20
+   21
+   22
+   23
+   24
+   25
+   26
+   27
+   28
    ```
 
 
@@ -362,6 +498,13 @@ The UI will invoke our resolver methods from the earlier section using [Forge br
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
    ```
 
 
@@ -384,6 +527,90 @@ Your `src/frontend/index.jsx` should look something like this:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
 ```
 
 
@@ -504,6 +731,14 @@ based on whether the pull request title contains the substring.
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
    ```
 
 
@@ -526,6 +761,9 @@ based on whether the pull request title contains the substring.
    ```
    1
    2
+   3
+   4
+   5
    ```
 
 
@@ -544,6 +782,37 @@ Your `src/merge-checks/index.js` should look like the following:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
 ```
 
 
@@ -595,6 +864,12 @@ export const checkPullRequest = async (event, context) => {
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
    ```
 
 
@@ -615,6 +890,8 @@ export const checkPullRequest = async (event, context) => {
    ```
    1
    2
+   3
+   4
    ```
 
 
@@ -631,6 +908,8 @@ export const checkPullRequest = async (event, context) => {
    ```
    1
    2
+   3
+   4
    ```
 
 
@@ -648,6 +927,36 @@ Your `manifest.yml` should look like the following:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
 ```
 
 
@@ -706,7 +1015,7 @@ app:
    ```
 3. Navigate to your repository settings and open the "Check pull request title" menu item under the `FORGE APPS` section.
 
-   ![Check pull request title repository settings page](https://dac-static.atlassian.com/platform/forge/images/bitbucket-merge-check-configuration-page.png?_v=1.5800.2282)
+   ![Check pull request title repository settings page](https://dac-static.atlassian.com/platform/forge/images/bitbucket-merge-check-configuration-page.png?_v=1.5800.2283)
 4. Set the pull request title substring value. For example, *TICKET-*.
 5. Ensure the merge check is enabled via the Repository settings → Custom merge checks page if it is not already enabled.
 6. Create a pull request without the substring in the title.
@@ -718,4 +1027,4 @@ app:
 
 Check out an example app, continue to one of the other tutorials, or read through the reference pages to learn more.
 
-[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.2282)](/platform/forge/build-a-pull-request-title-validator-with-custom-merge-checks/)
+[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.2283)](/platform/forge/build-a-pull-request-title-validator-with-custom-merge-checks/)

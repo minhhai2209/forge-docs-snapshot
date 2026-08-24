@@ -3,8 +3,8 @@
 To add the `CodeBlock` component to your app:
 
 ```
-1
-import { CodeBlock } from '@forge/react';
+1import { CodeBlock } from '@forge/react';
+2
 ```
 
 ## Description
@@ -29,12 +29,36 @@ A code block highlights an entire block of code and keeps the formatting.
 
 A code block highlights an entire block of code and keeps the formatting.
 
-![Example image of a code block with line numbers](https://dac-static.atlassian.com/platform/forge/ui-kit/images/code-block/code-block-line-numbers.png?_v=1.5800.2282)
+![Example image of a code block with line numbers](https://dac-static.atlassian.com/platform/forge/ui-kit/images/code-block/code-block-line-numbers.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
 ```
 
 
@@ -76,12 +100,37 @@ You can highlight lines in a code block.
 * To highlight a group of lines, input the line numbers as a range: `highlight="1-5"`.
 * To highlight multiple groups, separate the individual lines and ranges with a comma: `highlight="1-5,7,10,15-20"`.
 
-![Example image of a code block with line highlights](https://dac-static.atlassian.com/platform/forge/ui-kit/images/code-block/code-block-highlights.png?_v=1.5800.2282)
+![Example image of a code block with line highlights](https://dac-static.atlassian.com/platform/forge/ui-kit/images/code-block/code-block-highlights.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
 ```
 
 
@@ -120,12 +169,38 @@ const CodeBlockLineHighlightExample = () => {
 
 By default, long lines will result in a horizontal-scrolling code block. You can use the `shouldWrapLongLines` prop to make the long lines wrap instead.
 
-![Example image of a code block with default appearance](https://dac-static.atlassian.com/platform/forge/ui-kit/images/code-block/code-block-wrapping.png?_v=1.5800.2282)
+![Example image of a code block with default appearance](https://dac-static.atlassian.com/platform/forge/ui-kit/images/code-block/code-block-wrapping.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
 ```
 
 
@@ -165,12 +240,37 @@ const CodeBlockShouldWrapLongLinesExample = () => {
 
 Line numbers can be hidden by setting the `showLineNumbers` prop to `false`.
 
-![Example image of a code block with no line numbers](https://dac-static.atlassian.com/platform/forge/ui-kit/images/code-block/code-block-line-numbers.png?_v=1.5800.2282)
+![Example image of a code block with no line numbers](https://dac-static.atlassian.com/platform/forge/ui-kit/images/code-block/code-block-line-numbers.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
 ```
 
 

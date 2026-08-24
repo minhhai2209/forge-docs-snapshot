@@ -19,10 +19,9 @@ For details about migrating from the legacy sandbox runtime, see
 The new native Node.js runtime requires the latest version of all Forge packages. Install updates for the packages your app uses, from the command line. For example:
 
 ```
-1
-2
-npm install -g @forge/cli@latest
-npm install @forge/api@latest
+1npm install -g @forge/cli@latest
+2npm install @forge/api@latest
+3
 ```
 
 Repeat the `npm install` command for any other Forge packages your app uses.
@@ -35,6 +34,8 @@ The `runtime` section of the `manifest.yml` file features a `name` property that
 ```
 1
 2
+3
+4
 ```
 
 
@@ -61,7 +62,7 @@ The Forge runtime allows your app to run directly on a secure VM environment. Yo
 At invocation time, Forge calls a context function. Each module receives different [request parameters](/platform/forge/function-reference/arguments/) based on
 the module type.
 
-![A code editor showing the invocation context](https://dac-static.atlassian.com/platform/forge/images/invocation-context.png?_v=1.5800.2282)
+![A code editor showing the invocation context](https://dac-static.atlassian.com/platform/forge/images/invocation-context.png?_v=1.5800.2283)
 
 You can also explicitly request a Forge function’s context details (for example, the
 [environments and versions](/platform/forge/environments-and-versions/) an app is executing in). See
@@ -104,6 +105,22 @@ Code example:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
 ```
 
 
@@ -137,6 +154,10 @@ The latest Forge runtime might keep executing the code after the function return
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -193,6 +214,10 @@ manifest file:
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 

@@ -16,12 +16,61 @@ It must be used within a [Router](/platform/forge/ui-kit/components/router/) com
 To add the `useNavigate` hook to your app:
 
 ```
-1
-import { useNavigate } from '@forge/react/router';
+1import { useNavigate } from '@forge/react/router';
+2
 ```
 
 Here is an example of an app that uses `useNavigate` to navigate between pages.
 
+```
+1import ForgeReconciler, { Button, Text, Heading } from '@forge/react';
+2import { Router, Route, useNavigate } from '@forge/react/router';
+3
+4const HomePage = () => {
+5  const navigate = useNavigate();
+6  return (
+7    <>
+8      <Heading as="h1">Home</Heading>
+9      <Text>Welcome to the app!</Text>
+10      <Button appearance="primary" onClick={() => navigate('/settings')}>
+11        Go to Settings
+12      </Button>
+13    </>
+14  );
+15};
+16
+17const SettingsPage = () => {
+18  const navigate = useNavigate();
+19  return (
+20    <>
+21      <Heading as="h1">Settings</Heading>
+22      <Button onClick={() => navigate('/')}>Back to Home</Button>
+23    </>
+24  );
+25};
+26
+27const App = () => (
+28  <>
+29    <Route path="/">
+30      <HomePage />
+31    </Route>
+32    <Route path="/settings">
+33      <SettingsPage />
+34    </Route>
+35  </>
+36);
+37
+38ForgeReconciler.render(
+39  <Router>
+40    <App />
+41  </Router>
+42);
+43
+```
+
+### Function signature
+
+```
 ```
 1
 2
@@ -31,90 +80,6 @@ Here is an example of an app that uses `useNavigate` to navigate between pages.
 6
 7
 8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-import ForgeReconciler, { Button, Text, Heading } from '@forge/react';
-import { Router, Route, useNavigate } from '@forge/react/router';
-
-const HomePage = () => {
-  const navigate = useNavigate();
-  return (
-    <>
-      <Heading as="h1">Home</Heading>
-      <Text>Welcome to the app!</Text>
-      <Button appearance="primary" onClick={() => navigate('/settings')}>
-        Go to Settings
-      </Button>
-    </>
-  );
-};
-
-const SettingsPage = () => {
-  const navigate = useNavigate();
-  return (
-    <>
-      <Heading as="h1">Settings</Heading>
-      <Button onClick={() => navigate('/')}>Back to Home</Button>
-    </>
-  );
-};
-
-const App = () => (
-  <>
-    <Route path="/">
-      <HomePage />
-    </Route>
-    <Route path="/settings">
-      <SettingsPage />
-    </Route>
-  </>
-);
-
-ForgeReconciler.render(
-  <Router>
-    <App />
-  </Router>
-);
-```
-
-### Function signature
-
-```
-```
-1
-2
 ```
 
 
@@ -155,6 +120,7 @@ None.
 ```
 1
 2
+3
 ```
 
 
@@ -173,6 +139,7 @@ Replace the current history entry instead of pushing a new one.
 ```
 1
 2
+3
 ```
 
 
@@ -189,6 +156,7 @@ navigate('/login', { replace: true });
 ```
 1
 2
+3
 ```
 
 
@@ -208,6 +176,8 @@ is appended to the current path, while `..` navigates up one level.
 ```
 1
 2
+3
+4
 ```
 
 
@@ -223,6 +193,8 @@ navigate('general'); // Navigates to /settings/general
 ```
 1
 2
+3
+4
 ```
 
 

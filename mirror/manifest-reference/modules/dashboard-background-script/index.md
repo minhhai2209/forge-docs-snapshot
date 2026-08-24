@@ -41,6 +41,14 @@ Use the [events](/platform/forge/custom-ui-bridge/events/) API for communication
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -62,6 +70,14 @@ events.on("app.request-data", (payload) => {
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -85,6 +101,14 @@ events.on("app.data-change", (payload) => {
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 

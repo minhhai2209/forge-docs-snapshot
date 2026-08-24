@@ -11,8 +11,8 @@ see [Forge release phases: EAP, Preview, and GA](/platform/forge/whats-coming/#p
 To add the `AtlassianIcon` component to your app:
 
 ```
-1
-import { AtlassianIcon } from "@forge/react";
+1import { AtlassianIcon } from "@forge/react";
+2
 ```
 
 ## Description
@@ -28,7 +28,7 @@ Use `AtlassianIcon` for Atlassian object types such as Confluence pages or Jira 
 The following image shows some of the icon types available with the `AtlassianIcon` UI Kit component.
 For the full list of object types and usage guidelines, see the [Atlassian Design System](https://atlassian.design/components/object) object component.
 
-![Grid of available Atlassian icon types with labels](https://dac-static.atlassian.com/platform/forge/ui-kit/images/atlassian-icon/atlassian-icon-examples.png?_v=1.5800.2282)
+![Grid of available Atlassian icon types with labels](https://dac-static.atlassian.com/platform/forge/ui-kit/images/atlassian-icon/atlassian-icon-examples.png?_v=1.5800.2283)
 
 ## Props
 
@@ -44,12 +44,14 @@ For the full list of object types and usage guidelines, see the [Atlassian Desig
 
 The default appearance of an Atlassian icon with medium size.
 
-![Example image of default AtlassianIcon](https://dac-static.atlassian.com/platform/forge/ui-kit/images/atlassian-icon/atlassian-icon-default.png?_v=1.5800.2282)
+![Example image of default AtlassianIcon](https://dac-static.atlassian.com/platform/forge/ui-kit/images/atlassian-icon/atlassian-icon-default.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
 ```
 
 
@@ -65,12 +67,19 @@ const AtlassianIconDefault = () => {
 
 Atlassian icons can be displayed in two sizes: small (12px) and medium (16px). The medium size is the default.
 
-![Example image of AtlassianIcon sizes](https://dac-static.atlassian.com/platform/forge/ui-kit/images/atlassian-icon/atlassian-icon-size.png?_v=1.5800.2282)
+![Example image of AtlassianIcon sizes](https://dac-static.atlassian.com/platform/forge/ui-kit/images/atlassian-icon/atlassian-icon-size.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 

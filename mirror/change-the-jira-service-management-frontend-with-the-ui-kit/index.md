@@ -16,12 +16,10 @@ When using multiple UI Kit components, you must wrap them in a fragment (`<>`) b
 3. Inside the `<>` tag, add the following code after the first `Text` component:
 
    ```
-   1
-   2
-   3
-   <Text> 
-     Number of queues: {queues?.length} 
-   </Text>
+   1<Text> 
+   2  Number of queues: {queues?.length} 
+   3</Text>
+   4
    ```
 4. Refresh the Jira Service Management queues view.
 
@@ -31,6 +29,47 @@ When using multiple UI Kit components, you must wrap them in a fragment (`<>`) b
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
+   14
+   15
+   16
+   17
+   18
+   19
+   20
+   21
+   22
+   23
+   24
+   25
+   26
+   27
+   28
+   29
+   30
+   31
+   32
+   33
+   34
+   35
+   36
+   37
+   38
+   39
+   40
+   41
+   42
+   43
    ```
 
 
@@ -83,7 +122,7 @@ When using multiple UI Kit components, you must wrap them in a fragment (`<>`) b
 
    The app displays the number of queues in the queue page app in Jira Service Management. Add more queues and refresh the page to count them in your app. Your queue page app should look like the following:
 
-   ![A Jira Service Management queue page app displaying the hello world with queues counted](https://dac-static.atlassian.com/platform/forge/images/forge-getting-started-jira-service-management-final-state.png?_v=1.5800.2282)
+   ![A Jira Service Management queue page app displaying the hello world with queues counted](https://dac-static.atlassian.com/platform/forge/images/forge-getting-started-jira-service-management-final-state.png?_v=1.5800.2283)
 
 ## Close the tunnel and deploy the app
 
@@ -130,4 +169,4 @@ You now know enough to develop your own Forge apps. Learn more from our
 [tutorials](/platform/forge/tutorials-and-guides/), [guides](/platform/forge/guides/),
 [example apps](/platform/forge/example-apps/) or [reference pages](/platform/forge/manifest-reference/).
 
-[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.2282)](/platform/forge/call-a-jira-service-management-api/)
+[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.2283)](/platform/forge/call-a-jira-service-management-api/)

@@ -73,6 +73,8 @@ Nested JSON objects are shown as a string. For example:
 ```
 1
 2
+3
+4
 ```
 
 
@@ -91,6 +93,10 @@ For example:
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -111,6 +117,24 @@ grouped by Invocation ID with the attached metadata. For example:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
 ```
 
 
@@ -168,6 +192,33 @@ For example:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
 ```
 
 
@@ -207,7 +258,7 @@ SyntaxError: /Users/alui/src/forge/hello-world-app/src/index.jsx: Unexpected tok
 **Runtime errors:** Returned for general runtime errors. For example, calling a method that does not
 exist or is not a method. These errors are shown in the app UI. A stack trace is included with the
 error message. For example:
-![Runtime error example](https://dac-static.atlassian.com/platform/forge/images/error-runtime.png?_v=1.5800.2282)
+![Runtime error example](https://dac-static.atlassian.com/platform/forge/images/error-runtime.png?_v=1.5800.2283)
 
 ## Related pages
 

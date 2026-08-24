@@ -6,15 +6,15 @@ see the [Form](/platform/forge/ui-kit/components/form) component.
 To import `useForm` into your app:
 
 ```
-1
-import { useForm } from '@forge/react';
+1import { useForm } from '@forge/react';
+2
 ```
 
 **Props**
 
 | Name | Type | Required | Description |
 | --- | --- | --- | --- |
-| `defaultValues` | `FieldValues` | No | Default values for the form. |
+| `[object Object]` | `FieldValues[object Object]` | No | Default values for the form. |
 
 ## defaultValues
 
@@ -23,18 +23,13 @@ The `defaultValues` prop populates the entire form with default values. It is re
 ### Example
 
 ```
-1
-2
-3
-4
-5
-6
-useForm({
-  defaultValues: {
-    firstName: '',
-    lastName: ''
-  }
-})
+1useForm({
+2  defaultValues: {
+3    firstName: '',
+4    lastName: ''
+5  }
+6})
+7
 ```
 
 ### Note
@@ -46,13 +41,13 @@ useForm({
 
 | Name | Type | Description |
 | --- | --- | --- |
-| `register` | `(name: string, RegisterOptions?) => RegisterReturnProps` | This method allows you to register an input or select element and apply validation rules to Form. |
-| `formState` | `Object` | This object contains information about the entire form state. |
-| `getFieldId` | `(fieldName: string) => string` | Gets the id of a form field. |
-| `getValues` | `(payload?: string | string[]) => Object` | An optimized helper for reading form values |
-| `handleSubmit` | `((data: Object, e?: Event) => Promise<void>, (errors: Object, e?: Event) => void) => Promise<void>` | This function will receive the form data if form validation is successful. |
-| `trigger` | `(name?: string | string[]) => Promise<boolean>` | Manually triggers form or input validation. |
-| `clearErrors` | `(name?: string | string[]) => void` | This function can manually clear errors in the form. |
+| `[object Object]` | `(name: string, RegisterOptions?) => RegisterReturnProps` | This method allows you to register an input or select element and apply validation rules to Form. |
+| `[object Object]` | `Object` | This object contains information about the entire form state. |
+| `[object Object]` | `(fieldName: string) => string` | Gets the id of a form field. |
+| `[object Object]` | `(payload?: string | string[]) => Object` | An optimized helper for reading form values |
+| `[object Object]` | `((data: Object, e?: Event) => Promise<void>, (errors: Object, e?: Event) => void) => Promise<void>` | This function will receive the form data if form validation is successful. |
+| `[object Object]` | `(name?: string | string[]) => Promise<boolean>` | Manually triggers form or input validation. |
+| `[object Object]` | `(name?: string | string[]) => void` | This function can manually clear errors in the form. |
 
 ## register
 
@@ -73,7 +68,7 @@ By invoking the register function and supplying an input's name, you will receiv
 | --- | --- | --- |
 | `onChange` | `ChangeHandler` | `onChange` prop to subscribe the input change event. |
 | `onBlur` | `ChangeHandler` | `onBlur` prop to subscribe the input blur event. |
-| `id` | `string` | Input's id containing randomly generated string to avoid clashes. Use `getFieldId(name)` |
+| `id` | `string` | Input's id containing randomly generated string to avoid clashes. Use `getFieldId(name)[object Object]` |
 | `isInvalid` | `boolean` | Whether a field is invalid. |
 | `isDisabled` | `boolean` | Whether a field is disabled. |
 
@@ -81,14 +76,14 @@ By invoking the register function and supplying an input's name, you will receiv
 
 | Name | Type | Description | Example |
 | --- | --- | --- | --- |
-| `required` | `boolean` | A `boolean` which, if `true`, indicates that the input must have a value before the form can be submitted. You can assign a string to return an error message in the `errors` object. | ```  ``` 1 2 ```    ``` <Textfield   {...register("test", {     required: true   })} /> ``` ``` |
-| `disabled` | `boolean` | Set disabled to `true` will lead input value to be `undefined` and input control to be disabled.  `disabled` prop will also omit built-in validation rules.    For schema validation, you can leverage the `undefined` value returned from input or context object. | ```  ``` 1 2 ```    ``` <Textfield   {...register("test", {     disabled: true   })} /> ``` ``` |
-| `max` | `number` | The maximum value to accept for this input. | ```  ``` 1 2 ```    ``` <Textfield   type="number"   {...register('test', {     max: 3   })} /> ``` ``` |
-| `maxLength` | `number` | The maximum length of the value to accept for this input. | ```  ``` 1 2 ```    ``` <Textfield   {...register("test", {       maxLength: 2   })} /> ``` ``` |
-| `min` | `number` | The minimum value to accept for this input. | ```  ``` 1 2 ```    ``` <Textfield   type="number"   {...register("test", {     min: 3   })} /> ``` ``` |
-| `minLength` | `number` | The minimum length of the value to accept for this input. | ```  ``` 1 2 ```    ``` <Textfield   {...register("test", {     minLength: 1   })} /> ``` ``` |
-| `pattern` | `RegExp` | The regex pattern for the input.  **Note**: A RegExp object with the `/g` flag keeps track of the lastIndex where a match occurred. | ```  ``` 1 2 ```    ``` <Textfield   {...register("test", {     pattern: /[A-Za-z]{3}/   })} /> ``` ``` |
-| `validate` | `Function | Object` | You can pass a callback function as the argument to validate, or you can pass an object of callback functions to validate all of them. This function will be executed on its own without depending on other validation rules included in the `required` attribute.  Note: for `object` or `array` input data, it's recommended to use the `validate` function for validation as the other rules mostly apply to `string`, `string[]`, `number` and `boolean` data types. | ```  ``` 1 2 ```    ``` <Textfield   {...register("test", {     validate: (value, formValue) => {       return value === '1'     }   })} /> ``` ```  ```  ``` 1 2 ```    ``` // object of callback functions <Textfield   {...register("test1", {     validate: {       positive: v => parseInt(v) > 0,       lessThanTen: v => parseInt(v) < 10,       checkUrl: async () => await fetch(),     }   })} /> ``` ``` |
+| `required` | `boolean` | A `boolean` which, if `true`, indicates that the input must have a value before the form can be submitted. You can assign a string to return an error message in the `errors` object. | ```  ``` 1 2 3 4 5 ```    ``` <Textfield   {...register("test", {     required: true   })} /> ``` ``` |
+| `disabled` | `boolean` | Set disabled to `true` will lead input value to be `undefined` and input control to be disabled.  `disabled` prop will also omit built-in validation rules.    For schema validation, you can leverage the `undefined` value returned from input or context object. | ```  ``` 1 2 3 4 5 ```    ``` <Textfield   {...register("test", {     disabled: true   })} /> ``` ``` |
+| `max` | `number` | The maximum value to accept for this input. | ```  ``` 1 2 3 4 5 6 ```    ``` <Textfield   type="number"   {...register('test', {     max: 3   })} /> ``` ``` |
+| `maxLength` | `number` | The maximum length of the value to accept for this input. | ```  ``` 1 2 3 4 5 ```    ``` <Textfield   {...register("test", {       maxLength: 2   })} /> ``` ``` |
+| `min` | `number` | The minimum value to accept for this input. | ```  ``` 1 2 3 4 5 6 ```    ``` <Textfield   type="number"   {...register("test", {     min: 3   })} /> ``` ``` |
+| `minLength` | `number` | The minimum length of the value to accept for this input. | ```  ``` 1 2 3 4 5 ```    ``` <Textfield   {...register("test", {     minLength: 1   })} /> ``` ``` |
+| `pattern` | `RegExp` | The regex pattern for the input.  **Note**: A RegExp object with the `/g` flag keeps track of the lastIndex where a match occurred. | ```  ``` 1 2 3 4 5 ```    ``` <Textfield   {...register("test", {     pattern: /[A-Za-z]{3}/   })} /> ``` ``` |
+| `validate` | `Function | Object` | You can pass a callback function as the argument to validate, or you can pass an object of callback functions to validate all of them. This function will be executed on its own without depending on other validation rules included in the `required` attribute.  Note: for `object` or `array` input data, it's recommended to use the `validate` function for validation as the other rules mostly apply to `string`, `string[]`, `number` and `boolean` data types. | ```  ``` 1 2 3 4 5 6 7 ```    ``` <Textfield   {...register("test", {     validate: (value, formValue) => {       return value === '1'     }   })} /> ``` ```  ```  ``` 1 2 3 4 5 6 7 8 9 10 ```    ``` // object of callback functions <Textfield   {...register("test1", {     validate: {       positive: v => parseInt(v) > 0,       lessThanTen: v => parseInt(v) < 10,       checkUrl: async () => await fetch(),     }   })} /> ``` ``` |
 
 ### Example
 
@@ -96,6 +91,27 @@ By invoking the register function and supplying an input's name, you will receiv
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
 ```
 
 
@@ -153,6 +169,14 @@ register('user.firstname'); // returns {user: {firstname: ''}}
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -195,6 +219,7 @@ This object contains information about the entire form state. It helps you to ke
 ```
 1
 2
+3
 ```
 
 
@@ -221,6 +246,26 @@ Retrieves the `id` of a registered form field. This should be used to retrieve t
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
 ```
 
 
@@ -274,6 +319,32 @@ The example below shows what to expect when you invoke `getValues` method.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
 ```
 
 
@@ -333,6 +404,24 @@ This function will receive the form data if form validation is successful.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
 ```
 
 
@@ -366,6 +455,31 @@ export default function App() {
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
 ```
 
 
@@ -408,6 +522,9 @@ function App() {
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -426,6 +543,15 @@ handleSubmit(async (data) => await fetchAPI(data))
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -462,6 +588,52 @@ Manually triggers form or input validation. This method is also useful when you 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
 ```
 
 

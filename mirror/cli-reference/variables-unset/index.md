@@ -7,21 +7,18 @@ remove an environment variable
 ## Usage
 
 ```
-1
-Usage: forge variables unset [options] <key>
+1Usage: forge variables unset [options] <key>
+2
 ```
 
 ## Options
 
 ```
-1
-2
-3
-4
---verbose                        enable verbose mode
--e, --environment [environment]  specify the environment (see your default
-                                 environment by running forge settings list)
--h, --help                       display help for command
+1--verbose                        enable verbose mode
+2-e, --environment [environment]  specify the environment (see your default
+3                                 environment by running forge settings list)
+4-h, --help                       display help for command
+5
 ```
 
 ## Operation

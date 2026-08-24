@@ -11,14 +11,11 @@ function when the event is triggered.
 ### Function signature
 
 ```
-1
-2
-3
-4
-const on = (
-    event: string,
-    callback: (payload?: any) => Promise<any>
-): Promise<Subscription>
+1const on = (
+2    event: string,
+3    callback: (payload?: any) => Promise<any>
+4): Promise<Subscription>
+5
 ```
 
 ### Arguments
@@ -34,20 +31,14 @@ const on = (
 ### Example
 
 ```
-1
+1import { events } from "@forge/bridge";
 2
-3
-4
-5
+3function eventHandler(payload?: any) {
+4  console.log("Payload: ", payload);
+5}
 6
-7
-import { events } from "@forge/bridge";
-
-function eventHandler(payload?: any) {
-  console.log("Payload: ", payload);
-}
-
-events.on("EVENT_NAME", eventHandler);
+7events.on("EVENT_NAME", eventHandler);
+8
 ```
 
 ## unsubscribe
@@ -64,6 +55,8 @@ instance and will not globally unsubscribe from the event.
 ```
 1
 2
+3
+4
 ```
 
 
@@ -81,6 +74,15 @@ type Subscription = {
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -142,6 +144,14 @@ To learn more about defining Custom UI modules, see [Custom UI](/platform/forge/
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -165,6 +175,10 @@ events.on("EVENT_NAME", eventHandler);
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 

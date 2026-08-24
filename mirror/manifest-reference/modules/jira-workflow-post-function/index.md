@@ -81,6 +81,34 @@ follows:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
 ```
 
 
@@ -125,6 +153,18 @@ use the [`view.getContext` function](/platform/forge/custom-ui-bridge/view/#getc
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
 ```
 
 
@@ -153,6 +193,28 @@ the [`workflowRules.onConfigure` function](/platform/forge/custom-ui-jira-bridge
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
 ```
 
 
@@ -190,6 +252,36 @@ To implement the actual post function logic in the `src/index.js` file, declare 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
 ```
 
 
@@ -246,6 +338,20 @@ An example of `transitionContext`:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
 ```
 
 
@@ -275,6 +381,11 @@ The maximum length of configuration saved via the new editor is limited to 32KB.
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 

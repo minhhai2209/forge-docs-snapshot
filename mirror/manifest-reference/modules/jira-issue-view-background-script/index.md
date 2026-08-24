@@ -17,47 +17,31 @@ an issue view background script and an issue panel. Because modules may be rende
 Issue view background script:
 
 ```
-1
+1import { events } from '@forge/bridge';
 2
-3
-4
+3// Emit the data to an already rendered issue panel
+4events.emit('app.data-change', 'initial-data');
 5
-6
-7
-8
-9
-import { events } from '@forge/bridge';
-
-// Emit the data to an already rendered issue panel
-events.emit('app.data-change', 'initial-data');
-
-// Listen to data change requests from issue panels
-events.on('app.request-data', (payload) => {
-  events.emit('app.data-change', 'initial-or-changed-data');
-});
+6// Listen to data change requests from issue panels
+7events.on('app.request-data', (payload) => {
+8  events.emit('app.data-change', 'initial-or-changed-data');
+9});
+10
 ```
 
 Issue panel:
 
 ```
-1
+1import { events } from '@forge/bridge';
 2
-3
-4
+3// Request data in case the background script is already rendered
+4events.emit('app.request-data');
 5
-6
-7
-8
-9
-import { events } from '@forge/bridge';
-
-// Request data in case the background script is already rendered
-events.emit('app.request-data');
-
-// Listen to data change
-events.on('app.data-change', (payload) => {
-  console.log('The data has changed:', payload)
-});
+6// Listen to data change
+7events.on('app.data-change', (payload) => {
+8  console.log('The data has changed:', payload)
+9});
+10
 ```
 
 ### Manifest
@@ -66,6 +50,17 @@ events.on('app.data-change', (payload) => {
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
 ```
 
 
@@ -117,6 +112,9 @@ Apps can receive frontend events that will notify your app when an issue has bee
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -137,6 +135,13 @@ However, if you have multiple issue view modules in your app, you should use the
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 

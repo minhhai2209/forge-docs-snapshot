@@ -11,7 +11,7 @@ responds to issue created events in Jira and adds a comment to the created issue
 
 You'll learn about Atlassian app events, the Runtime API, and tunneling.
 
-![The final app displays on a Jira issue](https://dac-static.atlassian.com/platform/forge/images/jira-triggers-tutorial-final-state.png?_v=1.5800.2282)
+![The final app displays on a Jira issue](https://dac-static.atlassian.com/platform/forge/images/jira-triggers-tutorial-final-state.png?_v=1.5800.2283)
 
 ## Before you begin
 
@@ -73,6 +73,9 @@ Your app needs to define the OAuth 2.0 scopes to use when calling the Jira Cloud
    ```
    1
    2
+   3
+   4
+   5
    ```
 
 
@@ -94,6 +97,20 @@ Your `manifest.yml` file should look like the following, with your value for the
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
 ```
 
 
@@ -130,6 +147,8 @@ The `main` function is called when a new Jira issue is created. This function is
 ```
 1
 2
+3
+4
 ```
 
 
@@ -160,7 +179,7 @@ running locally is invoked.
    restart the tunnel (`forge tunnel`).
 4. Create a new issue in your Jira site. Make sure to create the issue in a project where you can view and comment on issues.
 5. Verify `Hello World!` appears in your tunnel.
-   ![The tunnel command is displayed in the terminal](https://dac-static.atlassian.com/platform/forge/images/jira-triggers-tutorial-tunnel.png?_v=1.5800.2282)
+   ![The tunnel command is displayed in the terminal](https://dac-static.atlassian.com/platform/forge/images/jira-triggers-tutorial-tunnel.png?_v=1.5800.2283)
 
 In [Step 3](#step-3--use-a-tunnel-to-test-the-app), we demonstrated how creating a new issue invoked the `run` method in `src/index.js`.
 
@@ -203,6 +222,35 @@ in response to the issue created event.
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
+   14
+   15
+   16
+   17
+   18
+   19
+   20
+   21
+   22
+   23
+   24
+   25
+   26
+   27
+   28
+   29
+   30
+   31
    ```
 
 
@@ -246,6 +294,10 @@ in response to the issue created event.
    ```
    1
    2
+   3
+   4
+   5
+   6
    ```
 
 
@@ -264,6 +316,25 @@ in response to the issue created event.
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
+   14
+   15
+   16
+   17
+   18
+   19
+   20
+   21
    ```
 
 
@@ -298,9 +369,9 @@ in response to the issue created event.
 8. Create an issue in the site where you installed your app, and verify the following:
 
    1. You receive a response message in the tunnel.
-      ![The terminal displaying a message](https://dac-static.atlassian.com/platform/forge/images/jira-triggers-tutorial-terminal-message.png?_v=1.5800.2282)
+      ![The terminal displaying a message](https://dac-static.atlassian.com/platform/forge/images/jira-triggers-tutorial-terminal-message.png?_v=1.5800.2283)
    2. The issue you created now has a comment.
-      ![A Jira issue with a comment](https://dac-static.atlassian.com/platform/forge/images/jira-triggers-tutorial-final-state.png?_v=1.5800.2282)
+      ![A Jira issue with a comment](https://dac-static.atlassian.com/platform/forge/images/jira-triggers-tutorial-final-state.png?_v=1.5800.2283)
 
 Your `index.js` should look like the following:
 
@@ -308,6 +379,59 @@ Your `index.js` should look like the following:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
 ```
 
 
@@ -394,6 +518,8 @@ the tunnel is closed.
    ```
    1
    2
+   3
+   4
    ```
 
 

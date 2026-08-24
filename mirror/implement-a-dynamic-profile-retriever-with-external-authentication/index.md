@@ -21,54 +21,31 @@ As you work with a dynamic profile retriever, keep in mind these limitations:
 Create a new file called `auth.ts` in the `src` folder with the code shown below.
 
 ```
-1
-2
+1``` typescript
+2import { AuthProfile } from '@forge/response';
 3
-4
-5
-6
-7
-8
-9
+4interface ProfileRetrieverParameters {
+5  status: number;
+6  body: {
+7    [key: string]: any;
+8  };
+9}
 10
-11
-12
+11export const retriever = (response:   ProfileRetrieverParameters): AuthProfile => {
+12  const { status, body: externalProfile } =   response;
 13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-``` typescript
-import { AuthProfile } from '@forge/response';
-
-interface ProfileRetrieverParameters {
-  status: number;
-  body: {
-    [key: string]: any;
-  };
-}
-
-export const retriever = (response:   ProfileRetrieverParameters): AuthProfile => {
-  const { status, body: externalProfile } =   response;
-
-  if (status === 200){
-    return new AuthProfile({
-      id: externalProfile.id,
-      displayName: externalProfile.email ||   externalProfile.name,
-      avatarUrl: externalProfile.picture,
-    });
-  } else {
-    throw new Error(`Could not determine   profile information. HTTP ${status}`);
-  }
-}
-```
+14  if (status === 200){
+15    return new AuthProfile({
+16      id: externalProfile.id,
+17      displayName: externalProfile.email ||   externalProfile.name,
+18      avatarUrl: externalProfile.picture,
+19    });
+20  } else {
+21    throw new Error(`Could not determine   profile information. HTTP ${status}`);
+22  }
+23}
+24```
+25
 ```
 
 See the
@@ -83,6 +60,10 @@ reference documentation for more details.
    ```
    1
    2
+   3
+   4
+   5
+   6
    ```
 
 
@@ -101,6 +82,15 @@ reference documentation for more details.
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
    ```
 
 
@@ -150,6 +140,7 @@ a dynamic profile retriever.
 ```
 1
 2
+3
 ```
 
 

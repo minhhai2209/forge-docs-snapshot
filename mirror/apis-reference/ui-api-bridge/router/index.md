@@ -59,6 +59,31 @@ URL
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
 ```
 
 
@@ -129,6 +154,15 @@ URL
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -177,6 +211,12 @@ The return type of `getUrl` is a promise that resolves to a [URL](https://develo
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -217,6 +257,8 @@ function reload(): Promise<void>;
 ```
 1
 2
+3
+4
 ```
 
 
@@ -248,6 +290,10 @@ To navigate to `/${workspace}/workspace/forge/${appId}/${environmentKey}/${modul
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -359,6 +405,10 @@ To navigate to `/wiki/spaces/TEAM/pages`:
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -380,6 +430,10 @@ To navigate to `/wiki/search?type=forge:${appId}:${environmentId}:my-custom-cont
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -426,6 +480,10 @@ To navigate to `/wiki/apps/${appId}/${environmentId}/${route}/settings?tab=gener
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -549,6 +607,10 @@ To navigate to `/jira/settings/apps/${appId}/${environmentId}/settings?tab=gener
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 

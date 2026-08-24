@@ -32,6 +32,15 @@ The module is designed to be used in conjunction with the [UI modifications (app
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -86,6 +95,17 @@ JSM agent view context shape
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
 ```
 
 
@@ -119,6 +139,20 @@ JSM agent view
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
 ```
 
 
@@ -162,6 +196,13 @@ Granular scopes
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -258,7 +299,7 @@ If you install and configure multiple UIM apps to run for a given combination of
 
 There may be conflicts when multiple apps attempt to modify the same field using the same [FieldAPI](/platform/forge/apis-reference/jira-api-bridge/uiModifications/#common-fieldapi) method. In such cases, app developers will receive conflict errors via the [onError](/platform/forge/apis-reference/jira-api-bridge/uiModifications/#error-handling) handler, and users will see corresponding notifications:
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/multi-app-conflict-notification.png?_v=1.5800.2282)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/multi-app-conflict-notification.png?_v=1.5800.2283)
 
 If the conflict happens, the changes applied by the app which finished running last will override changes from other apps.
 

@@ -46,6 +46,9 @@ For example, to allow inline CSS in your app, use the following configuration:
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -92,6 +95,12 @@ section below for more details.
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
    ```
 
 
@@ -112,6 +121,11 @@ section below for more details.
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
    ```
 
 
@@ -142,6 +156,7 @@ and a recommendation to fix it, as shown in the example below:
 ```
 1
 2
+3
 ```
 
 
@@ -193,6 +208,12 @@ To upgrade your app:
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
    ```
 
 

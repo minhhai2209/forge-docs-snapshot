@@ -13,23 +13,19 @@ If you’re using relative URLs (starts with `/`), the user won’t be prompted.
 ### Function signature
 
 ```
-1
-function navigate(url: string): Promise<void>;
+1function navigate(url: string): Promise<void>;
+2
 ```
 
 ### Example
 
 ```
-1
+1import { router } from '@forge/bridge';
 2
-3
+3router.navigate('/browse/ISSUE-1234');
 4
-5
-import { router } from '@forge/bridge';
-
-router.navigate('/browse/ISSUE-1234');
-
-router.navigate('https://example.com');
+5router.navigate('https://example.com');
+6
 ```
 
 ## open
@@ -61,6 +57,10 @@ function open(url: string): Promise<void>;
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -99,6 +99,8 @@ function reload(): Promise<void>;
 ```
 1
 2
+3
+4
 ```
 
 

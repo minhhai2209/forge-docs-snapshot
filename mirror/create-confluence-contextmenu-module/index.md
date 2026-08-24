@@ -10,7 +10,7 @@ This tutorial describes how to make a Forge app that uses highlighted text from 
 You might use this technique in a dictionary app, a custom glossary, or any app that requires users
 to highlight text on a page.
 
-![Confluence context menu](https://dac-static.atlassian.com/platform/forge/images/context-menu.png?_v=1.5800.2282)
+![Confluence context menu](https://dac-static.atlassian.com/platform/forge/images/context-menu.png?_v=1.5800.2283)
 
 To create the app, you'll learn how to:
 
@@ -84,6 +84,23 @@ Your `manifest.yml` should look like the following, with your value for the app 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
 ```
 
 
@@ -170,6 +187,25 @@ use the [useProductContext](https://developer.atlassian.com/platform/forge/ui-ki
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
+   14
+   15
+   16
+   17
+   18
+   19
+   20
+   21
    ```
 
 
@@ -200,7 +236,7 @@ use the [useProductContext](https://developer.atlassian.com/platform/forge/ui-ki
 4. Open a Confluence page and select some text. When the menu appears, click the dropdown
    button and select your app.
 
-   ![App displaying selected text](https://dac-static.atlassian.com/platform/forge/images/context-menu-highlighted-text.png?_v=1.5800.2282)
+   ![App displaying selected text](https://dac-static.atlassian.com/platform/forge/images/context-menu-highlighted-text.png?_v=1.5800.2283)
 
    In the code from this step:
 

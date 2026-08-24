@@ -37,7 +37,7 @@ This guide assumes you are operating a typical multi-tenant SaaS-style web appli
 
 **Jira tenant** or **Jira site** — Jira is a multi-tenant web application hosted on Atlassian infrastructure. Each tenant is accessible under a different base URL, typically `${customer-subdomain}.atlassian.net`, though the domain and TLD may vary. If listing on the Atlassian Marketplace, your remote agent must be ready to handle installations and tasks from multiple Jira tenants.
 
-![Simplified integration architecture showing a Jira site, a Forge app acting as middleware, and the remote service hosting the agent](https://dac-static.atlassian.com/platform/forge/images/remote-agents/architecture.png?_v=1.5800.2282)
+![Simplified integration architecture showing a Jira site, a Forge app acting as middleware, and the remote service hosting the agent](https://dac-static.atlassian.com/platform/forge/images/remote-agents/architecture.png?_v=1.5800.2283)
 
 *Simplified integration architecture*
 
@@ -80,7 +80,7 @@ Always verify events sent as webhooks using JWKS before processing them. Failing
 
 3. After receiving and verifying an installation event, your remote service may optionally call the Jira REST API to retrieve additional information about the Jira tenant.
 4. Your remote service then persists the Jira installation information in its data store. See [Recommended schema for jiraInstallations table](#recommended-schema-for-jirainstallations-table) for recommended properties to store.
-   ![Installation flow diagram](https://dac-static.atlassian.com/platform/forge/images/remote-agents/installation-flow.png?_v=1.5800.2282)
+   ![Installation flow diagram](https://dac-static.atlassian.com/platform/forge/images/remote-agents/installation-flow.png?_v=1.5800.2283)
 5. Your agent may also initiate a post-installation configuration flow that the administrator will be directed to after installing your agent. Most remote agents will need to implement this in order to map the customer's tenant in the remote service to their tenant in Jira. This flow is covered in the [Agent configuration](#3--agent-configuration) section below.
 
 After configuration is complete, your agent is ready to [handle tasks](#2--handling-jira-tasks).
@@ -129,7 +129,7 @@ Conversations between users and agents (including any additional input from the 
 
 During its lifecycle, a `task` will start in the `TASK_STATE_SUBMITTED` state and then transition through a number of states until it reaches a terminal state (`TASK_STATE_REJECTED`, `TASK_STATE_COMPLETED`, `TASK_STATE_CANCELED`, or `TASK_STATE_FAILED`).
 
-![Task lifecycle state diagram](https://dac-static.atlassian.com/platform/forge/images/remote-agents/task-lifecycle.png?_v=1.5800.2282)
+![Task lifecycle state diagram](https://dac-static.atlassian.com/platform/forge/images/remote-agents/task-lifecycle.png?_v=1.5800.2283)
 
 The directional arrows on the diagram are important. Once a task has entered a terminal state — `TASK_STATE_REJECTED`, `TASK_STATE_COMPLETED`, `TASK_STATE_CANCELED`, or `TASK_STATE_FAILED` — it **cannot be restarted**. Subsequent messages from the user for the same context should be handled by creating a new task. See the ["single active task per context" rule](#the-single-active-task-per-context-rule) for more details.
 
@@ -161,7 +161,7 @@ There are a few rules that govern agent context and task lifecycle in Jira:
 * However, if a user sends a new message to the remote agent in an ongoing chat session with that agent, Jira will send your agent a new `message` with the `contextId` corresponding to that chat. Your agent should update an existing active task or create a new task within the same context when this happens. See the ["single active task per context" rule](#the-single-active-task-per-context-rule).
 * Contexts are **always** private to a single user and agent. Messages from different users about the same work item should each have a separate context.
 
-![Cardinality of remote agent task-related objects](https://dac-static.atlassian.com/platform/forge/images/remote-agents/context-cardinality.png?_v=1.5800.2282)
+![Cardinality of remote agent task-related objects](https://dac-static.atlassian.com/platform/forge/images/remote-agents/context-cardinality.png?_v=1.5800.2283)
 
 *Cardinality of remote agent task-related objects.*
 
@@ -173,7 +173,7 @@ Each agent can potentially have multiple contexts for the same user on the same 
 * Therefore if your agent receives a new `message` in relation to a `task` it is already working on, it should attempt to incorporate that `message` into the context it is using to process the task (if possible).
 * Your agent may have multiple active tasks for the same user and work item, provided they are in different contexts.
 
-![A context may have multiple tasks, but only the newest may be in an active state](https://dac-static.atlassian.com/platform/forge/images/remote-agents/single-active-task.png?_v=1.5800.2282)
+![A context may have multiple tasks, but only the newest may be in an active state](https://dac-static.atlassian.com/platform/forge/images/remote-agents/single-active-task.png?_v=1.5800.2283)
 
 *A context may have multiple tasks, but only the newest may be in an active state.*
 
@@ -190,41 +190,41 @@ The following diagrams show the user experience and flow for a typical assignmen
 
 ## Initial assignment
 
-![Assignment flow diagram](https://dac-static.atlassian.com/platform/forge/images/remote-agents/assign-flow.png?_v=1.5800.2282)
+![Assignment flow diagram](https://dac-static.atlassian.com/platform/forge/images/remote-agents/assign-flow.png?_v=1.5800.2283)
 
-![User assigns remote agent to work item](https://dac-static.atlassian.com/platform/forge/images/remote-agents/assign-1.png?_v=1.5800.2282)
+![User assigns remote agent to work item](https://dac-static.atlassian.com/platform/forge/images/remote-agents/assign-1.png?_v=1.5800.2283)
 
 *User assigns remote agent to work item*
 
-![Agent's task status displayed in the Jira UI](https://dac-static.atlassian.com/platform/forge/images/remote-agents/assign-2.png?_v=1.5800.2282)
+![Agent's task status displayed in the Jira UI](https://dac-static.atlassian.com/platform/forge/images/remote-agents/assign-2.png?_v=1.5800.2283)
 
 *Agent's task status displayed in the Jira UI*
 
 ## Task execution
 
-![Task execution flow diagram](https://dac-static.atlassian.com/platform/forge/images/remote-agents/exec-flow.png?_v=1.5800.2282)
+![Task execution flow diagram](https://dac-static.atlassian.com/platform/forge/images/remote-agents/exec-flow.png?_v=1.5800.2283)
 
-![Agent requests input from user](https://dac-static.atlassian.com/platform/forge/images/remote-agents/exec-1.png?_v=1.5800.2282)
+![Agent requests input from user](https://dac-static.atlassian.com/platform/forge/images/remote-agents/exec-1.png?_v=1.5800.2283)
 
 *Agent requests input from user*
 
-![User selects "Refine in Chat" and provides further input to the Agent](https://dac-static.atlassian.com/platform/forge/images/remote-agents/exec-2.png?_v=1.5800.2282)
+![User selects "Refine in Chat" and provides further input to the Agent](https://dac-static.atlassian.com/platform/forge/images/remote-agents/exec-2.png?_v=1.5800.2283)
 
 *User selects "Refine in Chat" and provides further input to the Agent*
 
 ## Task completion
 
-![Task completion flow diagram](https://dac-static.atlassian.com/platform/forge/images/remote-agents/complete-flow.png?_v=1.5800.2282)
+![Task completion flow diagram](https://dac-static.atlassian.com/platform/forge/images/remote-agents/complete-flow.png?_v=1.5800.2283)
 
-![Agent returns task in TASK_STATE_COMPLETED status with prompt to draft a comment](https://dac-static.atlassian.com/platform/forge/images/remote-agents/complete-1.png?_v=1.5800.2282)
+![Agent returns task in TASK_STATE_COMPLETED status with prompt to draft a comment](https://dac-static.atlassian.com/platform/forge/images/remote-agents/complete-1.png?_v=1.5800.2283)
 
 *Agent returns task in `TASK_STATE_COMPLETED` status — final task message is displayed in the Jira UI with prompt to draft a comment*
 
-![User selects "Draft comment" and modifies content to their tastes](https://dac-static.atlassian.com/platform/forge/images/remote-agents/complete-2.png?_v=1.5800.2282)
+![User selects "Draft comment" and modifies content to their tastes](https://dac-static.atlassian.com/platform/forge/images/remote-agents/complete-2.png?_v=1.5800.2283)
 
 *User selects "Draft comment" and modifies content to their tastes*
 
-![User posts comment on work item](https://dac-static.atlassian.com/platform/forge/images/remote-agents/complete-3.png?_v=1.5800.2282)
+![User posts comment on work item](https://dac-static.atlassian.com/platform/forge/images/remote-agents/complete-3.png?_v=1.5800.2283)
 
 *User posts comment on work item*
 
@@ -280,6 +280,11 @@ To advertise streaming support, add `streaming: true` under the `agent2Agent.jso
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -327,6 +332,49 @@ Example SSE stream for a task that completes successfully:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
 ```
 
 
@@ -460,6 +508,70 @@ Example Forge `manifest.yml` for a remote agent. See the [`rovo:agentConnector` 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
 ```
 
 
@@ -555,6 +667,20 @@ Example:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
 ```
 
 
@@ -708,6 +834,23 @@ Jira will call the `SendMessage` method when:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
 ```
 
 
@@ -742,6 +885,33 @@ Jira will call the `SendMessage` method when:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
 ```
 
 
@@ -784,6 +954,26 @@ Jira will call the `SendMessage` method when:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
 ```
 
 
@@ -819,6 +1009,37 @@ Jira will call the `SendMessage` method when:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
 ```
 
 
@@ -865,6 +1086,26 @@ Jira will call the `SendMessage` method when:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
 ```
 
 
@@ -902,6 +1143,33 @@ Jira will call the `SendMessage` method when:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
 ```
 
 
@@ -944,6 +1212,26 @@ Jira will call the `SendMessage` method when:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
 ```
 
 
@@ -983,6 +1271,13 @@ Jira will call `GetTask` to poll for updates on tasks that are in an active stat
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -1005,6 +1300,13 @@ Jira will call `GetTask` to poll for updates on tasks that are in an active stat
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -1027,6 +1329,26 @@ Jira will call `GetTask` to poll for updates on tasks that are in an active stat
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
 ```
 
 
@@ -1062,6 +1384,26 @@ Jira will call `GetTask` to poll for updates on tasks that are in an active stat
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
 ```
 
 
@@ -1123,6 +1465,13 @@ Jira will call `CancelTask` when a user presses the cancel button on the agent p
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -1145,6 +1494,13 @@ Jira will call `CancelTask` when a user presses the cancel button on the agent p
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -1167,6 +1523,26 @@ Jira will call `CancelTask` when a user presses the cancel button on the agent p
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
 ```
 
 
@@ -1204,6 +1580,23 @@ The following JSON-RPC error codes from the [A2A specification](https://a2a-prot
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
 ```
 
 

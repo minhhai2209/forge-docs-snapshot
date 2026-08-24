@@ -25,6 +25,8 @@ and apply it in your app. It will also reactively apply theme changes that occur
 ```
 1
 2
+3
+4
 ```
 
 
@@ -44,6 +46,15 @@ Verify that design tokens are enabled by inspecting the HTML of your application
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -82,6 +93,10 @@ Design tokens are CSS custom properties so for **vanilla CSS, Sass and Less**, 
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -101,6 +116,12 @@ For **CSS-in-JS**, we strongly recommend you install `@atlaskit/tokens` as a 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -128,6 +149,14 @@ If your application uses colors that correspond to your unique brand, it is stil
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -159,6 +188,10 @@ To work around this, we make a special css variable available to your applicatio
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 

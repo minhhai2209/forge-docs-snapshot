@@ -101,6 +101,10 @@ To enable this, set `min` to `0` in your service's `scaling` configuration:
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -143,6 +147,30 @@ The following snippet shows a service named `java-service`, which is backed by a
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
 ```
 
 

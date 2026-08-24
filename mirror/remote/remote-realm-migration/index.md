@@ -11,18 +11,13 @@ To support migrations for Forge Remote, apps must implement the data residency m
 A migration module can be specified as follows:
 
 ```
-1
-2
-3
-4
-5
-6
-modules:
-  migration:dataResidency:
-    key: dare
-    remote: remote-backend
-    path: /migration
-    maxMigrationDurationHours: 6
+1modules:
+2  migration:dataResidency:
+3    key: dare
+4    remote: remote-backend
+5    path: /migration
+6    maxMigrationDurationHours: 6
+7
 ```
 
 This makes your Forge app eligible to receive the following compulsory hooks:
@@ -51,6 +46,11 @@ When an Atlassian app admin schedules a migration, the service will notify eligi
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -79,6 +79,11 @@ Once the site is taken offline, the service will notify eligible apps that have 
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -134,6 +139,9 @@ Failed status - service will update the Forge app migration's status to failed:
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -152,6 +160,8 @@ App is awaiting a `/commit` hook. The service, once the migration ends, will sen
 ```
 1
 2
+3
+4
 ```
 
 
@@ -177,6 +187,8 @@ Specifically, this is to commit the copied data to the new region.
 ```
 1
 2
+3
+4
 ```
 
 
@@ -209,6 +221,8 @@ Specifically, this is intended to roll back the non-destructive copy operation t
 ```
 1
 2
+3
+4
 ```
 
 
@@ -242,6 +256,8 @@ Any non-2xx response to any of the lifecycle events can optionally include any o
 ```
 1
 2
+3
+4
 ```
 
 
@@ -301,6 +317,8 @@ Planning a migration downtime is challenging for enterprise customers, therefore
 ```
 1
 2
+3
+4
 ```
 
 

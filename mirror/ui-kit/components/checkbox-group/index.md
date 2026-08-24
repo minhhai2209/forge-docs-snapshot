@@ -3,8 +3,8 @@
 To add the `CheckboxGroup` component to your app:
 
 ```
-1
-import { CheckboxGroup } from "@forge/react";
+1import { CheckboxGroup } from "@forge/react";
+2
 ```
 
 ## Description
@@ -29,12 +29,21 @@ A Checkbox group is a list of options where one or more choices can be selected.
 
 The default form of a Checkbox group.
 
-![Example image of a Checkbox group](https://dac-static.atlassian.com/platform/forge/ui-kit/images/checkbox-group/checkbox-group-default.png?_v=1.5800.2282)
+![Example image of a Checkbox group](https://dac-static.atlassian.com/platform/forge/ui-kit/images/checkbox-group/checkbox-group-default.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -57,12 +66,60 @@ const CheckboxGroupDefaultExample = () => {
 
 For required fields, use the `ErrorMessage` or `ValidMessage` components for displaying a validation message.
 
-![Example image of a required Checkbox group in a Form](https://dac-static.atlassian.com/platform/forge/ui-kit/images/checkbox-group/checkbox-group-with-form.png?_v=1.5800.2282)
+![Example image of a required Checkbox group in a Form](https://dac-static.atlassian.com/platform/forge/ui-kit/images/checkbox-group/checkbox-group-with-form.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
 ```
 
 
@@ -126,12 +183,21 @@ const CheckboxGroupRequiredExample = () => {
 
 `isDisabled` can be used to disable the entire Checkbox group.
 
-![Example image of a disabled Checkbox group](https://dac-static.atlassian.com/platform/forge/ui-kit/images/checkbox-group/checkbox-group-disabled.png?_v=1.5800.2282)
+![Example image of a disabled Checkbox group](https://dac-static.atlassian.com/platform/forge/ui-kit/images/checkbox-group/checkbox-group-disabled.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -156,12 +222,30 @@ const CheckboxGroupisDisabledExample = () => {
 
 In a `controlled` checkbox, the checked state is managed by the React component. Set `value` to select the checkbox(es) and use the`onChange` handler to change the value.
 
-![Example image of a controlled Checkbox group](https://dac-static.atlassian.com/platform/forge/ui-kit/images/checkbox-group/checkbox-group-controlled.png?_v=1.5800.2282)
+![Example image of a controlled Checkbox group](https://dac-static.atlassian.com/platform/forge/ui-kit/images/checkbox-group/checkbox-group-controlled.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
 ```
 
 

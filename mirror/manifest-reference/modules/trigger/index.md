@@ -38,6 +38,24 @@ The following examples show Dynamic Module implementations specific to this modu
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
 ```
 
 
@@ -71,6 +89,25 @@ console.log(`Response: ${response.status} ${body}`);
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
 ```
 
 
@@ -128,6 +165,8 @@ When your trigger function is invoked, it receives two arguments:
 ```
 1
 2
+3
+4
 ```
 
 
@@ -162,6 +201,19 @@ The `context` object contains information about the environment and installation
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
 ```
 
 

@@ -3,8 +3,8 @@
 To add the `ProgressTracker` component to your app:
 
 ```
-1
-import { ProgressTracker } from '@forge/react';
+1import { ProgressTracker } from '@forge/react';
+2
 ```
 
 ## Description
@@ -26,12 +26,55 @@ A progress tracker displays the steps and progress through a journey.
 
 The default version of a progress tracker that shows all the steps and states in a journey.
 
-![Example image of a progress tracker](https://dac-static.atlassian.com/platform/forge/ui-kit/images/progress-tracker/progress-tracker-default.png?_v=1.5800.2282)
+![Example image of a progress tracker](https://dac-static.atlassian.com/platform/forge/ui-kit/images/progress-tracker/progress-tracker-default.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
 ```
 
 
@@ -90,12 +133,55 @@ The margin spacing in between the steps of a progress tracker. Box with width mu
 
 #### Comfortable
 
-![Example image of comfortable progress tracker](https://dac-static.atlassian.com/platform/forge/ui-kit/images/progress-tracker/progress-tracker-comfortable.png?_v=1.5800.2282)
+![Example image of comfortable progress tracker](https://dac-static.atlassian.com/platform/forge/ui-kit/images/progress-tracker/progress-tracker-comfortable.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
 ```
 
 
@@ -150,12 +236,16 @@ const ProgressTrackerSpacingExample = () => (
 
 #### Cosy (default)
 
-![Example image of cosy progress tracker](https://dac-static.atlassian.com/platform/forge/ui-kit/images/progress-tracker/progress-tracker-cosy.png?_v=1.5800.2282)
+![Example image of cosy progress tracker](https://dac-static.atlassian.com/platform/forge/ui-kit/images/progress-tracker/progress-tracker-cosy.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -171,12 +261,16 @@ const ProgressTrackerSpacingExample = () => (
 
 #### Compact
 
-![Example image of compact progress tracker](https://dac-static.atlassian.com/platform/forge/ui-kit/images/progress-tracker/progress-tracker-compact.png?_v=1.5800.2282)
+![Example image of compact progress tracker](https://dac-static.atlassian.com/platform/forge/ui-kit/images/progress-tracker/progress-tracker-compact.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -194,12 +288,53 @@ const ProgressTrackerSpacingExample = () => (
 
 A progress tracker that shows all steps have been completed.
 
-![Example image of compact progress tracker](https://dac-static.atlassian.com/platform/forge/ui-kit/images/progress-tracker/progress-tracker-completed.png?_v=1.5800.2282)
+![Example image of compact progress tracker](https://dac-static.atlassian.com/platform/forge/ui-kit/images/progress-tracker/progress-tracker-completed.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
 ```
 
 

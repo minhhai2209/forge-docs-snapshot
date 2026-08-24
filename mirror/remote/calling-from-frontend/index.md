@@ -2,7 +2,7 @@
 
 You can call your remote backend from your frontend (Custom UI and UI Kit) using the `@forge/bridge` package. The diagram below illustrates the data flow.
 
-![Forge Remote diagram describing the flow of data and auth between Forge and remote application](https://dac-static.atlassian.com/platform/forge/images/remote/remote-calling-backend-from-frontend.png?_v=1.5800.2282)
+![Forge Remote diagram describing the flow of data and auth between Forge and remote application](https://dac-static.atlassian.com/platform/forge/images/remote/remote-calling-backend-from-frontend.png?_v=1.5800.2283)
 
 ## Setting up the manifest
 
@@ -19,18 +19,10 @@ These three pieces work together in a chain: **UI module → endpoint → remote
 Add a [`remotes`](/platform/forge/manifest-reference/remotes) entry with a unique `key` and the `baseUrl` of your backend. The `baseUrl` is the URL prefix that gets prepended to the `path` you specify in your frontend `invokeRemote` or `requestRemote` calls.
 
 ```
-```
-1
-2
-```
-
-
-
-```
-remotes:
-  - key: my-remote
-    baseUrl: https://my-backend.example.com
-```
+1remotes:
+2  - key: my-remote
+3    baseUrl: https://my-backend.example.com
+4
 ```
 
 ### Step 2: Define the endpoint
@@ -43,6 +35,14 @@ When your Forge frontend calls a remote backend, configure `auth` on the [endpoi
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -70,6 +70,12 @@ In your UI module (such as a `macro`, `jira:issuePanel`, or `confluence:globalPa
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -93,6 +99,32 @@ Here's a complete manifest that connects a Confluence macro to a remote backend 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
 ```
 
 
@@ -155,6 +187,17 @@ Each UI module's `resolver.endpoint` connects it to a single endpoint (and there
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
 ```
 
 
@@ -181,6 +224,10 @@ If you need to call **multiple remote backends** from a single module, use `requ
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -198,6 +245,17 @@ remotes:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
 ```
 
 
@@ -228,6 +286,16 @@ const dataResponse = await requestRemote('data-service', {
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -255,6 +323,18 @@ try {
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
 ```
 
 

@@ -17,7 +17,7 @@ For example, if the third-party service contains 100 objects to be imported into
 3. Submit the 10 transformed objects to Assets using the Imports REST API.
 4. Queue another event to execute the same task to handle the next 10 objects until all 100 objects are consumed.
 
-![Sequence diagram to explain the approach.](https://dac-static.atlassian.com/platform/forge/images/jsm-assets-import/queues-diagram.png?_v=1.5800.2282)
+![Sequence diagram to explain the approach.](https://dac-static.atlassian.com/platform/forge/images/jsm-assets-import/queues-diagram.png?_v=1.5800.2283)
 
 ### About scheduled imports
 
@@ -80,6 +80,9 @@ Since this app uses [Forge Storage API](/platform/forge/storage-reference/), we 
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -98,6 +101,25 @@ We also need to set up the queues that will submit the data to Assets and mark t
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
 ```
 
 
@@ -132,6 +154,13 @@ We are making API requests to external services that are not a part of Atlassian
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -156,6 +185,25 @@ If you want to support scheduled imports that run automatically at regular inter
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
 ```
 
 
@@ -198,6 +246,50 @@ To do this, navigate to the `src/frontend/index.jsx` file and change the `onSubm
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
 ```
 
 
@@ -263,6 +355,9 @@ Navigate to `src/resolvers/index.js` and instantiate the queues like below.
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -281,6 +376,14 @@ Before implementing the import logic, you'll need a utility function to extract 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -304,6 +407,43 @@ Navigate to the `startImport` function in `src/resolvers/index.jsx` and add the 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
 ```
 
 
@@ -356,6 +496,69 @@ Now that we have successfully queued our first job, we need to implement the res
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
 ```
 
 
@@ -438,6 +641,55 @@ In the same `src/resolvers/index.js` file, we add another resolver to handle mar
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
 ```
 
 
@@ -532,6 +784,93 @@ Create a handler function that will be called by the backend when the scheduled 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
 ```
 
 
@@ -642,6 +981,27 @@ Use the failed import history API to record failure reasons:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
 ```
 
 
@@ -695,6 +1055,109 @@ When the user wants to set up a scheduled import, your frontend should call the 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
 ```
 
 
@@ -815,6 +1278,13 @@ Add a resolver that generates the webtrigger URL to pass to the scheduling API:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -841,6 +1311,18 @@ Your app can also allow users to view, update, or delete existing schedules by c
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
 ```
 
 
@@ -868,6 +1350,18 @@ const getSchedule = async (workspaceId, importId, importScheduleId) => {
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
 ```
 
 
@@ -895,6 +1389,16 @@ const updateSchedule = async (workspaceId, importId, importScheduleId, scheduleD
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -945,7 +1449,7 @@ Once you have tested that all the functionality is working as intended, you can 
 
 Now you have a working Assets Import app that can handle a larger number of import records because they have been broken down into smaller chunks!
 
-![Assets import app backed by Forge Async Events runs when an user click 'Start Import' in Import tab.](https://dac-static.atlassian.com/platform/forge/images/jsm-assets-import/import-app-running.gif?_v=1.5800.2282)
+![Assets import app backed by Forge Async Events runs when an user click 'Start Import' in Import tab.](https://dac-static.atlassian.com/platform/forge/images/jsm-assets-import/import-app-running.gif?_v=1.5800.2283)
 
 ## Developing for Atlassian Government Cloud
 

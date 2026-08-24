@@ -22,18 +22,13 @@ to evaluate the condition result.
 For example, a condition that checks if the issue is assigned would look like this:
 
 ```
-1
-2
-3
-4
-5
-6
-modules:
-  jira:workflowCondition:
-    - key: my-forge-workflow-condition
-      name: Issue is assigned condition
-      description: This condition allows executing the transition if the issue has an assignee.
-      expression: issue.assignee != null
+1modules:
+2  jira:workflowCondition:
+3    - key: my-forge-workflow-condition
+4      name: Issue is assigned condition
+5      description: This condition allows executing the transition if the issue has an assignee.
+6      expression: issue.assignee != null
+7
 ```
 
 A workflow condition only evaluates to true if the provided Jira expression evaluates to true. It will evaluate to false
@@ -88,6 +83,30 @@ To create a condition that displays the [Custom UI](/platform/forge/custom-ui), 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
 ```
 
 
@@ -127,6 +146,18 @@ To get the Atlassian app context in the `create`, `edit`, and `view` resources d
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
 ```
 
 
@@ -154,6 +185,28 @@ To save the user input to the `config` context variable, pass the callback funct
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
 ```
 
 
@@ -194,6 +247,12 @@ To do that, include the `expression` property in the returned JSON. For example:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -224,6 +283,20 @@ An example of `transitionContext`:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
 ```
 
 
@@ -253,6 +326,11 @@ The maximum length of configuration saved via the new editor is limited to 32KB.
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 

@@ -14,35 +14,24 @@ directory. Use this directory as the resource path in the Forge app's `manifest.
 In the template, use the bridge in `static/hello-world/src/App.js` like this:
 
 ```
-1
+1import { getEditorContent, getMacroContent, updateMacro, setMacroViewportHeight } from '@forge/confluence-bridge';
 2
-3
+3const editorContent = await getEditorContent();
 4
-5
+5const macroContent = await getMacroContent();
 6
-7
-8
+7// Replace <updatedMacroADF> with your updated macro ADF content
+8const updateMacroContentResult = await updateMacro(<updatedMacroADF>);
 9
-10
-import { getEditorContent, getMacroContent, updateMacro, setMacroViewportHeight } from '@forge/confluence-bridge';
-
-const editorContent = await getEditorContent();
-
-const macroContent = await getMacroContent();
-
-// Replace <updatedMacroADF> with your updated macro ADF content
-const updateMacroContentResult = await updateMacro(<updatedMacroADF>);
-
-const setMacroViewportHeightResult = await setMacroViewportHeight('200');
+10const setMacroViewportHeightResult = await setMacroViewportHeight('200');
+11
 ```
 
 Use the `updateBylineProperties()` bridge method to update the `title`, `icon`, and `tooltip` of a `confluence:contentBylineItem` app programmatically, like this:
 
 ```
-1
+1import { updateBylineProperties } from "@forge/confluence-bridge";
 2
-3
-import { updateBylineProperties } from "@forge/confluence-bridge";
-
-await updateBylineProperties({ propertyKey, valueUpdate });
+3await updateBylineProperties({ propertyKey, valueUpdate });
+4
 ```

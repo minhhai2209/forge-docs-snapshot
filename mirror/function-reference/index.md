@@ -17,8 +17,8 @@ Estimate your app’s monthly costs using the [cost estimator](https://developer
 The following dependency should be installed at the top-level directory of your app:
 
 ```
-1
-npm i @forge/api@latest
+1npm i @forge/api@latest
+2
 ```
 
 #### File structure
@@ -26,12 +26,10 @@ npm i @forge/api@latest
 The following directory and function entry point file should be added to your app `/src` folder:
 
 ```
-1
-2
-3
-/src
-  /functions
-    /index.js
+1/src
+2  /functions
+3    /index.js
+4
 ```
 
 #### Handler
@@ -42,6 +40,9 @@ The following function handler should be defined in the `/src/functions/index.js
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -64,6 +65,9 @@ The following [function](/platform/forge/manifest-reference/modules/function/) s
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -86,6 +90,10 @@ To enable your function to run, it needs to be attached to a [module](/platform/
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 

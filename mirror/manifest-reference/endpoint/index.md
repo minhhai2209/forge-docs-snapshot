@@ -29,6 +29,20 @@ The following snippet provides a basic example of an endpoint targeting a Forge 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
 ```
 
 
@@ -64,6 +78,30 @@ The following snippet shows a service named `java-service`, which is backed by a
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
 ```
 
 
@@ -111,6 +149,23 @@ The following manifest shows an endpoint that uses a [customer-managed remote](/
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
 ```
 
 

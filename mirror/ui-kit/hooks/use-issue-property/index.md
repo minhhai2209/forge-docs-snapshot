@@ -14,16 +14,51 @@ Running the `forge lint` command picks up these required scopes.
 To add the `useIssueProperty` hook to your app:
 
 ```
-1
-import { useIssueProperty } from "@forge/react";
+1import { useIssueProperty } from "@forge/react";
+2
 ```
 
 Avoid calling `useIssueProperty` multiple times in the same app, since their outputs are not synced.
 
 Here is an example of an app that stores information in an issue property with `useIssueProperty`.
 
-![The app display on a Jira issue](https://dac-static.atlassian.com/platform/forge/images/ui-kit-2/hooks-examples/useissueproperty-concrete-value-update.png?_v=1.5800.2282)
+![The app display on a Jira issue](https://dac-static.atlassian.com/platform/forge/images/ui-kit-2/hooks-examples/useissueproperty-concrete-value-update.png?_v=1.5800.2283)
 
+```
+1import React from 'react';
+2import ForgeReconciler, { Button, Heading, Inline, useIssueProperty } from '@forge/react';
+3
+4const App = () => {
+5  const [number, setNumber, deleteNumber] = useIssueProperty('number', '<Click me>');
+6  const setRandomInt = async () => {
+7    const randomInt = Math.floor(Math.random() * 10);
+8    await setNumber(randomInt);
+9  };
+10  return (
+11    <>
+12      <Heading as='h3'>Issue Property</Heading>
+13      <Inline>
+14        <Button onClick={setRandomInt}>{`Random number: ${number}`}</Button>
+15        <Button onClick={async () => await deleteNumber()}>Delete</Button>
+16      </Inline>
+17    </>
+18  );
+19};
+20
+21ForgeReconciler.render(
+22  <React.StrictMode>
+23    <App />
+24  </React.StrictMode>
+25);
+26
+```
+
+Here's another example that updates the issue property based on the current value stored in the
+property.
+
+![The app display on a Jira issue](https://dac-static.atlassian.com/platform/forge/images/ui-kit-2/hooks-examples/useissueproperty-setter-function-update.png?_v=1.5800.2283)
+
+```
 ```
 1
 2
@@ -49,43 +84,6 @@ Here is an example of an app that stores information in an issue property with `
 22
 23
 24
-25
-import React from 'react';
-import ForgeReconciler, { Button, Heading, Inline, useIssueProperty } from '@forge/react';
-
-const App = () => {
-  const [number, setNumber, deleteNumber] = useIssueProperty('number', '<Click me>');
-  const setRandomInt = async () => {
-    const randomInt = Math.floor(Math.random() * 10);
-    await setNumber(randomInt);
-  };
-  return (
-    <>
-      <Heading as='h3'>Issue Property</Heading>
-      <Inline>
-        <Button onClick={setRandomInt}>{`Random number: ${number}`}</Button>
-        <Button onClick={async () => await deleteNumber()}>Delete</Button>
-      </Inline>
-    </>
-  );
-};
-
-ForgeReconciler.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
-```
-
-Here's another example that updates the issue property based on the current value stored in the
-property.
-
-![The app display on a Jira issue](https://dac-static.atlassian.com/platform/forge/images/ui-kit-2/hooks-examples/useissueproperty-setter-function-update.png?_v=1.5800.2282)
-
-```
-```
-1
-2
 ```
 
 
@@ -123,6 +121,13 @@ ForgeReconciler.render(
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 

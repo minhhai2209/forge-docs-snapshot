@@ -33,6 +33,8 @@ Use this model when each resource maps to one view. Use the tabs to switch betwe
 ```
 1
 2
+3
+4
 ```
 
 
@@ -48,6 +50,16 @@ resources:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -81,6 +93,20 @@ This feature is supported for [Jira](/platform/forge/manifest-reference/modules/
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
 ```
 
 

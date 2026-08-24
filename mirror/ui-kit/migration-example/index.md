@@ -19,8 +19,8 @@ Make sure to do the following before you start migrating your app:
 1. UI Kit requires a few new packages to be installed. Install the `@forge/react` and `@forge/resolver` packages from the root of the project by running:
 
    ```
-   1
-   npm install @forge/react @forge/resolver --save
+   1npm install @forge/react @forge/resolver --save
+   2
    ```
 
    * `@forge/react` is a package that contains all UI Kit components.
@@ -29,8 +29,8 @@ Make sure to do the following before you start migrating your app:
 2. Install the latest version of the [`@forge/bridge` package](/platform/forge/apis-reference/ui-api-bridge/bridge/) by running:
 
    ```
-   1
-   npm install @forge/bridge@latest
+   1npm install @forge/bridge@latest
+   2
    ```
 
    `@forge/bridge` allows you to invoke Atlassian app-specific capabilities and resolver functions from the frontend.
@@ -54,6 +54,51 @@ From our sample app, this is what the initial `src/frontend/index.jsx` file will
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
 ```
 
 
@@ -134,6 +179,68 @@ Forge resolvers are a series of backend functions for your app that can use back
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
 ```
 
 
@@ -234,6 +341,9 @@ Back in `src/frontend/index.jsx`, add the following to invoke your new resolver:
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -256,6 +366,10 @@ We now need to wire up the frontend and backend and also update our app to use U
    ```
    1
    2
+   3
+   4
+   5
+   6
    ```
 
 
@@ -275,6 +389,8 @@ We now need to wire up the frontend and backend and also update our app to use U
    ```
    1
    2
+   3
+   4
    ```
 
 
@@ -291,6 +407,8 @@ We now need to wire up the frontend and backend and also update our app to use U
    ```
    1
    2
+   3
+   4
    ```
 
 
@@ -307,6 +425,32 @@ We now need to wire up the frontend and backend and also update our app to use U
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
+   14
+   15
+   16
+   17
+   18
+   19
+   20
+   21
+   22
+   23
+   24
+   25
+   26
+   27
+   28
    ```
 
 

@@ -92,6 +92,8 @@ the following:
    ```
    1
    2
+   3
+   4
    ```
 
 
@@ -108,6 +110,9 @@ the following:
     ```
     1
     2
+    3
+    4
+    5
     ```
 
 
@@ -165,6 +170,13 @@ You can check your app against [the tutorial repository](https://bitbucket.org/a
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
    ```
 
 
@@ -186,6 +198,12 @@ You can check your app against [the tutorial repository](https://bitbucket.org/a
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
    ```
 
 
@@ -209,6 +227,19 @@ You can check your app against [the tutorial repository](https://bitbucket.org/a
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
+   14
+   15
    ```
 
 
@@ -244,6 +275,9 @@ The app stores key entities based on the term, with the following format:
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -262,6 +296,21 @@ interface Term {
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
+   14
+   15
+   16
+   17
    ```
 
 
@@ -291,6 +340,9 @@ interface Term {
    ```
    1
    2
+   3
+   4
+   5
    ```
 
 
@@ -326,6 +378,15 @@ interface Term {
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
    ```
 
 
@@ -350,6 +411,28 @@ interface Term {
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
+   14
+   15
+   16
+   17
+   18
+   19
+   20
+   21
+   22
+   23
+   24
    ```
 
 
@@ -383,7 +466,7 @@ interface Term {
 
 ## Step 5: Create the definitions table
 
-![The definition table](https://dac-static.atlassian.com/platform/forge/images/definition-macro-step-5.png?_v=1.5800.2282)
+![The definition table](https://dac-static.atlassian.com/platform/forge/images/definition-macro-step-5.png?_v=1.5800.2283)
 
 In this step, you'll add a [Dynamic Table](/platform/forge/ui-kit/components/dynamic-table/) to the definitions macro to show the list of terms side by side with a list of definitions.
 
@@ -397,6 +480,41 @@ For this app, we will add a `DefinitionTable` component.
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
+   14
+   15
+   16
+   17
+   18
+   19
+   20
+   21
+   22
+   23
+   24
+   25
+   26
+   27
+   28
+   29
+   30
+   31
+   32
+   33
+   34
+   35
+   36
+   37
    ```
 
 
@@ -446,6 +564,35 @@ For this app, we will add a `DefinitionTable` component.
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
+   14
+   15
+   16
+   17
+   18
+   19
+   20
+   21
+   22
+   23
+   24
+   25
+   26
+   27
+   28
+   29
+   30
+   31
    ```
 
 
@@ -503,6 +650,10 @@ For this app, we will add a `DefinitionTable` component.
    ```
    1
    2
+   3
+   4
+   5
+   6
    ```
 
 
@@ -520,7 +671,7 @@ For reference, a finished version of the `src/frontend/definition-table.jsx` fil
 
 ## Step 6: Allow a user to add a definition
 
-![The usable definition table](https://dac-static.atlassian.com/platform/forge/images/definition-macro-step-6a.png?_v=1.5800.2282)
+![The usable definition table](https://dac-static.atlassian.com/platform/forge/images/definition-macro-step-6a.png?_v=1.5800.2283)
 
 At this stage, there's still no data stored for the app. In this step, you'll add the
 ability to store a definition for a term.
@@ -531,6 +682,9 @@ ability to store a definition for a term.
    ```
    1
    2
+   3
+   4
+   5
    ```
 
 
@@ -548,6 +702,9 @@ ability to store a definition for a term.
    ```
    1
    2
+   3
+   4
+   5
    ```
 
 
@@ -565,6 +722,13 @@ ability to store a definition for a term.
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
    ```
 
 
@@ -586,6 +750,8 @@ ability to store a definition for a term.
    ```
    1
    2
+   3
+   4
    ```
 
 
@@ -602,6 +768,65 @@ ability to store a definition for a term.
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
+   14
+   15
+   16
+   17
+   18
+   19
+   20
+   21
+   22
+   23
+   24
+   25
+   26
+   27
+   28
+   29
+   30
+   31
+   32
+   33
+   34
+   35
+   36
+   37
+   38
+   39
+   40
+   41
+   42
+   43
+   44
+   45
+   46
+   47
+   48
+   49
+   50
+   51
+   52
+   53
+   54
+   55
+   56
+   57
+   58
+   59
+   60
+   61
    ```
 
 
@@ -675,6 +900,16 @@ ability to store a definition for a term.
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
    ```
 
 
@@ -699,6 +934,55 @@ ability to store a definition for a term.
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
+   14
+   15
+   16
+   17
+   18
+   19
+   20
+   21
+   22
+   23
+   24
+   25
+   26
+   27
+   28
+   29
+   30
+   31
+   32
+   33
+   34
+   35
+   36
+   37
+   38
+   39
+   40
+   41
+   42
+   43
+   44
+   45
+   46
+   47
+   48
+   49
+   50
+   51
    ```
 
 
@@ -762,6 +1046,8 @@ ability to store a definition for a term.
    ```
    1
    2
+   3
+   4
    ```
 
 

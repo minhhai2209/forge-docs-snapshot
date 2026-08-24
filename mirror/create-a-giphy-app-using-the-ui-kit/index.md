@@ -13,7 +13,7 @@ app and display the result on a Confluence Cloud page. You’ll use the
 [GIPHY API](https://developers.giphy.com/) to display GIFs on the Confluence
 page. The result will look like this:
 
-![A gif is added to a Confluence page](https://dac-static.atlassian.com/platform/forge/images/giphy-tutorial-final-state.gif?_v=1.5800.2282)
+![A gif is added to a Confluence page](https://dac-static.atlassian.com/platform/forge/images/giphy-tutorial-final-state.gif?_v=1.5800.2283)
 
 ## Before you begin
 
@@ -58,7 +58,7 @@ The following user limits apply to traditional cloud developer sites:
 
 Before we dive into the code, let's review how this app works.
 
-![A flow diagram describing how the app interacts with the GIPHY API and Confluence site](https://dac-static.atlassian.com/platform/forge/images/giphy-tutorial-flow-diagram.png?_v=1.5800.2282)
+![A flow diagram describing how the app interacts with the GIPHY API and Confluence site](https://dac-static.atlassian.com/platform/forge/images/giphy-tutorial-flow-diagram.png?_v=1.5800.2283)
 
 The flow diagram shows the app’s 3 main parts.
 
@@ -100,6 +100,9 @@ We will be adding this GIPHY source link: `https://media3.giphy.com/media/26vUJR
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -118,6 +121,27 @@ Your manifest file should look like this:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
 ```
 
 
@@ -169,6 +193,36 @@ GIPHY API to make a static app (steps 1 and 3 from the flow diagram above).
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
+   14
+   15
+   16
+   17
+   18
+   19
+   20
+   21
+   22
+   23
+   24
+   25
+   26
+   27
+   28
+   29
+   30
+   31
+   32
    ```
 
 
@@ -270,7 +324,7 @@ With your app installed, it’s time to see the app on a page.
 3. Find the macro app by name in the menu that appears and select it.
 4. Publish the page.
 
-![The app is inserted into a Confluence page](https://dac-static.atlassian.com/platform/forge/images/giphy-tutorial-static-app.gif?_v=1.5800.2282)
+![The app is inserted into a Confluence page](https://dac-static.atlassian.com/platform/forge/images/giphy-tutorial-static-app.gif?_v=1.5800.2283)
 
 ## Step 6: Call the GIPHY API to retrieve random images
 
@@ -288,6 +342,12 @@ Your `manifest.yml` permissions should look like this:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -346,6 +406,35 @@ Next, we will update the app code.
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
+   14
+   15
+   16
+   17
+   18
+   19
+   20
+   21
+   22
+   23
+   24
+   25
+   26
+   27
+   28
+   29
+   30
+   31
    ```
 
 
@@ -400,6 +489,11 @@ Next, we will update the app code.
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
    ```
 
 
@@ -420,6 +514,43 @@ Your `index.jsx` file should look like this:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
 ```
 
 
@@ -481,6 +612,20 @@ from the UI Kit.
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
+   14
+   15
+   16
    ```
 
 
@@ -512,6 +657,45 @@ Your `index.jsx` file should look like this:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
 ```
 
 
@@ -573,6 +757,8 @@ Deploy the app by running:
 ```
 1
 2
+3
+4
 ```
 
 

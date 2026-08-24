@@ -13,12 +13,10 @@ The `updateMacro` function accepts the following parameter:
 ### Example
 
 ```
-1
-2
-3
-const params = {
-  data: "<stringified_macro_adf_object>",
-};
+1const params = {
+2  data: "<stringified_macro_adf_object>",
+3};
+4
 ```
 
 ## Example
@@ -26,56 +24,32 @@ const params = {
 This example shows how to use `updateMacro`.
 
 ```
-1
+1import { updateMacro } from "@forge/confluence-bridge";
 2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
+3const newMacroADF = {
+4  type: "extension",
+5  attrs: {
+6    extensionKey: "cool-macro",
+7    extensionType: "com.atlassian.ecosystem",
+8    localId: "0",
+9    parameters: {
+10      localId: "0",
+11      extensionId: "cool-macro",
+12      extensionTitle: "Cool macro",
+13      layout: "extension",
+14      forgeEnvironment: "DEVELOPMENT",
+15      render: "native",
+16    },
+17    text: "Cool macro",
+18  },
+19};
 20
-21
-22
-23
+21const updatedMacroADF = {
+22  data: JSON.stringify(newMacroADF),
+23};
 24
-25
-import { updateMacro } from "@forge/confluence-bridge";
-
-const newMacroADF = {
-  type: "extension",
-  attrs: {
-    extensionKey: "cool-macro",
-    extensionType: "com.atlassian.ecosystem",
-    localId: "0",
-    parameters: {
-      localId: "0",
-      extensionId: "cool-macro",
-      extensionTitle: "Cool macro",
-      layout: "extension",
-      forgeEnvironment: "DEVELOPMENT",
-      render: "native",
-    },
-    text: "Cool macro",
-  },
-};
-
-const updatedMacroADF = {
-  data: JSON.stringify(newMacroADF),
-};
-
-const updateMacroContentResult = await updateMacro(updatedMacroADF); // Returns true or false
+25const updateMacroContentResult = await updateMacro(updatedMacroADF); // Returns true or false
+26
 ```
 
 ## Response Type

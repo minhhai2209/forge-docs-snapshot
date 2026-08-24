@@ -3,8 +3,8 @@
 To add the `SectionMessage` and `SectionMessageAction` component to your app:
 
 ```
-1
-import { SectionMessage, SectionMessageAction } from '@forge/react';
+1import { SectionMessage, SectionMessageAction } from '@forge/react';
+2
 ```
 
 ## Description
@@ -38,12 +38,19 @@ A section message is used to alert users to a particular section of the screen.
 
 The `information` section message is the default appearance used to signify a change in state or important information.
 
-![Example image of section with information appearance](https://dac-static.atlassian.com/platform/forge/ui-kit/images/section-message/section-message-information.png?_v=1.5800.2282)
+![Example image of section with information appearance](https://dac-static.atlassian.com/platform/forge/ui-kit/images/section-message/section-message-information.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -69,12 +76,18 @@ Use a `warning` section message to help people:
 * Take the steps needed to avoid potentially dangerous actions.
 * Feel certain they're making the decision, for example, in confirmation modals.
 
-![Example image of section with warning appearance](https://dac-static.atlassian.com/platform/forge/ui-kit/images/section-message/section-message-warning.png?_v=1.5800.2282)
+![Example image of section with warning appearance](https://dac-static.atlassian.com/platform/forge/ui-kit/images/section-message/section-message-warning.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -98,12 +111,16 @@ Use an `error` section message to let people know when:
 * Access has been denied.
 * There are connectivity issues.
 
-![Example image of section with error appearance](https://dac-static.atlassian.com/platform/forge/ui-kit/images/section-message/section-message-error.png?_v=1.5800.2282)
+![Example image of section with error appearance](https://dac-static.atlassian.com/platform/forge/ui-kit/images/section-message/section-message-error.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -121,12 +138,16 @@ const SectionMessageErrorExample = () => (
 
 Use a `success` section message to let the user know that an action or event has happened successfully.
 
-![Example image of section with success appearance](https://dac-static.atlassian.com/platform/forge/ui-kit/images/section-message/section-message-success.png?_v=1.5800.2282)
+![Example image of section with success appearance](https://dac-static.atlassian.com/platform/forge/ui-kit/images/section-message/section-message-success.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -142,12 +163,20 @@ const SectionMessageSuccessExample = () => (
 
 #### Discovery
 
-![Example image of section with discovery appearance](https://dac-static.atlassian.com/platform/forge/ui-kit/images/section-message/section-message-discovery.png?_v=1.5800.2282)
+![Example image of section with discovery appearance](https://dac-static.atlassian.com/platform/forge/ui-kit/images/section-message/section-message-discovery.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -169,12 +198,19 @@ const SectionMessageDiscoveryExample = () => (
 
 Use the `title` prop to add a title to a section message. This is useful for providing a brief summary of the message.
 
-![Example image of section with title](https://dac-static.atlassian.com/platform/forge/ui-kit/images/section-message/section-message-title.png?_v=1.5800.2282)
+![Example image of section with title](https://dac-static.atlassian.com/platform/forge/ui-kit/images/section-message/section-message-title.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -199,12 +235,23 @@ The `SectionMessageAction` component is designed to work with the `actions` prop
 
 An action will render a button if you supply an `onClick` handler, or a link if you supply an `href`.
 
-![Example image of section with actions](https://dac-static.atlassian.com/platform/forge/ui-kit/images/section-message/section-message-actions.png?_v=1.5800.2282)
+![Example image of section with actions](https://dac-static.atlassian.com/platform/forge/ui-kit/images/section-message/section-message-actions.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
 ```
 
 

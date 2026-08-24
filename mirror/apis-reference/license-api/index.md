@@ -36,6 +36,16 @@ Node.js
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -103,6 +113,31 @@ License information was successfully retrieved for the requested app(s). The `re
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
 ```
 
 
@@ -153,6 +188,9 @@ The request contains invalid query parameters.
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -173,6 +211,9 @@ The License service encountered an unexpected problem.
 ```
 1
 2
+3
+4
+5
 ```
 
 

@@ -15,6 +15,11 @@ You can also update your app’s database schema by adding new DDL operations ov
 
 The `sql` package provides the necessary methods for interacting with Forge SQL. To start using Forge SQL’s capabilities, you’ll need to install it in your project:
 
+```
+1npm install @forge/sql
+2
+```
+
 You can use the `migrationRunner` SDK to execute DDL operations. To import it:
 
 ```
@@ -47,6 +52,19 @@ The following snippet defines two DDL operations, `CREATE_USERS_TABLE` and `CREA
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
 ```
 
 
@@ -75,6 +93,8 @@ To invoke both DDL operations through `migrationRunner.enqueue`, assign an `oper
 ```
 1
 2
+3
+4
 ```
 
 
@@ -92,6 +112,18 @@ Next, wrap `createDBobjects` in a single database object creation function (`run
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
 ```
 
 
@@ -133,6 +165,13 @@ The following declaration triggers the `runMigration` function from the
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -171,6 +210,13 @@ The following snippet expands on our [earlier example](#migrationrunnerexample) 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 

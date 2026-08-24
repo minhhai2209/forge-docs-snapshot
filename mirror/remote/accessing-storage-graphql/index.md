@@ -37,6 +37,10 @@ The request body should be JSON encoded and of the format:
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -64,6 +68,9 @@ The response will be in JSON format and of the shape:
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -91,6 +98,13 @@ For GraphQL requests, the HTTP status code may be 200 even if there was an error
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -113,6 +127,28 @@ The app receives the response:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
 ```
 
 
@@ -162,6 +198,11 @@ The examples on this page are provided in the following format.
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -182,6 +223,10 @@ query nameOfQuery($variable: VariableType) {
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -201,6 +246,13 @@ This is the equivalent of:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -223,6 +275,13 @@ With GraphQL queries, you will get back the fields you asked for in your query. 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -253,6 +312,19 @@ You cannot set a key's `value` property to `null`. If your app attempts this, Gr
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
 ```
 
 
@@ -291,6 +363,13 @@ The `encrypted` field is how you would store secrets in Forge storage. Setting i
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -322,6 +401,15 @@ The `encrypted` field is how you would store secrets in Forge storage. Setting i
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -346,6 +434,22 @@ The `encrypted` field is how you would store secrets in Forge storage. Setting i
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
 ```
 
 
@@ -383,6 +487,12 @@ Set the key "example-key" with the non-encrypted string value of "hello world".
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -404,6 +514,15 @@ Set the key "example-key" with the non-encrypted string value of "hello world".
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -434,6 +553,13 @@ If the requested `key` is not found, the `value` is returned as `null`.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -456,6 +582,9 @@ query forge_app_getExample($key: ID!, $encrypted: Boolean!) {
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -481,6 +610,12 @@ query forge_app_getExample($key: ID!, $encrypted: Boolean!) {
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -502,6 +637,12 @@ query forge_app_getExample($key: ID!, $encrypted: Boolean!) {
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -529,6 +670,9 @@ Get the value of the key "example-key".
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -547,6 +691,12 @@ Get the value of the key "example-key".
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -572,6 +722,19 @@ Builds a query that returns a list of entities (key and value).
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
 ```
 
 
@@ -607,6 +770,15 @@ query forge_app_queryExample($where: [AppStoredEntityFilter!]!, $first: Int!, $a
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -643,6 +815,30 @@ query forge_app_queryExample($where: [AppStoredEntityFilter!]!, $first: Int!, $a
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
 ```
 
 
@@ -692,6 +888,15 @@ You can retrieve the value of the `cursor` from the response of your previous qu
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -716,6 +921,27 @@ You can retrieve the value of the `cursor` from the response of your previous qu
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
 ```
 
 
@@ -756,6 +982,19 @@ Deletes a `value` by `key`.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
 ```
 
 
@@ -784,6 +1023,11 @@ mutation forge_app_deleteExample($input: DeleteAppStoredEntityMutationInput!) {
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -811,6 +1055,15 @@ mutation forge_app_deleteExample($input: DeleteAppStoredEntityMutationInput!) {
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -835,6 +1088,23 @@ mutation forge_app_deleteExample($input: DeleteAppStoredEntityMutationInput!) {
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
 ```
 
 
@@ -873,6 +1143,11 @@ Delete the value associated with the key "example-key".
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -893,6 +1168,15 @@ Delete the value associated with the key "example-key".
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 

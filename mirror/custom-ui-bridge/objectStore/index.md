@@ -7,7 +7,7 @@ We release preview features so partners and developers can study, test, and inte
 The `objectStore` bridge API provides methods for integrating your app's frontend with the
 [Forge Object Store](/platform/forge/storage-reference/object-store/). This diagram outlines a typical integration between the `upload` method and backend resolver:
 
-![Diagram of how the upload bridge calls the resolver](https://dac-static.atlassian.com/platform/forge/custom-ui-bridge/images/objectStore.png?_v=1.5800.2282)
+![Diagram of how the upload bridge calls the resolver](https://dac-static.atlassian.com/platform/forge/custom-ui-bridge/images/objectStore.png?_v=1.5800.2283)
 
 [Example app
 
@@ -26,6 +26,9 @@ The `upload` function allows you to store objects in the Forge Object Store via
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -48,6 +51,8 @@ const upload = (
   ```
   1
   2
+  3
+  4
   ```
 
 
@@ -65,6 +70,34 @@ const upload = (
   ```
   1
   2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+  10
+  11
+  12
+  13
+  14
+  15
+  16
+  17
+  18
+  19
+  20
+  21
+  22
+  23
+  24
+  25
+  26
+  27
+  28
+  29
+  30
   ```
 
 
@@ -107,6 +140,9 @@ const upload = (
   ```
   1
   2
+  3
+  4
+  5
   ```
 
 
@@ -127,6 +163,15 @@ An `UploadResult` array:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -153,6 +198,31 @@ The following example show how to upload multiple files to the Forge Object Stor
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
 ```
 
 
@@ -198,6 +268,9 @@ The `download` function allows you to retrieve objects stored in the Forge Objec
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -220,6 +293,8 @@ const download = (
   ```
   1
   2
+  3
+  4
   ```
 
 
@@ -237,6 +312,12 @@ const download = (
   ```
   1
   2
+  3
+  4
+  5
+  6
+  7
+  8
   ```
 
 
@@ -261,6 +342,17 @@ An array of `DownloadResult`:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
 ```
 
 
@@ -289,6 +381,30 @@ The following example shows how to download multiple files from the Forge Object
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
 ```
 
 
@@ -331,6 +447,9 @@ The `getMetadata` function allows you to
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -356,6 +475,19 @@ An array of `GetMetadataResult`:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
 ```
 
 
@@ -388,6 +520,26 @@ The following example shows how to retrieve the metadata of multiple objects sto
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
 ```
 
 
@@ -427,6 +579,9 @@ The `delete` function allows you to delete objects from Forge Object Store.
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -452,6 +607,26 @@ The following example shows how to [delete](/platform/forge/storage-reference/ob
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
 ```
 
 

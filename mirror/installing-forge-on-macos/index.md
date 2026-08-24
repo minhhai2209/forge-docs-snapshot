@@ -35,10 +35,9 @@ the environment.
 2. Select the latest Node.js LTS release by running the following in the terminal:
 
    ```
-   1
-   2
-   nvm install --lts
-   nvm use --lts
+   1nvm install --lts
+   2nvm use --lts
+   3
    ```
 
 If `nvm` command doesn't work, try restarting the terminal.
@@ -127,6 +126,7 @@ After installing the Forge CLI, follow the prompts in the terminal, or use the s
    ```
    1
    2
+   3
    ```
 
 
@@ -242,6 +242,10 @@ Otherwise, you can also set environment variables manually:
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 

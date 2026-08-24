@@ -4,68 +4,42 @@ The `withProvider` method enables your Forge app to communicate with an API that
 requires OAuth 2.0 tokens. Access is via the `asUser` method, in the `@forge/api` package.
 
 ```
-1
+1import api from "@forge/api";
 2
-3
-4
-5
-6
-import api from "@forge/api";
-
-const response = await api
-  .asUser()
-  .withProvider("google", "google-apis")
-  .fetch("/userinfo/v2/me");
+3const response = await api
+4  .asUser()
+5  .withProvider("google", "google-apis")
+6  .fetch("/userinfo/v2/me");
+7
 ```
 
 Working with OAuth 2.0 providers involves more complexity in your app, as you manage
 multiple places to configure things correctly. See [Common issues with external authentication](/platform/forge/common-issues-with-external-authentication/) for troubleshooting information.
 
 ```
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-export interface ExternalAuthAccount {
-  id: string;
-  displayName: string;
-  avatarUrl?: string;
-  scopes: string[];
-}
-export interface ExternalAuthAccountMethods {
-  hasCredentials: (scopes?: string[]) => Promise<boolean>;
-  requestCredentials: (scopes?: string[]) => Promise<boolean>;
-  fetch: FetchMethodAllowingRoute;
-  getAccount: () => Promise<ExternalAuthAccount | undefined>;
-}
-export interface ExternalAuthFetchMethods extends ExternalAuthAccountMethods {
-  listAccounts: () => Promise<ExternalAuthAccount[]>;
-  asAccount: (externalAccountId: string) => ExternalAuthAccountMethods;
-}
-export interface ExternalAuthFetchMethodsProvider {
-  withProvider: (
-    provider: string,
-    remoteName?: string
-  ) => ExternalAuthFetchMethods;
-}
+1export interface ExternalAuthAccount {
+2  id: string;
+3  displayName: string;
+4  avatarUrl?: string;
+5  scopes: string[];
+6}
+7export interface ExternalAuthAccountMethods {
+8  hasCredentials: (scopes?: string[]) => Promise<boolean>;
+9  requestCredentials: (scopes?: string[]) => Promise<boolean>;
+10  fetch: FetchMethodAllowingRoute;
+11  getAccount: () => Promise<ExternalAuthAccount | undefined>;
+12}
+13export interface ExternalAuthFetchMethods extends ExternalAuthAccountMethods {
+14  listAccounts: () => Promise<ExternalAuthAccount[]>;
+15  asAccount: (externalAccountId: string) => ExternalAuthAccountMethods;
+16}
+17export interface ExternalAuthFetchMethodsProvider {
+18  withProvider: (
+19    provider: string,
+20    remoteName?: string
+21  ) => ExternalAuthFetchMethods;
+22}
+23
 ```
 
 ## hasCredentials
@@ -93,6 +67,13 @@ api.asUser().withProvider(provider).hasCredentials(scopes?: string[]) => Promise
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -137,6 +118,22 @@ api.asUser().withProvider(provider).requestCredentials(scopes?: string[])
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
 ```
 
 
@@ -256,6 +253,13 @@ api.asUser().withProvider(provider).asAccount(externalAccountId: string)
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -307,6 +311,24 @@ AuthProfile({ id, displayName, avatarUrl });
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
 ```
 
 

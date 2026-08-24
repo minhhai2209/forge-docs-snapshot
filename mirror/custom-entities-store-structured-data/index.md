@@ -68,6 +68,8 @@ We’ll add the scope required by the `storage` API and declare the entity we’
    ```
    1
    2
+   3
+   4
    ```
 
 
@@ -84,6 +86,26 @@ We’ll add the scope required by the `storage` API and declare the entity we’
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
+   14
+   15
+   16
+   17
+   18
+   19
+   20
+   21
+   22
    ```
 
 
@@ -140,7 +162,7 @@ See [Indexes](/platform/forge/storage-reference/entities-manifest/#indexes) for 
 
    If the indexes were created successfully, this command should display the following:
 
-   ![custom-entities-indexes-table-successful-command](https://dac-static.atlassian.com/platform/forge/images/custom-entities-indexes.png?_v=1.5800.2282)
+   ![custom-entities-indexes-table-successful-command](https://dac-static.atlassian.com/platform/forge/images/custom-entities-indexes.png?_v=1.5800.2283)
 3. Install your app by running:
 4. Select your Atlassian app using the arrow keys and press the enter key.
 5. Enter the URL for your development site. For example, *example.atlassian.net*. [View a list of your active sites at Atlassian administration](https://admin.atlassian.com/).
@@ -165,6 +187,62 @@ In the `src/`directory, add a new file named `create-user.js` with the following
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
 ```
 
 
@@ -238,6 +316,17 @@ The `create-user.js` file features a function named `createUser` which makes a c
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
    ```
 
 
@@ -294,6 +383,67 @@ Next, add a file in the `src/` directory named `query-users.js` with the followi
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
 ```
 
 
@@ -375,6 +525,17 @@ Modify the `manifest.yml` to add this new endpoint.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
 ```
 
 
@@ -428,6 +589,70 @@ To do this, create a new file in the `src/` directory named called `get-and-dele
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
 ```
 
 
@@ -507,6 +732,24 @@ Modify the `manifest.yml` to add two new endpoints.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
 ```
 
 

@@ -11,15 +11,15 @@ This API enables Forge apps to publish events to realtime channels. This is suit
 To publish an event, first import the Realtime publish API into your Forge resolver file:
 
 ```
-1
-import { publish } from '@forge/realtime';
+1import { publish } from '@forge/realtime';
+2
 ```
 
 Alternatively, to publish an event to a globally scoped channel, import the global publish API:
 
 ```
-1
-import { publishGlobal } from '@forge/realtime';
+1import { publishGlobal } from '@forge/realtime';
+2
 ```
 
 ## Publish API
@@ -29,86 +29,47 @@ Publishes events if there is an existing subscription for the same channel conte
 ### Method signature
 
 ```
-1
-2
-3
-4
-5
+1const publish = (
+2    channel: string,
+3    payload: string | Record<string, unknown>,
+4    options?: PublishOptions
+5): Promise<PublishResult>
 6
-7
-8
-9
-10
-11
+7const publishGlobal = (
+8    channel: string,
+9    payload: string | Record<string, unknown>,
+10    options?: PublishOptions
+11): Promise<PublishResult>
 12
-13
-14
-15
-16
-17
+13export enum Jira {
+14  Board = 'board',
+15  Issue = 'issue',
+16  Project = 'project'
+17}
 18
-19
-20
-21
-22
+19export enum Confluence {
+20  Content = 'content',
+21  Space = 'space'
+22}
 23
-24
-25
-26
-27
+24export enum Bitbucket {
+25  PullRequest = 'pullRequest',
+26  Repository = 'repository'
+27}
 28
-29
+29type ProductContext = Jira | Confluence | Bitbucket;
 30
-31
-32
-33
-34
+31interface PublishOptions {
+32  token?: string;
+33  contextOverrides?: ProductContext[];
+34}
 35
-36
-37
-38
-39
-40
-const publish = (
-    channel: string,
-    payload: string | Record<string, unknown>,
-    options?: PublishOptions
-): Promise<PublishResult>
-
-const publishGlobal = (
-    channel: string,
-    payload: string | Record<string, unknown>,
-    options?: PublishOptions
-): Promise<PublishResult>
-
-export enum Jira {
-  Board = 'board',
-  Issue = 'issue',
-  Project = 'project'
-}
-
-export enum Confluence {
-  Content = 'content',
-  Space = 'space'
-}
-
-export enum Bitbucket {
-  PullRequest = 'pullRequest',
-  Repository = 'repository'
-}
-
-type ProductContext = Jira | Confluence | Bitbucket;
-
-interface PublishOptions {
-  token?: string;
-  contextOverrides?: ProductContext[];
-}
-
-interface PublishResult {
-  eventId: string | null;
-  eventTimestamp: string | null;
-  errors?: any[];
-}
+36interface PublishResult {
+37  eventId: string | null;
+38  eventTimestamp: string | null;
+39  errors?: any[];
+40}
+41
 ```
 
 ### Arguments
@@ -127,6 +88,19 @@ interface PublishResult {
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
 ```
 
 
@@ -192,6 +166,18 @@ import { publishGlobal, signRealtimeToken } from '@forge/realtime';
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
 ```
 
 
@@ -232,6 +218,27 @@ interface TokenResult {
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
 ```
 
 

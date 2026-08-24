@@ -3,8 +3,8 @@
 To add the `Pagination` component to your app:
 
 ```
-1
-import { Pagination } from '@forge/react';
+1import { Pagination } from '@forge/react';
+2
 ```
 
 ## Description
@@ -32,12 +32,14 @@ Pagination allows you to divide large amounts of content into chunks across mult
 
 The default pagination with a list of pages.
 
-![Example image of rendered default pagination](https://dac-static.atlassian.com/platform/forge/ui-kit/images/pagination/pagination-default.png?_v=1.5800.2282)
+![Example image of rendered default pagination](https://dac-static.atlassian.com/platform/forge/ui-kit/images/pagination/pagination-default.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
 ```
 
 
@@ -53,12 +55,14 @@ const PaginationDefaultExample = () => {
 
 Use `defaultSelectedIndex` to pre-select a page on initial render. The index is zero-based, so `defaultSelectedIndex={2}` selects the third page.
 
-![Example image of rendered pagination with selected index](https://dac-static.atlassian.com/platform/forge/ui-kit/images/pagination/pagination-selected-index.png?_v=1.5800.2282)
+![Example image of rendered pagination with selected index](https://dac-static.atlassian.com/platform/forge/ui-kit/images/pagination/pagination-selected-index.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
 ```
 
 

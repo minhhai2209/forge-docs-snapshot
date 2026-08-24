@@ -3,8 +3,8 @@
 To add the `List` and `ListItem` components to your app:
 
 ```
-1
-import { List, ListItem } from "@forge/react";
+1import { List, ListItem } from "@forge/react";
+2
 ```
 
 ## Description
@@ -24,12 +24,22 @@ An unordered (bulleted) or ordered (numbered) list.
 
 An unordered list is rendered with bullets.
 
-![Example image of an unordered list](https://dac-static.atlassian.com/platform/forge/ui-kit/images/list/list-unordered.png?_v=1.5800.2282)
+![Example image of an unordered list](https://dac-static.atlassian.com/platform/forge/ui-kit/images/list/list-unordered.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -53,12 +63,47 @@ const App = () => {
 
 A nested unordered list. Bullet styles rotate in the following order when nested: Disc, Circle, Square.
 
-![Example image of an nested unordered list](https://dac-static.atlassian.com/platform/forge/ui-kit/images/list/list-unordered-nested.png?_v=1.5800.2282)
+![Example image of an nested unordered list](https://dac-static.atlassian.com/platform/forge/ui-kit/images/list/list-unordered-nested.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
 ```
 
 
@@ -107,12 +152,22 @@ const App = () => {
 
 An ordered (numbered) list
 
-![Example image of an ordered list](https://dac-static.atlassian.com/platform/forge/ui-kit/images/list/list-ordered.png?_v=1.5800.2282)
+![Example image of an ordered list](https://dac-static.atlassian.com/platform/forge/ui-kit/images/list/list-ordered.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -136,12 +191,47 @@ const App = () => {
 
 A nested ordered list. Bullet styles rotate in the following order when nested: Decimal, Lower-Alpha, Lower-Roman.
 
-![Example image of an nested ordered list](https://dac-static.atlassian.com/platform/forge/ui-kit/images/list/list-ordered-nested.png?_v=1.5800.2282)
+![Example image of an nested ordered list](https://dac-static.atlassian.com/platform/forge/ui-kit/images/list/list-ordered-nested.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
 ```
 
 
@@ -190,12 +280,44 @@ const App = () => {
 
 A nested list with a mix of unordered and ordered lists, which maintains the aforementioned bullet style pattern at each nest level regardless of list type.
 
-![Example image of an nested mixed list](https://dac-static.atlassian.com/platform/forge/ui-kit/images/list/list-mixed-nested.png?_v=1.5800.2282)
+![Example image of an nested mixed list](https://dac-static.atlassian.com/platform/forge/ui-kit/images/list/list-mixed-nested.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
 ```
 
 

@@ -14,88 +14,52 @@ This module works in conjunction with the [Teamwork Graph connector SDK](/platfo
 To install, run:
 
 ```
-1
-npm i @forge/teamwork-graph
+1npm i @forge/teamwork-graph
+2
 ```
 
 ## Manifest structure
 
 ```
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
+1modules {}
+2└─ graph:connector
+3   ├─ key (string) [Required]
+4   ├─ name (string) [Required]
+5   ├─ icons (object) [Required]
+6   │  ├─ light (string) [Required]
+7   │  └─ dark (string) [Required]
+8   ├─ objectTypes (array of string) [Required]
+9   ├─ capabilities (object) [Optional]
+10   │  ├─ replicatesPermissions (boolean) [Optional]
+11   │  ├─ syncFidelity (string) [Optional]
+12   │  └─ supportsIncrementalSync (boolean) [Optional]
+13   ├─ auth (object) [Optional]
+14   │  └─ provider (AuthProvider) [Required]
+15   └─ datasource (object) [Required]
+16      ├─ formConfiguration (object) [Optional]
+17      │  ├─ instructions (array of string) [Optional]
+18      │  ├─ form (array of FormSection) [Required]
+19      │  │  ├─ key (string) [Required]
+20      │  │  ├─ type (string) [Required]
+21      │  │  ├─ title (string) [Required]
+22      │  │  ├─ description (string) [Required]
+23      │  │  └─ properties (array of FormProperty) [Required]
+24      │  │     ├─ key (string) [Required]
+25      │  │     ├─ label (string) [Required]
+26      │  │     ├─ type (string) [Required]
+27      │  │     ├─ isRequired (boolean) [Optional]
+28      │  │     ├─ isSensitive (boolean) [Optional]
+29      │  │     └─ hideInEditView (boolean) [Optional]
+30      │  └─ validateConnection (object) [Required]
+31      │     └─ function (Function) [Required]
+32      └─ onConnectionChange (object) [Required]
+33         └─ function (Function) [Required]
 34
-35
-36
-37
+35function []
+36├─ key (string) [Mandatory]
+37└─ handler (string) [Mandatory]
 38
-modules {}
-└─ graph:connector
-   ├─ key (string) [Required]
-   ├─ name (string) [Required]
-   ├─ icons (object) [Required]
-   │  ├─ light (string) [Required]
-   │  └─ dark (string) [Required]
-   ├─ objectTypes (array of string) [Required]
-   ├─ capabilities (object) [Optional]
-   │  ├─ replicatesPermissions (boolean) [Optional]
-   │  ├─ syncFidelity (string) [Optional]
-   │  └─ supportsIncrementalSync (boolean) [Optional]
-   ├─ auth (object) [Optional]
-   │  └─ provider (AuthProvider) [Required]
-   └─ datasource (object) [Required]
-      ├─ formConfiguration (object) [Optional]
-      │  ├─ instructions (array of string) [Optional]
-      │  ├─ form (array of FormSection) [Required]
-      │  │  ├─ key (string) [Required]
-      │  │  ├─ type (string) [Required]
-      │  │  ├─ title (string) [Required]
-      │  │  ├─ description (string) [Required]
-      │  │  └─ properties (array of FormProperty) [Required]
-      │  │     ├─ key (string) [Required]
-      │  │     ├─ label (string) [Required]
-      │  │     ├─ type (string) [Required]
-      │  │     ├─ isRequired (boolean) [Optional]
-      │  │     ├─ isSensitive (boolean) [Optional]
-      │  │     └─ hideInEditView (boolean) [Optional]
-      │  └─ validateConnection (object) [Required]
-      │     └─ function (Function) [Required]
-      └─ onConnectionChange (object) [Required]
-         └─ function (Function) [Required]
-
-function []
-├─ key (string) [Mandatory]
-└─ handler (string) [Mandatory]
+39
 ```
 
 ## Properties
@@ -149,6 +113,11 @@ To enable data ingestion and retrieval, you will also need to enable the followi
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -173,12 +142,12 @@ The Connected apps screen can be accessed within Atlassian Administration by nav
 After selecting the app, all available Teamwork Graph connectors will be shown
 in the **Connections** tab.
 
-![Connections tab within Marketplace app showing one Teamwork Graph connector that has not yet been configured](https://dac-static.atlassian.com/platform/forge/images/teamwork-graph/teamwork-graph-connector-not-configured.svg?_v=1.5800.2282)
+![Connections tab within Marketplace app showing one Teamwork Graph connector that has not yet been configured](https://dac-static.atlassian.com/platform/forge/images/teamwork-graph/teamwork-graph-connector-not-configured.svg?_v=1.5800.2283)
 
 Admins must configure the connector before it can start providing data to Teamwork Graph. To
 do this, the admin will click the **Connect** button, which opens a configuration modal.
 
-![Basic modal for configuring Teamwork Graph connector](https://dac-static.atlassian.com/platform/forge/images/teamwork-graph/teamwork-graph-connector-modal.svg?_v=1.5800.2282)
+![Basic modal for configuring Teamwork Graph connector](https://dac-static.atlassian.com/platform/forge/images/teamwork-graph/teamwork-graph-connector-modal.svg?_v=1.5800.2283)
 
 ### Configuration details
 
@@ -212,6 +181,9 @@ the `validateConnection` function should not be supplied and will not be called.
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -230,6 +202,12 @@ the `validateConnection` function should not be supplied and will not be called.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -269,6 +247,11 @@ Note that Atlassian will automatically take care of deleting the data associated
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -289,6 +272,16 @@ Note that Atlassian will automatically take care of deleting the data associated
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -342,6 +335,35 @@ needed.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
 ```
 
 
@@ -393,6 +415,50 @@ when the connection is fully established and ready for use via the `onConnection
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
 ```
 
 

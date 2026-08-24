@@ -4,14 +4,11 @@ The [manifest](/platform/forge/manifest) contains three required top-level prope
 `modules`, and `permissions`, and number of optional properties. For example:
 
 ```
-1
-2
-3
-4
-app:
-  id: "ari:cloud:ecosystem::app/406d303d-0393-4ec4-ad7c-1435be94583a"
-  licensing:
-    enabled: true
+1app:
+2  id: "ari:cloud:ecosystem::app/406d303d-0393-4ec4-ad7c-1435be94583a"
+3  licensing:
+4    enabled: true
+5
 ```
 
 | Property | Required | Description |
@@ -98,6 +95,8 @@ You can read packaged files using the [fs module](https://nodejs.org/api/fs.html
 ```
 1
 2
+3
+4
 ```
 
 
@@ -122,6 +121,11 @@ You can execute packaged binaries using the [child\_process module](https://node
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -156,6 +160,12 @@ Refer to [Expanded developer responsibilities](/platform/forge/runtime-reference
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 

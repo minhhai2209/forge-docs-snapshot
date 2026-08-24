@@ -24,10 +24,9 @@ The latest runtime version offers the following advantages over the legacy runti
 The new native Node.js runtime requires the latest version of all Forge packages. Install updates for the packages your app uses, from the command line. For example:
 
 ```
-1
-2
-npm install -g @forge/cli@latest
-npm install @forge/api@latest
+1npm install -g @forge/cli@latest
+2npm install @forge/api@latest
+3
 ```
 
 Repeat the `npm install` command for any other Forge packages your app uses.
@@ -40,6 +39,8 @@ The `runtime` section of the `manifest.yml` file features a `name` property that
 ```
 1
 2
+3
+4
 ```
 
 
@@ -95,7 +96,7 @@ to be fully evaluated on each invocation. For this reason, you should consider l
 The following image highlights a sample snapshot context. Note that the invocation method is not run at this
 point in time.
 
-![A code editor showing the constants declared in the snapshot context](https://dac-static.atlassian.com/platform/forge/images/snapshot-context.png?_v=1.5800.2282)
+![A code editor showing the constants declared in the snapshot context](https://dac-static.atlassian.com/platform/forge/images/snapshot-context.png?_v=1.5800.2283)
 
 The `snapshots` flag is available under the `runtime` object with a default value of `true`.
 
@@ -103,6 +104,8 @@ The `snapshots` flag is available under the `runtime` object with a default valu
 ```
 1
 2
+3
+4
 ```
 
 
@@ -126,6 +129,10 @@ Environment variables are not available in the snapshot context.
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -149,6 +156,10 @@ Random values created at snapshot time are not random on each function invocatio
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -170,6 +181,10 @@ We discourage using `Buffers` in the snapshot context. If this is detected, warn
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -198,5 +213,5 @@ The global process object is a partial implementation of the [Node JS process](h
 | `platform` | `forge` |
 | `env` | See [Environments](/platform/forge/environments-and-versions/). |
 | `version` | The underlying Node JS version.   Example:  `process.version // 12.14.1` |
-| `versions` | Versions of runtime dependencies.   Example:  `{ forge: 'forge:47', node: '12.14.1' }` |
+| `versions` | Versions of runtime dependencies.   Example:  `{  forge: 'forge:47', node: '12.14.1' }` |
 | `nextTick` | A polyfill of [Node JS nextTick](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/). |

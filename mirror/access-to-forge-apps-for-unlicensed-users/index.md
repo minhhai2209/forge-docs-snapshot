@@ -152,6 +152,15 @@ The `unlicensedAccess` property in the manifest expects an array of user types.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -202,6 +211,8 @@ Apps can call a resolver if they need `accountType`. The resolver can access the
 ```
 1
 2
+3
+4
 ```
 
 
@@ -253,6 +264,15 @@ module using `jiraServiceManagement:queuePage`.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -278,6 +298,7 @@ access. You will get the following error when you try to deploy this app:
 ```
 1
 2
+3
 ```
 
 
@@ -300,6 +321,7 @@ in this format:
 ```
 1
 2
+3
 ```
 
 
@@ -317,6 +339,15 @@ user types to `hello-world-panel` for `jiraServiceManagement:portalUserMenuActio
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -343,6 +374,12 @@ Therefore you will get the following error when you try to deploy this app:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 

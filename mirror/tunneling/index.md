@@ -21,6 +21,18 @@ You'll see output similar to this:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
 ```
 
 
@@ -110,6 +122,7 @@ under the `resource` your server is hosting:
 ```
 1
 2
+3
 ```
 
 
@@ -126,6 +139,10 @@ For example, a `resources` definition might look like this:
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -262,6 +279,7 @@ If `forge tunnel` hangs at the bundling step and never proceeds:
 ```
 1
 2
+3
 ```
 
 

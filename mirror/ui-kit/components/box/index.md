@@ -3,8 +3,8 @@
 To add the `Box` component to your app:
 
 ```
-1
-import { Box } from '@forge/react';
+1import { Box } from '@forge/react';
+2
 ```
 
 ## Description
@@ -32,12 +32,21 @@ A box is a generic container that provides managed access to design tokens.
 
 Box is a general-purpose container that allows for controlled use of design tokens. Use the given props to configure display behavior and styling that aligns with the Atlassian Design System. Use [XCSS](/platform/forge/ui-kit/components/xcss) to style primitive components safely with tokens (and CSS for selected properties).
 
-![Example image of a rendered basic box](https://dac-static.atlassian.com/platform/forge/ui-kit/images/box/box-basic.png?_v=1.5800.2282)
+![Example image of a rendered basic box](https://dac-static.atlassian.com/platform/forge/ui-kit/images/box/box-basic.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -60,12 +69,35 @@ export default () => {
 
 Box accepts a wide variety of background colors, referenced as semantic design tokens. For the full list of color tokens, visit the [token list](https://atlassian.design/components/tokens/all-tokens).
 
-![Example image of rendered boxes with varying colors](https://dac-static.atlassian.com/platform/forge/ui-kit/images/box/box-color.png?_v=1.5800.2282)
+![Example image of rendered boxes with varying colors](https://dac-static.atlassian.com/platform/forge/ui-kit/images/box/box-color.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
 ```
 
 
@@ -102,12 +134,63 @@ export default () => {
 
 Use `padding` props to access spacing design tokens and control internal layout. The following example demonstrates how each prop works with space tokens.
 
-![Example image of rendered boxes with varying paddings](https://dac-static.atlassian.com/platform/forge/ui-kit/images/box/box-padding.png?_v=1.5800.2282)
+![Example image of rendered boxes with varying paddings](https://dac-static.atlassian.com/platform/forge/ui-kit/images/box/box-padding.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
 ```
 
 
@@ -174,12 +257,38 @@ The nomenclature used by these props follows [logical properties](https://develo
 
 Box exposes an `xcss` prop. This prop accepts xcss function calls that contain a subset of permitted styles. Box is designed to be used in conjunction with the inline and stack components to create layouts. This example demonstrates how these can be used to create familiar components and patterns. See the dedicated [xcss](/platform/forge/ui-kit/components/xcss) documentation for the range of properties available.
 
-![Example image of rendered boxes with varying colors](https://dac-static.atlassian.com/platform/forge/ui-kit/images/box/box-xcss.png?_v=1.5800.2282)
+![Example image of rendered boxes with varying colors](https://dac-static.atlassian.com/platform/forge/ui-kit/images/box/box-xcss.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
 ```
 
 

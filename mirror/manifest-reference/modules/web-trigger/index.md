@@ -10,8 +10,8 @@ To manually obtain a web trigger URL, perform the following steps:
 1. Get the web trigger URL by running:
 
    ```
-   1
-   forge webtrigger create
+   1forge webtrigger create
+   2
    ```
 
    1. Select the installation for the corresponding site and Atlassian app installation.
@@ -68,7 +68,7 @@ Inside the `response` object, you can configure the response type and definition
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| `type` | `static | dynamic` | Yes | When set to `static`, the web trigger will only be able to egress data as configured in [Outputs](#outputs). Static web triggers are eligible for the Runs on Atlassian program. Dynamic web triggers allow developers to return any data from their function and are not eligible for the Runs on Atlassian program. |
+| `type` | `static | dynamic[object Object]` | Yes | When set to `static`, the web trigger will only be able to egress data as configured in [Outputs](#outputs). Static web triggers are eligible for the Runs on Atlassian program. Dynamic web triggers allow developers to return any data from their function and are not eligible for the Runs on Atlassian program. |
 | `outputs` | `Array` of [Outputs](#outputs) | Yes (only when `type: static`) | An array of objects that contains the configured response definitions that a web trigger function can choose to use. |
 
 #### Outputs
@@ -94,6 +94,21 @@ Below is a configured `no-egress-web-trigger` web trigger function that can retu
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
 ```
 
 
@@ -124,6 +139,11 @@ The function response uses `outputKey` to return the configured response under `
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -146,6 +166,12 @@ Below is a configured web trigger function that can return any data from the fun
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -171,6 +197,15 @@ For information about web trigger request and response, see
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 

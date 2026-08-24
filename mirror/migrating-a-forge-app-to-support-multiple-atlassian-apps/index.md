@@ -40,13 +40,13 @@ support for additional Atlassian apps is a minor version change unless elevated 
 
 | Change | Situation | Is a major version update required? | Example manifest change |
 | --- | --- | --- | --- |
-| **Add a required Atlassian app** | A developer decides to change their Jira app to support multiple Atlassian apps, with Jira as the required Atlassian app. | No, as long as no new scopes are added | ```  ``` 1 2 ```    ``` compatibility:   jira:     required: true ``` ``` |
-| **Add an optional Atlassian app** | A developer wants to allow their app to be optionally connected to Confluence, in addition to the required app. | No, as long as no new scopes are added | ```  ``` 1 2 ```    ``` compatibility:   confluence:     required: false ``` ``` |
-| **Add new permissions (scopes) or egress** | A developer adds new permissions or egress to their app, such as requesting additional API scopes. | Yes | ```  ``` 1 2 ```    ``` permissions:   scopes:     - storage:app     - read:app-system-token ``` ``` |
-| **Add an optional Atlassian app *and* new permissions for that Atlassian app** | A developer adds Compass as an optional Atlassian app and also requests new permissions for Compass APIs. | Yes | ```  ``` 1 2 ```    ``` compatibility:   compass:     required: false permissions:   scopes:     - read:event:compass ``` ``` |
+| **Add a required Atlassian app** | A developer decides to change their Jira app to support multiple Atlassian apps, with Jira as the required Atlassian app. | No, as long as no new scopes are added | ```  ``` 1 2 3 ```    ``` compatibility:   jira:     required: true ``` ``` |
+| **Add an optional Atlassian app** | A developer wants to allow their app to be optionally connected to Confluence, in addition to the required app. | No, as long as no new scopes are added | ```  ``` 1 2 3 ```    ``` compatibility:   confluence:     required: false ``` ``` |
+| **Add new permissions (scopes) or egress** | A developer adds new permissions or egress to their app, such as requesting additional API scopes. | Yes | ```  ``` 1 2 3 4 ```    ``` permissions:   scopes:     - storage:app     - read:app-system-token ``` ``` |
+| **Add an optional Atlassian app *and* new permissions for that Atlassian app** | A developer adds Compass as an optional Atlassian app and also requests new permissions for Compass APIs. | Yes | ```  ``` 1 2 3 4 5 6 ```    ``` compatibility:   compass:     required: false permissions:   scopes:     - read:event:compass ``` ``` |
 | **Remove an optional Atlassian app** | A developer removes Confluence as an optional Atlassian app from their app. | No | ```  ``` 1 2 ```    ``` compatibility:   confluence: (removed) ``` ``` |
-| **Change the required Atlassian app** | A developer wants to change which Atlassian app is required. For example, making Jira required when previously, Confluence was required.  This is only possible if there are no existing installations. | No | ```  ``` 1 2 ```    ``` compatibility:   jira:     required: true   confluence:     required: false ``` ``` |
-| **Revert to single-app compatibility** | A developer wants to revert their app to support only one Atlassian app.  This is only possible if there are no existing installations. | No | ```  ``` 1 2 ```    ``` compatibility:   jira:     required: true ``` ``` |
+| **Change the required Atlassian app** | A developer wants to change which Atlassian app is required. For example, making Jira required when previously, Confluence was required.  This is only possible if there are no existing installations. | No | ```  ``` 1 2 3 4 5 ```    ``` compatibility:   jira:     required: true   confluence:     required: false ``` ``` |
+| **Revert to single-app compatibility** | A developer wants to revert their app to support only one Atlassian app.  This is only possible if there are no existing installations. | No | ```  ``` 1 2 3 ```    ``` compatibility:   jira:     required: true ``` ``` |
 
 ## Migration steps
 
@@ -84,6 +84,12 @@ To add support for additional Atlassian apps to your Forge app:
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
    ```
 
 
@@ -119,6 +125,22 @@ Below is an example manifest of a Confluence hello world app:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
 ```
 
 
@@ -150,6 +172,36 @@ Below is what that same example app manifest would look like once Jira is added 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
 ```
 
 

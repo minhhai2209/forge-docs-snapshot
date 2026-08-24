@@ -7,8 +7,8 @@ using a wide variety of filters and conditions.
 To start, import the Forge KVS package in your app, as follows:
 
 ```
-1
-import { kvs } from '@forge/kvs';
+1import { kvs } from '@forge/kvs';
+2
 ```
 
 Each installation of your app is subject to the API's quotas and limits.
@@ -20,12 +20,10 @@ See [Storage quotas](/platform/forge/platform-quotas-and-limits/#storage-quotas)
 Using the `@forge/kvs` package requires the `storage:app` scope in your manifest file:
 
 ```
-1
-2
-3
-permissions:
-  scopes:
-    - storage:app
+1permissions:
+2  scopes:
+3    - storage:app
+4
 ```
 
 See [Permissions](/platform/forge/manifest-reference/permissions/#scopes) for more information about scopes.
@@ -51,6 +49,9 @@ All complex queries operate on a [custom entity's index](/platform/forge/storage
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -71,6 +72,11 @@ When using indexes that feature a `partition`, you must specify a value to match
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -91,6 +97,12 @@ If your index's `partition` has multiple attributes, then you must set a value f
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -112,6 +124,12 @@ An appropriate query for this would be:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -349,6 +367,16 @@ pages of results.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -392,6 +420,12 @@ If `metadataFields` were requested in the query options, each result will also i
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -413,6 +447,10 @@ When there are no more pages of results, `nextCursor` is omitted:
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -437,6 +475,11 @@ is no match, the result resolves to `undefined`.
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -489,6 +532,33 @@ The following `manifest.yml` excerpt shows a custom entity named `employee` with
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
 ```
 
 
@@ -544,6 +614,10 @@ Targets the `surname` index of the `employee` entity.
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -565,6 +639,11 @@ Targets the `by-age` index, which uses `age` as its `range`. From this, the `whe
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -587,6 +666,12 @@ Targets the `by-age-per-gender` index, and will limit matches to female employee
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -610,6 +695,17 @@ Using the `by-age-per-gender` index, limits matches only to female Australian em
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
 ```
 
 

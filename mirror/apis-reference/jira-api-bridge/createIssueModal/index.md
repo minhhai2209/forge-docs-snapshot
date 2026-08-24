@@ -7,6 +7,53 @@ The `CreateIssueModal` class enables your Custom UI app to open an issue create 
 ## Class signature
 
 ```
+1interface CreateIssueModalOptions {
+2  context?: {
+3    projectId?: string;
+4    issueTypeId?: string;
+5    requestType?: string;
+6    parentId?: string;
+7    summary?: string;
+8    description?: Record<string, any>;
+9    environment?: Record<string, any>;
+10    assignee?: string;
+11    reporter?: string;
+12    labels?: string[];
+13    duedate?: string;
+14    priority?: string;
+15    components?: string[];
+16    versions?: string[];
+17    fixVersions?: string[];
+18    [customFieldKey: string]: any;
+19  };
+20  onClose?: (args: {
+21    payload: {
+22      issueId: string;
+23    }[];
+24  }) => void;
+25}
+26
+27class CreateIssueModal {
+28  constructor(opts?: CreateIssueModalOptions);
+29  open(): Promise<void>;
+30}
+31
+```
+
+## Arguments
+
+* **onClose**: A callback function that runs when the issue create modal is closed.
+  The function is called with a list of the issues created.
+* **context**: Custom context that contains fields to pre-fill when the issue create modal opens.
+
+The `description` and `environment` fields must be in an [Atlassian Document Format](https://developer.atlassian.com/cloud/jira/platform/apis/document/structure/).
+
+## Example
+
+This example shows how to open an issue create modal with pre-filled fields.
+
+```
+```
 1
 2
 3
@@ -36,55 +83,6 @@ The `CreateIssueModal` class enables your Custom UI app to open an issue create 
 27
 28
 29
-30
-interface CreateIssueModalOptions {
-  context?: {
-    projectId?: string;
-    issueTypeId?: string;
-    requestType?: string;
-    parentId?: string;
-    summary?: string;
-    description?: Record<string, any>;
-    environment?: Record<string, any>;
-    assignee?: string;
-    reporter?: string;
-    labels?: string[];
-    duedate?: string;
-    priority?: string;
-    components?: string[];
-    versions?: string[];
-    fixVersions?: string[];
-    [customFieldKey: string]: any;
-  };
-  onClose?: (args: {
-    payload: {
-      issueId: string;
-    }[];
-  }) => void;
-}
-
-class CreateIssueModal {
-  constructor(opts?: CreateIssueModalOptions);
-  open(): Promise<void>;
-}
-```
-
-## Arguments
-
-* **onClose**: A callback function that runs when the issue create modal is closed.
-  The function is called with a list of the issues created.
-* **context**: Custom context that contains fields to pre-fill when the issue create modal opens.
-
-The `description` and `environment` fields must be in an [Atlassian Document Format](https://developer.atlassian.com/cloud/jira/platform/apis/document/structure/).
-
-## Example
-
-This example shows how to open an issue create modal with pre-filled fields.
-
-```
-```
-1
-2
 ```
 
 

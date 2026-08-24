@@ -12,30 +12,19 @@ to allow backend functions to invoke the remote.
 ## Function signature
 
 ```
-1
+1import { RequestInit, Response } from 'undici';
 2
-3
-4
-5
+3type InvokeRemoteOptions = {
+4  path: string;
+5};
 6
-7
+7type APIResponse = Pick<Response, 'json' | 'text' | 'arrayBuffer' | 'ok' | 'status' | 'statusText' | 'headers'>
 8
-9
-10
-11
-12
-import { RequestInit, Response } from 'undici';
-
-type InvokeRemoteOptions = {
-  path: string;
-};
-
-type APIResponse = Pick<Response, 'json' | 'text' | 'arrayBuffer' | 'ok' | 'status' | 'statusText' | 'headers'>
-
-export async function invokeRemote(
-  remoteKey: string,
-  options: RequestInit & InvokeRemoteOptions
-): Promise<APIResponse>;
+9export async function invokeRemote(
+10  remoteKey: string,
+11  options: RequestInit & InvokeRemoteOptions
+12): Promise<APIResponse>;
+13
 ```
 
 ## Arguments
@@ -56,6 +45,26 @@ Making a `POST` request to a remote endpoint:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
 ```
 
 
@@ -91,6 +100,18 @@ Making a `GET` request to a remote endpoint:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
 ```
 
 

@@ -3,8 +3,8 @@
 To add the `Tabs`, `TabList`, `TabPanel`, and `Tab` components to your app:
 
 ```
-1
-import { Tabs, TabList, TabPanel, Tab } from "@forge/react";
+1import { Tabs, TabList, TabPanel, Tab } from "@forge/react";
+2
 ```
 
 ## Description
@@ -48,12 +48,39 @@ Tabs are used to organize content by grouping similar information on the same pa
 
 The default form of tabs.
 
-![Example image of rendered tabs](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tabs/tabs-default.png?_v=1.5800.2282)
+![Example image of rendered tabs](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tabs/tabs-default.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
 ```
 
 
@@ -94,12 +121,44 @@ const TabsDefaultExample = () => {
 
 Tabs can be used as a controlled component.
 
-![Example image of controlled tabs](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tabs/tabs-controlled.png?_v=1.5800.2282)
+![Example image of controlled tabs](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tabs/tabs-controlled.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
 ```
 
 
@@ -147,12 +206,43 @@ const TabsControlledExample = () => {
 
 You can wrap a tab in other presentational components. In this example we have added a `tooltip` to each tab.
 
-![Example image of tabs being wrapped](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tabs/tabs-wrapping-tab.png?_v=1.5800.2282)
+![Example image of tabs being wrapped](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tabs/tabs-wrapping-tab.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
 ```
 
 

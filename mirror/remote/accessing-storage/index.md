@@ -32,6 +32,16 @@ All requests should be sent in JSON format to the base URL `https://api.atlassia
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -67,6 +77,9 @@ In conjunction with proper HTTP status codes, non-2xx responses will have the fo
 ```
 1
 2
+3
+4
+5
 ```
 
 

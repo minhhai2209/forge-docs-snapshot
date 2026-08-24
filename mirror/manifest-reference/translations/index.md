@@ -21,40 +21,24 @@ The `translations` configuration specified in this section is shared across the 
 ## Manifest structure
 
 ```
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-modules {}
-└─ confluence:globalPage []
-   ├─ key: my-page
-   ├─ resource: main
-   ├─ render: native
-   ├─ route: my-page
-   └─ title: (string | i18n)
-   │  └─ i18n: page.title (string)
-translations: {}
-└─ resources: {}
-   ├─ key: en-US (string)
-   └─ path: locales/en-US.json (string)
-└─ fallback: {}
-   ├─ default: en-US (string)
-   └─ zh-CN: []
-   │  ├─ zh-TW
-   │  └─ ja-JP
+1modules {}
+2└─ confluence:globalPage []
+3   ├─ key: my-page
+4   ├─ resource: main
+5   ├─ render: native
+6   ├─ route: my-page
+7   └─ title: (string | i18n)
+8   │  └─ i18n: page.title (string)
+9translations: {}
+10└─ resources: {}
+11   ├─ key: en-US (string)
+12   └─ path: locales/en-US.json (string)
+13└─ fallback: {}
+14   ├─ default: en-US (string)
+15   └─ zh-CN: []
+16   │  ├─ zh-TW
+17   │  └─ ja-JP
+18
 ```
 
 ## Properties
@@ -91,6 +75,42 @@ locale are unavailable. It ensures a consistent and user-friendly experience, st
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
 ```
 
 
@@ -142,6 +162,14 @@ translations:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -163,6 +191,13 @@ translations:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -183,6 +218,11 @@ translations:
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -201,6 +241,9 @@ translations:
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -225,6 +268,25 @@ In the `manifest.yml` file some `module` properties, such as the `title` of the 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
 ```
 
 
@@ -263,6 +325,7 @@ After adding translation support, this looks like:
 ```
 1
 2
+3
 ```
 
 
@@ -292,6 +355,15 @@ one of the [supported locales](/platform/forge/manifest-reference/forge-supporte
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -323,6 +395,12 @@ The `manifest.yml` file also specifies the fallback configurations, including th
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -351,6 +429,14 @@ The table below explains the fallback logic for this example:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -372,6 +458,13 @@ The table below explains the fallback logic for this example:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -392,6 +485,11 @@ The table below explains the fallback logic for this example:
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -410,6 +508,9 @@ The table below explains the fallback logic for this example:
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -451,6 +552,14 @@ Forge to execute the translation. Each key represents a unique identifier, such 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -476,6 +585,10 @@ For example, a nested key format looks like:
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -495,6 +608,8 @@ A flattened key format looks like:
 ```
 1
 2
+3
+4
 ```
 
 

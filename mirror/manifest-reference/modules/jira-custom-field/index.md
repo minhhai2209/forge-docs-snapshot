@@ -8,6 +8,410 @@ This module can be used in Jira and Jira Service Management.
 ## Manifest example
 
 ```
+1modules:
+2  jira:customField:
+3    - key: story-points-field
+4      name: Story Points
+5      description: Track story points for agile development
+6      type: number
+7      view:
+8        resource: story-points-view
+9      edit:
+10        resource: story-points-edit
+11    - key: contact-info-field
+12      name: Contact Information
+13      description: Structured contact information with name, email, and phone
+14      type: object
+15      schema:
+16        type: object
+17        properties:
+18          fullName:
+19            type: string
+20            maxLength: 100
+21          email:
+22            type: string
+23            format: email
+24          phone:
+25            type: string
+26            pattern: "^[+]?[0-9\\s\\-\\(\\)]{10,20}$"
+27          department:
+28            type: string
+29            enum: ["Engineering", "Sales", "Marketing", "Support", "HR"]
+30        required: ["fullName", "email"]
+31        additionalProperties: false
+32      view:
+33        resource: contact-info-view
+34        render: native
+35        formatter:
+36          expression: "value != null ? `${value.fullName} (${value.email})` + (value.phone ? ` - ${value.phone}` : '') : 'No contact information'"
+37          export: true
+38        experience:
+39          - "issue-view"
+40          - "portal-view"
+41      edit:
+42        resource: contact-info-edit
+43        render: native
+44        experience:
+45          - "issue-view"
+46          - "issue-create"
+47          - "issue-transition"
+48          - "portal-request"
+49          - "issue-bulk-edit"
+50        validation:
+51          expression: "value == null || (value.fullName?.length > 0 && value.email?.length > 0)"
+52          errorMessage: "Full name and email are required"
+53      searchSuggestions:
+54        expression: '["Engineering", "Sales", "Marketing", "Support", "HR"]'
+55
+56resources:
+57  - key: story-points-view
+58    path: src/frontend/storyPointsView.jsx
+59  - key: story-points-edit
+60    path: src/frontend/storyPointsEdit.jsx
+61  - key: contact-info-view
+62    path: src/frontend/contactInfoView.jsx
+63  - key: contact-info-edit
+64    path: src/frontend/contactInfoEdit.jsx
+65
+```
+
+## Properties
+
+| Property | Type | Required | Description |
+| --- | --- | --- | --- |
+| `key` | `string` | Yes | A key for the module, which other modules can refer to. Must be unique within the manifest.   This key becomes a part of the custom field key as described in the [Field lifecycle section](#field-lifecycle).  *Regex:* `^[a-zA-Z0-9_-]+$` |
+| `name` | `string` or `i18n object` | Yes | The name of the field.  The `i18n object` allows for translation. See [i18n object](#i18n-object). |
+| `description` | `string` or `i18n object` | Yes | The description of the field.  The `i18n object` allows for translation. See [i18n object](#i18n-object). |
+| `type` | `string` | Yes | The type of the value stored by the field. Available types are:  * `string` * `number` * `user` * `group` * `datetime` * `date` * `object`    **Important:** When using `object` type, you **must** include `view.formatter.expression` to enable JQL search and proper field display. Without this formatter, the field will not be searchable in JQL queries. |
+| `collection` | `none|list` (default: `none`) |  | The kind of collection that the field values should be stored in. See [collection types](#collection-types) for more details. |
+| `readOnly` | `boolean` |  | Whether or not the field is read-only. Read-only fields can't be edited by users. Defaults to `false`. |
+| `resolver` | `{ function: string }` or `{ endpoint: string }` | Yes | Set the `function` property if you are using a hosted `function` module for your resolver.  Set the `endpoint` property if you are using [Forge Remote](/platform/forge/forge-remote-overview) to integrate with a remote back end. |
+| `function` | `string` | Required if using [triggers](/platform/forge/manifest-reference/modules/trigger/). | A reference to the function module that defines the module. |
+| `view.render` | `'native'` | Yes for [UI Kit](/platform/forge/ui-kit/components/) | Indicates the module uses [UI Kit](/platform/forge/ui-kit/components/). |
+| `view.resource` | `string` | Yes for [UI Kit](/platform/forge/ui-kit/components/) | A reference to the static `resources` entry that your view entry point wants to display. See [Resources](/platform/forge/manifest-reference/resources) for more details. Available only for [UI Kit](/platform/forge/ui-kit/components/). |
+| `view.experience` | `string[]` | yes | Indicates on which view experiences this rendering should be used. Currently supported view experiences:  * `'issue-view'` * `'portal-view'` |
+| `view.formatter.expression` | `string` | Required for the `object` type; otherwise, optional | A Jira expression that renders the value as a string. See [formatter](#formatter) for more details. |
+| `view.formatter.export` | `boolean` |  | Whether to use the formatter for values exported to CSV. See [Using formatters in CSV export](#using-formatters-in-csv-export) for more details. |
+| `view.value.function` | `string` |  | A function that computes the value of the field. See [value function](#value-function) for more details. |
+| `edit.function` | `string` |  | A reference to the `function` module that provides the field editing experience. |
+| `edit.resource` | `string` |  | A reference to the static `resources` entry that your edit entry point will display. See [Resources](/platform/forge/manifest-reference/resources) for more details. To submit the view, use the [submit API](/platform/forge/apis-reference/ui-api-bridge/view/#submit). |
+| `edit.render` | `'native'` |  | Indicates if your edit entry point should display as UI Kit. |
+| `edit.experience` | `string[]` | yes | Indicates on which view experiences this rendering should be used. Currently supported edit experiences:  * `'issue-view'` * `'issue-create'` * `'issue-transition'` * `'portal-request'` * `'issue-bulk-edit'`    `'issue-bulk-edit'` is available only for `Object` type as of now. |
+| `edit.isInline` | `boolean` |  | Indicates if your edit entry point should display inline on the issue view. |
+| `edit.validation.expression` | `string` |  | A Jira expression that validates the field value. See [validation](#validation) for more details. |
+| `edit.validation.errorMessage` | `string` or `i18n object` |  | The error message to show when the validation expression returns `false`.  The `i18n object` allows for translation. See [i18n object](#i18n-object). |
+| `edit.parser.expression` | `string` |  | A Jira expression that parses strings into valid values of this field. See [parser](#parser) for more details. |
+| `schema` | `object` | Allowed only for the `object` type | A [JSON schema](https://json-schema.org/) that desribes values stored in the field. |
+| `displayConditions` | `object` |  | The object that defines whether or not the field is displayed on the issue view or global issue create (GIC) (other views or REST APIs are not affected). See [display conditions](#display-conditions). |
+| `searchSuggestions.expression` | `string` | Requires either `function` or `expression`. Only one of the two properties must be present. | A [Jira expression](/cloud/jira/platform/jira-expressions/) that provides value suggestions in advanced search. For `object` fields, this can also provide suggestions for field properties that set `searchSuggestionsEnabled` to `true` in the schema. See [search suggestions](#search-suggestions) for more details. |
+| `searchSuggestions.function` | `string` | Requires either `function` or `expression`. Only one of the two properties must be present. | A reference to the `function` module that provides value suggestions in advanced search. For `object` fields, this can also provide suggestions for field properties that set `searchSuggestionsEnabled` to `true` in the schema. See [search suggestions](#search-suggestions) for more details. |
+| `unlicensedAccess` | List<string> |  | A list of unlicensed user types that can access this module. Valid values are: `unlicensed`, `customer`, and `anonymous`. For more information, see [Access to Forge apps for unlicensed users](/platform/forge/access-to-forge-apps-for-unlicensed-users). |
+
+## Rendering
+
+### View mode
+
+Forge apps can provide rendering of the field with [UI Kit](/platform/forge/ui-kit/).
+
+##### UI Kit
+
+```
+```
+1
+2
+3
+4
+5
+6
+```
+
+
+
+```
+modules:
+    jira:customField:
+      view:
+        resource: key
+        render: native
+```
+```
+
+You can obtain the current value of the field from the [useProductContext](/platform/forge/ui-kit/hooks/use-product-context/) hook, like this:
+
+```
+```
+1
+2
+3
+```
+
+
+
+```
+const context = useProductContext();
+const fieldValue = context?.extension.fieldValue;
+```
+```
+
+### Edit mode
+
+Forge apps can optionally provide their own editing experience of the field
+with [UI Kit](/platform/forge/ui-kit/) or [Custom UI](/platform/forge/custom-ui/) by specifying the `edit` property.
+
+##### UI Kit
+
+With UI Kit, use the [CustomFieldEdit](/platform/forge/ui-kit/jira-components/custom-field-edit) component to render the edit view.
+
+```
+```
+1
+2
+3
+4
+5
+6
+```
+
+
+
+```
+modules:
+    jira:customField:
+      edit:
+        resource: key
+        render: native
+```
+```
+
+You can obtain the current value of the field from the [getContext API](/platform/forge/custom-ui-bridge/view/#getcontext), like this:
+
+```
+```
+1
+2
+```
+
+
+
+```
+const { fieldValue } = await view.getContext();
+```
+```
+
+To update the field value, use the [submit API](/platform/forge/apis-reference/ui-api-bridge/view/#submit), like this:
+
+```
+```
+1
+2
+```
+
+
+
+```
+await view.submit(fieldValue);
+```
+```
+
+Default editing, appropriate to the field's data type, is used if the edit resource is not provided.
+
+##### Custom UI
+
+```
+```
+1
+2
+3
+4
+5
+```
+
+
+
+```
+modules:
+    jira:customField:
+      edit:
+        resource: key
+```
+```
+
+You can obtain the current value of the field from the [getContext API](/platform/forge/custom-ui-bridge/view/#getcontext), like this:
+
+```
+```
+1
+2
+```
+
+
+
+```
+const { fieldValue } = await view.getContext();
+```
+```
+
+To update the field value, use the [submit API](/platform/forge/apis-reference/ui-api-bridge/view/#submit), like this:
+
+```
+```
+1
+2
+```
+
+
+
+```
+await view.submit(fieldValue);
+```
+```
+
+Default editing, appropriate to the field's data type, is used if the edit resource is not provided.
+
+### Experience
+
+The `experience` property determines where a specific extension should be rendered within Jira views. Jira will default to rendering the built-in field if a view or edit entry point lacks a defined experience.
+This means that extensions must now opt-in for new views. This change ensures that fields which are irrelevant to the context or may not function correctly are not rendered.
+
+```
+```
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+```
+
+
+
+```
+jira:customFieldType:
+  - key: cf-with-experience
+    name: Example custom field
+    description: This field will render on every view
+    type: number
+    edit:
+      resource: key
+      render: native
+      isInline: true
+      experience:
+        - "issue-view"
+        - "issue-create"
+        - "issue-transition"
+        - "portal-request"
+    view:
+      resource: key
+      render: native
+      isInline: true
+      experience:
+        - "issue-view"
+        - "portal-view"
+```
+```
+
+### Issue view
+
+By default, when you define an editing function for a Jira custom field created by a Forge app, switching to the field’s edit mode opens a modal. However, when using [UI Kit](/platform/forge/ui-kit/) or [Custom UI](/platform/forge/custom-ui/), you can enable inline editing by including the `isInline` property in the app’s manifest.
+
+```
+```
+1
+2
+3
+4
+5
+6
+7
+```
+
+
+
+```
+modules:
+  jira:customField:
+    edit:
+      resource: key
+      render: native
+      isInline: true
+```
+```
+
+The `isInline` property is added temporarily for a [deprecation period of modal experience](https://developer.atlassian.com/changelog/#CHANGE-2536) and will be removed on **August 1, 2025**.
+After this date all fields on issue view will be rendered inline by default. If you still want to use modal experience in your fields,
+use the [Modal](/platform/forge/ui-kit/components/modal/) component for UI Kit fields and the [Modal bridge API](/platform/forge/apis-reference/ui-api-bridge/modal/) for Custom UI fields.
+
+For UI Kit, use the [CustomFieldEdit](/platform/forge/ui-kit/jira-components/custom-field-edit) component to render the edit view.
+In issue view, the `onSubmit` function in the CustomFieldEdit component will be called on blur events, "Enter" key press, or on clicking confirmation action button, so you can place
+the submit logic there. Otherwise, you can create your own logic to use the [submit API](/platform/forge/apis-reference/ui-api-bridge/view/#submit) outside the `onSubmit` function.
+
+#### Inline edit migration guide
+
+Here are two guides for migrating apps to use `isInline` property:
+
+How to edit custom fields inline (suggested approach for minimalistic UI)
+
+##### Original manifest and edit files
+
+The `manifest.yml` file with no `isInline` property:
+
+```
+```
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+```
+
+
+
+```
+modules:
+  jira:customField:
+    - key: my-cf
+      ...
+      edit:
+        resource: edit
+        render: native
+        experience:
+          - "issue-create"
+          - "issue-transition"
+          - "issue-view"
+          - "portal-request"
+      ...
+```
+```
+
+The `edit.jsx` file with the deprecated way of app rendering:
+
+```
+```
 1
 2
 3
@@ -72,362 +476,7 @@ This module can be used in Jira and Jira Service Management.
 62
 63
 64
-modules:
-  jira:customField:
-    - key: story-points-field
-      name: Story Points
-      description: Track story points for agile development
-      type: number
-      view:
-        resource: story-points-view
-      edit:
-        resource: story-points-edit
-    - key: contact-info-field
-      name: Contact Information
-      description: Structured contact information with name, email, and phone
-      type: object
-      schema:
-        type: object
-        properties:
-          fullName:
-            type: string
-            maxLength: 100
-          email:
-            type: string
-            format: email
-          phone:
-            type: string
-            pattern: "^[+]?[0-9\\s\\-\\(\\)]{10,20}$"
-          department:
-            type: string
-            enum: ["Engineering", "Sales", "Marketing", "Support", "HR"]
-        required: ["fullName", "email"]
-        additionalProperties: false
-      view:
-        resource: contact-info-view
-        render: native
-        formatter:
-          expression: "value != null ? `${value.fullName} (${value.email})` + (value.phone ? ` - ${value.phone}` : '') : 'No contact information'"
-          export: true
-        experience:
-          - "issue-view"
-          - "portal-view"
-      edit:
-        resource: contact-info-edit
-        render: native
-        experience:
-          - "issue-view"
-          - "issue-create"
-          - "issue-transition"
-          - "portal-request"
-          - "issue-bulk-edit"
-        validation:
-          expression: "value == null || (value.fullName?.length > 0 && value.email?.length > 0)"
-          errorMessage: "Full name and email are required"
-      searchSuggestions:
-        expression: '["Engineering", "Sales", "Marketing", "Support", "HR"]'
-
-resources:
-  - key: story-points-view
-    path: src/frontend/storyPointsView.jsx
-  - key: story-points-edit
-    path: src/frontend/storyPointsEdit.jsx
-  - key: contact-info-view
-    path: src/frontend/contactInfoView.jsx
-  - key: contact-info-edit
-    path: src/frontend/contactInfoEdit.jsx
-```
-
-## Properties
-
-| Property | Type | Required | Description |
-| --- | --- | --- | --- |
-| `key` | `string` | Yes | A key for the module, which other modules can refer to. Must be unique within the manifest.   This key becomes a part of the custom field key as described in the [Field lifecycle section](#field-lifecycle).  *Regex:* `^[a-zA-Z0-9_-]+$` |
-| `name` | `string` or `i18n object` | Yes | The name of the field.  The `i18n object` allows for translation. See [i18n object](#i18n-object). |
-| `description` | `string` or `i18n object` | Yes | The description of the field.  The `i18n object` allows for translation. See [i18n object](#i18n-object). |
-| `type` | `string` | Yes | The type of the value stored by the field. Available types are:  * `string` * `number` * `user` * `group` * `datetime` * `date` * `object`    **Important:** When using `object` type, you **must** include `view.formatter.expression` to enable JQL search and proper field display. Without this formatter, the field will not be searchable in JQL queries. |
-| `collection` | `none|list` (default: `none`) |  | The kind of collection that the field values should be stored in. See [collection types](#collection-types) for more details. |
-| `readOnly` | `boolean` |  | Whether or not the field is read-only. Read-only fields can't be edited by users. Defaults to `false`. |
-| `resolver` | `{ function: string }` or `{ endpoint: string }` | Yes | Set the `function` property if you are using a hosted `function` module for your resolver.  Set the `endpoint` property if you are using [Forge Remote](/platform/forge/forge-remote-overview) to integrate with a remote back end. |
-| `function` | `string` | Required if using [triggers](/platform/forge/manifest-reference/modules/trigger/). | A reference to the function module that defines the module. |
-| `view.render` | `'native'` | Yes for [UI Kit](/platform/forge/ui-kit/components/) | Indicates the module uses [UI Kit](/platform/forge/ui-kit/components/). |
-| `view.resource` | `string` | Yes for [UI Kit](/platform/forge/ui-kit/components/) | A reference to the static `resources` entry that your view entry point wants to display. See [Resources](/platform/forge/manifest-reference/resources) for more details. Available only for [UI Kit](/platform/forge/ui-kit/components/). |
-| `view.experience` | `string[]` | yes | Indicates on which view experiences this rendering should be used. Currently supported view experiences:  * `'issue-view'` * `'portal-view'` |
-| `view.formatter.expression` | `string` | Required for the `object` type; otherwise, optional | A Jira expression that renders the value as a string. See [formatter](#formatter) for more details. |
-| `view.formatter.export` | `boolean` |  | Whether to use the formatter for values exported to CSV. See [Using formatters in CSV export](#using-formatters-in-csv-export) for more details. |
-| `view.value.function` | `string` |  | A function that computes the value of the field. See [value function](#value-function) for more details. |
-| `edit.function` | `string` |  | A reference to the `function` module that provides the field editing experience. |
-| `edit.resource` | `string` |  | A reference to the static `resources` entry that your edit entry point will display. See [Resources](/platform/forge/manifest-reference/resources) for more details. To submit the view, use the [submit API](/platform/forge/apis-reference/ui-api-bridge/view/#submit). |
-| `edit.render` | `'native'` |  | Indicates if your edit entry point should display as UI Kit. |
-| `edit.experience` | `string[]` | yes | Indicates on which view experiences this rendering should be used. Currently supported edit experiences:  * `'issue-view'` * `'issue-create'` * `'issue-transition'` * `'portal-request'` * `'issue-bulk-edit'`    `'issue-bulk-edit'` is available only for `Object` type as of now. |
-| `edit.isInline` | `boolean` |  | Indicates if your edit entry point should display inline on the issue view. |
-| `edit.validation.expression` | `string` |  | A Jira expression that validates the field value. See [validation](#validation) for more details. |
-| `edit.validation.errorMessage` | `string` or `i18n object` |  | The error message to show when the validation expression returns `false`.  The `i18n object` allows for translation. See [i18n object](#i18n-object). |
-| `edit.parser.expression` | `string` |  | A Jira expression that parses strings into valid values of this field. See [parser](#parser) for more details. |
-| `schema` | `object` | Allowed only for the `object` type | A [JSON schema](https://json-schema.org/) that desribes values stored in the field. |
-| `displayConditions` | `object` |  | The object that defines whether or not the field is displayed on the issue view or global issue create (GIC) (other views or REST APIs are not affected). See [display conditions](#display-conditions). |
-| `searchSuggestions.expression` | `string` | Requires either `function` or `expression`. Only one of the two properties must be present. | A [Jira expression](/cloud/jira/platform/jira-expressions/) that provides value suggestions in advanced search. For `object` fields, this can also provide suggestions for field properties that set `searchSuggestionsEnabled` to `true` in the schema. See [search suggestions](#search-suggestions) for more details. |
-| `searchSuggestions.function` | `string` | Requires either `function` or `expression`. Only one of the two properties must be present. | A reference to the `function` module that provides value suggestions in advanced search. For `object` fields, this can also provide suggestions for field properties that set `searchSuggestionsEnabled` to `true` in the schema. See [search suggestions](#search-suggestions) for more details. |
-| `unlicensedAccess` | List<string> |  | A list of unlicensed user types that can access this module. Valid values are: `unlicensed`, `customer`, and `anonymous`. For more information, see [Access to Forge apps for unlicensed users](/platform/forge/access-to-forge-apps-for-unlicensed-users). |
-
-## Rendering
-
-### View mode
-
-Forge apps can provide rendering of the field with [UI Kit](/platform/forge/ui-kit/).
-
-##### UI Kit
-
-```
-```
-1
-2
-```
-
-
-
-```
-modules:
-    jira:customField:
-      view:
-        resource: key
-        render: native
-```
-```
-
-You can obtain the current value of the field from the [useProductContext](/platform/forge/ui-kit/hooks/use-product-context/) hook, like this:
-
-```
-```
-1
-2
-```
-
-
-
-```
-const context = useProductContext();
-const fieldValue = context?.extension.fieldValue;
-```
-```
-
-### Edit mode
-
-Forge apps can optionally provide their own editing experience of the field
-with [UI Kit](/platform/forge/ui-kit/) or [Custom UI](/platform/forge/custom-ui/) by specifying the `edit` property.
-
-##### UI Kit
-
-With UI Kit, use the [CustomFieldEdit](/platform/forge/ui-kit/jira-components/custom-field-edit) component to render the edit view.
-
-```
-```
-1
-2
-```
-
-
-
-```
-modules:
-    jira:customField:
-      edit:
-        resource: key
-        render: native
-```
-```
-
-You can obtain the current value of the field from the [getContext API](/platform/forge/custom-ui-bridge/view/#getcontext), like this:
-
-```
-```
-1
-2
-```
-
-
-
-```
-const { fieldValue } = await view.getContext();
-```
-```
-
-To update the field value, use the [submit API](/platform/forge/apis-reference/ui-api-bridge/view/#submit), like this:
-
-```
-```
-1
-2
-```
-
-
-
-```
-await view.submit(fieldValue);
-```
-```
-
-Default editing, appropriate to the field's data type, is used if the edit resource is not provided.
-
-##### Custom UI
-
-```
-```
-1
-2
-```
-
-
-
-```
-modules:
-    jira:customField:
-      edit:
-        resource: key
-```
-```
-
-You can obtain the current value of the field from the [getContext API](/platform/forge/custom-ui-bridge/view/#getcontext), like this:
-
-```
-```
-1
-2
-```
-
-
-
-```
-const { fieldValue } = await view.getContext();
-```
-```
-
-To update the field value, use the [submit API](/platform/forge/apis-reference/ui-api-bridge/view/#submit), like this:
-
-```
-```
-1
-2
-```
-
-
-
-```
-await view.submit(fieldValue);
-```
-```
-
-Default editing, appropriate to the field's data type, is used if the edit resource is not provided.
-
-### Experience
-
-The `experience` property determines where a specific extension should be rendered within Jira views. Jira will default to rendering the built-in field if a view or edit entry point lacks a defined experience.
-This means that extensions must now opt-in for new views. This change ensures that fields which are irrelevant to the context or may not function correctly are not rendered.
-
-```
-```
-1
-2
-```
-
-
-
-```
-jira:customFieldType:
-  - key: cf-with-experience
-    name: Example custom field
-    description: This field will render on every view
-    type: number
-    edit:
-      resource: key
-      render: native
-      isInline: true
-      experience:
-        - "issue-view"
-        - "issue-create"
-        - "issue-transition"
-        - "portal-request"
-    view:
-      resource: key
-      render: native
-      isInline: true
-      experience:
-        - "issue-view"
-        - "portal-view"
-```
-```
-
-### Issue view
-
-By default, when you define an editing function for a Jira custom field created by a Forge app, switching to the field’s edit mode opens a modal. However, when using [UI Kit](/platform/forge/ui-kit/) or [Custom UI](/platform/forge/custom-ui/), you can enable inline editing by including the `isInline` property in the app’s manifest.
-
-```
-```
-1
-2
-```
-
-
-
-```
-modules:
-  jira:customField:
-    edit:
-      resource: key
-      render: native
-      isInline: true
-```
-```
-
-The `isInline` property is added temporarily for a [deprecation period of modal experience](https://developer.atlassian.com/changelog/#CHANGE-2536) and will be removed on **August 1, 2025**.
-After this date all fields on issue view will be rendered inline by default. If you still want to use modal experience in your fields,
-use the [Modal](/platform/forge/ui-kit/components/modal/) component for UI Kit fields and the [Modal bridge API](/platform/forge/apis-reference/ui-api-bridge/modal/) for Custom UI fields.
-
-For UI Kit, use the [CustomFieldEdit](/platform/forge/ui-kit/jira-components/custom-field-edit) component to render the edit view.
-In issue view, the `onSubmit` function in the CustomFieldEdit component will be called on blur events, "Enter" key press, or on clicking confirmation action button, so you can place
-the submit logic there. Otherwise, you can create your own logic to use the [submit API](/platform/forge/apis-reference/ui-api-bridge/view/#submit) outside the `onSubmit` function.
-
-#### Inline edit migration guide
-
-Here are two guides for migrating apps to use `isInline` property:
-
-How to edit custom fields inline (suggested approach for minimalistic UI)
-
-##### Original manifest and edit files
-
-The `manifest.yml` file with no `isInline` property:
-
-```
-```
-1
-2
-```
-
-
-
-```
-modules:
-  jira:customField:
-    - key: my-cf
-      ...
-      edit:
-        resource: edit
-        render: native
-        experience:
-          - "issue-create"
-          - "issue-transition"
-          - "issue-view"
-          - "portal-request"
-      ...
-```
-```
-
-The `edit.jsx` file with the deprecated way of app rendering:
-
-```
-```
-1
-2
+65
 ```
 
 
@@ -501,7 +550,7 @@ const Edit = () => {
 ```
 
 Outcome:
-![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.2282)
+![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.2283)
 
 ##### Updated files
 
@@ -513,6 +562,19 @@ The `manifest.yml` file with `isInline` property:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
 ```
 
 
@@ -541,6 +603,32 @@ The `edit.jsx` file - version with inline edit experience:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
 ```
 
 
@@ -577,7 +665,7 @@ const Edit = () => {
 ```
 
 Outcome:
-![Updated experience to inline edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-inline.png?_v=1.5800.2282)
+![Updated experience to inline edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-inline.png?_v=1.5800.2283)
 
 
 How to edit custom fields in the modal (for more complex UI)
@@ -590,6 +678,18 @@ The `manifest.yml` file with no `isInline` property:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
 ```
 
 
@@ -617,6 +717,69 @@ The `edit.jsx` file with the deprecated way of app rendering:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
 ```
 
 
@@ -690,7 +853,7 @@ const Edit = () => {
 ```
 
 Outcome:
-![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.2282)
+![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.2283)
 
 ##### Updated files
 
@@ -702,6 +865,19 @@ The `manifest.yml` file with `isInline` property:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
 ```
 
 
@@ -730,6 +906,66 @@ The `edit.jsx` - version with modal edit experience:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
 ```
 
 
@@ -800,7 +1036,7 @@ ForgeReconciler.render(
 ```
 
 Outcome:
-![Updated experience to modal edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-new-modal.png?_v=1.5800.2282)
+![Updated experience to modal edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-new-modal.png?_v=1.5800.2283)
 
 ### Issue creation and issue transition dialog
 
@@ -820,6 +1056,8 @@ from the Atlassian app context:
 ```
 1
 2
+3
+4
 ```
 
 
@@ -885,6 +1123,19 @@ If your app's edit experience relies on issue or project context, you need to up
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
 ```
 
 
@@ -955,6 +1206,9 @@ To change that behavior, set the `export` property to `true`:
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -979,6 +1233,8 @@ For example, you can render a text-based progress bar for a field that stores pr
 ```
 1
 2
+3
+4
 ```
 
 
@@ -1001,6 +1257,10 @@ While such external calls are not possible in Jira expressions, you can store th
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -1027,6 +1287,9 @@ For example, if a number field stores 42 and your manifest defines a formatter l
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -1135,6 +1398,30 @@ This is an example of a field that stores money. It showcases the use of:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
 ```
 
 
@@ -1174,6 +1461,10 @@ The schema ensures that values of this field look like this:
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -1207,6 +1498,7 @@ For example, to create a field that stores a list of strings, declare it as:
 ```
 1
 2
+3
 ```
 
 
@@ -1281,6 +1573,30 @@ The following examples show Dynamic Module implementations specific to this modu
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
 ```
 
 
@@ -1320,6 +1636,31 @@ console.log(`Response: ${response.status} ${body}`);
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
 ```
 
 
@@ -1417,6 +1758,9 @@ Allow only numbers between 0 and 100, plus empty (`null`) values:
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -1438,6 +1782,13 @@ unless it's a new issue being created, and the field value is empty.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -1475,6 +1826,12 @@ Manifest example:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -1498,6 +1855,23 @@ Here is a payload example:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
 ```
 
 
@@ -1530,6 +1904,12 @@ Here is an example of how to define the value function:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -1561,6 +1941,12 @@ So the function would have to return a list of values like this:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -1632,6 +2018,9 @@ The actual values stored by the field would be JSON objects that look like this:
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -1653,6 +2042,13 @@ the app should declare a parser that can take such a string and transform it int
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -1729,6 +2125,18 @@ Similarly, the function receives an argument object with the same set of informa
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
 ```
 
 
@@ -1756,6 +2164,8 @@ The following example shows a signature that can serve as a starting point for y
 ```
 1
 2
+3
+4
 ```
 
 
@@ -1777,6 +2187,15 @@ or an object that contains the value that’s used in JQL when the user selects 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -1881,6 +2300,40 @@ The following example declares a number-type field that represents issue progres
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
 ```
 
 
@@ -1936,6 +2389,17 @@ The minimum required properties for a `jira:customField` are `key`, `name`, `des
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
 ```
 
 
@@ -2029,6 +2493,10 @@ Set `readOnly: true` in your manifest. Read-only fields can only be updated by y
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -2052,6 +2520,9 @@ Use the `edit.validation.expression` property with Jira expressions:
 ```
 1
 2
+3
+4
+5
 ```
 
 

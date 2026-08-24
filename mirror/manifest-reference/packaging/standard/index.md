@@ -26,32 +26,20 @@ The export must be a function. Both a named export and a declaration like
 For example, the following manifest excerpt:
 
 ```
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-modules:
-  trigger:
-    - key: pickle
-      function: main
-      events:
-        - avi:jira:updated:issue
-  function:
-    - key: main
-      handler: cucumber/two.handler
-app:
-  package:
-    bundler: manual@2026
-    path: backend/dist
+1modules:
+2  trigger:
+3    - key: pickle
+4      function: main
+5      events:
+6        - avi:jira:updated:issue
+7  function:
+8    - key: main
+9      handler: cucumber/two.handler
+10app:
+11  package:
+12    bundler: manual@2026
+13    path: backend/dist
+14
 ```
 
 can be satisfied by having `backend/dist/cucumber/two.js` export a function
@@ -75,6 +63,15 @@ entry map. For example:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -101,6 +98,12 @@ particular resource in the body, using relative paths. For example,
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 

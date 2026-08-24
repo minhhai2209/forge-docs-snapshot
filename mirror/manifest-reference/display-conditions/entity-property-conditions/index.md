@@ -22,28 +22,18 @@ Property conditions are defined in the `displayConditions` section of a module i
 file, as shown below:
 
 ```
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-modules:
-  confluence:contentBylineItem:
-    - key: example-app-key
-      function: main
-      title: Example App
-      displayConditions:
-        entityPropertyEqualTo:
-          entity: content
-          propertyKey: myPropertyKey
-          value: myValue
-          objectName: myNestedField.subField
+1modules:
+2  confluence:contentBylineItem:
+3    - key: example-app-key
+4      function: main
+5      title: Example App
+6      displayConditions:
+7        entityPropertyEqualTo:
+8          entity: content
+9          propertyKey: myPropertyKey
+10          value: myValue
+11          objectName: myNestedField.subField
+12
 ```
 
 You can use the operators `and`, `or`, and `not` to build more complex display rules that involve
@@ -69,6 +59,12 @@ is evaluated against the string `myValue` for the JSON property shown below:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -105,6 +101,8 @@ property with the key `myPropertyKey`:
 ```
 1
 2
+3
+4
 ```
 
 
@@ -122,6 +120,9 @@ entityPropertyExists:
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -140,6 +141,9 @@ The property condition evaluates to `true` for the property value shown below:
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -168,6 +172,10 @@ The referred property value or field value is converted to a string before the c
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -187,6 +195,9 @@ The property condition evaluates to `true` for the property value shown below:
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -222,6 +233,11 @@ The property condition shown below evaluates to `true` for the property value
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -246,6 +262,9 @@ and is contained in the property value array:
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -278,6 +297,11 @@ The property condition shown below evaluates to `true` for the property value
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -319,6 +343,10 @@ by applying the `JSON.stringify` function.
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -342,6 +370,8 @@ If `objectName` equals to `myField.mySubField`, the matching property value is `
 ```
 1
 2
+3
+4
 ```
 
 
@@ -390,6 +420,11 @@ structure is *not* allowed:
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -410,6 +445,11 @@ You can use an array if you need to use multiple property conditions on the same
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -433,6 +473,12 @@ Alternatively, the same condition can be defined like this:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -457,6 +503,10 @@ conditions tree:
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 

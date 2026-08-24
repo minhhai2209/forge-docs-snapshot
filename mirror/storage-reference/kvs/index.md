@@ -6,20 +6,14 @@ The [Key-Value Store](/platform/forge/storage-reference/kvs-api/) provides simpl
 For example:
 
 ```
-1
+1import { kvs, WhereConditions } from '@forge/kvs';
 2
-3
-4
-5
-6
-7
-import { kvs, WhereConditions } from '@forge/kvs';
-
-await kvs.set('foo', 'bar');
-await kvs.get('foo');
-await kvs.query()
-  .where('key', WhereConditions.beginsWith('fo'))
-  .getMany();
+3await kvs.set('foo', 'bar');
+4await kvs.get('foo');
+5await kvs.query()
+6  .where('key', WhereConditions.beginsWith('fo'))
+7  .getMany();
+8
 ```
 
 To safeguard sensitive data in a more secure manner, the Key-Value Store allows for storing encrypted data via the [Secret store](/platform/forge/storage-reference/kvs-api-secret).
@@ -50,6 +44,8 @@ Using the `@forge/kvs` package requires the `storage:app` scope in your manifest
 ```
 1
 2
+3
+4
 ```
 
 
@@ -131,6 +127,36 @@ You will have to use the same parameters as the initial query. See the example b
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
 ```
 
 
@@ -182,6 +208,18 @@ Hierarchical keys can be constructed to allow for nested entities to be fetched 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
 ```
 
 

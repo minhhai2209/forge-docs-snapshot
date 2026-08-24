@@ -16,6 +16,22 @@ In addition, since the context/configuration/property values outputted by the `@
 **UI Kit 1**
 
 ```
+1import ForgeUI, { useState, useEffect, useAction, Text } from '@forge/ui';
+2
+3const App = () => {
+4  const [count, setCount] = useState(0);
+5
+6  return (
+7    <Text>Count: {count}</Text>
+8  );
+9}
+10
+```
+
+**Latest version of UI Kit**
+
+```
+```
 1
 2
 3
@@ -25,23 +41,8 @@ In addition, since the context/configuration/property values outputted by the `@
 7
 8
 9
-import ForgeUI, { useState, useEffect, useAction, Text } from '@forge/ui';
-
-const App = () => {
-  const [count, setCount] = useState(0);
-
-  return (
-    <Text>Count: {count}</Text>
-  );
-}
-```
-
-**Latest version of UI Kit**
-
-```
-```
-1
-2
+10
+11
 ```
 
 
@@ -79,6 +80,20 @@ Your `manifest.yml` file should look like the following:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
 ```
 
 
@@ -138,6 +153,15 @@ The component APIs in UI Kit are very different to UI Kit 1 components. The brea
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -177,6 +201,8 @@ const CheckboxGroup = () => {
 ```
 1
 2
+3
+4
 ```
 
 
@@ -225,6 +251,12 @@ const CheckboxGroup = () => {
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -250,6 +282,7 @@ const CheckboxGroup = () => {
 ```
 1
 2
+3
 ```
 
 
@@ -277,6 +310,14 @@ const CheckboxGroup = () => {
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -323,6 +364,8 @@ const CheckboxGroup = () => {
 ```
 1
 2
+3
+4
 ```
 
 
@@ -345,6 +388,8 @@ const CheckboxGroup = () => {
 ```
 1
 2
+3
+4
 ```
 
 
@@ -364,6 +409,7 @@ const CheckboxGroup = () => {
 ```
 1
 2
+3
 ```
 
 
@@ -406,6 +452,18 @@ the top-level component has no props and can simply be deleted.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
 ```
 
 
@@ -433,6 +491,19 @@ export const run = render(
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
 ```
 
 
@@ -477,6 +548,18 @@ The config property in the macro module is a boolean instead of a function refer
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
 ```
 
 
@@ -504,6 +587,17 @@ modules:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
 ```
 
 
@@ -535,6 +629,16 @@ The `MacroConfig` top-level component has also been removed from UI Kit.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -560,6 +664,18 @@ export const config = render(<Config />);
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
 ```
 
 
@@ -595,6 +711,15 @@ For example, to call the [Key-Value Store](/platform/forge/storage-reference/kvs
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -619,6 +744,20 @@ export const handler = resolver.getDefinitions();
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
 ```
 
 
@@ -653,6 +792,16 @@ You'll notice that the folder structure is now different. The following modifica
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -678,6 +827,12 @@ ui-kit-app
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -703,6 +858,16 @@ Jira and Confluence API requests can be made from the app frontend via `@forge/b
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -728,6 +893,15 @@ await api.asUser()
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -762,6 +936,12 @@ If your app has an `export` property in the manifest, you need to rename it to `
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -783,6 +963,12 @@ modules:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -806,6 +992,10 @@ Here is an example of an update to the `export` function that you might make:
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -825,6 +1015,12 @@ export const macroExport = render(
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 

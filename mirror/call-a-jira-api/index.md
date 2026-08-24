@@ -19,92 +19,50 @@ The `@forge/bridge` package simplifies HTTP operations and contains other Forge 
 2. Open the `src/frontend/index.jsx` and replace its contents with the following code:
 
    ```
-   1
-   2
-   3
-   4
-   5
+   1import React from "react";
+   2// useProductContext hook retrieves current Atlassian app context
+   3import ForgeReconciler, { Text, useProductContext } from "@forge/react";
+   4// requestJira calls the Jira REST API
+   5import { requestJira } from "@forge/bridge";
    6
-   7
-   8
+   7const App = () => {
+   8  const context = useProductContext();
    9
-   10
-   11
-   12
+   10  // add the the 'comments' variable to store comments data
+   11  const [comments, setComments] = React.useState();
+   12  console.log(`Number of comments on this issue: ${comments?.length}`);
    13
-   14
-   15
-   16
-   17
-   18
-   19
-   20
-   21
-   22
+   14  // start of function that calls Jira REST API
+   15  const fetchCommentsForIssue = async () => {
+   16    // extract issue ID instead expecting one from function input
+   17    const issueId = context?.extension.issue.id;
+   18    // modify to take issueId variable
+   19    const res = await requestJira(`/rest/api/3/issue/${issueId}/comment`);
+   20    const data = await res.json();
+   21    return data.comments;
+   22  };
    23
-   24
-   25
-   26
-   27
-   28
-   29
-   30
-   31
-   32
+   24  React.useEffect(() => {
+   25    if (context) {
+   26      // extract issue ID from the context
+   27      const issueId = context.extension.issue.id;
+   28      // use the issue ID to call fetchCommentsForIssue(),
+   29      // then updates data stored in 'comments'
+   30      fetchCommentsForIssue().then(setComments);
+   31    }
+   32  }, [context]);
    33
-   34
-   35
-   36
-   37
+   34  // This UI will be updated in the next part of this tutorial
+   35  // to display number of comments onto the screen
+   36  return <Text>Hello world!</Text>;
+   37};
    38
-   39
-   40
-   41
-   42
-   43
-   import React from "react";
-   // useProductContext hook retrieves current Atlassian app context
-   import ForgeReconciler, { Text, useProductContext } from "@forge/react";
-   // requestJira calls the Jira REST API
-   import { requestJira } from "@forge/bridge";
-
-   const App = () => {
-     const context = useProductContext();
-
-     // add the the 'comments' variable to store comments data
-     const [comments, setComments] = React.useState();
-     console.log(`Number of comments on this issue: ${comments?.length}`);
-
-     // start of function that calls Jira REST API
-     const fetchCommentsForIssue = async () => {
-       // extract issue ID instead expecting one from function input
-       const issueId = context?.extension.issue.id;
-       // modify to take issueId variable
-       const res = await requestJira(`/rest/api/3/issue/${issueId}/comment`);
-       const data = await res.json();
-       return data.comments;
-     };
-
-     React.useEffect(() => {
-       if (context) {
-         // extract issue ID from the context
-         const issueId = context.extension.issue.id;
-         // use the issue ID to call fetchCommentsForIssue(),
-         // then updates data stored in 'comments'
-         fetchCommentsForIssue().then(setComments);
-       }
-     }, [context]);
-
-     // This UI will be updated in the next part of this tutorial
-     // to display number of comments onto the screen
-     return <Text>Hello world!</Text>;
-   };
-
-   ForgeReconciler.render(
-     <React.StrictMode>
-       <App />
-     </React.StrictMode>
-   );
+   39ForgeReconciler.render(
+   40  <React.StrictMode>
+   41    <App />
+   42  </React.StrictMode>
+   43);
+   44
    ```
 
    This code includes comments to help you quickly understand what each section does.
@@ -155,6 +113,7 @@ add the required scope to your `manifest.yml` file (in this case, `read:jira-wor
    ```
    1
    2
+   3
    ```
 
 
@@ -193,5 +152,5 @@ When you save the `index.jsx` file, the tunnel output in the developer console m
 In the next tutorial, you'll learn how to make changes to your app's frontend using the
 [UI Kit components](/platform/forge/ui-kit/components/) of Forge.
 
-[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.2282)](/platform/forge/build-a-hello-world-app-in-jira/)
-[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.2282)](/platform/forge/change-the-jira-frontend-with-the-ui-kit/)
+[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.2283)](/platform/forge/build-a-hello-world-app-in-jira/)
+[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.2283)](/platform/forge/change-the-jira-frontend-with-the-ui-kit/)

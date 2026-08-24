@@ -161,6 +161,17 @@ Example request (*application/json*):
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
 ```
 
 
@@ -200,6 +211,14 @@ Example request (*application/json*):
   ```
   1
   2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+  10
   ```
 
 
@@ -227,6 +246,9 @@ Example request (*application/json*):
   ```
   1
   2
+  3
+  4
+  5
   ```
 
 
@@ -248,6 +270,9 @@ Example request (*application/json*):
   ```
   1
   2
+  3
+  4
+  5
   ```
 
 
@@ -281,6 +306,12 @@ We assume data is being stored in Forge storage with the following shape:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 

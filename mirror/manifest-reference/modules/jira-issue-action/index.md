@@ -8,32 +8,24 @@ It works in the
 [new issue view](https://support.atlassian.com/jira-core-cloud/docs/what-is-the-new-jira-issue-view/)
 but not the old issue view.
 
-![Example of an Issue action button](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-action-location.png?_v=1.5800.2282)
+![Example of an Issue action button](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-action-location.png?_v=1.5800.2283)
 
 This is an example of the triggered modal dialog:
 
-![Example of an Issue action with the above sample code](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-action-demo.png?_v=1.5800.2282)
+![Example of an Issue action with the above sample code](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-action-demo.png?_v=1.5800.2283)
 
 ## Manifest example
 
 ```
-```
-1
-2
-```
-
-
-
-```
-modules:
-  jira:issueAction:
-    - key: hello-world-issue-action
-      resource: main
-      resolver:
-        function: resolver
-      render: native
-      title: Hello World
-```
+1modules:
+2  jira:issueAction:
+3    - key: hello-world-issue-action
+4      resource: main
+5      resolver:
+6        function: resolver
+7      render: native
+8      title: Hello World
+9
 ```
 
 ## Properties
@@ -108,6 +100,26 @@ The following examples show Dynamic Module implementations specific to this modu
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
 ```
 
 
@@ -143,6 +155,27 @@ console.log(`Response: ${response.status} ${body}`);
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
 ```
 
 
@@ -181,6 +214,9 @@ Apps can receive frontend events that will notify your app when an issue has bee
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -201,6 +237,13 @@ However, if you have multiple issue view modules in your app, you should use the
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 

@@ -50,6 +50,21 @@ The following pattern is common in Node.js but is **unsafe in Forge** because
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
 ```
 
 
@@ -84,6 +99,13 @@ object.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -115,6 +137,12 @@ Compute or fetch everything within the handler function itself.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -140,6 +168,26 @@ process reused for tenant B will only find tenant B's data.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
 ```
 
 
@@ -187,6 +235,20 @@ to persist across invocations.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
 ```
 
 
@@ -218,6 +280,13 @@ Module-level state that is **read-only** and **not tenant-specific** is safe.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 

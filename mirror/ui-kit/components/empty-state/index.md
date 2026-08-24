@@ -3,8 +3,8 @@
 To add the `EmptyState` component to your app:
 
 ```
-1
-import { EmptyState } from "@forge/react";
+1import { EmptyState } from "@forge/react";
+2
 ```
 
 ## Description
@@ -31,12 +31,14 @@ An empty state appears when there is no data to display and describes what the u
 
 The only required property of an empty state is the header.
 
-![Example image of empty state](https://dac-static.atlassian.com/platform/forge/ui-kit/images/empty-state/empty-state-default.png?_v=1.5800.2282)
+![Example image of empty state](https://dac-static.atlassian.com/platform/forge/ui-kit/images/empty-state/empty-state-default.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
 ```
 
 
@@ -50,12 +52,16 @@ export const EmptyStateExample = () => {
 
 The `headingLevel` rendered by default is `4`. To make sure that the empty state is accessible, headers must follow a logical order. If the empty state does not follow a `h3` or `h4` in the reading order, then you will need to modify the heading order to the next logical heading level.
 
-![Example image of empty state with custom heading level](https://dac-static.atlassian.com/platform/forge/ui-kit/images/empty-state/empty-state-custom-heading-level.png?_v=1.5800.2282)
+![Example image of empty state with custom heading level](https://dac-static.atlassian.com/platform/forge/ui-kit/images/empty-state/empty-state-custom-heading-level.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -73,12 +79,19 @@ export const CustomHeadingLevelEmptyStateExample = () => {
 
 Descriptions should add useful and relevant additional information.
 
-![Example image of empty state with description](https://dac-static.atlassian.com/platform/forge/ui-kit/images/empty-state/empty-state-description.png?_v=1.5800.2282)
+![Example image of empty state with description](https://dac-static.atlassian.com/platform/forge/ui-kit/images/empty-state/empty-state-description.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -101,12 +114,19 @@ export const EmptyStateWithDescriptionExample = () => {
 
 Use a primary action button to recommend the best next step that people can take.
 
-![Example image of empty state one action](https://dac-static.atlassian.com/platform/forge/ui-kit/images/empty-state/empty-state-actions-primary.png?_v=1.5800.2282)
+![Example image of empty state one action](https://dac-static.atlassian.com/platform/forge/ui-kit/images/empty-state/empty-state-actions-primary.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -127,12 +147,20 @@ export const EmptyStateWithOneActionExample = () => {
 
 Use a secondary action button to recommend an alternate step that people could take. This will render on the left side of the primary action button.
 
-![Example image of empty state with two actions](https://dac-static.atlassian.com/platform/forge/ui-kit/images/empty-state/empty-state-actions-secondary.png?_v=1.5800.2282)
+![Example image of empty state with two actions](https://dac-static.atlassian.com/platform/forge/ui-kit/images/empty-state/empty-state-actions-secondary.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -154,12 +182,25 @@ export const EmptyStateWithTwoActionsExample = () => {
 
 Use tertiary action buttons to link to external resources or documentation to further explain how to resolve the empty state. This will render below the primary and secondary action buttons.
 
-![Example image of empty state with all actions](https://dac-static.atlassian.com/platform/forge/ui-kit/images/empty-state/empty-state-actions-tertiary.png?_v=1.5800.2282)
+![Example image of empty state with all actions](https://dac-static.atlassian.com/platform/forge/ui-kit/images/empty-state/empty-state-actions-tertiary.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
 ```
 
 
@@ -186,12 +227,20 @@ export const EmptyStateWithAllActionsExample = () => {
 
 Use the `isLoading` prop to indicate a loading state. This will show a spinner next to the action buttons when true.
 
-![Example image of loading state empty state](https://dac-static.atlassian.com/platform/forge/ui-kit/images/empty-state/empty-state-loading-state.png?_v=1.5800.2282)
+![Example image of loading state empty state](https://dac-static.atlassian.com/platform/forge/ui-kit/images/empty-state/empty-state-loading-state.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -215,12 +264,21 @@ export const LoadingStateEmptyStateExample = () => {
 
 The horizontal space that an empty state takes up can be controlled with the `width` prop. It can be set to either `narrow` or `wide`, where the default is `wide`.
 
-![Example image of narrow empty state](https://dac-static.atlassian.com/platform/forge/ui-kit/images/empty-state/empty-state-width-narrow.png?_v=1.5800.2282)
+![Example image of narrow empty state](https://dac-static.atlassian.com/platform/forge/ui-kit/images/empty-state/empty-state-width-narrow.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 

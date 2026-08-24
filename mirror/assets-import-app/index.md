@@ -6,7 +6,7 @@ It also contains the triggers that are activated on the deletion, starting, and 
 
 The final app looks like the following:
 
-![Assets Import Type Selection Screen.](https://dac-static.atlassian.com/platform/forge/images/assets-import-type-selection.png?_v=1.5800.2282)
+![Assets Import Type Selection Screen.](https://dac-static.atlassian.com/platform/forge/images/assets-import-type-selection.png?_v=1.5800.2283)
 
 ## Before you begin
 
@@ -78,6 +78,10 @@ app.
    ```
    1
    2
+   3
+   4
+   5
+   6
    ```
 
 
@@ -184,6 +188,12 @@ Navigate to `src/resolvers/index.jsx`. These are pieces of code you can implemen
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
    ```
 
 
@@ -199,13 +209,19 @@ Navigate to `src/resolvers/index.jsx`. These are pieces of code you can implemen
    ```
    ```
 
-   ![Deleting an Assets App Type Import Structure.](https://dac-static.atlassian.com/platform/forge/images/assets-delete-import.png?_v=1.5800.2282)
+   ![Deleting an Assets App Type Import Structure.](https://dac-static.atlassian.com/platform/forge/images/assets-delete-import.png?_v=1.5800.2283)
 2. startImport - Triggers on the start of an import
 
    ```
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
    ```
 
 
@@ -221,13 +237,19 @@ Navigate to `src/resolvers/index.jsx`. These are pieces of code you can implemen
    ```
    ```
 
-   ![Starting an Assets App Type Import.](https://dac-static.atlassian.com/platform/forge/images/assets-start-import.png?_v=1.5800.2282)
+   ![Starting an Assets App Type Import.](https://dac-static.atlassian.com/platform/forge/images/assets-start-import.png?_v=1.5800.2283)
 3. stopImport - Triggers on the cancellation of an import
 
    ```
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
    ```
 
 
@@ -243,13 +265,19 @@ Navigate to `src/resolvers/index.jsx`. These are pieces of code you can implemen
    ```
    ```
 
-   ![Stopping an Assets App Type Import.](https://dac-static.atlassian.com/platform/forge/images/assets-stop-import.png?_v=1.5800.2282)
+   ![Stopping an Assets App Type Import.](https://dac-static.atlassian.com/platform/forge/images/assets-stop-import.png?_v=1.5800.2283)
 4. importStatus - Triggers to display the status of the import on the Imports UI
 
    ```
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
    ```
 
 
@@ -265,9 +293,9 @@ Navigate to `src/resolvers/index.jsx`. These are pieces of code you can implemen
    ```
    ```
 
-   ![Showing progress on an Assets App Type Import.](https://dac-static.atlassian.com/platform/forge/images/assets-progress-import-not-configured.png?_v=1.5800.2282)
+   ![Showing progress on an Assets App Type Import.](https://dac-static.atlassian.com/platform/forge/images/assets-progress-import-not-configured.png?_v=1.5800.2283)
 
-   ![Showing progress on an Assets App Type Import.](https://dac-static.atlassian.com/platform/forge/images/assets-progress-import-ready.png?_v=1.5800.2282)
+   ![Showing progress on an Assets App Type Import.](https://dac-static.atlassian.com/platform/forge/images/assets-progress-import-ready.png?_v=1.5800.2283)
 
 There are two status enums that can be returned.
 
@@ -289,6 +317,12 @@ can be found [here](/cloud/assets/rest/api-group-importsource/#api-group-imports
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -318,6 +352,13 @@ using `asUser()` and `asApp()` are provided below.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -338,6 +379,13 @@ const asUserRequest = await api
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -369,6 +417,12 @@ the `Import data` button to be active, as shown below.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -392,7 +446,7 @@ Assets.
 We have included an example of how to use Forge's Async Events API to import 3rd party data into Assets by setting up a
 controller and worker queue for data ingestion.
 
-![Forge Template Async Events API example](https://dac-static.atlassian.com/platform/forge/images/assets-import-async-events-api-example.png?_v=1.5800.2282)
+![Forge Template Async Events API example](https://dac-static.atlassian.com/platform/forge/images/assets-import-async-events-api-example.png?_v=1.5800.2283)
 
 From the diagram above:
 
@@ -402,6 +456,9 @@ The `Start Trigger` is represented below with a code snippet in the template fro
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -420,6 +477,15 @@ The `Controller Queue` is represented below with a code snippet in the template 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -444,6 +510,11 @@ The `Generic Worker Queue` is represented below with a code snippet in the templ
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 

@@ -52,6 +52,18 @@ The final project structure after completing the walkthrough:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
 ```
 
 
@@ -85,6 +97,27 @@ Define modules in `manifest.yml` for the `llm`, queue `consumer` (extended timeo
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
 ```
 
 
@@ -123,6 +156,15 @@ Ensure your `package.json` includes the necessary Forge SDK packages, for exampl
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -151,6 +193,50 @@ Ensure your `package.json` includes the necessary Forge SDK packages, for exampl
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
 ```
 
 
@@ -215,6 +301,28 @@ The resolver provides two functions:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
 ```
 
 
@@ -254,6 +362,33 @@ Handle the long-running process for the LLM app. The consumer must sign a token 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
 ```
 
 
@@ -298,6 +433,8 @@ Ensure you export the handlers for both the consumer and resolver functions.
 ```
 1
 2
+3
+4
 ```
 
 
@@ -317,6 +454,7 @@ After completing the steps, deploy and then install the app into your site or en
 ```
 1
 2
+3
 ```
 
 

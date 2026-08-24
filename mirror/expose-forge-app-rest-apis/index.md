@@ -19,8 +19,8 @@ Currently, this functionality is only available for Jira and Confluence apps.
 Ensure you are on the latest version of the Forge CLI. To update, run:
 
 ```
-1
-npm install -g @forge/cli@latest
+1npm install -g @forge/cli@latest
+2
 ```
 
 ## Step 1: Define scopes
@@ -43,6 +43,45 @@ Configure your editor to use the following JSON Schema for the `custom-scopes.ya
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
 ```
 
 
@@ -97,6 +136,15 @@ Example `custom-scopes.yaml`:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -177,6 +225,13 @@ This returns a list of all scopes that are registered in the specified environme
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -212,6 +267,24 @@ the call. The developer-defined scope being mapped to the `/employeeName` `GET` 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
 ```
 
 
@@ -247,6 +320,11 @@ Map the function specified under `apiRoute` to a function in your code, such as 
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -271,6 +349,20 @@ Example `src/resolvers/index.js`:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
 ```
 
 

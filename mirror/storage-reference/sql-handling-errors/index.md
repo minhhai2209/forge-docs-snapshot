@@ -4,32 +4,20 @@ The `@forge/sql` package exports error codes. The following example shows how th
 `QUERY_TIMED_OUT` error:
 
 ```
-1
+1import { sql, errorCodes } from '@forge/sql'; 
 2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-import { sql, errorCodes } from '@forge/sql'; 
-
-try { 
-  await sql
-    .prepare("INSERT INTO city (id, city, population) VALUES (?, ?, ?)")
-    .bindParams(1, "Beijing", 100)
-    .execute();
-} 
-catch (error) { 
-  if (error.code === errorCodes.QUERY_TIMED_OUT) { 
-    // Handle query timeout
-  } 
-}
+3try { 
+4  await sql
+5    .prepare("INSERT INTO city (id, city, population) VALUES (?, ?, ?)")
+6    .bindParams(1, "Beijing", 100)
+7    .execute();
+8} 
+9catch (error) { 
+10  if (error.code === errorCodes.QUERY_TIMED_OUT) { 
+11    // Handle query timeout
+12  } 
+13} 
+14
 ```
 
 ## Error codes
@@ -57,6 +45,10 @@ response uses the following shape:
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -83,6 +75,16 @@ TiDB parse error:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -114,6 +116,20 @@ permitted alternative:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
 ```
 
 

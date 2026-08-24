@@ -24,32 +24,20 @@ A Connect macro and Forge macro cannot exist side-by-side in your manifest with 
 For example, if your Connect app had a macro with key `static-macro-key`, your manifest should include it in `modules.macro[].key`, like this:
 
 ```
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-modules:
-  macro:
-    - key: static-macro-key # Forge macro key - matches Connect macro key
-      resource: main
-      # ...
-remotes:
-  - key: connect
-    baseUrl: https://hello-world-app.example.com
-app:
-  id: ari:cloud:ecosystem::app/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
-  connect:
-    key: my-connect-app # Target connect app key
-    remote: connect
+1modules:
+2  macro:
+3    - key: static-macro-key # Forge macro key - matches Connect macro key
+4      resource: main
+5      # ...
+6remotes:
+7  - key: connect
+8    baseUrl: https://hello-world-app.example.com
+9app:
+10  id: ari:cloud:ecosystem::app/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+11  connect:
+12    key: my-connect-app # Target connect app key
+13    remote: connect
+14
 ```
 
 # Unlicensed and anonymous user access is not enabled by default in Forge
@@ -64,6 +52,13 @@ To preserve the same behaviour as your Connect macro, add `unlicensedAccess` to 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -98,6 +93,19 @@ Note that the Connect format uses an `extensionType` of `com.atlassian.confluenc
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
 ```
 
 
@@ -132,6 +140,22 @@ Note that the Forge format uses an `extensionType` of `com.atlassian.ecosystem`,
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
 ```
 
 
@@ -193,6 +217,32 @@ For example, if you had a parameter from your Connect app called `myConnectField
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
 ```
 
 
@@ -310,6 +360,10 @@ In this section, we cover some limitations and differences between Connect and F
   ```
   1
   2
+  3
+  4
+  5
+  6
   ```
 
 

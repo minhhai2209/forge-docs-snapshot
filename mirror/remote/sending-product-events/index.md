@@ -7,7 +7,7 @@ Specify remote endpoints in your app’s manifest and Forge will automatically r
 
 Given the high-volume nature of Forge events, remote invocations will have a timeout of 5 seconds. Your app needs to implement processing logic in an asynchronous fashion (for example, enqueuing events for a worker to process asynchronously). The diagram below illustrates such a solution.
 
-![Forge Remote diagram describing the flow of events and auth between Forge and remote application, with an event queue setup on the remote app](https://dac-static.atlassian.com/platform/forge/images/remote/remote-events-diagram.png?_v=1.5800.2282)
+![Forge Remote diagram describing the flow of events and auth between Forge and remote application, with an event queue setup on the remote app](https://dac-static.atlassian.com/platform/forge/images/remote/remote-events-diagram.png?_v=1.5800.2283)
 
 ## Getting started
 
@@ -28,6 +28,26 @@ Here’s an example `manifest.yml` of a module that routes an event to `/frc-eve
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
 ```
 
 
@@ -70,6 +90,16 @@ Information on the retry attempt will be provided in the `retryContext` property
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 

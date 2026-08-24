@@ -16,50 +16,29 @@ Custom entities are defined in your `manifest.yml` as part of the `storage` prop
 also includes an `indexes` section where you define your query's filter patterns (more on this later). The `storage` property is a child of `app`, and uses the following syntax:
 
 ```
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-app:
-  id: "ari:cloud:ecosystem::app/406d303d-0393-4ec4-ad7c-1435be94583a"
-[...]
-  storage:
-    entities:
-      - name: <custom entity name>
-        attributes:
-          <attribute1>: 
-            type: <type>
-          <attribute2>: 
-            type: <type>
-          <attributeN>: 
-            type: <type>
-        indexes: 
-          - <attributeN>
-          - <attributeN>
-          - name: <by-any-name>
-            partition: 
-              - <attribute1>
-              - <attribute2>
-            range: 
-              - <attributeN>
+1app:
+2  id: "ari:cloud:ecosystem::app/406d303d-0393-4ec4-ad7c-1435be94583a"
+3[...]
+4  storage:
+5    entities:
+6      - name: <custom entity name>
+7        attributes:
+8          <attribute1>: 
+9            type: <type>
+10          <attribute2>: 
+11            type: <type>
+12          <attributeN>: 
+13            type: <type>
+14        indexes: 
+15          - <attributeN>
+16          - <attributeN>
+17          - name: <by-any-name>
+18            partition: 
+19              - <attribute1>
+20              - <attribute2>
+21            range: 
+22              - <attributeN>
+23
 ```
 
 After declaring custom entities for your structure data, you can start building complex queries
@@ -142,6 +121,7 @@ A *simple* index specifies one attribute (which you can use to reference the ind
 ```
 1
 2
+3
 ```
 
 
@@ -168,6 +148,13 @@ The following snippet shows the basic syntax for a named index:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -224,6 +211,33 @@ The following `manifest.yml` excerpt shows a custom entity named `employee` with
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
 ```
 
 

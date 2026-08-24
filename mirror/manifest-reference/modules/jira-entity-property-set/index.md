@@ -39,6 +39,30 @@ This example bundles multiple entity properties under a single `jira:entityPrope
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
 ```
 
 
@@ -83,6 +107,7 @@ Once indexed, you can query entity property data using:
 ```
 1
 2
+3
 ```
 
 
@@ -111,6 +136,9 @@ This module requires the `read:jira-work` and `write:jira-work` scopes.
 ```
 1
 2
+3
+4
+5
 ```
 
 

@@ -8,24 +8,16 @@ which are data structures you can define according to your app's needs. Custom e
 For example:
 
 ```
-1
+1import kvs, { WhereConditions, Sort } from "@forge/kvs";
 2
-3
-4
-5
-6
-7
-8
-9
-import kvs, { WhereConditions, Sort } from "@forge/kvs";
-
-await kvs
-  .entity('employee')
-  .query()
-  .index('by-age')
-  .where(WhereConditions.greaterThan(30))
-  .sort(Sort.DESC)
-  .getMany()
+3await kvs
+4  .entity('employee')
+5  .query()
+6  .index('by-age')
+7  .where(WhereConditions.greaterThan(30))
+8  .sort(Sort.DESC)
+9  .getMany()
+10
 ```
 
 ## Quotas and limits
@@ -46,6 +38,8 @@ Using the `@forge/kvs` package requires the `storage:app` scope in your manifest
 ```
 1
 2
+3
+4
 ```
 
 
@@ -143,6 +137,36 @@ You will have to use the same parameters as the initial query. See the example b
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
 ```
 
 
@@ -194,6 +218,18 @@ Hierarchical keys can be constructed to allow for nested entities to be fetched 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
 ```
 
 

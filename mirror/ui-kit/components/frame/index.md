@@ -7,8 +7,8 @@ Frame component acts as a container for rendering static frontend applications, 
 To add the `Frame` component to your app:
 
 ```
-1
-import { Frame } from "@forge/react";
+1import { Frame } from "@forge/react";
+2
 ```
 
 ### Props
@@ -28,6 +28,22 @@ The `Frame` component has the following properties that need to be considered:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
 ```
 
 
@@ -65,6 +81,9 @@ For example, to allow inline CSS in your app, use the following configuration:
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -83,6 +102,9 @@ Here’s an another example for allowing scripts from specific sources using a s
 ```
 1
 2
+3
+4
+5
 ```
 
 

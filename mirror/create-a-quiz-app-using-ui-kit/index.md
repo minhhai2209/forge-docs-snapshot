@@ -10,7 +10,7 @@ and [stack](/platform/forge/ui-kit/components/stack/) to build the user interfac
 The purpose of this tutorial is to get familiar with using
 [UI Kit components](/platform/forge/ui-kit/components/), so it is a purely frontend app.
 
-![A gif is added to a Confluence page](https://dac-static.atlassian.com/platform/forge/images/quiz-app.gif?_v=1.5800.2282)
+![A gif is added to a Confluence page](https://dac-static.atlassian.com/platform/forge/images/quiz-app.gif?_v=1.5800.2283)
 
 ## Before you begin
 
@@ -73,6 +73,9 @@ in place of a Confluence page.
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -91,6 +94,21 @@ Your manifest file should look like this:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
 ```
 
 
@@ -129,6 +147,39 @@ to add further notes to be displayed to the user.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
 ```
 
 
@@ -177,11 +228,11 @@ We are going to build a basic UI to layout our components. The layout of the app
 (which shows the question), an associated image, buttons to display the four multi-choice options,
 and a button to go to the next question.
 
-![A diagram of the quiz app is added to a Confluence page](https://dac-static.atlassian.com/platform/forge/images/quiz-app-diagram.png?_v=1.5800.2282)
+![A diagram of the quiz app is added to a Confluence page](https://dac-static.atlassian.com/platform/forge/images/quiz-app-diagram.png?_v=1.5800.2283)
 
 We are also going to use `Inline` and `Stack` components to layout our components:
 
-![A diagram showing the inline and stack components is added to a Confluence page](https://dac-static.atlassian.com/platform/forge/images/quiz-app-diagram-inline-stack.png?_v=1.5800.2282)
+![A diagram showing the inline and stack components is added to a Confluence page](https://dac-static.atlassian.com/platform/forge/images/quiz-app-diagram-inline-stack.png?_v=1.5800.2283)
 
 Install the latest versions of the following packages in the top-level directory of the app:
 
@@ -213,6 +264,45 @@ Your `frontend/index.jsx` file should look like this:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
 ```
 
 
@@ -308,7 +398,7 @@ To view the quiz app:
 1. Go the site where your app is installed.
 2. Select the **Apps** tab on the top navigation bar and select your app to view.
 
-![The app is inserted into a Confluence page](https://dac-static.atlassian.com/platform/forge/images/quiz-app-part-1.png?_v=1.5800.2282)
+![The app is inserted into a Confluence page](https://dac-static.atlassian.com/platform/forge/images/quiz-app-part-1.png?_v=1.5800.2283)
 
 ## Step 6: Importing questions and adding states
 
@@ -365,6 +455,70 @@ to build it yourself, or replace your `frontend/index.jsx` with the following:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
 ```
 
 
@@ -445,7 +599,7 @@ that toggles whether to display the explanation.
 
 Your app should now look like this and can be playable:
 
-![A gif is added to a Confluence page](https://dac-static.atlassian.com/platform/forge/images/quiz-app-before-ending-screen.gif?_v=1.5800.2282)
+![A gif is added to a Confluence page](https://dac-static.atlassian.com/platform/forge/images/quiz-app-before-ending-screen.gif?_v=1.5800.2283)
 
 ## Step 7: Adding an ending screen
 
@@ -459,6 +613,93 @@ The final `frontend/index.jsx` should look like this:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
 ```
 
 

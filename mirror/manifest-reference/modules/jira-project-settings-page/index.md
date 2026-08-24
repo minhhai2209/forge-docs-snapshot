@@ -8,7 +8,7 @@ The page URL is constructed in the following format: `/jira/software/projects/{p
 
 When adding this to your app, use it as a top-level component.
 
-![Example of an project settings page](https://dac-static.atlassian.com/platform/forge/snippets/images/project-settings-page.jpg?_v=1.5800.2282)
+![Example of an project settings page](https://dac-static.atlassian.com/platform/forge/snippets/images/project-settings-page.jpg?_v=1.5800.2283)
 
 ## Subpages
 
@@ -21,28 +21,20 @@ The sidebar will only change the project settings page URL, you will need to [ha
 
 This feature works only with Custom UI.
 
-![Example of a subpage](https://dac-static.atlassian.com/platform/forge/snippets/images/project-settings-subpage.jpg?_v=1.5800.2282)
+![Example of a subpage](https://dac-static.atlassian.com/platform/forge/snippets/images/project-settings-subpage.jpg?_v=1.5800.2283)
 
 ## Manifest example
 
 ```
-```
-1
-2
-```
-
-
-
-```
-modules:
-  jira:projectSettingsPage:
-    - key: hello-world-project-settings-page
-      resource: main
-      resolver:
-        function: resolver
-      render: native
-      title: Hello World
-```
+1modules:
+2  jira:projectSettingsPage:
+3    - key: hello-world-project-settings-page
+4      resource: main
+5      resolver:
+6        function: resolver
+7      render: native
+8      title: Hello World
+9
 ```
 
 ## Properties
@@ -74,6 +66,17 @@ modules:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
 ```
 
 
@@ -110,6 +113,19 @@ modules:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
 ```
 
 

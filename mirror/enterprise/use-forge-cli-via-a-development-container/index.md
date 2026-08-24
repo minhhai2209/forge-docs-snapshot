@@ -33,6 +33,22 @@ To use development containers, create a `.devcontainer.json` configuration file.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
 ```
 
 
@@ -122,6 +138,7 @@ Replace `http://proxy.example.com:8080` with your actual corporate proxy URL in 
    ```
    1
    2
+   3
    ```
 
 
@@ -137,6 +154,9 @@ Replace `http://proxy.example.com:8080` with your actual corporate proxy URL in 
    ```
    1
    2
+   3
+   4
+   5
    ```
 
 
@@ -154,6 +174,7 @@ Replace `http://proxy.example.com:8080` with your actual corporate proxy URL in 
    ```
    1
    2
+   3
    ```
 
 
@@ -186,6 +207,7 @@ Replace `http://proxy.example.com:8080` with your actual corporate proxy URL in 
    ```
    1
    2
+   3
    ```
 
 
@@ -201,6 +223,7 @@ Replace `http://proxy.example.com:8080` with your actual corporate proxy URL in 
    ```
    1
    2
+   3
    ```
 
 
@@ -216,6 +239,14 @@ Replace `http://proxy.example.com:8080` with your actual corporate proxy URL in 
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
    ```
 
 

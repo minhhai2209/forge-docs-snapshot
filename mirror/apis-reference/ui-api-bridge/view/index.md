@@ -9,19 +9,17 @@ The `close` method enables you to request the closure of the current view. For e
 ### Function signature
 
 ```
-1
-function close(): Promise<void>;
+1function close(): Promise<void>;
+2
 ```
 
 ### Example
 
 ```
-1
+1import { view } from "@forge/bridge";
 2
-3
-import { view } from "@forge/bridge";
-
-view.close();
+3view.close();
+4
 ```
 
 ## onClose
@@ -33,8 +31,8 @@ For [@forge/bridge modal](/platform/forge/custom-ui-bridge/modal.md) and the [UI
 ### Function signature
 
 ```
-1
-function onClose(payload: () => Promise<void>): Promise<void>;
+1function onClose(payload: () => Promise<void>): Promise<void>;
+2
 ```
 
 ### Example
@@ -43,6 +41,8 @@ function onClose(payload: () => Promise<void>): Promise<void>;
 ```
 1
 2
+3
+4
 ```
 
 
@@ -88,6 +88,15 @@ This example shows how to request form submission on a Jira custom field edit.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -116,6 +125,34 @@ The `getContext` method enables you to retrieve contextual information for your 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
 ```
 
 
@@ -175,6 +212,8 @@ interface LicenseDetails {
 ```
 1
 2
+3
+4
 ```
 
 
@@ -196,6 +235,7 @@ The `getFrameDispatch` method enables you to retrieve the [dispatch](/platform/f
 ```
 1
 2
+3
 ```
 
 
@@ -216,6 +256,8 @@ function getFrameDispatch<T extends Dispatch>(): Promise<T>;
 ```
 1
 2
+3
+4
 ```
 
 
@@ -246,6 +288,28 @@ The `createHistory` method is only available in the following modules:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
 ```
 
 
@@ -283,6 +347,19 @@ function createHistory(): Promise<{
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
 ```
 
 
@@ -336,6 +413,8 @@ function refresh(): Promise<void>;
 ```
 1
 2
+3
+4
 ```
 
 
@@ -376,6 +455,8 @@ function enable(): Promise<void>;
 ```
 1
 2
+3
+4
 ```
 
 
@@ -391,6 +472,15 @@ await view.theme.enable();
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -434,6 +524,8 @@ function changeWindowTitle(newTitle: string): Promise<void>;
 ```
 1
 2
+3
+4
 ```
 
 
@@ -472,6 +564,26 @@ function emitReadyEvent(): Promise<void>;
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
 ```
 
 
@@ -517,6 +629,24 @@ Use `createAdfRendererIframeProps` when building a Custom UI bodied macro that n
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
 ```
 
 
@@ -559,12 +689,46 @@ Returns an object with the following properties:
 
 ### Example
 
-![Example rendered Custom UI bodied macro contents](https://dac-static.atlassian.com/platform/forge/apis-reference/ui-api-bridge/images/view/view-createAdfRendererIframeProps-custom-ui-bodied-macro.svg?_v=1.5800.2282)
+![Example rendered Custom UI bodied macro contents](https://dac-static.atlassian.com/platform/forge/apis-reference/ui-api-bridge/images/view/view-createAdfRendererIframeProps-custom-ui-bodied-macro.svg?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
 ```
 
 

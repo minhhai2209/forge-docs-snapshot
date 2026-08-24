@@ -28,6 +28,18 @@ To use `global:ui`, the manifest has two key parts:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
 ```
 
 
@@ -55,6 +67,37 @@ app {}
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
 ```
 
 
@@ -133,6 +176,9 @@ To provide localized titles, use an i18n object:
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -157,6 +203,12 @@ The following example configures an icon:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -181,6 +233,11 @@ This section is required for `global:ui`, and one Atlassian app must be set to `
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 

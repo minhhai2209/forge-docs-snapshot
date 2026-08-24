@@ -24,16 +24,12 @@ in the app manifest.
 ### Function signature
 
 ```
-1
-2
-3
+1const createTranslationFunction = (
+2  locale: ForgeSupportedLocaleCode | null = null
+3): Promise<TranslationFunction>
 4
-5
-const createTranslationFunction = (
-  locale: ForgeSupportedLocaleCode | null = null
-): Promise<TranslationFunction>
-
-type TranslationFunction = (i18nKey: string, defaultValue?: string) => string;
+5type TranslationFunction = (i18nKey: string, defaultValue?: string) => string;
+6
 ```
 
 ### Arguments
@@ -63,6 +59,29 @@ type TranslationFunction = (i18nKey: string, defaultValue?: string) => string;
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
 ```
 
 
@@ -105,6 +124,22 @@ const App = () => {
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
 ```
 
 
@@ -157,6 +192,34 @@ interface TranslationResourceContent {
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
 ```
 
 

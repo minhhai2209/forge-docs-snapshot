@@ -16,6 +16,11 @@ For this tutorial, you’ll also use the context of a [Custom UI resolver](/plat
 to get context information about the page the app is on.
 
 1. In the app’s top-level directory, install the `@forge/api` package by running:
+
+   ```
+   1npm install @forge/api
+   2
+   ```
 2. Restart your tunnel to use the new npm modules by running:
 
    Make sure your docker is running.
@@ -23,8 +28,8 @@ to get context information about the page the app is on.
    package by adding the following to the top of the file:
 
    ```
-   1
-   import api, { route } from "@forge/api";
+   1import api, { route } from "@forge/api";
+   2
    ```
 4. In the same file, copy the following code to create a resolver function that calls
    the Bitbucket REST API by using the `@forge/api` package:
@@ -33,6 +38,19 @@ to get context information about the page the app is on.
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
+   14
+   15
    ```
 
 
@@ -64,6 +82,12 @@ to get context information about the page the app is on.
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
    ```
 
 
@@ -85,6 +109,24 @@ Your `src/resolvers/index.js` file should look like the following:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
 ```
 
 
@@ -118,6 +160,34 @@ Your `src/frontend/index.jsx` file should look like the following:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
 ```
 
 
@@ -197,6 +267,7 @@ add the required scope to your `manifest.yml` file (in this case, `read:reposito
    ```
    1
    2
+   3
    ```
 
 
@@ -218,6 +289,7 @@ add the required scope to your `manifest.yml` file (in this case, `read:reposito
    ```
    1
    2
+   3
    ```
 
 
@@ -257,6 +329,17 @@ We’ll also try out `api.asUser()` instead of `api.asApp()` to make API request
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
    ```
 
 
@@ -289,6 +372,9 @@ access to the app. This can cause different API responses between different user
    ```
    1
    2
+   3
+   4
+   5
    ```
 
 
@@ -311,6 +397,10 @@ access to the app. This can cause different API responses between different user
    ```
    1
    2
+   3
+   4
+   5
+   6
    ```
 
 
@@ -330,6 +420,7 @@ access to the app. This can cause different API responses between different user
    ```
    1
    2
+   3
    ```
 
 
@@ -366,6 +457,11 @@ In this section, you'll learn how to make Bitbucket API calls directly from the 
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
    ```
 
 
@@ -386,6 +482,8 @@ In this section, you'll learn how to make Bitbucket API calls directly from the 
    ```
    1
    2
+   3
+   4
    ```
 
 
@@ -403,6 +501,48 @@ Your `src/frontend/index.jsx` file should now look like the following:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
 ```
 
 
@@ -459,5 +599,5 @@ ForgeReconciler.render(
 In the next tutorial, you'll learn how to make changes to your app's frontend using the
 [UI Kit components](/platform/forge/ui-kit/components/) of Forge.
 
-[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.2282)](/platform/forge/build-a-hello-world-app-in-bitbucket/)
-[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.2282)](/platform/forge/change-the-bitbucket-frontend-with-the-ui-kit)
+[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.2283)](/platform/forge/build-a-hello-world-app-in-bitbucket/)
+[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.2283)](/platform/forge/change-the-bitbucket-frontend-with-the-ui-kit)

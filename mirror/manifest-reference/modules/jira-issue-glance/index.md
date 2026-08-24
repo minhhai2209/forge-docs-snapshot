@@ -13,26 +13,17 @@ but not the old issue view.
 ## Manifest example
 
 ```
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-modules:
-  jira:issueGlance:
-    - key: hello-world-issue-glance
-      resource: main
-      resolver:
-        function: resolver
-      render: native
-      title: Hello World!
-      description: A hello world issue glance.
-      label: Hello World!
+1modules:
+2  jira:issueGlance:
+3    - key: hello-world-issue-glance
+4      resource: main
+5      resolver:
+6        function: resolver
+7      render: native
+8      title: Hello World!
+9      description: A hello world issue glance.
+10      label: Hello World!
+11
 ```
 
 ## Properties
@@ -85,6 +76,24 @@ The app's handler function is passed the `payload` argument. The `payload` objec
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
 ```
 
 
@@ -120,6 +129,16 @@ This is an example of a handler function returning an object:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -195,6 +214,9 @@ Apps can receive frontend events that will notify your app when an issue has bee
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -215,6 +237,13 @@ However, if you have multiple issue view modules in your app, you should use the
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 

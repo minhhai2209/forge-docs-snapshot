@@ -109,6 +109,7 @@ Once that is in place, you'll have the following 2 URLs:
 ```
 1
 2
+3
 ```
 
 
@@ -148,6 +149,8 @@ for an access token:
 ```
 1
 2
+3
+4
 ```
 
 
@@ -168,6 +171,8 @@ client/consumer:
 ```
 1
 2
+3
+4
 ```
 
 
@@ -194,6 +199,8 @@ makes this different from HTTP Basic Auth (and so you cannot use "curl
 ```
 1
 2
+3
+4
 ```
 
 
@@ -215,6 +222,7 @@ request `Authorization` header as per RFC-6750 (2.1)
 ```
 1
 2
+3
 ```
 
 
@@ -262,6 +270,8 @@ token, without the need for end user participation:
 ```
 1
 2
+3
+4
 ```
 
 

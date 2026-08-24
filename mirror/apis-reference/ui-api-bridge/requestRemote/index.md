@@ -14,22 +14,15 @@ You may choose to use `requestRemote` over `invokeRemote` for latency sensitive 
 ## Function signature
 
 ```
-1
-2
-3
+1type RequestRemoteOptions = {
+2  path: string;
+3};
 4
-5
-6
-7
-8
-type RequestRemoteOptions = {
-  path: string;
-};
-
-function requestRemote(
-  remoteKey: string,
-  options?: RequestRemoteOptions & RequestInit,
-): Promise<Response>
+5function requestRemote(
+6  remoteKey: string,
+7  options?: RequestRemoteOptions & RequestInit,
+8): Promise<Response>
+9
 ```
 
 ## Arguments
@@ -48,6 +41,21 @@ If you send files as part of the form, note that **each file provided must start
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
 ```
 
 
@@ -82,6 +90,22 @@ Making a `POST` request to a remote endpoint:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
 ```
 
 
@@ -113,6 +137,18 @@ Making a `GET` request to a remote endpoint
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
 ```
 
 
@@ -140,6 +176,24 @@ Making a `POST` request to a remote endpoint with `FormData` as the body
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
 ```
 
 

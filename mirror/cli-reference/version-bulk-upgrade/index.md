@@ -7,52 +7,37 @@ upgrades installations from one major version to another version.
 ## Usage
 
 ```
-1
-Usage: forge version bulk-upgrade [options] [command]
+1Usage: forge version bulk-upgrade [options] [command]
+2
 ```
 
 ## Options
 
 ```
-1
-2
---verbose         enable verbose mode
--h, --help        display help for command
+1--verbose         enable verbose mode
+2-h, --help        display help for command
+3
 ```
 
 ## Commands
 
 ```
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-start [options]   upgrades installations using one major version to another version. The version selection list displays:
- - major version number
- - deployment date
- - number of installations
-list [options]    returns a summary of version update requests. Details include:
- - upgrade ID
- - upgrade request status
- - start date
- - completed date
- - from version
- - to version
- - number of updates completed
- - number of updates pending
- - number of updates failed
-cancel [options]  cancels a version upgrade that is in progress.
+1start [options]   upgrades installations using one major version to another version. The version selection list displays:
+2 - major version number
+3 - deployment date
+4 - number of installations
+5list [options]    returns a summary of version update requests. Details include:
+6 - upgrade ID
+7 - upgrade request status
+8 - start date
+9 - completed date
+10 - from version
+11 - to version
+12 - number of updates completed
+13 - number of updates pending
+14 - number of updates failed
+15cancel [options]  cancels a version upgrade that is in progress.
+16
 ```
 
 ## Operation

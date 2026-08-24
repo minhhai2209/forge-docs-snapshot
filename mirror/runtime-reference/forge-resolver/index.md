@@ -14,36 +14,22 @@ The `@forge/resolver` package is included in both Custom UI and UI Kit templates
 Consider the following example `manifest.yml` file:
 
 ```
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-modules:
-  jira:issuePanel:
-    - key: hello-world-panel
-      resource: example-resource
-      resolver:
-        function: issue-panel-resolver
-      render: native
-      title: Hello world!
-      icon: https://developer.atlassian.com/platform/forge/images/issue-panel-icon.svg
-  function:
-    - key: issue-panel-resolver
-      handler: index.handler
-resources:
-  - key: example-resource
-    path: src/frontend/index.jsx
+1modules:
+2  jira:issuePanel:
+3    - key: hello-world-panel
+4      resource: example-resource
+5      resolver:
+6        function: issue-panel-resolver
+7      render: native
+8      title: Hello world!
+9      icon: https://developer.atlassian.com/platform/forge/images/issue-panel-icon.svg
+10  function:
+11    - key: issue-panel-resolver
+12      handler: index.handler
+13resources:
+14  - key: example-resource
+15    path: src/frontend/index.jsx
+16
 ```
 
 This is the manifest declaration for a basic Jira issue panel using Forge resolver for UI Kit.
@@ -61,6 +47,15 @@ Consider an example `src/frontend/index.jsx` file that contains the resolver fun
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -90,6 +85,27 @@ Continuing this example, the following code invokes the "`getText`" function def
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
 ```
 
 
@@ -130,6 +146,19 @@ Consider the following example `manifest.yml` file:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
 ```
 
 
@@ -165,6 +194,14 @@ Consider an example `src/index.js` file that contains the resolver function defi
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -194,6 +231,10 @@ Continuing this example, the following code invokes the `"exampleFunctionKey"` f
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -233,6 +274,10 @@ perform, for example, `src/shared/types.ts`:
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -264,6 +309,21 @@ Now you can define the resolver:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
 ```
 
 
@@ -317,6 +377,14 @@ UI:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -355,6 +423,53 @@ The `define` method is used to define individual resolver functions, identified 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
 ```
 
 

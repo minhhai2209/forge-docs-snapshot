@@ -40,6 +40,24 @@ When this is called an admin will see a confirmation modal describing the egress
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
 ```
 
 
@@ -96,6 +114,13 @@ When `permissions.egress.get` is called, any previously configured egress groups
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -140,6 +165,14 @@ Use `permissions.egress.deleteDomain` to delete a single domain from a previousl
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -183,6 +216,12 @@ Use `permissions.egress.deleteGroup` to delete an entire egress group and all of
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -225,6 +264,19 @@ Use `permissions.remote.set` to set or update the endpoint of a customer-managed
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
 ```
 
 
@@ -276,6 +328,13 @@ Use `permissions.remote.get` to get previously configured remotes for an install
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 

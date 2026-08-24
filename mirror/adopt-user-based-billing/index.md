@@ -65,6 +65,18 @@ both `licensing.enabled=true` and `access.userAccess=true`, as in the example th
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
 ```
 
 
@@ -115,6 +127,9 @@ We provide `userAccess` data in different contexts with the same schema as follo
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -146,6 +161,9 @@ Here's a high-level explanation of how you can do it:
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -170,6 +188,9 @@ Here's how you can achieve this:
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -205,6 +226,13 @@ The following shows a sample Lambda resolver implementation:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -239,6 +267,21 @@ This is applicable if the [Forge Remote Compute (FRC)](/platform/forge/remote/) 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
 ```
 
 
@@ -349,6 +392,8 @@ See an example below:
 ```
 1
 2
+3
+4
 ```
 
 

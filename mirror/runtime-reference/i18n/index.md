@@ -22,16 +22,12 @@ in the app manifest.
 ### Function signature
 
 ```
-1
-2
-3
+1const createTranslationFunction = (
+2  locale: ForgeSupportedLocaleCode
+3): Promise<TranslationFunction>
 4
-5
-const createTranslationFunction = (
-  locale: ForgeSupportedLocaleCode
-): Promise<TranslationFunction>
-
-type TranslationFunction = (i18nKey: string, defaultValue?: string) => string;
+5type TranslationFunction = (i18nKey: string, defaultValue?: string) => string;
+6
 ```
 
 ### Arguments
@@ -59,6 +55,17 @@ type TranslationFunction = (i18nKey: string, defaultValue?: string) => string;
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
 ```
 
 
@@ -89,6 +96,22 @@ export const handler = resolver.getDefinitions();
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
 ```
 
 
@@ -139,6 +162,19 @@ interface TranslationResourceContent {
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
 ```
 
 
@@ -177,6 +213,17 @@ There are several ways for Forge functions to access a user's locale information
     ```
     1
     2
+    3
+    4
+    5
+    6
+    7
+    8
+    9
+    10
+    11
+    12
+    13
     ```
 
 
@@ -202,6 +249,17 @@ There are several ways for Forge functions to access a user's locale information
     ```
     1
     2
+    3
+    4
+    5
+    6
+    7
+    8
+    9
+    10
+    11
+    12
+    13
     ```
 
 

@@ -22,20 +22,14 @@ If `inScopeEUD` is not specified, it defaults to `true`.
 ### Example
 
 ```
-1
-2
-3
-4
-5
-6
-7
-permissions:
-  external:
-    fetch:
-      backend:
-        - address: '*.example-analytics.com'
-          category: analytics
-          inScopeEUD: false
+1permissions:
+2  external:
+3    fetch:
+4      backend:
+5        - address: '*.example-analytics.com'
+6          category: analytics
+7          inScopeEUD: false
+8
 ```
 
 ## Impact on data residency
@@ -79,6 +73,12 @@ This change leads to a major version upgrade.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -104,6 +104,15 @@ major version upgrade.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -133,6 +142,15 @@ to a minor version upgrade.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 

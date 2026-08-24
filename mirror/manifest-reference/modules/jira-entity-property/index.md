@@ -43,6 +43,29 @@ The following examples show Dynamic Module implementations specific to this modu
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
 ```
 
 
@@ -81,6 +104,30 @@ console.log(`Response: ${response.status} ${body}`);
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
 ```
 
 
@@ -122,6 +169,14 @@ This example uses an issue entity property with the key of `stats`, which is def
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -145,6 +200,32 @@ Using the `jira:entityProperty` module, you request that fields of an entity pro
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
 ```
 
 
@@ -191,6 +272,7 @@ Once indexed, you can query entity property data in JQL using two syntax forms:
 ```
 1
 2
+3
 ```
 
 
@@ -215,6 +297,10 @@ The `number` type supports exact match (`=`, `!=`), comparison (`>`, `>=`, `<`, 
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -237,6 +323,8 @@ using the `~` (contains) and `!~` (does not contain) operators.
 ```
 1
 2
+3
+4
 ```
 
 
@@ -258,6 +346,8 @@ The `string` type indexes the value as-is and supports exact match (`=`, `!=`) o
 ```
 1
 2
+3
+4
 ```
 
 
@@ -280,6 +370,9 @@ date-time with timezone offset.
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -300,6 +393,8 @@ The `user` type accepts an Atlassian account ID and supports the `currentUser()`
 ```
 1
 2
+3
+4
 ```
 
 
@@ -319,6 +414,21 @@ You can also request indexing for `user` and `project` entity types.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
 ```
 
 
@@ -352,6 +462,7 @@ For **project** properties, use the `project` prefix:
 ```
 1
 2
+3
 ```
 
 
@@ -368,6 +479,7 @@ For **user** properties, use a user-based field as the prefix (for example, `ass
 ```
 1
 2
+3
 ```
 
 

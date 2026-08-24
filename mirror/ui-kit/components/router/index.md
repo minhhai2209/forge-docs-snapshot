@@ -11,8 +11,8 @@ see [Forge release phases: EAP, Preview, and GA](/platform/forge/whats-coming/#p
 To add the `Router` and `Route` components to your app:
 
 ```
-1
-import { Router, Route } from '@forge/react/router';
+1import { Router, Route } from '@forge/react/router';
+2
 ```
 
 ## Description
@@ -71,6 +71,38 @@ Define multiple routes within a `Router`. Only the first matching `Route` is ren
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
 ```
 
 
@@ -120,6 +152,21 @@ Use the `fallback` prop to show a loading indicator while the router initializes
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
 ```
 
 
@@ -152,6 +199,26 @@ Use `:paramName` segments to capture dynamic values from the URL.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
 ```
 
 
@@ -189,6 +256,26 @@ Capture multiple values from the URL.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
 ```
 
 
@@ -226,6 +313,27 @@ Use a `*` path to catch any unmatched routes. Place it after all other routes. I
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
 ```
 
 

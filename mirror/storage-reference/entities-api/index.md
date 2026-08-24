@@ -6,8 +6,8 @@ using your defined [custom entities](/platform/forge/storage-reference/entities-
 To start, import the Forge KVS package in your app, as follows:
 
 ```
-1
-import { kvs } from '@forge/kvs';
+1import { kvs } from '@forge/kvs';
+2
 ```
 
 Each installation of your app is subject to the API's quotas and limits.
@@ -22,12 +22,10 @@ see [Use custom entities to store structured data](/platform/forge/custom-entiti
 Using the `@forge/kvs` package requires the `storage:app` scope in your manifest file:
 
 ```
-1
-2
-3
-permissions:
-  scopes:
-    - storage:app
+1permissions:
+2  scopes:
+3    - storage:app
+4
 ```
 
 See [Permissions](/platform/forge/manifest-reference/permissions/#scopes) for more information about scopes.
@@ -78,6 +76,11 @@ To set a TTL, provide the following option:
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -129,6 +132,22 @@ Specify whether a write request should also return metadata. Use the following o
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
 ```
 
 
@@ -172,6 +191,12 @@ Sets the key `example-key` for an entity named `employee`.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -195,6 +220,17 @@ You can also set a *relative* [time-to-live (TTL)](#ttl) for the entity value:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
 ```
 
 
@@ -223,6 +259,26 @@ Use the `keyPolicy` [property](#write-conflict) to specify how to handle write c
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
 ```
 
 
@@ -261,6 +317,26 @@ Use `returnValue` to return the written or overwritten value with the `entity().
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
 ```
 
 
@@ -296,6 +372,15 @@ You can also request the key's relevant metadata by including `metadataFields` i
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -332,6 +417,16 @@ The first two fields will return a Unix timestamp, however, `EXPIRE_TIME` will r
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -359,6 +454,7 @@ Gets the value associated with the key `example-key`.
 ```
 1
 2
+3
 ```
 
 
@@ -375,6 +471,12 @@ This will return all attributes related to the key:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -396,6 +498,11 @@ You can also request the key's relevant metadata by including `metadataFields` i
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -416,6 +523,18 @@ This will return the key's attributes with the requested metadata:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
 ```
 
 
@@ -469,6 +588,7 @@ Deletes the value associated with the key `example-key`, if it hasn't already be
 ```
 1
 2
+3
 ```
 
 

@@ -12,7 +12,7 @@ in a modal dialog. A user triggers the action from an entry in the more actions 
 
 The final app looks like the following:
 
-![Confluence page showing a modal dialog with macros used in this page.](https://dac-static.atlassian.com/platform/forge/images/content-action-macro-count.gif?_v=1.5800.2282)
+![Confluence page showing a modal dialog with macros used in this page.](https://dac-static.atlassian.com/platform/forge/images/content-action-macro-count.gif?_v=1.5800.2283)
 
 ## Before you begin
 
@@ -78,6 +78,12 @@ of macros.
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
    ```
 
 
@@ -98,6 +104,8 @@ of macros.
    ```
    1
    2
+   3
+   4
    ```
 
 
@@ -115,6 +123,28 @@ Your `manifest.yml` should look like the following, with your value for the app 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
 ```
 
 
@@ -190,7 +220,7 @@ You'll see the *Macro Count* entry from the app.
 
 When you select the menu item you will see, the following modal.
 
-![Confluence page showing a modal dialog with the default content from the macro count template](https://dac-static.atlassian.com/platform/forge/images/content-action-macro-count-initial.png?_v=1.5800.2282)
+![Confluence page showing a modal dialog with the default content from the macro count template](https://dac-static.atlassian.com/platform/forge/images/content-action-macro-count-initial.png?_v=1.5800.2283)
 
 ## Implement the front end
 
@@ -205,6 +235,40 @@ number of macros in the page.
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
+   14
+   15
+   16
+   17
+   18
+   19
+   20
+   21
+   22
+   23
+   24
+   25
+   26
+   27
+   28
+   29
+   30
+   31
+   32
+   33
+   34
+   35
+   36
    ```
 
 
@@ -298,6 +362,23 @@ of the page.
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
+   14
+   15
+   16
+   17
+   18
+   19
    ```
 
 
@@ -329,6 +410,20 @@ of the page.
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
+   14
+   15
+   16
    ```
 
 

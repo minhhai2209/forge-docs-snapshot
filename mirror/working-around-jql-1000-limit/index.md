@@ -38,6 +38,13 @@ App developers and customers have several options to work within the 1000 value 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -60,6 +67,13 @@ function relatedIssues(parentKey) {
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -120,6 +134,27 @@ Add pagination parameters to function signatures:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
 ```
 
 
@@ -158,6 +193,13 @@ Query page by page:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -180,6 +222,7 @@ Or combine pages:
 ```
 1
 2
+3
 ```
 
 
@@ -208,6 +251,8 @@ When a custom JQL function returns a response, it provides a JQL fragment that J
 ```
 1
 2
+3
+4
 ```
 
 
@@ -229,6 +274,8 @@ When a custom JQL function returns a response, it provides a JQL fragment that J
 ```
 1
 2
+3
+4
 ```
 
 
@@ -272,6 +319,16 @@ If your app stores metadata in custom fields:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -297,6 +354,11 @@ function relatedIssues(parentKey) {
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -317,6 +379,11 @@ function relatedIssues(parentKey) {
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -337,6 +404,15 @@ function relatedIssues(parentKey) {
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -378,6 +454,8 @@ Under the hood, this expands to:
 ```
 1
 2
+3
+4
 ```
 
 
@@ -403,6 +481,34 @@ The platform executes this as a natural query, returning any number of results w
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
 ```
 
 

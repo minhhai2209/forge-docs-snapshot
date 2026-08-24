@@ -17,8 +17,8 @@ You must also update to the latest Forge CLI version. To do this:
 1. Install the Forge CLI globally by running:
 
    ```
-   1
-   npm install -g @forge/cli@latest
+   1npm install -g @forge/cli@latest
+   2
    ```
 2. Verify that the CLI is installed correctly by running:
 
@@ -29,14 +29,14 @@ Additionally, ensure that you are using the latest version of `@forge/bridge` an
 1. Install the latest version of the [`@forge/bridge` package](/platform/forge/apis-reference/ui-api-bridge/bridge/) by running:
 
    ```
-   1
-   npm install @forge/bridge@latest
+   1npm install @forge/bridge@latest
+   2
    ```
 2. Install the latest `@forge/react` package to the project by running:
 
    ```
-   1
-   npm install @forge/react@latest
+   1npm install @forge/react@latest
+   2
    ```
 
 ### Set up a development site
@@ -106,6 +106,10 @@ as `app.description`.
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -130,6 +134,21 @@ In the app's `manifest.yml` file, create a new section called `translations`. Un
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
 ```
 
 
@@ -167,6 +186,13 @@ In this example, the default fallback is `en-US`. The locale-specific fallback c
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -199,6 +225,14 @@ In this example, we are adding an `i18n object` to the `modules.macro.title`.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -247,6 +281,12 @@ Wrap the `I18nProvider` around your `App` component. The `I18nProvider` initiali
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -270,6 +310,22 @@ Create the file `src/frontend/QuestionContent.jsx` and copy the code below. The 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
 ```
 
 
@@ -301,6 +357,9 @@ For example, if the current question index is `0`, then the `questionKey` is `q_
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -321,6 +380,40 @@ Create the file `src/frontend/QuestionGeneratorPanel.jsx` and copy the code belo
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
 ```
 
 
@@ -370,6 +463,16 @@ Next, add the following function before the return statement. This increments th
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -397,6 +500,14 @@ Finally, add the `QuestionGeneratorPanel` to your `App` component in `src/fronte
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 

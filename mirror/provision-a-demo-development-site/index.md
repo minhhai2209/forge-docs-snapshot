@@ -8,10 +8,9 @@ testing an app. A demo site is a fully featured Atlassian cloud site with realis
 Install the latest version of the Forge CLI and [log in](/platform/forge/getting-started/#log-in-with-an-atlassian-api-scoped-token).
 
 ```
-1
-2
-npm install -g @forge/cli@latest
-forge login
+1npm install -g @forge/cli@latest
+2forge login
+3
 ```
 
 ## Provision a site

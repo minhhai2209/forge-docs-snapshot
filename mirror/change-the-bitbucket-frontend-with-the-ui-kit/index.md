@@ -16,8 +16,8 @@ otherwise it displays 'Loading...'. You’ll update the app to display the repos
 4. Inside the `<></>` section, modify the second `Text` component:
 
    ```
-   1
-   <Text>{data ? `Repository full name: ${data.full_name}` : 'Loading...'}</Text>
+   1<Text>{data ? `Repository full name: ${data.full_name}` : 'Loading...'}</Text>
+   2
    ```
 5. Refresh the Bitbucket repository source page.
 
@@ -27,6 +27,39 @@ Your `src/frontend/index.jsx` file should look like the following:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
 ```
 
 
@@ -119,4 +152,4 @@ You now know enough to develop your own Forge apps. Learn more from our
 [tutorials](/platform/forge/tutorials-and-guides/), [guides](/platform/forge/guides/),
 [example apps](/platform/forge/example-apps/) or [reference pages](/platform/forge/manifest-reference/).
 
-[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.2282)](/platform/forge/call-a-bitbucket-api/)
+[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.2283)](/platform/forge/call-a-bitbucket-api/)

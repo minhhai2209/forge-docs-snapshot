@@ -3,34 +3,21 @@
 Transactions allow you to perform multiple operations in a single transaction, ensuring that all operations are either committed or rolled back together. This works with data stored through the [Key-Value Store](/platform/forge/storage-reference/kvs/)'s basic methods:
 
 ```
-1
+1import { kvs } from '@forge/kvs';
 2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-import { kvs } from '@forge/kvs';
-
-await kvs.transact()
-    // set first key with value
-    .set('key1', 'value1', { ttl: { unit: 'DAYS', value: 7 } })
-    
-    // delete second key
-    .delete('key2')
-    
-    //set third key with value
-    .set('key3', 'value3')
-    
-    //commit the transaction
-    .execute();
+3await kvs.transact()
+4    // set first key with value
+5    .set('key1', 'value1', { ttl: { unit: 'DAYS', value: 7 } })
+6    
+7    // delete second key
+8    .delete('key2')
+9    
+10    //set third key with value
+11    .set('key3', 'value3')
+12    
+13    //commit the transaction
+14    .execute();
+15
 ```
 
 Use transactions to execute multiple requests that must either succeed or fail together. If you want to
@@ -64,6 +51,17 @@ You can also set a *relative* time-to-live (TTL) for all keys in your transactio
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
 ```
 
 
@@ -90,6 +88,19 @@ transact.set(
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
 ```
 
 

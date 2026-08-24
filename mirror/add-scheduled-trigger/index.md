@@ -19,20 +19,14 @@ Add a [web trigger](/platform/forge/manifest-reference/modules/web-trigger/) mod
 `manifest.yml` as follows:
 
 ```
-1
-2
-3
-4
-5
-6
-7
-modules:
-  webtrigger:
-    - key: temporary-development-webtrigger
-      function: '<your-function-key>'
-      urlFormat: v2
-      response:
-        type: dynamic
+1modules:
+2  webtrigger:
+3    - key: temporary-development-webtrigger
+4      function: '<your-function-key>'
+5      urlFormat: v2
+6      response:
+7        type: dynamic
+8
 ```
 
 **Web Trigger for Development**
@@ -120,6 +114,10 @@ Once you have completed development of the function, you can add a scheduled tri
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -181,6 +179,13 @@ A: To set up a 5-minute scheduled trigger for your Jira Forge app, add the follo
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 

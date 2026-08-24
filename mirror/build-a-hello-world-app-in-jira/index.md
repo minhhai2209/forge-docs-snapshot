@@ -78,6 +78,16 @@ The `jira-issue-panel` template uses Node.js and has the following structure:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -126,6 +136,26 @@ title and app ID:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
 ```
 
 
@@ -202,7 +232,7 @@ With your app installed, it's time to see the app on an issue.
    [Learn more about Jira issues](https://support.atlassian.com/jira-software-cloud/docs/create-and-work-with-issues/).
 2. Open the issue. In the issue view, select the **Apps** button (shown as a grid icon in the top-right area of the issue) and select your app from the list. Your app should display like the example below.
 
-![An issue panel showing in a Jira issue view](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-panel-demo-with-show-hide-from-work-item.png?_v=1.5800.2282)
+![An issue panel showing in a Jira issue view](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-panel-demo-with-show-hide-from-work-item.png?_v=1.5800.2283)
 
 3. To view new changes in your app, run `forge deploy` again, or run `forge tunnel`.
    This is explained fully in the next section.
@@ -242,6 +272,17 @@ You should see output similar to:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
 ```
 
 
@@ -279,7 +320,7 @@ For important caveats on how `forge tunnel` works, see
 In the next tutorial, you'll learn how to make API calls to Jira using Forge. This tutorial
 uses the `forge tunnel`, so make sure you are familiar with using this command.
 
-[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.2282)](/platform/forge/call-a-jira-api/)
+[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.2283)](/platform/forge/call-a-jira-api/)
 
 ## Developing for Atlassian Government Cloud
 

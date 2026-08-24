@@ -33,7 +33,7 @@ When an app contains a remotes declaration, Forge will (by default) assume the a
 
 By meeting these requirements, Forge will consider your app eligible for `PINNED` status in the admin's **Data residency** interface. This also means that when your app is installed on an Atlassian app with the `PINNED` status, so will your app.
 
-![App pinned to same location as Atlassian app](https://dac-static.atlassian.com/platform/forge/images/dare-pinned-app.png?_v=1.5800.2282)
+![App pinned to same location as Atlassian app](https://dac-static.atlassian.com/platform/forge/images/dare-pinned-app.png?_v=1.5800.2283)
 
 See [Data residency](/platform/forge/data-residency/) for more information about the `PINNED`
 status (for both Atlassian apps and installed apps).
@@ -90,6 +90,24 @@ egress in-scope End-User Data to be stored remotely:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
 ```
 
 

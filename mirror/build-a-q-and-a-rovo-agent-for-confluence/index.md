@@ -21,28 +21,18 @@ Clone the [Forge Q&A Creator](https://bitbucket.org/atlassian/forge-q-and-a-crea
 The app has the following structure:
 
 ```
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-├── src
-    └── backend
-        └── action.js
-        └── confluenceUtil.js
-        └── qandaUtil.js
-        └── resolver.js
-    └── frontend
-        └── macro.jsx
-    └── index.js
-├── manifest.yml
-├── package.json
+1├── src
+2    └── backend
+3        └── action.js
+4        └── confluenceUtil.js
+5        └── qandaUtil.js
+6        └── resolver.js
+7    └── frontend
+8        └── macro.jsx
+9    └── index.js
+10├── manifest.yml
+11├── package.json
+12
 ```
 
 `backend`: Most of the code is within the backend directory. All of the backend code runs in Forge’s functions as a service infrastructure.
@@ -81,6 +71,48 @@ The app manifest, manifest.yml, declares various modules:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
 ```
 
 
@@ -169,6 +201,9 @@ The app’s prompt has the following outline:
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -294,6 +329,10 @@ Whilst the prompt has been fully developed, it still includes some logging state
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -313,6 +352,7 @@ Note the “DEBUG: “ prefix and the following instruction in the preamble:
 ```
 1
 2
+3
 ```
 
 

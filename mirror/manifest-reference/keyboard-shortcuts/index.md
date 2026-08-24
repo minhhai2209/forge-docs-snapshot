@@ -68,6 +68,11 @@ example, to use the key `u` as a shortcut, set the configuration as:
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -95,6 +100,11 @@ combination of `ctrl` and `1` at the same time, set the configuration as:
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -128,6 +138,11 @@ space character. For example, to use the sequence of `1` and then `2`, set the c
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -148,6 +163,23 @@ modules:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
 ```
 
 

@@ -59,6 +59,13 @@ Both UI Kit and Custom UI apps can use [`requestJira()`](/platform/forge/apis-re
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -87,6 +94,19 @@ A common anti-pattern is fetching data inside a component that re-renders freque
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
 ```
 
 
@@ -121,6 +141,11 @@ In both **UI Kit** and **Custom UI** you can use `view.getContext()` from `@forg
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -141,6 +166,16 @@ Alternatively in **UI Kit**, you can also use the `useProductContext()` hook fro
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -188,6 +223,10 @@ In your `manifest.yml`, prefer longer intervals wherever possible:
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -209,6 +248,11 @@ If your scheduled trigger is polling for changes (e.g. checking whether issues h
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -235,6 +279,21 @@ If you must use a scheduled trigger, add a lightweight guard at the start of you
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
 ```
 
 
@@ -275,6 +334,14 @@ Where available, use [manifest-level filtering](/platform/forge/events-reference
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -300,6 +367,17 @@ When manifest-level filtering isn't sufficient, add a fast check at the very top
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
 ```
 
 
@@ -330,6 +408,14 @@ Use the `ignoreSelf` filter property in your manifest to tell Forge to suppress 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -361,6 +447,13 @@ A web trigger gives your app a publicly accessible HTTPS URL. You can register t
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -381,6 +474,14 @@ functions:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -421,6 +522,20 @@ Good use cases for Forge Storage include:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
 ```
 
 
@@ -458,6 +573,13 @@ Good use cases for entity properties include:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -492,6 +614,24 @@ Some data fetched via `asApp()` API calls is the same for all users and changes 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
 ```
 
 
@@ -533,6 +673,18 @@ When working with the Forge Storage Custom Entities API, avoid patterns that fet
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
 ```
 
 
@@ -576,6 +728,12 @@ A classic anti-pattern is the "N+1 problem": fetching a list of items and then m
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -599,6 +757,14 @@ Many Atlassian APIs offer bulk endpoints that can fetch multiple resources in a 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -624,6 +790,12 @@ For search-style APIs that support field selection, always specify exactly the f
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -659,6 +831,16 @@ When you genuinely need to make multiple independent API calls, use `Promise.all
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -694,6 +876,20 @@ If your function iterates over a set of items, tests a condition on each, and th
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
 ```
 
 
@@ -725,6 +921,21 @@ For scheduled jobs that process "all items that need attention", use a timestamp
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
 ```
 
 
@@ -761,6 +972,14 @@ Always pass an explicit `maxResults` limit matched to your actual need:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -784,6 +1003,9 @@ Conversely, when you *do* need all items, use the maximum allowed page size (typ
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -814,6 +1036,13 @@ The default memory allocation for Forge functions is **512 MB**. You can adjust 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -866,6 +1095,14 @@ Gate debug-level logging behind an environment variable or a Forge Storage flag,
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -891,6 +1128,10 @@ In production, restrict logging to errors and meaningful state changes. Avoid lo
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -925,6 +1166,16 @@ With Forge Remote, your `manifest.yml` declares a remote backend endpoint. Forge
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 

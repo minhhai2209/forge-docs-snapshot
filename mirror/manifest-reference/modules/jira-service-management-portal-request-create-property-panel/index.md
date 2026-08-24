@@ -6,7 +6,7 @@ information on Jira entity properties, see [Jira entity properties](/platform/fo
 
 This module can be used in Jira Service Management.
 
-![Example of a Portal request create property panel](https://dac-static.atlassian.com/platform/forge/images/portal-request-create-property-panel-demo.png?_v=1.5800.2282)
+![Example of a Portal request create property panel](https://dac-static.atlassian.com/platform/forge/images/portal-request-create-property-panel-demo.png?_v=1.5800.2283)
 
 ## Portal Request Create Property Panel Lifecycle
 
@@ -75,6 +75,26 @@ In the portal request create property panel app:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
 ```
 
 
@@ -110,6 +130,10 @@ In the portal request detail app:
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 

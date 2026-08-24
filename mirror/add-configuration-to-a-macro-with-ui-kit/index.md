@@ -15,7 +15,7 @@ Configuration allows you to customize what the macro displays by adjusting setti
 To access these settings, you need to go into the edit mode for the macro, as demonstrated below.
 This gives you the ability to customize the macro's output according to your preferences.
 
-![Example of configuring a Forge macro](https://dac-static.atlassian.com/platform/forge/images/macro-config-demo.gif?_v=1.5800.2282)
+![Example of configuring a Forge macro](https://dac-static.atlassian.com/platform/forge/images/macro-config-demo.gif?_v=1.5800.2283)
 
 ## Before you begin
 
@@ -53,6 +53,22 @@ for each of the properties.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
 ```
 
 
@@ -84,6 +100,15 @@ To make the side panel open automatically when the macro is inserted, set the `c
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -134,6 +159,16 @@ for error-free results.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -162,6 +197,28 @@ The use of `Label` in the macro configuration is different from that of other ex
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
 ```
 
 
@@ -221,6 +278,12 @@ In your `src/frontend/index.jsx` file:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -242,6 +305,18 @@ import ForgeReconciler, {
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
 ```
 
 
@@ -270,6 +345,20 @@ const App = () => {
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
 ```
 
 
@@ -299,6 +388,36 @@ The `index.jsx` file should look like this:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
 ```
 
 
@@ -348,6 +467,19 @@ instructions, as shown below:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
 ```
 
 
@@ -385,6 +517,9 @@ In your `src/frontend/index.jsx` file outside the `Config` and `App` components,
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -403,6 +538,7 @@ Then replace the const `config` inside the `App` component with the following:
 ```
 1
 2
+3
 ```
 
 
@@ -428,6 +564,15 @@ In your `index.jsx` file:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -454,6 +599,10 @@ In the `return` statement of the `App` component, replace everything with:
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -473,6 +622,62 @@ Your main file containing the application's root component (here `index.jsx`) sh
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
 ```
 
 
@@ -586,7 +791,7 @@ You can always delete your app from the site by running the `forge uninstall` co
 ## View your app
 
 1. Edit a Confluence page in your development site.
-2. Select ![Insert icon from the toolbar](https://dac-static.atlassian.com/platform/forge/images/select_dropdown.png?_v=1.5800.2282) from the toolbar.
+2. Select ![Insert icon from the toolbar](https://dac-static.atlassian.com/platform/forge/images/select_dropdown.png?_v=1.5800.2283) from the toolbar.
 3. Find the macro by name and select it. The app is displayed on the page.
 4. Click the pencil icon to open the app's config panel on the right side of the page.
 5. Type the `Pet age`, `Pet name`, and then close the configuration page. The config values are saved automatically.

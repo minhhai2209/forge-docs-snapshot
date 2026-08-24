@@ -18,22 +18,15 @@ Before you begin, ensure you have the following:
 * Install the latest version of CLI and authenticate
 
   ```
-  1
-  2
+  1# Install the latest version of CLI
+  2npm i -g @forge/cli@latest
   3
-  4
-  5
+  4# Ensure you are authenticated by running 
+  5forge whoami
   6
-  7
-  8
-  # Install the latest version of CLI
-  npm i -g @forge/cli@latest
-
-  # Ensure you are authenticated by running 
-  forge whoami
-
-  # If not authenticated then login to authenticate
-  forge login
+  7# If not authenticated then login to authenticate
+  8forge login
+  9
   ```
 
 ---
@@ -49,6 +42,10 @@ Use the Forge CLI to create your app. In this example, we'll name it `rolling-re
    ```
    1
    2
+   3
+   4
+   5
+   6
    ```
 
 
@@ -89,6 +86,27 @@ Your `manifest.yml` file should look like the following:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
 ```
 
 
@@ -146,6 +164,13 @@ Update your app code to display the currently installed app version. This helps 
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
    ```
 
 
@@ -169,6 +194,38 @@ Your complete `src/frontend/index.jsx` should look like this:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
 ```
 
 
@@ -231,6 +288,10 @@ Now we'll add a permission scope to demonstrate rolling releases behavior.
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -255,6 +316,7 @@ Update your app to fetch and display Confluence spaces.
    ```
    1
    2
+   3
    ```
 
 
@@ -270,6 +332,38 @@ Update your app to fetch and display Confluence spaces.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
 ```
 
 
@@ -317,6 +411,14 @@ const ShowSpaces = () => {
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -367,6 +469,9 @@ Use the `usePermissions` hook in the app frontend to gracefully handle missing p
    ```
    1
    2
+   3
+   4
+   5
    ```
 
 
@@ -386,6 +491,84 @@ Your complete `src/frontend/index.jsx` should now look like this:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
 ```
 
 
@@ -499,6 +682,19 @@ If your app checks permissions in backend resolver code, use the `permissions` e
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
 ```
 
 

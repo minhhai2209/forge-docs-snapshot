@@ -7,17 +7,16 @@ configures autocomplete for the Forge CLI
 ## Usage
 
 ```
-1
-Usage: forge autocomplete [options] [install|uninstall]
+1Usage: forge autocomplete [options] [install|uninstall]
+2
 ```
 
 ## Options
 
 ```
-1
-2
---verbose   enable verbose mode
--h, --help  display help for command
+1--verbose   enable verbose mode
+2-h, --help  display help for command
+3
 ```
 
 ## Operation
@@ -29,8 +28,8 @@ When the `autocomplete` command is installed, press **Tab** to complete commands
 ## Examples
 
 ```
-1
-forge autocomplete install
+1forge autocomplete install
+2
 ```
 
 Installs Forge CLI `autocomplete`, updating the shell initialization file to enable it when you next start a shell.

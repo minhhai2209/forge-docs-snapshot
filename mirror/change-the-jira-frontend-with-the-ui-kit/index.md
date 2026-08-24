@@ -24,123 +24,72 @@ for the other UI Kit components.
 3. Find the `<Text>Hello world!</Text>` line and following below it:
 
    ```
-   1
-   2
-   3
-   <Text>
-     Number of comments on this issue: {comments?.length}
-   </Text>
+   1<Text>
+   2  Number of comments on this issue: {comments?.length}
+   3</Text>
+   4
    ```
 
    Your `src/frontend/index.jsx` should look like this:
 
    ```
-   1
-   2
-   3
-   4
-   5
+   1import React from 'react';
+   2// useProductContext hook retrieves current product context
+   3import ForgeReconciler, { Text, useProductContext } from '@forge/react';
+   4// requestJira calls the Jira REST API
+   5import { requestJira } from '@forge/bridge';
    6
-   7
-   8
+   7const App = () => {
+   8 const context = useProductContext();
    9
-   10
-   11
-   12
+   10 // add the the 'comments' variable to store comments data
+   11 const [comments, setComments] = React.useState();
+   12 console.log(`Number of comments on this issue: ${comments?.length}`);
    13
-   14
-   15
-   16
-   17
-   18
-   19
-   20
-   21
-   22
+   14 // start of function that calls Jira REST API
+   15 const fetchCommentsForIssue = async () => {
+   16   // extract issue ID instead expecting one from function input
+   17   const issueId = context?.extension.issue.id;
+   18   // modify to take issueId variable
+   19   const res = await requestJira(`/rest/api/3/issue/${issueId}/comment`);
+   20   const data = await res.json();
+   21   return data.comments;
+   22 };
    23
-   24
-   25
-   26
-   27
-   28
-   29
-   30
-   31
-   32
-   33
+   24 React.useEffect(() => {
+   25   if (context) {
+   26     // extract issue ID from the context
+   27     const issueId = context.extension.issue.id;
+   28     // use the issue ID to call fetchCommentsForIssue(), 
+   29     // then updates data stored in 'comments'
+   30     fetchCommentsForIssue().then(setComments);
+   31     
+   32   }
+   33 }, [context]);
    34
-   35
-   36
-   37
-   38
-   39
-   40
-   41
-   42
-   43
-   44
+   35 return (
+   36   <>
+   37     // This UI will now render the value of `comments` variable
+   38     <Text>Hello world!</Text>
+   39     <Text>
+   40       Number of comments on this issue: {comments?.length}
+   41     </Text>
+   42   </>
+   43 );
+   44};
    45
-   46
-   47
-   48
-   49
-   50
-   import React from 'react';
-   // useProductContext hook retrieves current product context
-   import ForgeReconciler, { Text, useProductContext } from '@forge/react';
-   // requestJira calls the Jira REST API
-   import { requestJira } from '@forge/bridge';
-
-   const App = () => {
-    const context = useProductContext();
-
-    // add the the 'comments' variable to store comments data
-    const [comments, setComments] = React.useState();
-    console.log(`Number of comments on this issue: ${comments?.length}`);
-
-    // start of function that calls Jira REST API
-    const fetchCommentsForIssue = async () => {
-      // extract issue ID instead expecting one from function input
-      const issueId = context?.extension.issue.id;
-      // modify to take issueId variable
-      const res = await requestJira(`/rest/api/3/issue/${issueId}/comment`);
-      const data = await res.json();
-      return data.comments;
-    };
-
-    React.useEffect(() => {
-      if (context) {
-        // extract issue ID from the context
-        const issueId = context.extension.issue.id;
-        // use the issue ID to call fetchCommentsForIssue(), 
-        // then updates data stored in 'comments'
-        fetchCommentsForIssue().then(setComments);
-        
-      }
-    }, [context]);
-
-    return (
-      <>
-        // This UI will now render the value of `comments` variable
-        <Text>Hello world!</Text>
-        <Text>
-          Number of comments on this issue: {comments?.length}
-        </Text>
-      </>
-    );
-   };
-
-   ForgeReconciler.render(
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-   );
+   46ForgeReconciler.render(
+   47 <React.StrictMode>
+   48   <App />
+   49 </React.StrictMode>
+   50);
+   51
    ```
 4. Refresh the Jira issue view.
 
 The app displays the number of comments in the issue panel. Add more comments and refresh the page to count them in your app. Your issue should look like the following:
 
-![A Jira issue displaying the hello world forge app with comments counted](https://dac-static.atlassian.com/platform/forge/images/forge-getting-started-jira-final-state.png?_v=1.5800.2282)
+![A Jira issue displaying the hello world forge app with comments counted](https://dac-static.atlassian.com/platform/forge/images/forge-getting-started-jira-final-state.png?_v=1.5800.2283)
 
 ## Close the tunnel and deploy the app
 
@@ -185,4 +134,4 @@ You now know enough to develop your own Forge apps. Learn more from our
 [tutorials](/platform/forge/tutorials-and-guides/), [guides](/platform/forge/guides/),
 [example apps](/platform/forge/example-apps/) or [reference pages](/platform/forge/manifest-reference/).
 
-[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.2282)](/platform/forge/call-a-jira-api/)
+[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.2283)](/platform/forge/call-a-jira-api/)

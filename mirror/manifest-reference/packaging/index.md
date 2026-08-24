@@ -38,6 +38,9 @@ set the following `app.package` properties in the manifest:
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -75,6 +78,9 @@ containing the assets.
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -109,6 +115,12 @@ To use the TypeScript compiler on the backend without Webpack:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -130,6 +142,11 @@ To use the TypeScript compiler on the backend without Webpack:
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -151,6 +168,15 @@ app:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -176,6 +202,8 @@ app:
 ```
 1
 2
+3
+4
 ```
 
 
@@ -193,6 +221,8 @@ forge deploy
 ```
 1
 2
+3
+4
 ```
 
 
@@ -212,6 +242,21 @@ The following example app with a custom Vite bundler has the structure:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
 ```
 
 
@@ -246,6 +291,14 @@ To produce a frontend bundle with Vite:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -271,6 +324,12 @@ resources:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -292,6 +351,32 @@ resources:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
 ```
 
 
@@ -333,6 +418,30 @@ ForgeReconciler.render(
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
 ```
 
 
@@ -373,6 +482,14 @@ export default defineConfig({
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -396,6 +513,7 @@ export default defineConfig({
 ```
 1
 2
+3
 ```
 
 
@@ -412,6 +530,8 @@ forge deploy
 ```
 1
 2
+3
+4
 ```
 
 

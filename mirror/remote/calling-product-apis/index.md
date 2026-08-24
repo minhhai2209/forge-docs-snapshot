@@ -49,6 +49,12 @@ Example FIT token claim:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -76,6 +82,15 @@ This example uses the `fetch` function from the `node-fetch` module to request d
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -107,6 +122,20 @@ This example uses a GET request to call the Confluence Content API (here `token`
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
 ```
 
 
@@ -147,6 +176,17 @@ is configured to allow being called from a Forge remote using a Forge app system
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
 ```
 
 
@@ -173,6 +213,9 @@ Where `input` contains:
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -201,6 +244,39 @@ This mutation has a rate limit for requesting user impersonation tokens. For det
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
 ```
 
 

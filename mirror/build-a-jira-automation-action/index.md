@@ -75,7 +75,7 @@ cd {your-preferred-location}
 
 **Step 1i**: Verify you see output similar to the following:
 
-![Initial Forge CLI commands](https://dac-static.atlassian.com/platform/forge/images/forge-automation-action-tutorial/forge-automation-tutorial-initial-commands.png?_v=1.5800.2282)
+![Initial Forge CLI commands](https://dac-static.atlassian.com/platform/forge/images/forge-automation-action-tutorial/forge-automation-tutorial-initial-commands.png?_v=1.5800.2283)
 
 **Step 1j**: This will have created a directory named `Requirement-Resolver` and files within it that is the initial version of your app. You could deploy and install your app as it is, but the app doesn’t do anything yet so we will make changes first. All future Forge CLI command for the app need to be done in the app’s root directory so run the command `cd Requirement-Resolver`.
 
@@ -89,6 +89,26 @@ The blank project doesn't have a `package.json` file so we need to create it.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
 ```
 
 
@@ -147,6 +167,15 @@ An example response from this curl command is as follows:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -173,6 +202,10 @@ An example response from this curl command is as follows:
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -196,6 +229,40 @@ permissions:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
 ```
 
 
@@ -253,6 +320,60 @@ The action needs to provide a form that users utilising the automation action wi
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
 ```
 
 
@@ -324,6 +445,46 @@ export const AutomationInputsForm = ({ context, isValidating }) => {
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
 ```
 
 
@@ -397,6 +558,8 @@ We now need to complete the app by implementing additional aspects of the manife
 ```
 1
 2
+3
+4
 ```
 
 
@@ -414,6 +577,33 @@ We now need to complete the app by implementing additional aspects of the manife
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
 ```
 
 
@@ -456,6 +646,9 @@ We now need to complete the app by implementing additional aspects of the manife
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -474,6 +667,8 @@ We now need to complete the app by implementing additional aspects of the manife
 ```
 1
 2
+3
+4
 ```
 
 
@@ -491,6 +686,56 @@ resources:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
 ```
 
 
@@ -568,15 +813,15 @@ The app’s action should now be available for use within an automation rule.
 
 **Step 7c**: Select the “Work item created” trigger.
 
-![Select the Work Item Created trigger](https://dac-static.atlassian.com/platform/forge/images/forge-automation-action-tutorial/forge-automation-tutorial-rule-work-item-created-trigger.png?_v=1.5800.2282)
+![Select the Work Item Created trigger](https://dac-static.atlassian.com/platform/forge/images/forge-automation-action-tutorial/forge-automation-tutorial-rule-work-item-created-trigger.png?_v=1.5800.2283)
 
 **Step 7d**: Add the action “Requirement Info Provider”.
 
-![Add the action Requirement Info Provider](https://dac-static.atlassian.com/platform/forge/images/forge-automation-action-tutorial/forge-automation-tutorial-rule-requirement-infor-provider.png?_v=1.5800.2282)
+![Add the action Requirement Info Provider](https://dac-static.atlassian.com/platform/forge/images/forge-automation-action-tutorial/forge-automation-tutorial-rule-requirement-infor-provider.png?_v=1.5800.2283)
 
 **Step 7e**: To configure the action, you need to enter `{{issue.key}}` into the text field so the automation engine passes the work item key to the action when it is invoked. This form is rendered by your app’s code in `src/frontend/AutomationConfig.jsx` and `src/frontend/AutomationInputsForm.jsx`.
 
-![Add the work item key](https://dac-static.atlassian.com/platform/forge/images/forge-automation-action-tutorial/forge-automation-tutorial-rule-issue-key.png?_v=1.5800.2282)
+![Add the work item key](https://dac-static.atlassian.com/platform/forge/images/forge-automation-action-tutorial/forge-automation-tutorial-rule-issue-key.png?_v=1.5800.2283)
 
 **Step 7f**: Add another step such as “Comment on work item” and enter the following into the “Comment” text field to configure the step:
 
@@ -584,6 +829,8 @@ The app’s action should now be available for use within an automation rule.
 ```
 1
 2
+3
+4
 ```
 
 
@@ -595,7 +842,7 @@ Found requirement:
 ```
 ```
 
-![Add the comment to the rule](https://dac-static.atlassian.com/platform/forge/images/forge-automation-action-tutorial/forge-automation-tutorial-rule-add-comment.png?_v=1.5800.2282)
+![Add the comment to the rule](https://dac-static.atlassian.com/platform/forge/images/forge-automation-action-tutorial/forge-automation-tutorial-rule-add-comment.png?_v=1.5800.2283)
 
 Note that the fields `requirementId` and `requirementStatus` are defined by the outputs section in the app’s manifest, `manifest.yml` and effectively forms a contract with the rules that use the app’s action so you need to be mindful of this when changing it.
 
@@ -611,6 +858,8 @@ Note that the fields `requirementId` and `requirementStatus` are defined by the 
 ```
 1
 2
+3
+4
 ```
 
 
@@ -622,7 +871,7 @@ Found requirement:
 ```
 ```
 
-![Test the automation rule](https://dac-static.atlassian.com/platform/forge/images/forge-automation-action-tutorial/forge-automation-tutorial-test-rule.png?_v=1.5800.2282)
+![Test the automation rule](https://dac-static.atlassian.com/platform/forge/images/forge-automation-action-tutorial/forge-automation-tutorial-test-rule.png?_v=1.5800.2283)
 
 ## Wrapping up
 

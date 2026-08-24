@@ -91,6 +91,10 @@ The latest Forge runtime might keep executing the code after the function return
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -136,6 +140,9 @@ To keep your app on the Forge runtime legacy version while addressing any breaki
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -155,6 +162,9 @@ set `name` to `nodejs24.x` then re-deploy your app:
 ```
 1
 2
+3
+4
+5
 ```
 
 

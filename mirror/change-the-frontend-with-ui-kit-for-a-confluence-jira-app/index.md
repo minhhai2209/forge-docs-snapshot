@@ -18,12 +18,10 @@ for the other UI Kit components.
 3. Inside the `<>` tag, add the following after the first `Text` component:
 
    ```
-   1
-   2
-   3
-   <Text>
-     Number of comments: {comments?.length}
-   </Text>
+   1<Text>
+   2  Number of comments: {comments?.length}
+   3</Text>
+   4
    ```
 4. Refresh the Confluence page or the Jira issue view to see the changes.
 
@@ -33,6 +31,59 @@ Your `index.jsx` file should look like the following:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
 ```
 
 
@@ -100,11 +151,11 @@ number of comments in the issue panel. Add more comments and refresh the page to
 
 Your Confluence page should look like the following:
 
-![A Confluence page displaying the hello world forge app with comments counted](https://dac-static.atlassian.com/platform/forge/images/display-xpa-confluence-macro.png?_v=1.5800.2282)
+![A Confluence page displaying the hello world forge app with comments counted](https://dac-static.atlassian.com/platform/forge/images/display-xpa-confluence-macro.png?_v=1.5800.2283)
 
 Your Jira issue should look like the following:
 
-![A Jira issue displaying the hello world forge app with comments counted](https://dac-static.atlassian.com/platform/forge/images/display-xpa-jira-issue-panel.png?_v=1.5800.2282)
+![A Jira issue displaying the hello world forge app with comments counted](https://dac-static.atlassian.com/platform/forge/images/display-xpa-jira-issue-panel.png?_v=1.5800.2283)
 
 ## Close the tunnel and deploy the app
 
@@ -125,4 +176,4 @@ Your logs are an important tool when debugging Forge apps. [Learn more about deb
 
 Once your app is deployed, it will appear in the [developer console](/console/myapps/).
 
-[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.2282)](/platform/forge/add-support-for-jira-as-an-optional-atlassian-app/)
+[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.2283)](/platform/forge/add-support-for-jira-as-an-optional-atlassian-app/)

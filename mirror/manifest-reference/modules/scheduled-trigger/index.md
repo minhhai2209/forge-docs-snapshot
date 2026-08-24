@@ -54,6 +54,16 @@ Scheduled triggers do not fire in response to user actions, so `ignoreSelf` and 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -79,6 +89,12 @@ Handler function in `index.js`
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 

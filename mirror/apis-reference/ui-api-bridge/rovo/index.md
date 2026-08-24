@@ -15,54 +15,31 @@ The `open` method allows you to open the Rovo chat sidebar and create a new conv
 ### Function signature
 
 ```
-1
-2
-3
-4
-5
-6
+1function open(
+2  openRovoPayload?:
+3    | ForgeAgentPayload
+4    | AtlassianAgentPayload
+5    | DefaultAgentPayload,
+6): Promise<void>;
 7
-8
-9
-10
-11
-12
-13
+8type ForgeAgentPayload = {
+9  type: "forge";
+10  agentName: string;
+11  agentKey: string;
+12  prompt?: string;
+13};
 14
-15
-16
-17
-18
-19
+15type AtlassianAgentPayload = {
+16  type: "atlassian";
+17  agentName: string;
+18  prompt?: string;
+19};
 20
-21
-22
-23
-24
-function open(
-  openRovoPayload?:
-    | ForgeAgentPayload
-    | AtlassianAgentPayload
-    | DefaultAgentPayload,
-): Promise<void>;
-
-type ForgeAgentPayload = {
-  type: "forge";
-  agentName: string;
-  agentKey: string;
-  prompt?: string;
-};
-
-type AtlassianAgentPayload = {
-  type: "atlassian";
-  agentName: string;
-  prompt?: string;
-};
-
-type DefaultAgentPayload = {
-  type: "default";
-  prompt?: string;
-};
+21type DefaultAgentPayload = {
+22  type: "default";
+23  prompt?: string;
+24};
+25
 ```
 
 ### Arguments
@@ -86,6 +63,13 @@ from where the method is called.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -108,6 +92,12 @@ await rovo.open({
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -129,6 +119,11 @@ await rovo.open({
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -153,6 +148,16 @@ The `isEnabled` method returns a boolean value indicating whether Rovo is enable
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 

@@ -19,16 +19,47 @@ You need:
 Install the server-side SDK:
 
 ```
-1
-2
-cd your-forge-app
-npm install @forge/feature-flags@latest
+1cd your-forge-app
+2npm install @forge/feature-flags@latest
+3
 ```
 
 ## Step 1: Add feature flag code
 
 Update your resolver to initialize the SDK and check a flag. Replace your `src/resolvers/index.js`:
 
+```
+1// src/resolvers/index.js
+2import Resolver from '@forge/resolver';
+3import { FeatureFlags } from "@forge/feature-flags";
+4
+5const resolver = new Resolver();
+6
+7resolver.define('getFlagValue', async ({ payload, context }) => {
+8  const featureFlags = new FeatureFlags();
+9  await featureFlags.initialize({
+10    environment: context?.environmentType?.toLowerCase() || "development"
+11  });
+12
+13  const user = {
+14    identifiers: {
+15      installContext: context?.installContext
+16    },
+17    attributes: {
+18      installContext: context?.installContext
+19    }
+20  };
+21
+22  return featureFlags.checkFlag(user, payload?.flag, false);
+23});
+24
+25export const handler = resolver.getDefinitions();
+26
+```
+
+Update your frontend to call the resolver and show the message. Replace your `src/frontend/index.jsx`:
+
+```
 ```
 1
 2
@@ -55,39 +86,22 @@ Update your resolver to initialize the SDK and check a flag. Replace your `src/r
 23
 24
 25
-// src/resolvers/index.js
-import Resolver from '@forge/resolver';
-import { FeatureFlags } from "@forge/feature-flags";
-
-const resolver = new Resolver();
-
-resolver.define('getFlagValue', async ({ payload, context }) => {
-  const featureFlags = new FeatureFlags();
-  await featureFlags.initialize({
-    environment: context?.environmentType?.toLowerCase() || "development"
-  });
-
-  const user = {
-    identifiers: {
-      installContext: context?.installContext
-    },
-    attributes: {
-      installContext: context?.installContext
-    }
-  };
-
-  return featureFlags.checkFlag(user, payload?.flag, false);
-});
-
-export const handler = resolver.getDefinitions();
-```
-
-Update your frontend to call the resolver and show the message. Replace your `src/frontend/index.jsx`:
-
-```
-```
-1
-2
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
 ```
 
 
@@ -142,6 +156,7 @@ ForgeReconciler.render(
 ```
 1
 2
+3
 ```
 
 

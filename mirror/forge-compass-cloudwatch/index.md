@@ -27,7 +27,7 @@ For Atlassian app, select “Compass”.
 
 For template, select “[compass-component-page](https://developer.atlassian.com/platform/forge/manifest-reference/modules/compass-component-page/)”.
 
-![Image Not Found](https://dac-static.atlassian.com/platform/forge/images/forge-compass-cloudwatch/img_001_forge_create.png?_v=1.5800.2282)
+![Image Not Found](https://dac-static.atlassian.com/platform/forge/images/forge-compass-cloudwatch/img_001_forge_create.png?_v=1.5800.2283)
 
 When the CLI finishes, you’ll have the skeleton of a new Forge app in a directory with the name you supplied. Change to this directory and use git to create a new repository so you can track changes.
 
@@ -35,6 +35,9 @@ When the CLI finishes, you’ll have the skeleton of a new Forge app in a direct
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -47,13 +50,13 @@ git commit -m "initial commit"
 ```
 ```
 
-![Image Not Found](https://dac-static.atlassian.com/platform/forge/images/forge-compass-cloudwatch/img_002_git_commit.png?_v=1.5800.2282)
+![Image Not Found](https://dac-static.atlassian.com/platform/forge/images/forge-compass-cloudwatch/img_002_git_commit.png?_v=1.5800.2283)
 
 Next, run `forge deploy`, `forge install`, and `forge tunnel` to be fully set up to build and debug the new app.
 
 First:
 
-![Image Not Found](https://dac-static.atlassian.com/platform/forge/images/forge-compass-cloudwatch/img_003_forge_deploy.png?_v=1.5800.2282)
+![Image Not Found](https://dac-static.atlassian.com/platform/forge/images/forge-compass-cloudwatch/img_003_forge_deploy.png?_v=1.5800.2283)
 
 You’ll be asked to choose an Atlassian app to deploy to, and to provide your site URL. Choose Compass.
 
@@ -61,27 +64,27 @@ Then:
 
 You will be asked for a site URL. The site URL is of the form **<site\_name>.atlassian.net**. You can find it in the URL bar of your Compass instance as shown in the screenshot below.
 
-![Image Not Found](https://dac-static.atlassian.com/platform/forge/images/forge-compass-cloudwatch/img_004_site_url.png?_v=1.5800.2282)
+![Image Not Found](https://dac-static.atlassian.com/platform/forge/images/forge-compass-cloudwatch/img_004_site_url.png?_v=1.5800.2283)
 
 Forge will ask you if you want to continue to install the app and the two scopes needed for the app. Say `Yes` to proceed. If forge install is successful, you’ll get an install complete message.
 
-![Image Not Found](https://dac-static.atlassian.com/platform/forge/images/forge-compass-cloudwatch/img_005_forge_install.png?_v=1.5800.2282)
+![Image Not Found](https://dac-static.atlassian.com/platform/forge/images/forge-compass-cloudwatch/img_005_forge_install.png?_v=1.5800.2283)
 
 Finally:
 
 While the tunnel is running, the code on your computer will handle any requests to the app in Compass. This makes debugging and testing easier because you don't have to redeploy after every change. Note, you do need to redeploy and reinstall after changing the `manifest.yml` file.
 
-![Image Not Found](https://dac-static.atlassian.com/platform/forge/images/forge-compass-cloudwatch/img_006_forge_tunnel.png?_v=1.5800.2282)
+![Image Not Found](https://dac-static.atlassian.com/platform/forge/images/forge-compass-cloudwatch/img_006_forge_tunnel.png?_v=1.5800.2283)
 
 To test the new Forge app, navigate to Compass and click into any Compass component. A link to the new app should appear in the Apps section of the left nav bar.
 
-![Image Not Found](https://dac-static.atlassian.com/platform/forge/images/forge-compass-cloudwatch/img_007_compass_demo_app.png?_v=1.5800.2282)
+![Image Not Found](https://dac-static.atlassian.com/platform/forge/images/forge-compass-cloudwatch/img_007_compass_demo_app.png?_v=1.5800.2283)
 
 # The structure of a Forge app
 
 For the purposes of this article, we’ll focus on the code in the `/src` directory and the `manifest.yml` file in the root directory. The `manifest.yml` file describes the structure of the app, the resources available, and the permissions it needs.
 
-![Image Not Found](https://dac-static.atlassian.com/platform/forge/images/forge-compass-cloudwatch/img_008_app_struct_01.png?_v=1.5800.2282)
+![Image Not Found](https://dac-static.atlassian.com/platform/forge/images/forge-compass-cloudwatch/img_008_app_struct_01.png?_v=1.5800.2283)
 
 Here is an example of a basic `manifest.yml` file that Forge apps start with.
 
@@ -89,6 +92,27 @@ Here is an example of a basic `manifest.yml` file that Forge apps start with.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
 ```
 
 
@@ -121,11 +145,11 @@ app:
 
 The app's root folder contains the `/src` directory, which contains the `/frontend` and `/resolvers` directories.
 
-![Image Not Found](https://dac-static.atlassian.com/platform/forge/images/forge-compass-cloudwatch/img_009_app_struct_02.png?_v=1.5800.2282)
+![Image Not Found](https://dac-static.atlassian.com/platform/forge/images/forge-compass-cloudwatch/img_009_app_struct_02.png?_v=1.5800.2283)
 
 The `/frontend` directory contains the code that renders the app's UI.
 
-![Image Not Found](https://dac-static.atlassian.com/platform/forge/images/forge-compass-cloudwatch/img_010_app_struct_03.png?_v=1.5800.2282)
+![Image Not Found](https://dac-static.atlassian.com/platform/forge/images/forge-compass-cloudwatch/img_010_app_struct_03.png?_v=1.5800.2283)
 
 The `/frontend/index.jsx` file the app starts with is very simple. It invokes a resolver to fetch data and renders some strings.
 
@@ -133,6 +157,29 @@ The `/frontend/index.jsx` file the app starts with is very simple. It invokes a 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
 ```
 
 
@@ -167,7 +214,7 @@ ForgeReconciler.render(
 
 The `/resolvers` directory contains the bulk of the app's logic. Put code that fetches and manipulates data here.
 
-![Image Not Found](https://dac-static.atlassian.com/platform/forge/images/forge-compass-cloudwatch/img_011_app_struct_04.png?_v=1.5800.2282)
+![Image Not Found](https://dac-static.atlassian.com/platform/forge/images/forge-compass-cloudwatch/img_011_app_struct_04.png?_v=1.5800.2283)
 
 The `resolvers/index.js` file the app starts with defines a simple resolver method that returns a string.
 
@@ -175,6 +222,16 @@ The `resolvers/index.js` file the app starts with defines a simple resolver meth
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -202,7 +259,7 @@ To pull AWS CloudWatch data, we’ll use the AWS Javascript SDK. Follow along to
 
 First, add an `admin-index.jsx` to the `/frontend` directory.
 
-![Image Not Found](https://dac-static.atlassian.com/platform/forge/images/forge-compass-cloudwatch/img_012_app_struct_05.png?_v=1.5800.2282)
+![Image Not Found](https://dac-static.atlassian.com/platform/forge/images/forge-compass-cloudwatch/img_012_app_struct_05.png?_v=1.5800.2283)
 
 The `/frontend/admin-index.jsx` file provides 3 text fields for AWS region, AWS access key ID, and AWS secret access key as well as a button to save this information. The snippet below is the content of the new `/frontend/admin-index.jsx`.
 
@@ -210,6 +267,80 @@ The `/frontend/admin-index.jsx` file provides 3 text fields for AWS region, AWS 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
 ```
 
 
@@ -316,6 +447,10 @@ The add the save function.
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -350,6 +485,39 @@ Finally, update the `manifest.yml` file with a new module, function handler, res
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
 ```
 
 
@@ -398,6 +566,12 @@ The module.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -419,6 +593,7 @@ The function handler.
 ```
 1
 2
+3
 ```
 
 
@@ -435,6 +610,7 @@ The resource.
 ```
 1
 2
+3
 ```
 
 
@@ -453,6 +629,7 @@ To deploy these changes run forge deploy and install as follows.
 ```
 1
 2
+3
 ```
 
 
@@ -465,11 +642,11 @@ forge install --upgrade
 
 To test the new functionality go back to Compass, click the Apps button in the top nav bar, and then “Manage your apps”. The demo\_app will have a new Configure option.
 
-![Image Not Found](https://dac-static.atlassian.com/platform/forge/images/forge-compass-cloudwatch/img_013_config_01.png?_v=1.5800.2282)
+![Image Not Found](https://dac-static.atlassian.com/platform/forge/images/forge-compass-cloudwatch/img_013_config_01.png?_v=1.5800.2283)
 
 Click on Configure to go to the screen built in `/frontend/admin-index.jsx`. You can expand this configuration page to track a wide variety of additional information. For example, a list of metrics and logs to render to replace the hardcoded ones in this demo.
 
-![Image Not Found](https://dac-static.atlassian.com/platform/forge/images/forge-compass-cloudwatch/img_014_config_02.png?_v=1.5800.2282)
+![Image Not Found](https://dac-static.atlassian.com/platform/forge/images/forge-compass-cloudwatch/img_014_config_02.png?_v=1.5800.2283)
 
 Saving the AWS credentials unblocks us and we can move on to getting data from AWS CloudWatch and rendering it. For simplicity sake, the demo code just saves the credentials. It does not have an on screen prompt to show it was successful.
 
@@ -483,6 +660,7 @@ To use the AWS Javascript SDK, install some AWS dependencies.
 ```
 1
 2
+3
 ```
 
 
@@ -499,6 +677,74 @@ Then, add two functions to the `/resolvers/index.js` file. The first function fe
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
 ```
 
 
@@ -582,6 +828,94 @@ The second function fetches AWS CloudWatch metric data.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
 ```
 
 
@@ -685,6 +1019,54 @@ Next, modify `/frontend/index.jsx` to invoke the new resolver functions, and ren
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
 ```
 
 
@@ -748,6 +1130,11 @@ Add this to the permissions section of the `manifest.yml` file to give the Forge
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -768,6 +1155,16 @@ Your permissions should look like this after adding the external fetch permissio
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -793,6 +1190,7 @@ Then run forge deploy and forge install.
 ```
 1
 2
+3
 ```
 
 
@@ -805,7 +1203,7 @@ forge install --upgrade
 
 If everything has gone right, we can refresh the demo\_app in one of our Compass components and we’ll have data.
 
-![Image Not Found](https://dac-static.atlassian.com/platform/forge/images/forge-compass-cloudwatch/img_015_cwl_metrics.png?_v=1.5800.2282)
+![Image Not Found](https://dac-static.atlassian.com/platform/forge/images/forge-compass-cloudwatch/img_015_cwl_metrics.png?_v=1.5800.2283)
 
 Now that the app is working the final thing we need to do is give our app an icon.
 
@@ -817,6 +1215,10 @@ To add an icon, start by adding a `/resources/icons` directory to the root direc
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -836,6 +1238,7 @@ Next, update the `manifest.yml` file by adding a resource for the new logo image
 ```
 1
 2
+3
 ```
 
 
@@ -852,6 +1255,13 @@ And tell the admin page component to use the logo image.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -874,6 +1284,7 @@ After modifying the `manifest.yml`, deploy and install the app again.
 ```
 1
 2
+3
 ```
 
 
@@ -886,7 +1297,7 @@ forge install --upgrade
 
 Refresh the “Manage your apps” page and the demo app will have an icon.
 
-![Image Not Found](https://dac-static.atlassian.com/platform/forge/images/forge-compass-cloudwatch/img_016_add_an_icon.png?_v=1.5800.2282)
+![Image Not Found](https://dac-static.atlassian.com/platform/forge/images/forge-compass-cloudwatch/img_016_add_an_icon.png?_v=1.5800.2283)
 
 If everything went well, you now have a working Forge app for Compass. The Forge app pulls data from AWS CloudWatch and renders it in Compass component pages. Following this model, you can augment your Atlassian apps with data from any application your team uses. Check out the links below for reference and additional information.
 

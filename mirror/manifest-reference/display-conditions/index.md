@@ -25,20 +25,14 @@ By default, the `and` operator comes with multiple display conditions.
 In the example below, the Jira issue panel module will only be rendered on issues of a Bug type.
 
 ```
-1
-2
-3
-4
-5
-6
-7
-jira:issuePanel:
-- key: hello-world-panel
-  function: issue-panel-function
-  title: Hello world!
-  icon: https://developer.atlassian.com/platform/forge/images/issue-panel-icon.svg
-  displayConditions:
-    issueType: Bug
+1jira:issuePanel:
+2- key: hello-world-panel
+3  function: issue-panel-function
+4  title: Hello world!
+5  icon: https://developer.atlassian.com/platform/forge/images/issue-panel-icon.svg
+6  displayConditions:
+7    issueType: Bug
+8
 ```
 
 In the example below, the display conditions for the Jira issue panel module are slightly more complex.
@@ -47,6 +41,17 @@ In the example below, the display conditions for the Jira issue panel module are
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
 ```
 
 
@@ -78,6 +83,16 @@ If you add multiple similar display conditions at the same level as shown below,
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -103,6 +118,17 @@ Instead, you should add similar display conditions at the same level in the form
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
 ```
 
 

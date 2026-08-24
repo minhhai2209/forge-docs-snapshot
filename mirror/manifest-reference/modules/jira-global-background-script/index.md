@@ -21,6 +21,29 @@ The `jira:globalBackgroundScript` module adds an invisible container that can co
 Use Forge UI bridge [modal API](/platform/forge/apis-reference/ui-api-bridge/modal/) to display modals from a global background script. The example below opens a modal for Jira users to agree to custom terms and conditions set by admins.
 
 ```
+1events.on("app.terms.and.conditions.show", () => {
+2  const modal = new Modal({
+3    resource: "terms-and-conditions",
+4    onClose: (payload) => {
+5      console.log("onClose called with", payload);
+6    },
+7    size: "medium",
+8    context: {
+9      customKey: "custom-value",
+10    },
+11    title: "Terms & Conditions",
+12    icon: "./icon.png",
+13  });
+14
+15  modal.open();
+16});
+17
+```
+
+**Manifest configuration:**
+
+```
+```
 1
 2
 3
@@ -36,31 +59,6 @@ Use Forge UI bridge [modal API](/platform/forge/apis-reference/ui-api-bridge/mod
 13
 14
 15
-16
-events.on("app.terms.and.conditions.show", () => {
-  const modal = new Modal({
-    resource: "terms-and-conditions",
-    onClose: (payload) => {
-      console.log("onClose called with", payload);
-    },
-    size: "medium",
-    context: {
-      customKey: "custom-value",
-    },
-    title: "Terms & Conditions",
-    icon: "./icon.png",
-  });
-
-  modal.open();
-});
-```
-
-**Manifest configuration:**
-
-```
-```
-1
-2
 ```
 
 
@@ -96,6 +94,27 @@ Global background script (listens and responds to field events):
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
 ```
 
 
@@ -132,6 +151,39 @@ Custom field (edit) module with dropdown menu (emits changes that the background
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
 ```
 
 
@@ -180,6 +232,29 @@ export default function CustomFieldEdit({ onSave }) {
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
 ```
 
 
@@ -220,6 +295,18 @@ Restrict the global background script to specific Jira experiences or allow it f
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
 ```
 
 

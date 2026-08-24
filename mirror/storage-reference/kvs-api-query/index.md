@@ -6,71 +6,43 @@ basic methods.
 To request expiry metadata for results, pass the `EXPIRE_TIME` metadata field using `metadataFields`. When requested, the API returns an `expireTime` attribute in ISO-8601 format.
 
 ```
-1
+1import { kvs, WhereConditions, MetadataField } from '@forge/kvs';
 2
-3
-4
-5
+3await kvs.query({ metadataFields: [MetadataField.EXPIRE_TIME] })
+4  // Filter the response to only keys that start with the string 'value'
+5  .where('key', WhereConditions.beginsWith('value'))
 6
-7
-8
+7  // Limit the result size to 10 values, up to a maximum of 20
+8  .limit(10)
 9
-10
-11
-12
+10  // Use the cursor provided (returned from a previous invocation)
+11  // Cursors shouldn't be persisted
+12  .cursor('...')
 13
-14
-15
-import { kvs, WhereConditions, MetadataField } from '@forge/kvs';
-
-await kvs.query({ metadataFields: [MetadataField.EXPIRE_TIME] })
-  // Filter the response to only keys that start with the string 'value'
-  .where('key', WhereConditions.beginsWith('value'))
-
-  // Limit the result size to 10 values, up to a maximum of 20
-  .limit(10)
-
-  // Use the cursor provided (returned from a previous invocation)
-  // Cursors shouldn't be persisted
-  .cursor('...')
-
-  // Get a list of results
-  .getMany();
+14  // Get a list of results
+15  .getMany();
+16
 ```
 
 This returns a `ListResult` object containing the matching key-value pairs and the requested metadata:
 
 ```
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-{
-  "results": [
-    {
-      "key": "value-1",
-      "value": "stored data",
-      "expireTime": "2026-01-15T16:12:19.000Z"
-    },
-    {
-      "key": "value-2",
-      "value": { "name": "another entry" },
-      "expireTime": "2026-03-20T10:30:00.000Z"
-    }
-  ],
-  "nextCursor": "eyJrZXkiOiJ2YWx1ZS0yIn0="
-}
+1{
+2  "results": [
+3    {
+4      "key": "value-1",
+5      "value": "stored data",
+6      "expireTime": "2026-01-15T16:12:19.000Z"
+7    },
+8    {
+9      "key": "value-2",
+10      "value": { "name": "another entry" },
+11      "expireTime": "2026-03-20T10:30:00.000Z"
+12    }
+13  ],
+14  "nextCursor": "eyJrZXkiOiJ2YWx1ZS0yIn0="
+15}
+16
 ```
 
 The `Query` object is immutable.
@@ -135,6 +107,16 @@ pages of results.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -178,6 +160,12 @@ If `metadataFields` were requested in the query options, each result will also i
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -199,6 +187,10 @@ When there are no more pages of results, `nextCursor` is omitted:
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -223,6 +215,11 @@ is no match, the result resolves to `undefined`.
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 

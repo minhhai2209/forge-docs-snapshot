@@ -12,7 +12,7 @@ triggered by granular, merge check specific, pull request focused [events](#trig
 Another key difference is that the `bitbucket:mergeCheck` module must return a [response payload](#response-payload)
 that indicates whether the check has passed or failed.
 
-![Example of a bitbucket:mergeCheck in a pull request](https://dac-static.atlassian.com/platform/forge/images/bitbucket-merge-check-pr.png?_v=1.5800.2282)
+![Example of a bitbucket:mergeCheck in a pull request](https://dac-static.atlassian.com/platform/forge/images/bitbucket-merge-check-pr.png?_v=1.5800.2283)
 
 Each module will be treated as its own **check** and have **independent results**. A check must pass for a
 pull request to be merged if it is configured to be **Required** in either the **Workspace**, **Project**
@@ -29,7 +29,7 @@ Once a Forge app with a `bitbucket:mergeCheck` module has been installed into a 
 **workspace admin** must [enable](https://support.atlassian.com/bitbucket-cloud/docs/set-up-and-use-custom-merge-checks/)
 the `Custom merge checks` feature in the workspace settings before they can be configured.
 
-![Enable the custom merge check feature in your workspace settings](https://dac-static.atlassian.com/platform/forge/images/bitbucket-merge-check-workspace-settings.png?_v=1.5800.2282)
+![Enable the custom merge check feature in your workspace settings](https://dac-static.atlassian.com/platform/forge/images/bitbucket-merge-check-workspace-settings.png?_v=1.5800.2283)
 
 After this, the check can be enabled by an appropriate admin at either the **repository**, **project** or **workspace**
 level. The admin is also able to specify the PR target branch pattern that the check should be run against and whether
@@ -61,6 +61,16 @@ the pull request.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -125,6 +135,36 @@ properties where applicable.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
 ```
 
 
@@ -171,6 +211,19 @@ This is an example payload of an on-code-pushed trigger.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
 ```
 
 
@@ -201,6 +254,25 @@ This is an example payload of an on-merge trigger.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
 ```
 
 
@@ -243,7 +315,7 @@ Note that the user can individually rerun failed checks.
 
 ### Merge check results in the Bitbucket UI
 
-![Example of a bitbucket:mergeCheck in a pull request, annotated with identifiers](https://dac-static.atlassian.com/platform/forge/images/bitbucket-merge-check-details.png?_v=1.5800.2282)
+![Example of a bitbucket:mergeCheck in a pull request, annotated with identifiers](https://dac-static.atlassian.com/platform/forge/images/bitbucket-merge-check-details.png?_v=1.5800.2283)
 
 1. **Merge check result:** derived from response payload `success` field.
 2. **Merge check name:** derived from the module `name` field.
@@ -264,6 +336,9 @@ Note that the user can individually rerun failed checks.
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -282,6 +357,9 @@ interface MergeCheckResponse{
 ```
 1
 2
+3
+4
+5
 ```
 
 

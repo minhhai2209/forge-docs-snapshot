@@ -91,6 +91,21 @@ for the FaaS backend. The template contains the following structure:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
 ```
 
 
@@ -143,6 +158,20 @@ Your `manifest.yml` file should look like the following, with your values for th
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
 ```
 
 
@@ -230,7 +259,7 @@ With your app installed, it’s time to see the app in the Queues section.
 
 The app should display on the page with the content of your Custom UI, like the image below.
 
-![A Jira Service Management Queue page displaying a Custom UI forge app](https://dac-static.atlassian.com/platform/forge/images/forge-getting-started-jira-service-management-custome-ui.png?_v=1.5800.2282)
+![A Jira Service Management Queue page displaying a Custom UI forge app](https://dac-static.atlassian.com/platform/forge/images/forge-getting-started-jira-service-management-custome-ui.png?_v=1.5800.2283)
 
 While your app is deployed to either a development or staging environment, `(DEVELOPMENT)` or
 `(STAGING)` will appear in your app title.
@@ -254,6 +283,21 @@ Follow these steps to modify the static assets:
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
+   14
+   15
+   16
+   17
    ```
 
 
@@ -296,6 +340,16 @@ Follow these steps to modify the value of the message returned by your FaaS back
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
    ```
 
 

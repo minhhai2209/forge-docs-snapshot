@@ -35,6 +35,7 @@ UI Kit expects your app to have the following dependencies installed at the top-
 ```
 1
 2
+3
 ```
 
 
@@ -53,6 +54,8 @@ In UI Kit, the following directory and UI entry point file should be added to yo
 ```
 1
 2
+3
+4
 ```
 
 
@@ -72,6 +75,8 @@ The specified folder structure `/static/src/index.js` is not mandatory; instead,
 ```
 1
 2
+3
+4
 ```
 
 
@@ -92,6 +97,19 @@ In UI Kit, the React dependencies should be imported, and the Forge render metho
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
 ```
 
 
@@ -120,6 +138,20 @@ In Custom UI, the React dependencies should be imported, and the `ReactDOM` rend
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
 ```
 
 
@@ -152,6 +184,8 @@ A [resource](/platform/forge/manifest-reference/resources/) should be declared i
 ```
 1
 2
+3
+4
 ```
 
 
@@ -194,6 +228,8 @@ The following directory and UI entry point file should be added to your app `/sr
 ```
 1
 2
+3
+4
 ```
 
 
@@ -213,6 +249,15 @@ The resolver dependency should be imported, and your resolvers defined in your a
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -240,6 +285,9 @@ A [function](/platform/forge/manifest-reference/modules/function/) should be dec
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -262,6 +310,12 @@ and a `render` mode to display UI in a Atlassian app.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 

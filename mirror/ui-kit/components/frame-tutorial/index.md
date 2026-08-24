@@ -4,7 +4,7 @@ The app in this example showcases a logo designer and renders a preview of the d
 
 The result will look like this:
 
-![Logo Designer app](https://dac-static.atlassian.com/platform/forge/ui-kit/images/frame/frame-tutorial.gif?_v=1.5800.2282)
+![Logo Designer app](https://dac-static.atlassian.com/platform/forge/ui-kit/images/frame/frame-tutorial.gif?_v=1.5800.2283)
 
 This example illustrates the following:
 
@@ -68,6 +68,7 @@ To create the web app resources:
    ```
    1
    2
+   3
    ```
 
 
@@ -97,6 +98,12 @@ To create the web app resources:
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
    ```
 
 
@@ -117,6 +124,7 @@ To create the web app resources:
    ```
    1
    2
+   3
    ```
 
 
@@ -137,6 +145,10 @@ To create the web app resources:
    ```
    1
    2
+   3
+   4
+   5
+   6
    ```
 
 
@@ -161,6 +173,36 @@ To create the web app resources:
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
+   14
+   15
+   16
+   17
+   18
+   19
+   20
+   21
+   22
+   23
+   24
+   25
+   26
+   27
+   28
+   29
+   30
+   31
+   32
    ```
 
 
@@ -212,6 +254,15 @@ Since this list will be utilized in both the UI Kit app and the `Frame` componen
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -238,6 +289,21 @@ export const fruitSelectionMap = [
      ```
      1
      2
+     3
+     4
+     5
+     6
+     7
+     8
+     9
+     10
+     11
+     12
+     13
+     14
+     15
+     16
+     17
      ```
 
 
@@ -267,6 +333,27 @@ export const fruitSelectionMap = [
      ```
      1
      2
+     3
+     4
+     5
+     6
+     7
+     8
+     9
+     10
+     11
+     12
+     13
+     14
+     15
+     16
+     17
+     18
+     19
+     20
+     21
+     22
+     23
      ```
 
 
@@ -302,6 +389,28 @@ export const fruitSelectionMap = [
      ```
      1
      2
+     3
+     4
+     5
+     6
+     7
+     8
+     9
+     10
+     11
+     12
+     13
+     14
+     15
+     16
+     17
+     18
+     19
+     20
+     21
+     22
+     23
+     24
      ```
 
 
@@ -338,6 +447,47 @@ export const fruitSelectionMap = [
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
+   14
+   15
+   16
+   17
+   18
+   19
+   20
+   21
+   22
+   23
+   24
+   25
+   26
+   27
+   28
+   29
+   30
+   31
+   32
+   33
+   34
+   35
+   36
+   37
+   38
+   39
+   40
+   41
+   42
+   43
    ```
 
 
@@ -410,6 +560,13 @@ export const fruitSelectionMap = [
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
    ```
 
 
@@ -431,6 +588,30 @@ export const fruitSelectionMap = [
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
+   14
+   15
+   16
+   17
+   18
+   19
+   20
+   21
+   22
+   23
+   24
+   25
+   26
    ```
 
 
@@ -471,6 +652,36 @@ export const fruitSelectionMap = [
      ```
      1
      2
+     3
+     4
+     5
+     6
+     7
+     8
+     9
+     10
+     11
+     12
+     13
+     14
+     15
+     16
+     17
+     18
+     19
+     20
+     21
+     22
+     23
+     24
+     25
+     26
+     27
+     28
+     29
+     30
+     31
+     32
      ```
 
 
@@ -515,6 +726,87 @@ export const fruitSelectionMap = [
      ```
      1
      2
+     3
+     4
+     5
+     6
+     7
+     8
+     9
+     10
+     11
+     12
+     13
+     14
+     15
+     16
+     17
+     18
+     19
+     20
+     21
+     22
+     23
+     24
+     25
+     26
+     27
+     28
+     29
+     30
+     31
+     32
+     33
+     34
+     35
+     36
+     37
+     38
+     39
+     40
+     41
+     42
+     43
+     44
+     45
+     46
+     47
+     48
+     49
+     50
+     51
+     52
+     53
+     54
+     55
+     56
+     57
+     58
+     59
+     60
+     61
+     62
+     63
+     64
+     65
+     66
+     67
+     68
+     69
+     70
+     71
+     72
+     73
+     74
+     75
+     76
+     77
+     78
+     79
+     80
+     81
+     82
+     83
      ```
 
 
@@ -612,6 +904,42 @@ export const fruitSelectionMap = [
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
+   14
+   15
+   16
+   17
+   18
+   19
+   20
+   21
+   22
+   23
+   24
+   25
+   26
+   27
+   28
+   29
+   30
+   31
+   32
+   33
+   34
+   35
+   36
+   37
+   38
    ```
 
 
@@ -668,6 +996,42 @@ Now, we are ready to include the Logo Display Frame Component into the main UI K
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
+   14
+   15
+   16
+   17
+   18
+   19
+   20
+   21
+   22
+   23
+   24
+   25
+   26
+   27
+   28
+   29
+   30
+   31
+   32
+   33
+   34
+   35
+   36
+   37
+   38
    ```
 
 
@@ -716,7 +1080,7 @@ Now, we are ready to include the Logo Display Frame Component into the main UI K
 
 You can use the [Events API](/platform/forge/custom-ui-bridge/events) on `@forge/bridge` to communicate between the UI Kit (main app) and the Frame component. The communication mechanism is utilised in this example to enable the logo design controls (logo picker, radius slider, and so on) to modify the logo preview component within the `Frame` component.
 
-![Example image of a logo designer app using Frame component](https://dac-static.atlassian.com/platform/forge/ui-kit/images/frame/frame-logo-designer.png?_v=1.5800.2282)
+![Example image of a logo designer app using Frame component](https://dac-static.atlassian.com/platform/forge/ui-kit/images/frame/frame-logo-designer.png?_v=1.5800.2283)
 
 1. Create the React hooks to abstract the underlying communication implementation. Copy the following `hooks.js` implementation into both UI Kit and Frame component sides:
 
@@ -726,6 +1090,35 @@ You can use the [Events API](/platform/forge/custom-ui-bridge/events) on `@forge
      ```
      1
      2
+     3
+     4
+     5
+     6
+     7
+     8
+     9
+     10
+     11
+     12
+     13
+     14
+     15
+     16
+     17
+     18
+     19
+     20
+     21
+     22
+     23
+     24
+     25
+     26
+     27
+     28
+     29
+     30
+     31
      ```
 
 
@@ -769,6 +1162,51 @@ You can use the [Events API](/platform/forge/custom-ui-bridge/events) on `@forge
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
+   14
+   15
+   16
+   17
+   18
+   19
+   20
+   21
+   22
+   23
+   24
+   25
+   26
+   27
+   28
+   29
+   30
+   31
+   32
+   33
+   34
+   35
+   36
+   37
+   38
+   39
+   40
+   41
+   42
+   43
+   44
+   45
+   46
+   47
    ```
 
 
@@ -827,6 +1265,56 @@ You can use the [Events API](/platform/forge/custom-ui-bridge/events) on `@forge
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
+   14
+   15
+   16
+   17
+   18
+   19
+   20
+   21
+   22
+   23
+   24
+   25
+   26
+   27
+   28
+   29
+   30
+   31
+   32
+   33
+   34
+   35
+   36
+   37
+   38
+   39
+   40
+   41
+   42
+   43
+   44
+   45
+   46
+   47
+   48
+   49
+   50
+   51
+   52
    ```
 
 
@@ -896,6 +1384,33 @@ You can use the [Events API](/platform/forge/custom-ui-bridge/events) on `@forge
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
+   14
+   15
+   16
+   17
+   18
+   19
+   20
+   21
+   22
+   23
+   24
+   25
+   26
+   27
+   28
+   29
    ```
 
 
@@ -937,6 +1452,12 @@ You can use the [Events API](/platform/forge/custom-ui-bridge/events) on `@forge
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
    ```
 
 
@@ -957,6 +1478,28 @@ You can use the [Events API](/platform/forge/custom-ui-bridge/events) on `@forge
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
+   14
+   15
+   16
+   17
+   18
+   19
+   20
+   21
+   22
+   23
+   24
    ```
 
 
@@ -993,6 +1536,73 @@ You can use the [Events API](/platform/forge/custom-ui-bridge/events) on `@forge
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
+   14
+   15
+   16
+   17
+   18
+   19
+   20
+   21
+   22
+   23
+   24
+   25
+   26
+   27
+   28
+   29
+   30
+   31
+   32
+   33
+   34
+   35
+   36
+   37
+   38
+   39
+   40
+   41
+   42
+   43
+   44
+   45
+   46
+   47
+   48
+   49
+   50
+   51
+   52
+   53
+   54
+   55
+   56
+   57
+   58
+   59
+   60
+   61
+   62
+   63
+   64
+   65
+   66
+   67
+   68
+   69
    ```
 
 
@@ -1074,6 +1684,77 @@ You can use the [Events API](/platform/forge/custom-ui-bridge/events) on `@forge
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
+   14
+   15
+   16
+   17
+   18
+   19
+   20
+   21
+   22
+   23
+   24
+   25
+   26
+   27
+   28
+   29
+   30
+   31
+   32
+   33
+   34
+   35
+   36
+   37
+   38
+   39
+   40
+   41
+   42
+   43
+   44
+   45
+   46
+   47
+   48
+   49
+   50
+   51
+   52
+   53
+   54
+   55
+   56
+   57
+   58
+   59
+   60
+   61
+   62
+   63
+   64
+   65
+   66
+   67
+   68
+   69
+   70
+   71
+   72
+   73
    ```
 
 

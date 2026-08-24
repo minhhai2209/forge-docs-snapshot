@@ -3,8 +3,8 @@
 To add the `DatePicker` component to your app:
 
 ```
-1
-import { DatePicker } from '@forge/react';
+1import { DatePicker } from '@forge/react';
+2
 ```
 
 ## Description
@@ -47,12 +47,17 @@ A date picker allows the user to select a particular date.
 
 By default, selecting the date field opens the calendar view. The current date text is bold, underlined, and highlighted blue.
 
-![Example image of a rendered date picker](https://dac-static.atlassian.com/platform/forge/ui-kit/images/date-picker/date-picker-default.png?_v=1.5800.2282)
+![Example image of a rendered date picker](https://dac-static.atlassian.com/platform/forge/ui-kit/images/date-picker/date-picker-default.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -79,12 +84,40 @@ For required fields, always add `RequiredAsterisk` component next to the label.
 
 Use `ErrorMessage` or `ValidationMessage` components to display validation-related messages.
 
-![Example image of a validation message](https://dac-static.atlassian.com/platform/forge/ui-kit/images/date-picker/date-picker-validation.png?_v=1.5800.2282)
+![Example image of a validation message](https://dac-static.atlassian.com/platform/forge/ui-kit/images/date-picker/date-picker-validation.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
 ```
 
 
@@ -130,12 +163,33 @@ If a certain date is not a valid selection, you may disable it in the calendar s
 
 Use `disabled` to restrict selection of individual dates.
 
-![Example image of a date picker with date range](https://dac-static.atlassian.com/platform/forge/ui-kit/images/date-picker/date-picker-specific-dates.png?_v=1.5800.2282)
+![Example image of a date picker with date range](https://dac-static.atlassian.com/platform/forge/ui-kit/images/date-picker/date-picker-specific-dates.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
 ```
 
 
@@ -170,12 +224,25 @@ const DatePickerDisabledExample = () => (
 
 Use `minDate` to set a minimum valid date and `maxDate` to set a maximum valid date. These can be used to define a valid date range.
 
-![Example image of a date picker with date range](https://dac-static.atlassian.com/platform/forge/ui-kit/images/date-picker/date-picker-date-ranges.png?_v=1.5800.2282)
+![Example image of a date picker with date range](https://dac-static.atlassian.com/platform/forge/ui-kit/images/date-picker/date-picker-date-ranges.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
 ```
 
 
@@ -209,12 +276,31 @@ const DatePickerDisableRangeExample = () => (
 
 Use `locale` to tailor UI copy to local audiences.
 
-![Example image of a date picker with locale](https://dac-static.atlassian.com/platform/forge/ui-kit/images/date-picker/date-picker-locale.png?_v=1.5800.2282)
+![Example image of a date picker with locale](https://dac-static.atlassian.com/platform/forge/ui-kit/images/date-picker/date-picker-locale.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
 ```
 
 
@@ -247,12 +333,29 @@ export default DatePickerLocaleExample;
 
 Use `weekStartDay` to adjust which day of the week is shown first in the calendar. A value of `0` corresponds to Sunday (default), `1` to Monday, and so on.
 
-![Example image of a date picker with alternative start day](https://dac-static.atlassian.com/platform/forge/ui-kit/images/date-picker/date-picker-week-start-day.png?_v=1.5800.2282)
+![Example image of a date picker with alternative start day](https://dac-static.atlassian.com/platform/forge/ui-kit/images/date-picker/date-picker-week-start-day.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
 ```
 
 
@@ -285,12 +388,24 @@ You can customize the date format using the `dateFormat` prop. Formats are given
 
 Where possible, use locale for date formatting, instead of a custom format. Date formats should be informed by the user’s locale and the use case.
 
-![Example image of a date picker with alternative date format](https://dac-static.atlassian.com/platform/forge/ui-kit/images/date-picker/date-picker-date-formats.png?_v=1.5800.2282)
+![Example image of a date picker with alternative date format](https://dac-static.atlassian.com/platform/forge/ui-kit/images/date-picker/date-picker-date-formats.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
 ```
 
 

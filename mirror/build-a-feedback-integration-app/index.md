@@ -18,7 +18,7 @@ The first step involves creating a Forge app from a template that provides simil
 6. Select *webtrigger* template.
 7. Verify you see output similar to the following:
 
-![CLI output after creating webtrigger template app](https://dac-static.atlassian.com/platform/forge/images/remote/cli-feedback-integration-tutorial.png?_v=1.5800.2282)
+![CLI output after creating webtrigger template app](https://dac-static.atlassian.com/platform/forge/images/remote/cli-feedback-integration-tutorial.png?_v=1.5800.2283)
 
 This will have created a directory named *FeedbackIntegration* and files within it that is the initial version of your app.
 
@@ -33,6 +33,9 @@ Next, you’ll need to update your app’s `manifest.yml` and update the `index.
    ```
    1
    2
+   3
+   4
+   5
    ```
 
 
@@ -50,6 +53,7 @@ Next, you’ll need to update your app’s `manifest.yml` and update the `index.
    ```
    1
    2
+   3
    ```
 
 
@@ -65,6 +69,21 @@ Next, you’ll need to update your app’s `manifest.yml` and update the `index.
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
+   14
+   15
+   16
+   17
    ```
 
 
@@ -94,6 +113,21 @@ Next, you’ll need to update your app’s `manifest.yml` and update the `index.
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
+   14
+   15
+   16
+   17
    ```
 
 
@@ -125,6 +159,31 @@ Next, you’ll need to update your app’s `manifest.yml` and update the `index.
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
+   14
+   15
+   16
+   17
+   18
+   19
+   20
+   21
+   22
+   23
+   24
+   25
+   26
+   27
    ```
 
 
@@ -186,6 +245,7 @@ Next, you’ll need to update your app’s `manifest.yml` and update the `index.
    ```
    1
    2
+   3
    ```
 
 
@@ -208,6 +268,58 @@ You need a form of authentication on the web trigger to avoid it being used mali
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
+   14
+   15
+   16
+   17
+   18
+   19
+   20
+   21
+   22
+   23
+   24
+   25
+   26
+   27
+   28
+   29
+   30
+   31
+   32
+   33
+   34
+   35
+   36
+   37
+   38
+   39
+   40
+   41
+   42
+   43
+   44
+   45
+   46
+   47
+   48
+   49
+   50
+   51
+   52
+   53
+   54
    ```
 
 
@@ -309,20 +421,22 @@ The following steps include multiple code edits. The final app code is listed af
 1. Create a new space (formerly known as project) in your Jira development site, where your feedback work items will be created.
 2. Add a new work type to the Jira space that will be used to represent feedback.
 
-   ![Create work item type in Jira](https://dac-static.atlassian.com/platform/forge/images/remote/create-work-type-tutorial.png?_v=1.5800.2282)
+   ![Create work item type in Jira](https://dac-static.atlassian.com/platform/forge/images/remote/create-work-type-tutorial.png?_v=1.5800.2283)
 3. Record the Jira space identifier and key by visiting `https://your-site.atlassian.net/rest/api/3/project` and finding the feedback project. This will allow you to capture the details on the Jira space and work item type that was created.
 
-   ![Find the Jira space identifier in feedback project](https://dac-static.atlassian.com/platform/forge/images/remote/jira-space-identifier-tutorial-work-item.png?_v=1.5800.2282)
+   ![Find the Jira space identifier in feedback project](https://dac-static.atlassian.com/platform/forge/images/remote/jira-space-identifier-tutorial-work-item.png?_v=1.5800.2283)
 4. Use the Jira space identifier to find the identifier of the feedback work item type by visiting:
    `https://your-site.atlassian.net/rest/api/3/issuetype/project?projectId=your-work-item-type-id`.
 
-   ![Find the Jira space identifier and key](https://dac-static.atlassian.com/platform/forge/images/remote/jira-space-identifier-tutorial.png?_v=1.5800.2282)
+   ![Find the Jira space identifier and key](https://dac-static.atlassian.com/platform/forge/images/remote/jira-space-identifier-tutorial.png?_v=1.5800.2283)
 5. Add three constants at the top of `src/index.js` for the identifiers retrieved in the previous steps:
 
    ```
    ```
    1
    2
+   3
+   4
    ```
 
 
@@ -339,6 +453,8 @@ The following steps include multiple code edits. The final app code is listed af
    ```
    1
    2
+   3
+   4
    ```
 
 
@@ -357,6 +473,23 @@ The following steps include multiple code edits. The final app code is listed af
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
+   14
+   15
+   16
+   17
+   18
+   19
    ```
 
 
@@ -394,6 +527,14 @@ The following steps include multiple code edits. The final app code is listed af
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
    ```
 
 
@@ -416,6 +557,9 @@ The following steps include multiple code edits. The final app code is listed af
    ```
    1
    2
+   3
+   4
+   5
    ```
 
 
@@ -429,7 +573,7 @@ The following steps include multiple code edits. The final app code is listed af
    ```
 10. Add code to invoke the Jira API and create the feedback work item. Go to the the [Jira Cloud platform REST API](/cloud/jira/platform/rest/v3/api-group-issues/#api-rest-api-3-issue-post), select the Forge code snippet tab, and copy the example code. Edit the code as needed for your use case. For more information, see the the [Jira Cloud platform REST API](/cloud/jira/platform/rest/v3).
 
-    ![Discover the Jira cloud rest API](https://dac-static.atlassian.com/platform/forge/images/remote/jira-cloud-rest-api-tutorial.png?_v=1.5800.2282)
+    ![Discover the Jira cloud rest API](https://dac-static.atlassian.com/platform/forge/images/remote/jira-cloud-rest-api-tutorial.png?_v=1.5800.2283)
 
     If you haven’t copied the code snippet yet, the following steps will provide detailed instructions for the required edits.
 11. Start by adding a new function named `buildCreateIssueBodyData`:
@@ -438,6 +582,22 @@ The following steps include multiple code edits. The final app code is listed af
     ```
     1
     2
+    3
+    4
+    5
+    6
+    7
+    8
+    9
+    10
+    11
+    12
+    13
+    14
+    15
+    16
+    17
+    18
     ```
 
 
@@ -468,6 +628,42 @@ The following steps include multiple code edits. The final app code is listed af
     ```
     1
     2
+    3
+    4
+    5
+    6
+    7
+    8
+    9
+    10
+    11
+    12
+    13
+    14
+    15
+    16
+    17
+    18
+    19
+    20
+    21
+    22
+    23
+    24
+    25
+    26
+    27
+    28
+    29
+    30
+    31
+    32
+    33
+    34
+    35
+    36
+    37
+    38
     ```
 
 
@@ -546,6 +742,14 @@ The following steps include multiple code edits. The final app code is listed af
     ```
     1
     2
+    3
+    4
+    5
+    6
+    7
+    8
+    9
+    10
     ```
 
 
@@ -568,6 +772,7 @@ The following steps include multiple code edits. The final app code is listed af
     ```
     1
     2
+    3
     ```
 
 
@@ -584,6 +789,133 @@ If you need to verify your implementation, your `src/index.js` file should now l
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
 ```
 
 
@@ -800,7 +1132,7 @@ const buildMethodNotAllowedOutput = (rnd) => ({
 
 At this point, you would have built a Forge app that enables your web application to submit feedback to Jira by making a simple REST API call to the app’s web trigger.
 
-![Diagram on web app sending information to Forge](https://dac-static.atlassian.com/platform/forge/images/remote/web-app-forge-jira-tutorial.png?_v=1.5800.2282)
+![Diagram on web app sending information to Forge](https://dac-static.atlassian.com/platform/forge/images/remote/web-app-forge-jira-tutorial.png?_v=1.5800.2283)
 
 While your web application could call the Jira REST API directly, this would require using OAuth 2.0 (which is more complex) or personal access tokens (which attribute all actions to a single user). Using a Forge app provides more flexibility and allows you to extend functionality, such as adding user interfaces to view or manage feedback.
 
@@ -814,6 +1146,9 @@ Enhance your Forge app to notify your web application when feedback work items a
    ```
    1
    2
+   3
+   4
+   5
    ```
 
 
@@ -831,6 +1166,13 @@ Enhance your Forge app to notify your web application when feedback work items a
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
    ```
 
 
@@ -852,6 +1194,8 @@ Enhance your Forge app to notify your web application when feedback work items a
    ```
    1
    2
+   3
+   4
    ```
 
 
@@ -868,6 +1212,8 @@ Enhance your Forge app to notify your web application when feedback work items a
    ```
    1
    2
+   3
+   4
    ```
 
 
@@ -884,6 +1230,34 @@ Enhance your Forge app to notify your web application when feedback work items a
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
+   14
+   15
+   16
+   17
+   18
+   19
+   20
+   21
+   22
+   23
+   24
+   25
+   26
+   27
+   28
+   29
+   30
    ```
 
 
@@ -954,6 +1328,44 @@ Enhance your Forge app to notify your web application when feedback work items a
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
+   14
+   15
+   16
+   17
+   18
+   19
+   20
+   21
+   22
+   23
+   24
+   25
+   26
+   27
+   28
+   29
+   30
+   31
+   32
+   33
+   34
+   35
+   36
+   37
+   38
+   39
+   40
    ```
 
 
@@ -1020,7 +1432,7 @@ You can also check your web application’s observability tools to verify that t
 
 Now, the Forge app provides the ability to send work item change events to the web application as depicted by the arrows from Jira to the Forge app to the web application. This may be important if the web application needs to present user interfaces summarising or detailing the open feedback.
 
-![Diagram on web app sending and receiving information to Forge](https://dac-static.atlassian.com/platform/forge/images/remote/web-app-forge-jira-tutorial-send.png?_v=1.5800.2282)
+![Diagram on web app sending and receiving information to Forge](https://dac-static.atlassian.com/platform/forge/images/remote/web-app-forge-jira-tutorial-send.png?_v=1.5800.2283)
 
 ## Next steps
 

@@ -7,44 +7,33 @@ deploy your app to an environment
 ## Usage
 
 ```
-1
-Usage: forge deploy [options] [command]
+1Usage: forge deploy [options] [command]
+2
 ```
 
 ## Options
 
 ```
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
---verbose                        enable verbose mode
--f, --no-verify                  disable pre-deployment checks
--v, --major-version [version]    specify a major version to update (Preview)
--t, --tag <tag>                  specify a build tag to deploy (from forge
-                                 build)
---inspect                        save application bundle for inspection
---skip-rollout                   Skip rolling release rollout after deployment
---approve <rule...>              list of validation rules to approve
--e, --environment [environment]  specify the environment (see your default
-                                 environment by running forge settings list)
---non-interactive                run the command without input prompts
--h, --help                       display help for command
+1--verbose                        enable verbose mode
+2-f, --no-verify                  disable pre-deployment checks
+3-v, --major-version [version]    specify a major version to update (Preview)
+4-t, --tag <tag>                  specify a build tag to deploy (from forge
+5                                 build)
+6--inspect                        save application bundle for inspection
+7--skip-rollout                   Skip rolling release rollout after deployment
+8--approve <rule...>              list of validation rules to approve
+9-e, --environment [environment]  specify the environment (see your default
+10                                 environment by running forge settings list)
+11--non-interactive                run the command without input prompts
+12-h, --help                       display help for command
+13
 ```
 
 ## Commands
 
 ```
-1
-list [options]                   list app deployments
+1list [options]                   list app deployments
+2
 ```
 
 ## Example
@@ -117,6 +106,19 @@ If this happens, the CLI linter blocks the deployment and asks for your approval
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
 ```
 
 

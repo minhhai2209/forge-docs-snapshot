@@ -3,18 +3,18 @@
 To add the `Button`, `LinkButton`, or `LoadingButton` component to your app:
 
 ```
-1
-import { Button } from "@forge/react";
+1import { Button } from "@forge/react";
+2
 ```
 
 ```
-1
-import { LinkButton } from "@forge/react";
+1import { LinkButton } from "@forge/react";
+2
 ```
 
 ```
-1
-import { LoadingButton } from "@forge/react";
+1import { LoadingButton } from "@forge/react";
+2
 ```
 
 ## Description
@@ -72,12 +72,14 @@ The `LoadingButton` accepts all [common props](/platform/forge/ui-kit/components
 
 Use default buttons for most actions that aren't the main call to action for a page or area. Default buttons are less prominent than primary buttons.
 
-![Example image of a rendered default button](https://dac-static.atlassian.com/platform/forge/ui-kit/images/button/button-default.png?_v=1.5800.2282)
+![Example image of a rendered default button](https://dac-static.atlassian.com/platform/forge/ui-kit/images/button/button-default.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
 ```
 
 
@@ -95,12 +97,14 @@ const ButtonDefaultExample = () => {
 
 Use a primary button to call attention to a form submission or to highlight the most important call to action on a page. Primary buttons should only appear once per area, though not every screen needs a primary button.
 
-![Example image of a rendered button primary appearance](https://dac-static.atlassian.com/platform/forge/ui-kit/images/button/button-primary.png?_v=1.5800.2282)
+![Example image of a rendered button primary appearance](https://dac-static.atlassian.com/platform/forge/ui-kit/images/button/button-primary.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
 ```
 
 
@@ -116,12 +120,14 @@ const ButtonPrimaryExample = () => {
 
 Use a subtle button with a primary button for secondary actions, such as “Cancel.”
 
-![Example image of a rendered button subtle appearance](https://dac-static.atlassian.com/platform/forge/ui-kit/images/button/button-subtle.png?_v=1.5800.2282)
+![Example image of a rendered button subtle appearance](https://dac-static.atlassian.com/platform/forge/ui-kit/images/button/button-subtle.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
 ```
 
 
@@ -139,12 +145,14 @@ Warning buttons confirm actions that may cause a significant change or a loss of
 
 Typically, warnings alert people of a problem that might happen if they proceed. These appearances are often found in confirmation modals.
 
-![Example image of a rendered button warning appearance](https://dac-static.atlassian.com/platform/forge/ui-kit/images/button/button-warning.png?_v=1.5800.2282)
+![Example image of a rendered button warning appearance](https://dac-static.atlassian.com/platform/forge/ui-kit/images/button/button-warning.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
 ```
 
 
@@ -160,12 +168,14 @@ const ButtonWarningExample = () => {
 
 A danger button appears as a final confirmation for a destructive and irreversible action, such as deleting.
 
-![Example image of a rendered button danger appearance](https://dac-static.atlassian.com/platform/forge/ui-kit/images/button/button-danger.png?_v=1.5800.2282)
+![Example image of a rendered button danger appearance](https://dac-static.atlassian.com/platform/forge/ui-kit/images/button/button-danger.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
 ```
 
 
@@ -181,12 +191,14 @@ const ButtonDangerExample = () => {
 
 The default form of a link button.
 
-![Example image of a rendered default link button](https://dac-static.atlassian.com/platform/forge/ui-kit/images/button/button-link-default.png?_v=1.5800.2282)
+![Example image of a rendered default link button](https://dac-static.atlassian.com/platform/forge/ui-kit/images/button/button-link-default.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
 ```
 
 
@@ -202,12 +214,18 @@ const LinkButtonExample = () => {
 
 Standard buttons use the `disabled` HTML attribute, however this doesn't exist for anchor `<a>` tags, so link buttons are disabled by adding `aria-disabled="true"`, adding `role="link"` and removing the `href` attribute.
 
-![Example image of a rendered button disabled link button](https://dac-static.atlassian.com/platform/forge/ui-kit/images/button/button-link-disabled.png?_v=1.5800.2282)
+![Example image of a rendered button disabled link button](https://dac-static.atlassian.com/platform/forge/ui-kit/images/button/button-link-disabled.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -231,12 +249,18 @@ Set `isDisabled` to disable a button that shouldn't be actionable. The button wi
 
 Disabled buttons can cause accessibility issues (disabled elements are not in the tab order) so wherever possible, avoid using `isDisabled`. Instead, use validation or other techniques to show users how to proceed.
 
-![Example image of a rendered button disabled](https://dac-static.atlassian.com/platform/forge/ui-kit/images/button/button-disabled.png?_v=1.5800.2282)
+![Example image of a rendered button disabled](https://dac-static.atlassian.com/platform/forge/ui-kit/images/button/button-disabled.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -256,12 +280,14 @@ const ButtonDisabledExample = () => {
 
 Set `isSelected` to indicate the button is selected.
 
-![Example image of a rendered button selected](https://dac-static.atlassian.com/platform/forge/ui-kit/images/button/button-selected.png?_v=1.5800.2282)
+![Example image of a rendered button selected](https://dac-static.atlassian.com/platform/forge/ui-kit/images/button/button-selected.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
 ```
 
 
@@ -277,12 +303,18 @@ const ButtonSelectedExample = () => {
 
 Use the loading button and set `isLoading` to indicate the button is loading. The button text is hidden and a spinner is shown in its place, while maintaining the width that it would have if the text were visible.
 
-![Example image of a rendered button loading button](https://dac-static.atlassian.com/platform/forge/ui-kit/images/button/button-loading.png?_v=1.5800.2282)
+![Example image of a rendered button loading button](https://dac-static.atlassian.com/platform/forge/ui-kit/images/button/button-loading.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -302,12 +334,23 @@ const ButtonLoadingExample = () => {
 
 Button spacing depends on the surrounding UI. Default spacing is used for most use cases, `compact` for tables.
 
-![Example image of a rendered button spacing](https://dac-static.atlassian.com/platform/forge/ui-kit/images/button/button-spacing.png?_v=1.5800.2282)
+![Example image of a rendered button spacing](https://dac-static.atlassian.com/platform/forge/ui-kit/images/button/button-spacing.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
 ```
 
 
@@ -332,12 +375,18 @@ const ButtonPaddingExample = () => {
 
 Buttons can expand to full width to fill the parent container. This is sometimes done in login forms.
 
-![Example image of a rendered button full width](https://dac-static.atlassian.com/platform/forge/ui-kit/images/button/button-full-width.png?_v=1.5800.2282)
+![Example image of a rendered button full width](https://dac-static.atlassian.com/platform/forge/ui-kit/images/button/button-full-width.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -369,12 +418,21 @@ Extract the `glyph` segment of the icon's import to get the valid icon name to p
 
 #### Icon before
 
-![Example image of a rendered button with icon before](https://dac-static.atlassian.com/platform/forge/ui-kit/images/button/button-icon-before.png?_v=1.5800.2282)
+![Example image of a rendered button with icon before](https://dac-static.atlassian.com/platform/forge/ui-kit/images/button/button-icon-before.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -395,12 +453,21 @@ const ButtonIconBefore = () => {
 
 #### Icon after
 
-![Example image of a rendered button with icon after](https://dac-static.atlassian.com/platform/forge/ui-kit/images/button/button-icon-after.png?_v=1.5800.2282)
+![Example image of a rendered button with icon after](https://dac-static.atlassian.com/platform/forge/ui-kit/images/button/button-icon-after.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 

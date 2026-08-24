@@ -9,30 +9,19 @@ For latency-sensitive use cases that don't require OAuth tokens, consider using 
 To use the `invokeRemote` bridge method, you need to define an [endpoint](/platform/forge/manifest-reference/endpoint) for your back end in the `manifest.yml` file. For example:
 
 ```
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-modules:
-  jira:issuePanel:
-    - key: my-jira-issue-panel
-      resolver:
-        endpoint: my-remote-endpoint
-      # ... other resolver properties
-  endpoint:
-    - key: my-remote-endpoint
-      remote: my-remote
-remotes:
-  - key: my-remote
-    baseUrl: https://my-remote.com
+1modules:
+2  jira:issuePanel:
+3    - key: my-jira-issue-panel
+4      resolver:
+5        endpoint: my-remote-endpoint
+6      # ... other resolver properties
+7  endpoint:
+8    - key: my-remote-endpoint
+9      remote: my-remote
+10remotes:
+11  - key: my-remote
+12    baseUrl: https://my-remote.com
+13
 ```
 
 Invocations from users, webtriggers, or scheduled triggers are subject to Forge's [invocation limits](/platform/forge/platform-quotas-and-limits/#invocation-limits).
@@ -40,27 +29,19 @@ Invocations from users, webtriggers, or scheduled triggers are subject to Forge'
 ## Function signature
 
 ```
-```
-1
-2
-```
-
-
-
-```
-interface InvokeRemoteInput {
-  path: string;
-  method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
-  headers?: Record<string, string>;
-  body?: unknown;
-}
-
-function invokeRemote(input: InvokeRemoteInput): Promise<{
-    headers: Record<string, string[]>;
-    status: number;
-    body?: Record<string, any>;
-}>;
-```
+1interface InvokeRemoteInput {
+2  path: string;
+3  method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
+4  headers?: Record<string, string>;
+5  body?: unknown;
+6}
+7
+8function invokeRemote(input: InvokeRemoteInput): Promise<{
+9    headers: Record<string, string[]>;
+10    status: number;
+11    body?: Record<string, any>;
+12}>;
+13
 ```
 
 ## Arguments
@@ -106,6 +87,21 @@ Making a `POST` request to a remote endpoint:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
 ```
 
 
@@ -136,6 +132,13 @@ Making a `GET` request to a remote endpoint:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 

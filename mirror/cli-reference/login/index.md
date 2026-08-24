@@ -7,37 +7,33 @@ log in to your Atlassian account
 ## Usage
 
 ```
-1
-Usage: forge login [options]
+1Usage: forge login [options]
+2
 ```
 
 ## Options
 
 ```
-1
-2
-3
-4
-5
---verbose                 enable verbose mode
--u, --email <user email>  specify the email to use
--t, --token <api token>   specify the API token to use
---non-interactive         run the command without input prompts
--h, --help                display help for command
+1--verbose                 enable verbose mode
+2-u, --email <user email>  specify the email to use
+3-t, --token <api token>   specify the API token to use
+4--non-interactive         run the command without input prompts
+5-h, --help                display help for command
+6
 ```
 
 ## Examples
 
 ```
-1
-forge login --user FORGE_EMAIL
+1forge login --user FORGE_EMAIL
+2
 ```
 
 Prompts you to enter a scoped API token then logs you in to Forge with the specified credentials.
 
 ```
-1
-forge login --email FORGE_EMAIL --token FORGE_API_TOKEN
+1forge login --email FORGE_EMAIL --token FORGE_API_TOKEN
+2
 ```
 
 Logs you in to Forge with the specified credentials.

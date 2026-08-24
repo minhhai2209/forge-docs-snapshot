@@ -4,7 +4,7 @@ The `jira:issueContext` module adds a collapsible panel under the other fields o
 These panels give your users a quick way to get information related to the issue from your app.
 Users can expand these panels to view app information or collapse them if they don’t need it.
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-issue-context.png?_v=1.5800.2282)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-issue-context.png?_v=1.5800.2283)
 
 This module can be used in Jira and Jira Service Management.
 It works in the
@@ -17,6 +17,15 @@ but not the old issue view.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -85,6 +94,24 @@ The app's handler function is passed the `payload` argument. The `payload` objec
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
 ```
 
 
@@ -120,6 +147,16 @@ This is an example of a handler function returning an object:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -206,6 +243,26 @@ The following examples show Dynamic Module implementations specific to this modu
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
 ```
 
 
@@ -241,6 +298,27 @@ console.log(`Response: ${response.status} ${body}`);
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
 ```
 
 
@@ -279,6 +357,9 @@ Apps can receive frontend events that will notify your app when an issue has bee
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -299,6 +380,13 @@ However, if you have multiple issue view modules in your app, you should use the
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 

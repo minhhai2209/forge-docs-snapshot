@@ -90,6 +90,30 @@ This is an example of a field that stores money. It showcases the use of:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
 ```
 
 
@@ -129,6 +153,10 @@ The schema ensures that values of this field look like this:
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -162,6 +190,7 @@ For example, to create a field that stores a list of strings, declare it as:
 ```
 1
 2
+3
 ```
 
 
@@ -240,6 +269,23 @@ The following examples show Dynamic Module implementations specific to this modu
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
 ```
 
 
@@ -272,6 +318,24 @@ console.log(`Response: ${response.status} ${body}`);
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
 ```
 
 
@@ -331,6 +395,9 @@ by declaring either a function or a resource in the manifest:
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -354,6 +421,9 @@ Ultimately, the shape of the value that the app submits looks like this:
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -383,6 +453,9 @@ maximum and minimum values for a custom number field. To do this, save a configu
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -417,6 +490,14 @@ and you can use it to validate the field value against the configured bounds:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -480,6 +561,9 @@ Allow only numbers between 0 and 100, plus empty (`null`) values:
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -501,6 +585,13 @@ unless it's a new issue being created, and the field value is empty.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -531,6 +622,10 @@ Forge apps can provide rendering of the field with [UI Kit](/platform/forge/ui-k
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -550,6 +645,7 @@ You can obtain the current value of the field from the [useProductContext](/plat
 ```
 1
 2
+3
 ```
 
 
@@ -573,6 +669,10 @@ With UI Kit, use the [CustomFieldEdit](/platform/forge/ui-kit/jira-components/cu
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -624,6 +724,9 @@ Default editing, appropriate to the field's data type, is used if the edit resou
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -677,6 +780,26 @@ This means that extensions must now opt-in for new views. This change ensures th
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
 ```
 
 
@@ -714,6 +837,11 @@ By default, when you define an editing function for a Jira custom field created 
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -750,6 +878,18 @@ The `manifest.yml` file with no `isInline` property:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
 ```
 
 
@@ -777,6 +917,69 @@ The `edit.jsx` file with the deprecated way of app rendering:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
 ```
 
 
@@ -850,7 +1053,7 @@ const Edit = () => {
 ```
 
 Outcome:
-![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.2282)
+![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.2283)
 
 ##### Updated files
 
@@ -862,6 +1065,19 @@ The `manifest.yml` file with `isInline` property:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
 ```
 
 
@@ -890,6 +1106,32 @@ The `edit.jsx` file - version with inline edit experience:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
 ```
 
 
@@ -926,7 +1168,7 @@ const Edit = () => {
 ```
 
 Outcome:
-![Updated experience to inline edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-inline.png?_v=1.5800.2282)
+![Updated experience to inline edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-inline.png?_v=1.5800.2283)
 
 
 How to edit custom fields in the modal (for more complex UI)
@@ -939,6 +1181,18 @@ The `manifest.yml` file with no `isInline` property:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
 ```
 
 
@@ -966,6 +1220,69 @@ The `edit.jsx` file with the deprecated way of app rendering:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
 ```
 
 
@@ -1039,7 +1356,7 @@ const Edit = () => {
 ```
 
 Outcome:
-![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.2282)
+![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.2283)
 
 ##### Updated files
 
@@ -1051,6 +1368,19 @@ The `manifest.yml` file with `isInline` property:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
 ```
 
 
@@ -1079,6 +1409,66 @@ The `edit.jsx` - version with modal edit experience:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
 ```
 
 
@@ -1149,7 +1539,7 @@ ForgeReconciler.render(
 ```
 
 Outcome:
-![Updated experience to modal edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-new-modal.png?_v=1.5800.2282)
+![Updated experience to modal edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-new-modal.png?_v=1.5800.2283)
 
 ### Issue creation and issue transition dialog
 
@@ -1169,6 +1559,8 @@ from the Atlassian app context:
 ```
 1
 2
+3
+4
 ```
 
 
@@ -1234,6 +1626,19 @@ If your app's edit experience relies on issue or project context, you need to up
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
 ```
 
 
@@ -1307,6 +1712,9 @@ To change that behavior, set the `export` property to `true`:
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -1331,6 +1739,8 @@ For example, you can render a text-based progress bar for a field that stores pr
 ```
 1
 2
+3
+4
 ```
 
 
@@ -1353,6 +1763,10 @@ While such external calls are not possible in Jira expressions, you can store th
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -1379,6 +1793,9 @@ For example, if a number field stores 42 and your manifest defines a formatter l
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -1419,6 +1836,12 @@ Manifest example:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -1443,6 +1866,31 @@ Here is a payload example:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
 ```
 
 
@@ -1483,6 +1931,12 @@ Here is an example of how to define the value function:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -1514,6 +1968,12 @@ So the function would have to return a list of values like this:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -1585,6 +2045,9 @@ The actual values stored by the field would be JSON objects that look like this:
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -1606,6 +2069,13 @@ the app should declare a parser that can take such a string and transform it int
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -1685,6 +2155,18 @@ Similarly, the function receives an argument object with the same set of informa
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
 ```
 
 
@@ -1712,6 +2194,8 @@ The following example shows a signature that can serve as a starting point for y
 ```
 1
 2
+3
+4
 ```
 
 
@@ -1733,6 +2217,15 @@ or an object that contains the value that’s used in JQL when the user selects 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -1876,6 +2369,55 @@ This example declares a progress bar custom field type that uses stored configur
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
 ```
 
 
@@ -1946,6 +2488,38 @@ This resource (`src/frontend/index.jsx`) renders the progress bar in view mode o
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
 ```
 
 
@@ -1995,6 +2569,64 @@ This resource (`src/frontend/editProgressBar.jsx`) provides the editing interfac
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
 ```
 
 
@@ -2070,6 +2702,59 @@ This resource (`src/frontend/configureProgressBar.jsx`) allows Jira administrato
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
 ```
 
 

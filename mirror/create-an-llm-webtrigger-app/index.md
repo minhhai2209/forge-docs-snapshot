@@ -25,23 +25,18 @@ Before you begin, ensure you have the following:
 Use the Forge CLI to create your app. In this example, we’ll name it `llm-webtrigger-app`:
 
 ```
-1
-2
-# First, authenticate with Forge if you haven’t already:
-forge login
+1# First, authenticate with Forge if you haven’t already:
+2forge login
+3
 ```
 
 ```
-1
-2
-3
-4
-5
-forge create
-# ? Enter a name for your app: llm-webtrigger-app
-# ? Select an Atlassian app or platform tool: Show All
-# ? Select a category: Show All
-# ? Select a template: webtrigger
+1forge create
+2# ? Enter a name for your app: llm-webtrigger-app
+3# ? Select an Atlassian app or platform tool: Show All
+4# ? Select a category: Show All
+5# ? Select a template: webtrigger
+6
 ```
 
 Navigate to your app directory:
@@ -56,6 +51,27 @@ Edit `manifest.yml` to include `llm` modules. Under the `llm` module, set the mo
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
 ```
 
 
@@ -101,6 +117,10 @@ Your `package.json` should include:
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -124,6 +144,13 @@ The app structure should look like this:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -157,6 +184,52 @@ Example structure:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
 ```
 
 
@@ -228,6 +301,7 @@ Deploy your app:
 ```
 1
 2
+3
 ```
 
 
@@ -246,6 +320,10 @@ Install the app on your Atlassian site:
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -269,6 +347,14 @@ Get your Web trigger URL:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -296,6 +382,18 @@ First create a `request.json` file with the following content:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
 ```
 
 
@@ -324,6 +422,8 @@ We use `jq` to pretty-print the JSON response.
 ```
 1
 2
+3
+4
 ```
 
 
@@ -341,6 +441,22 @@ curl -X POST https://<WEBTRIGGER_URL> \
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
 ```
 
 
@@ -376,6 +492,27 @@ curl -X POST https://<WEBTRIGGER_URL> \
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
 ```
 
 
@@ -427,6 +564,10 @@ curl -X POST https://<WEBTRIGGER_URL> \
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -446,6 +587,16 @@ curl -X POST https://<WEBTRIGGER_URL> \
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 

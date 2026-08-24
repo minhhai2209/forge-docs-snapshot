@@ -13,11 +13,16 @@ It may also contain updated code not included in this tutorial.](https://bitbuck
 
 The `sql` package provides the necessary SDKs for interacting with Forge SQL. To start using Forge SQL’s capabilities, you’ll need to install it in your project:
 
+```
+1npm install @forge/sql
+2
+```
+
 To import the package (including its [error handler](/platform/forge/storage-reference/sql-handling-errors/)) into your app:
 
 ```
-1
-import { sql, errorCodes } from '@forge/sql' ;
+1import { sql, errorCodes } from '@forge/sql' ;
+2
 ```
 
 ## Step 1: Define Forge SQL as a module
@@ -25,14 +30,11 @@ import { sql, errorCodes } from '@forge/sql' ;
 To enable Forge SQL on your app, you’ll need to define the `sql` [module](/platform/forge/manifest-reference/modules/sql/) in the manifest file:
 
 ```
-1
-2
-3
-4
-modules:
-  sql:
-    - key: main
-      engine: mysql
+1modules:
+2  sql:
+3    - key: main
+4      engine: mysql
+5
 ```
 
 ## Step 2: Define database schema via DDL statements
@@ -45,6 +47,19 @@ For example, the following snippet defines two DDL operations for creating table
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
 ```
 
 
@@ -81,6 +96,8 @@ For example, the following snippet assigns an `operationName` to the `CREATE_USE
 ```
 1
 2
+3
+4
 ```
 
 
@@ -98,6 +115,15 @@ In this next snippet, `createDBobjects` is wrapped in a single database object c
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -130,6 +156,13 @@ For example, the `scheduledTrigger` declaration here triggers the `runMigration`
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -156,6 +189,13 @@ Include a `migrationRunner.list` invocation in your database object creation (na
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -186,6 +226,8 @@ Use the following method signature for defining your SQL statements:
 ```
 1
 2
+3
+4
 ```
 
 
@@ -205,6 +247,22 @@ For example, to create a function for saving data to the `Users` table (defined 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
 ```
 
 
@@ -249,6 +307,29 @@ The following example uses `moment` to format dates accordingly:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
 ```
 
 

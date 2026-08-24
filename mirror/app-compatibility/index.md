@@ -21,40 +21,24 @@ needed. If published on the Atlassian Marketplace, it will only be available for
 ### Example manifest
 
 ```
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-modules:
-  macro:
-    - key: hello-world-app-hello-world
-      resource: main
-      render: native
-      resolver:
-        function: resolver
-      title: Forge app for Mia
-      description: Inserts hello world!
-  function:
-    - key: resolver
-      handler: index.handler
-resources:
-  - key: main
-    path: src/frontend/index.jsx
-app:
-  id: '<app id>'
+1modules:
+2  macro:
+3    - key: hello-world-app-hello-world
+4      resource: main
+5      render: native
+6      resolver:
+7        function: resolver
+8      title: Forge app for Mia
+9      description: Inserts hello world!
+10  function:
+11    - key: resolver
+12      handler: index.handler
+13resources:
+14  - key: main
+15    path: src/frontend/index.jsx
+16app:
+17  id: '<app id>'
+18
 ```
 
 ### Tutorials
@@ -95,6 +79,12 @@ the manifest, the app's compatibility is defined under `app`:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -134,6 +124,36 @@ This manifest defines Confluence as the required Atlassian app and Jira as optio
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
 ```
 
 

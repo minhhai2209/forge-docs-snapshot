@@ -77,6 +77,23 @@ An example egress group looks like:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
 ```
 
 
@@ -120,6 +137,11 @@ The data model for a customer-managed remote looks like:
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -153,6 +175,9 @@ To enable customer‑managed egress, enable the feature in your app manifest:
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -179,6 +204,12 @@ Basic example:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -209,6 +240,13 @@ For example, to provide a default `baseUrl` while still allowing customers to ov
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 

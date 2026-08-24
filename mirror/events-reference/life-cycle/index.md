@@ -5,14 +5,11 @@ Forge apps can subscribe to their own life cycle events for:
 Events are passed to your app via the `event` parameter.
 
 ```
-1
-2
-3
-4
-export async function handleEvent(event, context) {
-  console.log(`Event received: ${JSON.stringify(event)}`);
-  console.log(`Context: ${JSON.stringify(context)}`);
-}
+1export async function handleEvent(event, context) {
+2  console.log(`Event received: ${JSON.stringify(event)}`);
+3  console.log(`Context: ${JSON.stringify(context)}`);
+4}
+5
 ```
 
 ### Arguments
@@ -39,6 +36,15 @@ An event with the name `avi:forge:installed:app` is sent when an app has been in
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -65,6 +71,18 @@ This is an example payload.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
 ```
 
 
@@ -98,6 +116,24 @@ Here is a simple `installed` trigger that uses an exponential back-off strategy 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
 ```
 
 
@@ -145,6 +181,28 @@ An event with the name `avi:forge:upgraded:app` is sent when an installed app on
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
 ```
 
 
@@ -184,6 +242,18 @@ This is an example payload.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
 ```
 
 
@@ -217,6 +287,15 @@ The pre-uninstall invocation has a timeout of 55 seconds, during which the unins
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 

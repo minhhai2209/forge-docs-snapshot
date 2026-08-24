@@ -25,70 +25,39 @@ An HTTP request is made to the container endpoint route with the appropriate HTT
 The app below defines a container service `java-service`, which has an endpoint route `/webtrigger/http`.
 
 ```
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
+1services:
+2  - key: java-service
+3    containers:
+4      - key: java-service
+5        health:
+6          type: http
+7          route:
+8            path: /health
+9        resources:
+10          cpu: "1"
+11          memory: "2Gi"
 12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
+13modules:
+14  webtrigger:
+15    - key: http-webtrigger
+16      endpoint: webtrigger-http
+17  endpoint:
+18    - key: webtrigger-http
+19      service: java-service
+20      route:
+21        path: /webtrigger/http
+22app:
+23  runtime:
+24    name: nodejs22.x
+25  id: ari:cloud:ecosystem::app/${APP_ID}
 26
-27
-28
-29
-30
-31
-32
-services:
-  - key: java-service
-    containers:
-      - key: java-service
-        health:
-          type: http
-          route:
-            path: /health
-        resources:
-          cpu: "1"
-          memory: "2Gi"
-
-modules:
-  webtrigger:
-    - key: http-webtrigger
-      endpoint: webtrigger-http
-  endpoint:
-    - key: webtrigger-http
-      service: java-service
-      route:
-        path: /webtrigger/http
-app:
-  runtime:
-    name: nodejs22.x
-  id: ari:cloud:ecosystem::app/${APP_ID}
-
-environment:
-  variables:
-    - key: TAG
-      default: latest
-    - key: APP_ID
-      default: FORGE_REGISTER_ME
+27environment:
+28  variables:
+29    - key: TAG
+30      default: latest
+31    - key: APP_ID
+32      default: FORGE_REGISTER_ME
+33
 ```
 
 #### Request with path parameters
@@ -139,6 +108,20 @@ For example, the app manifest below defines two endpoints with nested routes tha
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
 ```
 
 
@@ -168,6 +151,20 @@ Instead, you can use a flat path for endpoints and avoid nested paths. For this 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
 ```
 
 

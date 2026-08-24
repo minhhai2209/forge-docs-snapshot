@@ -16,6 +16,31 @@ To use the `global:fullPage` module:
 ## Manifest structure
 
 ```
+1modules []
+2└─ global:fullPage {}
+3   ├─ key (string) [Mandatory]
+4   ├─ resource (string) [Mandatory]
+5   ├─ routePrefix (string) [Mandatory]
+6   ├─ render (string) [Mandatory for UI Kit only]
+7   ├─ resolver {} [Optional]
+8   ├─ title {} [Optional]
+9   └─ icon {} [Optional]
+10
+11resources []
+12├─ key (string) [Mandatory]
+13└─ path (string) [Mandatory]
+14
+15app {}
+16├─ id (string) [Required]
+17├─ runtime {} [Required]
+18└─ compatibility {} [Required]
+19
+```
+
+## Example manifest
+
+```
+```
 1
 2
 3
@@ -34,32 +59,18 @@ To use the `global:fullPage` module:
 16
 17
 18
-modules []
-└─ global:fullPage {}
-   ├─ key (string) [Mandatory]
-   ├─ resource (string) [Mandatory]
-   ├─ routePrefix (string) [Mandatory]
-   ├─ render (string) [Mandatory for UI Kit only]
-   ├─ resolver {} [Optional]
-   ├─ title {} [Optional]
-   └─ icon {} [Optional]
-
-resources []
-├─ key (string) [Mandatory]
-└─ path (string) [Mandatory]
-
-app {}
-├─ id (string) [Required]
-├─ runtime {} [Required]
-└─ compatibility {} [Required]
-```
-
-## Example manifest
-
-```
-```
-1
-2
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
 ```
 
 
@@ -117,6 +128,11 @@ Your app must declare a required Atlassian app in the manifest:
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 

@@ -3,8 +3,8 @@
 To add the `InlineEdit` component to your app:
 
 ```
-1
-import { InlineEdit } from "@forge/react";
+1import { InlineEdit } from "@forge/react";
+2
 ```
 
 ## Description
@@ -46,13 +46,38 @@ You can use various types of input fields such as text area and select. The appe
 
 #### Text field
 
-![Example image of an inline edit with Inline edit with textfield read view](https://dac-static.atlassian.com/platform/forge/ui-kit/images/inline-edit/inline-edit-textfield-read.png?_v=1.5800.2282)
-![Example image of an inline edit with Inline edit with textfield edit view](https://dac-static.atlassian.com/platform/forge/ui-kit/images/inline-edit/inline-edit-textfield-edit.png?_v=1.5800.2282)
+![Example image of an inline edit with Inline edit with textfield read view](https://dac-static.atlassian.com/platform/forge/ui-kit/images/inline-edit/inline-edit-textfield-read.png?_v=1.5800.2283)
+![Example image of an inline edit with Inline edit with textfield edit view](https://dac-static.atlassian.com/platform/forge/ui-kit/images/inline-edit/inline-edit-textfield-edit.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
 ```
 
 
@@ -91,13 +116,40 @@ const InlineEditTextfieldExample = () => {
 
 The text area example uses `keepEditViewOpenOnBlur`. When set to true, inline edit stays in editing when blurred (when the user clicks or moves away). This is recommended for larger areas of text to help prevent people from accidentally discarding or saving their unfinished work.
 
-![Example image of an inline edit with textarea read view](https://dac-static.atlassian.com/platform/forge/ui-kit/images/inline-edit/inline-edit-textarea-read.png?_v=1.5800.2282)
-![Example image of an inline edit with textarea edit view](https://dac-static.atlassian.com/platform/forge/ui-kit/images/inline-edit/inline-edit-textarea-edit.png?_v=1.5800.2282)
+![Example image of an inline edit with textarea read view](https://dac-static.atlassian.com/platform/forge/ui-kit/images/inline-edit/inline-edit-textarea-read.png?_v=1.5800.2283)
+![Example image of an inline edit with textarea edit view](https://dac-static.atlassian.com/platform/forge/ui-kit/images/inline-edit/inline-edit-textarea-edit.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
 ```
 
 
@@ -136,13 +188,75 @@ const InlineEditTextareaExample = () => {
 
 #### Select
 
-![Example image of an Inline edit with select read view](https://dac-static.atlassian.com/platform/forge/ui-kit/images/inline-edit/inline-edit-select-read.png?_v=1.5800.2282)
-![Example image of an Inline edit with select edit view](https://dac-static.atlassian.com/platform/forge/ui-kit/images/inline-edit/inline-edit-select-edit.png?_v=1.5800.2282)
+![Example image of an Inline edit with select read view](https://dac-static.atlassian.com/platform/forge/ui-kit/images/inline-edit/inline-edit-select-read.png?_v=1.5800.2283)
+![Example image of an Inline edit with select edit view](https://dac-static.atlassian.com/platform/forge/ui-kit/images/inline-edit/inline-edit-select-edit.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
 ```
 
 
@@ -222,12 +336,38 @@ Use `hideActionButtons` to remove the buttons and leave the field by itself. Use
 
 If there's no obstruction, keep action buttons for accessibility purposes. The contents in the field are saved when the user navigates away from the element, but this isn't immediately obvious on its' own.
 
-![Example image of an inline edit with no action buttons](https://dac-static.atlassian.com/platform/forge/ui-kit/images/inline-edit/inline-edit-no-action-buttons.png?_v=1.5800.2282)
+![Example image of an inline edit with no action buttons](https://dac-static.atlassian.com/platform/forge/ui-kit/images/inline-edit/inline-edit-no-action-buttons.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
 ```
 
 
@@ -268,12 +408,38 @@ const InlineEditTextfieldExample = () => {
 Inline edit starts in `readView` by default. You must click into the field to start editing.
 
 Use `startWithEditViewOpen` to set it to start in `editView` instead.
-![Example image of an inline edit with startsWithEditViewOpen prop](https://dac-static.atlassian.com/platform/forge/ui-kit/images/inline-edit/inline-edit-start-with-edit-view.png?_v=1.5800.2282)
+![Example image of an inline edit with startsWithEditViewOpen prop](https://dac-static.atlassian.com/platform/forge/ui-kit/images/inline-edit/inline-edit-start-with-edit-view.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
 ```
 
 
@@ -316,12 +482,105 @@ Validation displays an error message related to the restrictions of the inline e
 These error and warning messages disappear when the criteria is met.
 
 Try to keep the helper text as short as possible. For complex information, provide a link to more information in a new browser tab (see [messaging guidelines](https://atlassian.design/content/messaging-guidelines) for more information).
-![Example image of an inline edit with validation](https://dac-static.atlassian.com/platform/forge/ui-kit/images/inline-edit/inline-edit-validation.png?_v=1.5800.2282)
+![Example image of an inline edit with validation](https://dac-static.atlassian.com/platform/forge/ui-kit/images/inline-edit/inline-edit-validation.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
 ```
 
 
@@ -427,12 +686,38 @@ const InlineEditValidationExample = () => {
 ### Required field
 
 Set `isRequired` when an inline edit field needs to be filled out to continue.
-![Example image of an inline edit with required field](https://dac-static.atlassian.com/platform/forge/ui-kit/images/inline-edit/inline-edit-required-field.png?_v=1.5800.2282)
+![Example image of an inline edit with required field](https://dac-static.atlassian.com/platform/forge/ui-kit/images/inline-edit/inline-edit-required-field.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
 ```
 
 
@@ -474,13 +759,46 @@ In a stateless inline edit, you can manage the checked state of the input by usi
 
 This requires the `setEditing` handler to control the state value that you pass into the `isEditing` prop.
 
-![Example image of a stateless inline edit with read view](https://dac-static.atlassian.com/platform/forge/ui-kit/images/inline-edit/inline-edit-stateless-read.png?_v=1.5800.2282)
-![Example image of a stateless inline edit with edit view](https://dac-static.atlassian.com/platform/forge/ui-kit/images/inline-edit/inline-edit-stateless-edit.png?_v=1.5800.2282)
+![Example image of a stateless inline edit with read view](https://dac-static.atlassian.com/platform/forge/ui-kit/images/inline-edit/inline-edit-stateless-read.png?_v=1.5800.2283)
+![Example image of a stateless inline edit with edit view](https://dac-static.atlassian.com/platform/forge/ui-kit/images/inline-edit/inline-edit-stateless-edit.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
 ```
 
 

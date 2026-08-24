@@ -16,8 +16,8 @@ You must also update to the latest Forge CLI version. To do this:
 1. Install the Forge CLI globally by running:
 
    ```
-   1
-   npm install -g @forge/cli@latest
+   1npm install -g @forge/cli@latest
+   2
    ```
 2. Verify that the CLI is installed correctly by running:
 

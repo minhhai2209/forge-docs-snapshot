@@ -9,14 +9,11 @@ When you create a flag in Developer Console, it appears in three environments: *
 In your code, the SDK environment is set from the Forge context:
 
 ```
-1
-2
-3
-4
-const featureFlags = new FeatureFlags();
-await featureFlags.initialize({
-  environment: context?.environmentType?.toLowerCase() || "development"
-});
+1const featureFlags = new FeatureFlags();
+2await featureFlags.initialize({
+3  environment: context?.environmentType?.toLowerCase() || "development"
+4});
+5
 ```
 
 `environmentType` is automatically provided by Forge and reflects where the app is running (`development`, `staging`, or `production`). You don't need to hardcode or configure this.
@@ -26,42 +23,25 @@ await featureFlags.initialize({
 Write your flag check using the context-based environment. Don't hardcode an environment string:
 
 ```
-1
+1import { FeatureFlags } from "@forge/feature-flags";
 2
-3
-4
-5
-6
-7
+3resolver.define('getFeature', async ({ context }) => {
+4  const featureFlags = new FeatureFlags();
+5  await featureFlags.initialize({
+6    environment: context?.environmentType?.toLowerCase() || "development"
+7  });
 8
-9
-10
-11
-12
-13
+9  const user = {
+10    identifiers: {
+11      installContext: context?.installContext,
+12    }
+13  };
 14
-15
-16
-17
-18
-import { FeatureFlags } from "@forge/feature-flags";
-
-resolver.define('getFeature', async ({ context }) => {
-  const featureFlags = new FeatureFlags();
-  await featureFlags.initialize({
-    environment: context?.environmentType?.toLowerCase() || "development"
-  });
-
-  const user = {
-    identifiers: {
-      installContext: context?.installContext,
-    }
-  };
-
-  const isEnabled = featureFlags.checkFlag(user, "new-feature", false);
-  featureFlags.shutdown();
-  return isEnabled;
-});
+15  const isEnabled = featureFlags.checkFlag(user, "new-feature", false);
+16  featureFlags.shutdown();
+17  return isEnabled;
+18});
+19
 ```
 
 Deploy to all environments:
@@ -70,6 +50,8 @@ Deploy to all environments:
 ```
 1
 2
+3
+4
 ```
 
 
@@ -122,6 +104,9 @@ A common pattern is enabling debug logging or diagnostic output only in developm
 ```
 1
 2
+3
+4
+5
 ```
 
 

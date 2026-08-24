@@ -3,8 +3,8 @@
 To add the `TimePicker` component to your app:
 
 ```
-1
-import { TimePicker } from "@forge/react";
+1import { TimePicker } from "@forge/react";
+2
 ```
 
 ## Description
@@ -46,13 +46,24 @@ A time picker allows the user to select a specific time.
 ### Default
 
 By default, the time field is used to select a time from the select menu.
-![Example image of default time picker](https://dac-static.atlassian.com/platform/forge/ui-kit/images/time-picker/time-picker-default.png?_v=1.5800.2282)
-![Example image of default time picker opened](https://dac-static.atlassian.com/platform/forge/ui-kit/images/time-picker/time-picker-default-opened.png?_v=1.5800.2282)
+![Example image of default time picker](https://dac-static.atlassian.com/platform/forge/ui-kit/images/time-picker/time-picker-default.png?_v=1.5800.2283)
+![Example image of default time picker opened](https://dac-static.atlassian.com/platform/forge/ui-kit/images/time-picker/time-picker-default-opened.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
 ```
 
 
@@ -77,12 +88,43 @@ const TimePickerDefaultExample = () => {
 
 When using the time picker with the form component, include a label and helper text. For more information, see the [form](/platform/forge/ui-kit/components/form) component.
 
-![Example image of time picker in a form](https://dac-static.atlassian.com/platform/forge/ui-kit/images/time-picker/time-picker-form.png?_v=1.5800.2282)
+![Example image of time picker in a form](https://dac-static.atlassian.com/platform/forge/ui-kit/images/time-picker/time-picker-form.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
 ```
 
 
@@ -143,13 +185,57 @@ For example, helper text becomes an error message when the input content doesn't
 
 Keep helper text as short as possible. For complex information, provide a link to more information in a new browser tab. Use the [messaging guidelines](https://atlassian.design/content/messaging-guidelines) for more help.
 
-![Example image of invalid time picker in a form](https://dac-static.atlassian.com/platform/forge/ui-kit/images/time-picker/time-picker-invalid.png?_v=1.5800.2282)
-![Example image of valid time picker in a form](https://dac-static.atlassian.com/platform/forge/ui-kit/images/time-picker/time-picker-valid.png?_v=1.5800.2282)
+![Example image of invalid time picker in a form](https://dac-static.atlassian.com/platform/forge/ui-kit/images/time-picker/time-picker-invalid.png?_v=1.5800.2283)
+![Example image of valid time picker in a form](https://dac-static.atlassian.com/platform/forge/ui-kit/images/time-picker/time-picker-valid.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
 ```
 
 
@@ -209,12 +295,33 @@ const TimePickerFormValidationExample = () => {
 
 Use `locale` to display times in a format which is appropriate to users.
 
-![Example image of time picker with locale](https://dac-static.atlassian.com/platform/forge/ui-kit/images/time-picker/time-picker-locale.png?_v=1.5800.2282)
+![Example image of time picker with locale](https://dac-static.atlassian.com/platform/forge/ui-kit/images/time-picker/time-picker-locale.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
 ```
 
 
@@ -255,12 +362,25 @@ Where possible use locale for time formatting, instead of a custom format.
 
 Time formats should be informed by the user’s locale and the use case.
 
-![Example image of time picker with custom time format](https://dac-static.atlassian.com/platform/forge/ui-kit/images/time-picker/time-picker-formats.png?_v=1.5800.2282)
+![Example image of time picker with custom time format](https://dac-static.atlassian.com/platform/forge/ui-kit/images/time-picker/time-picker-formats.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
 ```
 
 
@@ -287,12 +407,24 @@ const TimePickerCustomTimeFormat = () => {
 
 This allows the time field to be edited via keyboard prompts.
 
-![Example image of default time picker](https://dac-static.atlassian.com/platform/forge/ui-kit/images/time-picker/time-picker-editable.png?_v=1.5800.2282)
+![Example image of default time picker](https://dac-static.atlassian.com/platform/forge/ui-kit/images/time-picker/time-picker-editable.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
 ```
 
 

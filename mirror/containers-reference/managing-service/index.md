@@ -39,7 +39,7 @@ Your app’s containerised service lifecycle begins when you upload the service�
 
 The following diagram provides a high-level view of the container lifecycle:
 
-![Forge Container services lifecycle overview](https://dac-static.atlassian.com/platform/forge/images/containers-lifecycle-overview.png?_v=1.5800.2282)
+![Forge Container services lifecycle overview](https://dac-static.atlassian.com/platform/forge/images/containers-lifecycle-overview.png?_v=1.5800.2283)
 
 This lifecycle involves the following major phases:
 
@@ -65,6 +65,8 @@ it to execute all container runtime commands:
 ```
 1
 2
+3
+4
 ```
 
 
@@ -146,6 +148,12 @@ Forge deploys your container service from a tagged image stored in your app’s 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -171,6 +179,20 @@ Use the `services` section of the Forge manifest to define a service for your ap
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
 ```
 
 
@@ -270,6 +292,27 @@ For example:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
 ```
 
 

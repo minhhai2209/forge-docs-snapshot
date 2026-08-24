@@ -13,8 +13,8 @@ When making an invocation from the frontend, the `invokeService` method must use
 To use the `invokeService` method, import it from `@forge/bridge`:
 
 ```
-1
-import { invokeService } from '@forge/bridge'
+1import { invokeService } from '@forge/bridge'
+2
 ```
 
 This method is only enabled on [UI Kit](/platform/forge/ui-kit/) and [Custom UI](/platform/forge/custom-ui/).
@@ -22,26 +22,17 @@ This method is only enabled on [UI Kit](/platform/forge/ui-kit/) and [Custom UI]
 ### Function signature
 
 ```
-1
-2
-3
-4
-5
-6
+1interface InvokeServiceInput {
+2  path: string;
+3  method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
+4  headers?: Record<string, string>;
+5  body?: unknown;
+6}
 7
-8
-9
-10
-interface InvokeServiceInput {
-  path: string;
-  method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
-  headers?: Record<string, string>;
-  body?: unknown;
-}
-
-function invokeService(
-  input: InvokeServiceInput
-): Promise<{ [key: string]: any } | void>;
+8function invokeService(
+9  input: InvokeServiceInput
+10): Promise<{ [key: string]: any } | void>;
+11
 ```
 
 ### Arguments
@@ -65,6 +56,13 @@ A `Promise` that resolves with the data returned from the invoked endpoint:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -104,6 +102,32 @@ import { invokeService } from '@forge/api';
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
 ```
 
 

@@ -7,32 +7,27 @@ build and upload your app
 ## Usage
 
 ```
-1
-Usage: forge build [options] [command]
+1Usage: forge build [options] [command]
+2
 ```
 
 ## Options
 
 ```
-1
-2
-3
-4
-5
-6
---verbose          enable verbose mode
--f, --no-verify    disable pre-build checks
--t, --tag <tag>    specify a custom build tag for build
---inspect          save application bundle for inspection
---non-interactive  run the command without input prompts
--h, --help         display help for command
+1--verbose          enable verbose mode
+2-f, --no-verify    disable pre-build checks
+3-t, --tag <tag>    specify a custom build tag for build
+4--inspect          save application bundle for inspection
+5--non-interactive  run the command without input prompts
+6-h, --help         display help for command
+7
 ```
 
 ## Commands
 
 ```
-1
-list [options]     list builds for your app
+1list [options]     list builds for your app
+2
 ```
 
 ## Operations

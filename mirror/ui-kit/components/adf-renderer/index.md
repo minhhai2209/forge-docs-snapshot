@@ -3,8 +3,8 @@
 To add the `AdfRenderer` component to your app:
 
 ```
-1
-import { AdfRenderer } from "@forge/react";
+1import { AdfRenderer } from "@forge/react";
+2
 ```
 
 ## Description
@@ -58,12 +58,39 @@ This demonstrates how to render the contents of a UI Kit bodied macro, including
 * Your app must be a [Confluence bodied macro](/platform/forge/using-rich-text-bodied-macros/#step-3--render-rich-body-content) with [layout:bodied enabled](/platform/forge/using-rich-text-bodied-macros/#step-1--configure-the-manifest) in the macro module properties of the manifest file.
 * This approach is for **UI Kit** apps only. For Custom UI, use `view.createAdfRendererIframeProps` instead.
 
-![Screenshot showing a UI Kit bodied macro with "Hello world!" text above and below the rendered macro body content](https://dac-static.atlassian.com/platform/forge/ui-kit/images/adfRenderer/adfRenderer-ui-kit-bodied-macro.png?_v=1.5800.2282)
+![Screenshot showing a UI Kit bodied macro with "Hello world!" text above and below the rendered macro body content](https://dac-static.atlassian.com/platform/forge/ui-kit/images/adfRenderer/adfRenderer-ui-kit-bodied-macro.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
 ```
 
 
@@ -106,12 +133,32 @@ If the UI Kit bodied macro contains multiple Forge embedded macro apps, you can 
 
 This demonstrates how a simple ADF document is rendered.
 
-![Example image of a rendered valid basic ADF document](https://dac-static.atlassian.com/platform/forge/ui-kit/images/adfRenderer/adfRenderer-basic.png?_v=1.5800.2282)
+![Example image of a rendered valid basic ADF document](https://dac-static.atlassian.com/platform/forge/ui-kit/images/adfRenderer/adfRenderer-basic.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
 ```
 
 
@@ -145,12 +192,36 @@ export const AdfRendererBasicExample = () => {
 
 This demonstrates how unsupported content might render by default, without any explicit replacement logic defined.
 
-![Example image of a rendered valid ADF document with unsupported content](https://dac-static.atlassian.com/platform/forge/ui-kit/images/adfRenderer/adfRenderer-unsupported-content-basic.png?_v=1.5800.2282)
+![Example image of a rendered valid ADF document with unsupported content](https://dac-static.atlassian.com/platform/forge/ui-kit/images/adfRenderer/adfRenderer-unsupported-content-basic.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
 ```
 
 
@@ -188,12 +259,53 @@ export const AdfRendererUnsupportedExample = () => {
 
 This demonstrates a simple replacement function that just replaces unsupported content with a paragraph.
 
-![Example image of a rendered valid ADF document with unsupported content replaced](https://dac-static.atlassian.com/platform/forge/ui-kit/images/adfRenderer/adfRenderer-unsupported-content-replaced-basic.png?_v=1.5800.2282)
+![Example image of a rendered valid ADF document with unsupported content replaced](https://dac-static.atlassian.com/platform/forge/ui-kit/images/adfRenderer/adfRenderer-unsupported-content-replaced-basic.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
 ```
 
 
@@ -248,12 +360,80 @@ export const AdfRendererUnsupportedContentExample = () => {
 
 This demonstrates a more complex replacement function that either replaces content, removes it, and or leaves it as-is, depending on the node type.
 
-![Example image of a rendered valid ADF document with unsupported content replaced](https://dac-static.atlassian.com/platform/forge/ui-kit/images/adfRenderer/adfRenderer-unsupported-content-replaced-complex.png?_v=1.5800.2282)
+![Example image of a rendered valid ADF document with unsupported content replaced](https://dac-static.atlassian.com/platform/forge/ui-kit/images/adfRenderer/adfRenderer-unsupported-content-replaced-complex.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
 ```
 
 

@@ -3,8 +3,8 @@
 To add the `PieChart` component to your app:
 
 ```
-1
-import { PieChart } from '@forge/react';
+1import { PieChart } from '@forge/react';
+2
 ```
 
 ## Props
@@ -26,7 +26,7 @@ import { PieChart } from '@forge/react';
 
 Data can be one of two formats, an array of arrays or an array of objects. Both examples below will produce the same pie chart:
 
-![Example image of a rendered pie chart](https://dac-static.atlassian.com/platform/forge/ui-kit/images/pie-chart/pie-chart-data.png?_v=1.5800.2282)
+![Example image of a rendered pie chart](https://dac-static.atlassian.com/platform/forge/ui-kit/images/pie-chart/pie-chart-data.png?_v=1.5800.2283)
 
 ### 1. Array of arrays
 
@@ -38,6 +38,21 @@ For this data format, the `valueAccessor`, `labelAccessor` and `colorAccessor` a
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
 ```
 
 
@@ -72,6 +87,36 @@ For this data format, the `valueAccessor`, `labelAccessor` and `colorAccessor` a
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
 ```
 
 

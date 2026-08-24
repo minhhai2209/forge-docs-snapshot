@@ -24,14 +24,11 @@ Make sure you have the following:
 To set your macro as a bodied macro, navigate to the app's `manifest.yml` file and add the line `layout: bodied` in the macro module properties.
 
 ```
-1
-2
-3
-4
-macro:
-  - key: my-macro
-    ...
-    layout: bodied
+1macro:
+2  - key: my-macro
+3    ...
+4    layout: bodied
+5
 ```
 
 ## Step 2: Extract the macro body
@@ -46,6 +43,19 @@ In a UI Kit app, we can use `useProductContext()` to extract the macro body.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
 ```
 
 
@@ -88,6 +98,12 @@ Both the `AdfRenderer` component and `view.createAdfRendererIframeProps` require
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -111,6 +127,11 @@ To render in UI Kit, you can use the `AdfRenderer` component from [@forge/react]
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -153,6 +174,41 @@ so it cannot make any assumptions about the format of the body.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
 ```
 
 
@@ -210,6 +266,28 @@ Note that we inject the expanded CSS and JavaScript tags into the HTML body.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
 ```
 
 
@@ -255,6 +333,9 @@ See an example manifest structure [here](/platform/forge/ui-kit/components/frame
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -277,6 +358,15 @@ function will be called each time the parent component provides HTML, which we w
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -302,6 +392,16 @@ The following code uses [createFrame](/platform/forge/ui-kit/components/frame/#u
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -327,6 +427,8 @@ Add the `read:confluence-content.all` scope in the permissions section of the `m
 ```
 1
 2
+3
+4
 ```
 
 
@@ -344,6 +446,25 @@ Additionally, if we want to render embedded content, we must specify the followi
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
 ```
 
 
@@ -393,6 +514,15 @@ See the full `adfExport` tutorial [here](/platform/forge/change-the-confluence-f
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 

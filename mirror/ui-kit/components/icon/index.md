@@ -11,8 +11,8 @@ for a list of deprecated icons, and which icons to migrate to.
 To add the `Icon` component to your app:
 
 ```
-1
-import { Icon } from "@forge/react";
+1import { Icon } from "@forge/react";
+2
 ```
 
 ## Description
@@ -40,12 +40,21 @@ Valid icons can be found in the [Atlassian Design System Icon Library](https://a
 
 Extract the `core` segment of the icon's import to get the valid icon name to pass into `glyph`. For example, the icon name for `icon/core/thumbs-up` is `thumbs-up`.
 
-![Example image of default icon](https://dac-static.atlassian.com/platform/forge/ui-kit/images/icon/icon-default.png?_v=1.5800.2282)
+![Example image of default icon](https://dac-static.atlassian.com/platform/forge/ui-kit/images/icon/icon-default.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -70,12 +79,50 @@ If an icon doesn’t have an existing text label or accessible text, provide a c
 
 If an icon is associated with a button or element that has a text label, you don't need to provide alternative text. The `label` of the button or element clarifies the icon's meaning.
 
-![Example image of icon with label](https://dac-static.atlassian.com/platform/forge/ui-kit/images/icon/icon-label.png?_v=1.5800.2282)
+![Example image of icon with label](https://dac-static.atlassian.com/platform/forge/ui-kit/images/icon/icon-label.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
 ```
 
 
@@ -131,12 +178,20 @@ The color of the icon can be declared using the `color` property. The icon's col
 
 Allowed `color` values include any design token with the prefix `color.` found under [Atlassian Design System design tokens](https://atlassian.design/components/tokens/all-tokens).
 
-![Example image of color icon](https://dac-static.atlassian.com/platform/forge/ui-kit/images/icon/icon-color.png?_v=1.5800.2282)
+![Example image of color icon](https://dac-static.atlassian.com/platform/forge/ui-kit/images/icon/icon-color.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -160,12 +215,16 @@ The `large` size is now [deprecated](https://developer.atlassian.com/changelog/#
 
 #### Small
 
-![Example image of small icon](https://dac-static.atlassian.com/platform/forge/ui-kit/images/icon/icon-sizing-small.png?_v=1.5800.2282)
+![Example image of small icon](https://dac-static.atlassian.com/platform/forge/ui-kit/images/icon/icon-sizing-small.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -181,12 +240,16 @@ const IconSmall = () => {
 
 #### Medium (default)
 
-![Example image of medium icon](https://dac-static.atlassian.com/platform/forge/ui-kit/images/icon/icon-sizing-medium.png?_v=1.5800.2282)
+![Example image of medium icon](https://dac-static.atlassian.com/platform/forge/ui-kit/images/icon/icon-sizing-medium.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -206,12 +269,24 @@ You can display an icon in a tile using the `Icon` and [Tile](/platform/forge/ui
 
 Place the `Icon` component as a child of the `Tile` component so the icon renders inside the tile.
 
-![Examples of tiles with icons](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tile/tile-with-icons.png?_v=1.5800.2282)
+![Examples of tiles with icons](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tile/tile-with-icons.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
 ```
 
 

@@ -3,8 +3,8 @@
 To add the `BarChart` component to your app:
 
 ```
-1
-import { BarChart } from '@forge/react';
+1import { BarChart } from '@forge/react';
+2
 ```
 
 ## Props
@@ -25,7 +25,7 @@ import { BarChart } from '@forge/react';
 
 Data can be one of two formats, an array of arrays or an array of objects. Both examples below will produce the same bar chart:
 
-![Example image of a rendered group bar](https://dac-static.atlassian.com/platform/forge/ui-kit/images/bar-chart/bar-chart-data.png?_v=1.5800.2282)
+![Example image of a rendered group bar](https://dac-static.atlassian.com/platform/forge/ui-kit/images/bar-chart/bar-chart-data.png?_v=1.5800.2283)
 
 ### 1. Array of arrays
 
@@ -37,6 +37,33 @@ For this data format, the `xAccessor`, `yAccessor` and `colorAccessor` are numbe
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
 ```
 
 
@@ -83,6 +110,95 @@ For this data format, the `xAccessor` and `yAccessor` are string indices, identi
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
 ```
 
 

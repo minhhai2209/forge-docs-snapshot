@@ -70,6 +70,13 @@ Update the permissions section in the app manifest to indicate that app is manag
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -121,6 +128,28 @@ Import the `usePermissions` hook to check permissions:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
 ```
 
 
@@ -177,6 +206,38 @@ Import the `checkPermissions` function to check permissions:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
 ```
 
 
@@ -245,6 +306,8 @@ npm install --save @forge/api@latest
 ```
 1
 2
+3
+4
 ```
 
 
@@ -262,6 +325,8 @@ const isPermitted = permissions.hasScope('write:confluence-content')
 ```
 1
 2
+3
+4
 ```
 
 
@@ -279,6 +344,8 @@ const isPermitted = permissions.canFetchFrom('backend', 'https://api.example.com
 ```
 1
 2
+3
+4
 ```
 
 
@@ -296,6 +363,16 @@ const isPermitted = permissions.canLoadResource('images', 'https://api.example.c
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -327,6 +404,16 @@ Permissions object is added to the event object so that we can filter out Atlass
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -352,6 +439,22 @@ External egress is also available in the `event.permissions` and can be used for
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
 ```
 
 
@@ -409,6 +512,13 @@ To test how your app behaves with different permission levels, you can install d
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -435,7 +545,7 @@ To start a rollout, select **Start rollout**. Rollouts are managed per environme
 
 To inspect an in-progress or completed rollout, select **View details**. The rollout details page shows the rollout status, percentage of installations receiving the update, installation and error metrics, installation eligibility, ineligible versions, and the rollout timeline.
 
-![Rollout details page showing in-progress rollout status, installation metrics, installation eligibility, ineligible versions, and rollout timeline](https://dac-static.atlassian.com/platform/forge/images/rolling-releases/rollout-details-page.png?_v=1.5800.2282)
+![Rollout details page showing in-progress rollout status, installation metrics, installation eligibility, ineligible versions, and rollout timeline](https://dac-static.atlassian.com/platform/forge/images/rolling-releases/rollout-details-page.png?_v=1.5800.2283)
 
 ## Controlling rollouts
 

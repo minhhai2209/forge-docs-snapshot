@@ -10,10 +10,10 @@ This tutorial describes how to create a Forge app with two modules, where an adm
 news content using `spaceSettings` module, and make the news content available using `contentBylineItem`.
 
 The final `spaceSettings` module looks like the following:
-![Space settings shows Space news app](https://dac-static.atlassian.com/platform/forge/images/space-news-settings.png?_v=1.5800.2282)
+![Space settings shows Space news app](https://dac-static.atlassian.com/platform/forge/images/space-news-settings.png?_v=1.5800.2283)
 
 The final `contentBylineItem` module looks like the following:
-![Content byline item shows Space news app](https://dac-static.atlassian.com/platform/forge/images/space-news-byline.png?_v=1.5800.2282)
+![Content byline item shows Space news app](https://dac-static.atlassian.com/platform/forge/images/space-news-byline.png?_v=1.5800.2283)
 
 ## Before you begin
 
@@ -76,6 +76,10 @@ The `function` modules contains the implementation of space settings and content
    ```
    1
    2
+   3
+   4
+   5
+   6
    ```
 
 
@@ -94,6 +98,9 @@ The `function` modules contains the implementation of space settings and content
    ```
    1
    2
+   3
+   4
+   5
    ```
 
 
@@ -111,6 +118,20 @@ The `function` modules contains the implementation of space settings and content
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
+   14
+   15
+   16
    ```
 
 
@@ -191,6 +212,40 @@ app logic yet. You'll do this in the next step.
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
+   14
+   15
+   16
+   17
+   18
+   19
+   20
+   21
+   22
+   23
+   24
+   25
+   26
+   27
+   28
+   29
+   30
+   31
+   32
+   33
+   34
+   35
+   36
    ```
 
 
@@ -262,6 +317,11 @@ The `confluence:contentBylineItem` module displays Forge apps in the content byl
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
    ```
 
 
@@ -281,6 +341,7 @@ The `confluence:contentBylineItem` module displays Forge apps in the content byl
    ```
    1
    2
+   3
    ```
 
 
@@ -297,6 +358,28 @@ Your `manifest.yml` should look like the following, with your value for the app 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
 ```
 
 
@@ -337,6 +420,20 @@ app:
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
+   12
+   13
+   14
+   15
+   16
    ```
 
 

@@ -11,35 +11,24 @@ Smart Link requests are executed in the context of the user. Both Atlassian and 
 
 By using the [`asUser()`](/platform/forge/runtime-reference/external-fetch-api/) the user Authentication token will automatically be injected in the communication to the remote system. The App should check that the user has a valid token, and if not, trigger the process to authenticate the user.
 
-![](https://dac-static.atlassian.com/platform/forge/snippets/images/graph/screenshot.png?_v=1.5800.2282)
+![](https://dac-static.atlassian.com/platform/forge/snippets/images/graph/screenshot.png?_v=1.5800.2283)
 
 ## Manifest structure
 
 ```
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-modules {}
-└─ graph:smartLink []
-   ├─ key (string) [Mandatory]
-   ├─ name (string) [Mandatory]
-   ├─ icon (string) [Mandatory]
-   ├─ function (string) [Mandatory]
-   ├─ domains [string] [Mandatory]
-   ├─ subdomains (boolean) [Optional]
-   └─ patterns [string] [Mandatory]
-function []
-├─ key (string) [Mandatory]
-└─ handler (string) [Mandatory]
+1modules {}
+2└─ graph:smartLink []
+3   ├─ key (string) [Mandatory]
+4   ├─ name (string) [Mandatory]
+5   ├─ icon (string) [Mandatory]
+6   ├─ function (string) [Mandatory]
+7   ├─ domains [string] [Mandatory]
+8   ├─ subdomains (boolean) [Optional]
+9   └─ patterns [string] [Mandatory]
+10function []
+11├─ key (string) [Mandatory]
+12└─ handler (string) [Mandatory]
+13
 ```
 
 ## Properties
@@ -60,6 +49,20 @@ function []
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
 ```
 
 
@@ -98,6 +101,8 @@ If there are multiple links on a given page for the same App that match, these w
 ```
 1
 2
+3
+4
 ```
 
 
@@ -124,6 +129,11 @@ Below is a request to resolve two links.
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -144,6 +154,13 @@ Below is a request to resolve two links.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -170,7 +187,7 @@ response {}
 | `entities[i].meta` | `Meta` | Yes | Object containing metadata about the entity, such as access and visibility. |
 | `entities[i].meta.access` | `String` | Yes | Access level for the entity.  Supported values: `granted`, `forbidden`, `unauthorized`, `not_found`. |
 | `entities[i].meta.visibility` | `String` | Yes | Visibility of the entity.  Supported values: `public`, `restricted`, `other`, `not_found`. |
-| `entities[i].entity` | `Object` | No | If the URL could be resolved successfully, return the entity using the Object format that closest matches the object. |
+| `entities[i].entity` | `[object Object]` | No | If the URL could be resolved successfully, return the entity using the Object format that closest matches the object. |
 
 #### Example:
 
@@ -178,6 +195,57 @@ response {}
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
 ```
 
 

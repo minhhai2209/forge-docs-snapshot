@@ -42,6 +42,24 @@ Send a `POST` request to `/forge/installation/v2/dynamic/module` to register a d
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
 ```
 
 
@@ -91,6 +109,8 @@ The request does not have permissions to access the target installation.
 ```
 1
 2
+3
+4
 ```
 
 
@@ -110,6 +130,8 @@ The Dynamic Module service encountered an unexpected problem.
 ```
 1
 2
+3
+4
 ```
 
 
@@ -146,6 +168,25 @@ The `dynamicModuleRequest` body has the following properties:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
 ```
 
 
@@ -186,6 +227,16 @@ The taget dynamic module was successfully updated. The response will contain the
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -225,6 +276,8 @@ The specified key does not match the key specified in the `dynamicModuleRequest`
 ```
 1
 2
+3
+4
 ```
 
 
@@ -244,6 +297,8 @@ The Dynamic Module service encountered an unexpected problem.
 ```
 1
 2
+3
+4
 ```
 
 
@@ -276,6 +331,18 @@ To make the dynamic module discoverable, update your `manifest.yml` to remove or
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
 ```
 
 
@@ -309,6 +376,33 @@ Dynamic modules were successfully fetched.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
 ```
 
 
@@ -361,6 +455,8 @@ The request does not have permissions to access the target installation.
 ```
 1
 2
+3
+4
 ```
 
 
@@ -380,6 +476,8 @@ The Dynamic Module service encountered an unexpected problem.
 ```
 1
 2
+3
+4
 ```
 
 
@@ -408,6 +506,15 @@ Send a `GET` request to `/forge/installation/v2/dynamic/module/<key>` to retriev
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -438,6 +545,16 @@ The specified dynamic module was successfully fetched.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -473,6 +590,8 @@ The request does not have permissions to access the target installation.
 ```
 1
 2
+3
+4
 ```
 
 
@@ -492,6 +611,8 @@ The Dynamic Module service encountered an unexpected problem.
 ```
 1
 2
+3
+4
 ```
 
 
@@ -520,6 +641,14 @@ Send a `DELETE` request to `/forge/installation/v2/dynamic/module/<key>` to dele
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -559,6 +688,8 @@ The request does not have permissions to access the target installation.
 ```
 1
 2
+3
+4
 ```
 
 
@@ -578,6 +709,8 @@ The Dynamic Module service encountered an unexpected problem.
 ```
 1
 2
+3
+4
 ```
 
 

@@ -25,6 +25,41 @@ If your action ran successfully, control will be passed back to Automation, and 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
 ```
 
 
@@ -110,6 +145,70 @@ The `action` module allows you to configure an action.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
 ```
 
 
@@ -256,6 +355,30 @@ See [Add scopes to call an Atlassian REST API](/platform/forge/add-scopes-to-cal
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
 ```
 
 
@@ -295,6 +418,40 @@ resources:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
 ```
 
 
@@ -347,7 +504,7 @@ That configuration form is built by you, using either UI Kit or Custom UI.
 
 We recommend choosing UI Kit due to its simplicity and efficiency in capturing user inputs.
 
-![configuration-example](https://dac-static.atlassian.com/platform/forge/images/automation/action-configuration-example.png?_v=1.5800.2282)
+![configuration-example](https://dac-static.atlassian.com/platform/forge/images/automation/action-configuration-example.png?_v=1.5800.2283)
 
 For a great user experience, it is important for the configuration form to interact properly with Automation.
 There are two areas to take care of:
@@ -378,6 +535,62 @@ More information about the form can be found under [Form](/platform/forge/ui-kit
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
 ```
 
 
@@ -458,6 +671,74 @@ This event is only available for Custom UI modules.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
 ```
 
 
@@ -550,6 +831,18 @@ Additionally, we provide information to the action configuration about any inval
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
 ```
 
 
@@ -581,6 +874,48 @@ This allows you to update your form's UI state, such as disabling inputs during 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
 ```
 
 
@@ -638,6 +973,35 @@ ForgeReconciler.render(<App />);
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
 ```
 
 
@@ -684,6 +1048,16 @@ root.render(<App />);
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -730,11 +1104,11 @@ Kindly refer [outputs](/platform/forge/manifest-reference/modules/automation-act
 Below section gives a glimpse of what to expect when working with Forge actions and smart values.
 Defining a rule with a Forge action that has defined outputs mentioned in the example here: [Forge Action](/platform/forge/manifest-reference/modules/automation-action/#using-a-forge-app-with-output)
 
-![automation-action-configuration](https://dac-static.atlassian.com/platform/forge/images/automation/automation-action-smart-value-configuration.png?_v=1.5800.2282)
+![automation-action-configuration](https://dac-static.atlassian.com/platform/forge/images/automation/automation-action-smart-value-configuration.png?_v=1.5800.2283)
 
 We can now select the smart value operator which is created as explained above. This operator can than be used in the subsequent rule executions.
 
-![automation-action-smart-value-operator](https://dac-static.atlassian.com/platform/forge/images/automation/automation-action-smart-value-operator.png?_v=1.5800.2282)
+![automation-action-smart-value-operator](https://dac-static.atlassian.com/platform/forge/images/automation/automation-action-smart-value-operator.png?_v=1.5800.2283)
 
 ## Action execution
 
@@ -748,6 +1122,12 @@ Here’s an example of a payload object, and how it can be accessed.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -769,6 +1149,14 @@ The `addComment` function from the previous example might look like this:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -811,6 +1199,20 @@ The rule owner can then navigate to the Audit Log, where they can then see the e
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
 ```
 
 
@@ -841,7 +1243,7 @@ If the app defines multiple actions, they will have the same icon.
 
 An app icon can be configured in the Developer console:
 
-![app-icon](https://dac-static.atlassian.com/platform/forge/images/automation/action-configuration-icon.png?_v=1.5800.2282)
+![app-icon](https://dac-static.atlassian.com/platform/forge/images/automation/action-configuration-icon.png?_v=1.5800.2283)
 
 ## Design guidelines
 

@@ -18,48 +18,28 @@ In Developer Console, create the flag with **ID type: installContext**.
 ### Step 2: Add the flag check
 
 ```
-1
+1import { FeatureFlags } from "@forge/feature-flags";
 2
-3
-4
-5
-6
-7
+3resolver.define('getFeature', async ({ context }) => {
+4  const featureFlags = new FeatureFlags();
+5  await featureFlags.initialize({
+6    environment: context?.environmentType?.toLowerCase() || "development"
+7  });
 8
-9
-10
-11
-12
-13
-14
-15
-16
+9  const user = {
+10    identifiers: {
+11      installContext: context?.installContext,
+12    },
+13    attributes: {
+14      installContext: context?.installContext,
+15    }
+16  };
 17
-18
-19
-20
-21
-import { FeatureFlags } from "@forge/feature-flags";
-
-resolver.define('getFeature', async ({ context }) => {
-  const featureFlags = new FeatureFlags();
-  await featureFlags.initialize({
-    environment: context?.environmentType?.toLowerCase() || "development"
-  });
-
-  const user = {
-    identifiers: {
-      installContext: context?.installContext,
-    },
-    attributes: {
-      installContext: context?.installContext,
-    }
-  };
-
-  const isEnabled = featureFlags.checkFlag(user, "enterprise-feature", false);
-  featureFlags.shutdown();
-  return isEnabled;
-});
+18  const isEnabled = featureFlags.checkFlag(user, "enterprise-feature", false);
+19  featureFlags.shutdown();
+20  return isEnabled;
+21});
+22
 ```
 
 ### Step 3: Target the organization in Developer Console
@@ -85,6 +65,26 @@ In Developer Console, create the flag with **ID type: accountId**.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
 ```
 
 
@@ -129,6 +129,38 @@ Use the `license` attribute to enable features only for paid or trial users.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
 ```
 
 
@@ -182,6 +214,17 @@ Use `capabilitySet` to differentiate between Standard and Advanced license tiers
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
 ```
 
 
@@ -212,6 +255,14 @@ If the predefined attributes don't meet your needs, pass any custom key/value pa
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 

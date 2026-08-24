@@ -19,7 +19,7 @@ typically a small React app), and Forge serves it. This gives you full control o
 looks and behaves. The simpler alternative, [UI Kit](/platform/forge/ui-kit/), uses Atlassian's
 ready-made components instead.
 
-![A Jira issue displaying a Custom UI Forge app](https://dac-static.atlassian.com/platform/forge/images/forge-getting-started-jira-custom-ui.png?_v=1.5800.2282)
+![A Jira issue displaying a Custom UI Forge app](https://dac-static.atlassian.com/platform/forge/images/forge-getting-started-jira-custom-ui.png?_v=1.5800.2283)
 
 ## How Custom UI differs from UI Kit
 
@@ -44,6 +44,33 @@ following:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
 ```
 
 
@@ -121,6 +148,8 @@ edit the code, then rebuild.
    ```
    1
    2
+   3
+   4
    ```
 
 

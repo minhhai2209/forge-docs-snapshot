@@ -25,108 +25,56 @@ use the returned array to count the number of footer comments and write it to th
 2. Go to the `src/frontend/index.jsx` file, replace it with the following code:
 
    ```
-   1
-   2
-   3
-   4
-   5
+   1// Import React and Forge UI Kit components/hooks
+   2import React from 'react';
+   3import ForgeReconciler, { Text, useProductContext } from '@forge/react';
+   4// Import the bridge method to call Confluence REST APIs
+   5import { requestConfluence } from '@forge/bridge';
    6
-   7
-   8
-   9
-   10
-   11
-   12
-   13
-   14
-   15
-   16
-   17
+   791011
+   12const fetchCommentsForPage = async (pageId) => {
+   13  // Call the Confluence REST API for footer comments
+   14  const res = await requestConfluence(`/wiki/api/v2/pages/${pageId}/footer-comments`);
+   15  const data = await res.json();
+   16  return data.results;
+   17};
    18
-   19
-   20
-   21
+   19const App = () => {
+   20  // Get the current Atlassian app context (includes page info)
+   21  const context = useProductContext();
    22
-   23
-   24
+   23  // State to store the array of footer comments
+   24  const [comments, setComments] = React.useState();
    25
-   26
-   27
+   26  // Log the number of comments to the browser console for debugging
+   27  console.log(`Number of comments on this page: ${comments?.length}`);
    28
-   29
-   30
-   31
-   32
-   33
-   34
-   35
-   36
-   37
+   29  // Fetch comments when the context is available (i.e., after loading)
+   30  React.useEffect(() => {
+   31    if (context) {
+   32      // Extract the page ID from the context object
+   33      const pageId = context.extension.content.id;
+   34      // Fetch and store the comments
+   35      fetchCommentsForPage(pageId).then(setComments);
+   36    }
+   37  }, [context]);
    38
-   39
-   40
-   41
-   42
-   43
-   44
-   45
-   46
+   39  // Render the UI: show the number of comments and a hello message
+   40  return (
+   41    <>
+   42      <Text>Number of comments on this page: {comments?.length}</Text>
+   43      <Text>Hello world!</Text>
+   44    </>
+   45  );
+   46};
    47
-   48
-   49
-   50
-   51
-   52
-   53
-   // Import React and Forge UI Kit components/hooks
-   import React from 'react';
-   import ForgeReconciler, { Text, useProductContext } from '@forge/react';
-   // Import the bridge method to call Confluence REST APIs
-   import { requestConfluence } from '@forge/bridge';
-
-
-   const fetchCommentsForPage = async (pageId) => {
-     // Call the Confluence REST API for footer comments
-     const res = await requestConfluence(`/wiki/api/v2/pages/${pageId}/footer-comments`);
-     const data = await res.json();
-     return data.results;
-   };
-
-   const App = () => {
-     // Get the current Atlassian app context (includes page info)
-     const context = useProductContext();
-
-     // State to store the array of footer comments
-     const [comments, setComments] = React.useState();
-
-     // Log the number of comments to the browser console for debugging
-     console.log(`Number of comments on this page: ${comments?.length}`);
-
-     // Fetch comments when the context is available (i.e., after loading)
-     React.useEffect(() => {
-       if (context) {
-         // Extract the page ID from the context object
-         const pageId = context.extension.content.id;
-         // Fetch and store the comments
-         fetchCommentsForPage(pageId).then(setComments);
-       }
-     }, [context]);
-
-     // Render the UI: show the number of comments and a hello message
-     return (
-       <>
-         <Text>Number of comments on this page: {comments?.length}</Text>
-         <Text>Hello world!</Text>
-       </>
-     );
-   };
-
-   // Render the App component using ForgeReconciler
-   ForgeReconciler.render(
-     <React.StrictMode>
-       <App />
-     </React.StrictMode>
-   );
+   48// Render the App component using ForgeReconciler
+   49ForgeReconciler.render(
+   50  <React.StrictMode>
+   51    <App />
+   52  </React.StrictMode>
+   53);
+   54
    ```
 
    This code includes comments to help you quickly understand what each section does.
@@ -167,7 +115,7 @@ For information about how Atlassian collects and handles your data, read our
 2. Refresh the Confluence page that contains your macro.
 3. Check the developer console in your browser. The number of comments on the page displays as follows:
 
-![The message displayed in the browser console](https://dac-static.atlassian.com/platform/forge/images/console-log-successful.png?_v=1.5800.2282)
+![The message displayed in the browser console](https://dac-static.atlassian.com/platform/forge/images/console-log-successful.png?_v=1.5800.2283)
 
 The `requestConfluence` method inherits the Atlassian app permissions of the user that is interacting with the app. This can cause different API responses between different users in the same app.
 
@@ -184,6 +132,8 @@ You'll have to manually add the required scope permission into your `manifest.ym
    ```
    1
    2
+   3
+   4
    ```
 
 
@@ -201,6 +151,7 @@ You'll have to manually add the required scope permission into your `manifest.ym
    ```
    1
    2
+   3
    ```
 
 
@@ -217,5 +168,5 @@ You'll have to manually add the required scope permission into your `manifest.ym
 In the next tutorial, you'll learn how to make changes to your app's frontend using the
 [UI Kit components](/platform/forge/ui-kit/components/) of Forge.
 
-[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.2282)](/platform/forge/build-a-hello-world-app-in-confluence/)
-[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.2282)](/platform/forge/change-the-confluence-frontend-with-the-ui-kit)
+[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.2283)](/platform/forge/build-a-hello-world-app-in-confluence/)
+[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.2283)](/platform/forge/change-the-confluence-frontend-with-the-ui-kit)

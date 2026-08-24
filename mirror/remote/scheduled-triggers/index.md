@@ -20,46 +20,27 @@ To configure scheduled triggers that invoke your remote backend, in your `manife
 Below is an example `manifest.yml` configuring a scheduled trigger that invokes a remote endpoint at `/frc-trigger` every hour:
 
 ```
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-modules:  
-  scheduledTrigger:
-    - key: remote-scheduled-trigger-node
-      endpoint: remote-trigger-node
-      interval: hour
-  endpoint:
-      - key: remote-trigger-node
-        remote: remote-app-node
-        route:
-          path: /frc-trigger
-        auth:
-          appSystemToken:
-            enabled: true
-permissions:
-  scopes:
-    - read:app-system-token    
-    - read:confluence-content:summary # relevant app scopes must be included when oauth tokens are enabled
-remotes:
-  - key: remote-app-node
-    baseUrl: https://forge-remote-refapp-nodejs.services.atlassian.com
+1modules:  
+2  scheduledTrigger:
+3    - key: remote-scheduled-trigger-node
+4      endpoint: remote-trigger-node
+5      interval: hour
+6  endpoint:
+7      - key: remote-trigger-node
+8        remote: remote-app-node
+9        route:
+10          path: /frc-trigger
+11        auth:
+12          appSystemToken:
+13            enabled: true
+14permissions:
+15  scopes:
+16    - read:app-system-token    
+17    - read:confluence-content:summary # relevant app scopes must be included when oauth tokens are enabled
+18remotes:
+19  - key: remote-app-node
+20    baseUrl: https://forge-remote-refapp-nodejs.services.atlassian.com
+21
 ```
 
 ## Token expiry and choosing an interval

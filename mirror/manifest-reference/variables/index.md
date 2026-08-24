@@ -8,31 +8,23 @@ Manifest variables are only available during manifest parsing by the Forge CLI t
 An environment variable must first be declared in `environment.variables` before it can be used elsewhere in the manifest file:
 
 ```
-1
-2
-3
-4
-environment:
-  variables:
-    - VARIABLE
-    - VARIABLE2
+1environment:
+2  variables:
+3    - VARIABLE
+4    - VARIABLE2
+5
 ```
 
 or using default values:
 
 ```
-1
-2
-3
-4
-5
-6
-environment:
-  variables:
-    - key: VARIABLE
-      default: "default value"
-    - key: VARIABLE2
-      default: "default value 2"
+1environment:
+2  variables:
+3    - key: VARIABLE
+4      default: "default value"
+5    - key: VARIABLE2
+6      default: "default value 2"
+7
 ```
 
 ## Manifest variables vs runtime variables
@@ -86,6 +78,10 @@ Afterwards, you can specify it in your manifest file:
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -105,6 +101,10 @@ Forge CLI commands that read the manifest will convert the variable `APP_ID` as 
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -126,6 +126,11 @@ Alternatively, if you want to export your `APP_ID` as a list of environment vari
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -146,6 +151,11 @@ Forge CLI commands that read the manifest will convert the variable `APP_ID` as 
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -183,6 +193,11 @@ Then, Forge CLI commands that read the manifest will convert the variable `APP_I
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 

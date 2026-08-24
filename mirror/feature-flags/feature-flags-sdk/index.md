@@ -7,8 +7,8 @@ The server-side SDK evaluates feature flags in Forge functions (resolvers, trigg
 ## Installation
 
 ```
-1
-npm install @forge/feature-flags@latest
+1npm install @forge/feature-flags@latest
+2
 ```
 
 Requires Forge CLI version 2.0.0 or later.
@@ -22,8 +22,8 @@ Creates a new instance of the SDK client.
 ### `initialize(config)`
 
 ```
-1
-initialize(config: FeatureFlagConfig): Promise<void>
+1initialize(config: FeatureFlagConfig): Promise<void>
+2
 ```
 
 Downloads the latest flag configuration and prepares the SDK for evaluation. Must be called before using `checkFlag`, `getFlag`, or `getAllFlagIds`.
@@ -130,6 +130,12 @@ Stops the polling interval and releases resources. Call this when the SDK instan
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -165,6 +171,12 @@ Custom attributes are also supported.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -196,6 +208,56 @@ Returned by `getFlag()`. Contains the full evaluation result for a specific flag
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
 ```
 
 

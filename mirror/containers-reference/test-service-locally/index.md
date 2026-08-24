@@ -19,20 +19,14 @@ Either `build` or `image` should be defined, but not both. All other `tunnel` fi
 Use `build` if you want to rebuild the image each time the tunnel is started. For example:
 
 ```
-1
-2
-3
-4
-5
-6
-7
-tunnel:
-  docker:
-    build:
-      context: ./services/java-spring-server
-      dockerfile: Dockerfile
-    ports:
-      - '8080:8080'
+1tunnel:
+2  docker:
+3    build:
+4      context: ./services/java-spring-server
+5      dockerfile: Dockerfile
+6    ports:
+7      - '8080:8080'
+8
 ```
 
 **`image` is defined**
@@ -40,16 +34,12 @@ tunnel:
 Use `image` to define a pre-built image for the tunnel instead. For example:
 
 ```
-1
-2
-3
-4
-5
-tunnel:
-  docker:
-    image: java-service:${TAG}
-    ports:
-      - '8080:8080'
+1tunnel:
+2  docker:
+3    image: java-service:${TAG}
+4    ports:
+5      - '8080:8080'
+6
 ```
 
 Running `forge tunnel` will then create a docker compose stack using the container’s `tunnel` configuration and the latest Forge Container services proxy sidecar. Terminating the tunnel will also clean up the compose stack.
@@ -78,6 +68,7 @@ For example, to use `docker pull` (you may need to re-authenticate the Docker CL
 ```
 1
 2
+3
 ```
 
 

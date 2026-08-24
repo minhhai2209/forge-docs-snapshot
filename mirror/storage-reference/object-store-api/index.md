@@ -9,15 +9,15 @@ The Forge Object Store API lets you upload, download, and manage large items (li
 To start using the Forge Object Store, add the required package (`@forge/object-store`) to your project first:
 
 ```
-1
-npm install @forge/object-store
+1npm install @forge/object-store
+2
 ```
 
 Then, import the package to your app, as follows:
 
 ```
-1
-import fos from '@forge/object-store'
+1import fos from '@forge/object-store'
+2
 ```
 
 To integrate the Forge Object Store with your app's frontend, use the [objectStore](/platform/forge/custom-ui-bridge/objectStore/) bridge methods.
@@ -72,6 +72,17 @@ To integrate with the frontend, use the `objectStore` bridge API's [get](/platfo
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
 ```
 
 
@@ -110,6 +121,16 @@ This method accepts the following properties:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -164,6 +185,12 @@ This method accepts the following properties:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -196,6 +223,10 @@ Don’t store pre-signed URLs in a global context. Doing this could potentially 
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -229,6 +260,24 @@ For example, the following header will request the first 500 bytes of the object
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
 ```
 
 
@@ -299,6 +348,24 @@ For example, the following header will request the first 500 bytes of the object
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
 ```
 
 
@@ -342,6 +409,20 @@ Don’t store pre-signed URLs in a global context. Doing this could potentially 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
 ```
 
 
@@ -392,6 +473,41 @@ as their `content-type` header.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
 ```
 
 
@@ -449,6 +565,20 @@ Don't store pre-signed URLs in a global context. Doing this could potentially le
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
 ```
 
 
@@ -499,6 +629,41 @@ as their `content-type` header.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
 ```
 
 
@@ -553,6 +718,10 @@ To generate a CDN URL for accessing an object, use the `createCDNUrl` method. Un
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -580,6 +749,12 @@ When generating a URL through `createCDNUrl`, supply the following properties in
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 

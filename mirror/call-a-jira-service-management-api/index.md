@@ -16,22 +16,18 @@ For this tutorial, you'll also use the UI Kit hook
 2. Navigate to the `src/frontend` directory and open the `index.jsx` file. Import the `requestJira` from `@forge/bridge` package by adding the following to the top of the file:
 
    ```
-   1
-   import { requestJira } from '@forge/bridge';
+   1import { requestJira } from '@forge/bridge';
+   2
    ```
 3. Copy the following code to create a function that calls the Jira Service Management REST API by using the `requestJira` function:
 
    ```
-   1
-   2
-   3
-   4
-   5
-   const getJsmQueues = async (serviceDeskKey) => {
-     const res = await requestJira(`/rest/servicedeskapi/servicedesk/${serviceDeskKey}/queue`);
-     const data = await res.json();
-     return data.values;
-   };
+   1const getJsmQueues = async (serviceDeskKey) => {
+   2  const res = await requestJira(`/rest/servicedeskapi/servicedesk/${serviceDeskKey}/queue`);
+   3  const data = await res.json();
+   4  return data.values;
+   5};
+   6
    ```
 
    This function takes a `serviceDeskKey` to call the REST API with path `/rest/servicedeskapi/servicedesk/${serviceDeskKey}/queue`.
@@ -63,6 +59,7 @@ need to add the required permissions first; this is covered later in the
       ```
       1
       2
+      3
       ```
 
 
@@ -78,6 +75,11 @@ need to add the required permissions first; this is covered later in the
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
    ```
 
 
@@ -97,6 +99,13 @@ need to add the required permissions first; this is covered later in the
    ```
    1
    2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
    ```
 
 
@@ -123,6 +132,43 @@ Your `index.jsx` file should look like the following:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
 ```
 
 
@@ -175,7 +221,7 @@ ForgeReconciler.render(
 2. Refresh the JSM queue page app.
 3. Check the output of the app in your browser's developer console. The number of queues on the service desk displays as follows:
 
-![The message displayed in the browser console](https://dac-static.atlassian.com/platform/forge/images/console-log-successful-jsm.png?_v=1.5800.2282)
+![The message displayed in the browser console](https://dac-static.atlassian.com/platform/forge/images/console-log-successful-jsm.png?_v=1.5800.2283)
 
 ## Set required permissions
 
@@ -193,6 +239,7 @@ add the required scope to your `manifest.yml` file (in this case, `read:jira-wor
    ```
    1
    2
+   3
    ```
 
 
@@ -234,5 +281,5 @@ For information about how Atlassian collects and handles your data, read our
 In the next tutorial, you'll learn how to make changes to your app's frontend using the
 [UI Kit components](/platform/forge/ui-kit/components/) of Forge.
 
-[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.2282)](/platform/forge/build-a-hello-world-app-in-jira-service-management/)
-[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.2282)](/platform/forge/change-the-jira-service-management-frontend-with-the-ui-kit/)
+[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.2283)](/platform/forge/build-a-hello-world-app-in-jira-service-management/)
+[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.2283)](/platform/forge/change-the-jira-service-management-frontend-with-the-ui-kit/)

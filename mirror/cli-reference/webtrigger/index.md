@@ -7,28 +7,25 @@ manage webtriggers
 ## Usage
 
 ```
-1
-Usage: forge webtrigger [options] [command]
+1Usage: forge webtrigger [options] [command]
+2
 ```
 
 ## Options
 
 ```
-1
-2
---verbose         enable verbose mode
--h, --help        display help for command
+1--verbose         enable verbose mode
+2-h, --help        display help for command
+3
 ```
 
 ## Commands
 
 ```
-1
-2
-3
-create [options]  get a web trigger URL
-list [options]    list webtrigger URLs
-delete [options]  delete a webtrigger URL
+1create [options]  get a web trigger URL
+2list [options]    list webtrigger URLs
+3delete [options]  delete a webtrigger URL
+4
 ```
 
 ## Operation

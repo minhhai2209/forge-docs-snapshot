@@ -21,22 +21,15 @@ or [Jira Service Management Hello World app](/platform/forge/build-a-hello-world
 tutorials. To turn your app into a UIM app, update your `manifest.yml` file to include a `jira:uiModifications` module and a static resource:
 
 ```
-1
-2
-3
-4
-5
-6
-7
-8
-modules:
-  jira:uiModifications:
-    - key: ui-modifications-app
-      title: Example UI modifications app
-      resource: uiModificationsApp
-resources:
-  - key: uiModificationsApp
-    path: static/ui-modifications/dist
+1modules:
+2  jira:uiModifications:
+3    - key: ui-modifications-app
+4      title: Example UI modifications app
+5      resource: uiModificationsApp
+6resources:
+7  - key: uiModificationsApp
+8    path: static/ui-modifications/dist
+9
 ```
 
 ## Step 2: Add the UIM app code
@@ -55,6 +48,39 @@ In your static resource (for example, `static/ui-modifications/index.js`), add t
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
 ```
 
 
@@ -111,6 +137,33 @@ Here is a correct implementation using a `Promise`:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
 ```
 
 
@@ -153,6 +206,27 @@ uiModificationsApi.onInit(
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
 ```
 
 
@@ -199,6 +273,26 @@ To configure a UI modification for a given `projectId` and `issueTypeId`:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
 ```
 
 
@@ -234,6 +328,9 @@ Custom UIM data is available as `uiModifications` within the `onInit` and `onCha
 ```
 1
 2
+3
+4
+5
 ```
 
 

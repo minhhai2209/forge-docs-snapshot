@@ -3,8 +3,8 @@
 To add the `Radio` component to your app:
 
 ```
-1
-import { Radio } from '@forge/react';
+1import { Radio } from '@forge/react';
+2
 ```
 
 ## Description
@@ -31,12 +31,20 @@ The default way to present a single option from a list.
 
 In most situations where you want to present a list of mutually exclusive options, you will want to use a [RadioGroup](/platform/forge/ui-kit/components/radio-group/).
 
-![Example image of a radio](https://dac-static.atlassian.com/platform/forge/ui-kit/images/radio/radio-default.png?_v=1.5800.2282)
+![Example image of a radio](https://dac-static.atlassian.com/platform/forge/ui-kit/images/radio/radio-default.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
 ```
 
 
@@ -60,12 +68,21 @@ const RadioDefaultExample = () => {
 
 Use `isDisabled` to disable a radio option.
 
-![Example image of a disabled radio](https://dac-static.atlassian.com/platform/forge/ui-kit/images/radio/radio-disabled.png?_v=1.5800.2282)
+![Example image of a disabled radio](https://dac-static.atlassian.com/platform/forge/ui-kit/images/radio/radio-disabled.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -88,12 +105,25 @@ const RadioDisabledExample = () => {
 
 Use `isInvalid` for situations where the selected field is invalid or incorrect. Remember to provide useful validation messages to help people understand how to proceed.
 
-![Example image of an invalid radio](https://dac-static.atlassian.com/platform/forge/ui-kit/images/radio/radio-invalid.png?_v=1.5800.2282)
+![Example image of an invalid radio](https://dac-static.atlassian.com/platform/forge/ui-kit/images/radio/radio-invalid.png?_v=1.5800.2283)
 
 ```
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
 ```
 
 

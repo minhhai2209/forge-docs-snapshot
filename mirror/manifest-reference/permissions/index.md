@@ -19,23 +19,19 @@ be listed alongside OAuth 2.0 scopes (e.g. when incrementally adopting Forge OAu
 Define each scope on a new line. Your app should use the minimum set of scopes required. For example:
 
 ```
-1
-2
-3
-4
-permissions:
-  scopes:
-    - "read:confluence-content.summary"
-    - "write:jira-work"
+1permissions:
+2  scopes:
+3    - "read:confluence-content.summary"
+4    - "write:jira-work"
+5
 ```
 
 If your app requires no OAuth 2.0 permissions, you must provide an empty `scopes` list as in the example below.
 
 ```
-1
-2
-permissions:
-  scopes: []
+1permissions:
+2  scopes: []
+3
 ```
 
 If your app needs to use offline user impersonation (e.g. to impersonate a user from a scheduled trigger), you will need to specify the scopes as a map instead, and specify `allowImpersonation: true` on scopes your app will use for offline user impersonation. Other scopes can either be an empty map or a map with `allowImpersonation: false`, for example:
@@ -44,6 +40,12 @@ If your app needs to use offline user impersonation (e.g. to impersonate a user 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -92,6 +94,9 @@ using Custom UI:
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -125,6 +130,9 @@ using Custom UI:
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -255,6 +263,10 @@ allows access to any URL on that domain.
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -272,6 +284,10 @@ permissions:
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -291,6 +307,12 @@ permissions:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -310,6 +332,12 @@ permissions:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -339,6 +367,15 @@ To maintain eligibility for `PINNED` status when using direct listing, ensure th
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -369,6 +406,15 @@ to its *key* in your `fetch.backend` or `fetch.client` list.
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -408,6 +454,9 @@ header for all modules using Custom UI:
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -433,6 +482,9 @@ header for all modules using Custom UI:
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -460,6 +512,9 @@ header for all modules using Custom UI:
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -478,6 +533,10 @@ Popups from embedded iframes are blocked by default for security reasons. To all
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -506,6 +565,9 @@ header for all modules using Custom UI:
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -529,6 +591,9 @@ header for all modules using Custom UI:
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -554,6 +619,9 @@ header for all modules using Custom UI:
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -570,6 +638,11 @@ permissions:
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -603,6 +676,8 @@ In the example below, the app opts in to the Storage Access API:
 ```
 1
 2
+3
+4
 ```
 
 

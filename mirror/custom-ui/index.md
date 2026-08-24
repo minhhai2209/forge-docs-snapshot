@@ -14,22 +14,15 @@ Atlassian cloud infrastructure.
 Consider the following example `manifest.yml` file:
 
 ```
-1
-2
-3
-4
-5
-6
-7
-8
-modules:
-  jira:issuePanel:
-    - key: hello-world-panel
-      resource: example-resource
-      title: Hello world!
-resources:
-  - key: example-resource
-    path: static/hello-world/build
+1modules:
+2  jira:issuePanel:
+3    - key: hello-world-panel
+4      resource: example-resource
+5      title: Hello world!
+6resources:
+7  - key: example-resource
+8    path: static/hello-world/build
+9
 ```
 
 This is the manifest declaration for a basic Jira issue panel using Frame or Custom UI. In this example:
@@ -47,6 +40,11 @@ Consider an example `index.html` file saved in the root of the resource path:
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -75,6 +73,12 @@ like this:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
 ```
 
 
@@ -98,6 +102,21 @@ Using `Frame` involves importing the component into your UI Kit app and specifyi
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
 ```
 
 
@@ -139,6 +158,26 @@ The following example demonstrates how you can use the `event.emit` function to 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
 ```
 
 
@@ -176,6 +215,31 @@ The following example shows how you can use the `event.on` function to receive d
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
 ```
 
 
@@ -271,6 +335,13 @@ in `static/hello-world/build/icons/` as our icon for the Jira issue panel:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -338,6 +409,8 @@ In the template, the bridge is used in `static/<module-name>/src/App.js`:
 ```
 1
 2
+3
+4
 ```
 
 

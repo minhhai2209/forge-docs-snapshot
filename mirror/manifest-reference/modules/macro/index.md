@@ -19,7 +19,7 @@ from the quick insert menu of the editor. The `macro` module is implemented by a
 
 On apps that use Custom UI, module content is displayed inside a [special Forge iframe](/platform/forge/custom-ui/iframe/) which has the [sandbox](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#sandbox) attribute configured. This means that HTML links (for example, `<a href="https://domain.tld/path">...</a>`) in this iframe won't be clickable. To make them clickable, use the [router.navigate](/platform/forge/custom-ui-bridge/router/#navigate) API from the `@forge/bridge` package.
 
-![Example of a macro](https://dac-static.atlassian.com/platform/forge/snippets/images/macro-example.png?_v=1.5800.2282)
+![Example of a macro](https://dac-static.atlassian.com/platform/forge/snippets/images/macro-example.png?_v=1.5800.2283)
 
 ## Manifest structure
 
@@ -27,6 +27,44 @@ On apps that use Custom UI, module content is displayed inside a [special Forge 
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
 ```
 
 
@@ -137,6 +175,34 @@ The following examples show Dynamic Module implementations specific to this modu
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
 ```
 
 
@@ -180,6 +246,38 @@ console.log(`Response: ${response.status} ${body}`);
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
 ```
 
 
@@ -256,6 +354,31 @@ property. These `matchers`are registered in the editor when the app is installed
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
 ```
 
 
@@ -352,6 +475,7 @@ Creating custom URL schemes is also supported. For example, `customScheme:*` can
 ```
 1
 2
+3
 ```
 
 
@@ -368,6 +492,7 @@ Creating custom URL schemes is also supported. For example, `customScheme:*` can
 ```
 1
 2
+3
 ```
 
 
@@ -411,6 +536,23 @@ For example, this macro declares three config parameters, each with a unique `id
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
 ```
 
 
@@ -443,6 +585,9 @@ The `identifier` you choose is the key you use to read the value back from [`use
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -510,6 +655,10 @@ Example of a blog post reference:
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -529,6 +678,11 @@ For any value stored as JSON (all `confluence-content` values, and any multi-val
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -549,6 +703,15 @@ Conversely, when you set one of these JSON-valued typed parameters (any `conflue
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 ```
 
 
@@ -576,9 +739,9 @@ in the context of custom macro configuration.
 
 | Parameter | Type | Required | Details | Code |
 | --- | --- | --- | --- | --- |
-| `config` | [Config payload](#supported-config-payload-format) | Yes | Sets the config properties of the macro. | ```  ``` 1 2 ```    ``` view.submit({   config: {     param1: "test",     param2: [1, 2, 3]   } }) ``` ``` |
-| `body` | [ADF document](/cloud/jira/platform/apis/document/structure/) | No | Sets the rich text body of the macro. Can only be used with `layout: bodied` macros. | ```  ``` 1 2 ```    ``` view.submit({   config: {},   body: {     type: "doc",     version: 1,     content: [       // ADF content     ]   } }) ``` ``` |
-| `keepEditing` | `boolean` | No | Defaults to `false`, which automatically closes the config modal on submit. Set this to `true` to keep the modal open. | ```  ``` 1 2 ```    ``` view.submit({   config: {},   keepEditing: true }) ``` ``` |
+| `config` | [Config payload](#supported-config-payload-format) | Yes | Sets the config properties of the macro. | ```  ``` 1 2 3 4 5 6 ```    ``` view.submit({   config: {     param1: "test",     param2: [1, 2, 3]   } }) ``` ``` |
+| `body` | [ADF document](/cloud/jira/platform/apis/document/structure/) | No | Sets the rich text body of the macro. Can only be used with `layout: bodied` macros. | ```  ``` 1 2 3 4 5 6 7 8 9 10 ```    ``` view.submit({   config: {},   body: {     type: "doc",     version: 1,     content: [       // ADF content     ]   } }) ``` ``` |
+| `keepEditing` | `boolean` | No | Defaults to `false`, which automatically closes the config modal on submit. Set this to `true` to keep the modal open. | ```  ``` 1 2 3 4 ```    ``` view.submit({   config: {},   keepEditing: true }) ``` ``` |
 
 ### Supported config payload format
 
@@ -625,6 +788,10 @@ To override this and allow the macro to shrink to fit its content, add the follo
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -646,6 +813,9 @@ If you apply these styles using a `style` attribute directly on the `<body>` ele
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -709,6 +879,25 @@ The app must return a `{ renderedMacros }` object containing an array of objects
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
 ```
 
 
@@ -741,6 +930,40 @@ modules:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
 ```
 
 

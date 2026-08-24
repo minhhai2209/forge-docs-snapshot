@@ -9,33 +9,24 @@ The signature of `Queue.push()` has changed, with the parameter type `PushEvent`
 **`@forge/events` 1.x**
 
 ```
-1
-2
+1type Payload = string | number | boolean | { [key: string]: Payload };
+2type PushSettings = { delayInSeconds: number };
 3
-4
-type Payload = string | number | boolean | { [key: string]: Payload };
-type PushSettings = { delayInSeconds: number };
-
-await queue.push(Payload | Payload[], PushSettings);
+4await queue.push(Payload | Payload[], PushSettings);
+5
 ```
 
 **`@forge/events` 2.0.0**
 
 ```
-1
-2
-3
-4
-5
+1export type Body = Record<string, unknown>;
+2export interface PushEvent {
+3    body: Body;
+4    delayInSeconds?: number;
+5}
 6
-7
-export type Body = Record<string, unknown>;
-export interface PushEvent {
-    body: Body;
-    delayInSeconds?: number;
-}
-
-const result: PushResult = await queue.push(PushEvent | PushEvent[]);
+7const result: PushResult = await queue.push(PushEvent | PushEvent[]);
+8
 ```
 
 ### Event consumption
@@ -52,6 +43,18 @@ Consumer functions are invoked with an `AsyncEvent`, which contains the fields o
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
 ```
 
 
@@ -77,6 +80,13 @@ modules:
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
 ```
 
 
@@ -99,6 +109,16 @@ export const handler = resolver.getDefinitions();
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
 ```
 
 
@@ -122,6 +142,10 @@ modules:
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -147,6 +171,9 @@ Breaking changes
 ```
 1
 2
+3
+4
+5
 ```
 
 
@@ -165,6 +192,11 @@ const { success, inProgress, failed } = await response.json();
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -200,6 +232,10 @@ Async Events were retried **4 times**.
 ```
 1
 2
+3
+4
+5
+6
 ```
 
 
@@ -217,6 +253,17 @@ interface RetryContext {
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
 ```
 
 
@@ -249,6 +296,11 @@ Async Events are retried until the [retention window is exceeded](/platform/forg
 ```
 1
 2
+3
+4
+5
+6
+7
 ```
 
 
@@ -267,6 +319,19 @@ interface RetryContext {
 ```
 1
 2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
 ```
 
 
