@@ -1,9 +1,58 @@
-# Command: install
+# install
 
-Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
-When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our
+## Description
 
-[Privacy Policy](https://www.atlassian.com/legal/privacy-policy#additional-disclosures-for-ca-residents)
+manage app installations
 
-.
-You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
+## Usage
+
+```
+1Usage: forge install [options] [command]
+2
+```
+
+## Options
+
+```
+1--verbose                          enable verbose mode
+2--app-id-override <appId>          App ID to use (skips reading from manifest)
+3-e, --environment [environment]    specify the environment (see your default
+4                                   environment by running forge settings list)
+5-s, --site [site]                  site URL (example.atlassian.net)
+6-p, --product [Atlassian app]      Atlassian app (Jira, Confluence, Compass,
+7                                   Bitbucket)
+8-d, --demo-site                    install onto your demo site instead of a
+9                                   site passed with --site
+10--upgrade [target]                 upgrade an existing installation (allowed
+11                                   values: all (default), code)
+12--confirm-scopes                   skip confirmation of scopes for the app
+13                                   before installing or upgrading the app
+14                                   (default: false)
+15-l, --license [license]            specify the license value for the app
+16                                   (allowed values: active, standard,
+17                                   advanced, inactive, and trial)
+18--license-modes [licenseModes...]  specify the list of license mode value for
+19                                   the app (allowed values: user-access)
+20--users-with-access [user...]      specify the list of Atlassian Account
+21                                   IDs(aaid) for users who have access to the
+22                                   app
+23--major-version <majorVersion>     specify the major version to install
+24--non-interactive                  run the command without input prompts
+25-h, --help                         display help for command
+26
+```
+
+## Commands
+
+```
+```
+1
+2
+```
+
+
+
+```
+list [options]                     list app installations
+```
+```

@@ -1,9 +1,44 @@
-# Command: repositories
+# repositories
 
-Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
-When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our
+## Description
 
-[Privacy Policy](https://www.atlassian.com/legal/privacy-policy#additional-disclosures-for-ca-residents)
+view repositories and repository images
 
-.
-You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
+## Usage
+
+```
+1Usage: forge repositories [options] [command]
+2
+```
+
+## Options
+
+```
+1--verbose         enable verbose mode
+2-h, --help        display help for command
+3
+```
+
+## Commands
+
+```
+1help [command]    display help for command
+2images [options]  manage container images
+3list [options]    list image repositories for all containers
+4
+```
+
+## Operation
+
+This command is used with Forge Container services, which is currently available under
+[Forge's Early Access Program (EAP)](/platform/forge/whats-coming/#eap).
+EAPs are offered to selected users for testing and feedback purposes.
+
+APIs and features under EAP are:
+
+* Unsupported and subject to change without notice
+* Not recommended for use in production environments
+
+Use the `forge repositories` command with any of the following subcommands to manage containers and images associated with your service:
+
+## Further information

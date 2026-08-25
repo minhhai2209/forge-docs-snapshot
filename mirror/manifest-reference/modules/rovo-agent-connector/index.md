@@ -1,8 +1,4 @@
-# Rovo Agent Connector (EAP)
-
-Rovo Agent Connector is available through Forge's Early Access Program (EAP). EAP grants selected users early testing access for feedback; APIs and features in EAP are experimental, unsupported, subject to change without notice, and not recommended for production. [Sign up here](https://go.atlassian.com/signup-forge-agent-connector) to participate.
-
-For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
+# Rovo Agent Connector (Preview)
 
 The `rovo:agentConnector` module allows you to integrate remote AI agents hosted on external infrastructure into Jira. Once a remote agent is registered, users can interact with them in a similar manner to other users and Rovo agents: assigning them work items, @mentioning them in comments, and chatting with them via the Rovo Chat panel.
 
@@ -15,13 +11,6 @@ Remote agents must implement an Agent2Agent (A2A) protocol server to communicate
 For more information, see [Getting Started](https://github.com/a2aproject/A2A#getting-started).
 
 Jira communicates with remote agents via the [JSON-RPC 2.0](https://www.jsonrpc.org/specification) protocol. Your remote service must expose an endpoint that accepts JSON-RPC requests from Jira and returns responses according to the A2A protocol specification.
-
-## EAP limitations
-
-During the EAP, apps using Rovo Agent Connector:
-
-* Can't be deployed to the `production` and `staging` [environments](/platform/forge/environments-and-versions/).
-* Can't be distributed or listed on the Atlassian Marketplace.
 
 ## Timeouts
 
@@ -120,7 +109,7 @@ In this structure:
 * The `endpoint` property references a separately defined [`endpoint` module](/platform/forge/manifest-reference/endpoint/), which specifies the route Jira uses to communicate with your remote agent via JSON-RPC.
 * The `remotes` configuration identifies the domain of your remote service and enables authentication tokens to be passed to your service.
 * The `resources` module provides static assets like the agent icon.
-* The `productContexts` property specifies which Atlassian products the agent operates in. Only `jira` is supported during the EAP.
+* The `productContexts` property specifies which Atlassian products the agent operates in. Only `jira` is supported during the Preview.
 * The `permissions.scopes` array declares the OAuth scopes your app requires. The `read:jira-work` scope is required for the agent to function correctly.
 
 ## Properties
@@ -132,7 +121,7 @@ In this structure:
 | `description` | `string` |  | The description of your Agent. This is used to describe what your Agent can do to users. |
 | `icon` | `string` |  | The icon displayed as the Agent’s avatar.  The `icon` property accepts a relative path from a declared resource. Alternatively, you can also use an absolute URL to a self-hosted icon.  If no icon is provided, or if there's an issue preventing the icon from loading, a generic avatar will be displayed. |
 | `conversationStarters` | `string[]` |  | Conversation starters that will be suggested to the user when they engage with your Agent. |
-| `productContexts` | `string[]` | Yes | The Atlassian apps within which the agent should operate.  Only `jira` can be used during the EAP. |
+| `productContexts` | `string[]` | Yes | The Atlassian apps within which the agent should operate.  Only `jira` can be used during the Preview. |
 | `protocols` | `object` | Yes | Defines the protocols and transport mechanisms your remote agent uses to communicate with Jira.  See [A2A Protocols](#a2a-protocols) for more configuration details |
 
 ### A2A Protocols

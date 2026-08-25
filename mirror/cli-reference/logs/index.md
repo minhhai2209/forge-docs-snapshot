@@ -1,9 +1,33 @@
-# Command: logs
+# logs
 
-Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
-When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our
+## Description
 
-[Privacy Policy](https://www.atlassian.com/legal/privacy-policy#additional-disclosures-for-ca-residents)
+view app logs
 
-.
-You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
+## Usage
+
+```
+1Usage: forge logs [options]
+2
+```
+
+## Options
+
+```
+1--verbose                          enable verbose mode
+2-e, --environment [environment]    specify the environment (see your default
+3                                   environment by running forge settings list)
+4-i, --invocation <invocation>      view logs for a given invocation ID
+5-n, --limit <limit>                number of log lines to return
+6-s, --since <since>                view logs since the specified time. valid
+7                                   formats: YYYY-MM-DD, ISO 8061 timestamp or
+8                                   a relative time (e.g: 5m, 10h, 2d)
+9-g, --grouped                      group logs by invocation ID (default:
+10                                   false)
+11-c, --containerKey <containerKey>  view logs for a given container
+12--instance <instance>              view logs for a given container instance
+13--serviceKey <serviceKey>          view logs for a given service
+14-f, --functionKey <functionKey>    view logs for a given function
+15-h, --help                         display help for command
+16
+```

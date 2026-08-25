@@ -1,9 +1,33 @@
-# Command: site provision
+# site provision
 
-Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
-When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our
+## Description
 
-[Privacy Policy](https://www.atlassian.com/legal/privacy-policy#additional-disclosures-for-ca-residents)
+provision a demo site for development and testing
 
-.
-You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
+## Usage
+
+```
+1Usage: forge site provision [options]
+2
+```
+
+## Options
+
+```
+1--verbose   enable verbose mode
+2-h, --help  display help for command
+3
+```
+
+## Operation
+
+Run `forge site provision` to request a demo development site. If you already have an active demo
+site, the CLI displays that site instead of provisioning another one.
+
+The command displays provisioning status while it waits. You can press **Ctrl+C** without cancelling
+the provisioning request. Run the command again later to display the site when it is ready.
+
+Demo sites are active for 90 days by default.
+
+For the complete workflow, see
+[Provision a demo development site](/platform/forge/provision-a-demo-development-site/).

@@ -1,9 +1,65 @@
 # Privacy API
 
-Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
-When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our
+Forge Privacy API provides functions to help app developers comply with Atlassian's [user privacy requirements](/platform/forge/user-privacy-guidelines/).
 
-[Privacy Policy](https://www.atlassian.com/legal/privacy-policy#additional-disclosures-for-ca-residents)
+Import the Privacy API package in your app, as follows:
 
-.
-You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
+```
+1import { privacy } from '@forge/api';
+2
+```
+
+The `reportPersonalData` function returns updates on whether a user account needs to be updated or erased. This helper function calls the 3LO [/report-accounts](https://developer.atlassian.com/cloud/jira/platform/user-privacy-developer-guide/#report-accounts-for-oauth-2-0-authorization-code-grants--3lo--apps) endpoint and handles requests with more than 90 accounts.
+
+```
+1const updates = await privacy.reportPersonalData([
+2  {
+3    accountId: 'account-id-a',
+4    updatedAt: '2018-10-25T23:08:51.382Z'
+5  },
+6  {
+7    accountId: 'account-id-b',
+8    updatedAt: '2018-10-25T23:14:44.231Z'
+9  },
+10  {
+11    accountId: 'account-id-c',
+12    updatedAt: '2018-12-01T02:44:21.020Z'
+13  }
+14]);
+15
+16console.log(updates)
+17// [{
+18//   "accountId": "account-id-a",
+19//   "status": "closed"
+20// },
+21// {
+22//   "accountId": "account-id-c",
+23//   "status": "updated"
+24// }]
+25
+```
+
+## Method signature
+
+```
+```
+1
+2
+3
+4
+```
+
+
+
+```
+reportPersonalData(
+  accounts: Array<{ accountId: string; updatedAt: string }>
+) => Promise<Array<{ accountId: string; status: 'updated' | 'closed' }>>;
+```
+```
+
+## Parameters
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `accounts` | `Array<{ accountId: string; updatedAt: string }>` | A list of the accounts to get updates for. Returns updates to the account after the `updatedAt` time. |
