@@ -1,23 +1,9 @@
 # The Forge REST API
 
-`1{
-2 "app": {
-3 "id": "ari:cloud:ecosystem::app/d60dfafb-a14d-4d56-bf03-0c3823d39e2b",
-4 "installationId": "ari:cloud:ecosystem::installation/8d5f651a-b2e9-4b38-aac6-30abc7f3effb",
-5 "environment": {
-6 "type": "DEVELOPMENT",
-7 "id": "ari:cloud:ecosystem::environment/d60dfafb-a14d-4d56-bf03-0c3823d39e2b/e62535ae-72f9-49da-a8d3-c0b82cab4ca1"
-8 },
-9 "module": {
-10 "key": "container-webtrigger",
-11 "type": "core:webtrigger"
-12 }
-13 },
-14 "context": {
-15 "cloudId": "4869c4ef-cb0d-4108-8243-8929ac7cc1fa",
-16 "moduleKey": "container-webtrigger",
-17 "userAccess": {
-18 "enabled": false
-19 }
-20 }
-21}`
+Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
+When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our
+
+[Privacy Policy](https://www.atlassian.com/legal/privacy-policy#how-we-disclose-information-we-collect)
+
+.
+You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt-out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.

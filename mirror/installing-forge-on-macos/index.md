@@ -8,7 +8,7 @@ Ask for help on our Developer Community
 
 Welcome to developing with the Forge platform for Atlassian cloud apps. Work through
 the steps below to set up your development environment. To get started using Forge,
-you’ll install the CLI, log in with an Atlassian API scoped token, and prepare an Atlassian
+you'll install the CLI, log in with an Atlassian API scoped token, and prepare an Atlassian
 site where you can install and test your app.
 
 After setting up, you'll go through a three-part tutorial to create a simple hello world app
@@ -72,9 +72,37 @@ installing Node.js using this method.
    ```
    ```
 
+**Still seeing permission errors after installing with the installer?** Run
+`npm config set unsafe-perm true` in your terminal. If the errors persist,
+reinstall Node.js using nvm as shown above — this is the recommended setup
+and avoids permission problems with the Forge CLI.
+
+**Working behind a corporate proxy?** Some networks require all outbound
+traffic to go through a proxy server. If npm isn't configured to use the
+proxy, it can't download the Forge CLI or your app's dependencies. Configure
+npm to use your proxy:
+
+```
+```
+1
+2
+3
+```
+
+
+
+```
+npm config set proxy http://user:password@proxy-url:port
+npm config set https-proxy http://user:password@proxy-url:port
+```
+```
+
+Replace `user`, `password`, `proxy-url`, and `port` with the values for your
+proxy. Ask your IT team if you don't know these values.
+
 ## Install the Forge CLI
 
-Install the Forge CLI using npm. You’ll install the CLI globally so that the commands
+Install the Forge CLI using npm. You'll install the CLI globally so that the commands
 can be run across your system.
 
 Do not install `forge` with `root` privileges. In case that has been done, you might need to uninstall forge.
@@ -114,6 +142,45 @@ look for errors reported in the terminal.
 
 With the CLI installed, view the complete list of Forge commands by running `forge --help`.
 
+**Installation fails with `Error: spawn ts-node ENOENT`?** This usually means
+Node.js is configured to run in development mode, which causes npm to skip
+installing some dependencies the Forge CLI needs. Clear the `NODE_ENV`
+environment variable and reinstall.
+
+On macOS or Linux:
+
+```
+```
+1
+2
+3
+```
+
+
+
+```
+unset NODE_ENV
+npm install -g @forge/cli
+```
+```
+
+On Windows:
+
+```
+```
+1
+2
+3
+```
+
+
+
+```
+set NODE_ENV=
+npm install -g @forge/cli
+```
+```
+
 ## Build your first Forge app
 
 After installing the Forge CLI, follow the prompts in the terminal, or use the steps outlined below to build a hello world app.
@@ -136,6 +203,12 @@ After installing the Forge CLI, follow the prompts in the terminal, or use the s
    forge deploy
    ```
    ```
+
+   **`Error: Command failed due to validation error`?** You're running the
+   command outside a Forge project directory. This commonly happens right
+   after `forge create`, when you forget to change into the new project
+   directory. Run `cd <your-app-dir>` before running any other Forge
+   commands.
 4. Install the app to an Atlassian site. You can now view and test your app.
 
    You can install to a Forge demo development site. The CLI reuses your active demo site, or
@@ -224,6 +297,13 @@ You will see a message similar to this confirming you are logged in:
 
 If you get some permission error, this might be due to installation of `forge` with root permissions.
 Try removing forge installation and try to install without root permissions.
+
+**`forge login` fails with `Unable to get local issuer certificate`?** A VPN
+or corporate network is intercepting the TLS connection to Atlassian APIs
+and presenting a certificate that the Forge CLI doesn't trust. Disconnect
+from your VPN and run `forge login` again. If you must stay connected to the
+VPN, ask your IT team to allowlist Atlassian's developer endpoints or to
+provide the corporate root certificate authority to your system.
 
 The Forge CLI uses your operating system's keychain to securely store your login details.
 Any command after `forge login` that requires authentication will read your credentials

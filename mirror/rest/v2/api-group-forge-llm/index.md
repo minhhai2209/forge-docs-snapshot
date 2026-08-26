@@ -1,56 +1,9 @@
 # The Forge REST API
 
-`1curl --request POST \
-2 --url '{FORGE_EGRESS_PROXY_URL}/forge/llm/{model}' \
-3 --header 'Accept: application/json' \
-4 --header 'forge-proxy-authorization: Forge as=app,id=invocation-123' \
-5 --header 'Content-Type: application/json' \
-6 --data '{
-7 "messages": [
-8 {
-9 "role": "system",
-10 "content": "You are a helpful assistant."
-11 },
-12 {
-13 "role": "user",
-14 "content": [
-15 {
-16 "type": "text",
-17 "text": "What is the weather like in Melbourne?"
-18 }
-19 ]
-20 }
-21 ],
-22 "max_completion_tokens": 1000,
-23 "temperature": 0.7,
-24 "tools": [
-25 {
-26 "type": "function",
-27 "function": {
-28 "name": "get_current_weather",
-29 "description": "Get the current weather in a given location",
-30 "parameters": {
-31 "type": "object",
-32 "properties": {
-33 "location": {
-34 "type": "string",
-35 "description": "The city and state, e.g. Sydney, NSW"
-36 },
-37 "unit": {
-38 "type": "string",
-39 "enum": [
-40 "celsius",
-41 "fahrenheit"
-42 ],
-43 "description": "The unit of temperature"
-44 }
-45 },
-46 "required": [
-47 "location"
-48 ]
-49 }
-50 }
-51 }
-52 ],
-53 "tool_choice": "auto"
-54}'`
+Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
+When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our
+
+[Privacy Policy](https://www.atlassian.com/legal/privacy-policy#how-we-disclose-information-we-collect)
+
+.
+You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt-out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.

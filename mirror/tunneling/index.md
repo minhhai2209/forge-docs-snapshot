@@ -254,6 +254,25 @@ If the tunnel is running but you don't see any output when you trigger your app:
 
 If you see an authentication error when running `forge tunnel`, your CLI session may have expired. Re-authenticate by running:
 
+### `forge tunnel` reports an ngrok error
+
+If `forge tunnel` fails with an error about ngrok, you're running a Forge CLI version older than 10.1.0. The Forge tunnel no longer uses ngrok. Upgrade the CLI to the latest version:
+
+```
+```
+1
+2
+```
+
+
+
+```
+npm install -g @forge/cli@latest
+```
+```
+
+Then confirm the installed version is at least 10.1.0:
+
 ### "Listening for requests..." shown but app isn't working
 
 If the tunnel starts successfully but your app behaves unexpectedly or shows errors:

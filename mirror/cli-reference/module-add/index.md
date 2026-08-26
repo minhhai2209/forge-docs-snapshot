@@ -1,37 +1,9 @@
-# module add
+# Command: module add
 
-## Description
+Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
+When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our
 
-[Preview] add a module to your Forge App. ⚠️ This will modify your app files
-(manifest.yml, source files, and package.json).
+[Privacy Policy](https://www.atlassian.com/legal/privacy-policy#how-we-disclose-information-we-collect)
 
-## Usage
-
-```
-1Usage: forge module add [options]
-2
-```
-
-## Options
-
-```
-1--verbose                         enable verbose mode
-2-t, --module-type <type>          module type to add (e.g. jira:issuePanel,
-3                                  jiraServiceManagement:portalFooter,
-4                                  confluence:macro, etc.)
-5-u, --ui-type <ui-kit|custom-ui>  UI framework (ui-kit, custom-ui)
-6-p, --product <product>           target product (Jira, Jira Service
-7                                  Management, Confluence, etc.)
-8--dry-run                         show what would be generated
-9--force                           overwrite existing files and upgrade
-10                                  conflicting dependencies to template
-11                                  versions
-12--variables <json>                template variables as a JSON object, e.g.
-13                                  '{"moduleKey":"my-panel","title":"My
-14                                  Panel"}'. Implies --non-interactive
-15                                  (requires -t/--module-type)
-16--no-install                      skip installing dependencies
-17--non-interactive                 run the command without input prompts
-18-h, --help                        display help for command
-19
-```
+.
+You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt-out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.

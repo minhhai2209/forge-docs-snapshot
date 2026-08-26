@@ -19,7 +19,7 @@ from the quick insert menu of the editor. The `macro` module is implemented by a
 
 On apps that use Custom UI, module content is displayed inside a [special Forge iframe](/platform/forge/custom-ui/iframe/) which has the [sandbox](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#sandbox) attribute configured. This means that HTML links (for example, `<a href="https://domain.tld/path">...</a>`) in this iframe won't be clickable. To make them clickable, use the [router.navigate](/platform/forge/custom-ui-bridge/router/#navigate) API from the `@forge/bridge` package.
 
-![Example of a macro](https://dac-static.atlassian.com/platform/forge/snippets/images/macro-example.png?_v=1.5800.2286)
+![Example of a macro](https://dac-static.atlassian.com/platform/forge/snippets/images/macro-example.png?_v=1.5800.2292)
 
 ## Manifest structure
 
@@ -65,6 +65,8 @@ On apps that use Custom UI, module content is displayed inside a [special Forge 
 38
 39
 40
+41
+42
 ```
 
 
@@ -79,6 +81,7 @@ modules {}
    ├─ viewportSize (string) [Optional]
    ├─ title (string | i18n) [Mandatory]
    ├─ icon (string) [Optional]
+   ├─ category (string) [Optional]
    ├─ categories (string[]) [Optional]
    ├─ unlicensedAccess (List<string>) [Optional]
    ├─ description (string | i18n) [Optional]
@@ -86,6 +89,7 @@ modules {}
    ├─ static {} [Optional]
       ├─ endpoint (string) [Optional]
       ├─ function (string) [Optional]
+      ├─ concurrency (integer) [Optional]
       └─ cacheConfiguration {} [Optional]
          └─ keyComposition (string[]) [Mandatory]
    └─ config (boolean | {} | config object) [Optional]
@@ -123,7 +127,8 @@ resources []
 | `viewportSize` | `'small'`, `'medium'`, `'large'` or `'xlarge'` |  | Use `viewportSize` to pre-reserve the height in the editor before the app loads. Setting this prop disables auto-resizing. This is only supported for the main macro in Custom UI apps. |
 | `title` | `string` or `i18n object` | Yes | The title of the macro. In Confluence, this is displayed in the editor.  The `i18n object` allows for translation. See [i18n object](#i18n-object). |
 | `icon` | `string` |  | The icon displayed next to the `title`.   For Custom UI and UI Kit apps, the `icon` property accepts a relative path from a declared resource. Alternatively, you can also use an absolute URL to a self-hosted icon. See [Icons](/platform/forge/custom-ui/#icons) for more information.  If no icon is provided, or if there's an issue preventing the icon from loading, a generic app icon will be displayed. |
-| `categories` | `string[]` |  | The categories of the macro. In Confluence, this is used for categorisation in the macro browser.    * `formatting` * `confluence-content` * `media` * `visuals` * `navigation` * `external-content` * `communication` * `reporting` * `admin` * `development` |
+| `category` | `string` |  | The category of the macro. In Confluence, this is used for categorization in the macro browser.    * `structure` * `media` * `embed` * `text-formatting` * `data-and-charts` |
+| `categories` DEPRECATED On February 25, 2027, Forge app macros will no longer use the `categories` property. Use the `category` property instead. | `string[]` |  | The categories of the macro. In Confluence, this is used for categorization in the macro browser.    * `formatting` * `confluence-content` * `media` * `visuals` * `navigation` * `external-content` * `communication` * `reporting` * `admin` * `development` |
 | `description` | `string` or `i18n object` |  | The description of the macro. In Confluence, this is displayed in the editor.  The `i18n object` allows for translation. See [i18n object](#i18n-object). |
 | `hidden` | `boolean` |  | Defaults to `false`. When set to `true`, hides the macro from the quick insert menu and macro browser in Confluence. This prevents users from inserting new instances of the macro through these interfaces.  Existing macros on pages continue to render normally, even when this property is set to `true`. |
 | `config` | `boolean`, `{ function: string }`, `{ openOnInsert: boolean }` or `config object` |  | Set `config` to `true` if you are using [classic macro configuration](/platform/forge/add-configuration-to-a-macro/) without needing `openOnInsert`.  Set `config` with the `openOnInsert` property if you are using [classic macro configuration](/platform/forge/add-configuration-to-a-macro/) and need the `openOnInsert` feature. `openOnInsert` defaults to false.  Set `config` to the [config object](/platform/forge/manifest-reference/modules/macro/#config-object) if you are using a [custom macro configuration](/platform/forge/add-custom-configuration-to-a-macro/). |
@@ -146,6 +151,7 @@ resources []
 | `emitsReadyEvent` | boolean | No | Defaults to `false`. An optional configuration to notify Confluence that the macro will send a `emitReadyEvent` when it has completed loading and is ready for export or further processing. This should be used with `view.emitReadyEvent()`. See the [view bridge function](/platform/forge/apis-reference/ui-api-bridge/view/#emitreadyevent) for more information. |
 | `unlicensedAccess` | `List<string>` |  | A list of unlicensed user types that can access this module. Valid values are: `unlicensed` (Guests Users), and `anonymous`. For more information, see [Access to Forge apps for unlicensed Confluence users](/platform/forge/access-to-forge-apps-for-unlicensed-users/#confluence-forge-modules). |
 | `static` | `{ function: string }` or `{ endpoint: string }` | No | Set the `function` property to specify the Forge function that handles static rendering.  Set the `endpoint` property if you are using [Forge Remote](/platform/forge/forge-remote-overview) to handle static rendering from a remote back end.  Can also include `cacheConfiguration` to specify the caching behavior. |
+| `static.concurrency` | `integer` | No | The maximum number of elements that can be sent to the static macro function or endpoint in one invocation. Must be at least `1`. Defaults to `10` when omitted. |
 | `static.cacheConfiguration` | `object` | No | Defines which runtime inputs are used to construct the cache key for the static macro's rendered output. This property is supported for both function-backed and endpoint-backed static macros.  If omitted, the cache key uses `macro.id`, `macro.body`, and `macro.params` by default. |
 | `static.cacheConfiguration.keyComposition` | `string[]` | Yes, if using `cacheConfiguration` | A non-empty list of unique runtime inputs used to construct the cache key. When the value of a selected input changes, the cached output is not reused.  Supported values are:   * `macro.id`: The macro instance identifier * `macro.body`: The complete macro body * `macro.params`: The parameters supplied to the macro * `content.id`: The Confluence content identifier * `content.type`: The Confluence content type * `content.version`: The Confluence content version * `space.id`: The Confluence space identifier |
 
@@ -840,9 +846,11 @@ For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/
 
 Static macros are a performance-focused approach to rendering a macro. Instead of rendering the macro in an iframe, your app returns a set of [Atlassian Document Format (ADF)](/cloud/jira/platform/apis/document/structure) or [Confluence Storage Format](https://confluence.atlassian.com/doc/confluence-storage-format-790796544.html) nodes that will be converted to HTML and rendered view-only in a Confluence page.
 
-The rendering flow for a static macro works differently from other macros. Normally, Confluence places an iframe on the page to invoke your Forge app. For static macros, your Forge app will receive an array of `macros` to render. This minimizes Forge app invocations, particularly for pages with a large number of static macros.
+The rendering flow for a static macro works differently from other macros. Normally, Confluence places an iframe on the page to invoke your Forge app. For static macros, your function or endpoint receives an array of macro arguments (called `macros`). This minimizes Forge app invocations, particularly for pages with a large number of static macros.
 
-The Forge app receives a request in this format:
+The optional `concurrency` property under `static` specifies the maximum number of elements that can be included in this array. A higher value can reduce the number of invocations required to render a page, improving page load performance. The minimum value is `1`, which means that the array contains only one set of macro arguments. If you omit `concurrency`, the default maximum array size is `10`. Your app might receive an array with fewer elements than the configured maximum, but never more.
+
+Each object in the `macros` array has the following fields:
 
 ### Request
 
@@ -898,6 +906,7 @@ The app must return a `{ renderedMacros }` object containing an array of objects
 19
 20
 21
+22
 ```
 
 
@@ -913,6 +922,7 @@ modules:
         function: regularIframeRender
       static:
         function: staticRender
+        concurrency: 20
         cacheConfiguration:
           keyComposition:
             - macro.params
@@ -964,6 +974,7 @@ modules:
 34
 35
 36
+37
 ```
 
 
@@ -974,6 +985,7 @@ modules:
 export const staticRender = async (payload) => {
   const renderedMacros = [];
 
+  // payload.macros contains at most `concurrency` macro arguments (as set in manifest.yml).
   payload?.macros?.forEach((macro) => {
     const presetName = macro?.config?.presetName ?? "Default Name";
 

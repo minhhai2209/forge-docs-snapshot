@@ -13,36 +13,65 @@ The default context for a channel will be the Atlassian app context of the modul
 
 We recommend using the default `publish()` and `subscribe()` methods if you don't need to send messages between Atlassian app contexts.
 
-![Atlassian app context as default channel context](https://dac-static.atlassian.com/platform/forge/images/realtime/realtime-atlassian-app-context-publish.png?_v=1.5800.2286)
+![Atlassian app context as default channel context](https://dac-static.atlassian.com/platform/forge/images/realtime/realtime-atlassian-app-context-publish.png?_v=1.5800.2292)
 
 #### Example
 
 **Frontend**
 
 ```
-1import { useEffect } from 'react';
-2import { realtime } from '@forge/bridge';
+```
+1
+2
 3
-4const App = () => {
-5  useEffect(() => {
-6    const onEvent = (payload: string | Record<string, unknown>) => {
-7      console.log('Received event with payload: ', payload);
-8    };
+4
+5
+6
+7
+8
 9
-10    const subscription = realtime.subscribe('my-test-channel', onEvent);
+10
 11
-12    return () => {
-13      subscription.then(s => s.unsubscribe());
-14    };
-15  }, []);
+12
+13
+14
+15
 16
-17  return (
-18    <Button onClick={() => realtime.publish('my-test-channel', 'Here is an event payload!')}>
-19      Publish event
-20    </Button>
-21  );
-22};
+17
+18
+19
+20
+21
+22
 23
+```
+
+
+
+```
+import { useEffect } from 'react';
+import { realtime } from '@forge/bridge';
+
+const App = () => {
+  useEffect(() => {
+    const onEvent = (payload: string | Record<string, unknown>) => {
+      console.log('Received event with payload: ', payload);
+    };
+
+    const subscription = realtime.subscribe('my-test-channel', onEvent);
+
+    return () => {
+      subscription.then(s => s.unsubscribe());
+    };
+  }, []);
+
+  return (
+    <Button onClick={() => realtime.publish('my-test-channel', 'Here is an event payload!')}>
+      Publish event
+    </Button>
+  );
+};
+```
 ```
 
 ### Using context overrides
@@ -194,7 +223,7 @@ The properties in `contextOverrides` must match exactly in the `subscribe()` and
 a subscriber with overrides `[Jira.Project]` will not receive messages from a publisher with overrides `[Jira.Project, Jira.Issue]`, even
 though they have overlapping properties.
 
-![Atlassian app context with overrides as channel context](https://dac-static.atlassian.com/platform/forge/images/realtime/realtime-context-overrides-publish.png?_v=1.5800.2286)
+![Atlassian app context with overrides as channel context](https://dac-static.atlassian.com/platform/forge/images/realtime/realtime-context-overrides-publish.png?_v=1.5800.2292)
 
 #### Limitations
 
@@ -216,7 +245,7 @@ If an app is publishing messages to a global channel with `publishGlobal()`, the
 
 It is your responsibility to ensure you are scoping your channels appropriately, and only using global channels if absolutely necessary. Using channel tokens to enforce Atlassian app permissions is also encouraged when using global channels.
 
-![Global channels with no channel context](https://dac-static.atlassian.com/platform/forge/images/realtime/realtime-global-publish.png?_v=1.5800.2286)
+![Global channels with no channel context](https://dac-static.atlassian.com/platform/forge/images/realtime/realtime-global-publish.png?_v=1.5800.2292)
 
 #### Example
 
@@ -290,7 +319,7 @@ The custom claims will be added on top of the Atlassian app context that already
 the channel is secured by the Atlassian app context (or a subset if `contextOverrides` is provided) and your token's claims. If using the `subscribeGlobal`
 and `publishGlobal` methods, the channel is only secured by the token.
 
-![Atlassian app context with Realtime token as channel context](https://dac-static.atlassian.com/platform/forge/images/realtime/realtime-token-publish.png?_v=1.5800.2286)
+![Atlassian app context with Realtime token as channel context](https://dac-static.atlassian.com/platform/forge/images/realtime/realtime-token-publish.png?_v=1.5800.2292)
 
 #### Example
 

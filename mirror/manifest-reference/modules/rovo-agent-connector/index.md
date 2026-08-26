@@ -1,5 +1,13 @@
 # Rovo Agent Connector (Preview)
 
+This section describes a Forge *preview* feature. Preview features are deemed stable;
+however, they remain under active development and may be subject to shorter deprecation
+windows. Preview features are suitable for early adopters in production environments.
+
+We release preview features so partners and developers can study, test, and integrate
+them prior to General Availability (GA). For more information,
+see [Forge release phases: EAP, Preview, and GA](/platform/forge/whats-coming/#preview).
+
 The `rovo:agentConnector` module allows you to integrate remote AI agents hosted on external infrastructure into Jira. Once a remote agent is registered, users can interact with them in a similar manner to other users and Rovo agents: assigning them work items, @mentioning them in comments, and chatting with them via the Rovo Chat panel.
 
 Use this module to integrate Jira with AI agents residing outside of the Atlassian platform (such as GitHub Copilot, Cursor Background Agents, or Box AI Agents). New integrations should target A2A 1.0. For implementation guidance, see [Integrate remote agents with Jira](/platform/forge/remote-agents-in-jira/).

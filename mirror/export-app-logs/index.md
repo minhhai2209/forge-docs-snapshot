@@ -147,7 +147,6 @@ To get the Site ID:
   This means any date-time specified that is more than 14 days in the past will not be accepted.
 * We recommend fetching data periodically, for example, every three or five minutes. A rate limit of
   30 calls per minute per `appId` is enforced.
-* The API returns logs of approximately 3500 sites on which the app is installed.
 
 #### Sample API request to retrieve app logs
 
@@ -453,7 +452,7 @@ fetchLogs(startDate, endDate, cursor);
 To use the App logs API and ingest logs into observability tools, we recommend fetching logs in
 OTLP format from the API, and having the following components in your infrastructure:
 
-![Partner Server View](https://dac-static.atlassian.com/platform/forge/images/partner-server-arch-logs.svg?_v=1.5800.2286)
+![Partner Server View](https://dac-static.atlassian.com/platform/forge/images/partner-server-arch-logs.svg?_v=1.5800.2292)
 
 ### CronJob service
 

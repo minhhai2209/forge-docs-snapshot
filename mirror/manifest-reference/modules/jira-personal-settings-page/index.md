@@ -12,7 +12,7 @@ The `jira:personalSettingsPage` module adds an item to the user's profile menu i
 
 The page URL is constructed in the following format: `/jira/settings/personal/apps/{appId}/{envId}`
 
-![Example of a personal settings page](https://dac-static.atlassian.com/platform/forge/snippets/images/personal-settings-page.png?_v=1.5800.2286)
+![Example of a personal settings page](https://dac-static.atlassian.com/platform/forge/snippets/images/personal-settings-page.png?_v=1.5800.2292)
 
 ## Subpages
 
@@ -28,21 +28,42 @@ This feature works only with Custom UI.
 ## Manifest structure
 
 ```
-1modules {}
-2└─ jira:personalSettingsPage []
-3   ├─ key (string) [Mandatory]
-4   ├─ resource (string) [Mandatory]
-5   ├─ render (string) [Optional]
-6   ├─ resolver {} [Optional]
-7   ├─ title (string | i18n) [Mandatory]
-8   ├─ icon (string) [Optional]
-9   ├─ viewportSize (string) [Optional]
-10   ├─ displayCondition {} [Optional]
+```
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
 11
-12resources []
-13├─ key (string) [Mandatory]
-14└─ path (string) [Mandatory]
+12
+13
+14
 15
+```
+
+
+
+```
+modules {}
+└─ jira:personalSettingsPage []
+   ├─ key (string) [Mandatory]
+   ├─ resource (string) [Mandatory]
+   ├─ render (string) [Optional]
+   ├─ resolver {} [Optional]
+   ├─ title (string | i18n) [Mandatory]
+   ├─ icon (string) [Optional]
+   ├─ viewportSize (string) [Optional]
+   ├─ displayCondition {} [Optional]
+
+resources []
+├─ key (string) [Mandatory]
+└─ path (string) [Mandatory]
+```
 ```
 
 ## Properties

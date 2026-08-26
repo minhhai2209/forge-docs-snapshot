@@ -1,8 +1,12 @@
 # Integrate remote agents with Jira
 
-Remote agents in Jira are available through Forge's Early Access Program (EAP). EAP grants selected users early testing access for feedback; APIs and features in EAP are experimental, unsupported, subject to change without notice, and not recommended for production. [Sign up here](https://go.atlassian.com/signup-forge-agent-connector) to participate.
+This section describes a Forge *preview* feature. Preview features are deemed stable;
+however, they remain under active development and may be subject to shorter deprecation
+windows. Preview features are suitable for early adopters in production environments.
 
-For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
+We release preview features so partners and developers can study, test, and integrate
+them prior to General Availability (GA). For more information,
+see [Forge release phases: EAP, Preview, and GA](/platform/forge/whats-coming/#preview).
 
 This guide is intended for developers seeking to integrate **AI agents running on external infrastructure** (referred to in this guide as *Remote Agents*) into Jira. For patterns to enable [Rovo agents](https://www.atlassian.com/software/rovo/features) running on Atlassian's AI agent platform to interact with external APIs or MCP servers, see the following:
 
@@ -37,7 +41,7 @@ This guide assumes you are operating a typical multi-tenant SaaS-style web appli
 
 **Jira tenant** or **Jira site** — Jira is a multi-tenant web application hosted on Atlassian infrastructure. Each tenant is accessible under a different base URL, typically `${customer-subdomain}.atlassian.net`, though the domain and TLD may vary. If listing on the Atlassian Marketplace, your remote agent must be ready to handle installations and tasks from multiple Jira tenants.
 
-![Simplified integration architecture showing a Jira site, a Forge app acting as middleware, and the remote service hosting the agent](https://dac-static.atlassian.com/platform/forge/images/remote-agents/architecture.png?_v=1.5800.2286)
+![Simplified integration architecture showing a Jira site, a Forge app acting as middleware, and the remote service hosting the agent](https://dac-static.atlassian.com/platform/forge/images/remote-agents/architecture.png?_v=1.5800.2292)
 
 *Simplified integration architecture*
 
@@ -80,7 +84,7 @@ Always verify events sent as webhooks using JWKS before processing them. Failing
 
 3. After receiving and verifying an installation event, your remote service may optionally call the Jira REST API to retrieve additional information about the Jira tenant.
 4. Your remote service then persists the Jira installation information in its data store. See [Recommended schema for jiraInstallations table](#recommended-schema-for-jirainstallations-table) for recommended properties to store.
-   ![Installation flow diagram](https://dac-static.atlassian.com/platform/forge/images/remote-agents/installation-flow.png?_v=1.5800.2286)
+   ![Installation flow diagram](https://dac-static.atlassian.com/platform/forge/images/remote-agents/installation-flow.png?_v=1.5800.2292)
 5. Your agent may also initiate a post-installation configuration flow that the administrator will be directed to after installing your agent. Most remote agents will need to implement this in order to map the customer's tenant in the remote service to their tenant in Jira. This flow is covered in the [Agent configuration](#3--agent-configuration) section below.
 
 After configuration is complete, your agent is ready to [handle tasks](#2--handling-jira-tasks).
@@ -129,7 +133,7 @@ Conversations between users and agents (including any additional input from the 
 
 During its lifecycle, a `task` will start in the `TASK_STATE_SUBMITTED` state and then transition through a number of states until it reaches a terminal state (`TASK_STATE_REJECTED`, `TASK_STATE_COMPLETED`, `TASK_STATE_CANCELED`, or `TASK_STATE_FAILED`).
 
-![Task lifecycle state diagram](https://dac-static.atlassian.com/platform/forge/images/remote-agents/task-lifecycle.png?_v=1.5800.2286)
+![Task lifecycle state diagram](https://dac-static.atlassian.com/platform/forge/images/remote-agents/task-lifecycle.png?_v=1.5800.2292)
 
 The directional arrows on the diagram are important. Once a task has entered a terminal state — `TASK_STATE_REJECTED`, `TASK_STATE_COMPLETED`, `TASK_STATE_CANCELED`, or `TASK_STATE_FAILED` — it **cannot be restarted**. Subsequent messages from the user for the same context should be handled by creating a new task. See the ["single active task per context" rule](#the-single-active-task-per-context-rule) for more details.
 
@@ -161,7 +165,7 @@ There are a few rules that govern agent context and task lifecycle in Jira:
 * However, if a user sends a new message to the remote agent in an ongoing chat session with that agent, Jira will send your agent a new `message` with the `contextId` corresponding to that chat. Your agent should update an existing active task or create a new task within the same context when this happens. See the ["single active task per context" rule](#the-single-active-task-per-context-rule).
 * Contexts are **always** private to a single user and agent. Messages from different users about the same work item should each have a separate context.
 
-![Cardinality of remote agent task-related objects](https://dac-static.atlassian.com/platform/forge/images/remote-agents/context-cardinality.png?_v=1.5800.2286)
+![Cardinality of remote agent task-related objects](https://dac-static.atlassian.com/platform/forge/images/remote-agents/context-cardinality.png?_v=1.5800.2292)
 
 *Cardinality of remote agent task-related objects.*
 
@@ -173,7 +177,7 @@ Each agent can potentially have multiple contexts for the same user on the same 
 * Therefore if your agent receives a new `message` in relation to a `task` it is already working on, it should attempt to incorporate that `message` into the context it is using to process the task (if possible).
 * Your agent may have multiple active tasks for the same user and work item, provided they are in different contexts.
 
-![A context may have multiple tasks, but only the newest may be in an active state](https://dac-static.atlassian.com/platform/forge/images/remote-agents/single-active-task.png?_v=1.5800.2286)
+![A context may have multiple tasks, but only the newest may be in an active state](https://dac-static.atlassian.com/platform/forge/images/remote-agents/single-active-task.png?_v=1.5800.2292)
 
 *A context may have multiple tasks, but only the newest may be in an active state.*
 
@@ -190,41 +194,41 @@ The following diagrams show the user experience and flow for a typical assignmen
 
 ## Initial assignment
 
-![Assignment flow diagram](https://dac-static.atlassian.com/platform/forge/images/remote-agents/assign-flow.png?_v=1.5800.2286)
+![Assignment flow diagram](https://dac-static.atlassian.com/platform/forge/images/remote-agents/assign-flow.png?_v=1.5800.2292)
 
-![User assigns remote agent to work item](https://dac-static.atlassian.com/platform/forge/images/remote-agents/assign-1.png?_v=1.5800.2286)
+![User assigns remote agent to work item](https://dac-static.atlassian.com/platform/forge/images/remote-agents/assign-1.png?_v=1.5800.2292)
 
 *User assigns remote agent to work item*
 
-![Agent's task status displayed in the Jira UI](https://dac-static.atlassian.com/platform/forge/images/remote-agents/assign-2.png?_v=1.5800.2286)
+![Agent's task status displayed in the Jira UI](https://dac-static.atlassian.com/platform/forge/images/remote-agents/assign-2.png?_v=1.5800.2292)
 
 *Agent's task status displayed in the Jira UI*
 
 ## Task execution
 
-![Task execution flow diagram](https://dac-static.atlassian.com/platform/forge/images/remote-agents/exec-flow.png?_v=1.5800.2286)
+![Task execution flow diagram](https://dac-static.atlassian.com/platform/forge/images/remote-agents/exec-flow.png?_v=1.5800.2292)
 
-![Agent requests input from user](https://dac-static.atlassian.com/platform/forge/images/remote-agents/exec-1.png?_v=1.5800.2286)
+![Agent requests input from user](https://dac-static.atlassian.com/platform/forge/images/remote-agents/exec-1.png?_v=1.5800.2292)
 
 *Agent requests input from user*
 
-![User selects "Refine in Chat" and provides further input to the Agent](https://dac-static.atlassian.com/platform/forge/images/remote-agents/exec-2.png?_v=1.5800.2286)
+![User selects "Refine in Chat" and provides further input to the Agent](https://dac-static.atlassian.com/platform/forge/images/remote-agents/exec-2.png?_v=1.5800.2292)
 
 *User selects "Refine in Chat" and provides further input to the Agent*
 
 ## Task completion
 
-![Task completion flow diagram](https://dac-static.atlassian.com/platform/forge/images/remote-agents/complete-flow.png?_v=1.5800.2286)
+![Task completion flow diagram](https://dac-static.atlassian.com/platform/forge/images/remote-agents/complete-flow.png?_v=1.5800.2292)
 
-![Agent returns task in TASK_STATE_COMPLETED status with prompt to draft a comment](https://dac-static.atlassian.com/platform/forge/images/remote-agents/complete-1.png?_v=1.5800.2286)
+![Agent returns task in TASK_STATE_COMPLETED status with prompt to draft a comment](https://dac-static.atlassian.com/platform/forge/images/remote-agents/complete-1.png?_v=1.5800.2292)
 
 *Agent returns task in `TASK_STATE_COMPLETED` status — final task message is displayed in the Jira UI with prompt to draft a comment*
 
-![User selects "Draft comment" and modifies content to their tastes](https://dac-static.atlassian.com/platform/forge/images/remote-agents/complete-2.png?_v=1.5800.2286)
+![User selects "Draft comment" and modifies content to their tastes](https://dac-static.atlassian.com/platform/forge/images/remote-agents/complete-2.png?_v=1.5800.2292)
 
 *User selects "Draft comment" and modifies content to their tastes*
 
-![User posts comment on work item](https://dac-static.atlassian.com/platform/forge/images/remote-agents/complete-3.png?_v=1.5800.2286)
+![User posts comment on work item](https://dac-static.atlassian.com/platform/forge/images/remote-agents/complete-3.png?_v=1.5800.2292)
 
 *User posts comment on work item*
 
@@ -375,54 +379,74 @@ Example SSE stream for a task that completes successfully:
 43
 44
 45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
 ```
 
 
 
 ```
 data: {
-  "jsonrpc": "2.0",
-  "id": "1",
-  "result": {
-    "task": {
-      "id": "task-123",
-      "contextId": "ctx-456",
-      "status": { "state": "TASK_STATE_WORKING" }
-    }
-  }
-}
+data:   "jsonrpc": "2.0",
+data:   "id": "1",
+data:   "result": {
+data:     "task": {
+data:       "id": "task-123",
+data:       "contextId": "ctx-456",
+data:       "status": { "state": "TASK_STATE_WORKING" }
+data:     }
+data:   }
+data: }
 
 data: {
-  "jsonrpc": "2.0",
-  "id": "1",
-  "result": {
-    "statusUpdate": {
-      "taskId": "task-123",
-      "contextId": "ctx-456",
-      "status": { "state": "TASK_STATE_WORKING" },
-      "message": {
-        "role": "ROLE_AGENT",
-        "parts": [{ "text": "Analyzing the issue..." }]
-      }
-    }
-  }
-}
+data:   "jsonrpc": "2.0",
+data:   "id": "1",
+data:   "result": {
+data:     "statusUpdate": {
+data:       "taskId": "task-123",
+data:       "contextId": "ctx-456",
+data:       "status": {
+data:         "state": "TASK_STATE_WORKING",
+data:         "message": {
+data:           "messageId": "message-456",
+data:           "role": "ROLE_AGENT",
+data:           "parts": [{ "text": "Analyzing the issue..." }],
+data:           "taskId": "task-123",
+data:           "contextId": "ctx-456"
+data:         }
+data:       }
+data:     }
+data:   }
+data: }
 
 data: {
-  "jsonrpc": "2.0",
-  "id": "1",
-  "result": {
-    "statusUpdate": {
-      "taskId": "task-123",
-      "contextId": "ctx-456",
-      "status": { "state": "TASK_STATE_COMPLETED" },
-      "message": {
-        "role": "ROLE_AGENT",
-        "parts": [{ "text": "Done! I've drafted a fix." }]
-      }
-    }
-  }
-}
+data:   "jsonrpc": "2.0",
+data:   "id": "1",
+data:   "result": {
+data:     "statusUpdate": {
+data:       "taskId": "task-123",
+data:       "contextId": "ctx-456",
+data:       "status": {
+data:         "state": "TASK_STATE_COMPLETED",
+data:         "message": {
+data:           "messageId": "message-789",
+data:           "role": "ROLE_AGENT",
+data:           "parts": [{ "text": "Done! I've drafted a fix." }],
+data:           "taskId": "task-123",
+data:           "contextId": "ctx-456"
+data:         }
+data:       }
+data:     }
+data:   }
+data: }
 ```
 ```
 
@@ -859,7 +883,7 @@ Jira will call the `SendMessage` method when:
 {
   "jsonrpc": "2.0",
   "id": $requestId,
-  "method": "message/send",
+  "method": "SendMessage",
   "params": {
     "message": {
       "role": "ROLE_USER",
@@ -920,7 +944,7 @@ Jira will call the `SendMessage` method when:
 {
   "jsonrpc": "2.0",
   "id": "03fbd406-dc47-472d-9c5c-03b6f2716fce",
-  "method": "message/send",
+  "method": "SendMessage",
   "params": {
     "message": {
       "role": "ROLE_USER",
@@ -974,6 +998,8 @@ Jira will call the `SendMessage` method when:
 20
 21
 22
+23
+24
 ```
 
 
@@ -983,20 +1009,22 @@ Jira will call the `SendMessage` method when:
   "jsonrpc": "2.0",
   "id": "03fbd406-dc47-472d-9c5c-03b6f2716fce",
   "result": {
-    "id": "909aef32-059d-46d7-ade3-38fa4d2c5162",
-    "contextId": "4bdcf71e-0441-4564-95a3-f1c50594b60c",
-    "status": {
-      "state": "TASK_STATE_WORKING",
-      "message": {
-        "role": "ROLE_AGENT",
-        "parts": [{
-          "text": "Cursor is reviewing AW26-11."
-        }],
-        "messageId": "0fca37e8-80c3-43d3-bcf5-cb4be26f4df8",
-        "taskId": "909aef32-059d-46d7-ade3-38fa4d2c5162",
-        "contextId": "4bdcf71e-0441-4564-95a3-f1c50594b60c"
-      },
-      "timestamp": "2025-01-01T12:00:00Z"
+    "task": {
+      "id": "909aef32-059d-46d7-ade3-38fa4d2c5162",
+      "contextId": "4bdcf71e-0441-4564-95a3-f1c50594b60c",
+      "status": {
+        "state": "TASK_STATE_WORKING",
+        "message": {
+          "role": "ROLE_AGENT",
+          "parts": [{
+            "text": "Cursor is reviewing AW26-11."
+          }],
+          "messageId": "0fca37e8-80c3-43d3-bcf5-cb4be26f4df8",
+          "taskId": "909aef32-059d-46d7-ade3-38fa4d2c5162",
+          "contextId": "4bdcf71e-0441-4564-95a3-f1c50594b60c"
+        },
+        "timestamp": "2025-01-01T12:00:00Z"
+      }
     }
   }
 }
@@ -1048,7 +1076,7 @@ Jira will call the `SendMessage` method when:
 {
   "jsonrpc": "2.0",
   "id": "03fbd406-dc47-472d-9c5c-03b6f2716fce",
-  "method": "message/send",
+  "method": "SendMessage",
   "params": {
     "message": {
       "role": "ROLE_USER",
@@ -1106,6 +1134,8 @@ Jira will call the `SendMessage` method when:
 20
 21
 22
+23
+24
 ```
 
 
@@ -1115,20 +1145,22 @@ Jira will call the `SendMessage` method when:
   "jsonrpc": "2.0",
   "id": "03fbd406-dc47-472d-9c5c-03b6f2716fce",
   "result": {
-    "id": "909aef32-059d-46d7-ade3-38fa4d2c5162",
-    "contextId": "4bdcf71e-0441-4564-95a3-f1c50594b60c",
-    "status": {
-      "state": "TASK_STATE_WORKING",
-      "message": {
-        "role": "ROLE_AGENT",
-        "parts": [{
-          "text": "Cursor is reviewing your comment."
-        }],
-        "messageId": "0fca37e8-80c3-43d3-bcf5-cb4be26f4df8",
-        "taskId": "909aef32-059d-46d7-ade3-38fa4d2c5162",
-        "contextId": "4bdcf71e-0441-4564-95a3-f1c50594b60c"
-      },
-      "timestamp": "2025-01-01T12:00:00Z"
+    "task": {
+      "id": "909aef32-059d-46d7-ade3-38fa4d2c5162",
+      "contextId": "4bdcf71e-0441-4564-95a3-f1c50594b60c",
+      "status": {
+        "state": "TASK_STATE_WORKING",
+        "message": {
+          "role": "ROLE_AGENT",
+          "parts": [{
+            "text": "Cursor is reviewing your comment."
+          }],
+          "messageId": "0fca37e8-80c3-43d3-bcf5-cb4be26f4df8",
+          "taskId": "909aef32-059d-46d7-ade3-38fa4d2c5162",
+          "contextId": "4bdcf71e-0441-4564-95a3-f1c50594b60c"
+        },
+        "timestamp": "2025-01-01T12:00:00Z"
+      }
     }
   }
 }
@@ -1178,7 +1210,7 @@ Jira will call the `SendMessage` method when:
 {
   "jsonrpc": "2.0",
   "id": "2561267b-a71a-42f6-bbb1-fbcb30359b41",
-  "method": "message/send",
+  "method": "SendMessage",
   "params": {
     "message": {
       "role": "ROLE_USER",
@@ -1232,6 +1264,8 @@ Jira will call the `SendMessage` method when:
 20
 21
 22
+23
+24
 ```
 
 
@@ -1241,20 +1275,22 @@ Jira will call the `SendMessage` method when:
   "jsonrpc": "2.0",
   "id": "2561267b-a71a-42f6-bbb1-fbcb30359b41",
   "result": {
-    "id": "909aef32-059d-46d7-ade3-38fa4d2c5162",
-    "contextId": "4bdcf71e-0441-4564-95a3-f1c50594b60c",
-    "status": {
-      "state": "TASK_STATE_WORKING",
-      "message": {
-        "role": "ROLE_AGENT",
-        "parts": [{
-          "text": "Thanks! Resuming QA review with the provided credentials."
-        }],
-        "messageId": "e3d4c5b6-a7b8-9c0d-1e2f-3a4b5c6d7e8f",
-        "taskId": "909aef32-059d-46d7-ade3-38fa4d2c5162",
-        "contextId": "4bdcf71e-0441-4564-95a3-f1c50594b60c"
-      },
-      "timestamp": "2025-01-01T12:05:00Z"
+    "task": {
+      "id": "909aef32-059d-46d7-ade3-38fa4d2c5162",
+      "contextId": "4bdcf71e-0441-4564-95a3-f1c50594b60c",
+      "status": {
+        "state": "TASK_STATE_WORKING",
+        "message": {
+          "role": "ROLE_AGENT",
+          "parts": [{
+            "text": "Thanks! Resuming QA review with the provided credentials."
+          }],
+          "messageId": "e3d4c5b6-a7b8-9c0d-1e2f-3a4b5c6d7e8f",
+          "taskId": "909aef32-059d-46d7-ade3-38fa4d2c5162",
+          "contextId": "4bdcf71e-0441-4564-95a3-f1c50594b60c"
+        },
+        "timestamp": "2025-01-01T12:05:00Z"
+      }
     }
   }
 }
@@ -1286,9 +1322,9 @@ Jira will call `GetTask` to poll for updates on tasks that are in an active stat
 {
   "jsonrpc": "2.0",
   "id": $requestId,
-  "method": "tasks/get",
+  "method": "GetTask",
   "params": {
-    "taskId": $taskId
+    "id": $taskId
   }
 }
 ```
@@ -1315,9 +1351,9 @@ Jira will call `GetTask` to poll for updates on tasks that are in an active stat
 {
   "jsonrpc": "2.0",
   "id": "b2c3d4e5-f6a7-8b9c-0d1e-2f3a4b5c6d7e",
-  "method": "tasks/get",
+  "method": "GetTask",
   "params": {
-    "taskId": "909aef32-059d-46d7-ade3-38fa4d2c5162"
+    "id": "909aef32-059d-46d7-ade3-38fa4d2c5162"
   }
 }
 ```
@@ -1453,7 +1489,7 @@ The request body is identical to `SendMessage`. See [Streaming (optional)](#stre
 | `params` | object | Yes |  |
 | `params.id` | string | Yes | The `taskId` to resubscribe to |
 
-Your agent must return an SSE stream (same format as `SendStreamingMessage`), starting with the current `Task` object, followed by any pending `TaskStatusUpdateEvent` or `TaskArtifactUpdateEvent` events. If the task is already in a terminal state, return the task and close the stream immediately.
+Your agent must return an SSE stream (same format as `SendStreamingMessage`), starting with the current `Task` object, followed by any pending `TaskStatusUpdateEvent` or `TaskArtifactUpdateEvent` events. If the task is already in a terminal state, return `UnsupportedOperationError` instead of an SSE stream.
 
 ## `CancelTask`
 
@@ -1480,9 +1516,9 @@ Jira will call `CancelTask` when a user presses the cancel button on the agent p
 {
   "jsonrpc": "2.0",
   "id": $requestId,
-  "method": "tasks/cancel",
+  "method": "CancelTask",
   "params": {
-    "taskId": $taskId
+    "id": $taskId
   }
 }
 ```
@@ -1509,9 +1545,9 @@ Jira will call `CancelTask` when a user presses the cancel button on the agent p
 {
   "jsonrpc": "2.0",
   "id": "f1a032e3-9d46-4464-a50e-70cf12ff86bd",
-  "method": "tasks/cancel",
+  "method": "CancelTask",
   "params": {
-    "taskId": "909aef32-059d-46d7-ade3-38fa4d2c5162"
+    "id": "909aef32-059d-46d7-ade3-38fa4d2c5162"
   }
 }
 ```
@@ -1627,4 +1663,4 @@ The following JSON-RPC error codes from the [A2A specification](https://a2a-prot
 | --- | --- | --- |
 | `TaskNotFoundError` | `-32001` | Only for `GetTask` |
 | `TaskNotCancelableError` | `-32002` | Only for `CancelTask` |
-| `UnsupportedOperationError` | `-32004` | Only for `CancelTask` |
+| `UnsupportedOperationError` | `-32004` | Only for `SubscribeToTask` when the task is in a terminal state |

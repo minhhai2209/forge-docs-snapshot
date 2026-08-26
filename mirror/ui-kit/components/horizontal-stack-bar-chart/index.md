@@ -25,7 +25,7 @@ To add the `HorizontalStackBarChart` component to your app:
 
 Data can be one of two formats, an array of arrays or an array of objects. Both examples below will produce the same horizontal stack bar chart:
 
-![Example image of a rendered horizontal stack bar chart](https://dac-static.atlassian.com/platform/forge/ui-kit/images/horizontal-stack-bar-chart/horizontal-stack-bar-chart-data.png?_v=1.5800.2286)
+![Example image of a rendered horizontal stack bar chart](https://dac-static.atlassian.com/platform/forge/ui-kit/images/horizontal-stack-bar-chart/horizontal-stack-bar-chart-data.png?_v=1.5800.2292)
 
 ### 1. Array of arrays
 
