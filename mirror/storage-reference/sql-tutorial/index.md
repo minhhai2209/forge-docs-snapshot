@@ -7,7 +7,9 @@ This tutorial describes how to add a Forge SQL database to your app for the firs
 This tutorial uses code samples from an example app, which we published to help
 demonstrate the basics of using Forge SQL. This example app includes simple and clear samples for
 defining database objects, orchestrating schema migrations, and supported SQL statement syntax.
-It may also contain updated code not included in this tutorial.](https://bitbucket.org/atlassian/forge-sql-examples/src/main/book-management-typescript/)
+It may also contain updated code not included in this tutorial.
+
+[Explore sample app](https://bitbucket.org/atlassian/forge-sql-examples/src/main/book-management-typescript/)](https://bitbucket.org/atlassian/forge-sql-examples/src/main/book-management-typescript/)
 
 ## Before you begin
 
@@ -214,7 +216,9 @@ export const applyMigrations = async () => {
 
 [Generate logs
 
-Our sample app’s database object creation function generates logs for each operation. These logs let you track the progress of each schema application (and update) for every app installation.](https://bitbucket.org/atlassian/forge-sql-examples/src/main/book-management-typescript/src/sql/migration.ts#lines-48)
+Our sample app’s database object creation function generates logs for each operation. These logs let you track the progress of each schema application (and update) for every app installation.
+
+[Refer to sample code](https://bitbucket.org/atlassian/forge-sql-examples/src/main/book-management-typescript/src/sql/migration.ts#lines-48)](https://bitbucket.org/atlassian/forge-sql-examples/src/main/book-management-typescript/src/sql/migration.ts#lines-48)
 
 ## Step 6: Write your SQL operations
 

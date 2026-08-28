@@ -23,17 +23,15 @@ Teamwork Graph connector with AI assistance. When invoked in your IDE or Rovo Ch
 walks you through each step — from setting up your connector in `manifest.yml` to writing the
 code that fetches, transforms, and pushes data into Teamwork Graph.
 
-[Forge Connector skill
-
-Build a Teamwork Graph connector with AI assistance.](https://github.com/atlassian/forge-skills/blob/main/README.md)
-
 ## Example app
 
 To view the app code for this tutorial, check out the example app.
 
 [Connect Google Drive to Teamwork Graph
 
-A Teamwork Graph connector to add Google Drive data to Atlassian's Teamwork Graph.](https://bitbucket.org/atlassian/forge-teamwork-graph-examples/src/main/forge-twg-ingestion-gdrive-example/)
+A Teamwork Graph connector to add Google Drive data to Atlassian's Teamwork Graph.
+
+[See the example app](https://bitbucket.org/atlassian/forge-teamwork-graph-examples/src/main/forge-twg-ingestion-gdrive-example/)](https://bitbucket.org/atlassian/forge-teamwork-graph-examples/src/main/forge-twg-ingestion-gdrive-example/)
 
 ## Before you begin
 

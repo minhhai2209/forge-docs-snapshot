@@ -19,7 +19,7 @@ from the quick insert menu of the editor. The `macro` module is implemented by a
 
 On apps that use Custom UI, module content is displayed inside a [special Forge iframe](/platform/forge/custom-ui/iframe/) which has the [sandbox](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#sandbox) attribute configured. This means that HTML links (for example, `<a href="https://domain.tld/path">...</a>`) in this iframe won't be clickable. To make them clickable, use the [router.navigate](/platform/forge/custom-ui-bridge/router/#navigate) API from the `@forge/bridge` package.
 
-![Example of a macro](https://dac-static.atlassian.com/platform/forge/snippets/images/macro-example.png?_v=1.5800.2292)
+![Example of a macro](https://dac-static.atlassian.com/platform/forge/snippets/images/macro-example.png?_v=1.5800.2295)
 
 ## Manifest structure
 
@@ -515,7 +515,9 @@ captured and inserted as a parameter into the macro body. This parameter can be 
 
 [Example app: Macro autoconvert for UI Kit
 
-Learn how to configure auto convert in your manifest.yml file, including pattern matching and setting permissions for API calls.](https://bitbucket.org/atlassian/macro-auto-convert-app-for-ui-kit/src/master/)
+Learn how to configure auto convert in your manifest.yml file, including pattern matching and setting permissions for API calls.
+
+[See example app](https://bitbucket.org/atlassian/macro-auto-convert-app-for-ui-kit/src/master/)](https://bitbucket.org/atlassian/macro-auto-convert-app-for-ui-kit/src/master/)
 
 ## Macro custom configuration
 

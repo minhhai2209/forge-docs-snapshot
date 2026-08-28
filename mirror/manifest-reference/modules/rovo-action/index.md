@@ -39,7 +39,7 @@ In this structure:
 | `key` | `string` | Yes | A key for the action, which other modules can refer to. Must be unique within the manifest. Regex: `^[a-zA-Z0-9_-]+$` |
 | `name` | `string` | Yes | A human-friendly name for the action which will be displayed in the user interface. |
 | `function` or `endpoint` | `string` | Yes | A reference to the hosted Forge function that defines the behavior of this action. If you are using Forge Remote then you can use an endpoint instead. |
-| `actionVerb` | `string` | Yes | The verb that best represents your action: `GET`, `CREATE`, `UPDATE`, `DELETE`, `TRIGGER`. [Agents](/platform/forge/manifest-reference/modules/rovo-agent) triggered by automation rules will not invoke actions with actionVerb `CREATE` , `UPDATE` , `DELETE` , and `TRIGGER` . |
+| `actionVerb` | `string` | Yes | The verb that best represents your action: `GET`, `CREATE`, `UPDATE`, `DELETE`, `TRIGGER`. [Agents](/platform/forge/manifest-reference/modules/rovo-agent) triggered by automation rules will not invoke actions with actionVerb `CREATE`, `UPDATE`, `DELETE`, and `TRIGGER`. |
 | `description` | `string` | Yes | The description that the Agent will use to decide when to invoke this action. |
 | `inputs` | [inputs](/platform/forge/manifest-reference/modules/rovo-action/#inputs) | Yes | The inputs for this action. |
 

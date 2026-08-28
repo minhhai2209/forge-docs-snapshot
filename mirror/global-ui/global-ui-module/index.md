@@ -140,35 +140,16 @@ app:
 
 ## Properties
 
-### `key`
-
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
 | `key` | `string` | Yes | A unique key that identifies this module within the app. Must be unique across all modules in the manifest. |
-
-### `resource`
-
-| Property | Type | Required | Description |
-| --- | --- | --- | --- |
 | `resource` | `string` | Yes | The key of a static `resources` entry that your module will display. See [resources](/platform/forge/manifest-reference/resources/) for more details. |
-
-### `render`
-
-| Property | Type | Required | Description |
-| --- | --- | --- | --- |
 | `render` | `string` | Yes | The rendering method for the module. Must be set to `native`, which enables UI Kit rendering. Custom UI is not supported for `global:ui`. The platform enforces a UI chrome around the module and UI Kit is the public API that lets you control it. To embed custom web content in the main content area, use the [`Frame`](/platform/forge/ui-kit/components/frame/) component inside `<Main>`. |
-
-### `resolver`
-
-| Property | Type | Required | Description |
-| --- | --- | --- | --- |
-| `resolver` | `object` | No | An optional object that specifies a resolver for back-end data access. Set the `function` property if you are using a hosted `function` module for your resolver. Set the `endpoint` property if you are using [Forge Remote](/platform/forge/remote/remote-overview/) to integrate with a remote back end. |
-
-### `title`
-
-| Property | Type | Required | Description |
-| --- | --- | --- | --- |
+| `resolver` | `object` | No | An optional object that specifies a resolver for back-end data access. Set the `function` property if you are using a hosted `function` module for your resolver. Set the `endpoint` property if you are using [Forge Remote](/platform/forge/remote/) to integrate with a remote back end. |
 | `title` | `string` or i18n object | Yes | The display name for your app. Shown in the Atlassian app switcher and in the top navigation bar. |
+| `icon` | `string` | No | A reference to a local SVG resource for your app icon, in the format `resource:<resource-key>;<filename>`. Displayed at 24×24px in the sidenav header and 32×32px in the app switcher. Requires a corresponding entry in the `resources` section. |
+
+### i18n object
 
 To provide localized titles, use an i18n object:
 
@@ -191,11 +172,7 @@ title:
 ```
 ```
 
-### `icon`
-
-| Property | Type | Required | Description |
-| --- | --- | --- | --- |
-| `icon` | `string` | No | A reference to a local SVG resource for your app icon, in the format `resource:<resource-key>;<filename>`. Displayed at 24×24px in the sidenav header and 32×32px in the app switcher. Requires a corresponding entry in the `resources` section. |
+### Icon example
 
 The following example configures an icon:
 
@@ -226,8 +203,7 @@ resources:
 
 ## Compatibility
 
-The `compatibility` section in your manifest declares which Atlassian apps your app connects to.
-This section is required for `global:ui`, and one Atlassian app must be set to `required: true`.
+Your app must declare a required Atlassian app in the manifest:
 
 ```
 ```

@@ -6,7 +6,9 @@ This tutorial is based on the following example app:
 
 [Jira UI modifications example app
 
-This example Jira UIM app demonstrates how to configure the manifest, modify fields and tabs at runtime, and manage UI modifications via REST APIs.](https://bitbucket.org/atlassian/forge-ui-modifications-example)
+This example Jira UIM app demonstrates how to configure the manifest, modify fields and tabs at runtime, and manage UI modifications via REST APIs.
+
+[Explore example app](https://bitbucket.org/atlassian/forge-ui-modifications-example)](https://bitbucket.org/atlassian/forge-ui-modifications-example)
 
 ## Before you begin
 

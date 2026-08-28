@@ -23,7 +23,9 @@ For reference documentation and tutorials, see:
 
 [API route
 
-Reference for defining app REST API endpoints in your manifest using the apiRoute module.](/platform/forge/manifest-reference/modules/api-route/)
+Reference for defining app REST API endpoints in your manifest using the apiRoute module.
+
+[See module](/platform/forge/manifest-reference/modules/api-route/)](/platform/forge/manifest-reference/modules/api-route/)
 
 ## What are app REST APIs?
 

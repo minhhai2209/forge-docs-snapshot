@@ -705,6 +705,10 @@ multiple relationships, and integration with Forge UI components:
 
 [Forge Teamwork Graph Dashboards Widget
 
-Atlassian Home Dashboards widget that track work contributions and project/goal rollups across multiple tools using Teamwork Graph.](https://bitbucket.org/atlassian/forge-teamwork-graph-examples/src/main/forge-twg-dashboards/)[Teamwork Graph-powered Onboarding Assistant
+Atlassian Home Dashboards widget that track work contributions and project/goal rollups across multiple tools using Teamwork Graph.
 
-A Rovo agent that queries Teamwork Graph to gather team resources and onboard new starters.](https://bitbucket.org/atlassian/forge-teamwork-graph-examples/src/main/forge-rovo-agent/)
+[See example app](https://bitbucket.org/atlassian/forge-teamwork-graph-examples/src/main/forge-twg-dashboards/)](https://bitbucket.org/atlassian/forge-teamwork-graph-examples/src/main/forge-twg-dashboards/)[Teamwork Graph-powered Onboarding Assistant
+
+A Rovo agent that queries Teamwork Graph to gather team resources and onboard new starters.
+
+[See example app](https://bitbucket.org/atlassian/forge-teamwork-graph-examples/src/main/forge-rovo-agent/)](https://bitbucket.org/atlassian/forge-teamwork-graph-examples/src/main/forge-rovo-agent/)

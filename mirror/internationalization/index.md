@@ -80,7 +80,9 @@ For more information on configuring translation fallbacks in the manifest, see [
 
 [Tutorial: Create a question generator app using internationalization
 
-Follow a step-by-step tutorial to see how we created a question generator app that uses internationalization and UI Kit.](/platform/forge/create-a-question-generator-app-in-multiple-languages-using-i18n)
+Follow a step-by-step tutorial to see how we created a question generator app that uses internationalization and UI Kit.
+
+[See tutorial](/platform/forge/create-a-question-generator-app-in-multiple-languages-using-i18n)](/platform/forge/create-a-question-generator-app-in-multiple-languages-using-i18n)
 
 ## Supported modules
 

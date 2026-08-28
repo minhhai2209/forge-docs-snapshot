@@ -110,6 +110,8 @@ resolver.define("example", () => {
 
 In this example, timers and other asynchronous code may continue executing even after the Forge function returns a response.
 
+### Default Content-Type header
+
 When making API calls through `requestJira`, `requestConfluence`, and `requestBitbucket`, outbound HTTP
 requests will assume a `Content-type: application/json` if a content type isn’t specified. However, this
 default will not be applied to requests to external domains using the `fetch` function or other HTTP clients.

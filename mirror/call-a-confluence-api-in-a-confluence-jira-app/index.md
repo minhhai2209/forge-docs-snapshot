@@ -25,7 +25,11 @@ use the returned array to count the number of footer comments and write it to th
    4// Import the bridge method to call Confluence REST APIs
    5import { requestConfluence } from '@forge/bridge';
    6
-   791011
+   7/**
+   8* Fetches footer comments for a given Confluence page.
+   9* @param {string} pageId - The ID of the Confluence page.
+   10* @returns {Promise<Array>} - Resolves to an array of comment objects.
+   11*/
    12const fetchCommentsForPage = async (pageId) => {
    13  // Call the Confluence REST API for footer comments
    14  const res = await requestConfluence(`/wiki/api/v2/pages/${pageId}/footer-comments`);
@@ -109,7 +113,7 @@ For information about how Atlassian collects and handles your data, read our
 2. Refresh the Confluence page that contains your macro.
 3. Check the developer console in your browser. The number of comments on the page displays as follows:
 
-![The message displayed in the browser console](https://dac-static.atlassian.com/platform/forge/images/console-log-successful.png?_v=1.5800.2292)
+![The message displayed in the browser console](https://dac-static.atlassian.com/platform/forge/images/console-log-successful.png?_v=1.5800.2295)
 
 The `requestConfluence` method inherits the Atlassian app permissions of the user that is interacting with the app. This can cause different API responses between different users in the same app.
 
@@ -161,5 +165,5 @@ You'll have to manually add the required scope permission into your `manifest.ym
 
 In the next tutorial, you'll learn how to add support for Jira as an optional Atlassian app and make calls to the Jira REST API.
 
-[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.2292)](/platform/forge/build-an-app-compatible-with-confluence-and-jira/)
-[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.2292)](/platform/forge/add-support-for-jira-as-an-optional-atlassian-app)
+[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.2295)](/platform/forge/build-an-app-compatible-with-confluence-and-jira/)
+[![A button to go to the next tutorial](https://dac-static.atlassian.com/platform/forge/images/button-next-tutorial.svg?_v=1.5800.2295)](/platform/forge/add-support-for-jira-as-an-optional-atlassian-app)

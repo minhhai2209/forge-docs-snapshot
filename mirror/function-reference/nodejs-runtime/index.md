@@ -62,7 +62,7 @@ The Forge runtime allows your app to run directly on a secure VM environment. Yo
 At invocation time, Forge calls a context function. Each module receives different [request parameters](/platform/forge/function-reference/arguments/) based on
 the module type.
 
-![A code editor showing the invocation context](https://dac-static.atlassian.com/platform/forge/images/invocation-context.png?_v=1.5800.2292)
+![A code editor showing the invocation context](https://dac-static.atlassian.com/platform/forge/images/invocation-context.png?_v=1.5800.2295)
 
 You can also explicitly request a Forge function’s context details (for example, the
 [environments and versions](/platform/forge/environments-and-versions/) an app is executing in). See
@@ -172,6 +172,8 @@ resolver.define("example", () => {
 ```
 
 In this example, timers and other asynchronous code may continue executing even after the Forge function returns a response.
+
+### Default Content-Type header
 
 When making API calls through `requestJira`, `requestConfluence` and `requestBitbucket`, outbound HTTP
 requests will assume a `Content-type: application/json` if a content type isn’t specified. However, this

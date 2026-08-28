@@ -15,6 +15,8 @@ To add the `HorizontalStackBarChart` component to your app:
 | `colorPalette` | `string[]` | `{ key: string; value: string }[]` | No | Custom color palette for the chart. Can be an array of color strings (e.g., `['#0052CC', '#FF5630']`) or an array of objects with `key` and `value` properties to map specific data categories to colors (e.g., `[{ key: 'category1', value: '#0052CC' }]`). |
 | `data` | `unknown[]` | Yes | Data can be one of two formats:    1. An [array of arrays](#1--array-of-arrays). 2. An [array of objects](#2--array-of-objects). |
 | `height` | `number` | No | The static height of the chart in pixels. Defaults to `400`. |
+| `hideMenu` | `boolean` | No | When true, hides the menu in the top right corner. Defaults to `false`. |
+| `showBorder` | `boolean` | No | Adds a border around the chart. Defaults to `true`. |
 | `subtitle` | `string` | No | A string value that represents the subtitle of the chart. This appears below the title. |
 | `title` | `string` | No | A string value that represents the title of the chart. |
 | `width` | `number` | No | The static width of the chart in pixels. If this is not specified, the width is responsive. |
@@ -25,7 +27,7 @@ To add the `HorizontalStackBarChart` component to your app:
 
 Data can be one of two formats, an array of arrays or an array of objects. Both examples below will produce the same horizontal stack bar chart:
 
-![Example image of a rendered horizontal stack bar chart](https://dac-static.atlassian.com/platform/forge/ui-kit/images/horizontal-stack-bar-chart/horizontal-stack-bar-chart-data.png?_v=1.5800.2292)
+![Example image of a rendered horizontal stack bar chart](https://dac-static.atlassian.com/platform/forge/ui-kit/images/horizontal-stack-bar-chart/horizontal-stack-bar-chart-data.png?_v=1.5800.2295)
 
 ### 1. Array of arrays
 

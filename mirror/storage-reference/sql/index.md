@@ -95,7 +95,9 @@ During the execution phase, Forge SQL will also take care of migrating data betw
 
 [Manage database schemas
 
-Learn more about defining and updating your app’s SQL database schema.](/platform/forge/storage-reference/sql-api-schema/)
+Learn more about defining and updating your app’s SQL database schema.
+
+[Explore reference](/platform/forge/storage-reference/sql-api-schema/)](/platform/forge/storage-reference/sql-api-schema/)
 
 ## Partitioning
 

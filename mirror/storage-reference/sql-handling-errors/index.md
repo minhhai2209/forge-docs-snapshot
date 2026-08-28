@@ -155,4 +155,6 @@ try {
 
 [Example app
 
-We published a sample app to help demonstrate the basics of using Forge SQL. This sample also provides sample code that demonstrate how to handle typical errors.](https://bitbucket.org/atlassian/forge-sql-examples/src/main/book-management-typescript/src/resolvers/interactors/)
+We published a sample app to help demonstrate the basics of using Forge SQL. This sample also provides sample code that demonstrate how to handle typical errors.
+
+[Explore sample app](https://bitbucket.org/atlassian/forge-sql-examples/src/main/book-management-typescript/src/resolvers/interactors/)](https://bitbucket.org/atlassian/forge-sql-examples/src/main/book-management-typescript/src/resolvers/interactors/)

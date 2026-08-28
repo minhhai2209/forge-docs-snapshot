@@ -545,7 +545,7 @@ To start a rollout, select **Start rollout**. Rollouts are managed per environme
 
 To inspect an in-progress or completed rollout, select **View details**. The rollout details page shows the rollout status, percentage of installations receiving the update, installation and error metrics, installation eligibility, ineligible versions, and the rollout timeline.
 
-![Rollout details page showing in-progress rollout status, installation metrics, installation eligibility, ineligible versions, and rollout timeline](https://dac-static.atlassian.com/platform/forge/images/rolling-releases/rollout-details-page.png?_v=1.5800.2292)
+![Rollout details page showing in-progress rollout status, installation metrics, installation eligibility, ineligible versions, and rollout timeline](https://dac-static.atlassian.com/platform/forge/images/rolling-releases/rollout-details-page.png?_v=1.5800.2295)
 
 ## Controlling rollouts
 
@@ -570,6 +570,10 @@ While already in Preview, Rolling releases is still under active development. Th
 * Upgrading from a version without any dynamic webtriggers to a version with a dynamic webtrigger is not supported.
 * Upgrading from a version without [Forge LLMs](/platform/forge/runtime-reference/forge-llms-api/) to a version with [Forge LLMs](/platform/forge/runtime-reference/forge-llms-api/) is not supported.
 * For apps that use [Forge Container services](/platform/forge/containers-reference/), some installations may not upgrade successfully. If this happens, retry to complete the upgrade.
+
+## Known issues
+
+* In a decoupled state, Rovo Agent configuration and action code can use different versions. The available agents and their `key`, description, prompt, and conversation starters come from the installed permissions version, while action functions use resolvers from the latest code version. See [ECO-1695](https://jira.atlassian.com/browse/ECO-1695) to track this issue.
 
 ## Tutorials and guides
 

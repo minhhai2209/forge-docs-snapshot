@@ -64,26 +64,13 @@ The following table outlines the roles and permissions associated with app monit
 | View contributor history |  |  |  |  |
 | View and download production logs |  |  |  |  |
 
-![](https://dac-static.atlassian.com/platform/forge/images/dev-console-role-permissions/_EditorPanelIcon_.svg?_v=1.5800.2292)
+![](https://dac-static.atlassian.com/platform/forge/images/dev-console-role-permissions/_EditorPanelIcon_.svg?_v=1.5800.2295)
 
 Granted as an advanced permission to contributors of
 
-*deployer*
-
-,
-
-*developer*
-
-,
-and
-
-*viewer*
-
-roles. Gives contributors access to production logs for sites that have activated
-
-[log sharing](https://developer.atlassian.com/platform/forge/access-app-logs/)
-
-.
+*deployer*, *developer*,
+and *viewer* roles. Gives contributors access to production logs for sites that have activated
+[log sharing](https://developer.atlassian.com/platform/forge/access-app-logs/).
 
 ### App and contributor management activities
 

@@ -147,7 +147,9 @@ export const applyMigrations = async () => {
 
 [Creating database objects
 
-Our example app uses DDL operations to define each database object, then orders them in the sequence they should be executed. This sequence is then wrapped in a single database object creation function.](https://bitbucket.org/atlassian/forge-sql-examples/src/main/book-management-typescript/src/sql/migration.ts)
+Our example app uses DDL operations to define each database object, then orders them in the sequence they should be executed. This sequence is then wrapped in a single database object creation function.
+
+[Refer to sample code](https://bitbucket.org/atlassian/forge-sql-examples/src/main/book-management-typescript/src/sql/migration.ts)](https://bitbucket.org/atlassian/forge-sql-examples/src/main/book-management-typescript/src/sql/migration.ts)
 
 ## Orchestrate schema updates
 
@@ -194,7 +196,9 @@ Forge SQL will check each app installation hourly if there are any failed or pen
 
 [Orchestrate DDL operations
 
-In our sample app, the database object creation function is mapped to a scheduled trigger. This lets Forge manage the lifecycle of your database object creation (and database schema migration later on, if needed).](https://bitbucket.org/atlassian/forge-sql-examples/src/main/book-management-typescript/manifest.yml#lines-13)
+In our sample app, the database object creation function is mapped to a scheduled trigger. This lets Forge manage the lifecycle of your database object creation (and database schema migration later on, if needed).
+
+[Refer to sample manifest](https://bitbucket.org/atlassian/forge-sql-examples/src/main/book-management-typescript/manifest.yml#lines-13)](https://bitbucket.org/atlassian/forge-sql-examples/src/main/book-management-typescript/manifest.yml#lines-13)
 
 ## Log schema updates
 
@@ -235,7 +239,9 @@ export const applyMigrations = async () => {
 
 [Generate logs
 
-Our sample app’s database object creation function generates logs for each operation. These logs let you track the progress of each schema application (and update) for every app installation.](https://bitbucket.org/atlassian/forge-sql-examples/src/main/book-management-typescript/src/sql/migration.ts#lines-48)
+Our sample app’s database object creation function generates logs for each operation. These logs let you track the progress of each schema application (and update) for every app installation.
+
+[Refer to sample code](https://bitbucket.org/atlassian/forge-sql-examples/src/main/book-management-typescript/src/sql/migration.ts#lines-48)](https://bitbucket.org/atlassian/forge-sql-examples/src/main/book-management-typescript/src/sql/migration.ts#lines-48)
 
 ## Monitoring
 

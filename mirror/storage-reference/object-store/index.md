@@ -12,7 +12,9 @@ The Forge Object Store integrates tightly with the Forge platform, enabling secu
 
 We published a sample app to demonstrate the basics of implementing object storage features in
 a Forge app. This sample app uses the Forge Object Store as its backend and available Forge UI components
-for its frontend. Refer to the app's README for additional guidance on exploring and testing the code.](https://bitbucket.org/atlassian/forge-ui-object-store-example-app/src/main/)
+for its frontend. Refer to the app's README for additional guidance on exploring and testing the code.
+
+[Explore sample app object storage features](https://bitbucket.org/atlassian/forge-ui-object-store-example-app/src/main/)](https://bitbucket.org/atlassian/forge-ui-object-store-example-app/src/main/)
 
 ## Limitations
 
