@@ -122,7 +122,7 @@ When using multiple UI Kit components, you must wrap them in a fragment (`<>`) b
 
    The app displays the number of queues in the queue page app in Jira Service Management. Add more queues and refresh the page to count them in your app. Your queue page app should look like the following:
 
-   ![A Jira Service Management queue page app displaying the hello world with queues counted](https://dac-static.atlassian.com/platform/forge/images/forge-getting-started-jira-service-management-final-state.png?_v=1.5800.2295)
+   ![A Jira Service Management queue page app displaying the hello world with queues counted](https://dac-static.atlassian.com/platform/forge/images/forge-getting-started-jira-service-management-final-state.png?_v=1.5800.2296)
 
 ## Close the tunnel and deploy the app
 
@@ -169,4 +169,4 @@ You now know enough to develop your own Forge apps. Learn more from our
 [tutorials](/platform/forge/tutorials-and-guides/), [guides](/platform/forge/guides/),
 [example apps](/platform/forge/example-apps/) or [reference pages](/platform/forge/manifest-reference/).
 
-[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.2295)](/platform/forge/call-a-jira-service-management-api/)
+[![A button to go back a page](https://dac-static.atlassian.com/platform/forge/images/button-go-back.svg?_v=1.5800.2296)](/platform/forge/call-a-jira-service-management-api/)

@@ -16,7 +16,7 @@ The dashboard widget module allows you to create interactive widgets that can be
 * Communicate with [background scripts](/platform/forge/manifest-reference/modules/dashboard-background-script/)
 * Be configured by users through edit modes
 
-![Dashboard widget example](https://dac-static.atlassian.com/platform/forge/images/modules/dashboard-widget-example.png?_v=1.5800.2295)
+![Dashboard widget example](https://dac-static.atlassian.com/platform/forge/images/modules/dashboard-widget-example.png?_v=1.5800.2296)
 
 *Example of a dashboard widget displaying custom content*
 
@@ -33,13 +33,13 @@ You can create a dashboard widget app with the following steps:
 
 When users install your widget to their site, they'll see your widget in the widget list:
 
-![Widget list interface](https://dac-static.atlassian.com/platform/forge/images/modules/dashboard-widget-list.png?_v=1.5800.2295)
+![Widget list interface](https://dac-static.atlassian.com/platform/forge/images/modules/dashboard-widget-list.png?_v=1.5800.2296)
 
 *Widget selection interface showing available dashboard widgets on the right, and on the left showing the **preview** of the selected dashboard widget*
 
 Users can configure your widget through the edit interface:
 
-![Widget edit mode](https://dac-static.atlassian.com/platform/forge/images/modules/dashboard-widget-edit-mode.png?_v=1.5800.2295)
+![Widget edit mode](https://dac-static.atlassian.com/platform/forge/images/modules/dashboard-widget-edit-mode.png?_v=1.5800.2296)
 
 *Widget configuration interface allowing users to customize widgets*
 
@@ -165,12 +165,154 @@ functions:
 | `thumbnail` | `string` | Yes | The absolute URL of the icon displayed next to the widget's name and description. |
 | `resource` | `string` | Yes | The key of a static resources entry that provides the widget view. |
 | `edit` | `object` | No | Configuration for the widget's edit mode. |
+| `ai-context` | `object` | No | Configuration that lets the widget contribute structured data to [AI insights](#ai-insights-context). See [ai-context Object Properties](#ai-context-object-properties). |
 
 ### edit Object Properties
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
 | `resource` | `string` | Yes | The key of a static resources entry that provides the widget edit experience. |
+
+### ai-context Object Properties
+
+| Property | Type | Required | Description |
+| --- | --- | --- | --- |
+| `data` | `object` | Yes | Points at the function (or remote endpoint) that returns the widget's data for AI insights. Provide exactly one of `function` or `endpoint`. |
+
+#### data Object Properties
+
+| Property | Type | Required | Description |
+| --- | --- | --- | --- |
+| `function` | `string` | Conditional | The key of a [function](/platform/forge/manifest-reference/modules/function/) that resolves the AI context payload. Mutually exclusive with `endpoint`. |
+| `endpoint` | `string` | Conditional | The key of a [remote endpoint](/platform/forge/manifest-reference/endpoint/) that resolves the AI context payload. Mutually exclusive with `function`. |
+
+## AI insights context
+
+Chart and dashboard insights are part of a separate EAP from the dashboard widget module. To
+contribute your widget's data to insights through `ai-context.data`, you must also [sign up for
+the insights EAP](https://docs.google.com/forms/d/1bKpwRn35VH3fktCPbzQOUUJbL5pxRNb1cGP05EIQfXM/viewform).
+
+Dashboard widgets can contribute a structured, tabular view of their data to Atlassian
+Intelligence **insights**. The platform invokes the `ai-context.data` entry point declared
+on your module and passes the response to the AI as prompt context. This data powers both:
+
+* **Chart insights**: AI-generated insights for an individual widget, shown on the widget.
+* **Dashboard insights**: AI-generated insights across all of a dashboard's widgets,
+  delivered through [Rovo Chat](https://www.atlassian.com/software/rovo).
+
+The platform sends data your widget returns from `ai-context.data` to a generative AI model
+to produce insights. Only return data that's appropriate to process with AI, and ensure you
+comply with the [Atlassian Acceptable Use Policy](https://www.atlassian.com/legal/acceptable-use-policy#disruption).
+
+Insights only render when AI is enabled for Jira. If it's not enabled, the
+`ai-context.data` entry point isn't invoked.
+
+### Manifest configuration
+
+Add an `ai-context` block to your `dashboards:widget` module and point its `data` field at
+a [function](/platform/forge/manifest-reference/modules/function/) (or a remote
+[endpoint](/platform/forge/manifest-reference/endpoint/)):
+
+```
+```
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+```
+
+
+
+```
+modules:
+  dashboards:widget:
+    - key: hello-world-widget
+      title: Hello World Widget
+      description: A sample dashboard widget
+      thumbnail: https://example.com/icon.svg
+      resource: widgetResource
+      edit:
+        resource: widgetEditResource
+      ai-context:
+        data:
+          function: aiContextResolver
+
+resources:
+  - key: widgetResource
+    path: static/widget/build
+  - key: widgetEditResource
+    path: static/widget-edit/build
+
+functions:
+  - key: aiContextResolver
+    handler: aiContext.handler
+```
+```
+
+The referenced function must return an object matching the [return-value
+schema](#return-value-schema). For a full handler example, see
+[AI insights context data](#ai-insights-context-data) in the [Examples](#examples) section.
+
+### Return-value schema
+
+Your response must be an object with the following fields:
+
+| Field | Type | Required | Notes |
+| --- | --- | --- | --- |
+| `title` | `string` | No | Title for the data. **Defaults to the widget's manifest `title`** if omitted. Used by both chart and dashboard insights. |
+| `type` | `string` | No | Free-form chart type (for example, `'bar'`, `'line'`, `'pie'`). Surfaced to the AI for prompt context. |
+| `description` | `string` | No | Natural-language description of the widget or data. **Defaults to the widget's manifest `description`** if omitted. **Consumed by dashboard insights only**; chart insights don't use this field. |
+| `columns` | `Array<{ key: string; label: string }>` | Yes | `key` is the stable field id used to read object rows (`row[key]`); `label` is the human-readable header shown to the AI. |
+| `rows` | `Array<Cell[] | Partial<Record<string, Cell>>>` | Yes | Each row is either a positional array aligned to the `columns` order, or an object keyed by column `key`. |
+
+A cell is a `string`, `number`, `boolean`, or `null`.
+
+Import the response type from [`@forge/dashboards-bridge`](/platform/forge/apis-reference/dashboard-bridge-apis/bridge/) to type your function:
+
+```
+```
+1
+2
+```
+
+
+
+```
+import type { ForgeAiContextResponse } from "@forge/dashboards-bridge";
+```
+```
+
+`ForgeAiContextResponse` optionally accepts a union of column keys. For example,
+`ForgeAiContextResponse<'issue_type' | 'count'>` keeps your `columns` and object-row keys
+in agreement.
+
+### Limits
+
+* **Max rows:** 1000.
+* **Max serialized size:** 300,000 characters (the `JSON.stringify` of the whole payload).
+  This keeps the prompt within the model's context window.
+
+If you exceed either limit, the platform rejects the response and the widget's data isn't
+used for insights.
 
 ## API Documentation
 
@@ -311,5 +453,53 @@ const WidgetEditMode = () => {
 };
 
 export default WidgetEditMode;
+```
+```
+
+### AI insights context data
+
+The function referenced by [`ai-context.data`](#ai-insights-context) returns a structured,
+tabular view of the widget's data for AI insights. The following example mixes both
+supported row styles: a positional array aligned to `columns`, and an object keyed by
+column `key`:
+
+```
+```
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+```
+
+
+
+```
+export const handler = async () => {
+  return {
+    title: "Issues by type",
+    type: "bar",
+    description: "Breakdown of open issues by type",
+    columns: [
+      { key: "issue_type", label: "Issue Type" },
+      { key: "count", label: "Count" },
+    ],
+    rows: [
+      ["Bug", 25], // positional array, aligned to the columns order
+      { issue_type: "Story", count: 40 }, // object keyed by column key
+    ],
+  };
+};
 ```
 ```

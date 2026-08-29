@@ -28,8 +28,16 @@ When the `autocomplete` command is installed, press **Tab** to complete commands
 ## Examples
 
 ```
-1forge autocomplete install
+```
+1
 2
+```
+
+
+
+```
+forge autocomplete install
+```
 ```
 
 Installs Forge CLI `autocomplete`, updating the shell initialization file to enable it when you next start a shell.

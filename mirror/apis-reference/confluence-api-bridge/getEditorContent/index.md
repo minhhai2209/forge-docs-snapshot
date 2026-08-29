@@ -33,38 +33,78 @@ The `getEditorContent` function returns an object with the following structure:
 ### Example response after `data` goes through JSON.parse
 
 ```
-1{
-2    "version": 1,
-3    "type": "doc",
-4    "content": [
-5        {
-6            "type": "paragraph",
-7            "content": [
-8                {
-9                    "type": "text",
-10                    "text": "hello world!"
-11                }
-12            ]
-13        },
-14        {
-15            "type": "extension",
-16            "attrs": {
-17                "extensionKey": "cool-macro",
-18                "extensionType": "com.atlassian.ecosystem",
-19                "parameters": {
-20                    "localId": "0",
-21                    "extensionId": "ari:cloud:ecosystem::extension/cool-macro",
-22                    "extensionTitle": "Cool macro",
-23                    "layout": "extension",
-24                    "forgeEnvironment": "DEVELOPMENT",
-25                    "render": "native"
-26                },
-27                "layout": "default",
-28                "localId": "0",
-29                "text": "Cool macro"
-30            }
-31        }
-32    ]
-33}
+```
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
 34
+```
+
+
+
+```
+{
+    "version": 1,
+    "type": "doc",
+    "content": [
+        {
+            "type": "paragraph",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "hello world!"
+                }
+            ]
+        },
+        {
+            "type": "extension",
+            "attrs": {
+                "extensionKey": "cool-macro",
+                "extensionType": "com.atlassian.ecosystem",
+                "parameters": {
+                    "localId": "0",
+                    "extensionId": "ari:cloud:ecosystem::extension/cool-macro",
+                    "extensionTitle": "Cool macro",
+                    "layout": "extension",
+                    "forgeEnvironment": "DEVELOPMENT",
+                    "render": "native"
+                },
+                "layout": "default",
+                "localId": "0",
+                "text": "Cool macro"
+            }
+        }
+    ]
+}
+```
 ```
