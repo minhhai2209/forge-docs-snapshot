@@ -504,7 +504,7 @@ That configuration form is built by you, using either UI Kit or Custom UI.
 
 We recommend choosing UI Kit due to its simplicity and efficiency in capturing user inputs.
 
-![configuration-example](https://dac-static.atlassian.com/platform/forge/images/automation/action-configuration-example.png?_v=1.5800.2296)
+![configuration-example](https://dac-static.atlassian.com/platform/forge/images/automation/action-configuration-example.png?_v=1.5800.2297)
 
 For a great user experience, it is important for the configuration form to interact properly with Automation.
 There are two areas to take care of:
@@ -1104,11 +1104,11 @@ Kindly refer [outputs](/platform/forge/manifest-reference/modules/automation-act
 Below section gives a glimpse of what to expect when working with Forge actions and smart values.
 Defining a rule with a Forge action that has defined outputs mentioned in the example here: [Forge Action](/platform/forge/manifest-reference/modules/automation-action/#using-a-forge-app-with-output)
 
-![automation-action-configuration](https://dac-static.atlassian.com/platform/forge/images/automation/automation-action-smart-value-configuration.png?_v=1.5800.2296)
+![automation-action-configuration](https://dac-static.atlassian.com/platform/forge/images/automation/automation-action-smart-value-configuration.png?_v=1.5800.2297)
 
 We can now select the smart value operator which is created as explained above. This operator can than be used in the subsequent rule executions.
 
-![automation-action-smart-value-operator](https://dac-static.atlassian.com/platform/forge/images/automation/automation-action-smart-value-operator.png?_v=1.5800.2296)
+![automation-action-smart-value-operator](https://dac-static.atlassian.com/platform/forge/images/automation/automation-action-smart-value-operator.png?_v=1.5800.2297)
 
 ## Action execution
 
@@ -1195,6 +1195,11 @@ The rule owner can then navigate to the Audit Log, where they can then see the e
 
 *Note: if your app throws an exception, the execution will be marked as failed too, but only a generic error message will be shown.*
 
+For actions implemented with a Forge remote endpoint, the error-handling behavior is the same:
+
+* Return a successful `2xx` response with an `errors` array in the response body to surface custom messages in the Audit Log.
+* If the remote responds with a non-`2xx` status, times out, or returns a payload that does not match the expected contract, the action is still marked as failed but Automation shows a generic error message in the Audit Log.
+
 ```
 ```
 1
@@ -1236,6 +1241,33 @@ export async function addCommentWithUsageError(payload) {
 ```
 ```
 
+#### Forge remote endpoint error response example
+
+```
+```
+1
+2
+3
+4
+5
+6
+7
+8
+```
+
+
+
+```
+{
+  "errors": [
+    {
+      "message": "Payload provided with invalid issue key: null"
+    }
+  ]
+}
+```
+```
+
 ## Icons
 
 An app icon will be used as an action icon visible in the automation flow configuration.
@@ -1243,7 +1275,7 @@ If the app defines multiple actions, they will have the same icon.
 
 An app icon can be configured in the Developer console:
 
-![app-icon](https://dac-static.atlassian.com/platform/forge/images/automation/action-configuration-icon.png?_v=1.5800.2296)
+![app-icon](https://dac-static.atlassian.com/platform/forge/images/automation/action-configuration-icon.png?_v=1.5800.2297)
 
 ## Design guidelines
 
