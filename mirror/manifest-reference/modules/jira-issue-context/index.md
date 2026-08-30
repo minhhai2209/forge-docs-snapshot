@@ -14,17 +14,34 @@ but not the old issue view.
 ## Manifest example
 
 ```
-1modules:
-2  jira:issueContext:
-3    - key: hello-world-issue-context
-4      resource: main
-5      resolver:
-6        function: resolver
-7      render: native
-8      title: Hello World!
-9      description: A hello world issue context.
-10      label: Hello World!
+```
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
 11
+```
+
+
+
+```
+modules:
+  jira:issueContext:
+    - key: hello-world-issue-context
+      resource: main
+      resolver:
+        function: resolver
+      render: native
+      title: Hello World!
+      description: A hello world issue context.
+      label: Hello World!
+```
 ```
 
 ## Properties
