@@ -65,6 +65,7 @@ The following table helps simplify the differences between EAP, preview, and GA 
 | Documentation availability | Only to EAP participants | All Forge users | All Forge users |
 | Feature availability | Only to EAP participants, and can only be enabled on development environments | All Forge users, and can be enabled on production environments | All Forge users |
 | Operational commitment | No guarantees | Has passed Atlassian standards for stability, reliability, and security | Has passed Atlassian standards for stability, reliability, and security |
+| Monetisation (for paid features) | Free, with limits on usage | Paid, with [published pricing](/platform/forge/forge-platform-pricing/) and [usage visibility](/platform/forge/monitor-usage-metrics/) | Paid, with [published pricing](/platform/forge/forge-platform-pricing/) and [usage visibility](/platform/forge/monitor-usage-metrics/). May include coverage under the [Forge service level agreement](/platform/forge/forge-service-level-agreement/) |
 | Opt-in | Required | Required | Not required |
 | Deprecation policy (for breaking changes) | None; feature may be changed or removed without notice | 1 month minimum deprecation | 6 months minimum deprecation |
 

@@ -132,6 +132,58 @@ A clickable navigation link in the sidebar.
 | `label` | `string` | Yes | The text displayed for the menu item. |
 | `href` | `string` | Yes | The route this item navigates to. |
 | `icon` | `string` | No | The name of an Atlassian Design System (ADS) icon glyph to display alongside the label. For example, `"chart-bar"` or `"settings"`. The platform controls the icon size and color. Always use with a visible `label`. |
+| `activePath` | `string | string[]` | No | One or more glob patterns, such as `"/projects/*/settings"`, that highlight this item when the current path matches. Use this to keep an item highlighted on routes nested below its `href`. |
+
+#### Highlighting nested paths
+
+By default, a `LinkMenuItem` is highlighted only when the current path matches its `href` exactly.
+Apps with deeply nested routes often need the item to stay highlighted on child routes as well.
+For example, you might want **Projects** to stay highlighted while the user navigates to
+`/projects/alpha/boards/3`.
+
+The `activePath` prop takes a glob pattern, or an array of glob patterns, that the platform matches
+against the current path. If any pattern matches, the item is highlighted. Matching against the
+item's own `href` still applies, so you only need to describe the additional paths.
+
+```
+```
+1
+2
+3
+4
+5
+6
+7
+```
+
+
+
+```
+<LinkMenuItem
+  label="Projects"
+  href="/projects"
+  icon="folder-closed"
+  activePath="/projects/**"
+/>
+```
+```
+
+Patterns support the following wildcards:
+
+| Wildcard | Description |
+| --- | --- |
+| `*` | Matches exactly one path segment (no slashes). |
+| `**` | Matches one or more path segments, at any depth. |
+
+Unlike some glob libraries, `**` matches one or more path segments, not zero or more. To also match
+the path itself, combine it with an exact pattern: `activePath={["/projects", "/projects/**"]}`.
+
+| Pattern | Matches | Doesn't match |
+| --- | --- | --- |
+| `"/projects/*"` | `/projects/alpha` | `/projects`, `/projects/alpha/boards` |
+| `"/projects/*/settings"` | `/projects/alpha/settings` | `/projects/alpha/boards/settings` |
+| `"/projects/**"` | `/projects/alpha`, `/projects/alpha/boards/3` | `/projects` |
+| `"/projects/**/settings"` | `/projects/alpha/settings`, `/projects/alpha/boards/3/settings` | `/projects/settings` |
 
 #### Using icons
 
@@ -197,7 +249,7 @@ navigation order.
 
 | Name | Type | Required | Description |
 | --- | --- | --- | --- |
-| `items` | `{ id: string; label: string; href: string, icon: string }[]` | Yes | An array of sidebar menu items that the user can reorder. Each item must include a unique `id`, a display `label`, and a navigation `href`. An optional ADS `icon` glyph name from [ADS icon explorer](https://atlassian.design/components/icon/icon-explorer) can also be included to render the corresponding icon. |
+| `items` | `{ id: string; label: string; href: string; icon?: string; activePath?: string | string[] }[]` | Yes | An array of sidebar menu items that the user can reorder. Each item must include a unique `id`, a display `label`, and a navigation `href`. An optional ADS `icon` glyph name from [ADS icon explorer](https://atlassian.design/components/icon/icon-explorer) can also be included to render the corresponding icon. An optional `activePath` glob pattern, or array of patterns, highlights the item on nested routes — see [Highlighting nested paths](#highlighting-nested-paths). |
 | `onReorder` | `(items: Item[]) => void` | Yes | A callback invoked after the user changes the item order. Receives the reordered items so the app can update local state or persist the new order. |
 | `onError` | `(error: Error, currentItems: Item[], nextItems: Item[]) => void` | No | A callback invoked when reordering fails. Receives the error, the current items before the attempted reorder, and the next items from the attempted reorder. |
 
@@ -418,7 +470,7 @@ const initialNotes = [
 const App = () => {
   const [notes, setNotes] = useState(initialNotes);
   const [message, setMessage] = useState(
-    "Select an action from the header or sidebar.",
+    "Select an action from the header or sidebar."
   );
 
   const handleCreateDocument = () => {
@@ -488,7 +540,7 @@ const App = () => {
 ForgeReconciler.render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
+  </React.StrictMode>
 );
 ```
 ```
@@ -573,6 +625,9 @@ In the main app, the sidebar state is defined as a list of items that can be dyn
 64
 65
 66
+67
+68
+69
 ```
 
 
@@ -592,7 +647,10 @@ interface GlobalState {
   sidebar: LinkMenuItemProps[];
 }
 
-type AddSidebarItemAction = { type: 'ADD_SIDEBAR_ITEM', item: LinkMenuItemProps };
+type AddSidebarItemAction = {
+  type: "ADD_SIDEBAR_ITEM";
+  item: LinkMenuItemProps;
+};
 const initialState: GlobalState = {
   sidebar: [
     { id: "dashboard", label: "Dashboard", href: "/dashboard" },
@@ -606,7 +664,7 @@ const initialState: GlobalState = {
         { id: "monthly", label: "Monthly", href: "/reports/monthly" },
       ],
     },
-  ]
+  ],
 };
 
 const reducer = (state: GlobalState, action: Action) => {
@@ -614,7 +672,7 @@ const reducer = (state: GlobalState, action: Action) => {
     case "ADD_SIDEBAR_ITEM":
       return {
         ...state,
-        sidebar: [...state.sidebar, action.item]
+        sidebar: [...state.sidebar, action.item],
       };
     default:
       return state;

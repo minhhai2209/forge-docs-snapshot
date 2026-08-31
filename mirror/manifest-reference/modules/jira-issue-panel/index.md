@@ -3,12 +3,14 @@
 The `jira:issuePanel` module adds an issue panel to a Jira issue when a configured button is clicked.
 The content of the module is shown above the **Activity** panel on a Jira issue.
 
+Only users with permission to edit the Jira issue can see the configured button.
+
 This module can be used in Jira and Jira Service Management.
 It works in the
 [new issue view](https://support.atlassian.com/jira-core-cloud/docs/what-is-the-new-jira-issue-view/)
 but not the old issue view.
 
-![Example of an Issue panel](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-panel-demo-with-show-hide-from-work-item.png?_v=1.5800.2297)
+![Example of an Issue panel](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-panel-demo-with-show-hide-from-work-item.png?_v=1.5800.2300)
 
 Only Jira administrators can see the **Show for all work items** and **Hide from all work items** options in the issue panel menu.
 
