@@ -42,6 +42,10 @@ Cursor
 
 VS Code
 
+Claude Code
+
+Codex CLI
+
 Other IDEs or custom clients
 
 To connect Rovo Dev CLI to the Forge MCP server, follow the [instructions in our support documentation](https://support.atlassian.com/rovo/docs/connect-to-an-mcp-server-in-rovo-dev-cli/).

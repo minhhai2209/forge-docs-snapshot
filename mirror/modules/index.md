@@ -1,15 +1,64 @@
-# Forge modules
+# Modules
 
-## Manage Preferences
+Modules are defined in the [manifest](/platform/forge/manifest/), and they describe how Forge
+apps extend and interact with Atlassian apps.
 
-Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
-When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our [Privacy Policy](https://www.atlassian.com/legal/privacy-policy#how-we-disclose-information-we-collect).
-You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt-out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
+Here are some examples of what you can do with Forge modules:
 
-Allow all
+* Create new custom fields in Jira
+* Add new menu items in Jira issues
+* Display app content in Confluence pages and blogs
+* Create Confluence custom content, such as templates, forms, or macros
+* Add a pull request card in Bitbucket
+* Use webhooks to listen for events
 
-These cookies are necessary for the website to function and cannot be switched off in our systems. They are usually only set in response to actions made by you which amount to a request for services, such as setting your privacy preferences, logging in or filling in forms. You can set your browser to block or alert you about these cookies, but some parts of the site will not then work. These cookies do not store any personally identifiable information.
+## Example
 
-These cookies allow us to count visits and traffic sources so we can measure and improve the performance of our site. They help us to know which pages are the most and least popular and see how visitors move around the site. If you do not allow these cookies we will not know when you have visited our site, and will not be able to monitor its performance.
+Here's an example of how modules appear in the `manifest.yml` file.
 
-These cookies enable the website to provide enhanced functionality and personalisation. They may be set by us or by third party providers whose services we have added to our pages. If you do not allow these cookies then some or all of these services may not function properly.
+```
+1modules:
+2  macro:
+3    - key: hello-world-macro
+4      function: hello-world-macro-func
+5      title: Hello world macro!
+6      description: Inserts hello world!
+7  webtrigger:
+8    - key: webtrigger-sync
+9      function: my-forge-app-sync-func
+10      urlFormat: v2
+11      response:
+12        type: dynamic
+13    - key: my-webtrigger-async
+14      function: my-async-func
+15      urlFormat: v2
+16      response:
+17        type: dynamic
+18  trigger:
+19    - key: issue-creation-trigger
+20      events:
+21        - avi:jira:created:issue
+22        - avi:jira:updated:issue
+23      function: issue-trigger-func
+24  jira:workflowValidator:
+25    - key: my-forge-workflow-validator
+26      name: My example Forge workflow validator
+27      description: The description of my example Forge workflow validator
+28      function: my-forge-validator-function
+29  function:
+30    - key: my-forge-app-sync-func
+31      handler: index.runSync
+32    - key: my-async-func
+33      handler: index.runAsync
+34    - key: hello-world-macro-func
+35      handler: macro.run
+36    - key: issue-trigger-func
+37      handler: jira.issueCreationTrigger
+38    - key: my-forge-validator-function
+39      handler: index.runValidate
+40
+```
+
+## Reference documentation
+
+To learn more, check out the modules [reference documentation](/platform/forge/manifest-reference/modules/).

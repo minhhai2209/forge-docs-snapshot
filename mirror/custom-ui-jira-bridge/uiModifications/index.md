@@ -656,7 +656,7 @@ setName(value: string): FieldAPI
 
 Changes the field's name.
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/set-name.png?_v=1.5800.2300)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/set-name.png?_v=1.5800.2303)
 
 Example:
 
@@ -694,7 +694,7 @@ setDescription(value: string): FieldAPI
 
 Changes the field's description.
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/set-description.png?_v=1.5800.2300)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/set-description.png?_v=1.5800.2303)
 
 Example:
 
@@ -999,7 +999,7 @@ getValue(): IssueTypeField
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-issue-type.png?_v=1.5800.2300)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-issue-type.png?_v=1.5800.2303)
 
 ### priority
 
@@ -1060,7 +1060,7 @@ getValue(): PriorityField
 
 #### Reference screenshot
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-priority.png?_v=1.5800.2300)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-priority.png?_v=1.5800.2303)
 
 ### project picker
 
@@ -1119,7 +1119,7 @@ getValue(): ProjectPickerField
 
 #### Reference screenshot
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-project.png?_v=1.5800.2300)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-project.png?_v=1.5800.2303)
 
 ### Resolution
 
@@ -1180,7 +1180,7 @@ getValue(): ResolutionField
 
 #### Reference screenshot
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-resolution.png?_v=1.5800.2300)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-resolution.png?_v=1.5800.2303)
 
 ### summary
 
@@ -1220,7 +1220,7 @@ getValue(): SummaryField
 
 #### Reference screenshot
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-summary.png?_v=1.5800.2300)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-summary.png?_v=1.5800.2303)
 
 ### assignee
 
@@ -1283,7 +1283,7 @@ This means that all calls to `setValue` for user-based fields performed in a sin
 
 #### Reference screenshot
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-assignee.png?_v=1.5800.2300)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-assignee.png?_v=1.5800.2303)
 
 ### reporter
 
@@ -1344,7 +1344,7 @@ This means that all calls to `setValue` for user-based fields performed in a sin
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-reporter.png?_v=1.5800.2300)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-reporter.png?_v=1.5800.2303)
 
 ### labels
 
@@ -1384,7 +1384,7 @@ getValue(): LabelsField
 
 #### Reference screenshot
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-labels.png?_v=1.5800.2300)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-labels.png?_v=1.5800.2303)
 
 ### description
 
@@ -1479,8 +1479,8 @@ type ADF = {
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-description.png?_v=1.5800.2300)
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-description-plain-text.png?_v=1.5800.2300)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-description.png?_v=1.5800.2303)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-description-plain-text.png?_v=1.5800.2303)
 
 ### components
 
@@ -1555,7 +1555,7 @@ getValue(): ComponentsField
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-components.png?_v=1.5800.2300)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-components.png?_v=1.5800.2303)
 
 ### fix versions
 
@@ -1636,7 +1636,7 @@ This means that each supported field has its own limit of 100 IDs.
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-fix-versions.png?_v=1.5800.2300)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-fix-versions.png?_v=1.5800.2303)
 
 ### affects versions
 
@@ -1717,7 +1717,7 @@ This means that each field of this type has its own limit of 100 IDs.
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-affects-versions.png?_v=1.5800.2300)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-affects-versions.png?_v=1.5800.2303)
 
 ### single select
 
@@ -1778,7 +1778,7 @@ null | {
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-select.png?_v=1.5800.2300)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-select.png?_v=1.5800.2303)
 
 ### multi select
 
@@ -1859,7 +1859,7 @@ This means that each supported field has its own limit of 100 IDs.
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-multi-select.png?_v=1.5800.2300)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-multi-select.png?_v=1.5800.2303)
 
 ### Cascading select
 
@@ -1926,7 +1926,7 @@ null | {
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-cascading-select.png?_v=1.5800.2300)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-cascading-select.png?_v=1.5800.2303)
 
 ### checkboxes
 
@@ -2007,7 +2007,7 @@ This means that each supported field has its own limit of 100 IDs.
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-multi-check-boxes.png?_v=1.5800.2300)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-multi-check-boxes.png?_v=1.5800.2303)
 
 ### radio buttons
 
@@ -2068,7 +2068,7 @@ null | {
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/radio-buttons.png?_v=1.5800.2300)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/radio-buttons.png?_v=1.5800.2303)
 
 ### paragraph
 
@@ -2135,8 +2135,8 @@ type ADF = {
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-paragraph.png?_v=1.5800.2300)
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-paragraph-plain-text.png?_v=1.5800.2300)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-paragraph.png?_v=1.5800.2303)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-paragraph-plain-text.png?_v=1.5800.2303)
 
 ### text field
 
@@ -2176,7 +2176,7 @@ string // Plain-text editor
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-text.png?_v=1.5800.2300)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-text.png?_v=1.5800.2303)
 
 ### user picker
 
@@ -2241,7 +2241,7 @@ This means that all calls to `setValue` for user-based fields performed in a sin
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-user-picker.png?_v=1.5800.2300)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-user-picker.png?_v=1.5800.2303)
 
 ### multi user picker
 
@@ -2318,7 +2318,7 @@ This means that all calls to `setValue` for user-based fields performed in a sin
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-multi-user-picker.png?_v=1.5800.2300)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-multi-user-picker.png?_v=1.5800.2303)
 
 ### people
 
@@ -2399,7 +2399,7 @@ This means that all calls to `setValue` for user-based fields performed in a sin
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-people-picker.png?_v=1.5800.2300)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-people-picker.png?_v=1.5800.2303)
 
 ### url
 
@@ -2426,7 +2426,7 @@ setValue(url: string): FieldAPI
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-url.png?_v=1.5800.2300)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-url.png?_v=1.5800.2303)
 
 ### date picker
 
@@ -2470,7 +2470,7 @@ getValue(): DatePickerField
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-date-picker.png?_v=1.5800.2300)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-date-picker.png?_v=1.5800.2303)
 
 ### date time picker
 
@@ -2514,7 +2514,7 @@ getValue(): DatePickerField
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-date-time.png?_v=1.5800.2300)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-date-time.png?_v=1.5800.2303)
 
 ### due date
 
@@ -2558,7 +2558,7 @@ getValue(): DatePickerField
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-due-date.png?_v=1.5800.2300)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-due-date.png?_v=1.5800.2303)
 
 ### target start
 
@@ -2602,7 +2602,7 @@ getValue(): DatePickerField
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-target-start.png?_v=1.5800.2300)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-target-start.png?_v=1.5800.2303)
 
 ### target end
 
@@ -2646,7 +2646,7 @@ getValue(): DatePickerField
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-target-end.png?_v=1.5800.2300)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-target-end.png?_v=1.5800.2303)
 
 ### number
 
@@ -2688,7 +2688,7 @@ getValue(): NumberField
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-number.png?_v=1.5800.2300)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-number.png?_v=1.5800.2303)
 
 ### parent
 
@@ -2747,7 +2747,7 @@ getValue(): ParentField
 
 #### Reference screenshot
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-parent.png?_v=1.5800.2300)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-parent.png?_v=1.5800.2303)
 
 ### status
 
@@ -2810,7 +2810,7 @@ getValue(): StatusField | null
 
 #### Reference screenshot
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-status.png?_v=1.5800.2300)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-status.png?_v=1.5800.2303)
 
 ### original estimate
 
@@ -2854,7 +2854,7 @@ getValue(): OriginalEstimateField
 
 #### Reference screenshots
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-original-estimate.png?_v=1.5800.2300)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-ui-modifications/field-original-estimate.png?_v=1.5800.2303)
 
 ## Querying screen tabs
 

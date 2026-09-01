@@ -6,7 +6,7 @@ All apps using Macros. Learn more about app macros at the following links.
 
 ## What’s changing?
 
-### DEPRECATION NOTICE In 6 months on Feb 25, 2027, app macros will only appear in one category in the **modal element browser, and the** `categories ([string])` property will be fully replaced by a new `category (string)` property for Forge app macros
+### In 6 months on Feb 25, 2027, app macros will only appear in one category in the **modal element browser, and the** `categories ([string])` property will be fully replaced by a new `category (string)` property for Forge app macros
 
 Today, app macros can set an optional `categories ([string])` property that defines which categories (potentially multiple) the app macro should appear in within the **modal element browser** (not the **slash menu element browser**).
 
@@ -36,7 +36,7 @@ On Feb 25, 2027, Connect app macros will only appear in the **first** category l
 * `external-content` → `embed`
 * **No valid categories provided** → Other elements (as well as the default "All" category)
 
-### HEADS UP Modernizing categories in the **slash menu element browser** and **modal element browser**
+### Modernizing categories in the **slash menu element browser** and **modal element browser**
 
 Before the above deprecation on Feb 25, 2027, we will also be updating the categories & appearance of the **slash menu element browser** and **modal element browser** to improve discoverability of our shared offerings, expected to begin rollout on Oct 6, 2026. We will be:
 

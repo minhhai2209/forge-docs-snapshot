@@ -1,15 +1,153 @@
 # useProductContext
 
-## Manage Preferences
+This hook reads the context in which the component is currently running. Note that the context data is loaded asynchronously, so its output will be `undefined` while it is still loading.
 
-Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
-When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our [Privacy Policy](https://www.atlassian.com/legal/privacy-policy#how-we-disclose-information-we-collect).
-You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt-out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
+### Usage
 
-Allow all
+To add the `useProductContext` hook to your app:
 
-These cookies are necessary for the website to function and cannot be switched off in our systems. They are usually only set in response to actions made by you which amount to a request for services, such as setting your privacy preferences, logging in or filling in forms. You can set your browser to block or alert you about these cookies, but some parts of the site will not then work. These cookies do not store any personally identifiable information.
+```
+1import { useProductContext } from "@forge/react";
+2
+```
 
-These cookies allow us to count visits and traffic sources so we can measure and improve the performance of our site. They help us to know which pages are the most and least popular and see how visitors move around the site. If you do not allow these cookies we will not know when you have visited our site, and will not be able to monitor its performance.
+Here is an example of an app that displays all its context information with `useProductContext`.
 
-These cookies enable the website to provide enhanced functionality and personalisation. They may be set by us or by third party providers whose services we have added to our pages. If you do not allow these cookies then some or all of these services may not function properly.
+![The app display on a Confluence page](https://dac-static.atlassian.com/platform/forge/images/ui-kit-2/hooks-examples/useproductcontext.png?_v=1.5800.2303)
+
+```
+1import React from "react";
+2import ForgeReconciler, {
+3  Code,
+4  Heading,
+5  Text,
+6  useProductContext,
+7} from "@forge/react";
+8
+9const App = () => {
+10  const context = useProductContext();
+11
+12  return (
+13    <>
+14      <Heading as="h3">Product context</Heading>
+15      <Text>
+16        Module key from context:
+17        <Code>{context?.moduleKey}</Code>
+18      </Text>
+19    </>
+20  );
+21};
+22
+23ForgeReconciler.render(
+24  <React.StrictMode>
+25    <App />
+26  </React.StrictMode>
+27);
+28
+```
+
+### Function signature
+
+```
+```
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+```
+
+
+
+```
+function useProductContext(): ProductContext | undefined;
+
+interface ProductContext {
+  accountId?: string;
+  cloudId?: string;
+  workspaceId?: string;
+  extension: ExtensionData;
+  license?: LicenseDetails;
+  localId: string;
+  locale: string;
+  moduleKey: string;
+  siteUrl: string;
+  timezone: string;
+  theme?: {
+    colorMode: string;
+    light: string;
+    dark: string;
+    spacing: string;
+    [key: string]: string;
+  };
+}
+
+interface ExtensionData {
+  [k: string]: any;
+}
+
+interface LicenseDetails {
+  active: boolean;
+  billingPeriod: string;
+  ccpEntitlementId: string;
+  ccpEntitlementSlug: string;
+  isEvaluation: boolean;
+  subscriptionEndDate: string | null;
+  supportEntitlementNumber: string | null;
+  trialEndDate: string | null;
+  type: string;
+}
+```
+```
+
+### Arguments
+
+None.
+
+### Returns
+
+* **ProductContext:** An object containing contextual information about the current environment in which the app is running. The data available depends on the module in which your app is used.
+  * **accountId:** The Atlassian ID of the user that interacted with the app.
+  * **cloudId:** The ID identifying the cloud context of this app installation, such as the ID of a Jira or Confluence instance.
+  * **workspaceId:** The ID identifying the workspace context of this app installation. This is specific to Bitbucket apps.
+  * **extension**: Contextual information about the current environment that depends on the extension being used. The format of this information varies across different Atlassian apps that the component may be installed on.
+  * **license**: Contains information about the license of the app. Note: this field is only present for paid apps in the production environment. license is `undefined` for free apps, apps not listed on the Atlassian Marketplace, and apps in development and staging environments. See the `LicenseDetails` type for what information is available.
+  * **localId**: The unique ID for this instance of this component in the content.
+  * **locale**: The locale of the user that interacted with the app.
+  * **moduleKey**: The key for the module as defined in the `manifest.yml` file.
+  * **siteUrl**: The URL of the site that the app is running on (e.g. <https://example.atlassian.net>).
+  * **timezone**: The timezone of the user that interacted with the app.
+  * **theme.colorMode** Current color mode. Can be `light` or `dark`. For accessing theme information, prefer using the [useTheme](/platform/forge/ui-kit/hooks/use-theme) hook instead, as it is reactive to theme changes in the Atlassian app.
