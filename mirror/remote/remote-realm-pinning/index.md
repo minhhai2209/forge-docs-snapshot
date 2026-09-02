@@ -59,20 +59,20 @@ If your app is upgraded from a Connect app, the `app.connect.remote` field must 
 
 Forge currently supports several regions for realm pinning to meet data residency requirements.
 
-| Location | AWS regions |
-| --- | --- |
-| Global | In-scope data is hosted within realms determined by Atlassian: data may be moved between realms as needed. |
-| Australia | In-scope data is hosted within the Australia (Sydney) region. |
-| Canada | In-scope data is hosted within the Canada (Central) region. |
-| EU | In-scope data is hosted within the Europe (Frankfurt) and Europe (Dublin) regions. |
-| Germany | In-scope data is hosted within the Europe (Frankfurt) region. |
-| India | In-scope data is hosted within the Asia Pacific (Mumbai) regions.  **Note**: India is not assigned as the default data residency location, even for organizations based in India. You can manually set data residency to India through the Atlassian Administration interface. |
-| Japan | In-scope data is hosted within the Asia Pacific (Tokyo) region. |
-| Singapore | In-scope data is hosted within the Asia Pacific (Singapore) region. |
-| South Korea | In-scope data is hosted within the Asia Pacific (Seoul) region. |
-| Switzerland | In-scope data is hosted within the Europe (Zurich) region. |
-| United Kingdom | In-scope data is hosted within the Europe (London) region. |
-| USA | In-scope data is hosted within the US East (North Virginia) and US West (Oregon) regions. |
+| Location | Location code | AWS regions |
+| --- | --- | --- |
+| Global | — | In-scope data is hosted within realms determined by Atlassian: data may be moved between realms as needed. |
+| Australia | `AU` | In-scope data is hosted within the Australia (Sydney) region. |
+| Canada | `CA` | In-scope data is hosted within the Canada (Central) region. |
+| EU | `EU` | In-scope data is hosted within the Europe (Frankfurt) and Europe (Dublin) regions. |
+| Germany | `DE` | In-scope data is hosted within the Europe (Frankfurt) region. |
+| India | `IN` | In-scope data is hosted within the Asia Pacific (Mumbai) regions.  **Note**: India is not assigned as the default data residency location, even for organizations based in India. You can manually set data residency to India through the Atlassian Administration interface. |
+| Japan | `JP` | In-scope data is hosted within the Asia Pacific (Tokyo) region. |
+| Singapore | `SG` | In-scope data is hosted within the Asia Pacific (Singapore) region. |
+| South Korea | `KR` | In-scope data is hosted within the Asia Pacific (Seoul) region. |
+| Switzerland | `CH` | In-scope data is hosted within the Europe (Zurich) region. |
+| United Kingdom | `GB` | In-scope data is hosted within the Europe (London) region. |
+| USA | `US` | In-scope data is hosted within the US East (North Virginia) and US West (Oregon) regions. |
 
 ## Realm migration for Forge Remote
 

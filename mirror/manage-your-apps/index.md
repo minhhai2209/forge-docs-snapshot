@@ -1,7 +1,6 @@
 # Manage your apps
 
-You can securely manage all your Forge apps, [Cloud Fortified Connect apps](/platform/marketplace/cloud-fortified-apps-program/)
-and [OAuth 2.0 (3LO) integrations](/cloud/jira/platform/oauth-2-3lo-apps/)
+You can securely manage all your Forge apps and [OAuth 2.0 (3LO) integrations](/cloud/jira/platform/oauth-2-3lo-apps/)
 in one place using the Atlassian [developer console](/console/myapps/).
 
 ## View your apps

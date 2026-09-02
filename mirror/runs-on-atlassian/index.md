@@ -14,7 +14,7 @@ The Forge CLI provides a programmatic way to verify the above requirements.
 
 While controls that limit external data egress are in place, these controls do not prevent misuse of access granted to the app during installation or abuse of the app runtime. The boundaries of tenant safety and data handling are defined in the [Shared responsibility model](/platform/forge/shared-responsibility-model/#tenant-safety).
 
-![Runs on Atlassian page on app listing page](https://dac-static.atlassian.com/platform/forge/images/app-listing.svg?_v=1.5800.2303)
+![Runs on Atlassian page on app listing page](https://dac-static.atlassian.com/platform/forge/images/app-listing.svg?_v=1.5800.2309)
 
 ## Eligibility requirements
 
@@ -36,11 +36,6 @@ web analytics and Atlassian app analytics. In the context of Runs on Atlassian,
 you must not mark tools that don't capture analytics data as *analytics egress*.
 
 We enforce a policy in order to prevent abuse. Refer to [Analytics tools policy for Forge apps](/platform/forge/analytics-tool-policy) for more information.
-
-The [Cloud Fortified](/platform/marketplace/cloud-fortified-apps-program/) and
-[Cloud Security Participant](/platform/marketplace/marketplace-security-bug-bounty-program/)
-badges remain important signals on the investments partners have made in ensuring their apps adhere to
-advanced trust practices. Depending on eligibility, an app can have a combination of these badges.
 
 ## Ready to dive right in?
 

@@ -1,17 +1,12 @@
 # Async events API Reference
 
-## Manage Preferences
-
-When you visit any website, it may store or retrieve information on your browser, mostly in the form of cookies. This information might be about you, your preferences, or your device, and is mostly used to make the site work as you expect. The information does not usually identify you directly, but it can give you a more personalized web experience. Because we respect your right to privacy, you can choose not to allow some types of cookies. Click on the different category headings to learn more and change our default settings. Blocking some types of cookies may impact your experience of the site and the services we are able to offer.
-  
-[More information](https://www.atlassian.com/legal/cookies)
-
-Accept all
-
-These cookies are necessary for the website to function and cannot be switched off in our systems. They are usually only set in response to actions made by you which amount to a request for services, such as setting your privacy preferences, logging in or filling in forms. You can set your browser to block or alert you about these cookies, but some parts of the site will not then work. These cookies do not store any personally identifiable information.
-
-These cookies may be set through our site by our advertising partners. They may be used by those companies to build a profile of your interests and show you relevant adverts on other sites. They are based on uniquely identifying your browser and internet device. If you do not allow these cookies, you will experience less targeted advertising.
-
-These cookies enable the website to provide enhanced functionality and personalisation. They may be set by us or by third party providers whose services we have added to our pages. If you do not allow these cookies then some or all of these services may not function properly.
-
-These cookies allow us to count visits and traffic sources so we can measure and improve the performance of our site. They help us to know which pages are the most and least popular and see how visitors move around the site. If you do not allow these cookies we will not know when you have visited our site, and will not be able to monitor its performance.
+|  |  |
+| --- | --- |
+| `PartialSuccessError` | Some pushed events were not recorded for later processing. Each event can have a different reason for failure. To get error details for failed events, inspect the error's `failedEvents` property [here](#tip-menu-code). |
+| `RateLimitError` | The total number of events pushed per minute exceeds the defined limits. To overcome this, retry adding events after a minute. |
+| `TooManyEventsError` | More than 50 events were pushed to the queue in a single request. See [Async events limits](/platform/forge/limits-async-events/) for more details about this limit. |
+| `PayloadTooBigError` | The combined payload of events pushed in a single request exceeded 200 KB. See [Async events limits](/platform/forge/limits-async-events/) for more details about this limit. |
+| *Invalid event shape* | A pushed event is not an object (`Event must be an object.`), or it has no `body` object (`Event body must be an object.`). See [Event shape](/platform/forge/runtime-reference/async-events-api/#event-shape) for the structure `Queue.push()` expects. |
+| `InvalidPushSettingsError` | The `delayInSeconds` setting of a pushed event is outside the supported range of 0 to 900 seconds. |
+| `InvalidQueueNameError` | The queue name is invalid. A valid queue name is alphanumeric string, and can start with `_`. |
+| `InvocationLimitReachedError` | An event resolver can push more events to the queue, creating a cycle. This error means an event pushed another event into the queue more than 1000 times. To avoid this, process more events in parallel. See [Async events limits](/platform/forge/limits-async-events/) for more details about this limit. |

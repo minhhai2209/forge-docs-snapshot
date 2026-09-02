@@ -1,17 +1,21 @@
 # Monitor app metrics
 
-## Manage Preferences
+App metrics show you how your Forge app is currently performing across all [sites](/developer-guide/glossary).
+This page explains how to view, filter, and monitor the following metrics for your app on the
+developer console:
 
-When you visit any website, it may store or retrieve information on your browser, mostly in the form of cookies. This information might be about you, your preferences, or your device, and is mostly used to make the site work as you expect. The information does not usually identify you directly, but it can give you a more personalized web experience. Because we respect your right to privacy, you can choose not to allow some types of cookies. Click on the different category headings to learn more and change our default settings. Blocking some types of cookies may impact your experience of the site and the services we are able to offer.
-  
-[More information](https://www.atlassian.com/legal/cookies)
+To view app metrics:
 
-Accept all
+1. Access the [developer console](/console/myapps).
+2. Select the Forge app that you want to view metrics for.
+3. Select **Metrics** in the left menu.
+4. Select the relevant metric you want to view in the left menu.
 
-These cookies are necessary for the website to function and cannot be switched off in our systems. They are usually only set in response to actions made by you which amount to a request for services, such as setting your privacy preferences, logging in or filling in forms. You can set your browser to block or alert you about these cookies, but some parts of the site will not then work. These cookies do not store any personally identifiable information.
+The screen below shows invocation metrics, as well as all sites that your Forge app is currently
+installed on, and where there has been at least one invocation in the last 14 days.
 
-These cookies may be set through our site by our advertising partners. They may be used by those companies to build a profile of your interests and show you relevant adverts on other sites. They are based on uniquely identifying your browser and internet device. If you do not allow these cookies, you will experience less targeted advertising.
+![Metrics screen](https://dac-static.atlassian.com/platform/forge/images/metrics-screen.svg?_v=1.5800.2309)
 
-These cookies enable the website to provide enhanced functionality and personalisation. They may be set by us or by third party providers whose services we have added to our pages. If you do not allow these cookies then some or all of these services may not function properly.
+## Developing for Atlassian Government Cloud
 
-These cookies allow us to count visits and traffic sources so we can measure and improve the performance of our site. They help us to know which pages are the most and least popular and see how visitors move around the site. If you do not allow these cookies we will not know when you have visited our site, and will not be able to monitor its performance.
+This content is written with standard cloud development in mind. To learn about developing for Atlassian Government Cloud, go to our [Atlassian Government Cloud developer portal](https://developer.atlassian.com/platform/framework/agc/).

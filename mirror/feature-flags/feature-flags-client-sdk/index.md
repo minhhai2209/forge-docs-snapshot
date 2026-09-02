@@ -6,6 +6,12 @@ The client SDK evaluates feature flags directly in your Forge UI app's frontend 
 
 The client SDK is available from `@forge/bridge` version `5.15.0`.
 
+**We are removing support for anonymous users in the Forge Feature Flags Client SDK.**
+
+We are removing support for *anonymous (unauthenticated) users* from the *Forge Feature Flags Client SDK* (`FeatureFlags` in `@forge/bridge`). After *1 December 2026*, the client SDK will no longer evaluate feature flags when no authenticated user is present.
+
+For more information about this deprecation, see the [related changelog entry](https://developer.atlassian.com/platform/forge/changelog/#CHANGE-3416).
+
 ## Installation
 
 ```
@@ -24,8 +30,16 @@ Creates a new instance of the client SDK.
 ### `initialize(user, config?)`
 
 ```
-1initialize(user: FeatureFlagUser, config?: ForgeFeatureFlagConfig): Promise<void>
+```
+1
 2
+```
+
+
+
+```
+initialize(user: FeatureFlagUser, config?: ForgeFeatureFlagConfig): Promise<void>
+```
 ```
 
 Downloads flag configuration and prepares the SDK for evaluation. Must be called before using `checkFlag`.

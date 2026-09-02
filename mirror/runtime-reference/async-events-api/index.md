@@ -86,6 +86,74 @@ const result: PushResult = await queue.push(PushEvent | PushEvent[]);
 ```
 ```
 
+### Event shape
+
+Each event you push is a `PushEvent` object, and the data for the event must be in its `body`
+property. Passing your data as a plain top-level object is not supported:
+
+```
+```
+1
+2
+3
+4
+5
+6
+```
+
+
+
+```
+// Incorrect: throws "Event body must be an object."
+await queue.push({ issueKey: 'ABC-123' });
+
+// Correct: the data is wrapped in the body property
+await queue.push({ body: { issueKey: 'ABC-123' } });
+```
+```
+
+The consumer function reads this data back from
+[`event.body`](/platform/forge/runtime-reference/async-events-api/#asyncevent-properties), so what you
+push as `{ body: X }` arrives as `event.body`.
+
+`Queue.push()` validates the event before sending it, and throws one of these errors if the shape is
+wrong:
+
+* `Event must be an object.` if an individual event is not an object, for example a string. When you
+  push an array, `Queue.push()` validates each item in the array separately.
+* `Event body must be an object.` if the event has no `body` property, or its `body` is not an object.
+
+Both errors only report the shape of the pushed event. Where you create the `Queue` instance makes no
+difference, so you can create it at module level or inside your handler. Creating it once at module
+level lets you reuse the same instance across invocations:
+
+```
+```
+1
+2
+3
+4
+5
+6
+7
+8
+9
+```
+
+
+
+```
+import { Queue } from '@forge/events';
+
+// Create the queue once, at module level
+const queue = new Queue({ key: 'queue-name' });
+
+export async function handler(event) {
+    await queue.push({ body: { hello: 'world' } });
+}
+```
+```
+
 ### Example
 
 To push event(s) to the queue:
@@ -164,7 +232,7 @@ modules:
     - key: queue-consumer
       # Name of the queue for which this consumer will be invoked
       queue: queue-name
-      # Function to be called with payload
+      # Function that processes each queued event
       function: consumer-function
   function:
     - key: consumer-function
@@ -202,13 +270,19 @@ in the manifest `handler` property:
 ```
 import { AsyncEvent } from '@forge/events';
 
-export async function handler(event: AsyncEvent, context) {
+export async function handler(event: AsyncEvent) {
     // Access the event body
     const data = event.body;
     // Process the event
 }
 ```
 ```
+
+The consumer receives one argument, the `AsyncEvent`. The data you pushed with
+`queue.push({ body: ... })` is on its `body` property, alongside the `jobId`, `eventId`, `queueName`,
+and other fields listed in [AsyncEvent properties](/platform/forge/runtime-reference/async-events-api/#asyncevent-properties).
+There is no `payload` property; if you read `event.payload` you get `undefined`. The `payload`
+argument belonged to the 1.x resolver-based consumer, which 2.0.0 replaced.
 
 The `AsyncEvent` type from `@forge/events` provides type safety for the `event` parameter. By
 default, `event.body` is typed as `Record<string, unknown>`. `AsyncEvent` is generic and accepts
@@ -241,7 +315,7 @@ interface IssueEventBody {
     issueKey: string;
 }
 
-export async function handler(event: AsyncEvent<IssueEventBody>, context) {
+export async function handler(event: AsyncEvent<IssueEventBody>) {
     // event.body is typed as IssueEventBody
     const { issueKey } = event.body;
     // Process the event
@@ -264,7 +338,7 @@ If you are using JavaScript instead of TypeScript, you can omit the import and t
 
 
 ```
-export async function handler(event, context) {
+export async function handler(event) {
     // Access the event body
     const data = event.body;
     // Process the event
@@ -279,8 +353,12 @@ properties:
 
 | Property | Type | Description |
 | --- | --- | --- |
-| `body` | `Record<string, unknown>` | The event payload, as provided in the `body` field of the [PushEvent](/platform/forge/runtime-reference/async-events-api/#push-api). |
+| `body` | `Record<string, unknown>` | The event data, exactly as provided in the `body` field of the [PushEvent](/platform/forge/runtime-reference/async-events-api/#event-shape). |
 | `jobId` | `string` | The unique identifier for the job that this event belongs to. Use this to [track progress](/platform/forge/runtime-reference/async-events-api/#tracking-progress-of-events) or [cancel the job](/platform/forge/runtime-reference/async-events-api/#cancel-a-job-in-progress). |
+| `eventId` | `string` | The unique identifier for this event within the job. |
+| `queueName` | `string` | The `key` of the queue that delivered this event. |
+| `delayInSeconds` | `number | undefined` | The delay applied when the event was pushed, if any. See [Push API](/platform/forge/runtime-reference/async-events-api/#push-api). |
+| `concurrency` | [Concurrency](/platform/forge/runtime-reference/async-events-api/#controlling-processing-concurrency) | undefined | The concurrency `key` and `limit` applied when the event was pushed, if any. |
 | `retryContext` | [RetryContext](/platform/forge/runtime-reference/async-events-api/#retry-context) | undefined | Contains retry metadata when the event is being retried. This property is only populated on retries, so check that it exists before accessing it. See [Retries](/platform/forge/runtime-reference/async-events-api/#retries). |
 
 ## Tracking progress of events
@@ -350,7 +428,7 @@ import { Queue, AsyncEvent } from '@forge/events';
 
 const queue = new Queue({ key: 'queue-name' });
 
-export async function handler(event: AsyncEvent, context) {
+export async function handler(event: AsyncEvent) {
   const jobProgress = queue.getJob(event.jobId);
 
   try {
