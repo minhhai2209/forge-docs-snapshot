@@ -19,101 +19,54 @@ from the quick insert menu of the editor. The `macro` module is implemented by a
 
 On apps that use Custom UI, module content is displayed inside a [special Forge iframe](/platform/forge/custom-ui/iframe/) which has the [sandbox](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#sandbox) attribute configured. This means that HTML links (for example, `<a href="https://domain.tld/path">...</a>`) in this iframe won't be clickable. To make them clickable, use the [router.navigate](/platform/forge/custom-ui-bridge/router/#navigate) API from the `@forge/bridge` package.
 
-![Example of a macro](https://dac-static.atlassian.com/platform/forge/snippets/images/macro-example.png?_v=1.5800.2309)
+![Example of a macro](https://dac-static.atlassian.com/platform/forge/snippets/images/macro-example.png?_v=1.5800.2310)
 
 ## Manifest structure
 
 ```
-```
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
+1modules {}
+2└─ macro []
+3   ├─ key (string) [Mandatory]
+4   ├─ resource (string) [Mandatory]
+5   ├─ render (string) [Optional]
+6   ├─ resolver {} [Optional]
+7   ├─ viewportSize (string) [Optional]
+8   ├─ title (string | i18n) [Mandatory]
+9   ├─ icon (string) [Optional]
+10   ├─ category (string) [Optional]
+11   ├─ categories (string[]) [Optional]
+12   ├─ unlicensedAccess (List<string>) [Optional]
+13   ├─ description (string | i18n) [Optional]
+14   ├─ hidden (boolean) [Optional]
+15   ├─ migratedFrom (string[]) [Optional]
+16   ├─ static {} [Optional]
+17      ├─ endpoint (string) [Optional]
+18      ├─ function (string) [Optional]
+19      ├─ concurrency (integer) [Optional]
+20      └─ cacheConfiguration {} [Optional]
+21         └─ keyComposition (string[]) [Mandatory]
+22   └─ config (boolean | {} | config object) [Optional]
+23     ├─ icon (string) [Optional]
+24     ├─ title (string | i18n) [Optional]
+25     ├─ resource (string) [Mandatory]
+26     ├─ render (string) [Optional]
+27     ├─ viewportSize (string) [Optional]
+28     ├─ openOnInsert (boolean) [Optional]
+29     └─ parameters [] [Optional]
+30        ├─ identifier (string) [Mandatory]
+31        ├─ type (string) [Mandatory]
+32        └─ indexing {} [Optional]
+33           └─ enabled (boolean) [Optional]
+34   ├─ adfExport {} [Optional]
+35   ├─ layout (string) [Optional]
+36   └─ autoConvert [] [Optional]
+37     └─ matchers [] [Mandatory]
+38        └─ pattern (string) [Mandatory]
 39
-40
-41
-42
-```
-
-
-
-```
-modules {}
-└─ macro []
-   ├─ key (string) [Mandatory]
-   ├─ resource (string) [Mandatory]
-   ├─ render (string) [Optional]
-   ├─ resolver {} [Optional]
-   ├─ viewportSize (string) [Optional]
-   ├─ title (string | i18n) [Mandatory]
-   ├─ icon (string) [Optional]
-   ├─ category (string) [Optional]
-   ├─ categories (string[]) [Optional]
-   ├─ unlicensedAccess (List<string>) [Optional]
-   ├─ description (string | i18n) [Optional]
-   ├─ hidden (boolean) [Optional]
-   ├─ static {} [Optional]
-      ├─ endpoint (string) [Optional]
-      ├─ function (string) [Optional]
-      ├─ concurrency (integer) [Optional]
-      └─ cacheConfiguration {} [Optional]
-         └─ keyComposition (string[]) [Mandatory]
-   └─ config (boolean | {} | config object) [Optional]
-     ├─ icon (string) [Optional]
-     ├─ title (string | i18n) [Optional]
-     ├─ resource (string) [Mandatory]
-     ├─ render (string) [Optional]
-     ├─ viewportSize (string) [Optional]
-     ├─ openOnInsert (boolean) [Optional]
-     └─ parameters [] [Optional]
-        ├─ identifier (string) [Mandatory]
-        ├─ type (string) [Mandatory]
-        └─ indexing {} [Optional]
-           └─ enabled (boolean) [Optional]
-   ├─ adfExport {} [Optional]
-   ├─ layout (string) [Optional]
-   └─ autoConvert [] [Optional]
-     └─ matchers [] [Mandatory]
-        └─ pattern (string) [Mandatory]
-
-resources []
-├─ key (string) [Mandatory]
-└─ path (string) [Mandatory]
-```
+40resources []
+41├─ key (string) [Mandatory]
+42└─ path (string) [Mandatory]
+43
 ```
 
 ## Properties
@@ -131,6 +84,7 @@ resources []
 | `categories` DEPRECATED On February 25, 2027, Forge app macros will no longer use the `categories` property. Use the `category` property instead. | `string[]` |  | The categories of the macro. In Confluence, this is used for categorization in the macro browser.    * `formatting` * `confluence-content` * `media` * `visuals` * `navigation` * `external-content` * `communication` * `reporting` * `admin` * `development` |
 | `description` | `string` or `i18n object` |  | The description of the macro. In Confluence, this is displayed in the editor.  The `i18n object` allows for translation. See [i18n object](#i18n-object). |
 | `hidden` | `boolean` |  | Defaults to `false`. When set to `true`, hides the macro from the quick insert menu and macro browser in Confluence. This prevents users from inserting new instances of the macro through these interfaces.  Existing macros on pages continue to render normally, even when this property is set to `true`. |
+| `migratedFrom` | `string[]` |  | Specifies the existing Connect macro keys that should resolve to this Forge macro when adopting Forge from Connect.  Each key must belong to the Connect app declared in `app.connect.key`. The target macro must remain compatible with the configuration and parameters stored by the previous macros. |
 | `config` | `boolean`, `{ function: string }`, `{ openOnInsert: boolean }` or `config object` |  | Set `config` to `true` if you are using [classic macro configuration](/platform/forge/add-configuration-to-a-macro/) without needing `openOnInsert`.  Set `config` with the `openOnInsert` property if you are using [classic macro configuration](/platform/forge/add-configuration-to-a-macro/) and need the `openOnInsert` feature. `openOnInsert` defaults to false.  Set `config` to the [config object](/platform/forge/manifest-reference/modules/macro/#config-object) if you are using a [custom macro configuration](/platform/forge/add-custom-configuration-to-a-macro/). |
 | `config.icon` | `string` |  | The icon displayed next to the title in the custom config modal.   For Custom UI and UI Kit apps, the `icon` property accepts a relative path from a declared resource. Alternatively, you can also use an absolute URL to a self-hosted icon. See [Icons](/platform/forge/custom-ui/#icons) for more information.  If no icon is provided, or if there's an issue preventing the icon from loading, a generic app icon will be displayed. |
 | `config.title` | `string` or `i18n object` |  | A title for the config. If the viewport size is `fullscreen`\*, then the title rendered in the modal header will be this title. |
@@ -160,6 +114,37 @@ resources []
 | Key | Type | Required | Description |
 | --- | --- | --- | --- |
 | `i18n` | `string` | Yes | A key referencing a translated string in the translation files. For more details, see [Translations](/platform/forge/manifest-reference/translations). |
+
+## Migrate macros from Connect to Forge with migratedFrom
+
+Use `migratedFrom` when adopting Forge from Connect to map one or more existing Connect macro keys to a Forge macro. Existing content that uses a listed legacy key resolves to the Forge macro. Configure the Connect association in `app.connect.key`; for the full migration workflow, see [Migrate a macro module from Connect to Forge](/platform/forge/adopting-forge-from-connect-migrate-macro/).
+
+```
+```
+1
+2
+3
+4
+5
+6
+7
+```
+
+
+
+```
+modules:
+  macro:
+    - key: consolidated-macro
+      migratedFrom:
+        - old-macro-a
+        - old-macro-b
+```
+```
+
+The target macro is responsible for handling the configuration and parameters created by the previous macros. This property does not transform parameter schemas. Do not use a legacy key that is still an active macro key in the same manifest.
+
+Forge-to-Forge macro consolidation is not currently supported.
 
 ## Dynamic module (Preview)
 

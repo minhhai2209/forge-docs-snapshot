@@ -23,15 +23,29 @@ A component that displays a link. Use this component for inline links.
 
 A link component that will open the `https://atlassian.com` website in a new tab when clicked.
 
-![Example image of rendered link](https://dac-static.atlassian.com/platform/forge/ui-kit/images/link/link-default.png?_v=1.5800.2309)
+![Example image of rendered link](https://dac-static.atlassian.com/platform/forge/ui-kit/images/link/link-default.png?_v=1.5800.2310)
 
 ```
-1const LinkExample = () => {
-2  return (
-3    <Text>
-4      <Link href="https://atlassian.com">Log in</Link> to view this content
-5    </Text>
-6  );
-7}
+```
+1
+2
+3
+4
+5
+6
+7
 8
+```
+
+
+
+```
+const LinkExample = () => {
+  return (
+    <Text>
+      <Link href="https://atlassian.com">Log in</Link> to view this content
+    </Text>
+  );
+}
+```
 ```

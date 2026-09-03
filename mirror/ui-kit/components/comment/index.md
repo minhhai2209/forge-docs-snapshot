@@ -40,7 +40,7 @@ A comment displays discussions and user feedback.
 
 The simplest form of a comment contains an avatar and text.
 
-![Example image of a comment with a user and text](https://dac-static.atlassian.com/platform/forge/ui-kit/images/comment/comment-default.png?_v=1.5800.2309)
+![Example image of a comment with a user and text](https://dac-static.atlassian.com/platform/forge/ui-kit/images/comment/comment-default.png?_v=1.5800.2310)
 
 ```
 ```
@@ -81,7 +81,7 @@ export const CommentDefaultExample = () => {
 
 Many features are available to customize the display of the comment.
 
-![Example image of a comment with a user, text, and actions](https://dac-static.atlassian.com/platform/forge/ui-kit/images/comment/comment-full.png?_v=1.5800.2309)
+![Example image of a comment with a user, text, and actions](https://dac-static.atlassian.com/platform/forge/ui-kit/images/comment/comment-full.png?_v=1.5800.2310)
 
 ```
 ```
@@ -154,7 +154,7 @@ export const CommentFullExample = () => {
 
 Comments can be nested inside of each other by passing comments as children.
 
-![Example image of a comment with nested comments](https://dac-static.atlassian.com/platform/forge/ui-kit/images/comment/comment-nested.png?_v=1.5800.2309)
+![Example image of a comment with nested comments](https://dac-static.atlassian.com/platform/forge/ui-kit/images/comment/comment-nested.png?_v=1.5800.2310)
 
 ```
 ```
@@ -267,7 +267,7 @@ An "optimistic saving" mode can be enabled using `isSaving`, which hides actions
 
 Using the optimistic UI technique means that people receive a fast, responsive experience even on limited connections.
 
-![Example image of a comment in saving mode](https://dac-static.atlassian.com/platform/forge/ui-kit/images/comment/comment-saving.png?_v=1.5800.2309)
+![Example image of a comment in saving mode](https://dac-static.atlassian.com/platform/forge/ui-kit/images/comment/comment-saving.png?_v=1.5800.2310)
 
 ```
 ```
@@ -332,7 +332,7 @@ export const CommentSavingExample = () => {
 
 Mark a comment as edited by passing in the `edited` prop.
 
-![Example image of a comment with edited text](https://dac-static.atlassian.com/platform/forge/ui-kit/images/comment/comment-edited.png?_v=1.5800.2309)
+![Example image of a comment with edited text](https://dac-static.atlassian.com/platform/forge/ui-kit/images/comment/comment-edited.png?_v=1.5800.2310)
 
 ```
 ```
@@ -379,7 +379,7 @@ export const CommentEditedExample = () => {
 
 Display a message in the comment header by using the `restrictedTo` prop.
 
-![Example image of a comment with restricted text](https://dac-static.atlassian.com/platform/forge/ui-kit/images/comment/comment-restricted.png?_v=1.5800.2309)
+![Example image of a comment with restricted text](https://dac-static.atlassian.com/platform/forge/ui-kit/images/comment/comment-restricted.png?_v=1.5800.2310)
 
 ```
 ```
@@ -432,7 +432,7 @@ export const CommentRestrictedExample = () => {
 
 Highlight a comment using the `highlighted` prop.
 
-![Example image of a highlighted comment](https://dac-static.atlassian.com/platform/forge/ui-kit/images/comment/comment-highlighted.png?_v=1.5800.2309)
+![Example image of a highlighted comment](https://dac-static.atlassian.com/platform/forge/ui-kit/images/comment/comment-highlighted.png?_v=1.5800.2310)
 
 ```
 ```
@@ -485,7 +485,7 @@ export const CommentHighlightedExample = () => {
 
 Change the heading level using the `headingLevel` prop. The default heading has an `h3` tag. Make sure that headings are in the correct order and don’t skip levels. For example, an `h3` should follow an `h2` or lower, never an `h1`.
 
-![Example image of a comment with a custom heading level](https://dac-static.atlassian.com/platform/forge/ui-kit/images/comment/comment-custom-heading-level.png?_v=1.5800.2309)
+![Example image of a comment with a custom heading level](https://dac-static.atlassian.com/platform/forge/ui-kit/images/comment/comment-custom-heading-level.png?_v=1.5800.2310)
 
 ```
 ```
