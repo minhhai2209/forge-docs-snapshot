@@ -1,6 +1,6 @@
 # Global full page (Preview)
 
-Isolated Cloud and Atlassian Government Cloud (AGC) are not yet supported but will be added in the near future.
+Atlassian Government Cloud (AGC) is not yet supported but will be added in the near future.
 
 The full page module allows you to create fully customised app experiences.
 Full page modules occupy the entire web page, providing ample space to deliver UI for a broader range of use cases,

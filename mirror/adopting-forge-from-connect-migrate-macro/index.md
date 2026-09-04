@@ -40,6 +40,57 @@ For example, if your Connect app had a macro with key `static-macro-key`, your m
 14
 ```
 
+### Map Connect macro keys to a Forge macro
+
+Use `migratedFrom` when one Forge macro replaces one or more existing Connect macros with different keys. List the legacy Connect macro keys on the target Forge macro. Existing content that uses a listed key will resolve to the target Forge macro.
+
+```
+```
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+```
+
+
+
+```
+modules:
+  macro:
+    - key: consolidated-macro
+      migratedFrom:
+        - old-connect-macro-a
+        - old-connect-macro-b
+      resource: main
+      # ...
+remotes:
+  - key: connect
+    baseUrl: https://hello-world-app.example.com
+app:
+  id: ari:cloud:ecosystem::app/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+  connect:
+    key: my-connect-app # Target connect app key
+    remote: connect
+```
+```
+
+Each listed key must belong to the Connect app declared in `app.connect.key`. A legacy key can be claimed by only one Forge macro. The target macro must handle the configuration and parameters created by the previous macros; `migratedFrom` does not transform parameter schemas.
+
+`migratedFrom` currently supports mapping Connect macro keys to Forge macros. Mapping one Forge macro key to another Forge macro is not supported.
+
 # Unlicensed and anonymous user access is not enabled by default in Forge
 
 In Connect, macros are rendered for unlicensed and anonymous (guest) users by default.

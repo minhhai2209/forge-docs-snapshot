@@ -19,54 +19,103 @@ from the quick insert menu of the editor. The `macro` module is implemented by a
 
 On apps that use Custom UI, module content is displayed inside a [special Forge iframe](/platform/forge/custom-ui/iframe/) which has the [sandbox](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#sandbox) attribute configured. This means that HTML links (for example, `<a href="https://domain.tld/path">...</a>`) in this iframe won't be clickable. To make them clickable, use the [router.navigate](/platform/forge/custom-ui-bridge/router/#navigate) API from the `@forge/bridge` package.
 
-![Example of a macro](https://dac-static.atlassian.com/platform/forge/snippets/images/macro-example.png?_v=1.5800.2310)
+![Example of a macro](https://dac-static.atlassian.com/platform/forge/snippets/images/macro-example.png?_v=1.5800.2311)
 
 ## Manifest structure
 
 ```
-1modules {}
-2└─ macro []
-3   ├─ key (string) [Mandatory]
-4   ├─ resource (string) [Mandatory]
-5   ├─ render (string) [Optional]
-6   ├─ resolver {} [Optional]
-7   ├─ viewportSize (string) [Optional]
-8   ├─ title (string | i18n) [Mandatory]
-9   ├─ icon (string) [Optional]
-10   ├─ category (string) [Optional]
-11   ├─ categories (string[]) [Optional]
-12   ├─ unlicensedAccess (List<string>) [Optional]
-13   ├─ description (string | i18n) [Optional]
-14   ├─ hidden (boolean) [Optional]
-15   ├─ migratedFrom (string[]) [Optional]
-16   ├─ static {} [Optional]
-17      ├─ endpoint (string) [Optional]
-18      ├─ function (string) [Optional]
-19      ├─ concurrency (integer) [Optional]
-20      └─ cacheConfiguration {} [Optional]
-21         └─ keyComposition (string[]) [Mandatory]
-22   └─ config (boolean | {} | config object) [Optional]
-23     ├─ icon (string) [Optional]
-24     ├─ title (string | i18n) [Optional]
-25     ├─ resource (string) [Mandatory]
-26     ├─ render (string) [Optional]
-27     ├─ viewportSize (string) [Optional]
-28     ├─ openOnInsert (boolean) [Optional]
-29     └─ parameters [] [Optional]
-30        ├─ identifier (string) [Mandatory]
-31        ├─ type (string) [Mandatory]
-32        └─ indexing {} [Optional]
-33           └─ enabled (boolean) [Optional]
-34   ├─ adfExport {} [Optional]
-35   ├─ layout (string) [Optional]
-36   └─ autoConvert [] [Optional]
-37     └─ matchers [] [Mandatory]
-38        └─ pattern (string) [Mandatory]
+```
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
 39
-40resources []
-41├─ key (string) [Mandatory]
-42└─ path (string) [Mandatory]
+40
+41
+42
 43
+```
+
+
+
+```
+modules {}
+└─ macro []
+   ├─ key (string) [Mandatory]
+   ├─ resource (string) [Mandatory]
+   ├─ render (string) [Optional]
+   ├─ resolver {} [Optional]
+   ├─ viewportSize (string) [Optional]
+   ├─ title (string | i18n) [Mandatory]
+   ├─ icon (string) [Optional]
+   ├─ category (string) [Optional]
+   ├─ categories (string[]) [Optional]
+   ├─ unlicensedAccess (List<string>) [Optional]
+   ├─ description (string | i18n) [Optional]
+   ├─ hidden (boolean) [Optional]
+   ├─ migratedFrom (string[]) [Optional]
+   ├─ static {} [Optional]
+      ├─ endpoint (string) [Optional]
+      ├─ function (string) [Optional]
+      ├─ concurrency (integer) [Optional]
+      └─ cacheConfiguration {} [Optional]
+         └─ keyComposition (string[]) [Mandatory]
+   └─ config (boolean | {} | config object) [Optional]
+     ├─ icon (string) [Optional]
+     ├─ title (string | i18n) [Optional]
+     ├─ resource (string) [Mandatory]
+     ├─ render (string) [Optional]
+     ├─ viewportSize (string) [Optional]
+     ├─ openOnInsert (boolean) [Optional]
+     └─ parameters [] [Optional]
+        ├─ identifier (string) [Mandatory]
+        ├─ type (string) [Mandatory]
+        └─ indexing {} [Optional]
+           └─ enabled (boolean) [Optional]
+   ├─ adfExport {} [Optional]
+   ├─ layout (string) [Optional]
+   └─ autoConvert [] [Optional]
+     └─ matchers [] [Mandatory]
+        └─ pattern (string) [Mandatory]
+
+resources []
+├─ key (string) [Mandatory]
+└─ path (string) [Mandatory]
+```
 ```
 
 ## Properties
