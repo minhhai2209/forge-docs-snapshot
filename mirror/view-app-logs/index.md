@@ -1,5 +1,9 @@
 # View app logs
 
+Frontend logs are available as part of [Forge's Early Access Program (EAP)](/platform/forge/whats-coming/#eap). To get started, sign up using this [form](https://ecosystem.atlassian.net/servicedesk/customer/portal/38/group/136/create/20612).
+
+This feature is supported for both UI Kit and Custom UI across all environments, including production. It captures **console.error**, **uncaught exceptions**, and **unhandled promise rejections**.
+
 App logs give you the information you need in order to [debug](/platform/forge/debugging/)
 your apps. Logs are enabled by default when a user installs your app, and are displayed in the
 developer console. If you need to view app logs for a site where the user has disabled log access,
@@ -18,7 +22,7 @@ To view app logs:
 
 The screen shows logs for all sites that users have granted you access to.
 
-![A list of logs and the associated filters](https://dac-static.atlassian.com/platform/forge/images/logs-screen-new.png?_v=1.5800.2311)
+![A list of logs and the associated filters](https://dac-static.atlassian.com/platform/forge/images/logs-screen-new.png?_v=1.5800.2317)
 
 A maximum of 20 log events are displayed by default. To view more log events, select **Load more logs**
 at the bottom of the page.
@@ -57,6 +61,28 @@ from the state of the app.
 * **License**: The license status (active/inactive/trial) of your app installation if app is enabled for licensing
 * **Edition**: The app edition value (standard/advanced) of your installation if app is enabled for editions
 
+### Frontend log attributes ([EAP](https://ecosystem.atlassian.net/servicedesk/customer/portal/38/group/136/create/20612))
+
+These attributes appear when you expand a frontend log.
+See [Frontend log limits](/platform/forge/debugging/#frontend-log-limits) for how Forge truncates oversized frontend log data.
+
+* **Log source**: Where the frontend log came from. One of `console` (`console.error`),
+  `uncaught exception` (an uncaught `ErrorEvent`), or `unhandled rejection`
+  (an unhandled promise rejection).
+* **Error type**: The JavaScript error name, such as `TypeError` or `RangeError`.
+  For `console.error` calls with no `Error` object, this is `unknown`.
+* **Render type**: Whether the log was emitted from a **UI Kit** or **Custom UI** frontend.
+* **Extension type**: The Forge module that rendered the frontend, for example
+  `confluence:globalPage`.
+* **Installation ID**: A unique identifier for the app installation on the site that
+  produced the log.
+* **Browser name**: The browser that ran the frontend, parsed from the user agent
+  (for example, Chrome).
+* **Browser version**: The browser version parsed from the user agent.
+* **Operating system**: The operating system parsed from the user agent
+  (for example, Mac OS X).
+* **User agent**: The full browser user agent string captured by the Forge frontend host.
+
 ## Search for logs
 
 You can search for logs using invocation ID, trace ID, log messages, and modules. This helps
@@ -65,7 +91,7 @@ narrow down log search results.
 To search for logs:
 
 1. In the search box above, enter the attributes of the logs you're searching for.
-2. Hit **Enter** on your keyboard or select the **search** icon.
+2. Press **Enter** or select the search icon.
 
 To clear your search results, select the **X** button in the search box.
 

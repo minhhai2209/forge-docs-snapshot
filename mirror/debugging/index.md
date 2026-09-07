@@ -27,6 +27,10 @@ see our [Logging guidelines for app developers](/platform/forge/logging-guidelin
 
 ### Logging
 
+Frontend logs are available as part of [Forge's Early Access Program (EAP)](/platform/forge/whats-coming/#eap). To get started, sign up using this [form](https://ecosystem.atlassian.net/servicedesk/customer/portal/38/group/136/create/20612).
+
+This feature is supported for both UI Kit and Custom UI across all environments, including production. It captures **console.error**, **uncaught exceptions**, and **unhandled promise rejections**.
+
 Logging messages to the console is a common process for debugging code. Forge supports logging via
 the `forge logs` CLI command, which shows the logs for your deployed app.
 
@@ -60,7 +64,9 @@ Each logging statement has the following structure:
 * Invocation ID
 * Logging message
 
-Only `console.log` statements from backend Forge functions are available in logs. Logging from your frontend (UI Kit JSX files and Custom UI pages) can only be accessed using your browser's developer console.
+Backend `console.log` statements from Forge functions still appear in `forge logs` and the developer console.
+
+Other frontend `console` methods (such as `console.log` and `console.warn`) remain available in the browser developer console. See [Frontend log attributes](/platform/forge/view-app-logs/#frontend-log-attributes).
 
 #### Options for the forge logs command
 
@@ -176,6 +182,16 @@ these limits when debugging your app:
 
 See [Platform quotas and limits](/platform/forge/platform-quotas-and-limits/#invocation-limits) for a complete list of related limits.
 
+#### Frontend log limits ([EAP](https://ecosystem.atlassian.net/servicedesk/customer/portal/38/group/136/create/20612))
+
+Forge truncates or omits oversized frontend log data before it is stored:
+
+| Resource | Limit | Description |
+| --- | --- | --- |
+| String length | 1,024 characters | Maximum length of a string in a frontend log. Longer strings are truncated. |
+| Extra arguments | 5 | Maximum number of extra arguments stored after the log message. The first argument is the log message. Further arguments are dropped. |
+| Object size | 10,000 characters | Maximum serialized JSON size of an object in a frontend log. Larger objects are omitted. |
+
 ## Identifying problems
 
 Forge has error handling for common app issues, such as not implementing UI kit components in the
@@ -258,7 +274,7 @@ SyntaxError: /Users/alui/src/forge/hello-world-app/src/index.jsx: Unexpected tok
 **Runtime errors:** Returned for general runtime errors. For example, calling a method that does not
 exist or is not a method. These errors are shown in the app UI. A stack trace is included with the
 error message. For example:
-![Runtime error example](https://dac-static.atlassian.com/platform/forge/images/error-runtime.png?_v=1.5800.2311)
+![Runtime error example](https://dac-static.atlassian.com/platform/forge/images/error-runtime.png?_v=1.5800.2317)
 
 ## Related pages
 

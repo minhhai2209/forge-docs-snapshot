@@ -1,5 +1,9 @@
 # Export app logs
 
+Frontend logs are available as part of [Forge's Early Access Program (EAP)](/platform/forge/whats-coming/#eap). To get started, sign up using this [form](https://ecosystem.atlassian.net/servicedesk/customer/portal/38/group/136/create/20612).
+
+This feature is supported for both UI Kit and Custom UI across all environments, including production. It captures **console.error**, **uncaught exceptions**, and **unhandled promise rejections**.
+
 App logs, which can be viewed in the [developer console](/console/myapps), help in tracking down
 and troubleshooting issues that app users may be experiencing. Forge app owners and
 [app contributors](/platform/forge/manage-app-contributors/) can view app logs.
@@ -51,7 +55,7 @@ You can use the below API Spec and try the App logs API with your Forge app.
 
 ### API
 
-The API return logs in the OTLP format, which is the format used in the OpenTelemetry
+The API returns logs in the OTLP format, which is the format used in the OpenTelemetry
 framework.
 
 #### Endpoint URL
@@ -114,7 +118,7 @@ To get the Site ID:
 
 1. Open the [developer console](/console/myapps/) and navigate to your Forge app.
 2. Select the **Installations** page from the menu.
-3. Hover over the site in the "Site & ID" column and click the "Copy site ID" button.
+3. Hover over the site in the **Site & ID** column and select **Copy site ID**.
 
 #### Responses
 
@@ -452,7 +456,7 @@ fetchLogs(startDate, endDate, cursor);
 To use the App logs API and ingest logs into observability tools, we recommend fetching logs in
 OTLP format from the API, and having the following components in your infrastructure:
 
-![Partner Server View](https://dac-static.atlassian.com/platform/forge/images/partner-server-arch-logs.svg?_v=1.5800.2311)
+![Partner Server View](https://dac-static.atlassian.com/platform/forge/images/partner-server-arch-logs.svg?_v=1.5800.2317)
 
 ### CronJob service
 
@@ -636,7 +640,7 @@ Next, run an OTEL Collector/Sidecar using the configuration of three components:
 
 #### Serverless framework
 
-If using AWS infrastructure, you can leverage the OTEL lambda layer. You can also use a similar
+If using AWS infrastructure, you can use the OTEL lambda layer. You can also use a similar
 configuration for GCP or Microsoft Azure infrastructure.
 
 A sample configuration should look like the following:

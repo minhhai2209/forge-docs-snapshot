@@ -103,9 +103,12 @@ The component renders three layout areas:
 1. **Header** — Rendered automatically by the platform. Includes your app branding, the search
    component, Rovo Chat, profile, and settings. You do not configure the header in code; it uses
    properties from your manifest.
-2. **Sidebar** — The left navigation panel. The platform renders a mandatory **For you** item at
-   the top of the sidebar. This item navigates to the root route (`/`) of your app and acts as
-   the app's home page. Below it, you configure additional menu items using `Sidebar`,
+2. **Sidebar** — The left navigation panel.
+   When the `forYouMenuItem` prop is `true`, the **For you** menu item is displayed at the top of the sidebar
+   and the app uses the route `/for-you` as its home page.
+   When the `forYouMenuItem` prop is `false`, the **For you** menu item is hidden and the app uses the root
+   route (`/`) as its home page.
+   Below it, you configure additional menu items using `Sidebar`,
    `LinkMenuItem`, `ExpandableMenuItem`, and related components.
 3. **Main content** — The central area for your app's primary content, wrapped in `<Main>`.
 
@@ -124,6 +127,7 @@ Renders the left navigation panel.
 | Name | Type | Required | Description |
 | --- | --- | --- | --- |
 | `children` | `ForgeElement` | Yes | Accepts `LinkMenuItem`, `ExpandableMenuItem`, `FlyOutMenuItem`, and `ReorderableMenuItems`. |
+| `forYouMenuItem` | `boolean` | No | Whether to show the built-in **For you** menu item. Defaults to `true`. When `true`, displays the **For you** item and uses `/for-you` as the home page. When `false`, hides the item and uses the root route `/` as the home page. |
 
 A clickable navigation link in the sidebar.
 
@@ -249,7 +253,7 @@ navigation order.
 
 | Name | Type | Required | Description |
 | --- | --- | --- | --- |
-| `items` | `{ id: string; label: string; href: string; icon?: string; activePath?: string | string[] }[]` | Yes | An array of sidebar menu items that the user can reorder. Each item must include a unique `id`, a display `label`, and a navigation `href`. An optional ADS `icon` glyph name from [ADS icon explorer](https://atlassian.design/components/icon/icon-explorer) can also be included to render the corresponding icon. An optional `activePath` glob pattern, or array of patterns, highlights the item on nested routes — see [Highlighting nested paths](#highlighting-nested-paths). |
+| `items` | `{ id: string;`  `label: string;`  `href: string;`  `icon?: string;`  `activePath?: string | string[] }[]` | Yes | An array of sidebar menu items that the user can reorder. Each item must include a unique `id`, a display `label`, and a navigation `href`. An optional ADS `icon` glyph name from [ADS icon explorer](https://atlassian.design/components/icon/icon-explorer) can also be included to render the corresponding icon. An optional `activePath` glob pattern, or array of patterns, highlights the item on nested routes — see [Highlighting nested paths](#highlighting-nested-paths). |
 | `onReorder` | `(items: Item[]) => void` | Yes | A callback invoked after the user changes the item order. Receives the reordered items so the app can update local state or persist the new order. |
 | `onError` | `(error: Error, currentItems: Item[], nextItems: Item[]) => void` | No | A callback invoked when reordering fails. Receives the error, the current items before the attempted reorder, and the next items from the attempted reorder. |
 
@@ -329,9 +333,9 @@ For details on configuring `title` and `icon`, see the [`global:ui` module refer
 * Custom UI is not supported for `global:ui`. The platform enforces a UI chrome around the module
   and UI Kit is the public API that lets you control it. To embed custom web content in the main
   content area, use the [`Frame`](/platform/forge/ui-kit/components/frame/) component inside `<Main>`.
-* The sidebar always includes a platform-provided **For you** item as its first entry. This item
-  navigates to the root route (`/`) of your app and cannot be removed or replaced. Use it as your
-  app's home page.
+* By default, the sidebar displays the platform-provided **For you** item as its first entry.
+  This item navigates to the route `/for-you` and acts as the app's home page.
+  Set `forYouMenuItem` to `false` to hide it; the app then uses the root route `/` as the home page.
 
 ## Usage example
 
