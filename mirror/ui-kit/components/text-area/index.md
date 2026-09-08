@@ -45,7 +45,7 @@ A text area lets users enter long form text which spans over multiple lines.
 
 The default text area.
 
-![Example image of a rendered default text area](https://dac-static.atlassian.com/platform/forge/ui-kit/images/text-area/text-area-basic.png?_v=1.5800.2317)
+![Example image of a rendered default text area](https://dac-static.atlassian.com/platform/forge/ui-kit/images/text-area/text-area-basic.png?_v=1.5800.2320)
 
 ```
 ```
@@ -94,7 +94,7 @@ For required fields, always add `RequiredAsterisk` component next to the label.
 
 Use `ErrorMessage` or `ValidationMessage` components to display validation-related messages.
 
-![Example image of a validation message](https://dac-static.atlassian.com/platform/forge/ui-kit/images/text-area/text-area-field-label.png?_v=1.5800.2317)
+![Example image of a validation message](https://dac-static.atlassian.com/platform/forge/ui-kit/images/text-area/text-area-field-label.png?_v=1.5800.2320)
 
 ### Appearance
 
@@ -102,7 +102,7 @@ Use `ErrorMessage` or `ValidationMessage` components to display validation-relat
 
 The default text area appearance.
 
-![Example image of a rendered standard appearance text area](https://dac-static.atlassian.com/platform/forge/ui-kit/images/text-area/text-area-standard.png?_v=1.5800.2317)
+![Example image of a rendered standard appearance text area](https://dac-static.atlassian.com/platform/forge/ui-kit/images/text-area/text-area-standard.png?_v=1.5800.2320)
 
 ```
 ```
@@ -137,7 +137,7 @@ export const TextAreaStandard = () => {
 
 A text area that's transparent until interaction or error.
 
-![Example image of a rendered subtle appearance text area](https://dac-static.atlassian.com/platform/forge/ui-kit/images/text-area/text-area-subtle.png?_v=1.5800.2317)
+![Example image of a rendered subtle appearance text area](https://dac-static.atlassian.com/platform/forge/ui-kit/images/text-area/text-area-subtle.png?_v=1.5800.2320)
 
 ```
 ```
@@ -176,7 +176,7 @@ Use the `resize` prop to set whether the text area expands when the user enters 
 
 Use `smart` for a text area that shows all user input at once. Overflow text wraps onto a new line and expands the text area. This is the default sizing option.
 
-![Example image of a rendered smart resize text area](https://dac-static.atlassian.com/platform/forge/ui-kit/images/text-area/text-area-resize-smart.png?_v=1.5800.2317)
+![Example image of a rendered smart resize text area](https://dac-static.atlassian.com/platform/forge/ui-kit/images/text-area/text-area-resize-smart.png?_v=1.5800.2320)
 
 ```
 ```
@@ -205,7 +205,7 @@ export const TextAreaSmartResizeExample = () => (
 
 Use `auto` for a text area that will resize horizontally and vertically.
 
-![Example image of a rendered auto resize text area](https://dac-static.atlassian.com/platform/forge/ui-kit/images/text-area/text-area-resize-auto.png?_v=1.5800.2317)
+![Example image of a rendered auto resize text area](https://dac-static.atlassian.com/platform/forge/ui-kit/images/text-area/text-area-resize-auto.png?_v=1.5800.2320)
 
 ```
 ```
@@ -234,7 +234,7 @@ export const TextAreaAutoResizeExample = () => (
 
 Use `vertical` or `horizontal` for a text area that will resize either vertically only or horizontally only.
 
-![Example image of a vertical and horizontal resizeable text area](https://dac-static.atlassian.com/platform/forge/ui-kit/images/text-area/text-area-resize-vertical-horizontal.png?_v=1.5800.2317)
+![Example image of a vertical and horizontal resizeable text area](https://dac-static.atlassian.com/platform/forge/ui-kit/images/text-area/text-area-resize-vertical-horizontal.png?_v=1.5800.2320)
 
 ```
 ```

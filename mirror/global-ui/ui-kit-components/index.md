@@ -24,15 +24,16 @@ These UI Kit components are exported from the `@forge/react/global` entry point.
 4  LinkMenuItem,
 5  FlyOutMenuItem,
 6  ExpandableMenuItem,
-7  ReorderableMenuItems,
-8  HelpLink,
-9  PersonalSettings,
-10  PersonalSettingsItem,
-11  CreateButton,
-12  CreateMenuItem,
-13  Main,
-14} from "@forge/react/global";
-15
+7  MenuSection,
+8  ReorderableMenuItems,
+9  HelpLink,
+10  PersonalSettings,
+11  PersonalSettingsItem,
+12  CreateButton,
+13  CreateMenuItem,
+14  Main,
+15} from "@forge/react/global";
+16
 ```
 
 ## Component hierarchy
@@ -64,6 +65,12 @@ The `Global` component is composed of sub-components that work together to creat
 21
 22
 23
+24
+25
+26
+27
+28
+29
 ```
 
 
@@ -79,6 +86,12 @@ The `Global` component is composed of sub-components that work together to creat
 │  └─ <PersonalSettingsItem />
 │
 ├─ <Sidebar />
+│  ├─ <MenuSection />
+│  │  ├─ <LinkMenuItem />
+│  │  ├─ <ReorderableMenuItems />
+│  │  ├─ <FlyOutMenuItem />
+│  │  └─ <ExpandableMenuItem />
+│  │
 │  ├─ <LinkMenuItem />
 │  │
 │  ├─ <ReorderableMenuItems />
@@ -126,7 +139,7 @@ Renders the left navigation panel.
 
 | Name | Type | Required | Description |
 | --- | --- | --- | --- |
-| `children` | `ForgeElement` | Yes | Accepts `LinkMenuItem`, `ExpandableMenuItem`, `FlyOutMenuItem`, and `ReorderableMenuItems`. |
+| `children` | `ForgeElement` | Yes | Accepts `LinkMenuItem`, `ExpandableMenuItem`, `FlyOutMenuItem`, `MenuSection`, and `ReorderableMenuItems`. |
 | `forYouMenuItem` | `boolean` | No | Whether to show the built-in **For you** menu item. Defaults to `true`. When `true`, displays the **For you** item and uses `/for-you` as the home page. When `false`, hides the item and uses the root route `/` as the home page. |
 
 A clickable navigation link in the sidebar.
@@ -232,6 +245,42 @@ The following icons are used in Atlassian's own global navigation for specific p
 | `"clock"` | clock icon | "Recent" flyout in Atlassian navigation | Avoid to prevent confusion with Atlassian's "Recent" navigation item. |
 | `"star-starred"`, `"star-unstarred"` | star-starred icon star-unstarred icon | "Starred" flyout in Atlassian navigation | Avoid unless your destination represents starred or favourited content. |
 
+Groups sidebar menu items under an optional section header. Use the `label` prop to display a section header above the items.
+
+| Name | Type | Required | Description |
+| --- | --- | --- | --- |
+| `label` | `string` | No | The section header displayed above the grouped menu items. |
+| `children` | `ForgeElement` | Yes | Accepts `LinkMenuItem`, `ExpandableMenuItem`, `FlyOutMenuItem`, and `ReorderableMenuItems` components. |
+
+Use `MenuSection` with a `label` prop to add a section header for menu items in the sidebar.
+
+```
+```
+1
+2
+3
+4
+5
+6
+7
+8
+9
+```
+
+
+
+```
+<Global>
+  <Sidebar>
+    <MenuSection label="Your homes">
+      <LinkMenuItem label="Home 1" href="/home-1" />
+      <LinkMenuItem label="Home 2" href="/home-2" />
+    </MenuSection>
+  </Sidebar>
+</Global>
+```
+```
+
 ### `ExpandableMenuItem`
 
 An expandable menu item that reveals nested links when selected.
@@ -253,9 +302,9 @@ navigation order.
 
 | Name | Type | Required | Description |
 | --- | --- | --- | --- |
-| `items` | `{ id: string;`  `label: string;`  `href: string;`  `icon?: string;`  `activePath?: string | string[] }[]` | Yes | An array of sidebar menu items that the user can reorder. Each item must include a unique `id`, a display `label`, and a navigation `href`. An optional ADS `icon` glyph name from [ADS icon explorer](https://atlassian.design/components/icon/icon-explorer) can also be included to render the corresponding icon. An optional `activePath` glob pattern, or array of patterns, highlights the item on nested routes — see [Highlighting nested paths](#highlighting-nested-paths). |
-| `onReorder` | `(items: Item[]) => void` | Yes | A callback invoked after the user changes the item order. Receives the reordered items so the app can update local state or persist the new order. |
-| `onError` | `(error: Error, currentItems: Item[], nextItems: Item[]) => void` | No | A callback invoked when reordering fails. Receives the error, the current items before the attempted reorder, and the next items from the attempted reorder. |
+| `items` | ```  ``` 1 2 3 4 5 6 7 8 ```    ``` {   id: string;   label: string;   href: string;   icon?: string;   activePath?:     string | string[] }[] ``` ``` | Yes | An array of sidebar menu items that the user can reorder. Each item must include a unique `id`, a display `label`, and a navigation `href`. An optional ADS `icon` glyph name from [ADS icon explorer](https://atlassian.design/components/icon/icon-explorer) can also be included to render the corresponding icon. An optional `activePath` glob pattern, or array of patterns, highlights the item on nested routes — see [Highlighting nested paths](#highlighting-nested-paths). |
+| `onReorder` | ```  ``` 1 2 3 ```    ``` (   items: Item[] ) => void ``` ``` | Yes | A callback invoked after the user changes the item order. Receives the reordered items so the app can update local state or persist the new order. |
+| `onError` | ```  ``` 1 2 3 4 5 ```    ``` (   error: Error,   currentItems: Item[],   nextItems: Item[] ) => void ``` ``` | No | A callback invoked when reordering fails. Receives the error, the current items before the attempted reorder, and the next items from the attempted reorder. |
 
 ### `Main`
 
@@ -443,6 +492,12 @@ and main content:
 97
 98
 99
+100
+101
+102
+103
+104
+105
 ```
 
 
@@ -455,6 +510,7 @@ import {
   Sidebar,
   LinkMenuItem,
   ExpandableMenuItem,
+  MenuSection,
   HelpLink,
   PersonalSettings,
   PersonalSettingsItem,
@@ -508,6 +564,11 @@ const App = () => {
       <Sidebar>
         <LinkMenuItem label="Reports" href="/reports" icon="chart-bar" />
         <LinkMenuItem label="Recent" href="/recent" />
+
+        <MenuSection label="Dashboards">
+          <LinkMenuItem label="Sales performance" href="/reports/sales-performance" />
+          <LinkMenuItem label="Team activity" href="/reports/team-activity" />
+        </MenuSection>
 
         <ExpandableMenuItem label="Projects">
           <LinkMenuItem label="Project Alpha" href="/projects/alpha" />
