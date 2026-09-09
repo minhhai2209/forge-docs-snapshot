@@ -16,7 +16,7 @@ The dashboard widget module allows you to create interactive widgets that can be
 * Communicate with [background scripts](/platform/forge/manifest-reference/modules/dashboard-background-script/)
 * Be configured by users through edit modes
 
-![Dashboard widget example](https://dac-static.atlassian.com/platform/forge/images/modules/dashboard-widget-example.png?_v=1.5800.2320)
+![Dashboard widget example](https://dac-static.atlassian.com/platform/forge/images/modules/dashboard-widget-example.png?_v=1.5800.2324)
 
 *Example of a dashboard widget displaying custom content*
 
@@ -33,13 +33,13 @@ You can create a dashboard widget app with the following steps:
 
 When users install your widget to their site, they'll see your widget in the widget list:
 
-![Widget list interface](https://dac-static.atlassian.com/platform/forge/images/modules/dashboard-widget-list.png?_v=1.5800.2320)
+![Widget list interface](https://dac-static.atlassian.com/platform/forge/images/modules/dashboard-widget-list.png?_v=1.5800.2324)
 
 *Widget selection interface showing available dashboard widgets on the right, and on the left showing the **preview** of the selected dashboard widget*
 
 Users can configure your widget through the edit interface:
 
-![Widget edit mode](https://dac-static.atlassian.com/platform/forge/images/modules/dashboard-widget-edit-mode.png?_v=1.5800.2320)
+![Widget edit mode](https://dac-static.atlassian.com/platform/forge/images/modules/dashboard-widget-edit-mode.png?_v=1.5800.2324)
 
 *Widget configuration interface allowing users to customize widgets*
 
@@ -196,9 +196,11 @@ Dashboard widgets can contribute a structured, tabular view of their data to Atl
 Intelligence **insights**. The platform invokes the `aiContext.data` entry point declared
 on your module and passes the response to the AI as prompt context. This data powers both:
 
-* **Chart insights**: AI-generated insights for an individual widget, shown on the widget.
-* **Dashboard insights**: AI-generated insights across all of a dashboard's widgets,
-  delivered through [Rovo Chat](https://www.atlassian.com/software/rovo).
+* **Chart insights**: AI-generated insights for an individual widget, shown in a dialog when you
+  select the **AI Insights** menu button on the widget.
+* **Dashboard insights**: AI-generated insights across all widgets on a dashboard, available from
+  the floating **Get insights** button on the dashboard or through
+  [Rovo Chat](https://www.atlassian.com/software/rovo).
 
 The platform sends data your widget returns from `aiContext.data` to a generative AI model
 to produce insights. Only return data that's appropriate to process with AI, and ensure you
@@ -281,8 +283,8 @@ Your response must be an object with the following fields:
 | `title` | `string` | No | Title for the data. **Defaults to the widget's manifest `title`** if omitted. Used by both chart and dashboard insights. |
 | `type` | `string` | No | Free-form chart type (for example, `'bar'`, `'line'`, `'pie'`). Surfaced to the AI for prompt context. |
 | `description` | `string` | No | Natural-language description of the widget or data. **Defaults to the widget's manifest `description`** if omitted. **Consumed by dashboard insights only**; chart insights don't use this field. |
-| `columns` | `Array<{ key: string; label: string }>` | Yes | `key` is the stable field id used to read object rows (`row[key]`); `label` is the human-readable header shown to the AI. |
-| `rows` | `Array<Cell[] | Partial<Record<string, Cell>>>` | Yes | Each row is either a positional array aligned to the `columns` order, or an object keyed by column `key`. |
+| `columns` | `Array<{`  `key: string;`  `label: string;`  `}>` | Yes | `key` is the stable field id used to read object rows (`row[key]`); `label` is the human-readable header shown to the AI. |
+| `rows` | `Array<`  `Cell[] |`  `Partial<`  `Record<`  `string, Cell`  `>>>` | Yes | Each row is either a positional array aligned to the `columns` order, or an object keyed by column `key`. |
 
 A cell is a `string`, `number`, `boolean`, or `null`.
 

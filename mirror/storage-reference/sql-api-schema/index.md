@@ -3,7 +3,7 @@
 Use *Data Definition Language (DDL)* to create and update database objects (such as tables and indexes) in your provisioned SQL database. Forge SQL supports MySQL-compatible DDL operations like `CREATE`, `ALTER`, and `DROP` (for more details, see
 [SQL Statement Overview](https://docs.pingcap.com/tidb/stable/sql-statement-overview) in the TiDB documentation).
 
-You can create as many DDL operations as needed. Forge SQL can use `scheduledTrigger` to execute each operation on each provisioned SQL database in the sequence you specify.
+You can create as many DDL operations as needed. Forge SQL can use an [async event consumer](#orchestrate-with-an-async-event-consumer-recommended) (recommended) or a [scheduled trigger](#orchestrate-with-a-scheduled-trigger) to execute each operation on each provisioned SQL database in the sequence you specify.
 
 You can also update your app’s database schema by adding new DDL operations over time. Forge SQL can:
 
@@ -106,7 +106,7 @@ const createDBobjects = migrationRunner
 ```
 ```
 
-Next, wrap `createDBobjects` in a single database object creation function (`runMigration`). This will let you map its key to a scheduled trigger, which Forge will use to execute it (this is covered in the [next section](#executeddl)):
+Next, wrap `createDBobjects` in a single database object creation function (`runMigration`). This will let you map its key to an async event consumer or scheduled trigger, which Forge will use to execute it (this is covered in the [next section](#executeddl)):
 
 ```
 ```
@@ -153,12 +153,168 @@ Our example app uses DDL operations to define each database object, then orders 
 
 ## Orchestrate schema updates
 
-Database object creation (that is, your DDL operations) needs to be executed as part of the app installation process. One way to orchestrate this is through *scheduled triggers*. Doing so assigns the entire lifecycle of creating your database objects to Forge SQL.
+Database object creation (that is, your DDL operations) needs to be executed as part of the app installation process. You can orchestrate this through either an [async event consumer](#orchestrate-with-an-async-event-consumer-recommended) or a [scheduled trigger](#orchestrate-with-a-scheduled-trigger). In both cases, Forge SQL manages the lifecycle of creating your database objects.
 
-Map your database object creation function to a
+We recommend orchestrating schema updates through an [async event consumer](/platform/forge/runtime-reference/async-events-api/#event-consumer). The async event handler provides a maximum runtime of 15 minutes, compared to the 55-second standard function timeout. This longer runtime makes it much easier to stay within the [per-install DDL rate limit](/platform/forge/storage-reference/sql/#per-install-limits) (25 DDL requests per minute) when applying a large number of schema changes.
+
+### Orchestrate with an async event consumer (recommended)
+
+To orchestrate schema updates through the [async events API](/platform/forge/runtime-reference/async-events-api/):
+
+1. Define a queue and an event consumer in your manifest that invokes your `runMigration` function. Set `timeoutSeconds` on the function to allow up to 15 minutes (900 seconds) of runtime.
+2. Push an event to the queue when your app is installed or upgraded. You can do this from a [product event trigger](/platform/forge/events-reference/) (such as `avi:forge:installed:app`) or from a [scheduled trigger](/platform/forge/function-reference/scheduled-trigger/) that runs periodically to retry any pending or failed migrations.
+
+#### Example
+
+The following manifest declares a queue named `schema-migration-queue` and a consumer that calls `runMigration` with a 15-minute timeout:
+
+```
+```
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+```
+
+
+
+```
+modules:
+  consumer:
+    - key: schema-migration-consumer
+      queue: schema-migration-queue
+      function: runMigration
+  trigger:
+    - key: app-installed-trigger
+      function: enqueueMigration
+      events:
+        - avi:forge:installed:app
+        - avi:forge:upgraded:app
+  function:
+    - key: runMigration
+      handler: index.runMigration
+      timeoutSeconds: 900
+    - key: enqueueMigration
+      handler: index.enqueueMigration
+```
+```
+
+`avi:forge:upgraded:app` is sent only when the app is upgraded to a new **major version**. It does not trigger on minor or patch version upgrades. If you add new DDL operations in a minor or patch release, use a [scheduled trigger](/platform/forge/function-reference/scheduled-trigger/) or another mechanism to ensure migrations run.
+
+The `enqueueMigration` function pushes an event to the queue:
+
+```
+```
+1
+2
+3
+4
+5
+6
+7
+8
+```
+
+
+
+```
+import { Queue } from '@forge/events';
+
+const queue = new Queue({ key: 'schema-migration-queue' });
+
+export const enqueueMigration = async () => {
+  await queue.push({});
+};
+```
+```
+
+The following `runMigration` implementation replaces the one defined in the [Define schema updates](#migrationrunnerexample) section. It adds retry logic suitable for use as an async event consumer.
+
+The consumer function calls `migrationRunner.run()` from within the async event handler. We recommend wrapping the call in [retry logic](#retry-logic-and-idempotency) with a 60-second timeout to gracefully handle transient DDL rate-limit errors:
+
+```
+```
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+```
+
+
+
+```
+import { migrationRunner } from '@forge/sql';
+
+const RETRY_TIMEOUT_MS = 60000;
+
+export const runMigration = async (event, context) => {
+  const deadline = Date.now() + RETRY_TIMEOUT_MS;
+  let lastError;
+
+  while (Date.now() < deadline) {
+    try {
+      const successfulMigrations = await migrationRunner.run();
+      console.log('Migrations applied:', successfulMigrations);
+      return;
+    } catch (error) {
+      lastError = error;
+      console.warn('Migration attempt failed, retrying:', error);
+      // Back off briefly before retrying. Adjust the delay to suit your app.
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+    }
+  }
+
+  // Let the async events API retry the event within the retention window.
+  throw lastError;
+};
+```
+```
+
+If the consumer function returns an error, the async events API will [retry the event within the retention window](/platform/forge/runtime-reference/async-events-api/#retries). This means transient failures (such as exceeding the per-install DDL rate limit) will be retried automatically.
+
+### Orchestrate with a scheduled trigger
+
+Alternatively, you can map your database object creation function to a
 [scheduled trigger](/platform/forge/function-reference/scheduled-trigger/) module in your manifest. Forge will use the trigger to execute your `migrationRunner` invocation according to your defined `interval` (we recommend `hourly` or `daily`).
 
-### Example
+Scheduled trigger functions are subject to the standard 55-second function timeout. If your migration cannot reliably complete within this window (for example, because it contains many DDL statements or repeatedly hits the per-install DDL rate limit), use the [async event consumer approach](#orchestrate-with-an-async-event-consumer-recommended) instead.
+
+#### Example
 
 The following declaration triggers the `runMigration` function from the
 [previous example](#migrationrunnerexample):
@@ -199,6 +355,14 @@ Forge SQL will check each app installation hourly if there are any failed or pen
 In our sample app, the database object creation function is mapped to a scheduled trigger. This lets Forge manage the lifecycle of your database object creation (and database schema migration later on, if needed).
 
 [Refer to sample manifest](https://bitbucket.org/atlassian/forge-sql-examples/src/main/book-management-typescript/manifest.yml#lines-13)](https://bitbucket.org/atlassian/forge-sql-examples/src/main/book-management-typescript/manifest.yml#lines-13)
+
+### Retry logic and idempotency
+
+Regardless of which orchestration approach you use, follow these guidelines to make your schema migrations resilient:
+
+* **Retry `migrationRunner.run()` with a 60-second timeout.** The per-install [DDL rate limit](/platform/forge/storage-reference/sql/#per-install-limits) (25 DDL requests per minute) can cause transient failures when applying many schema changes. Wrapping `migrationRunner.run()` in a retry loop with a 60-second timeout gives the rate limit time to reset before the next attempt.
+* **Make DDL statements idempotent.** Always use idempotent forms such as `CREATE TABLE IF NOT EXISTS`, `CREATE INDEX IF NOT EXISTS`, and `DROP TABLE IF EXISTS`. Idempotent DDL ensures that retries and re-runs do not fail because an object already exists (or does not exist).
+* **Throw on unrecoverable errors.** When using the async event consumer, throw the error after the 60-second retry window expires. The async events API will then retry the event within the [retention window](/platform/forge/runtime-reference/async-events-api/#retention-window).
 
 ## Log schema updates
 
@@ -279,6 +443,9 @@ For a complete reference of supported data types and how they are returned by th
 
 ## Recommendations
 
+* Orchestrate schema migrations through an [async event consumer](/platform/forge/storage-reference/sql-api-schema/#orchestrate-with-an-async-event-consumer-recommended) so your `migrationRunner.run()` invocation has up to 15 minutes of runtime to complete. This is especially important when applying many DDL statements that may hit the [per-install DDL rate limit](/platform/forge/storage-reference/sql/#per-install-limits).
+* Wrap `migrationRunner.run()` in [retry logic](/platform/forge/storage-reference/sql-api-schema/#retry-logic-and-idempotency) with a 60-second timeout to gracefully recover from transient DDL rate-limit errors.
+* Make every DDL statement idempotent (for example, use `CREATE TABLE IF NOT EXISTS` and `DROP TABLE IF EXISTS`) so that retries and re-runs are safe.
 * Ensure that each change to your SQL database is backwards compatible to all schema versions that are currently in use. Every DDL operation you define should introduce schema changes that won’t block data migrations from previous versions.
 * Likewise, each SQL database change should be compatible to all versions of your app currently installed on a customer site. This means, for example, that every SQL query used by previous versions of your app should also work in the latest version of your SQL database.
 * Avoid destructive changes to your SQL database, as these risk breaking compatibility between database schema versions.

@@ -130,6 +130,9 @@ See [Monitor SQL](/platform/forge/monitor-sql-metrics/) for detailed information
 
 ## Recommendations
 
+* Orchestrate schema migrations through an [async event consumer](/platform/forge/storage-reference/sql-api-schema/#orchestrate-with-an-async-event-consumer-recommended) so your `migrationRunner.run()` invocation has up to 15 minutes of runtime to complete. This is especially important when applying many DDL statements that may hit the [per-install DDL rate limit](/platform/forge/storage-reference/sql/#per-install-limits).
+* Wrap `migrationRunner.run()` in [retry logic](/platform/forge/storage-reference/sql-api-schema/#retry-logic-and-idempotency) with a 60-second timeout to gracefully recover from transient DDL rate-limit errors.
+* Make every DDL statement idempotent (for example, use `CREATE TABLE IF NOT EXISTS` and `DROP TABLE IF EXISTS`) so that retries and re-runs are safe.
 * Ensure that each change to your SQL database is backwards compatible to all schema versions that are currently in use. Every DDL operation you define should introduce schema changes that won’t block data migrations from previous versions.
 * Likewise, each SQL database change should be compatible to all versions of your app currently installed on a customer site. This means, for example, that every SQL query used by previous versions of your app should also work in the latest version of your SQL database.
 * Avoid destructive changes to your SQL database, as these risk breaking compatibility between database schema versions.

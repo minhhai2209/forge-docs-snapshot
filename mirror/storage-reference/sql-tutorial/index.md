@@ -183,6 +183,8 @@ modules:
 
 In this case, Forge will execute `runMigration` within an *hour* of app installation. As such, it is possible for customers to have your app already installed, without the database schema applied yet.
 
+For production apps, we recommend orchestrating schema migrations through an [async event consumer](/platform/forge/storage-reference/sql-api-schema/#orchestrate-with-an-async-event-consumer-recommended) instead of a scheduled trigger. The async event handler provides a maximum runtime of 15 minutes (versus the 55-second standard function timeout), which is necessary when applying many DDL statements that may hit the per-install DDL rate limit. Also wrap your `migrationRunner.run()` call in [retry logic with a 60-second timeout](/platform/forge/storage-reference/sql-api-schema/#retry-logic-and-idempotency) and ensure all DDL statements are idempotent (for example, by using `CREATE TABLE IF NOT EXISTS`).
+
 ## Step 5: Create logs for database object creation
 
 Include a `migrationRunner.list` invocation in your database object creation (namely, `runMigration` in our previous example). This method lets you generate logs for each queued database creation operation in [Step 2](#step2). For example:
@@ -368,6 +370,6 @@ export const insertLoginDetails = async () => {
 
 ## Step 7 Deploy app and track schema migration
 
-You can monitor any failures in DDL operations by viewing your *app logs* in the Developer Console. From there, you can filter for errors against the scheduledTrigger mapped to your migrationRunner invocation. See [Monitoring SQL](/platform/forge/monitor-sql-metrics/) for more information.
+You can monitor any failures in DDL operations by viewing your *app logs* in the Developer Console. From there, you can filter for errors against the function handling your schema migration. See [Monitoring SQL](/platform/forge/monitor-sql-metrics/) for more information.
 
 SQL operations executed while tunnelling will be directed to your app’s provisioned database. This means that changes to the database from other users will be reflected on any SQL queries performed while tunnelling.

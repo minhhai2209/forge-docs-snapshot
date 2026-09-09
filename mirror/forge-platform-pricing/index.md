@@ -98,7 +98,7 @@ Forge consumption-based pricing covers the platform resources your app uses, suc
 
 ### How Rovo billing works for customers
 
-Rovo billing is managed at the customer organization level, so Marketplace partners are not responsible for the AI usage costs of their Rovo agents. Every paid Jira, Confluence, or Jira Service Management subscription includes a pooled allowance of **Rovo credits** and **indexed objects**. The size of this allowance is determined by the customer's subscription tier and the number of licensed users in their organization.
+Rovo billing is managed at the customer organization level, so Marketplace partners are not responsible for the AI usage costs of their Rovo agents. Every paid Jira, Confluence, Teamwork Collection, or Service Collection subscription includes a pooled allowance of **[Rovo credits](https://support.atlassian.com/rovo/docs/rovo-usage-limits/)** and **[indexed objects](https://support.atlassian.com/organization-administration/docs/what-are-indexed-objects/)**. The size of this allowance is determined by the customer's subscription tier and the number of licensed users in their organization.
 
 Each agent request consumes credits from the customer's pool according to the rates defined in [Rovo usage limits](https://support.atlassian.com/rovo/docs/rovo-usage-limits/), regardless of whether the agent was built by Atlassian, created by the customer in Atlassian Studio, or distributed through a Marketplace Forge app.
 
