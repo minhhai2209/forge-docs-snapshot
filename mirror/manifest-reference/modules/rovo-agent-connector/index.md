@@ -42,6 +42,29 @@ Instead, the agent connector user is available for @-mention.
 The Forge CLI warns about this behavior change at deployment time and asks you to approve before proceeding.
 This warning feature requires the Forge CLI version `13.3` or higher. For more details about the deployment approval flow, refer to [deploy](/platform/forge/cli-reference/deploy/).
 
+## Limitations
+
+Non-production apps might fail during the invocation if the user triggering the agent is not a contributor to the app.
+
+This would reflect in the following error message:
+
+```
+```
+1
+2
+```
+
+
+
+```
+I counldn't finish working because of a technical problem on my end. Try again in a few moments.
+```
+```
+
+If this is the case, you can fix it by adding the current user as an [**app contributor**](/platform/forge/manage-app-contributors/).
+
+See also: more details about Forge [app environments](/forge/environments-and-versions/#environments).
+
 ## Manifest structure
 
 ```

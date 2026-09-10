@@ -28,7 +28,7 @@ To add the `PieChart` component to your app:
 
 Data can be one of two formats, an array of arrays or an array of objects. Both examples below will produce the same pie chart:
 
-![Example image of a rendered pie chart](https://dac-static.atlassian.com/platform/forge/ui-kit/images/pie-chart/pie-chart-data.png?_v=1.5800.2324)
+![Example image of a rendered pie chart](https://dac-static.atlassian.com/platform/forge/ui-kit/images/pie-chart/pie-chart-data.png?_v=1.5800.2327)
 
 ### 1. Array of arrays
 

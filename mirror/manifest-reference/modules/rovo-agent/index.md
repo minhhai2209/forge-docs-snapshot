@@ -2,7 +2,7 @@
 
 When you use Rovo APIs, you must comply with the [Atlassian Acceptable Use Policy](https://www.atlassian.com/legal/acceptable-use-policy#disruption), including the section titled “Artificial intelligence offerings and features.” For the protection of our customers, Atlassian performs safety screening on Agents at our sole discretion. If we identify any issues with your Agent, we may take protective actions, such as preventing the Agent from being deployed or suspending your use of Rovo APIs. Where possible we will notify you of the nature of the issue, and you must use reasonable commercial efforts to correct the issue before deploying your Agent again.
 
-The `rovo:agent` module defines an Agent. Agents are configurable AI teammates that integrate into Jira and Confluence workflows. You can define an Agent's behaviour using a prompt and an action, so the Agent can fetch data and perform operations.
+The `rovo:agent` module defines an Agent. Agents are configurable AI teammates that integrate into Jira and Confluence workflows. You can define an Agent's behavior using a prompt and an action, so the Agent can fetch data and perform operations.
 
 ## Data access
 
@@ -24,18 +24,20 @@ To enable your Agent to access data from multiple Atlassian apps, configure your
 9   │  └─ conversationStarter (string)
 10   ├─ actions [] [Optional]
 11   │  └─ action (string)
-12   └─ followUpPrompt (string) [Optional]
-13
-14resources []
-15└─ key (string) [Mandatory]
-16└─ path (string) [Mandatory]
-17
+12   ├─ skills [] [Optional]
+13   │  └─ skill (string)
+14   └─ followUpPrompt (string) [Optional]
+15
+16resources []
+17└─ key (string) [Mandatory]
+18└─ path (string) [Mandatory]
+19
 ```
 
 In this structure:
 
-* The `rovo:agent` array includes properties such as `key`, `name`, `description`, `icon`, `prompt`, `conversationStarters`, `actions`, and `followUpPrompt`.
-* The `conversationStarters` array and `actions` array are represented with generic entries `conversationStarter` and `action`, respectively.
+* The `rovo:agent` array includes properties such as `key`, `name`, `description`, `icon`, `prompt`, `conversationStarters`, `actions`, `skills`, and `followUpPrompt`.
+* The `conversationStarters`, `actions`, and `skills` arrays are represented with generic entries `conversationStarter`, `action`, and `skill`, respectively.
 * The `resources` array includes properties `key` and `path`.
 
 ## Properties
@@ -46,9 +48,10 @@ In this structure:
 | `name` | `string` | Yes | The name of your Agent. Must not exceed 30 characters. |
 | `description` | `string` |  | The description of your Agent. This is used to describe what your Agent can do to users. |
 | `icon` | `string` |  | The icon displayed as the Agent’s avatar.  The `icon` property accepts a relative path from a declared resource. Alternatively, you can also use an absolute URL to a self-hosted icon.  If no icon is provided, or if there's an issue preventing the icon from loading, a generic avatar will be displayed. |
-| `prompt` | `string` | Yes | This is the custom LLM prompt where you describe how your Agent will behave.  You can specify the `prompt` as a string or provide it as a relative path to a declared resource. See, the [prompt as resource example](/platform/forge/manifest-reference/modules/rovo-agent/#prompt-as-a-resource). |
+| `prompt` | `string` | Yes | This is the custom LLM prompt where you describe how your Agent will behave.  You can specify the `prompt` as a string or provide it as a relative path to a declared resource. See the [prompt as resource example](/platform/forge/manifest-reference/modules/rovo-agent/#prompt-as-a-resource). |
 | `conversationStarters` | `string[]` |  | Conversation starters that will be suggested to the user when they engage with your Agent. |
-| `actions` | `actions` |  | A list of the actions that the Agent can invoke. |
+| `actions` | `string[]` |  | A list of the actions that the Agent can invoke. |
+| `skills` | `string[]` |  | A list of [`rovo:skill`](/platform/forge/manifest-reference/modules/rovo-skill/) module keys that the Agent can use. Each key must be unique within the list. Use skills to provide task-specific playbooks or orchestrate actions without adding all of the workflow instructions to the Agent prompt. This property is available as part of the `rovo:skill` EAP. |
 | `followUpPrompt` | `string` |  | A prompt that will be used to generate follow up suggestions once the user’s original query has been answered. |
 
 ## Manifest example
@@ -190,32 +193,53 @@ Using the [Forge bridge rovo API](/platform/forge/apis-reference/ui-api-bridge/r
 
 Accessed by clicking the **Chat** button in the top navigation bar
 
-![Example of a chat button](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-chat-side.png?_v=1.5800.2324)
+![Example of a chat button](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-chat-side.png?_v=1.5800.2327)
 
 Accessed using the /ai command in the editor
 
-![Example of a chat button](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-ai-toolbar.png?_v=1.5800.2324)
+![Example of a chat button](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-ai-toolbar.png?_v=1.5800.2327)
 
 Accessed using the /ai command in the Jira issues editor
 
-![Example of a chat button](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-ai-toolbar-jira.png?_v=1.5800.2324)
+![Example of a chat button](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-ai-toolbar-jira.png?_v=1.5800.2327)
 
 ### Automation (Confluence and Jira)
 
 You can add Agents to Automation rules. This will invoke the Agent to act asynchronously in response to Atlassian app events or schedules.
 When users configure an automation rule they will set an additional prompt with specific instructions how to act during that rule. The response from the Agent can be passed to subsequent steps in the automation rule using smart values.
 
-![Example of a chat button](https://dac-static.atlassian.com/platform/forge/images/rovo/automations.png?_v=1.5800.2324)
+![Example of a chat button](https://dac-static.atlassian.com/platform/forge/images/rovo/automations.png?_v=1.5800.2327)
+
+## Choose between prompts, skills, and actions
+
+Keep your Agent's prompt focused on its overall role, behavior, boundaries, and high-level responsibilities.
+
+| Need | Use |
+| --- | --- |
+| Agent-wide role, tone, boundaries, and behavior | `prompt` |
+| Large but cohesive Agent-wide instructions | [Prompt resource](#prompt-as-a-resource) |
+| Task-specific procedures or multi-step tool orchestration | [`rovo:skill`](/platform/forge/manifest-reference/modules/rovo-skill/) |
+| An executable operation or API call | [`action`](/platform/forge/manifest-reference/modules/rovo-action/) |
+
+Use a `rovo:skill` when instructions apply to a particular type of task rather than every conversation. Skills are especially useful when a workflow:
+
+* Coordinates multiple actions or calls them in a particular order.
+* Contains branching steps, validation, or error-recovery guidance.
+* Requires detailed examples or supporting reference material.
+* Is reusable across multiple Agents.
+* Would otherwise make the Agent prompt difficult to understand or maintain.
+
+Skills provide task-specific instructions that an Agent can load when relevant. Actions provide the underlying executable capabilities, while the skill explains how to combine those actions into a complete workflow.
+
+Don't use skills only to divide Agent-wide instructions into smaller files. If instructions must apply to every interaction, keep them in the Agent prompt or store the prompt as a resource.
 
 ## Writing effective prompts
 
-When creating prompts for an Agent, it is essential to define the Agent's purpose, personality, output format, capabilities, and other relevant aspects. The structure of your prompts should align with the specific tasks you intend to delegate to the Agent and the nature of the actions you aim to develop.
-
-For crafting a compelling prompt, it is advisable to incorporate the following key components:
+Define the Agent's purpose, personality, output format, capabilities, and other relevant aspects. Include these key components:
 
 ### Define the role of your Agent
 
-Roles play a crucial role in shaping the language, tone, style, and personality of your Agent.
+The role you define shapes the Agent's language, tone, style, and personality.
 
 **Example**:
 
@@ -322,7 +346,7 @@ To do this, follow these steps:
 ```
 ```
 
-### Define to format of output
+### Define the format of output
 
 Define how your Agent will structure its responses when performing certain jobs.
 
