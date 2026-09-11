@@ -88,6 +88,10 @@ For more information about the Forge manifest, refer to the following sections.
 
 - [Keyboard shortcuts](https://developer.atlassian.com/platform/forge/manifest-reference/keyboard-shortcuts/index.md)
 
+### Manifest size best practices
+
+- [Manifest size best practices](https://developer.atlassian.com/platform/forge/manifest-reference/manifest-size-best-practices.md)
+
 ### Permissions
 
 - [Permissions](https://developer.atlassian.com/platform/forge/manifest-reference/permissions.md)

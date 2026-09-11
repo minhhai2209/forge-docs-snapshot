@@ -60,7 +60,7 @@ In this structure:
 | --- | --- | --- | --- |
 | `key` | `string` | Yes | A key for the module, which other modules can refer to. Must be unique within the manifest. Regex: `^[a-zA-Z0-9_-]+$` |
 | `name` | `string` | Yes | The name of your MCP server. Must not exceed 30 characters. |
-| `tools` | `string[]` | Yes | A list of action keys to expose as tools. Each referenced action must have a unique key under 64 characters, and there can be at most 20 actions. |
+| `tools` | `string[]` | Yes | A list of action keys to expose as tools. Each referenced action must have a unique key under 64 characters, and there can be at most 50 actions. |
 
 ## Manifest example
 

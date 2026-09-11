@@ -9,20 +9,35 @@ but not the old issue view.
 For more information, see the
 [IssueActivity](/platform/forge/ui-kit-components/jira/issue-activity/) component documentation.
 
-![Example of an Issue activity](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-activity-module-demo.gif?_v=1.5800.2327)
+![Example of an Issue activity](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-activity-module-demo.gif?_v=1.5800.2330)
 
 ## Manifest example
 
 ```
-1modules:
-2  jira:issueActivity:
-3    - key: hello-world-issue-activity
-4      resource: main
-5      resolver:
-6        function: resolver
-7      render: native
-8      title: Hello World!
+```
+1
+2
+3
+4
+5
+6
+7
+8
 9
+```
+
+
+
+```
+modules:
+  jira:issueActivity:
+    - key: hello-world-issue-activity
+      resource: main
+      resolver:
+        function: resolver
+      render: native
+      title: Hello World!
+```
 ```
 
 ## Properties

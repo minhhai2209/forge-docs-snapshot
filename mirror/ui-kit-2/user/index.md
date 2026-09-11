@@ -32,11 +32,11 @@ the user's [privacy settings](https://confluence.atlassian.com/x/lwkvOg).
 6
 ```
 
-![Example image of rendered pictures and names of Atlassian users](https://dac-static.atlassian.com/platform/forge/ui-kit/images/user/user-default.png?_v=1.5800.2327)
+![Example image of rendered pictures and names of Atlassian users](https://dac-static.atlassian.com/platform/forge/ui-kit/images/user/user-default.png?_v=1.5800.2330)
 
 ### Inline
 
-![Example image of a rendered picture and name of an Atlassian user within a Text component](https://dac-static.atlassian.com/platform/forge/ui-kit/images/user/user-inline.png?_v=1.5800.2327)
+![Example image of a rendered picture and name of an Atlassian user within a Text component](https://dac-static.atlassian.com/platform/forge/ui-kit/images/user/user-inline.png?_v=1.5800.2330)
 
 ```
 ```

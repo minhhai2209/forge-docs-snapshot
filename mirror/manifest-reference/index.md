@@ -32,6 +32,9 @@ To avoid this, ensure that your manifest only includes the modules and configura
 necessary for your app. If you encounter this limit, consider removing unused modules, splitting your app into smaller components, or
 refactoring your configuration. This limit helps maintain platform performance and reliability.
 
+For patterns that keep your manifest well within this limit, see
+[Manifest size best practices](/platform/forge/manifest-reference/manifest-size-best-practices/).
+
 ## App
 
 The `app` dictionary contains properties about your Forge app. Some of these are populated as part of the

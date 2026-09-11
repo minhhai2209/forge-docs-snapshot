@@ -27,7 +27,7 @@ To add the `BarChart` component to your app:
 
 Data can be one of two formats, an array of arrays or an array of objects. Both examples below will produce the same bar chart:
 
-![Example image of a rendered group bar](https://dac-static.atlassian.com/platform/forge/ui-kit/images/bar-chart/bar-chart-data.png?_v=1.5800.2327)
+![Example image of a rendered group bar](https://dac-static.atlassian.com/platform/forge/ui-kit/images/bar-chart/bar-chart-data.png?_v=1.5800.2330)
 
 ### 1. Array of arrays
 

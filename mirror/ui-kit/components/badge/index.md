@@ -27,7 +27,7 @@ A badge is a visual indicator for numeric values, such as tallies and scores.
 
 The default form of a badge.
 
-![Example image of a rendered default badge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/badge/badge-default.png?_v=1.5800.2327)
+![Example image of a rendered default badge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/badge/badge-default.png?_v=1.5800.2330)
 
 ```
 ```
@@ -50,7 +50,7 @@ const BadgeDefaultExample = () => {
 
 Use a `primary` badge to help draw attention to new or updated information.
 
-![Example image of a rendered primary badge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/badge/badge-primary.png?_v=1.5800.2327)
+![Example image of a rendered primary badge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/badge/badge-primary.png?_v=1.5800.2330)
 
 ```
 ```
@@ -73,7 +73,7 @@ const BadgePrimaryExample = () => {
 
 Use a `primaryInverted` badge when high contrast against a darker background color is needed.
 
-![Example image of a rendered primary inverted badge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/badge/badge-primary-inverted.png?_v=1.5800.2327)
+![Example image of a rendered primary inverted badge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/badge/badge-primary-inverted.png?_v=1.5800.2330)
 
 ```
 ```
@@ -96,7 +96,7 @@ const BadgePrimaryInvertedExample = () => {
 
 Use an `important` badge to call attention to information that needs to stand out. For example, notifications in Confluence.
 
-![Example image of a rendered important badge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/badge/badge-important.png?_v=1.5800.2327)
+![Example image of a rendered important badge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/badge/badge-important.png?_v=1.5800.2330)
 
 ```
 ```
@@ -119,7 +119,7 @@ const BadgeImportantExample = ()=> {
 
 Use an `added` badge to indicate when an item has been added. For example, in a changelog or activity feed.
 
-![Example image of a rendered added badge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/badge/badge-added.png?_v=1.5800.2327)
+![Example image of a rendered added badge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/badge/badge-added.png?_v=1.5800.2330)
 
 ```
 ```
@@ -142,7 +142,7 @@ const BadgeAddedExample = () => {
 
 Use a `removed` badge to indicate when an item has been removed. For example, in a changelog or activity feed.
 
-![Example image of a rendered removed badge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/badge/badge-removed.png?_v=1.5800.2327)
+![Example image of a rendered removed badge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/badge/badge-removed.png?_v=1.5800.2330)
 
 ```
 ```
@@ -167,7 +167,7 @@ const BadgeRemovedExample = () => {
 
 Use the max prop to cap the value of a badge. When the value to display is greater than the max prop, a + will be appended. The default max value of a badge is 99.
 
-![Example image of a rendered default max badge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/badge/badge-maxvalue-default.png?_v=1.5800.2327)
+![Example image of a rendered default max badge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/badge/badge-maxvalue-default.png?_v=1.5800.2330)
 
 ```
 ```
@@ -196,7 +196,7 @@ const BadgeMaxDefault = () => {
 
 #### Max value enabled
 
-![Example image of a rendered capped badge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/badge/badge-maxvalue-enabled.png?_v=1.5800.2327)
+![Example image of a rendered capped badge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/badge/badge-maxvalue-enabled.png?_v=1.5800.2330)
 
 ```
 ```
@@ -225,7 +225,7 @@ const BadgeMaxValueEnabled = () => {
 
 #### Max value disabled
 
-![Example image of a rendered capped badge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/badge/badge-maxvalue-disabled.png?_v=1.5800.2327)
+![Example image of a rendered capped badge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/badge/badge-maxvalue-disabled.png?_v=1.5800.2330)
 
 ```
 ```
@@ -254,7 +254,7 @@ const BadgeMaxValueDisabled = () => {
 
 ### Badge with a Text component
 
-![Example image of a rendered badge with text](https://dac-static.atlassian.com/platform/forge/ui-kit/images/badge/badge-textcomponent-example.png?_v=1.5800.2327)
+![Example image of a rendered badge with text](https://dac-static.atlassian.com/platform/forge/ui-kit/images/badge/badge-textcomponent-example.png?_v=1.5800.2330)
 
 ```
 ```
