@@ -29,21 +29,42 @@ A simple group of seven users using the `UserGroup` component.
 ![Example image of a rendered group of seven Atlassian users](https://dac-static.atlassian.com/platform/forge/images/ui-kit-2/user-group.png?_v=1.5800.2330)
 
 ```
-1import { UserGroup, User } from '@forge/react';
-2const App = () => {
-3    return (
-4        <UserGroup>
-5            <User accountId="5a1234bc8d12345e3f1g11hi"/>
-6            <User accountId="2a98a42dbc7ab42e12ee360d"/>
-7            <User accountId="5d8732lq8jg85a0e3f1g90as"/>
-8            <User accountId="2h98a10dbl5ab93e62hja23z"/>
-9            <User accountId="7b20f0bc2d05325e3f1g43ty"/>
-10            <User accountId="2p72s42dbc7ab42e90gf252d"/>
-11            <User accountId="2l01x78mf4pqw42e84fg40ad"/>
-12        </UserGroup>
-13    );
-14};
+```
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
 15
+```
+
+
+
+```
+import { UserGroup, User } from '@forge/react';
+const App = () => {
+    return (
+        <UserGroup>
+            <User accountId="5a1234bc8d12345e3f1g11hi"/>
+            <User accountId="2a98a42dbc7ab42e12ee360d"/>
+            <User accountId="5d8732lq8jg85a0e3f1g90as"/>
+            <User accountId="2h98a10dbl5ab93e62hja23z"/>
+            <User accountId="7b20f0bc2d05325e3f1g43ty"/>
+            <User accountId="2p72s42dbc7ab42e90gf252d"/>
+            <User accountId="2l01x78mf4pqw42e84fg40ad"/>
+        </UserGroup>
+    );
+};
+```
 ```
 
 ### Inline
