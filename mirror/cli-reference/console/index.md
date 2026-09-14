@@ -1,4 +1,4 @@
-# Command: manifest render
+# Command: console
 
 ## Manage Preferences
 

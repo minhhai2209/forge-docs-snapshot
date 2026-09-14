@@ -21,6 +21,8 @@ list webtrigger URLs
 5                                 Bitbucket)
 6-e, --environment [environment]  specify the environment (see your default
 7                                 environment by running forge settings list)
-8-h, --help                       display help for command
-9
+8--json                           output results in JSON format (default:
+9                                 false)
+10-h, --help                       display help for command
+11
 ```

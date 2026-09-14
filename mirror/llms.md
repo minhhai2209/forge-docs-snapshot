@@ -801,6 +801,10 @@ This section documents the **Forge CLI**—the command-line tool used to **creat
 - [build](https://developer.atlassian.com/platform/forge/cli-reference/build.md)
 - [list](https://developer.atlassian.com/platform/forge/cli-reference/build-list.md)
 
+### console
+
+- [console](https://developer.atlassian.com/platform/forge/cli-reference/console.md)
+
 ### containers
 
 - [containers](https://developer.atlassian.com/platform/forge/cli-reference/containers.md)

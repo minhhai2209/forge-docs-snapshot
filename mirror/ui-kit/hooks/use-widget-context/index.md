@@ -9,7 +9,7 @@ To participate, you can [sign up for the EAP here](https://docs.google.com/forms
 
 **Note:** You must also opt-in to the open beta of Dashboards in Atlassian Home. See the [guide on how to opt-in](https://community.atlassian.com/forums/Atlassian-Home-articles/Home-Dashboards-available-in-open-beta/ba-p/3009544).
 
-Hook for accessing widget context information including `widgetId`, `dashboardId` and `layout` information. The context data loads asynchronously, so the output is `undefined` while loading.
+Hook for accessing widget context information, including `widgetId`, `dashboardId`, `layout` and dashboard filters. Context data loads asynchronously, so the output is `undefined` while loading.
 
 For module configuration and setup instructions, see [Dashboard widget](/platform/forge/manifest-reference/modules/dashboard-widget/).
 
@@ -33,24 +33,38 @@ Here is an example of accessing widget context information:
 1import React from "react";
 2import { useWidgetContext } from "@forge/hooks/dashboards";
 3
-4function MyWidget() {
-5  const context = useWidgetContext();
-6
-7  if (!context) return <div>Loading...</div>;
+4const getFilterLabels = (expression) => {
+5  if (!expression) {
+6    return [];
+7  }
 8
-9  const { layout, widgetId, dashboardId } = context;
-10
-11  return (
-12    <div style={{ width: layout.width, height: layout.height }}>
-13      <p>Widget ID: {widgetId}</p>
-14      <p>Dashboard ID: {dashboardId}</p>
-15      <p>
-16        Size: {layout.width}x{layout.height}
-17      </p>
-18    </div>
-19  );
-20}
-21
+9  if ("groups" in expression) {
+10    return expression.groups.flatMap(getFilterLabels);
+11  }
+12
+13  return expression.label ? [expression.label] : [];
+14};
+15
+16function MyWidget() {
+17  const context = useWidgetContext();
+18
+19  if (!context) return <div>Loading...</div>;
+20
+21  const { layout, widgetId, dashboardId, filters } = context;
+22  const filterLabels = getFilterLabels(filters);
+23
+24  return (
+25    <div style={{ width: layout.width, height: layout.height }}>
+26      <p>Widget ID: {widgetId}</p>
+27      <p>Dashboard ID: {dashboardId}</p>
+28      <p>
+29        Size: {layout.width}x{layout.height}
+30      </p>
+31      <p>Dashboard filters: {filterLabels.join(", ") || "None"}</p>
+32    </div>
+33  );
+34}
+35
 ```
 
 ## Function signature
@@ -84,6 +98,7 @@ Here is an example of accessing widget context information:
 25
 26
 27
+28
 ```
 
 
@@ -95,6 +110,7 @@ interface UseWidgetContextType {
   layout: Layout;
   widgetId?: string;
   dashboardId: string;
+  filters: FilterExpression | null;
 }
 
 interface Layout {
@@ -124,3 +140,65 @@ interface Layout {
   * **layout** (Layout): Widget dimensions and grid positioning
   * **widgetId** (string | undefined): Unique widget identifier, `undefined` if it's a new widget
   * **dashboardId** (string): Parent dashboard identifier
+  * **filters** (FilterExpression | null): Dashboard filters available to the widget. Returns `null` when there is no active filter expression.
+
+## Dashboard filters
+
+Dashboard widgets can receive dashboard filters through the `filters` property. This is typed as a `FilterExpression` tree. Typically on the dashboard, `FilterExpression`s are nested as a root dashboard-level `FilterGroup` containing product-specific `FilterGroup`s, which themselves contain individual leaf node `Filter`s.
+
+```
+```
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+```
+
+
+
+```
+type FilterExpression = FilterGroup | Filter;
+
+interface FilterGroup {
+  id: string;
+  operator: "AND" | "OR";
+  groups: FilterExpression[];
+}
+
+interface Filter {
+  id: string;
+  label?: string | null;
+  comparison: string;
+  defaultValues?: Array<string | null> | null;
+  metadata?: string;
+  dimensions: FilterDimension[];
+}
+
+interface FilterDimension {
+  name: string;
+  product?: string;
+  subProduct?: string | null;
+  dynamicDimensionKey?: string; // The key for any custom field dimensions
+}
+```
+```
