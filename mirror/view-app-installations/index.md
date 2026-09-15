@@ -1,13 +1,11 @@
 # View app installations
 
-The installations page is being improved as part of an Early Access Program (EAP). Improvements include performance at scale, configurable columns, and an enhanced filter and search experience. To participate, [sign up for the EAP](https://ecosystem.atlassian.net/servicedesk/customer/portal/38/group/136/create/19578).
-
 You can view the sites onto which your app is installed. This helps you see the following details
 about your app:
 
 * the total number of current installations of your app
 * a breakdown of **Atlassian apps**, **versions**, **licenses**, **editions**, and **environments** that your app is installed on
-* whether admins have enabled data egress for the [purpose of analytics](/platform/forge/manifest-reference/permissions/#external-permissions)
+* whether admins have enabled logs, custom metrics, and data egress for the [purpose of analytics](/platform/forge/manifest-reference/permissions/#external-permissions)
 
 ## View app installations
 
@@ -18,17 +16,27 @@ To view app installations:
 
 The screen shows a list of all the sites and Atlassian apps that your app is currently connected to.
 
-![A list of sites the app is installed onto](https://dac-static.atlassian.com/platform/forge/images/installation-screen.svg?_v=1.5800.2332)
+![The Installations page showing filters, a table of app installations, and pagination controls](https://dac-static.atlassian.com/platform/forge/images/installation-screen.png?_v=1.5800.2334)
 
-You can sort the sites by **version** or **installation date** in ascending or descending order
-by clicking on the corresponding column header.
+You can sort the sites by **site name**, **version**, or **installation date** in ascending or descending order
+by selecting the corresponding column header.
 
-## Search for installations
+## Customize the table
 
-You can search for a specific installation of the app by entering the **site** in the search box.
+You can configure the table to show the information most relevant to you. Show or hide columns,
+move them left or right, and pin a column to the left. You can restore the default table configuration
+by resetting your selection.
 
-You can also use filters to further refine the list of sites. You can filter by **version**,
-**environment**, **Atlassian app**, **license**, or **edition**.
+## Search for specific installations
+
+You can use filters to refine the list of sites. You can filter by:
+
+* **Site**, **environment**, **Atlassian app**, **version**, **license**, **edition**, and **status**.
+* **Installed on**, including a custom date range.
+* Whether **logs access**, **analytics access**, and **custom metrics access** are enabled or disabled.
+
+The page shows the number of installations that match your filters above the table. You can choose to
+show 10, 20, 30, 40, or 50 installations per page.
 
 ## Check access to analytics
 
@@ -46,13 +54,34 @@ in the form of failing app invocations or elements not rendering properly in the
 
 For each site that your app is installed on, you can check whether or not admins have enabled custom metrics ingestion. See [custom metrics](/platform/forge/monitor-custom-metrics) for more details.
 
+## Copy a site ARI
+
+From the **Actions** menu for an installation, select **Copy site ARI** to copy the installation context
+ARI. You can use this value as the `installationContext` when you [export app logs](/platform/forge/export-app-logs/).
+
+## View installation permissions
+
+From the **Actions** menu for an installation, select **View permissions**. The Installation permissions
+page shows the app version, the requested scopes and egress permissions, and the status of each permission.
+
 ## View app logs
 
 You can view app logs associated with a specific site. This is handy for troubleshooting issues
 occurring on that site.
 
-Click the **Logs** link for the site you want to view. This takes you to the Logs screen, where
-the logs are already filtered by the corresponding **environment**, **time range**, **site**, **license**, and **edition**.
+From the **Actions** menu for the site you want to investigate, select **View logs**. This takes you to
+the Logs screen, where the logs are already filtered by the corresponding **environment**, **time range**,
+**site**, **license**, and **edition**.
 
 You can do further log operations on this screen. See [View app logs](/platform/forge/view-app-logs/)
 for more details.
+
+## Download installation details
+
+Select **Download installations** to generate a CSV file containing all installation details for your app.
+After a file has been generated, select **Download** to retrieve the previously generated file immediately.
+The file shows the date and time through which its data is current.
+
+To generate a new file with the latest installation data, select the **More download options** menu and then
+**Download Latest**. Generating a new file can take 15 to 20 minutes. Select **Refresh** while the file is
+being generated to check whether it is ready to download.

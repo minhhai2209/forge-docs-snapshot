@@ -9,11 +9,11 @@ Unlicensed user access: This module supports interaction with customer accounts 
 
 When adding this to your app, use it as a top-level component.
 
-![Example of a Portal request view action button](https://dac-static.atlassian.com/platform/forge/snippets/images/portal-request-view-action-location.png?_v=1.5800.2332)
+![Example of a Portal request view action button](https://dac-static.atlassian.com/platform/forge/snippets/images/portal-request-view-action-location.png?_v=1.5800.2334)
 
 This is an example of the triggered modal dialog:
 
-![Example of a Portal request view with the above sample code](https://dac-static.atlassian.com/platform/forge/snippets/images/portal-request-view-action-demo.png?_v=1.5800.2332)
+![Example of a Portal request view with the above sample code](https://dac-static.atlassian.com/platform/forge/snippets/images/portal-request-view-action-demo.png?_v=1.5800.2334)
 
 ## Properties
 
@@ -90,7 +90,7 @@ The following examples show Dynamic Module implementations specific to this modu
 
 
 ```
-import { asApp } from "@forge/api";
+import { asApp, route } from "@forge/api";
 const payload = {
   "type": "jiraServiceManagement:portalRequestViewAction",
   "data": {
@@ -100,7 +100,7 @@ const payload = {
     "icon": "https://developer.atlassian.com/platform/forge/images/icons/issue-panel-icon.svg"
   }
 }
-const response = await asApp().requestAtlassian(`/forge/installation/v2/dynamic/module/`, {
+const response = await asApp().requestAtlassian(route`/forge/installation/v2/dynamic/module/`, {
   headers: {
     'Content-Type': 'application/json'
   },
@@ -142,7 +142,7 @@ console.log(`Response: ${response.status} ${body}`);
 
 
 ```
-import { asApp } from "@forge/api";
+import { asApp, route } from "@forge/api";
 const key = "portal-request-view-action";
 const payload = {
   "type": "jiraServiceManagement:portalRequestViewAction",
@@ -153,7 +153,7 @@ const payload = {
     "icon": "https://developer.atlassian.com/platform/forge/images/icons/issue-panel-icon.svg"
   }
 }
-const response = await asApp().requestAtlassian(`/forge/installation/v2/dynamic/module/${key}`, {
+const response = await asApp().requestAtlassian(route`/forge/installation/v2/dynamic/module/${key}`, {
   headers: {
     'Content-Type': 'application/json'
   },

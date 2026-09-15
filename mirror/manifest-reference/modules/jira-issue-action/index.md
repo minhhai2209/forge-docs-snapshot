@@ -8,24 +8,39 @@ It works in the
 [new issue view](https://support.atlassian.com/jira-core-cloud/docs/what-is-the-new-jira-issue-view/)
 but not the old issue view.
 
-![Example of an Issue action button](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-action-location.png?_v=1.5800.2332)
+![Example of an Issue action button](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-action-location.png?_v=1.5800.2334)
 
 This is an example of the triggered modal dialog:
 
-![Example of an Issue action with the above sample code](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-action-demo.png?_v=1.5800.2332)
+![Example of an Issue action with the above sample code](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-action-demo.png?_v=1.5800.2334)
 
 ## Manifest example
 
 ```
-1modules:
-2  jira:issueAction:
-3    - key: hello-world-issue-action
-4      resource: main
-5      resolver:
-6        function: resolver
-7      render: native
-8      title: Hello World
+```
+1
+2
+3
+4
+5
+6
+7
+8
 9
+```
+
+
+
+```
+modules:
+  jira:issueAction:
+    - key: hello-world-issue-action
+      resource: main
+      resolver:
+        function: resolver
+      render: native
+      title: Hello World
+```
 ```
 
 ## Properties
@@ -125,7 +140,7 @@ The following examples show Dynamic Module implementations specific to this modu
 
 
 ```
-import { asApp } from "@forge/api";
+import { asApp, route } from "@forge/api";
 const payload = {
   "type": "jira:issueAction",
   "data": {
@@ -137,7 +152,7 @@ const payload = {
     "render": "native"
   }
 }
-const response = await asApp().requestAtlassian(`/forge/installation/v2/dynamic/module/`, {
+const response = await asApp().requestAtlassian(route`/forge/installation/v2/dynamic/module/`, {
   headers: {
     'Content-Type': 'application/json'
   },
@@ -181,7 +196,7 @@ console.log(`Response: ${response.status} ${body}`);
 
 
 ```
-import { asApp } from "@forge/api";
+import { asApp, route } from "@forge/api";
 const key = "issue-action";
 const payload = {
   "type": "jira:issueAction",
@@ -194,7 +209,7 @@ const payload = {
     "render": "native"
   }
 }
-const response = await asApp().requestAtlassian(`/forge/installation/v2/dynamic/module/${key}`, {
+const response = await asApp().requestAtlassian(route`/forge/installation/v2/dynamic/module/${key}`, {
   headers: {
     'Content-Type': 'application/json'
   },

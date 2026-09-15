@@ -61,7 +61,7 @@ The following examples show Dynamic Module implementations specific to this modu
 
 
 ```
-import { asApp } from "@forge/api";
+import { asApp, route } from "@forge/api";
 const payload = {
   type: "trigger",
   data: {
@@ -71,7 +71,7 @@ const payload = {
     "endpoint": "some-endpoint"
   }
 }
-const response = await asApp().requestAtlassian(`/forge/installation/v2/dynamic/module/`, {
+const response = await asApp().requestAtlassian(route`/forge/installation/v2/dynamic/module/`, {
   headers: {
     'Content-Type': 'application/json'
   },
@@ -113,7 +113,7 @@ console.log(`Response: ${response.status} ${body}`);
 
 
 ```
-import { asApp } from "@forge/api";
+import { asApp, route } from "@forge/api";
 const key = "unique-module-key";
 const payload = {
   type: "trigger",
@@ -124,7 +124,7 @@ const payload = {
     "endpoint": "some-endpoint"
   }
 }
-const response = await asApp().requestAtlassian(`/forge/installation/v2/dynamic/module/${key}`, {
+const response = await asApp().requestAtlassian(route`/forge/installation/v2/dynamic/module/${key}`, {
   headers: {
     'Content-Type': 'application/json'
   },

@@ -19,7 +19,7 @@ from the quick insert menu of the editor. The `macro` module is implemented by a
 
 On apps that use Custom UI, module content is displayed inside a [special Forge iframe](/platform/forge/custom-ui/iframe/) which has the [sandbox](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#sandbox) attribute configured. This means that HTML links (for example, `<a href="https://domain.tld/path">...</a>`) in this iframe won't be clickable. To make them clickable, use the [router.navigate](/platform/forge/custom-ui-bridge/router/#navigate) API from the `@forge/bridge` package.
 
-![Example of a macro](https://dac-static.atlassian.com/platform/forge/snippets/images/macro-example.png?_v=1.5800.2332)
+![Example of a macro](https://dac-static.atlassian.com/platform/forge/snippets/images/macro-example.png?_v=1.5800.2334)
 
 ## Manifest structure
 
@@ -248,7 +248,7 @@ The following examples show Dynamic Module implementations specific to this modu
 
 
 ```
-import { asApp } from "@forge/api";
+import { asApp, route } from "@forge/api";
 const payload = {
   "type": "macro",
   "data": {
@@ -268,7 +268,7 @@ const payload = {
     }
   }
 }
-const response = await asApp().requestAtlassian(`/forge/installation/v2/dynamic/module/`, {
+const response = await asApp().requestAtlassian(route`/forge/installation/v2/dynamic/module/`, {
   headers: {
     'Content-Type': 'application/json'
   },
@@ -323,7 +323,7 @@ console.log(`Response: ${response.status} ${body}`);
 
 
 ```
-import { asApp } from "@forge/api";
+import { asApp, route } from "@forge/api";
 const key = "macro-dynamic";
 const payload = {
   "type": "macro",
@@ -347,7 +347,7 @@ const payload = {
     }
   }
 }
-const response = await asApp().requestAtlassian(`/forge/installation/v2/dynamic/module/${key}`, {
+const response = await asApp().requestAtlassian(route`/forge/installation/v2/dynamic/module/${key}`, {
   headers: {
     'Content-Type': 'application/json'
   },

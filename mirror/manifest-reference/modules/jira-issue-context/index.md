@@ -4,7 +4,7 @@ The `jira:issueContext` module adds a collapsible panel under the other fields o
 These panels give your users a quick way to get information related to the issue from your app.
 Users can expand these panels to view app information or collapse them if they don’t need it.
 
-![](https://dac-static.atlassian.com/platform/forge/images/jira-issue-context.png?_v=1.5800.2332)
+![](https://dac-static.atlassian.com/platform/forge/images/jira-issue-context.png?_v=1.5800.2334)
 
 This module can be used in Jira and Jira Service Management.
 It works in the
@@ -14,17 +14,34 @@ but not the old issue view.
 ## Manifest example
 
 ```
-1modules:
-2  jira:issueContext:
-3    - key: hello-world-issue-context
-4      resource: main
-5      resolver:
-6        function: resolver
-7      render: native
-8      title: Hello World!
-9      description: A hello world issue context.
-10      label: Hello World!
+```
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
 11
+```
+
+
+
+```
+modules:
+  jira:issueContext:
+    - key: hello-world-issue-context
+      resource: main
+      resolver:
+        function: resolver
+      render: native
+      title: Hello World!
+      description: A hello world issue context.
+      label: Hello World!
+```
 ```
 
 ## Properties
@@ -251,7 +268,7 @@ The following examples show Dynamic Module implementations specific to this modu
 
 
 ```
-import { asApp } from "@forge/api";
+import { asApp, route } from "@forge/api";
 const payload = {
   "type": "jira:issueContext",
   "data": {
@@ -263,7 +280,7 @@ const payload = {
     "title": "Dynamic Issue Context Title"
   }
 }
-const response = await asApp().requestAtlassian(`/forge/installation/v2/dynamic/module/`, {
+const response = await asApp().requestAtlassian(route`/forge/installation/v2/dynamic/module/`, {
   headers: {
     'Content-Type': 'application/json'
   },
@@ -307,7 +324,7 @@ console.log(`Response: ${response.status} ${body}`);
 
 
 ```
-import { asApp } from "@forge/api";
+import { asApp, route } from "@forge/api";
 const key = "issue-context";
 const payload = {
   "type": "jira:issueContext",
@@ -320,7 +337,7 @@ const payload = {
     "title": "Dynamic Issue Context Title"
   }
 }
-const response = await asApp().requestAtlassian(`/forge/installation/v2/dynamic/module/${key}`, {
+const response = await asApp().requestAtlassian(route`/forge/installation/v2/dynamic/module/${key}`, {
   headers: {
     'Content-Type': 'application/json'
   },

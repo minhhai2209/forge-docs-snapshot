@@ -9,7 +9,7 @@ but not the old issue view.
 For more information, see the
 [IssueActivity](/platform/forge/ui-kit-components/jira/issue-activity/) component documentation.
 
-![Example of an Issue activity](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-activity-module-demo.gif?_v=1.5800.2332)
+![Example of an Issue activity](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-activity-module-demo.gif?_v=1.5800.2334)
 
 ## Manifest example
 
@@ -137,7 +137,7 @@ The following examples show Dynamic Module implementations specific to this modu
 
 
 ```
-import { asApp } from "@forge/api";
+import { asApp, route } from "@forge/api";
 const payload = {
   "type": "jira:issueActivity",
   "data": {
@@ -149,7 +149,7 @@ const payload = {
     "render": "native",
   }
 }
-const response = await asApp().requestAtlassian(`/forge/installation/v2/dynamic/module/`, {
+const response = await asApp().requestAtlassian(route`/forge/installation/v2/dynamic/module/`, {
   headers: {
     'Content-Type': 'application/json'
   },
@@ -193,7 +193,7 @@ console.log(`Response: ${response.status} ${body}`);
 
 
 ```
-import { asApp } from "@forge/api";
+import { asApp, route } from "@forge/api";
 const key = "issue-activity";
 const payload = {
   "type": "jira:issueActivity",
@@ -206,7 +206,7 @@ const payload = {
     "render": "native",
   }
 }
-const response = await asApp().requestAtlassian(`/forge/installation/v2/dynamic/module/${key}`, {
+const response = await asApp().requestAtlassian(route`/forge/installation/v2/dynamic/module/${key}`, {
   headers: {
     'Content-Type': 'application/json'
   },
