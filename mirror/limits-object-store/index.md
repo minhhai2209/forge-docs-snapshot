@@ -1,15 +1,43 @@
 # Forge Object Store limits
 
-## Manage Preferences
+Forge Object Store is now in Preview, and therefore fully supported. However, it remains under active development and may be subject to shorter deprecation windows. Preview features are suitable for early adopters in production environments.
 
-Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
-When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our [Privacy Policy](https://www.atlassian.com/legal/privacy-policy#how-we-disclose-information-we-collect).
-You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt-out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
+We release preview features so partners and developers can study, test, and integrate them prior to General Availability (GA). For more details, see [Forge EAP, Preview, and GA](https://developer.atlassian.com/platform/forge/whats-coming/#forge-preview).
 
-Allow all
+The [Forge Object Store](/platform/forge/storage-reference/object-store/) is a hosted storage solution that let you manage large items such as data objects or media files. It provides you with a seamless way to efficiently store, retrieve, and manage objects directly from your Forge apps.
 
-These cookies are necessary for the website to function and cannot be switched off in our systems. They are usually only set in response to actions made by you which amount to a request for services, such as setting your privacy preferences, logging in or filling in forms. You can set your browser to block or alert you about these cookies, but some parts of the site will not then work. These cookies do not store any personally identifiable information.
+Forge Object Store is not supported on Bitbucket apps.
 
-These cookies allow us to count visits and traffic sources so we can measure and improve the performance of our site. They help us to know which pages are the most and least popular and see how visitors move around the site. If you do not allow these cookies we will not know when you have visited our site, and will not be able to monitor its performance.
+### Rate limits per installation
 
-These cookies enable the website to provide enhanced functionality and personalisation. They may be set by us or by third party providers whose services we have added to our pages. If you do not allow these cookies then some or all of these services may not function properly.
+If the following rate limits are exceeded, Forge will return a `TOO_MANY_REQUESTS` error.
+
+| Parameter | Limit |
+| --- | --- |
+| Object Store requests per minute | 5000 |
+| Pre-signed URL requests per second | 1000 |
+
+### Operation limits
+
+When building interfaces for object download/uploads, you must use the available
+[frontend components](/platform/forge/storage-reference/object-store/#frontend-components).
+
+| Parameter | Limit |
+| --- | --- |
+| Maximum object size | 1 GB |
+| Maximum request payload size | 1 kB |
+| Pre-signed URL validity | 1 hour |
+
+The maximum object size applies to objects uploaded through any [frontend component](/platform/forge/storage-reference/object-store/#frontend-components) used in conjunction with the Forge Object Store (for example, the `useObjectStore`
+[UI Kit hook](/platform/forge/ui-kit/hooks/use-object-store/)).
+
+Meanwhile, the maximum request payload size only applies to the actual [Forge Object Store request](/platform/forge/storage-reference/object-store-api/).
+This request should only contain the object's name and other relevant metadata (not the object itself).
+
+### Versioning
+
+If you add Forge Object Store to an existing app, admins of that app's current installations must review and consent before updating.
+
+As such, adding Forge Object Store to an existing app will require a [major version upgrade](/platform/forge/versions/#major-version-upgrades). This will be triggered through the `objectStore`
+[module](/platform/forge/manifest-reference/modules/object-store/)
+(which is required to enable the feature on an app).
