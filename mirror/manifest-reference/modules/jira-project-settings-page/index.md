@@ -26,15 +26,30 @@ This feature works only with Custom UI.
 ## Manifest example
 
 ```
-1modules:
-2  jira:projectSettingsPage:
-3    - key: hello-world-project-settings-page
-4      resource: main
-5      resolver:
-6        function: resolver
-7      render: native
-8      title: Hello World
+```
+1
+2
+3
+4
+5
+6
+7
+8
 9
+```
+
+
+
+```
+modules:
+  jira:projectSettingsPage:
+    - key: hello-world-project-settings-page
+      resource: main
+      resolver:
+        function: resolver
+      render: native
+      title: Hello World
+```
 ```
 
 ## Properties
