@@ -16,7 +16,7 @@ To view app installations:
 
 The screen shows a list of all the sites and Atlassian apps that your app is currently connected to.
 
-![The Installations page showing filters, a table of app installations, and pagination controls](https://dac-static.atlassian.com/platform/forge/images/installation-screen.png?_v=1.5800.2334)
+![The Installations page showing filters, a table of app installations, and pagination controls](https://dac-static.atlassian.com/platform/forge/images/installation-screen.png?_v=1.5800.2335)
 
 You can sort the sites by **site name**, **version**, or **installation date** in ascending or descending order
 by selecting the corresponding column header.
