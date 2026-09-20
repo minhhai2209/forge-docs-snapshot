@@ -1,15 +1,45 @@
 # requestJira
 
-## Manage Preferences
+Previously, you'd need to define a [resolver](/platform/forge/runtime-reference/custom-ui-resolver/) to use the `requestJira` bridge method. With the release of [Forge bridge version 2.0](/platform/forge/changelog/), Custom UI and UI Kit can now use the method directly.
 
-Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
-When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our [Privacy Policy](https://www.atlassian.com/legal/privacy-policy#how-we-disclose-information-we-collect).
-You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt-out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
+The `requestJira` bridge method enables Forge apps to call the
+[Jira Cloud platform REST API](https://developer.atlassian.com/cloud/jira/platform/rest/v2/) **on behalf of the user who is currently interacting with the app** in the browser. There is no equivalent of `asApp()` on the `@forge/bridge` package: calls from front-end code always run with the permissions of the current user.
 
-Allow all
+This means that, in addition to the app declaring the correct [scopes](/platform/forge/manifest-reference/permissions/) in its manifest, the current user must have the Jira permissions required by the REST API operation being called. If the user does not have those permissions, the request fails with a `403 Forbidden` response — even when the app's scopes are configured correctly.
 
-These cookies are necessary for the website to function and cannot be switched off in our systems. They are usually only set in response to actions made by you which amount to a request for services, such as setting your privacy preferences, logging in or filling in forms. You can set your browser to block or alert you about these cookies, but some parts of the site will not then work. These cookies do not store any personally identifiable information.
+If you need to call the Jira REST API as the app itself (for example, to access data that the current user cannot see, or to make a request from a [scheduled trigger](/platform/forge/manifest-reference/modules/scheduled-trigger/) or [event handler](/platform/forge/events-reference/)), use the [`requestJira`](/platform/forge/runtime-reference/product-fetch-api/#requestjira) method from the `@forge/api` package in a back-end function, and call it with `api.asApp()`. See [Contextual methods](/platform/forge/runtime-reference/product-fetch-api/#contextual-methods) for more information on the differences between `asUser()` and `asApp()`.
 
-These cookies allow us to count visits and traffic sources so we can measure and improve the performance of our site. They help us to know which pages are the most and least popular and see how visitors move around the site. If you do not allow these cookies we will not know when you have visited our site, and will not be able to monitor its performance.
+## Function signature
 
-These cookies enable the website to provide enhanced functionality and personalisation. They may be set by us or by third party providers whose services we have added to our pages. If you do not allow these cookies then some or all of these services may not function properly.
+```
+1function requestJira(
+2  uri: string,
+3  options?: RequestInit,
+4): Promise<Response>
+5
+```
+
+## Arguments
+
+## Returns
+
+## Example
+
+```
+```
+1
+2
+3
+4
+5
+```
+
+
+
+```
+import { requestJira } from '@forge/bridge';
+
+const response = await requestJira('/rest/api/3/issue/ISSUE-1');
+console.log(await response.text());
+```
+```
