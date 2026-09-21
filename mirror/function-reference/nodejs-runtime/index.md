@@ -62,7 +62,7 @@ The Forge runtime allows your app to run directly on a secure VM environment. Yo
 At invocation time, Forge calls a context function. Each module receives different [request parameters](/platform/forge/function-reference/arguments/) based on
 the module type.
 
-![A code editor showing the invocation context](https://dac-static.atlassian.com/platform/forge/images/invocation-context.png?_v=1.5800.2335)
+![A code editor showing the invocation context](https://dac-static.atlassian.com/platform/forge/images/invocation-context.png?_v=1.5800.2336)
 
 You can also explicitly request a Forge function’s context details (for example, the
 [environments and versions](/platform/forge/environments-and-versions/) an app is executing in). See
@@ -172,6 +172,14 @@ resolver.define("example", () => {
 ```
 
 In this example, timers and other asynchronous code may continue executing even after the Forge function returns a response.
+
+Unawaited promises don't necessarily run to completion during the invocation that created them. The runtime can suspend them when the handler returns, and resume them only when the environment is reused for a later invocation, immediately before that invocation's handler runs. This means:
+
+* Execution timing is non-deterministic. The unawaited work might run seconds or minutes later, or never, depending on when (or whether) the environment is reused.
+* Logs from this resumed code can be **lost or misattributed**, because the logging context is tied to an invocation lifecycle that has already ended or already moved on to the next one. Don't rely on `console.log` output from unawaited code for debugging.
+* Any data the resumed code reads or writes can belong to a different tenant's invocation than the one that scheduled it, risking tenant data isolation. See [Developer responsibilities](#developer-responsibilities).
+
+Always `await` asynchronous operations before your handler returns. For work that must continue after the response is sent, use the [Async Events API](/platform/forge/runtime-reference/async-events-api/) instead of unawaited promises or timers.
 
 ### Default Content-Type header
 
