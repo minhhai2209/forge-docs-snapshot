@@ -32,11 +32,22 @@ To import the package (including its [error handler](/platform/forge/storage-ref
 To enable Forge SQL on your app, you’ll need to define the `sql` [module](/platform/forge/manifest-reference/modules/sql/) in the manifest file:
 
 ```
-1modules:
-2  sql:
-3    - key: main
-4      engine: mysql
+```
+1
+2
+3
+4
 5
+```
+
+
+
+```
+modules:
+  sql:
+    - key: main
+      engine: mysql
+```
 ```
 
 ## Step 2: Define database schema via DDL statements
