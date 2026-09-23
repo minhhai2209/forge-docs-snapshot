@@ -194,8 +194,12 @@ For requirements on what to declare and document as a third-party connector deve
 
 The `datasource` property in this module also enables:
 
-* **Connection validation** (`validateConnectionFn`): Ensures that the details entered by the admin,
-  such as API keys or folder IDs, are correct before the connection is saved.
+* **Connection validation** (`validateConnectionFn`): Checks the details entered by the admin,
+  such as API keys or folder IDs. Atlassian can also call this function after setup to evaluate the
+  health of the connection, so keep it read-only, idempotent, and inexpensive.
+
+  The typed response and reason-code constants below require `@forge/teamwork-graph@5.3.0-next.1`
+  or later.
 
   ```
   ```
@@ -256,14 +260,14 @@ The `datasource` property in this module also enables:
   55
   56
   57
-  58
-  59
   ```
 
 
 
   ```
   import { fetch } from '@forge/api';
+  import { types } from '@forge/teamwork-graph';
+
   // Connection management types for graph connector
   export interface ConnectionRequest {
       name: string;
@@ -274,55 +278,56 @@ The `datasource` property in this module also enables:
       message?: string;
   }
   export interface ValidateConnectionRequest extends ConnectionRequest {}
-  export interface ValidateConnectionResponse extends ConnectionResponse {}
-  export const validateConnection = async (request: ValidateConnectionRequest): Promise<ValidateConnectionResponse> => {
-      try {
-          console.log('Validating connection:', request.name);
-          
-          const apiKey = request.configProperties.apiKey;
-          const folderId = request.configProperties.folderId;
-          
-          if (!apiKey || !folderId) {
-              return {
-                  success: false,
-                  message: 'Either API key or folderId is missing'
-              };
-          }
-          // Test the API key by making a simple request to Google Drive API
-          const testUrl = `https://www.googleapis.com/drive/v3/files?q='${folderId}'%20in%20parents&key=${apiKey}`;
-          
-          const response = await fetch(testUrl, {
-              method: 'GET',
-              headers: {
-                  'Accept': 'application/json'
-              }
-          });
-          if (!response.ok) {
-              const errorText = await response.text();
-              console.error('API validation failed:', response.status, errorText);
-              return {
-                  success: false,
-                  message: `API key validation failed: ${response.status} ${response.statusText}`
-              };
-          }
-          const data = await response.json() as GoogleDriveApiResponse;
-          console.log('API validation successful for folderId: ', folderId, ' with data size: ', data.files.length);
-          
-          return {
-              success: true,
-              message: 'Connection validated successfully'
-          };
-          
-      } catch (error) {
-          console.error('Error validating connection:', error);
+
+  export const validateConnection = async (
+      request: ValidateConnectionRequest
+  ): Promise<types.ValidateConnectionResponse> => {
+      const apiKey = request.configProperties.apiKey;
+      const folderId = request.configProperties.folderId;
+
+      if (!apiKey || !folderId) {
           return {
               success: false,
-              message: `Connection validation error: ${error instanceof Error ? error.message : 'Unknown error'}`
+              reasonCode: types.CONNECTION_VALIDATION_REASON_CODES.INVALID_CONFIGURATION,
+              message: 'An API key and folder ID are required.'
           };
       }
+
+      const testUrl = `https://www.googleapis.com/drive/v3/files?q='${folderId}'%20in%20parents&key=${apiKey}`;
+      const response = await fetch(testUrl, {
+          method: 'GET',
+          headers: { Accept: 'application/json' }
+      });
+
+      if (response.ok) {
+          return { success: true };
+      }
+
+      const errorBody = await response.json().catch(() => undefined) as {
+          error?: { details?: Array<{ reason?: string }> }
+      } | undefined;
+      const reason = errorBody?.error?.details?.find(detail => detail.reason)?.reason;
+
+      if (response.status === 401 || reason === 'API_KEY_INVALID') {
+          return {
+              success: false,
+              reasonCode: types.CONNECTION_VALIDATION_REASON_CODES.INVALID_CREDENTIALS,
+              message: 'The Google Drive credentials are invalid or expired.'
+          };
+      }
+
+      // Classify other responses only when the provider reliably distinguishes a
+      // deterministic configuration or permission problem. For example, Google can
+      // also use HTTP 403 for quota errors, which are transient.
+      throw new Error(`Google Drive validation failed with status ${response.status}`);
   };
   ```
   ```
+
+  Return `success: false` only for deterministic problems that an admin can fix, and throw
+  transient failures. Existing validators that return normally with an HTTP 200 response remain
+  compatible. For the complete response, cadence, classification, and privacy guidance, see
+  [Connector health checks](/platform/teamwork-graph/connector-health-checks/).
 * **Connection change handling** (`onConnectionChangeFn`): Automatically responds to changes made by the admin, such as updating or deleting a connection.
 
   ```
@@ -386,8 +391,6 @@ The `datasource` property in this module also enables:
   57
   58
   59
-  60
-  61
   ```
 
 
@@ -407,14 +410,12 @@ The `datasource` property in this module also enables:
   export interface OnConnectionChangeResponse extends ConnectionResponse {}
   export const onConnectionChange = async (request: OnConnectionChangeRequest): Promise<OnConnectionChangeResponse> => {
       try {
-          console.log('Connection change event:', request);
           const connectorConfig: ConnectorConfig = {
               connectorName: request.configProperties.connectorName,
               connectionId: request.connectionId,
               apiKey: request.configProperties.apiKey,
               folderId: request.configProperties.folderId
           };
-          console.log('Connector config:', JSON.stringify(connectorConfig));
           switch (request.action) {
               case 'CREATED':
                   console.log('New connection created:', request.name);
@@ -446,10 +447,10 @@ The `datasource` property in this module also enables:
           };
           
       } catch (error) {
-          console.error('Error handling connection change:', error);
+          console.error('Error handling connection change.');
           return {
               success: false,
-              message: `Connection change error: ${error instanceof Error ? error.message : 'Unknown error'}`
+              message: 'Connection change failed.'
           };
       }
   };
