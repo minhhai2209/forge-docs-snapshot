@@ -1,45 +1,15 @@
 # Forge changelog
 
-### What is changing?
+## Manage Preferences
 
-We are removing support for anonymous (unauthenticated) users from the Forge Feature Flags Client SDK (`FeatureFlags` in `@forge/bridge`). Starting **December 1, 2026**, the Client SDK will no longer evaluate feature flags when no authenticated user is present.
+Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
+When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our [Privacy Policy](https://www.atlassian.com/legal/privacy-policy#how-we-disclose-information-we-collect).
+You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt-out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
 
-Currently, the Client SDK can be initialized even without a logged-in user (i.e., when no `accountId` is available). After this change, `FeatureFlags.initialize()` will only function for authenticated users with a valid Atlassian account. If your app calls `initialize()` without an `accountId` in the user's `identifiers`, the SDK will not return evaluated flag values and will fallback to default values.
+Allow all
 
-### Who is affected?
+These cookies are necessary for the website to function and cannot be switched off in our systems. They are usually only set in response to actions made by you which amount to a request for services, such as setting your privacy preferences, logging in or filling in forms. You can set your browser to block or alert you about these cookies, but some parts of the site will not then work. These cookies do not store any personally identifiable information.
 
-You are affected if your Forge app meets **both** of these conditions:
+These cookies allow us to count visits and traffic sources so we can measure and improve the performance of our site. They help us to know which pages are the most and least popular and see how visitors move around the site. If you do not allow these cookies we will not know when you have visited our site, and will not be able to monitor its performance.
 
-1. Uses the Feature Flags Client SDK (`FeatureFlags` from `@forge/bridge`)
-2. Allows anonymous access (e.g., your app module has `unlicensedAccess` enabled and you serve users who are not logged in)
-
-**If your app only serves logged-in users, no action is needed.**
-
-### What should you do?
-
-**Option A — Use a default value for anonymous users**
-
-Before calling `initialize()`, check whether an `accountId` is available. If not, skip initialization and use a hardcoded default for your feature flag logic:
-
-`1const { accountId } = await view.getContext();
-2if (accountId) {
-3 const featureFlags = new FeatureFlags();
-4 await featureFlags.initialize(user, config);
-5 const enabled = featureFlags.checkFlag("my-flag", false);
-6} else {
-7 // Anonymous user — use default behaviour
-8 const enabled = false;
-9}`
-
-**Option B — Move flag logic to the server-side SDK**
-
-If you need to control behaviour for anonymous users, use the <https://developer.atlassian.com/platform/forge/feature-flags/feature-flags-sdk/> in a resolver. The server SDK supports targeting by `installContext` (site-level), which does not require a user identity.
-
-### Timeline
-
-|  |  |
-| --- | --- |
-| Deprecation notice issued | Sep 2, 2026 |
-| End of support (breaking change) | Dec 1, 2026 |
-
-The deprecation period is **90 days**. During this time, the existing behaviour will continue to work, but you will see deprecation warnings in the developer console.
+These cookies enable the website to provide enhanced functionality and personalisation. They may be set by us or by third party providers whose services we have added to our pages. If you do not allow these cookies then some or all of these services may not function properly.
