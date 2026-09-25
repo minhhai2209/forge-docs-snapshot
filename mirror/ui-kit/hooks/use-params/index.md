@@ -1,15 +1,90 @@
 # useParams (Preview)
 
-## Manage Preferences
+This section describes a Forge *preview* feature. Preview features are deemed stable;
+however, they remain under active development and may be subject to shorter deprecation
+windows. Preview features are suitable for early adopters in production environments.
 
-Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
-When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our [Privacy Policy](https://www.atlassian.com/legal/privacy-policy#how-we-disclose-information-we-collect).
-You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt-out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
+We release preview features so partners and developers can study, test, and integrate
+them prior to General Availability (GA). For more information,
+see [Forge release phases: EAP, Preview, and GA](/platform/forge/whats-coming/#preview).
 
-Allow all
+This hook returns an object containing the dynamic parameters extracted from the current URL, as
+defined by the matching [Route](/platform/forge/ui-kit/components/router/#route) component's `path` prop.
 
-These cookies are necessary for the website to function and cannot be switched off in our systems. They are usually only set in response to actions made by you which amount to a request for services, such as setting your privacy preferences, logging in or filling in forms. You can set your browser to block or alert you about these cookies, but some parts of the site will not then work. These cookies do not store any personally identifiable information.
+It must be used within a [Route](/platform/forge/ui-kit/components/router/#route) component.
 
-These cookies allow us to count visits and traffic sources so we can measure and improve the performance of our site. They help us to know which pages are the most and least popular and see how visitors move around the site. If you do not allow these cookies we will not know when you have visited our site, and will not be able to monitor its performance.
+## Usage
 
-These cookies enable the website to provide enhanced functionality and personalisation. They may be set by us or by third party providers whose services we have added to our pages. If you do not allow these cookies then some or all of these services may not function properly.
+To add the `useParams` hook to your app:
+
+```
+1import { useParams } from '@forge/react/router';
+2
+```
+
+Here is an example of an app that uses `useParams` to display a post by its ID.
+
+```
+1import ForgeReconciler, { Text, Heading } from '@forge/react';
+2import { Router, Route, useParams } from '@forge/react/router';
+3
+4const PostPage = () => {
+5  const { id } = useParams();
+6  return (
+7    <>
+8      <Heading as="h2">Post Detail</Heading>
+9      <Text>Viewing post with ID: {id}</Text>
+10    </>
+11  );
+12};
+13
+14const App = () => (
+15  <>
+16    <Route path="/">
+17      <Text>Home Page</Text>
+18    </Route>
+19    <Route path="/posts/:id">
+20      <PostPage />
+21    </Route>
+22  </>
+23);
+24
+25ForgeReconciler.render(
+26  <Router>
+27    <App />
+28  </Router>
+29);
+30
+```
+
+### Function signature
+
+```
+```
+1
+2
+```
+
+
+
+```
+function useParams(): Record<string, string>;
+```
+```
+
+### Arguments
+
+None.
+
+### Returns
+
+* **Record<string, string>:** An object containing key-value pairs of the dynamic parameters from the
+  matched route path. The keys correspond to the parameter names defined in the
+  [Route](/platform/forge/ui-kit/components/router/#route) component's `path` prop (without the `:` prefix).
+
+  For example, if the route path is `/posts/:postId/comments/:commentId` and the current URL is
+  `/posts/42/comments/7`, the returned object will be `{ postId: '42', commentId: '7' }`.
+
+  If the route uses a catch-all pattern (`*`), the matched remainder is available under the `*` key.
+  For example, if the route path is `/files/*` and the current URL is `/files/docs/report.pdf`, the
+  returned object will be `{ '*': 'docs/report.pdf' }`.

@@ -1,15 +1,12 @@
 # Async events API Reference
 
-## Manage Preferences
-
-Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
-When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our [Privacy Policy](https://www.atlassian.com/legal/privacy-policy#how-we-disclose-information-we-collect).
-You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt-out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
-
-Allow all
-
-These cookies are necessary for the website to function and cannot be switched off in our systems. They are usually only set in response to actions made by you which amount to a request for services, such as setting your privacy preferences, logging in or filling in forms. You can set your browser to block or alert you about these cookies, but some parts of the site will not then work. These cookies do not store any personally identifiable information.
-
-These cookies allow us to count visits and traffic sources so we can measure and improve the performance of our site. They help us to know which pages are the most and least popular and see how visitors move around the site. If you do not allow these cookies we will not know when you have visited our site, and will not be able to monitor its performance.
-
-These cookies enable the website to provide enhanced functionality and personalisation. They may be set by us or by third party providers whose services we have added to our pages. If you do not allow these cookies then some or all of these services may not function properly.
+|  |  |
+| --- | --- |
+| `PartialSuccessError` | Some pushed events were not recorded for later processing. Each event can have a different reason for failure. To get error details for failed events, inspect the error's `failedEvents` property [here](#tip-menu-code). |
+| `RateLimitError` | The total number of events pushed per minute exceeds the defined limits. To overcome this, retry adding events after a minute. |
+| `TooManyEventsError` | More than 50 events were pushed to the queue in a single request. See [Async events limits](/platform/forge/limits-async-events/) for more details about this limit. |
+| `PayloadTooBigError` | The combined payload of events pushed in a single request exceeded 200 KB. See [Async events limits](/platform/forge/limits-async-events/) for more details about this limit. |
+| *Invalid event shape* | A pushed event is not an object (`Event must be an object.`), or it has no `body` object (`Event body must be an object.`). See [Event shape](/platform/forge/runtime-reference/async-events-api/#event-shape) for the structure `Queue.push()` expects. |
+| `InvalidPushSettingsError` | The `delayInSeconds` setting of a pushed event is outside the supported range of 0 to 900 seconds. |
+| `InvalidQueueNameError` | The queue name is invalid. A valid queue name is alphanumeric string, and can start with `_`. |
+| `InvocationLimitReachedError` | An event resolver can push more events to the queue, creating a cycle. This error means an event pushed another event into the queue more than 1000 times. To avoid this, process more events in parallel. See [Async events limits](/platform/forge/limits-async-events/) for more details about this limit. |

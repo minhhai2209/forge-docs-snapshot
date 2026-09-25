@@ -1,21 +1,18 @@
 # Call the Teamwork Graph API (EAP)
 
-The Teamwork Graph API is available through Forge's Early Access Program (EAP).
+The Teamwork Graph API is available through Forge's
+[Preview](/platform/forge/whats-coming/#preview) release phase.
 
-EAPs are offered to selected users for testing and feedback purposes. These features are unsupported
-and are subject to change without notice.
+Preview features are available to all users and receive the same level of support as generally
+available features. Schemas, fields, and behavior may still change before general availability (GA),
+and breaking changes are subject to a minimum **1-month deprecation notice**, announced in the
+[Teamwork Graph changelog](/platform/teamwork-graph/changelog/).
 
-**You must only install apps that call the Teamwork Graph API in test organizations.** Apps calling
-the Teamwork Graph API require the `read:graph:jira`or `read:graph:confluence` scope, which provides access to Teamwork Graph
-data across your entire organization. While apps still respect end-user permissions, this scope may
-grant access to sensitive information. For safety, only install these apps in organizations with test
-data unless you have an [approved path to production](/platform/teamwork-graph/limitations-and-considerations/#path-to-production-for-teamwork-graph-api-apps).
+To review the current limitations, see
+[Limitations and considerations](/platform/teamwork-graph/limitations-and-considerations/).
 
-Additionally, this EAP has significant limitations. To review the full list of limitations, see
-[Limitations and considerations](/platform/teamwork-graph/limitations-and-considerations/#teamwork-graph-api--eap-).
-
-You must be part of this EAP in order to use the Teamwork Graph API. Express interest in joining
-through [this form](https://ecosystem.atlassian.net/servicedesk/customer/portal/1040/group/3496/create/18841).
+To share feedback or report an issue, visit the
+[Atlassian developer community](https://community.developer.atlassian.com/).
 
 This tutorial shows you how to query data from Teamwork Graph using the GraphQL API in a Forge app. You'll learn how to use Cypher queries to traverse the graph and retrieve connected data.
 
