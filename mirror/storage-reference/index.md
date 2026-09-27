@@ -1,15 +1,39 @@
-# Storage
+# Storage overview
 
-## Manage Preferences
+Forge provides hosted storage capabilities that let you persistently store data in your app installation. Each installation of your app is subject to the quotas and limits of Forge's hosted storage capabilities. See [Storage quotas](/platform/forge/platform-quotas-and-limits/#storage-quotas) and [Storage limits](/platform/forge/platform-quotas-and-limits/#storage-limits) for more details.
 
-Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
-When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our [Privacy Policy](https://www.atlassian.com/legal/privacy-policy#how-we-disclose-information-we-collect).
-You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt-out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
+## Hosted storage capabilities
 
-Allow all
+Use this for long-term storage until you need to delete or overwrite the data. Forge provides the following persistent storage capabilities:
 
-These cookies are necessary for the website to function and cannot be switched off in our systems. They are usually only set in response to actions made by you which amount to a request for services, such as setting your privacy preferences, logging in or filling in forms. You can set your browser to block or alert you about these cookies, but some parts of the site will not then work. These cookies do not store any personally identifiable information.
+These capabilities will:
 
-These cookies allow us to count visits and traffic sources so we can measure and improve the performance of our site. They help us to know which pages are the most and least popular and see how visitors move around the site. If you do not allow these cookies we will not know when you have visited our site, and will not be able to monitor its performance.
+* [Encrypt](https://www.atlassian.com/trust/security/security-practices#key-management) and store data on disk, optimising them for durability and persistence at the expense of performance.
+* Automatically scope data per installation to ensure tenant safety.
 
-These cookies enable the website to provide enhanced functionality and personalisation. They may be set by us or by third party providers whose services we have added to our pages. If you do not allow these cookies then some or all of these services may not function properly.
+## Data recovery for apps with hosted storage
+
+Forge hosted storage retains data for 28 days after uninstallation. However, when a customer reinstalls an app that uses Forge hosted storage, data
+from the previous installation is not automatically restored.
+
+To recover this data for a customer, app developers must:
+
+* Get customer consent to restore data.
+* Submit a recovery request within 21 days of uninstallation. This is to ensure the request is processed before the 28-day retention ends.
+
+To submit a recovery request:
+
+1. Raise a bug ticket on [Developer and Marketplace Support](https://ecosystem.atlassian.net/servicedesk/customer/portal/34/group/3534/create/4180).
+2. Write **Re-link data to reinstalled app** in the summary.
+3. Add the following customer details to the **Description**:
+   * **Site ID**: of the site where the app is currently installed
+   * **Installation ID**: the current app installation where the existing data should be re-linked
+
+We will then re-link the data from their *previous* installation (also identified by Installation ID) to the current installation.
+
+If the customer uninstalled and reinstalled their app multiple times, you may need to specify which installation's data we should re-link.
+In this case, you can ask the customer to identify this installation by the date it was uninstalled.
+
+See [Data lifecycle for Forge-hosted storage](/platform/forge/storage-reference/hosted-storage-data-lifecycle/) for related details.
+
+Forge storage capabilities have generous free monthly allowances, but reads, writes, and stored data are billable above those thresholds. For recommendations on reducing storage costs (such as caching, batching, and querying instead of iterating) see [Storage optimisations](/platform/forge/optimise-forge-costs/#storage-optimisations).

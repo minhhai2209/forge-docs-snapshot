@@ -1,15 +1,37 @@
 # Promote an app to staging or production
 
-## Manage Preferences
+This page describes how to take your existing Forge app from the *development* environment
+and share it with your users in a *production* environment. You'll learn about Forge
+environment restrictions and how to request the minimum set of permissions from your users.
 
-Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
-When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our [Privacy Policy](https://www.atlassian.com/legal/privacy-policy#how-we-disclose-information-we-collect).
-You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt-out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
+## Configure API scopes
 
-Allow all
+Forge apps must explicitly declare which scopes they require in the `manifest.yml` file
+to use the authenticated [Product Fetch APIs](/platform/forge/runtime-reference/product-fetch-api/).
 
-These cookies are necessary for the website to function and cannot be switched off in our systems. They are usually only set in response to actions made by you which amount to a request for services, such as setting your privacy preferences, logging in or filling in forms. You can set your browser to block or alert you about these cookies, but some parts of the site will not then work. These cookies do not store any personally identifiable information.
+See the [Permissions](/platform/forge/manifest-reference/permissions/) page for a summarized
+table of Forge supported OAuth 2.0 scopes for all Atlassian cloud apps. You
+can also find supported scopes in each Atlassian app's REST API documentation on a per operation basis.
 
-These cookies allow us to count visits and traffic sources so we can measure and improve the performance of our site. They help us to know which pages are the most and least popular and see how visitors move around the site. If you do not allow these cookies we will not know when you have visited our site, and will not be able to monitor its performance.
+See the [Add scopes to call an Atlassian REST API](/platform/forge/add-scopes-to-call-an-atlassian-rest-api/)
+page for step-by-step instructions on adding new scopes.
 
-These cookies enable the website to provide enhanced functionality and personalisation. They may be set by us or by third party providers whose services we have added to our pages. If you do not allow these cookies then some or all of these services may not function properly.
+### Deploy to a specific environment
+
+To deploy to a specific environment, provide the `-e` argument to your command.
+
+1. Navigate to the app's top-level directory and deploy your app by running:
+
+   ```
+   1forge deploy -e production
+   2
+   ```
+2. Install your app by running:
+
+   ```
+   1forge install -e production
+   2
+   ```
+3. Select the Atlassian app.
+4. Enter the URL for your development site (for example, *example.atlassian.net*).
+5. Review the scopes your app is requesting then answer `y`.

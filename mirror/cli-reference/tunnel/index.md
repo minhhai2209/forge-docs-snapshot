@@ -1,15 +1,35 @@
-# Command: tunnel
+# tunnel
 
-## Manage Preferences
+## Description
 
-Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
-When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our [Privacy Policy](https://www.atlassian.com/legal/privacy-policy#how-we-disclose-information-we-collect).
-You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt-out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
+start a tunnel to connect your local code with the app running in the
+development environment
 
-Allow all
+## Usage
 
-These cookies are necessary for the website to function and cannot be switched off in our systems. They are usually only set in response to actions made by you which amount to a request for services, such as setting your privacy preferences, logging in or filling in forms. You can set your browser to block or alert you about these cookies, but some parts of the site will not then work. These cookies do not store any personally identifiable information.
+```
+1Usage: forge tunnel [options]
+2
+```
 
-These cookies allow us to count visits and traffic sources so we can measure and improve the performance of our site. They help us to know which pages are the most and least popular and see how visitors move around the site. If you do not allow these cookies we will not know when you have visited our site, and will not be able to monitor its performance.
+## Options
 
-These cookies enable the website to provide enhanced functionality and personalisation. They may be set by us or by third party providers whose services we have added to our pages. If you do not allow these cookies then some or all of these services may not function properly.
+```
+1--verbose                                              enable verbose mode
+2-e, --environment [environment]                        specify the environment (see your default environment by running forge settings list)
+3-d, --debug                                            enable debugger mode
+4-f,--debugFunctionHandlers <debugFunctionHandlers...>  list of function handlers declared on manifest to debug, separated by space. This option must be specified if debug mode is enabled.  It is only used for Node runtime debugger
+5-p,--debugStartingPort [debugStartingPort]             starting port to use for debugging, multiple handlers will get subsequent ports. It is only used for Node runtime debugger (default: "9229")
+6-h,--debugHost [debugHost]                             host to bind the Node runtime debuggers to, default is 127.0.0.1 (default: "127.0.0.1")
+7-n, --no-verify                                        disable pre-tunnel checks
+8--help                                                 display help for command
+9
+```
+
+For CLI versions `10.1.0` and beyond, tunnels running on Cloudflare do not require additional setup.
+
+## Further information
+
+* [Debug functions using IntelliJ](/platform/forge/debug-functions-using-intellij): This tutorial demonstrates debugging back-end Forge functions in Node.js with IntelliJ's debugger.
+* [Debug functions using VSCode](/platform/forge/debug-functions-using-vscode): This tutorial demonstrates debugging back-end Forge functions in Node.js with VS Code's debugger.
+* [Tunneling](/platform/forge/tunneling/): This guide explains how to debug in real-time between the local environment and the Forge platform.
