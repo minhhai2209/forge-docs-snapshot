@@ -1,15 +1,6 @@
-# Dashboard background script (EAP)
+# Dashboard background script
 
-Forge's EAP offers experimental features to selected users for testing and feedback purposes.
-These features are unsupported and not recommended for use in production environments. They
-are also subject to change without notice.
-For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
-
-To participate, you can [sign up for the EAP here](https://docs.google.com/forms/d/e/1FAIpQLSfl_TpJ7o160vlOMhvU07u4XfKSnTnMpzi_4Q8d7-ieNhD1vQ/viewform?usp=sharing&ouid=100849039189157529928p).
-
-**Note:** You must also opt-in to the open beta of Dashboards in Atlassian Home. See the [guide on how to opt-in](https://community.atlassian.com/forums/Atlassian-Home-articles/Home-Dashboards-available-in-open-beta/ba-p/3009544).
-
-## Dashboard Background Script module (EAP)
+## Dashboard background script module
 
 The dashboard background script module allows you to run background processes that can:
 
@@ -20,22 +11,23 @@ The dashboard background script module allows you to run background processes th
 
 Unlike dashboard widgets, the background script is not influenced by dashboard page navigation changes, making it perfect for persistent operations.
 
-### Setup Instructions
+### Setup instructions
 
 You can create a dashboard widget with background script app with the following steps:
 
-1. Run `forge create` and follow the prompts, selecting the templates under **Dashboards (EAP)**.
-2. Run `forge deploy` to deploy the app.
-3. Run `forge install` and follow the prompts to install the app to **Jira** context (even though it is only available in Atlassian Home).
-4. Once the app is installed, navigate to your Atlassian site and go to the Dashboards section in Atlassian Home.
-5. Click "Add widget" and find your widget in the Marketplace widget list.
-6. Add your widget to the dashboard to see it in action.
+1. Ensure your Jira development or test site is enrolled in the [Developer Canary Program](https://developer.atlassian.com/cloud/jira/platform/developer-canary-program/).
+2. Run `forge create` and follow the prompts, selecting the templates under **Dashboards**.
+3. Run `forge deploy` to deploy the app.
+4. Run `forge install` and follow the prompts to install the app to **Jira**.
+5. Once the app is installed, navigate to Jira and go to **Dashboards**.
+6. Select **Add widget** and find your widget in the Atlassian Marketplace widget list.
+7. Add your widget to the upgraded dashboard to see it in action.
 
 ## Examples
 
 Use the [events](/platform/forge/custom-ui-bridge/events/) API for communication between dashboard background scripts and dashboard widgets.
 
-### Basic Background Script
+### Basic background script
 
 ```
 ```
@@ -140,8 +132,4 @@ The background script receives context information about the dashboard environme
 
 ## Complete examples
 
-For complete implementation examples, refer to the [Forge sample apps repository](https://developer.atlassian.com/platform/forge/example-apps/) once the EAP is fully available.
-
-## UI Kit Background Script
-
-When using UI Kit for your background script implementation, ensure you're using the latest version that supports the dashboard features.
+For complete implementation examples, refer to the [Forge sample apps repository](https://developer.atlassian.com/platform/forge/example-apps/).

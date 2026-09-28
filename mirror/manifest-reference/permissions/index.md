@@ -76,6 +76,12 @@ documentation.
 For more details about each Atlassian app's OAuth 2.0 (3LO) and Forge scopes,
 refer to the pages below:
 
+### Teamwork Graph scopes
+
+For scopes required to query the Teamwork Graph API, refer to
+[Teamwork Graph scopes](/platform/teamwork-graph/scopes/). This reference explains which scopes
+to declare in your app's manifest and how scope permissions affect query results.
+
 ## Content permissions
 
 The `content` section declares which Content Security Policy (CSP) options are required by your app

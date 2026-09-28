@@ -1,15 +1,7 @@
-# Dashboard UI bridge (EAP)
+# Dashboard UI bridge
 
-Forge's EAP offers experimental features to selected users for testing and feedback purposes.
-These features are unsupported and not recommended for use in production environments. They
-are also subject to change without notice.
-For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
-
-To participate, you can [sign up for the EAP here](https://docs.google.com/forms/d/e/1FAIpQLSfl_TpJ7o160vlOMhvU07u4XfKSnTnMpzi_4Q8d7-ieNhD1vQ/viewform?usp=sharing&ouid=100849039189157529928p).
-
-**Note:** You must also opt-in to the open beta of Dashboards in Atlassian Home. See the [guide on how to opt-in](https://community.atlassian.com/forums/Atlassian-Home-articles/Home-Dashboards-available-in-open-beta/ba-p/3009544).
-
-The Dashboard UI bridge is a JavaScript API that enables [Forge dashboard widgets](/platform/forge/manifest-reference/modules/dashboard-widget) to securely integrate with dashboards in Atlassian Home.
+The Dashboard UI bridge is a JavaScript API that enables [Forge dashboard widgets](/platform/forge/manifest-reference/modules/dashboard-widget/) to securely integrate with Jira dashboards.
+It also exposes the [`filter`](/platform/forge/apis-reference/dashboard-bridge-apis/filter/) APIs for apps that define filters for dashboards.
 
 Install the Dashboard UI bridge using the
 [@forge/dashboards-bridge](https://www.npmjs.com/package/@forge/dashboards-bridge) npm package.
@@ -65,5 +57,44 @@ widgetEdit.onSave(async (config, { widgetId }) => {
 widgetEdit.onProductSave(async (config) => {
   return config; // Return config to save in product
 });
+```
+```
+
+For dashboard filter functionality, use the bridge in your filter resource like this:
+
+```
+```
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+```
+
+
+
+```
+import { filter } from "@forge/dashboards-bridge";
+
+filter.onProductSave(async () => ({
+  operator: "AND",
+  groups: [
+    {
+      label: "Status",
+      comparison: "EQUALS",
+      defaultValues: ["Done"],
+      dimensions: ["status"],
+    },
+  ],
+}));
 ```
 ```

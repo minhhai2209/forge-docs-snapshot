@@ -8,7 +8,7 @@ The page URL is constructed in the following format: `/jira/software/projects/{p
 
 When adding this to your app, use it as a top-level component.
 
-![Example of an project settings page](https://dac-static.atlassian.com/platform/forge/snippets/images/project-settings-page.jpg?_v=1.5800.2336)
+![Example of an project settings page](https://dac-static.atlassian.com/platform/forge/snippets/images/project-settings-page.jpg?_v=1.5800.2350)
 
 ## Subpages
 
@@ -21,20 +21,35 @@ The sidebar will only change the project settings page URL, you will need to [ha
 
 This feature works only with Custom UI.
 
-![Example of a subpage](https://dac-static.atlassian.com/platform/forge/snippets/images/project-settings-subpage.jpg?_v=1.5800.2336)
+![Example of a subpage](https://dac-static.atlassian.com/platform/forge/snippets/images/project-settings-subpage.jpg?_v=1.5800.2350)
 
 ## Manifest example
 
 ```
-1modules:
-2  jira:projectSettingsPage:
-3    - key: hello-world-project-settings-page
-4      resource: main
-5      resolver:
-6        function: resolver
-7      render: native
-8      title: Hello World
+```
+1
+2
+3
+4
+5
+6
+7
+8
 9
+```
+
+
+
+```
+modules:
+  jira:projectSettingsPage:
+    - key: hello-world-project-settings-page
+      resource: main
+      resolver:
+        function: resolver
+      render: native
+      title: Hello World
+```
 ```
 
 ## Properties
@@ -77,6 +92,8 @@ This feature works only with Custom UI.
 11
 12
 13
+14
+15
 ```
 
 
@@ -94,6 +111,8 @@ modules:
         - title: page example
           route: page-example-1
           icon: https://example.com/icon.png
+          displayConditions:
+            isAdmin: true
 ```
 ```
 
@@ -104,6 +123,7 @@ modules:
 | `title` | `string` or `i18n object` | Yes | The title of the subpage, which is displayed on the sidebar.  The `i18n object` allows for translation. See [i18n object](#i18n-object). |
 | `icon` | `string` |  | The URL of the icon that's displayed next to the subpage title. A generic app icon is displayed if no icon is provided. |
 | `route` | `string` | Yes | The unique identifier of the subpage. This identifier is appended to the project settings page URL. |
+| `displayConditions` | `object` |  | The object that defines whether the subpage is displayed in the navigation. The subpage is hidden when the conditions evaluate to false.  See [display conditions](/platform/forge/manifest-reference/display-conditions). |
 
 ### Section
 
@@ -126,6 +146,8 @@ modules:
 13
 14
 15
+16
+17
 ```
 
 
@@ -145,6 +167,8 @@ modules:
             - title: page example
               route: page-example-1
               icon: https://example.com/icon.png
+          displayConditions:
+            isAdmin: true
 ```
 ```
 
@@ -154,6 +178,7 @@ modules:
 | --- | --- | --- | --- |
 | `header` | `string` or `i18n object` |  | The section header.  The `i18n object` allows for translation. See [i18n object](#i18n-object). |
 | `pages` | `Page[]` | Yes | The list of subpages to render on the sidebar. |
+| `displayConditions` | `object` |  | The object that defines whether the section is displayed in the navigation. The section, and every subpage it contains, is hidden when the conditions evaluate to false.  The section is also hidden when all of the subpages it contains are hidden.  See [display conditions](/platform/forge/manifest-reference/display-conditions). |
 
 ## Extension data
 

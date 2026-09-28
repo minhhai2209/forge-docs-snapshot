@@ -1,16 +1,8 @@
-# Rovo Agent Connector (Preview)
-
-This section describes a Forge *preview* feature. Preview features are deemed stable;
-however, they remain under active development and may be subject to shorter deprecation
-windows. Preview features are suitable for early adopters in production environments.
-
-We release preview features so partners and developers can study, test, and integrate
-them prior to General Availability (GA). For more information,
-see [Forge release phases: EAP, Preview, and GA](/platform/forge/whats-coming/#preview).
+# Rovo Agent Connector
 
 The `rovo:agentConnector` module allows you to integrate remote AI agents hosted on external infrastructure into Jira. Once a remote agent is registered, users can interact with them in a similar manner to other users and Rovo agents: assigning them work items, @mentioning them in comments, and chatting with them via the Rovo Chat panel.
 
-Use this module to integrate Jira with AI agents residing outside of the Atlassian platform (such as GitHub Copilot, Cursor Background Agents, or Box AI Agents). New integrations should target A2A 1.0. For implementation guidance, see [Integrate remote agents with Jira](/platform/forge/remote-agents-in-jira/).
+Use this module to integrate Jira with AI agents residing outside of the Atlassian platform (such as GitHub Copilot, Cursor Background Agents, or Box AI Agents). Integrations must use A2A 1.0. For implementation guidance, see [Integrate remote agents with Jira](/platform/forge/remote-agents-in-jira/).
 
 ## Requirement: Agent2Agent protocol server
 
@@ -57,7 +49,7 @@ This would reflect in the following error message:
 
 
 ```
-I counldn't finish working because of a technical problem on my end. Try again in a few moments.
+I couldn't finish working because of a technical problem on my end. Try again in a few moments.
 ```
 ```
 
@@ -140,7 +132,7 @@ In this structure:
 * The `endpoint` property references a separately defined [`endpoint` module](/platform/forge/manifest-reference/endpoint/), which specifies the route Jira uses to communicate with your remote agent via JSON-RPC.
 * The `remotes` configuration identifies the domain of your remote service and enables authentication tokens to be passed to your service.
 * The `resources` module provides static assets like the agent icon.
-* The `productContexts` property specifies which Atlassian products the agent operates in. Only `jira` is supported during the Preview.
+* The `productContexts` property specifies which Atlassian products the agent operates in. Only `jira` is supported.
 * The `permissions.scopes` array declares the OAuth scopes your app requires. The `read:jira-work` scope is required for the agent to function correctly.
 
 ## Properties
@@ -152,17 +144,15 @@ In this structure:
 | `description` | `string` |  | The description of your Agent. This is used to describe what your Agent can do to users. |
 | `icon` | `string` |  | The icon displayed as the Agent’s avatar.  The `icon` property accepts a relative path from a declared resource. Alternatively, you can also use an absolute URL to a self-hosted icon.  If no icon is provided, or if there's an issue preventing the icon from loading, a generic avatar will be displayed. |
 | `conversationStarters` | `string[]` |  | Conversation starters that will be suggested to the user when they engage with your Agent. |
-| `productContexts` | `string[]` | Yes | The Atlassian apps within which the agent should operate.  Only `jira` can be used during the Preview. |
+| `productContexts` | `string[]` | Yes | The Atlassian apps within which the agent should operate.  Only `jira` is currently supported. |
 | `protocols` | `object` | Yes | Defines the protocols and transport mechanisms your remote agent uses to communicate with Jira.  See [A2A Protocols](#a2a-protocols) for more configuration details |
 
 ### A2A Protocols
 
-For new integrations, set `agent2Agent.version` to `1.0`. Use `0.3` only for deprecated A2A 0.3-era integrations or temporary migration scenarios.
-
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
 | `agent2Agent` | `object` | Yes | Configures communication using the Agent2Agent (A2A) protocol. Currently, only `jsonRpcTransport` is supported. |
-| `agent2Agent` `.version` | `string` | Yes | The version of the A2A protocol to use.  Valid values are `1.0` and `0.3`. Use `1.0` for new integrations. Use `0.3` only to preserve compatibility with existing A2A 0.3-era implementations during migration.  See [A2A protocol versioning](https://a2a-protocol.org/latest/whats-new-v1/) for more details. |
+| `agent2Agent` `.version` | `string` | Yes | The version of the A2A protocol to use.  The only valid value is `1.0`. A2A 0.3 is no longer accepted.  See [A2A protocol versioning](https://a2a-protocol.org/latest/whats-new-v1/) for more details. |
 | `agent2Agent` `.jsonRpcTransport` | `object` | Yes | Enables Agent2Agent protocol over JSON-RPC 2.0 transport.  See [Transport properties](#transport-properties) for more configuration details |
 
 ### Transport properties

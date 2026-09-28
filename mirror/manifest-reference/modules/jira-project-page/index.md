@@ -10,9 +10,9 @@ This module can be used in Jira and Jira Service Management.
 
 When adding this to your app, use it as a top-level component.
 
-![Example of a project page](https://dac-static.atlassian.com/platform/forge/snippets/images/project-page.jpg?_v=1.5800.2336)
+![Example of a project page](https://dac-static.atlassian.com/platform/forge/snippets/images/project-page.jpg?_v=1.5800.2350)
 
-![Example of a project page - JSM](https://dac-static.atlassian.com/platform/forge/snippets/images/project-page-jsm.jpg?_v=1.5800.2336)
+![Example of a project page - JSM](https://dac-static.atlassian.com/platform/forge/snippets/images/project-page-jsm.jpg?_v=1.5800.2350)
 
 ## Subpages
 
@@ -94,6 +94,8 @@ modules:
 11
 12
 13
+14
+15
 ```
 
 
@@ -111,6 +113,8 @@ modules:
         - title: page example
           route: page-example-1
           icon: https://example.com/icon.png
+          displayConditions:
+            isAdmin: true
 ```
 ```
 
@@ -121,6 +125,7 @@ modules:
 | `title` | `string` or `i18n object` | Yes | The title of the subpage, which is displayed on the sidebar.  The `i18n object` allows for translation. See [i18n object](#i18n-object). |
 | `icon` | `string` |  | The URL of the icon that's displayed next to the subpage title. A generic app icon is displayed if no icon is provided. |
 | `route` | `string` | Yes | The unique identifier of the subpage. This identifier is appended to the project page URL. |
+| `displayConditions` | `object` |  | The object that defines whether the subpage is displayed in the navigation. The subpage is hidden when the conditions evaluate to false.  See [display conditions](/platform/forge/manifest-reference/display-conditions). |
 
 ### Section
 
@@ -143,6 +148,8 @@ modules:
 13
 14
 15
+16
+17
 ```
 
 
@@ -162,6 +169,8 @@ modules:
             - title: page example
               route: page-example-1
               icon: https://example.com/icon.png
+          displayConditions:
+            isAdmin: true
 ```
 ```
 
@@ -171,6 +180,7 @@ modules:
 | --- | --- | --- | --- |
 | `header` | `string` or `i18n object` |  | The section header.  The `i18n object` allows for translation. See [i18n object](#i18n-object). |
 | `pages` | `Page[]` | Yes | The list of subpages to render within the app. |
+| `displayConditions` | `object` |  | The object that defines whether the section is displayed in the navigation. The section, and every subpage it contains, is hidden when the conditions evaluate to false.  The section is also hidden when all of the subpages it contains are hidden.  See [display conditions](/platform/forge/manifest-reference/display-conditions). |
 
 ## Extension data
 
@@ -303,6 +313,8 @@ history.go(-2);
 ### Can I restrict when my project page appears?
 
 Yes, use the [displayConditions](/platform/forge/manifest-reference/display-conditions/) property to control when your module is visible. This allows you to show the page only in specific project types or under certain conditions.
+
+You can also add `displayConditions` to individual [subpages](#page) or [sections](#section) to hide parts of your app's navigation.
 
 ### Is the project page module compatible with Jira Service Management?
 

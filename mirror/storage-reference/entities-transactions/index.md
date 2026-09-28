@@ -56,7 +56,7 @@ This page discusses Custom Entity Store transactions. For Key-Value Store transa
 
 ## Limitations
 
-Data stored through transactions is still subject to [Custom entities limits](/platform/forge/platform-quotas-and-limits/#custom-entities-limits). Transactions are also subject to additional limits, namely:
+Data stored through any transaction operation is subject to Forge's [key and object size limits](/platform/forge/limits-kvs-ce#forge-hosted-storage-key-and-object-size-limits). For example, each operation can only store a key with a maximum length of 500 characters. Transactions are also subject to additional limits, namely:
 
 | Category | Limit |
 | --- | --- |

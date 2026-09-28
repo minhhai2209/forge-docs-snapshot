@@ -94,6 +94,9 @@ By default, this command:
 1. Runs pre-deployment checks (like `forge lint`) and reports any compilation errors.
 2. Deploys app changes to your [default environment](/platform/forge/environments-and-versions/#default-environments).
 
+If your app uses [manual packaging (Preview)](/platform/forge/manifest-reference/packaging/), the Forge CLI uploads your packaged code as it is,
+without compiling or bundling it. Build your app before you run `forge deploy`.
+
 ## Pre-approval
 
 The `forge deploy` command relies on pre-deployment checks (via `forge lint`). Some of those checks may require a developer approval before being able to continue the deployment flow.

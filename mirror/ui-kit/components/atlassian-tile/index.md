@@ -27,7 +27,7 @@ Use `AtlassianTile` for Atlassian object types such as Confluence pages or Jira 
 
 The following image shows some of the available Atlassian tile types. For the full list of Atlassian tile types and usage guidelines, see the [Atlassian Design System](https://atlassian.design/components/object/object-tile) object tile component.
 
-![Grid of available Atlassian tile types with labels](https://dac-static.atlassian.com/platform/forge/ui-kit/images/atlassian-tile/atlassian-tile-examples.png?_v=1.5800.2336)
+![Grid of available Atlassian tile types with labels](https://dac-static.atlassian.com/platform/forge/ui-kit/images/atlassian-tile/atlassian-tile-examples.png?_v=1.5800.2350)
 
 ## Props
 
@@ -44,7 +44,7 @@ The following image shows some of the available Atlassian tile types. For the fu
 
 The default appearance of an Atlassian tile with the default size (medium).
 
-![Example image of default AtlassianTile](https://dac-static.atlassian.com/platform/forge/ui-kit/images/atlassian-tile/atlassian-tile-default.png?_v=1.5800.2336)
+![Example image of default AtlassianTile](https://dac-static.atlassian.com/platform/forge/ui-kit/images/atlassian-tile/atlassian-tile-default.png?_v=1.5800.2350)
 
 ```
 ```
@@ -67,7 +67,7 @@ const AtlassianTileDefault = () => {
 
 Atlassian tiles can be displayed in five sizes: xsmall (20px), small (24px), medium (32px), large (40px), and xlarge (48px). The medium size is the default.
 
-![Example image of Atlassian tile sizes](https://dac-static.atlassian.com/platform/forge/ui-kit/images/atlassian-tile/atlassian-tile-size.png?_v=1.5800.2336)
+![Example image of Atlassian tile sizes](https://dac-static.atlassian.com/platform/forge/ui-kit/images/atlassian-tile/atlassian-tile-size.png?_v=1.5800.2350)
 
 ```
 ```
@@ -106,7 +106,7 @@ const AtlassianTileSize = () => {
 
 Atlassian tiles can be displayed with a bold appearance using the `isBold` prop. When `isBold` is `true`, the tile uses a darker icon color and a bright background color.
 
-![Example image of Atlassian tiles with bold appearance](https://dac-static.atlassian.com/platform/forge/ui-kit/images/atlassian-tile/atlassian-tile-bold.png?_v=1.5800.2336)
+![Example image of Atlassian tiles with bold appearance](https://dac-static.atlassian.com/platform/forge/ui-kit/images/atlassian-tile/atlassian-tile-bold.png?_v=1.5800.2350)
 
 ```
 ```
@@ -144,8 +144,6 @@ const AtlassianTileBold = () => {
 ### Atlassian icons in tiles
 
 Use `AtlassianTile` when you need Atlassian icons in tiles. The [Atlassian icon](/platform/forge/ui-kit/components/atlassian-icon) component is not supported with the [Tile](/platform/forge/ui-kit/components/tile) component. This keeps icon and tile styling consistent with the Atlassian Design System.
-
-For tiles with custom or non-Atlassian icons, use the [Tile](/platform/forge/ui-kit/components/tile) component with the standard [Icon](/platform/forge/ui-kit/components/icon) component.
 
 See the [Atlassian icon](/platform/forge/ui-kit/components/atlassian-icon) component for Atlassian icons without tiles.
 

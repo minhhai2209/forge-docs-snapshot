@@ -1,45 +1,37 @@
-# Dashboard widget (EAP)
+# Dashboard widget
 
-Forge's EAP offers experimental features to selected users for testing and feedback purposes.
-These features are unsupported and not recommended for use in production environments. They
-are also subject to change without notice.
-For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
-
-To participate, you can [sign up for the EAP here](https://docs.google.com/forms/d/e/1FAIpQLSfl_TpJ7o160vlOMhvU07u4XfKSnTnMpzi_4Q8d7-ieNhD1vQ/viewform?usp=sharing&ouid=100849039189157529928p).
-
-**Note:** You must also opt-in to the open beta of Dashboards in Atlassian Home. See the [guide on how to opt-in](https://community.atlassian.com/forums/Atlassian-Home-articles/Home-Dashboards-available-in-open-beta/ba-p/3009544).
-
-The dashboard widget module allows you to create interactive widgets that can be added to the [dashboards in Atlassian Home](https://community.atlassian.com/forums/Atlassian-Home-articles/Home-Dashboards-available-in-open-beta/ba-p/3009544). These widgets can:
+The dashboard widget module allows you to create interactive widgets that can be added to Jira dashboards. These widgets can:
 
 * Display custom data and visualizations
 * Provide user interaction capabilities
 * Communicate with [background scripts](/platform/forge/manifest-reference/modules/dashboard-background-script/)
 * Be configured by users through edit modes
 
-![Dashboard widget example](https://dac-static.atlassian.com/platform/forge/images/modules/dashboard-widget-example.png?_v=1.5800.2336)
+![Dashboard widget example](https://dac-static.atlassian.com/platform/forge/images/modules/dashboard-widget-example.png?_v=1.5800.2350)
 
 *Example of a dashboard widget displaying custom content*
 
-### Setup Instructions
+### Setup instructions
 
 You can create a dashboard widget app with the following steps:
 
-1. Run `forge create` and follow the prompts, selecting the templates under **Dashboards (EAP)**.
-2. Run `forge deploy` to deploy the app.
-3. Run `forge install` and follow the prompts to install the app to **Jira** context (even though it is only available in Atlassian Home).
-4. Once the app is installed, navigate to your Atlassian site and go to the Dashboards section in Atlassian Home.
-5. Click "Add widget" and find your widget in the Marketplace widget list.
-6. Add your widget to the dashboard to see it in action.
+1. Ensure your Jira development or test site is enrolled in the [Developer Canary Program](https://developer.atlassian.com/cloud/jira/platform/developer-canary-program/).
+2. Run `forge create` and follow the prompts, selecting the templates under **Dashboards**.
+3. Run `forge deploy` to deploy the app.
+4. Run `forge install` and follow the prompts to install the app to **Jira**.
+5. Once the app is installed, navigate to Jira and go to **Dashboards**.
+6. Select **Add widget** and find your widget in the Atlassian Marketplace widget list.
+7. Add your widget to the upgraded dashboard to see it in action.
 
 When users install your widget to their site, they'll see your widget in the widget list:
 
-![Widget list interface](https://dac-static.atlassian.com/platform/forge/images/modules/dashboard-widget-list.png?_v=1.5800.2336)
+![Widget list interface](https://dac-static.atlassian.com/platform/forge/images/modules/dashboard-widget-list.png?_v=1.5800.2350)
 
 *Widget selection interface showing available dashboard widgets on the right, and on the left showing the **preview** of the selected dashboard widget*
 
 Users can configure your widget through the edit interface:
 
-![Widget edit mode](https://dac-static.atlassian.com/platform/forge/images/modules/dashboard-widget-edit-mode.png?_v=1.5800.2336)
+![Widget edit mode](https://dac-static.atlassian.com/platform/forge/images/modules/dashboard-widget-edit-mode.png?_v=1.5800.2350)
 
 *Widget configuration interface allowing users to customize widgets*
 
@@ -164,8 +156,10 @@ functions:
 | `description` | `string` | Yes | A description of what the widget does. |
 | `thumbnail` | `string` | Yes | The absolute URL of the icon displayed next to the widget's name and description. |
 | `resource` | `string` | Yes | The key of a static resources entry that provides the widget view. |
-| `edit` | `object` | No | Configuration for the widget's edit mode. |
-| `aiContext` | `object` | No | Configuration that lets the widget contribute structured data to [AI insights](#ai-insights-context). See [aiContext object properties](#aicontext-object-properties). |
+| `edit` | `object` | Yes | Configuration for the widget's edit mode. |
+| `aiContext` | `object` | No | Configuration that lets the widget contribute structured data to [AI insights](#ai-insights-context-eap). See [aiContext object properties](#aicontext-object-properties). |
+
+The `edit` entry point is currently required. We plan to make it optional in a future release.
 
 ### edit object properties
 
@@ -186,11 +180,13 @@ functions:
 | `function` | `string` | Conditional | The key of a [function](/platform/forge/manifest-reference/modules/function/) that resolves the AI context payload. Mutually exclusive with `endpoint`. |
 | `endpoint` | `string` | Conditional | The key of a [remote endpoint](/platform/forge/manifest-reference/endpoint/) that resolves the AI context payload. Mutually exclusive with `function`. |
 
-## AI insights context
+## AI insights context (EAP)
 
-Chart and dashboard insights are part of a separate EAP from the dashboard widget module. To
-contribute your widget's data to insights through `aiContext.data`, you must also [sign up for
-the insights EAP](https://docs.google.com/forms/d/1bKpwRn35VH3fktCPbzQOUUJbL5pxRNb1cGP05EIQfXM/viewform).
+This is an experimental [Early Access Program (EAP)](/platform/forge/whats-coming/#eap) feature, offered to selected users for testing
+and feedback purposes. EAP features are unsupported, not usable in production environments, and subject to change without notice.
+
+To contribute your widget's data to insights through `aiContext.data`, [sign up for the insights
+EAP](https://docs.google.com/forms/d/1bKpwRn35VH3fktCPbzQOUUJbL5pxRNb1cGP05EIQfXM/viewform).
 
 Dashboard widgets can contribute a structured, tabular view of their data to Atlassian
 Intelligence **insights**. The platform invokes the `aiContext.data` entry point declared
@@ -434,7 +430,7 @@ widgetEdit.onSave(async (config, { widgetId }) => {
 
 widgetEdit.onProductSave(async (config) => {
   console.log("Widget config before saving in-product!", config);
-  return null; // return config to opt-in to in-product save
+  return null; // return config to opt in to in-product save
 });
 
 const WidgetEditMode = () => {
@@ -460,7 +456,7 @@ export default WidgetEditMode;
 
 ### AI insights context data
 
-The function referenced by [`aiContext.data`](#ai-insights-context) returns a structured,
+The function referenced by [`aiContext.data`](#ai-insights-context-eap) returns a structured,
 tabular view of the widget's data for AI insights. The following example mixes both
 supported row styles: a positional array aligned to `columns`, and an object keyed by
 column `key`:

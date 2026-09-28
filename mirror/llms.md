@@ -92,6 +92,11 @@ For more information about the Forge manifest, refer to the following sections.
 
 - [Manifest size best practices](https://developer.atlassian.com/platform/forge/manifest-reference/manifest-size-best-practices.md)
 
+### Packaging
+
+- [Packaging](https://developer.atlassian.com/platform/forge/manifest-reference/packaging/index.md)
+- [Packaging standard](https://developer.atlassian.com/platform/forge/manifest-reference/packaging/standard.md)
+
 ### Permissions
 
 - [Permissions](https://developer.atlassian.com/platform/forge/manifest-reference/permissions.md)
@@ -219,11 +224,12 @@ Refer to the following sections for more detailed information about Forge module
 - [Space page](https://developer.atlassian.com/platform/forge/manifest-reference/modules/confluence-space-page.md)
 - [Space settings](https://developer.atlassian.com/platform/forge/manifest-reference/modules/confluence-space-settings.md)
 
-### Dashboard modules (EAP)
+### Dashboard modules
 
-- [Dashboard modules (EAP)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/index-dashboard.md)
-- [Widget (EAP)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/dashboard-widget.md)
-- [Background script (EAP)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/dashboard-background-script.md)
+- [Dashboard modules](https://developer.atlassian.com/platform/forge/manifest-reference/modules/index-dashboard.md)
+- [Widget](https://developer.atlassian.com/platform/forge/manifest-reference/modules/dashboard-widget.md)
+- [Filter (EAP)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/dashboard-filter.md)
+- [Background script](https://developer.atlassian.com/platform/forge/manifest-reference/modules/dashboard-background-script.md)
 
 ### Global module (EAP)
 
@@ -307,7 +313,7 @@ Refer to the following sections for more detailed information about Forge module
 - [Rovo modules](https://developer.atlassian.com/platform/forge/manifest-reference/modules/rovo-index.md)
 - [Rovo Agent](https://developer.atlassian.com/platform/forge/manifest-reference/modules/rovo-agent.md)
 - [Rovo Skill (EAP)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/rovo-skill.md)
-- [Rovo Agent Connector (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/rovo-agent-connector.md)
+- [Rovo Agent Connector](https://developer.atlassian.com/platform/forge/manifest-reference/modules/rovo-agent-connector.md)
 - [Rovo MCP (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/rovo-mcp.md)
 - [Action](https://developer.atlassian.com/platform/forge/manifest-reference/modules/rovo-action.md)
 
@@ -435,8 +441,10 @@ Use the linked pages in this navigation area for UI Kit components, hooks, bridg
 - [useSpaceProperty](https://developer.atlassian.com/platform/forge/ui-kit/hooks/use-space-property.md)
 - [useTheme](https://developer.atlassian.com/platform/forge/ui-kit/hooks/use-theme.md)
 - [useTranslation](https://developer.atlassian.com/platform/forge/ui-kit/hooks/use-translation.md)
-- [useWidgetConfig (EAP)](https://developer.atlassian.com/platform/forge/ui-kit/hooks/use-widget-config.md)
-- [useWidgetContext (EAP)](https://developer.atlassian.com/platform/forge/ui-kit/hooks/use-widget-context.md)
+- [useCurrentFilter (EAP)](https://developer.atlassian.com/platform/forge/ui-kit/hooks/use-current-filter.md)
+- [useFilters (EAP)](https://developer.atlassian.com/platform/forge/ui-kit/hooks/use-filters.md)
+- [useWidgetConfig](https://developer.atlassian.com/platform/forge/ui-kit/hooks/use-widget-config.md)
+- [useWidgetContext](https://developer.atlassian.com/platform/forge/ui-kit/hooks/use-widget-context.md)
 
 ### Forge bridge APIs
 
@@ -475,11 +483,12 @@ Use the linked pages in this navigation area for UI Kit components, hooks, bridg
 - [updateMacroContent](https://developer.atlassian.com/platform/forge/apis-reference/confluence-api-bridge/updateMacroContent.md)
 - [updateBylineProperties](https://developer.atlassian.com/platform/forge/apis-reference/confluence-api-bridge/updateBylineProperties.md)
 
-### Dashboard bridge APIs (EAP)
+### Dashboard bridge APIs
 
-- [Dashboard bridge APIs (EAP)](https://developer.atlassian.com/platform/forge/apis-reference/dashboard-bridge-apis/bridge.md)
-- [widget (EAP)](https://developer.atlassian.com/platform/forge/apis-reference/dashboard-bridge-apis/widget.md)
-- [widgetEdit (EAP)](https://developer.atlassian.com/platform/forge/apis-reference/dashboard-bridge-apis/widget-edit.md)
+- [Dashboard bridge APIs](https://developer.atlassian.com/platform/forge/apis-reference/dashboard-bridge-apis/bridge.md)
+- [filter (EAP)](https://developer.atlassian.com/platform/forge/apis-reference/dashboard-bridge-apis/filter.md)
+- [widget](https://developer.atlassian.com/platform/forge/apis-reference/dashboard-bridge-apis/widget.md)
+- [widgetEdit](https://developer.atlassian.com/platform/forge/apis-reference/dashboard-bridge-apis/widget-edit.md)
 
 ### Custom UI
 
@@ -896,6 +905,12 @@ This section documents the **Forge CLI**—the command-line tool used to **creat
 - [list](https://developer.atlassian.com/platform/forge/cli-reference/settings-list.md)
 - [set](https://developer.atlassian.com/platform/forge/cli-reference/settings-set.md)
 - [delete](https://developer.atlassian.com/platform/forge/cli-reference/settings-delete.md)
+
+### show
+
+- [show](https://developer.atlassian.com/platform/forge/cli-reference/show.md)
+- [services](https://developer.atlassian.com/platform/forge/cli-reference/show-services.md)
+- [containers](https://developer.atlassian.com/platform/forge/cli-reference/show-containers.md)
 
 ### site
 

@@ -46,7 +46,9 @@ conflicts across apps or installations.
 
 ## Transaction limits
 
-The KVS and Custom Entity Store also let you package multiple operations into one transaction. Transactions are subject to the following limits:
+The KVS and Custom Entity Store also let you package multiple operations into one transaction.
+
+Data stored through any transaction operation is subject to Forge's [key and object size limits](/platform/forge/limits-kvs-ce#forge-hosted-storage-key-and-object-size-limits). For example, each operation can only store a key with a maximum length of 500 characters. Transactions are also subject to additional limits, namely:
 
 | Category | Limit |
 | --- | --- |

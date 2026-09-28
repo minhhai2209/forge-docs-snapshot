@@ -11,17 +11,12 @@ For Custom UI apps, the Forge platform hosts your static resources, enabling you
 The `resources` section of your `manifest.yml` controls the configuration of assets that
 you want to display in your app.
 
-This is an experimental [Early Access Program (EAP)](/platform/forge/whats-coming/#eap) feature, offered to selected users for testing and feedback purposes. EAP features are unsupported, not usable in production environments, and subject to change without notice.
-
-An optional flag to opt-out of the default bundling behavior of the Forge CLI for UI Kit resources, and provide a pre-built resource directory as the `path` instead. It accepts `manual@2026` as a value. See [packaging](/platform/forge/manifest-reference/packaging/standard/#ui-kit) for more details.
-
--->
-
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
 | `key` | `string` | Yes | A key for the resource, which other modules can refer to. Must be unique within the manifest and have a maximum of 23 characters.  *Regex:* `^[a-zA-Z0-9_-]+$` |
 | `path` | `string` | Yes | For UI Kit, this is the relative path from your app's root directory to the source file containing your app (for example, `src/frontend/index.jsx`), or to the source directory when using the `entry` property.   For Custom UI, this is the relative path from your app's root directory to the directory containing your static resources, which must include an `index.html` entry point (or named entry files when using the `entry` property). |
 | `entry` | `object` | No | An optional map of named entry points within this resource. Each key is an entry identifier and each value is a source filename (not a nested path) directly within the `path` directory — a source file for UI Kit (for example, `global.jsx`), or an `.html` file for Custom UI (for example, `global.html`). Nested paths such as `views/global.jsx` or `views/global.html` are not supported.  A maximum of **50 entries** are allowed per resource.  When `entry` is defined, modules reference a specific entry using the slash syntax: `resource: <resource-key>/<entry-key>`.  When `entry` is omitted, the resource behaves as it does today: a single entry point inferred from `path`. Existing apps require no changes. |
+| `bundler` (Preview) | `string` | No | An optional flag to opt-out of the default bundling behavior of the Forge CLI for UI Kit resources, and provide a pre-built resource directory as the `path` instead. It accepts `manual@2026` as a value. See [packaging](/platform/forge/manifest-reference/packaging/standard/#ui-kit) for more details. |
 
 ### Examples
 

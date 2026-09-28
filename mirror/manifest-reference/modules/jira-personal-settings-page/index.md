@@ -1,53 +1,6 @@
-# Jira personal settings page (Preview)
+# Jira personal settings page
 
-This section describes a Forge *preview* feature. Preview features are deemed stable;
-however, they remain under active development and may be subject to shorter deprecation
-windows. Preview features are suitable for early adopters in production environments.
-
-We release preview features so partners and developers can study, test, and integrate
-them prior to General Availability (GA). For more information,
-see [Forge release phases: EAP, Preview, and GA](/platform/forge/whats-coming/#preview).
-
-The `jira:personalSettingsPage` module adds an item to the user's profile menu in the main navigation. When the item is clicked, content is rendered on a new Jira page.
-
-The page URL is constructed in the following format: `/jira/settings/personal/apps/{appId}/{envId}`
-
-![Example of a personal settings page](https://dac-static.atlassian.com/platform/forge/snippets/images/personal-settings-page.png?_v=1.5800.2336)
-
-## Subpages
-
-By default, the `jira:personalSettingsPage` module registers a top-level page.
-However, there is an option to register multiple pages using a `pages` or `sections` field.
-
-Use `pages` to add individual pages to the sidebar and `sections` to group pages.
-
-The sidebar will only change the global page URL, you will need to [handle routes inside your Custom UI app](/platform/forge/add-routing-to-a-full-page-app/) using [view.createHistory()](/platform/forge/custom-ui-bridge/view/#createhistory).
-
-This feature works only with Custom UI.
-
-## Manifest structure
-
-```
-1modules {}
-2└─ jira:personalSettingsPage []
-3   ├─ key (string) [Mandatory]
-4   ├─ resource (string) [Mandatory]
-5   ├─ render (string) [Optional]
-6   ├─ resolver {} [Optional]
-7   ├─ title (string | i18n) [Mandatory]
-8   ├─ icon (string) [Optional]
-9   ├─ viewportSize (string) [Optional]
-10   ├─ displayCondition {} [Optional]
-11
-12resources []
-13├─ key (string) [Mandatory]
-14└─ path (string) [Mandatory]
-15
-```
-
-## Properties
-
-| Property | Type | Required | Description |
+|  |  |  |  |
 | --- | --- | --- | --- |
 | `key` | `string` | Yes | A key for the module, which other modules can refer to. Must be unique within the manifest.  *Regex:* `^[a-zA-Z0-9_-]+$` |
 |
@@ -64,57 +17,9 @@ This feature works only with Custom UI.
 | `pages.title` | `string` or `i18n object` | Yes, if using `pages` | The title of the subpage, which is displayed on the sidebar.  The `i18n object` allows for translation. See [i18n object](#i18n-object). |
 | `pages.icon` | `string` |  | The URL of the icon that's displayed next to the subpage title. A generic app icon is displayed if no icon is provided. |
 | `pages.route` | `string` | Yes, if using `pages` | The unique identifier of the subpage. This identifier is appended to the global page URL. |
+| `pages.displayConditions` | `object` |  | The object that defines whether the subpage is displayed in the navigation. The subpage is hidden when the conditions evaluate to false.  See [display conditions](/platform/forge/manifest-reference/display-conditions). |
 | `sections` | `Section[]` |  | The list of sections to render on the sidebar.  Note that you can only specify `pages` or `sections` but not both. |
 | `sections.header` | `string` or `i18n object` |  | The section header.  The `i18n object` allows for translation. See [i18n object](#i18n-object). |
 | `sections.pages` | `Page[]` | Yes, if using `sections` | The list of subpages to render on the sidebar. |
+| `sections.displayConditions` | `object` |  | The object that defines whether the section is displayed in the navigation. The section, and every subpage it contains, is hidden when the conditions evaluate to false.  The section is also hidden when all of the subpages it contains are hidden.  See [display conditions](/platform/forge/manifest-reference/display-conditions). |
 | `displayConditions` | `object` |  | The object that defines whether a module is displayed in the UI of the app. See [display conditions](/platform/forge/manifest-reference/display-conditions). |
-
-### i18n object
-
-| Key | Type | Required | Description |
-| --- | --- | --- | --- |
-| `i18n` | `string` | Yes | A key referencing a translated string in the translation files. For more details, see [Translations](/platform/forge/manifest-reference/translations). |
-
-## Extension data
-
-### UI Kit and Custom UI
-
-Use the [useProductContext](/platform/forge/ui-kit/hooks/use-product-context/) hook to access the extension context in UI Kit or [getContext](/platform/forge/apis-reference/ui-api-bridge/view/#submit) bridge method in Custom UI.
-
-| Property | Type | Description |
-| --- | --- | --- |
-| `type` | `string` | The type of the module. |
-| `location` | `string` | The full URL of the host page where this module is displayed. |
-
-## Manifest example
-
-```
-```
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-```
-
-
-
-```
-modules:
-  jira:personalSettingsPage:
-    - key: hello-world-personal-settings-page-module
-      resource: main
-      resolver:
-        function: resolver
-      render: native
-      title: Hello World
-      icon: https://developer.atlassian.com/platform/forge/images/icons/issue-panel-icon.svg
-      viewportSize: medium
-```
-```

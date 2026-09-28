@@ -95,6 +95,10 @@ When running `forge tunnel` with a [UI Kit](/platform/forge/ui-kit/) app, any ch
 code triggers a rebundle from the Forge CLI. Once the rebundling is completed successfully, you can
 see your changes by refreshing the page that your app is on.
 
+If the resource uses [manual packaging (Preview)](/platform/forge/manifest-reference/packaging/#ui-kit), the Forge CLI does not rebundle
+your code. Run your own build in watch mode, or connect the tunnel to
+[your own dev server](#connecting-the-tunnel-to-your-own-dev-server).
+
 ## Tunneling with Custom UI
 
 When running `forge tunnel` with a [Custom UI](/platform/forge/custom-ui/) app, the Forge CLI serves
@@ -171,6 +175,10 @@ When running `forge tunnel` with non-UI functions, such as
 [web triggers](/platform/forge/manifest-reference/modules/web-trigger), any changes to your source
 code triggers a rebundle from the Forge CLI. Once that rebundling is completed successfully,
 you can see your changes reflected in the next invocation of the function.
+
+If your app uses [manual packaging (Preview)](/platform/forge/manifest-reference/packaging/#functions), the Forge CLI does not rebundle
+your code. Instead, it watches the directory set in `app.package.path`. Run your own build in watch
+mode alongside `forge tunnel`.
 
 ## Tunneling with Forge Container services (Preview)
 

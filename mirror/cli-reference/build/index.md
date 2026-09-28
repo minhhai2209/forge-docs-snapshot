@@ -40,6 +40,9 @@ By default, this command:
 
 1. Runs pre-build checks (such as `forge lint`) and reports any compilation errors.
 
+If your app uses [manual packaging (Preview)](/platform/forge/manifest-reference/packaging/), the Forge CLI uploads your packaged code as it is,
+without compiling or bundling it. Build your app before you run `forge build`.
+
 Builds that are not actively deployed to any environment are retained for a minimum of 30 days from either the date they were last deployed or, if never deployed, the date they were created. After this period, they may be subject to cleanup. However, builds that are actively deployed will not be cleaned up as long as they remain deployed.
 
 ## Example

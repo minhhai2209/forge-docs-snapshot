@@ -59,6 +59,11 @@ UI Kit supports JSX syntax, enabling developers to write declarative and highly 
 | Context providers | yes |  |
 | HTML | no |
 
+### Bundling
+
+By default, the Forge CLI bundles your UI Kit code when you deploy or tunnel your app.
+To use your own bundler, such as Vite, see [manual packaging (Preview)](/platform/forge/manifest-reference/packaging/#ui-kit).
+
 ## API requests
 
 Making API requests in UI Kit is the same as in Custom UI. Whether a request is made from the client side or from the lambda depends on the request type.

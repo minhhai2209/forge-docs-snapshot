@@ -82,6 +82,9 @@ modules:
 
 The function `key` is `my-function`, while the directory name is `functions`. These do not need to match. The `key` is a unique identifier used to reference this function from other modules (see example below). The `handler` specifies the file and function to execute: `index.handler` refers to the `handler` function exported from `index.js` in the `/src/functions/` directory.
 
+By default, the Forge CLI compiles and bundles your function code when you deploy or tunnel your app.
+To use your own compiler or bundler, see [manual packaging (Preview)](/platform/forge/manifest-reference/packaging/#functions).
+
 ### Attaching a function to a module
 
 To enable your function to run, it needs to be attached to a [module](/platform/forge/manifest-reference/modules/) via the [app manifest](/platform/forge/manifest-reference/). For example, a [scheduled trigger](/platform/forge/manifest-reference/modules/scheduled-trigger/) that uses the function key we defined above:

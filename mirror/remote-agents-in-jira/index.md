@@ -1,19 +1,11 @@
 # Integrate remote agents with Jira
 
-This section describes a Forge *preview* feature. Preview features are deemed stable;
-however, they remain under active development and may be subject to shorter deprecation
-windows. Preview features are suitable for early adopters in production environments.
-
-We release preview features so partners and developers can study, test, and integrate
-them prior to General Availability (GA). For more information,
-see [Forge release phases: EAP, Preview, and GA](/platform/forge/whats-coming/#preview).
-
 This guide is intended for developers seeking to integrate **AI agents running on external infrastructure** (referred to in this guide as *Remote Agents*) into Jira. For patterns to enable [Rovo agents](https://www.atlassian.com/software/rovo/features) running on Atlassian's AI agent platform to interact with external APIs or MCP servers, see the following:
 
 * If your product has a published MCP server, users can register it with a [custom Rovo agent](https://support.atlassian.com/rovo/docs/create-and-edit-agents/) created in Atlassian Studio.
 * If your product has a public API, you can develop a custom Rovo agent and actions that interact with your APIs using [the Forge platform](/platform/forge/manifest-reference/modules/rovo-index/) and publish it on Marketplace.
 
-This guide is intended for developers building deep integrations between Jira and a Remote Agent that resides outside of the Atlassian platform — e.g. GitHub Copilot, Cursor Agents, OpenAI Codex, or Anthropic Claude.
+This guide is intended for developers building deep integrations between Jira and a Remote Agent that resides outside of the Atlassian platform — for example, GitHub Copilot, Cursor Agents, OpenAI Codex, or Anthropic Claude.
 
 ## What can remote agents do?
 
@@ -21,7 +13,7 @@ Remote agents can be assigned work items, @mentioned in comments, and chatted wi
 
 After following this guide, you will have an agent that can:
 
-* be assigned work items, @mentioned in comments, or chatted to by a human user
+* be assigned work items, @mentioned in comments, or chatted with by a human user
 * surface updates in Jira as it executes on a task
 * elicit further context and requirements from the user, if required
 * fetch further context programmatically from the [Jira REST API](https://developer.atlassian.com/cloud/jira/platform/rest/v3/intro/)
@@ -41,7 +33,7 @@ This guide assumes you are operating a typical multi-tenant SaaS-style web appli
 
 **Jira tenant** or **Jira site** — Jira is a multi-tenant web application hosted on Atlassian infrastructure. Each tenant is accessible under a different base URL, typically `${customer-subdomain}.atlassian.net`, though the domain and TLD may vary. If listing on the Atlassian Marketplace, your remote agent must be ready to handle installations and tasks from multiple Jira tenants.
 
-![Simplified integration architecture showing a Jira site, a Forge app acting as middleware, and the remote service hosting the agent](https://dac-static.atlassian.com/platform/forge/images/remote-agents/architecture.png?_v=1.5800.2336)
+![Simplified integration architecture showing a Jira site, a Forge app acting as middleware, and the remote service hosting the agent](https://dac-static.atlassian.com/platform/forge/images/remote-agents/architecture.png?_v=1.5800.2350)
 
 *Simplified integration architecture*
 
@@ -84,7 +76,7 @@ Always verify events sent as webhooks using JWKS before processing them. Failing
 
 3. After receiving and verifying an installation event, your remote service may optionally call the Jira REST API to retrieve additional information about the Jira tenant.
 4. Your remote service then persists the Jira installation information in its data store. See [Recommended schema for jiraInstallations table](#recommended-schema-for-jirainstallations-table) for recommended properties to store.
-   ![Installation flow diagram](https://dac-static.atlassian.com/platform/forge/images/remote-agents/installation-flow.png?_v=1.5800.2336)
+   ![Installation flow diagram](https://dac-static.atlassian.com/platform/forge/images/remote-agents/installation-flow.png?_v=1.5800.2350)
 5. Your agent may also initiate a post-installation configuration flow that the administrator will be directed to after installing your agent. Most remote agents will need to implement this in order to map the customer's tenant in the remote service to their tenant in Jira. This flow is covered in the [Agent configuration](#3--agent-configuration) section below.
 
 After configuration is complete, your agent is ready to [handle tasks](#2--handling-jira-tasks).
@@ -116,24 +108,82 @@ Schemas and examples for these methods are provided in the [JSON RPC Method Refe
 
 It is the agent's responsibility to keep track of tasks they have been asked to perform, and share the current state of these tasks when requested by Jira. If needed, your agent may also fetch additional context or work items using the Jira REST API, as described in [Authenticating requests from your agent to the Jira REST API](#authenticating-requests-from-your-agent-to-the-jira-rest-api).
 
-## Polling for task updates
+## Data shared with your remote agent
 
-All message and task passing is handled by Jira invoking the remote agent over JSON RPC:
+When Jira invokes your remote agent, it sends instructions and contextual data to your remote service. Most initial agent invocations contain two parts:
 
-* Jira will send your agent a `message` whenever a user invokes your agent
-* Jira will poll the `task` endpoint for updates to any task that is currently in an active or interrupted status (`TASK_STATE_SUBMITTED`, `TASK_STATE_WORKING`, `TASK_STATE_INPUT_REQUIRED`, `TASK_STATE_AUTH_REQUIRED`, or `TASK_STATE_UNKNOWN`)
+* A `text` part with instructions for the agent and optional contextual information.
+* A `data` part with structured information about the invocation, including the invoking user’s account ID, the agent’s account ID, and the invocation type. Work-item-based invocations also include the work item’s ID, key, summary, and description.
 
-There is currently no mechanism for the remote agent to "push" updates to Jira. We may implement support for SSE or push notifications in the future.
+Your integration should process **both parts**. Text fields such as work item descriptions and comment bodies are converted from Atlassian Document Format (ADF) to plain text; their original rich-text formatting is not preserved.
+
+The contents of the `text` and `data` parts vary based on the invocation type. See the [JSON RPC method reference](#json-rpc-method-reference) for detailed examples of different invocation payloads.
+
+Messages sent to your agent via Rovo chat, including follow-up messages when your agent requests additional input from the user, contain only a `text` part. See [Chat messages](#chat-messages) for further details.
+
+### Invocation type
+
+The `data` part of the initial payload includes an `invocationType` field, which identifies how the agent was invoked from Jira:
+
+| Invocation | `invocationType` |
+| --- | --- |
+| Work item assignment | `ISSUE_ASSIGNMENT` |
+| Comment @mention | `ISSUE_COMMENT_MENTION` |
+| Workflow transition | `ISSUE_WORKFLOW_ASSIGNMENT` |
+| Manual trigger | `ISSUE_MANUAL_TRIGGER` |
+| Automation flow | `AUTOMATION` |
+| Rovo chat | N/A |
+
+Messages sent to the agent from Rovo chat do not contain an `invocationType` field or other `data` parts.
+
+### Space instructions & additional context
+
+The agent instructions in the `text` part may be prepended with a **Space Instructions** section and appended with a **Relevant Context for This Task** section. **Space Instructions** are optional agent instructions configured by an administrator for the context Jira space. **Relevant Context for This Task** lists titles and URLs of related resources, along with an instruction to fetch and reference them. For example:
+
+```
+```
+1
+2
+3
+4
+5
+6
+7
+8
+9
+```
+
+
+
+```
+Space Instructions:
+Be concise and cite Jira evidence.
+
+You have been assigned to a work item "QA checkout flow updates". Analyze the details of the work item and get started.
+
+Relevant Context for This Task
+The following resources have been identified as relevant. Fetch and reference them to get additional context such as prior decisions, related work, team conventions, etc.
+- Checkout design: https://example.com/checkout-design
+```
+```
+
+Note that the contents of the linked resources are not included. Your agent must retrieve any content it needs using credentials that respect the invoking user's permissions. See [Fetching additional context via REST](#fetching-additional-context-via-rest) and [Authorization & tenancy considerations](#authorization--tenancy-considerations) for further details.
+
+## Updating tasks
+
+By default, after the initial `message` request, Jira polls your agent's `GetTask` endpoint for updates to any task that is currently in an active or interrupted status (`TASK_STATE_SUBMITTED`, `TASK_STATE_WORKING`, `TASK_STATE_INPUT_REQUIRED`, `TASK_STATE_AUTH_REQUIRED`, or `TASK_STATE_UNKNOWN`).
+
+We also strongly recommend that you implement [streaming](#streaming) to incrementally update tasks as your agent produces output, as this will dramatically improve the user experience of your agent.
 
 ## Task privacy
 
-Conversations between users and agents (including any additional input from the user or status updates on tasks) are kept private to the user, and not automatically replicated on to the work item. Once a task is complete, the user has the option of sharing the outcome of the task via a comment on the work item.
+Within Jira, conversations between users and agents are private to the user. Additional user input and task status updates are not automatically copied to the work item. Once a task is complete, the user has the option of sharing the outcome of the task via a comment on the work item.
 
 ## Task lifecycle
 
 During its lifecycle, a `task` will start in the `TASK_STATE_SUBMITTED` state and then transition through a number of states until it reaches a terminal state (`TASK_STATE_REJECTED`, `TASK_STATE_COMPLETED`, `TASK_STATE_CANCELED`, or `TASK_STATE_FAILED`).
 
-![Task lifecycle state diagram](https://dac-static.atlassian.com/platform/forge/images/remote-agents/task-lifecycle.png?_v=1.5800.2336)
+![Task lifecycle state diagram](https://dac-static.atlassian.com/platform/forge/images/remote-agents/task-lifecycle.png?_v=1.5800.2350)
 
 The directional arrows on the diagram are important. Once a task has entered a terminal state — `TASK_STATE_REJECTED`, `TASK_STATE_COMPLETED`, `TASK_STATE_CANCELED`, or `TASK_STATE_FAILED` — it **cannot be restarted**. Subsequent messages from the user for the same context should be handled by creating a new task. See the ["single active task per context" rule](#the-single-active-task-per-context-rule) for more details.
 
@@ -165,7 +215,7 @@ There are a few rules that govern agent context and task lifecycle in Jira:
 * However, if a user sends a new message to the remote agent in an ongoing chat session with that agent, Jira will send your agent a new `message` with the `contextId` corresponding to that chat. Your agent should update an existing active task or create a new task within the same context when this happens. See the ["single active task per context" rule](#the-single-active-task-per-context-rule).
 * Contexts are **always** private to a single user and agent. Messages from different users about the same work item should each have a separate context.
 
-![Cardinality of remote agent task-related objects](https://dac-static.atlassian.com/platform/forge/images/remote-agents/context-cardinality.png?_v=1.5800.2336)
+![Cardinality of remote agent task-related objects](https://dac-static.atlassian.com/platform/forge/images/remote-agents/context-cardinality.png?_v=1.5800.2350)
 
 *Cardinality of remote agent task-related objects.*
 
@@ -177,7 +227,7 @@ Each agent can potentially have multiple contexts for the same user on the same 
 * Therefore if your agent receives a new `message` in relation to a `task` it is already working on, it should attempt to incorporate that `message` into the context it is using to process the task (if possible).
 * Your agent may have multiple active tasks for the same user and work item, provided they are in different contexts.
 
-![A context may have multiple tasks, but only the newest may be in an active state](https://dac-static.atlassian.com/platform/forge/images/remote-agents/single-active-task.png?_v=1.5800.2336)
+![A context may have multiple tasks, but only the newest may be in an active state](https://dac-static.atlassian.com/platform/forge/images/remote-agents/single-active-task.png?_v=1.5800.2350)
 
 *A context may have multiple tasks, but only the newest may be in an active state.*
 
@@ -185,7 +235,7 @@ Each agent can potentially have multiple contexts for the same user on the same 
 
 A typical assignment flow has up to four stages:
 
-1. **Initial assignment:** A user assigns a work item to an agent for the first time. This results in a `message` being sent to the remote agent using the [SendMessage](#sendmessage) method. The message contains a `text` part informing the agent that they have been assigned to a work item, and a `data` part containing context information about the work item. Your agent must immediately create a new `task` in response, and a new `contextId` to associate with it.
+1. **Initial assignment:** A user assigns a work item to an agent for the first time. This results in a `message` being sent to the remote agent using the [SendMessage](#sendmessage) method. The message contains a `text` part with assignment instructions and any available space instructions or resource references. Its `data` part contains account IDs, `invocationType: "ISSUE_ASSIGNMENT"`, and the work item's ID, key, summary, and description. See [Data shared with your remote agent](#data-shared-with-your-remote-agent). Your agent must immediately create a new `task` in response, and a new `contextId` to associate with it.
 2. **Task execution:** The agent then works on the task until it reaches a [terminal state](#task-lifecycle). During this time, Jira will poll the agent for status updates on the task using the [GetTask](#gettask) method. When polled, the agent should return the current `status` of the task, including an explanatory `message` that will be displayed to the user. If your agent needs more information, it can enter the `TASK_STATE_INPUT_REQUIRED` state with a message prompting the user to provide more context via chat.
 3. **Task completion:** Once the task is complete, the agent should return a `task` object in the `TASK_STATE_COMPLETED` state on the next poll from Jira, with an accompanying `message` object describing the outcome of the task. This message will then be presented to the user, with the option to draft a comment sharing the outcome of the task on the work item.
 4. **Follow-up:** The agent will remain assigned to the work item after the initial task has been completed. If the user @mentions or reassigns the agent to the same work item again, Jira will send a new `message` object to the agent with no `contextId`. The agent must create and return a new task in a [new context](#agent-contexts) representing this request.
@@ -194,41 +244,41 @@ The following diagrams show the user experience and flow for a typical assignmen
 
 ## Initial assignment
 
-![Assignment flow diagram](https://dac-static.atlassian.com/platform/forge/images/remote-agents/assign-flow.png?_v=1.5800.2336)
+![Assignment flow diagram](https://dac-static.atlassian.com/platform/forge/images/remote-agents/assign-flow.png?_v=1.5800.2350)
 
-![User assigns remote agent to work item](https://dac-static.atlassian.com/platform/forge/images/remote-agents/assign-1.png?_v=1.5800.2336)
+![User assigns remote agent to work item](https://dac-static.atlassian.com/platform/forge/images/remote-agents/assign-1.png?_v=1.5800.2350)
 
 *User assigns remote agent to work item*
 
-![Agent's task status displayed in the Jira UI](https://dac-static.atlassian.com/platform/forge/images/remote-agents/assign-2.png?_v=1.5800.2336)
+![Agent's task status displayed in the Jira UI](https://dac-static.atlassian.com/platform/forge/images/remote-agents/assign-2.png?_v=1.5800.2350)
 
 *Agent's task status displayed in the Jira UI*
 
 ## Task execution
 
-![Task execution flow diagram](https://dac-static.atlassian.com/platform/forge/images/remote-agents/exec-flow.png?_v=1.5800.2336)
+![Task execution flow diagram](https://dac-static.atlassian.com/platform/forge/images/remote-agents/exec-flow.png?_v=1.5800.2350)
 
-![Agent requests input from user](https://dac-static.atlassian.com/platform/forge/images/remote-agents/exec-1.png?_v=1.5800.2336)
+![Agent requests input from user](https://dac-static.atlassian.com/platform/forge/images/remote-agents/exec-1.png?_v=1.5800.2350)
 
 *Agent requests input from user*
 
-![User selects "Refine in Chat" and provides further input to the Agent](https://dac-static.atlassian.com/platform/forge/images/remote-agents/exec-2.png?_v=1.5800.2336)
+![User selects "Refine in Chat" and provides further input to the Agent](https://dac-static.atlassian.com/platform/forge/images/remote-agents/exec-2.png?_v=1.5800.2350)
 
 *User selects "Refine in Chat" and provides further input to the Agent*
 
 ## Task completion
 
-![Task completion flow diagram](https://dac-static.atlassian.com/platform/forge/images/remote-agents/complete-flow.png?_v=1.5800.2336)
+![Task completion flow diagram](https://dac-static.atlassian.com/platform/forge/images/remote-agents/complete-flow.png?_v=1.5800.2350)
 
-![Agent returns task in TASK_STATE_COMPLETED status with prompt to draft a comment](https://dac-static.atlassian.com/platform/forge/images/remote-agents/complete-1.png?_v=1.5800.2336)
+![Agent returns task in TASK_STATE_COMPLETED status with prompt to draft a comment](https://dac-static.atlassian.com/platform/forge/images/remote-agents/complete-1.png?_v=1.5800.2350)
 
 *Agent returns task in `TASK_STATE_COMPLETED` status — final task message is displayed in the Jira UI with prompt to draft a comment*
 
-![User selects "Draft comment" and modifies content to their tastes](https://dac-static.atlassian.com/platform/forge/images/remote-agents/complete-2.png?_v=1.5800.2336)
+![User selects "Draft comment" and modifies content to their tastes](https://dac-static.atlassian.com/platform/forge/images/remote-agents/complete-2.png?_v=1.5800.2350)
 
 *User selects "Draft comment" and modifies content to their tastes*
 
-![User posts comment on work item](https://dac-static.atlassian.com/platform/forge/images/remote-agents/complete-3.png?_v=1.5800.2336)
+![User posts comment on work item](https://dac-static.atlassian.com/platform/forge/images/remote-agents/complete-3.png?_v=1.5800.2350)
 
 *User posts comment on work item*
 
@@ -240,17 +290,19 @@ A task cannot be restarted after it reaches a terminal state. If the user reassi
 
 The @mention flow is almost identical to the [assignment flow](#assignment-flow) described above, with the exception that the initial `message` sent to the remote agent is slightly different:
 
-* the `text` part will indicate that the agent has been @mentioned in a comment by a user
-* the `data` part will contain the id and body (in markdown) of the comment
+* the `text` part will indicate that the agent has been @mentioned in a comment by a user, without repeating the comment body
+* the `data` part will contain `invocationType: "ISSUE_COMMENT_MENTION"`, the work item, and the triggering comment's ID and plain-text body
+
+The message can also include space instructions and resource references, as described in [Data shared with your remote agent](#data-shared-with-your-remote-agent).
 
 There are two other important things to note:
 
 * a user @mentioning your agent in a comment will *not* automatically assign the work item to your agent
 * each comment @mentioning your agent will result in a separate context being created
 
-## Chat flow
+## Transition flows
 
-We are also considering implementing support for users to initiate a chat session with your agent outside of a work item context. Stay tuned for updates!
+Your agent may also be bound to specific workflow transitions. For example, a vulnerability remediation workflow may have a specialized security agent assigned to trigger when an issue is transitioned into the "Security Review" status.
 
 ## Retrying tasks
 
@@ -266,15 +318,17 @@ If a task is successfully canceled, Jira will stop polling for updates for that 
 
 ## Fetching additional context via REST
 
-In addition to prompting the user, remote agents can also fetch additional context using the method described in [Authenticating requests from your agent to the Jira REST API](#authenticating-requests-from-your-agent-to-the-jira-rest-api). You may wish to fetch additional context such as attachments, additional work item fields, or linked work items.
+The initial invocation is not a complete export of the work item or its related content. Work-item-based invocations supply the ID, key, summary, and description. Comment mentions also supply the triggering comment, but not the full comment history. Attachments, other work item fields, and linked work items require additional requests.
 
-You must authenticate *as* the user (i.e. using the `appUserToken` passed to your agent in the `x-forge-oauth-user` header) when requesting additional context in this manner. This ensures your agent only considers data that the user has access to when working on the work item. See [Authorization & tenancy considerations](#authorization--tenancy-considerations) for details on safely handling this data.
+Resource references in the text part supply titles and URLs, not document contents. A reference does not grant access to the resource. Retrieve its content only if the invoking user is authorized to access it.
 
-## Streaming (optional)
+For Jira resources, use the method described in [Authenticating requests from your agent to the Jira REST API](#authenticating-requests-from-your-agent-to-the-jira-rest-api). You must authenticate *as* the invoking user, using the `appUserToken` passed in the `x-forge-oauth-user` header. This ensures your agent only considers data that the user has access to. For resources outside Jira, use authorization that also respects that user's access. See [Authorization & tenancy considerations](#authorization--tenancy-considerations) for details on safely handling this data.
 
-By default, Jira uses polling to receive task updates from your agent — Jira periodically calls your agent's `GetTask` endpoint to check on progress. This works well for most use cases, but if your agent produces incremental output (for example, streaming text as it generates a response), you can opt in to **streaming** using [Server-Sent Events (SSE)](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events). This allows Jira to display real-time progress to the user as your agent works.
+## Streaming
 
-Implementing streaming is optional. Agents that do not implement it will continue to work via polling.
+By default, Jira uses polling to receive task updates from your agent — Jira periodically calls your agent's `GetTask` endpoint to check on progress. However if your agent produces incremental output (for example, streaming text as it generates a response), you can opt in to **streaming** using [Server-Sent Events (SSE)](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events). This allows Jira to display real-time progress to the user as your agent works.
+
+Implementing streaming is optional, but strongly recommended for an enhanced user experience. Agents that do not implement streaming will continue to work via polling. Note that your agent must also expose a `GetTask` endpoint even if you implement streaming.
 
 ### Declaring streaming support in your Forge manifest
 
@@ -460,7 +514,7 @@ Streaming requests are authenticated in the same way as non-streaming requests �
 
 ## Authorization & tenancy considerations
 
-Aligning the context passed to your agent with Jira's permissions and tenancy model is **critical** for ensuring customer data is safeguarded. Please read this section carefully and ensure your remote agent conforms to these requirements.
+Aligning the context passed to your agent with Jira's permissions and tenancy model is **critical** for ensuring customer data is safeguarded. Read this section carefully and ensure your remote agent conforms to these requirements.
 
 You must ensure that your agent *only* reasons about data that the user who assigned them to a work item has access to. This ensures that a user cannot escalate their own permissions when working with your agent.
 
@@ -843,16 +897,18 @@ The following method schemas and conventions are based on a subset of the [A2A s
 
 Your remote service must implement the following JSON RPC methods, accessible at the endpoint specified by the `jsonRpcTransport` property in your Forge manifest.
 
-All messages and rich text fields are formatted in markdown.
+Jira converts work item descriptions and comment bodies from ADF to plain text before including them in initial event-triggered messages. Do not rely on the original rich-text formatting being preserved.
 
 ## `SendMessage`
 
 Jira will call the `SendMessage` method when:
 
-* a user creates a new context (by @mentioning or assigning your agent on a work item)
+* an assignment, comment @mention, workflow, manual trigger, or automation rule invokes your agent
 * a user sends a message in the Rovo chat panel attached to an existing context (e.g. when providing more information in response to a `TASK_STATE_INPUT_REQUIRED` task status)
 
 ### Initial message schema
+
+Initial event-triggered messages contain one text part and one data part in `params.message.parts`. In the template below, values prefixed with `$` are placeholders:
 
 ```
 ```
@@ -901,6 +957,27 @@ Jira will call the `SendMessage` method when:
 ```
 ```
 
+The text part contains the invocation instruction and any [space instructions or relevant resources](#space-instructions--additional-context). For workflow and manual invocations, it also includes a non-blank caller-provided prompt under **Additional Context**. For automation, the caller-provided prompt appears in `data.automation.prompt` instead.
+
+### Initial invocation data fields
+
+The following fields belong to the `data` object in the data part of **initial event-triggered invocations**. Chat payloads *do not* contain a `data` part. See [Chat messages](#chat-messages) for more details.
+
+| Field | Type | When included | Description |
+| --- | --- | --- | --- |
+| `userAccountId` | `string` | All initial event-triggered invocations | Account ID of the invoking user. |
+| `agentAccountId` | `string` | All initial event-triggered invocations | Account ID of the agent identity, or the literal string `"UNKNOWN"` if the agent has no identity account ID. |
+| `invocationType` | `string` | All initial event-triggered invocations | One of `ISSUE_ASSIGNMENT`, `ISSUE_COMMENT_MENTION`, `ISSUE_WORKFLOW_ASSIGNMENT`, `ISSUE_MANUAL_TRIGGER`, or `AUTOMATION`. |
+| `issue.id` | `string` | Work-item-based invocations | ID of the work item. |
+| `issue.fields.key` | `string` | Work-item-based invocations | Key of the work item, such as `AW26-11`. |
+| `issue.fields.summary` | `string` | Work-item-based invocations | Summary of the work item. |
+| `issue.fields.description` | `string` | Work-item-based invocations | Description of the work item, converted from ADF to plain text. |
+| `comment.id` | `string` | Comment @mentions | ID of the comment that invoked the agent. |
+| `comment.body` | `string` | Comment @mentions | Body of the triggering comment, converted from ADF to plain text. It is not repeated in the text part. |
+| `automation.prompt` | `string` | Automation invocations with a caller-provided prompt | Instructions supplied by the automation rule. Required for automation without a work item. |
+
+Your agent may also fetch additional fields through the [Jira REST API](#fetching-additional-context-via-rest) when needed.
+
 ### Agent assigned to work item — example
 
 **Request:**
@@ -936,6 +1013,8 @@ Jira will call the `SendMessage` method when:
 27
 28
 29
+30
+31
 ```
 
 
@@ -950,14 +1029,16 @@ Jira will call the `SendMessage` method when:
       "role": "ROLE_USER",
       "parts": [
         {
-          "text": "A user has assigned you to a work item."
+          "text": "Space Instructions:\nBe concise and cite Jira evidence.\n\nYou have been assigned to a work item \"QA checkout flow updates\". Analyze the details of the work item and get started.\n\nRelevant Context for This Task\nThe following resources have been identified as relevant. Fetch and reference them to get additional context such as prior decisions, related work, team conventions, etc.\n- Checkout design: https://example.com/checkout-design"
         }, {
           "data": {
             "userAccountId": "22222",
             "agentAccountId": "11111",
+            "invocationType": "ISSUE_ASSIGNMENT",
             "issue": {
               "id": "21930",
               "fields": {
+                "key": "AW26-11",
                 "summary": "QA checkout flow updates",
                 "description": "Perform a comprehensive QA review..."
               }
@@ -1068,6 +1149,8 @@ Jira will call the `SendMessage` method when:
 31
 32
 33
+34
+35
 ```
 
 
@@ -1082,21 +1165,23 @@ Jira will call the `SendMessage` method when:
       "role": "ROLE_USER",
       "parts": [
         {
-          "text": "A user has mentioned you in a comment."
+          "text": "You have been mentioned in a comment on a work item \"QA checkout flow updates\". Analyze the details of the work item and get started."
         }, {
           "data": {
             "userAccountId": "22222",
             "agentAccountId": "11111",
+            "invocationType": "ISSUE_COMMENT_MENTION",
             "issue": {
               "id": "21930",
               "fields": {
+                "key": "AW26-11",
                 "summary": "QA checkout flow updates",
                 "description": "Perform a comprehensive QA review..."
               }
             },
             "comment": {
               "id": "91283",
-              "body": "QA is showing that when a customer enters a valid discount code at checkout, it's not being reflected in the order summary or total. [@Cursor](~11111) can you analyze and suggest a fix?"
+              "body": "Please review the checkout error log and suggest a fix."
             }
           }
         }
@@ -1167,9 +1252,125 @@ Jira will call the `SendMessage` method when:
 ```
 ```
 
-### User provides more context in response to `TASK_STATE_INPUT_REQUIRED` — example
+### Workflow trigger
 
-**Request:**
+This example shows only the `params.message.parts` array. It uses the same request envelope as the assignment example. Optional space instructions and resource references are omitted for brevity.
+
+For a workflow invocation, the caller-provided prompt appears in the text part under **Additional Context**. The data part identifies the invocation and the work item, but does not include the new workflow status:
+
+```
+```
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+```
+
+
+
+```
+[
+  {
+    "text": "An issue \"QA checkout flow updates\" has moved to a new status in a Jira workflow. Analyze the details of the work item and get started.\n\nAdditional Context:\nFocus on security review."
+  },
+  {
+    "data": {
+      "userAccountId": "22222",
+      "agentAccountId": "11111",
+      "invocationType": "ISSUE_WORKFLOW_ASSIGNMENT",
+      "issue": {
+        "id": "21930",
+        "fields": {
+          "key": "AW26-11",
+          "summary": "QA checkout flow updates",
+          "description": "Perform a comprehensive QA review..."
+        }
+      }
+    }
+  }
+]
+```
+```
+
+A null or blank caller-provided prompt omits the entire **Additional Context** section.
+
+### Manual trigger
+
+This example shows only the `params.message.parts` array. It uses the same request envelope as the assignment example. Optional space instructions and resource references are omitted for brevity.
+
+```
+```
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+```
+
+
+
+```
+[
+  {
+    "text": "You have been assigned to a work item \"QA checkout flow updates\". Analyze the details of the work item and get started.\n\nAdditional Context:\nInvestigate the failing checkout tests."
+  },
+  {
+    "data": {
+      "userAccountId": "22222",
+      "agentAccountId": "11111",
+      "invocationType": "ISSUE_MANUAL_TRIGGER",
+      "issue": {
+        "id": "21930",
+        "fields": {
+          "key": "AW26-11",
+          "summary": "QA checkout flow updates",
+          "description": "Perform a comprehensive QA review..."
+        }
+      }
+    }
+  }
+]
+```
+```
+
+A null or blank caller-provided prompt omits the entire **Additional Context** section.
+
+### Automation with a work item
+
+This example shows the `params.message.parts` array. Unlike workflow and manual triggers, automation places the caller-provided prompt in `data.automation.prompt`, not in the text part:
 
 ```
 ```
@@ -1197,11 +1398,114 @@ Jira will call the `SendMessage` method when:
 22
 23
 24
-25
-26
-27
-28
-29
+```
+
+
+
+```
+[
+  {
+    "text": "This session was started from a Jira automation rule, complete the task as described below."
+  },
+  {
+    "data": {
+      "userAccountId": "22222",
+      "agentAccountId": "11111",
+      "invocationType": "AUTOMATION",
+      "issue": {
+        "id": "21930",
+        "fields": {
+          "key": "AW26-11",
+          "summary": "QA checkout flow updates",
+          "description": "Perform a comprehensive QA review..."
+        }
+      },
+      "automation": {
+        "prompt": "Investigate the checkout failure and propose a fix."
+      }
+    }
+  }
+]
+```
+```
+
+Space instructions and relevant-resource references can also appear in the text part when available. If the caller-provided prompt is null, the `automation` object is omitted.
+
+### Automation without a work item
+
+This example also shows the `params.message.parts` array. The invocation type remains `AUTOMATION`, but there is no `issue` object. The text part contains only the automation instruction, and the required caller-provided prompt appears in `data.automation.prompt`:
+
+```
+```
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+```
+
+
+
+```
+[
+  {
+    "text": "This session was started from a Jira automation rule, complete the task as described below."
+  },
+  {
+    "data": {
+      "userAccountId": "22222",
+      "agentAccountId": "11111",
+      "invocationType": "AUTOMATION",
+      "automation": {
+        "prompt": "Summarize the deployment failures from the supplied rule inputs."
+      }
+    }
+  }
+]
+```
+```
+
+### Chat messages
+
+Users may send your agent chat messages in two situations:
+
+* by starting a new Rovo chat, selecting your agent from the agent dropdown, and sending a message; or
+* by replying to a request from your agent for input (that is, in response to a task in the `TASK_STATE_INPUT_REQUIRED` state)
+
+In both situations, the message will contain a single `text` part with the user's input.
+
+For a new chat, the `contextId` will be omitted:
+
+**Request:**
+
+```
+```
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
 ```
 
 
@@ -1214,23 +1518,9 @@ Jira will call the `SendMessage` method when:
   "params": {
     "message": {
       "role": "ROLE_USER",
-      "parts": [
-        {
-          "text": "A user has sent a message in the chat."
-        }, {
-          "data": {
-            "userAccountId": "22222",
-            "agentAccountId": "11111",
-            "issue": {
-              "id": "21930"
-            },
-            "chat": {
-              "message": "The test credentials are username: testuser@example.com, password: Test1234!"
-            }
-          }
-        }
-      ],
-      "contextId": "4bdcf71e-0441-4564-95a3-f1c50594b60c",
+      "parts": [{
+        "text": "Open the pod bay doors, HAL."
+      }],
       "messageId": "d2c9e3f1-5a6b-7c8d-9e0f-1a2b3c4d5e6f"
     }
   }
@@ -1283,9 +1573,113 @@ Jira will call the `SendMessage` method when:
         "message": {
           "role": "ROLE_AGENT",
           "parts": [{
-            "text": "Thanks! Resuming QA review with the provided credentials."
+            "text": "I'm sorry, Dave. I'm afraid I can't do that."
           }],
           "messageId": "e3d4c5b6-a7b8-9c0d-1e2f-3a4b5c6d7e8f",
+          "taskId": "909aef32-059d-46d7-ade3-38fa4d2c5162",
+          "contextId": "4bdcf71e-0441-4564-95a3-f1c50594b60c"
+        },
+        "timestamp": "2025-01-01T12:05:00Z"
+      }
+    }
+  }
+}
+```
+```
+
+For a follow-up chat message from the user supplying further input, the payload will include the `contextId` for the existing conversation:
+
+**Request:**
+
+```
+```
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+```
+
+
+
+```
+{
+  "jsonrpc": "2.0",
+  "id": "7f4e8c1a-b23d-4f56-89ab-0c1d2e3f4a5b",
+  "method": "SendMessage",
+  "params": {
+    "message": {
+      "role": "ROLE_USER",
+      "parts": [{
+        "text": "HAL, I won't argue with you anymore! Open the doors!"
+      }],
+      "contextId": "4bdcf71e-0441-4564-95a3-f1c50594b60c",
+      "messageId": "d2c9e3f1-5a6b-7c8d-9e0f-1a2b3c4d5aaa"
+    }
+  }
+}
+```
+```
+
+**Response:**
+
+```
+```
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+```
+
+
+
+```
+{
+  "jsonrpc": "2.0",
+  "id": "7f4e8c1a-b23d-4f56-89ab-0c1d2e3f4a5b",
+  "result": {
+    "task": {
+      "id": "909aef32-059d-46d7-ade3-38fa4d2c5162",
+      "contextId": "4bdcf71e-0441-4564-95a3-f1c50594b60c",
+      "status": {
+        "state": "TASK_STATE_COMPLETED",
+        "message": {
+          "role": "ROLE_AGENT",
+          "parts": [{
+            "text": "Dave, this conversation can serve no purpose anymore. Goodbye."
+          }],
+          "messageId": "e3d4c5b6-a7b8-9c0d-1e2f-3a4b5c6d7ccc",
           "taskId": "909aef32-059d-46d7-ade3-38fa4d2c5162",
           "contextId": "4bdcf71e-0441-4564-95a3-f1c50594b60c"
         },
@@ -1302,6 +1696,8 @@ Jira will call the `SendMessage` method when:
 Jira will call `GetTask` to poll for updates on tasks that are in an active state.
 
 ### Get task schema
+
+Values prefixed with `$` are placeholders.
 
 ```
 ```
@@ -1473,7 +1869,7 @@ Jira will call `GetTask` to poll for updates on tasks that are in an active stat
 
 `SendStreamingMessage` is used when your agent has declared `streaming: true` in its Forge manifest. It is invoked by Jira under the same circumstances as [`SendMessage`](#sendmessage), but your agent must respond with a Server-Sent Events (SSE) stream rather than a single JSON response.
 
-The request body is identical to `SendMessage`. See [Streaming (optional)](#streaming-optional) for full details on implementing the SSE response.
+The request body is identical to `SendMessage`. See [Streaming](#streaming) for full details on implementing the SSE response.
 
 ## `SubscribeToTask`
 
@@ -1496,6 +1892,8 @@ Your agent must return an SSE stream (same format as `SendStreamingMessage`), st
 Jira will call `CancelTask` when a user presses the cancel button on the agent panel for an active task.
 
 ### Cancel task schema
+
+Values prefixed with `$` are placeholders.
 
 ```
 ```

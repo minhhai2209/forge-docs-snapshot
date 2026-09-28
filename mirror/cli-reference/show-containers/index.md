@@ -19,10 +19,11 @@ display information about deployed app containers for a given service
 3-c, --container [container]      specify the name of a container
 4-e, --environment [environment]  specify the environment (see your default
 5                                 environment by running forge settings list)
-6--json                           output container information in JSON format
-7                                 (default: false)
-8-h, --help                       display help for command
-9
+6--json                           output results in JSON format (default:
+7                                 false)
+8--placement <placement>          placement where the app is deployed
+9-h, --help                       display help for command
+10
 ```
 
 ## Operation

@@ -9,7 +9,7 @@ The page URL is constructed in the following format: `/jira/settings/apps/{appId
 
 When adding this to your app, use it as a top-level component.
 
-![Example of an admin page](https://dac-static.atlassian.com/platform/forge/snippets/images/admin-page.jpg?_v=1.5800.2336)
+![Example of an admin page](https://dac-static.atlassian.com/platform/forge/snippets/images/admin-page.jpg?_v=1.5800.2350)
 
 To organize your Jira admin space and simplify the app management, create [Configure](#configure-page) and [Get started](#get-started-page) pages.
 
@@ -23,7 +23,7 @@ To create this page, use the `useAsConfig` property.
 
 When it’s set to `true`, it creates a Configure button that leads to this page from the app's entry in **Manage Apps**.
 
-![Example of a configure button in Manage Apps](https://dac-static.atlassian.com/platform/forge/snippets/images/configure-button-manage-apps.png?_v=1.5800.2336)
+![Example of a configure button in Manage Apps](https://dac-static.atlassian.com/platform/forge/snippets/images/configure-button-manage-apps.png?_v=1.5800.2350)
 
 The `jira:adminPage` entry with the `useAsConfig` property won't be displayed on the sidebar.
 
@@ -39,7 +39,7 @@ To create this page, use the `useAsGetStarted` property.
 
 When it’s set to `true`, it creates a Get started button that leads to this page from the app's entry in **Manage Apps**.
 
-![Example of a get started button in Manage Apps](https://dac-static.atlassian.com/platform/forge/snippets/images/get-started-button-manage-apps.png?_v=1.5800.2336)
+![Example of a get started button in Manage Apps](https://dac-static.atlassian.com/platform/forge/snippets/images/get-started-button-manage-apps.png?_v=1.5800.2350)
 
 The `jira:adminPage` entry with the `useAsGetStarted` property won’t be displayed on the sidebar.
 
@@ -52,7 +52,7 @@ However, you can register multiple pages using the `pages` and `sections` proper
 
 Use `pages` to add individual pages to the sidebar and `sections` to group pages.
 
-![Example of an admin page](https://dac-static.atlassian.com/platform/forge/snippets/images/subpages-admin.jpg?_v=1.5800.2336)
+![Example of an admin page](https://dac-static.atlassian.com/platform/forge/snippets/images/subpages-admin.jpg?_v=1.5800.2350)
 
 The sidebar will only change the admin page URL, you'll need to
 [handle routes inside your Custom UI app](/platform/forge/add-routing-to-a-full-page-app/)
@@ -195,6 +195,8 @@ resources:
 11
 12
 13
+14
+15
 ```
 
 
@@ -212,6 +214,8 @@ modules:
         - title: page example
           route: page-example-1
           icon: https://example.com/icon.png
+          displayConditions:
+            isAdmin: true
 ```
 ```
 
@@ -222,6 +226,7 @@ modules:
 | `title` | `string` or `i18n object` | Yes | The title of the subpage, which is displayed on the sidebar.  The `i18n object` allows for translation. See [i18n object](#i18n-object). |
 | `icon` | `string` |  | The URL of the icon that's displayed next to the subpage title. A generic app icon is displayed if no icon is provided. |
 | `route` | `string` | Yes | The unique identifier of the subpage. This identifier is appended to the admin page URL. |
+| `displayConditions` | `object` |  | The object that defines whether the subpage is displayed in the navigation. The subpage is hidden when the conditions evaluate to false.  See [display conditions](/platform/forge/manifest-reference/display-conditions). |
 
 ### Section
 
@@ -244,6 +249,8 @@ modules:
 13
 14
 15
+16
+17
 ```
 
 
@@ -263,6 +270,8 @@ modules:
             - title: page example
               route: page-example-1
               icon: https://example.com/icon.png
+          displayConditions:
+            isAdmin: true
 ```
 ```
 
@@ -272,6 +281,7 @@ modules:
 | --- | --- | --- | --- |
 | `header` | `string` or `i18n object` |  | The section header.  The `i18n object` allows for translation. See [i18n object](#i18n-object). |
 | `pages` | `Page[]` | Yes | The list of subpages to render on the sidebar. |
+| `displayConditions` | `object` |  | The object that defines whether the section is displayed in the navigation. The section, and every subpage it contains, is hidden when the conditions evaluate to false.  The section is also hidden when all of the subpages it contains are hidden.  See [display conditions](/platform/forge/manifest-reference/display-conditions). |
 
 ## Extension data
 

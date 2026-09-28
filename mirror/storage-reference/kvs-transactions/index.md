@@ -29,7 +29,7 @@ This page discusses KVS transactions. For Custom Entity Store transactions, see 
 
 ## Limitations
 
-Data stored through transactions is still subject to the limits defined in [Forge hosted storage key and object size limits](/platform/forge/platform-quotas-and-limits/#forge-hosted-storage-key-and-object-size-limits). Transactions are also subject to additional limits, namely:
+Data stored through any transaction operation is subject to Forge's [key and object size limits](/platform/forge/limits-kvs-ce#forge-hosted-storage-key-and-object-size-limits). For example, each operation can only store a key with a maximum length of 500 characters. Transactions are also subject to additional limits, namely:
 
 | Category | Limit |
 | --- | --- |

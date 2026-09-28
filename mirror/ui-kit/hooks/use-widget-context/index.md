@@ -1,13 +1,4 @@
-# useWidgetContext (EAP)
-
-Forge's EAP offers experimental features to selected users for testing and feedback purposes.
-These features are unsupported and not recommended for use in production environments. They
-are also subject to change without notice.
-For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
-
-To participate, you can [sign up for the EAP here](https://docs.google.com/forms/d/e/1FAIpQLSfl_TpJ7o160vlOMhvU07u4XfKSnTnMpzi_4Q8d7-ieNhD1vQ/viewform?usp=sharing&ouid=100849039189157529928p).
-
-**Note:** You must also opt-in to the open beta of Dashboards in Atlassian Home. See the [guide on how to opt-in](https://community.atlassian.com/forums/Atlassian-Home-articles/Home-Dashboards-available-in-open-beta/ba-p/3009544).
+# useWidgetContext
 
 Hook for accessing widget context information, including `widgetId`, `dashboardId`, `layout` and dashboard filters. Context data loads asynchronously, so the output is `undefined` while loading.
 
@@ -146,6 +137,8 @@ interface Layout {
 
 Dashboard widgets can receive dashboard filters through the `filters` property. This is typed as a `FilterExpression` tree. Typically on the dashboard, `FilterExpression`s are nested as a root dashboard-level `FilterGroup` containing product-specific `FilterGroup`s, which themselves contain individual leaf node `Filter`s.
 
+Apps can define custom dashboard filters using the [Dashboard filter (EAP)](/platform/forge/manifest-reference/modules/dashboard-filter/) module.
+
 ```
 ```
 1
@@ -172,6 +165,13 @@ Dashboard widgets can receive dashboard filters through the `filters` property. 
 22
 23
 24
+25
+26
+27
+28
+29
+30
+31
 ```
 
 
@@ -185,13 +185,20 @@ interface FilterGroup {
   groups: FilterExpression[];
 }
 
-interface Filter {
+type Filter = AvpStoredFilter | AppStoredFilter;
+
+interface AvpStoredFilter {
   id: string;
-  label?: string | null;
+  label: string;
   comparison: string;
-  defaultValues?: Array<string | null> | null;
+  defaultValues: Array<string | null>;
   metadata?: string;
   dimensions: FilterDimension[];
+}
+
+interface AppStoredFilter {
+  id: string;
+  label: string;
 }
 
 interface FilterDimension {

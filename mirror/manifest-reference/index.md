@@ -74,21 +74,11 @@ If your app is running on the Javascript sandbox runtime, we strongly advise tha
 The `package` property lets you configure how the application's source code is
 packaged during deployment.
 
-This is an experimental [Early Access Program (EAP)](/platform/forge/whats-coming/#eap) feature, offered to selected users for testing
-and feedback purposes. EAP features are unsupported, not usable in production environments, and subject to change without notice.
-
-By default, Forge uses Webpack to bundle your application code
-together with its dependencies.
-To provide compiled application code yourself instead, set this to
-`manual@2026`. See <packaging> for
-more details.
-
--->
-
 | Setting | Type | Description |
 | --- | --- | --- |
 | `extraFiles` | `string[]` | Extra files to copy to the deployed application. These can include application data, configuration files or additional programs the application might want to read or launch.  Each item in this list can point to a single file or a [glob pattern](https://www.npmjs.com/package/glob).  When the Forge function runs, the files matching the specified patterns are available in the application directory. |
-| `path` (EAP) | `string` | This is an experimental [Early Access Program (EAP)](/platform/forge/whats-coming/#eap) feature, offered to selected users for testing and feedback purposes. EAP features are unsupported, not usable in production environments, and subject to change without notice.  Path where the compiled application code resides when using manual packaging. See <packaging> for details. |
+| `bundler` (Preview) | `string` | By default, Forge uses Webpack to bundle your application code together with its dependencies. To provide compiled application code yourself instead, set this to `manual@2026`. See [packaging](/platform/forge/manifest-reference/packaging/) for more details. |
+| `path` (Preview) | `string` | Path where the compiled application code resides when using manual packaging. See [packaging](/platform/forge/manifest-reference/packaging/) for details. |
 
 #### Reading packaged files
 

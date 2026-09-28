@@ -23,17 +23,19 @@ These UI Kit components are exported from the `@forge/react/global` entry point.
 3  Sidebar,
 4  LinkMenuItem,
 5  FlyOutMenuItem,
-6  ExpandableMenuItem,
-7  MenuSection,
-8  ReorderableMenuItems,
-9  HelpLink,
-10  PersonalSettings,
-11  PersonalSettingsItem,
-12  CreateButton,
-13  CreateMenuItem,
-14  Main,
-15} from "@forge/react/global";
-16
+6  SearchableFlyoutMenuItems,
+7  ExpandableMenuItem,
+8  MenuSection,
+9  MenuSpacer,
+10  ReorderableMenuItems,
+11  HelpLink,
+12  PersonalSettings,
+13  PersonalSettingsItem,
+14  CreateButton,
+15  CreateMenuItem,
+16  Main,
+17} from "@forge/react/global";
+18
 ```
 
 ## Component hierarchy
@@ -71,6 +73,10 @@ The `Global` component is composed of sub-components that work together to creat
 27
 28
 29
+30
+31
+32
+33
 ```
 
 
@@ -94,10 +100,14 @@ The `Global` component is composed of sub-components that work together to creat
 │  │
 │  ├─ <LinkMenuItem />
 │  │
+│  ├─ <MenuSpacer />
+│  │
 │  ├─ <ReorderableMenuItems />
 │  │
 │  ├─ <FlyOutMenuItem />
 │  │  └─ <LinkMenuItem />
+│  │
+│  ├─ <SearchableFlyoutMenuItems />
 │  │
 │  └─ <ExpandableMenuItem />
 │     └─ <LinkMenuItem />
@@ -139,7 +149,7 @@ Renders the left navigation panel.
 
 | Name | Type | Required | Description |
 | --- | --- | --- | --- |
-| `children` | `ForgeElement` | Yes | Accepts `LinkMenuItem`, `ExpandableMenuItem`, `FlyOutMenuItem`, `MenuSection`, and `ReorderableMenuItems`. |
+| `children` | `ForgeElement` | Yes | Accepts `LinkMenuItem`, `ExpandableMenuItem`, `FlyOutMenuItem`, `SearchableFlyoutMenuItems`, `MenuSection`, `MenuSpacer`, and `ReorderableMenuItems`. |
 | `forYouMenuItem` | `boolean` | No | Whether to show the built-in **For you** menu item. Defaults to `true`. When `true`, displays the **For you** item and uses `/for-you` as the home page. When `false`, hides the item and uses the root route `/` as the home page. |
 
 A clickable navigation link in the sidebar.
@@ -281,6 +291,39 @@ Use `MenuSection` with a `label` prop to add a section header for menu items in 
 ```
 ```
 
+Adds vertical spacing between groups of top-level sidebar items. It has no props and can only be used as a direct child of `Sidebar`.
+
+```
+```
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+```
+
+
+
+```
+<Global>
+  <Sidebar>
+    <LinkMenuItem label="Overview" href="/overview" />
+    <LinkMenuItem label="Recent" href="/recent" />
+
+    <MenuSpacer />
+
+    <LinkMenuItem label="Settings" href="/settings" />
+  </Sidebar>
+</Global>
+```
+```
+
 ### `ExpandableMenuItem`
 
 An expandable menu item that reveals nested links when selected.
@@ -296,6 +339,148 @@ A sidebar item that opens a flyout containing nested menu items.
 | --- | --- | --- | --- |
 | `label` | `string` | Yes | The text displayed for the flyout menu item. |
 | `children` | `ForgeElement` | Yes | Accepts nested sidebar menu items, such as `LinkMenuItem`. |
+
+A sidebar item that opens a searchable flyout. Use it when users need to find an item in a dynamic or long list, such as spaces, projects, or customers.
+
+`SearchableFlyoutMenuItems` uses a controlled data flow:
+
+1. Provide the sections currently displayed through `items`.
+2. When a user changes the search input, `onSearchTextChanged` receives `{ searchText }`.
+3. Filter or fetch the matching data in your app, then render the resulting sections through `items` again.
+
+| Name | Type | Required | Description |
+| --- | --- | --- | --- |
+| `label` | `string` | Yes | The label displayed for the sidebar item that opens the flyout. |
+| `items` | ```  ``` 1 2 3 4 ```    ``` {   header: string;   items: { primaryLabel: string; href: string }[]; }[] ``` ``` | Yes | The sections currently displayed in the flyout. Each section requires a `header` string. For standard link results, each entry in the inner `items` array should be an object with a `primaryLabel` string and an app-relative `href` string. |
+| `onSearchTextChanged` | ```  ``` 1 2 3 ```    ``` (params: {   searchText?: string; }) => void ``` ``` | Yes | Called when the user changes the search input. Update the data supplied through `items` in response. |
+| `searchPlaceholder` | `string` | No | Placeholder text for the search input. Defaults to `Search`. |
+
+#### Filtering items in response to search
+
+The following example filters a fixed list of spaces. In an app backed by remote data, use `searchText` to fetch the next matching sections instead.
+
+```
+```
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+```
+
+
+
+```
+import React, { useState } from "react";
+import ForgeReconciler, { Text } from "@forge/react";
+import {
+  Global,
+  Main,
+  SearchableFlyoutMenuItems,
+  Sidebar,
+} from "@forge/react/global";
+
+const allSpaces = [
+  { primaryLabel: "Design", href: "spaces/design" },
+  { primaryLabel: "Engineering", href: "spaces/engineering" },
+  { primaryLabel: "Marketing", href: "spaces/marketing" },
+];
+
+const initialSections = [{ header: "Spaces", items: allSpaces }];
+
+const App = () => {
+  const [sections, setSections] = useState(initialSections);
+
+  const handleSearchTextChange = ({ searchText = "" }) => {
+    const query = searchText.trim().toLowerCase();
+    const matchingSpaces = allSpaces.filter(({ primaryLabel }) =>
+      primaryLabel.toLowerCase().includes(query),
+    );
+
+    setSections(
+      matchingSpaces.length > 0
+        ? [{ header: "Spaces", items: matchingSpaces }]
+        : [],
+    );
+  };
+
+  return (
+    <Global>
+      <Sidebar>
+        <SearchableFlyoutMenuItems
+          label="Spaces"
+          items={sections}
+          onSearchTextChanged={handleSearchTextChange}
+          searchPlaceholder="Search spaces"
+        />
+      </Sidebar>
+      <Main>
+        <Text>Select a space from the sidebar.</Text>
+      </Main>
+    </Global>
+  );
+};
+
+ForgeReconciler.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+);
+```
+```
+
+For link results, use app-relative values such as `spaces/design`, not tenant-root values such as `/spaces/design`. The platform resolves the result relative to your Global App installation URL.
 
 Groups sidebar menu items that users can reorder. Use this when your app supports a customizable
 navigation order.
@@ -498,6 +683,14 @@ and main content:
 103
 104
 105
+106
+107
+108
+109
+110
+111
+112
+113
 ```
 
 
@@ -511,6 +704,7 @@ import {
   LinkMenuItem,
   ExpandableMenuItem,
   MenuSection,
+  MenuSpacer,
   HelpLink,
   PersonalSettings,
   PersonalSettingsItem,
@@ -530,7 +724,7 @@ const initialNotes = [
 const App = () => {
   const [notes, setNotes] = useState(initialNotes);
   const [message, setMessage] = useState(
-    "Select an action from the header or sidebar."
+    "Select an action from the header or sidebar.",
   );
 
   const handleCreateDocument = () => {
@@ -565,8 +759,13 @@ const App = () => {
         <LinkMenuItem label="Reports" href="/reports" icon="chart-bar" />
         <LinkMenuItem label="Recent" href="/recent" />
 
+        <MenuSpacer />
+
         <MenuSection label="Dashboards">
-          <LinkMenuItem label="Sales performance" href="/reports/sales-performance" />
+          <LinkMenuItem
+            label="Sales performance"
+            href="/reports/sales-performance"
+          />
           <LinkMenuItem label="Team activity" href="/reports/team-activity" />
         </MenuSection>
 
@@ -574,6 +773,8 @@ const App = () => {
           <LinkMenuItem label="Project Alpha" href="/projects/alpha" />
           <LinkMenuItem label="Project Beta" href="/projects/beta" />
         </ExpandableMenuItem>
+
+        <MenuSpacer />
 
         <FlyOutMenuItem label="Resources">
           <LinkMenuItem label="Documentation" href="/resources/docs" />
@@ -605,7 +806,7 @@ const App = () => {
 ForgeReconciler.render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>
+  </React.StrictMode>,
 );
 ```
 ```
