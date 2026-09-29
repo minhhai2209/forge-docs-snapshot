@@ -69,6 +69,30 @@ Learn more about Forge’s pricing structure, allowances, and billing by visitin
 
 Estimate your app’s monthly costs using the [cost estimator](https://developer.atlassian.com/forge-cost-estimator), which lets you model usage and see potential charges.
 
+## Data residency
+
+The Atlassian cloud provides features that allow admins to control and verify where their Jira and Confluence data is hosted. These features support them in meeting company requirements or regulatory obligations relating to data residency.
+
+Forge's [persistent storage options](/platform/forge/storage-reference/#persistent)
+use this same cloud infrastructure to store data. This allows Forge to extend similar data residency
+features to your app. All data stored on Forge persistent storage automatically inherit these features.
+
+Specifically, if your app stores data on Forge persistent storage, an admin can control where that
+data is stored.
+For more details about how this works, see [Data residency](/platform/forge/data-residency/).
+
+The Forge Object Store is data residency-enabled, in the same way as the Key-Value Store, the Custom Entity Store, and Forge SQL. An app that stores all of its in-scope End-User Data in the Forge Object Store meets the storage criterion for [`PINNED` status](/platform/forge/data-residency/#eligibility) and for the [Runs on Atlassian](/platform/forge/runs-on-atlassian/) badge.
+
+## Data lifecycle
+
+Objects follow the [data lifecycle for Forge-hosted storage](/platform/forge/storage-reference/hosted-storage-data-lifecycle/) that applies to every Forge hosted storage capability.
+
+When a customer uninstalls your app, Forge soft deletes the app's objects instead of destroying them immediately, and retains them for the rest of the retention period set by Atlassian's Standard Data Retention and Disposal policy. Reinstalling the app doesn't restore the objects automatically. To have them re-linked to the new installation, submit a recovery request within 21 days of the uninstallation. See [Data recovery for apps with hosted storage](/platform/forge/storage-reference/#data-recovery) for the steps.
+
+When your app deletes an object while it's still installed, the object becomes unavailable to the app straight away. The platform keeps a soft-deleted copy so that Atlassian can restore it after an accidental deletion, and then destroys it at the end of the retention period. Raise a support ticket within 21 days of the deletion to request a restore. After the retention period, the copy and any backups that contain it are destroyed under Atlassian's Standard Data Retention and Disposal policy, described in the [Atlassian SOC 2 report](https://www.atlassian.com/trust/compliance/resources/soc2).
+
+The retention periods above are platform guarantees, not a data archive. If your app needs to keep objects for a defined period, or to prove that an object was destroyed on a given date, track that in your app rather than relying on the retention window.
+
 ## Partitioning
 
 Data in Forge hosted storage is namespaced. The namespace includes all metadata relevant to an app's current installation. As a result:

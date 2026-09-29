@@ -135,9 +135,11 @@ console.log(`Tasks: ${JSON.stringify(json)}`);
 
 ## Context and security
 
-No context will automatically be passed to `invokeRemote` when called from a backend Forge function,
-unlike the context shown on [Forge Remote essentials](/platform/forge/remote/essentials/),
-which is only provided to frontend invocations of `invokeRemote`.
+When `invokeRemote` is called from a backend Forge function, the
+[Forge Invocation Token](/platform/forge/remote/essentials/#the-forge-invocation-token--fit-)
+`context` claim will contain only `context.cloudId` for Jira and Confluence apps, and will be an empty object otherwise.
+The full module context shown on [Forge Remote essentials](/platform/forge/remote/essentials/)
+is only provided to frontend invocations of `invokeRemote`.
 
 Context should only be pulled from the FCT token in your backend function,
 otherwise it could be untrusted user input.

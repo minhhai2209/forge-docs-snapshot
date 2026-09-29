@@ -1,8 +1,6 @@
 # Data lifecycle for Forge-hosted storage
 
-This document outlines the Forge-hosted [Persistent](/platform/forge/storage-reference/#persistent) storage data lifecycle for apps. It focuses on data managed through Forge-hosted storage and explains how data is provisioned, retained, and deleted at different stages of the app lifecycle. Understanding these stages helps you effectively plan your app's behavior and ensures it meets data handling requirements.
-
-This guide only discusses Forge-hosted Persistent storage and doesn't include remote or other types of storage. While this guide details how Atlassian manages Forge-hosted data, you may find these practices useful for managing remote storage as well to ensure consistency and effective data handling.
+This document outlines the Forge-hosted [persistent](/platform/forge/storage-reference/#persistent) storage data lifecycle for apps. It focuses on data managed through Forge-hosted storage and explains how data is provisioned, retained, and deleted at different stages of the app lifecycle. Understanding these stages helps you effectively plan your app's behavior and ensures it meets data handling requirements.
 
 ## Data storage during App lifecycle stages
 
@@ -31,6 +29,18 @@ If an app is reinstalled, it is treated as a new installation. However, if a req
 ### App deletion
 
 Before an [app is deleted](/platform/forge/manage-your-apps/#delete-forge-apps), all installations must be removed first. Partners need to ask customers or contact Atlassian support to uninstall the app so the data can be deleted. Given these are normal uninstallations, they will fall under the same retention period as described above.
+
+### Data an app deletes while it remains installed
+
+When your app deletes data through a storage API, that data is removed from primary storage and your app can no longer read it. Atlassian keeps a soft-deleted copy so the data can be restored after an accidental deletion, then destroys it at the end of the retention period described in the [Atlassian SOC 2 report](https://www.atlassian.com/trust/compliance/resources/soc2). Backups taken before the deletion are destroyed on the same schedule.
+
+To ask Atlassian to restore data your app deleted by mistake, raise a support ticket within 21 days of the deletion, following the steps in [Data recovery for apps with hosted storage](/platform/forge/storage-reference/#data-recovery).
+
+Tell your customers that deletion is final from the app's point of view. The retention window exists so Atlassian can recover from accidental deletion; it isn't an archive your app can read from.
+
+## Data residency
+
+Every Forge-hosted persistent storage capability is data residency-enabled. Data an app stores in the Key-Value Store, the Custom Entity Store, Forge SQL, or the Forge Object Store is held in the same location as the host Atlassian app, and moves with it when an admin migrates that app to another location. See [Data residency](/platform/forge/data-residency/) for the details and for the conditions an app must meet to be shown as `PINNED`.
 
 ## Licensing changes and Atlassian app impacts
 
