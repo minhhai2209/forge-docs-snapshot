@@ -153,6 +153,28 @@ The `getContext` method enables you to retrieve contextual information for your 
 28
 29
 30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
 ```
 
 
@@ -163,17 +185,39 @@ function getContext(): Promise<Context>;
 interface Context {
   accountId?: string;
   cloudId?: string;
+  workspaceId?: string;
   extension: ExtensionData;
+  installation?: Installation;
   license?: LicenseDetails;
   localId: string;
   locale: string;
   moduleKey: string;
   siteUrl: string;
   timezone: string;
+  theme?: {
+    colorMode: string;
+    light: string;
+    dark: string;
+    spacing: string;
+    [key: string]: string;
+  };
 }
 
 interface ExtensionData {
   [k: string]: any;
+}
+
+interface Installation {
+  ari: {
+    installationId: string;
+  };
+  contexts: ContextAri[];
+}
+
+interface ContextAri {
+  cloudId?: string;
+  workspaceId?: string;
+  resourceOwner?: string;
 }
 
 interface LicenseDetails {
@@ -196,7 +240,14 @@ interface LicenseDetails {
   in which the app is running. The data available depends on the module in which your app is used.
   * **accountId:** The Atlassian ID of the user that interacted with the app.
   * **cloudId:** The ID identifying the cloud context of this app installation.
-  * **extension:** Provides information related to the Forge app extension point, such as the content ID of the page where the app is running, module type and so on.
+  * **workspaceId:** The ID identifying the workspace context of this app installation. This is specific to Bitbucket apps.
+  * **extension:** Contextual information about the current environment that depends on the extension being used. The format of this information varies across different Atlassian apps that the component may be installed on.
+  * **installation:** Information about the app installation.
+    * **ari:** An object containing ARI information for the installation, where `installationId` is the UUID part of the full installation ARI.
+    * **contexts:** The list of contexts where the app is installed. Each item includes:
+      * **cloudId:** A unique identifier for the cloud instance of a context, such as the ID of a Jira or Confluence instance.
+      * **workspaceId:** The workspace ID for a given context. This is specific to Bitbucket.
+      * **resourceOwner:** The product that owns the context, such as Jira or Confluence.
   * **license:** Contains information about the license of the app. Note: this field is only present for paid apps in the production environment.
     `license` is `undefined` for free apps, apps not listed on the Atlassian Marketplace, and apps in development and staging environments.
     See the `LicenseDetails` type for what information is available.
@@ -205,6 +256,7 @@ interface LicenseDetails {
   * **moduleKey:** The key for the module as defined in the `manifest.yml` file.
   * **siteUrl:** The URL of the site of this app installation (e.g. <https://example.atlassian.net>).
   * **timezone:** The timezone of the user that interacted with the app.
+  * **theme.colorMode:** Current color mode. Can be `light` or `dark`. For Custom UI apps, enable theming using [`view.theme.enable()`](#theme) and Atlassian Design Tokens rather than reading this property directly.
 
 ### Example
 
@@ -689,7 +741,7 @@ Returns an object with the following properties:
 
 ### Example
 
-![Example rendered Custom UI bodied macro contents](https://dac-static.atlassian.com/platform/forge/apis-reference/ui-api-bridge/images/view/view-createAdfRendererIframeProps-custom-ui-bodied-macro.svg?_v=1.5800.2352)
+![Example rendered Custom UI bodied macro contents](https://dac-static.atlassian.com/platform/forge/apis-reference/ui-api-bridge/images/view/view-createAdfRendererIframeProps-custom-ui-bodied-macro.svg?_v=1.5800.2354)
 
 ```
 ```

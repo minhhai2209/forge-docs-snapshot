@@ -13,7 +13,7 @@ To add the `useProductContext` hook to your app:
 
 Here is an example of an app that displays all its context information with `useProductContext`.
 
-![The app display on a Confluence page](https://dac-static.atlassian.com/platform/forge/images/ui-kit-2/hooks-examples/useproductcontext.png?_v=1.5800.2352)
+![The app display on a Confluence page](https://dac-static.atlassian.com/platform/forge/images/ui-kit-2/hooks-examples/useproductcontext.png?_v=1.5800.2354)
 
 ```
 1import React from "react";
@@ -88,6 +88,20 @@ Here is an example of an app that displays all its context information with `use
 36
 37
 38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
 ```
 
 
@@ -100,6 +114,7 @@ interface ProductContext {
   cloudId?: string;
   workspaceId?: string;
   extension: ExtensionData;
+  installation?: Installation;
   license?: LicenseDetails;
   localId: string;
   locale: string;
@@ -117,6 +132,19 @@ interface ProductContext {
 
 interface ExtensionData {
   [k: string]: any;
+}
+
+interface Installation {
+  ari: {
+    installationId: string;
+  };
+  contexts: ContextAri[];
+}
+
+interface ContextAri {
+  cloudId?: string;
+  workspaceId?: string;
+  resourceOwner?: string;
 }
 
 interface LicenseDetails {
@@ -143,11 +171,17 @@ None.
   * **accountId:** The Atlassian ID of the user that interacted with the app.
   * **cloudId:** The ID identifying the cloud context of this app installation, such as the ID of a Jira or Confluence instance.
   * **workspaceId:** The ID identifying the workspace context of this app installation. This is specific to Bitbucket apps.
-  * **extension**: Contextual information about the current environment that depends on the extension being used. The format of this information varies across different Atlassian apps that the component may be installed on.
-  * **license**: Contains information about the license of the app. Note: this field is only present for paid apps in the production environment. license is `undefined` for free apps, apps not listed on the Atlassian Marketplace, and apps in development and staging environments. See the `LicenseDetails` type for what information is available.
-  * **localId**: The unique ID for this instance of this component in the content.
-  * **locale**: The locale of the user that interacted with the app.
-  * **moduleKey**: The key for the module as defined in the `manifest.yml` file.
-  * **siteUrl**: The URL of the site that the app is running on (e.g. <https://example.atlassian.net>).
-  * **timezone**: The timezone of the user that interacted with the app.
-  * **theme.colorMode** Current color mode. Can be `light` or `dark`. For accessing theme information, prefer using the [useTheme](/platform/forge/ui-kit/hooks/use-theme) hook instead, as it is reactive to theme changes in the Atlassian app.
+  * **extension:** Contextual information about the current environment that depends on the extension being used. The format of this information varies across different Atlassian apps that the component may be installed on.
+  * **installation:** Information about the app installation.
+    * **ari:** An object containing ARI information for the installation, where `installationId` is the UUID part of the full installation ARI.
+    * **contexts:** The list of contexts where the app is installed. Each item includes:
+      * **cloudId:** A unique identifier for the cloud instance of a context, such as the ID of a Jira or Confluence instance.
+      * **workspaceId:** The workspace ID for a given context. This is specific to Bitbucket.
+      * **resourceOwner:** The product that owns the context, such as Jira or Confluence.
+  * **license:** Contains information about the license of the app. Note: this field is only present for paid apps in the production environment. `license` is `undefined` for free apps, apps not listed on the Atlassian Marketplace, and apps in development and staging environments. See the `LicenseDetails` type for what information is available.
+  * **localId:** The unique ID for this instance of this app in the content.
+  * **locale:** The locale of the user that interacted with the app.
+  * **moduleKey:** The key for the module as defined in the `manifest.yml` file.
+  * **siteUrl:** The URL of the site that the app is running on (e.g. <https://example.atlassian.net>).
+  * **timezone:** The timezone of the user that interacted with the app.
+  * **theme.colorMode:** Current color mode. Can be `light` or `dark`. For accessing theme information, prefer using the [useTheme](/platform/forge/ui-kit/hooks/use-theme) hook instead, as it is reactive to theme changes in the Atlassian app.
