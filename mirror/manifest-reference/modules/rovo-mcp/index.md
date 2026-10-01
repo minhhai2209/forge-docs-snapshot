@@ -6,7 +6,7 @@ Atlassian releases preview features so partners and developers can study, test, 
 
 When you use Rovo APIs, you must comply with the [Atlassian Acceptable Use Policy](https://www.atlassian.com/legal/acceptable-use-policy#disruption), including the section titled “Artificial intelligence offerings and features.” For the protection of our customers, Atlassian performs safety screening on Agents at our sole discretion. If we identify any issues with your Agent, we may take protective actions, such as preventing the Agent from being deployed or suspending your use of Rovo APIs. Where possible we will notify you of the nature of the issue, and you must use reasonable commercial efforts to correct the issue before deploying your Agent again.
 
-The `rovo:mcp` module lets you expose actions as tools in Rovo Studio for custom agents. An app can have at most one `rovo:mcp` module.
+The `rovo:mcp` module lets you expose actions as tools that agents can invoke. Tools are available to custom agents in Rovo Studio, and can also be connected to third-party, MCP-compatible AI clients (EAP). An app can have at most one `rovo:mcp` module.
 
 ## Data access
 
@@ -186,3 +186,42 @@ modules:
 Hands-on, step-by-step guides for building with the `rovo:mcp` module:
 
 The `rovo:mcp` module integrates with other manifest configurations to expose tools in Rovo Studio.
+
+You can now connect Rovo MCP tools to third-party AI clients. This capability is available under Forge's Early Access Program (EAP).
+It is experimental, unsupported, not recommended for use in production environments, and subject to change without notice.
+
+For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
+
+In addition to custom agents in Rovo Studio, you can connect the tools exposed by your `rovo:mcp` module to any third-party, MCP-compatible AI client.
+
+External MCP exposure is disabled by default. Before a client can connect, a site or org admin must enable
+it from **Apps > Sites > *your site* > Connected apps** in [Atlassian Administration](https://admin.atlassian.com/):
+select your Forge app (the one that declares a `rovo:mcp` module), open its app details, and turn on the
+tools you want to expose. This is set per app installation (per site). For full instructions, see
+[Configure tools for an external MCP server](https://support.atlassian.com/organization-administration/docs/configure-tools-for-an-external-mcp-server/).
+
+Each installed app exposes its tools at the following endpoint:
+
+```
+```
+1
+2
+```
+
+
+
+```
+https://mcp.atlassian.com/forge/<appId>
+```
+```
+
+Where `<appId>` is the UUID portion of your Forge app ID from `app.id` in `manifest.yml`
+(the part after `ari:cloud:ecosystem::app/`).
+
+Add this URL to your client's remote MCP server configuration. When the client connects, it opens an OAuth
+2.1 consent screen where the user selects the site to connect to (limited to sites where the app is
+installed and exposure is enabled), reviews the app's scopes and tools, and approves access. Once
+connected, the client can invoke any of the tools listed in your `rovo:mcp` module's `tools` property,
+subject to the invoking user's own permissions on that site.
+
+For step-by-step instructions, see [Build a Rovo MCP hello world app](/platform/forge/build-a-hello-world-rovo-mcp/#connect-to-a-third-party-ai-client-preview).

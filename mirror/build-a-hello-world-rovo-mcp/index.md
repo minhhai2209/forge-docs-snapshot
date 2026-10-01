@@ -224,17 +224,17 @@ With your app installed, your tool is available to custom agents in Rovo Studio.
 
 1. Access Rovo by selecting **Ask Rovo** on the top menu within the Atlassian app where you have installed your Forge app.
 2. In the Rovo side panel, select the agent selector and go to **Create agent**.
-   ![example of the Rovo agent selector](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-mcp-agent-selector.png?_v=1.5800.2354)
+   ![example of the Rovo agent selector](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-mcp-agent-selector.png?_v=1.5800.2358)
 3. Select **skip to manual step** to open the agent configuration.
-   ![example of the create agent configuration screen](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-mcp-create-agent.png?_v=1.5800.2354)
+   ![example of the create agent configuration screen](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-mcp-create-agent.png?_v=1.5800.2358)
 4. In the agent configuration, find the **Tools** section and select **Add tools**.
 5. Scroll down to the **Connected apps** section, select your app, then select the **Log a message** tool exposed by your MCP module, and select **Add**.
-   ![example of adding the tool exposed by your app](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-mcp-add-tools.png?_v=1.5800.2354)
+   ![example of adding the tool exposed by your app](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-mcp-add-tools.png?_v=1.5800.2358)
 6. Your tool now appears under the agent's **Tools** section. Give your agent a name, for example
    *Hello world logger agent*, then select **Publish**.
-   ![example of the agent with the tool added](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-mcp-agent-with-tool.png?_v=1.5800.2354)
+   ![example of the agent with the tool added](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-mcp-agent-with-tool.png?_v=1.5800.2358)
 7. Use the agent selector to find and select your published agent.
-   ![example of selecting your published agent](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-mcp-select-agent.png?_v=1.5800.2354)
+   ![example of selecting your published agent](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-mcp-select-agent.png?_v=1.5800.2358)
 8. Chat with the agent and invoke your tool. Ask the agent to log a message for you, for example,
    *Log the message "hello world"*.
      
@@ -244,7 +244,7 @@ With your app installed, your tool is available to custom agents in Rovo Studio.
 
 You should see a Forge log with your message:
 
-![example of your tool creating a Forge log](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-mcp-log.png?_v=1.5800.2354)
+![example of your tool creating a Forge log](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-mcp-log.png?_v=1.5800.2358)
 
 The Forge function in the `src/hello-world-mcp.js` file shapes the behavior of the tool:
 
@@ -370,6 +370,50 @@ export function messageLogger(payload) {
    [developer console](https://developer.atlassian.com/console/myapps/), select your app, and navigate to **Logs**.
 
    You should see Forge logs with your messages.
+
+## Connect to a third-party AI client (Preview)
+
+You can now connect Rovo MCP tools to third-party AI clients. This capability is available under Forge's Early Access Program (EAP).
+It is experimental, unsupported, not recommended for use in production environments, and subject to change without notice.
+
+For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
+
+In addition to custom agents in Rovo Studio, you can connect your tool to any third-party, MCP-compatible
+AI client. The steps below show this flow using Claude Code as an example client; exact steps and
+screens vary depending on the client you use.
+
+1. External MCP exposure is disabled by default. In [Atlassian Administration](https://admin.atlassian.com/),
+   go to **Apps > Sites > *your site* > Connected apps**, select your Forge app (the one with a `rovo:mcp`
+   module), and open its app details. Under **Tools**, turn on the tools you want to expose to external
+   clients. For full instructions, see
+   [Configure tools for an external MCP server](https://support.atlassian.com/organization-administration/docs/configure-tools-for-an-external-mcp-server/).
+
+   ![example of enabling tools for a Forge app with a rovo:mcp module in Atlassian Administration](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-mcp-3p-client-admin-toggle.png?_v=1.5800.2358)
+2. Open your `manifest.yml` and copy the UUID portion of your `app.id`. That's the `<appId>` in
+   `ari:cloud:ecosystem::app/<appId>`.
+3. Construct your app's MCP endpoint URL: `https://mcp.atlassian.com/forge/<appId>`.
+4. Add the URL as a remote MCP server in your AI client. The steps below use Claude Code;
+   other clients vary, so check your client's docs.
+
+   ```
+   ```
+   1
+   2
+   ```
+
+
+
+   ```
+   claude mcp add --transport http hello-world-mcp https://mcp.atlassian.com/forge/<appId>
+   ```
+   ```
+
+   Then run `/mcp` in a Claude Code session to connect and complete OAuth.
+5. When you connect, your client opens a browser window with an OAuth consent screen. Select the site
+   where you installed your app, sign in with your Atlassian account, and approve access for the client.
+6. Once connected, your client lists the **Log a message** tool exposed by your MCP module. Chat with
+   your AI client and ask it to invoke the tool, for example, *Log the message "hello world"*.
+7. Check the logs to confirm your tool ran, the same way as in [Use your Rovo MCP tool](#use-your-rovo-mcp-tool).
 
 ## Developing for Atlassian Government Cloud
 

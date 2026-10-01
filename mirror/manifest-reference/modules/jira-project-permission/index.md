@@ -1,15 +1,51 @@
 # Jira project permission
 
-## Manage Preferences
+The `jira:projectPermission` module allows you to define custom project permissions for Jira.
+Project permissions are scoped to projects and are useful if you need to manage permissions for operations performed on objects related to projects, like issues, comments, worklogs or your add-on's project-scoped entities.
 
-Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
-When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our [Privacy Policy](https://www.atlassian.com/legal/privacy-policy#how-we-disclose-information-we-collect).
-You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt-out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
+A custom project permission behaves as any other Jira permission. Administrators may manage it in the UI, and your add-on can access it through REST APIs.
 
-Allow all
+The format of the permission key is: `ari:cloud:ecosystem::extension/[App ID]/[Environment ID]/static/[Permission key]`.
 
-These cookies are necessary for the website to function and cannot be switched off in our systems. They are usually only set in response to actions made by you which amount to a request for services, such as setting your privacy preferences, logging in or filling in forms. You can set your browser to block or alert you about these cookies, but some parts of the site will not then work. These cookies do not store any personally identifiable information.
+Note that there is a similar module for [global permissions](/platform/forge/manifest-reference/modules/jira-global-permission/).
 
-These cookies allow us to count visits and traffic sources so we can measure and improve the performance of our site. They help us to know which pages are the most and least popular and see how visitors move around the site. If you do not allow these cookies we will not know when you have visited our site, and will not be able to monitor its performance.
+## Properties
 
-These cookies enable the website to provide enhanced functionality and personalisation. They may be set by us or by third party providers whose services we have added to our pages. If you do not allow these cookies then some or all of these services may not function properly.
+| Property | Type | Required | Description |
+| --- | --- | --- | --- |
+| `key` | `string` | Yes | A key for the module, which other modules can refer to. Must be unique within the manifest.  *Regex:* `^[a-zA-Z0-9_-]+$` |
+| `name` | `string` or `i18n object` | Yes | The name of the permission.  The `i18n object` allows for translation. See [i18n object](#i18n-object). |
+| `description` | `string` or `i18n object` | Yes | Description of the project permission. It will be displayed under the permission's name.  The `i18n object` allows for translation. See [i18n object](#i18n-object). |
+| `category` | `string` | No | The category of the project permission. This determines in which section the permission will be displayed. Allowed values:   * `attachments` * `comments` * `issues` * `other` * `projects` * `time_tracking` * `voters_and_watchers`   *Default:* `other` |
+| `migratedFromConnect` | `boolean` | No | This optional field relates to migrating from a Connect app. See [here](https://developer.atlassian.com/platform/adopting-forge-from-connect/migrate-jira-global-project-permissions/) for more information.  *Default:* `false` |
+
+### i18n object
+
+| Key | Type | Required | Description |
+| --- | --- | --- | --- |
+| `i18n` | `string` | Yes | A key referencing a translated string in the translation files. For more details, see [Translations](/platform/forge/manifest-reference/translations). |
+
+## Example
+
+```
+```
+1
+2
+3
+4
+5
+6
+7
+```
+
+
+
+```
+modules:
+  jira:projectPermission:
+    - key: "forge-project-permission"
+      name: "Forge project permission"
+      description: "Forge custom project permission"
+      category: attachments
+```
+```

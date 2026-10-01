@@ -6,8 +6,7 @@ We release preview features so partners and developers can study, test, and inte
 
 Manifest overrides let you use the same `manifest.yml` file across deployments while adapting your
 Forge Container services configuration to an environment type or placement. For example, you can
-allocate fewer resources to a development environment or increase scaling for a particular data
-residency realm.
+allocate fewer resources to a development environment or increase scaling for a particular region.
 
 Define overrides in the top-level `overrides` property. During deployment, Forge Container services
 selects at most one matching override and replaces the top-level `services` property with the
@@ -24,7 +23,7 @@ Properties from the base `services` configuration aren't preserved when omitted 
 | `overrides` | `Array` | No | A list of manifest overrides. At most one matching override is applied to a deployment. |
 | `overrides[].applyTo` | `Object` | Yes | Defines when the override applies. Include at least one of `environmentTypes` or `placements`. If you include both properties, both must match. |
 | `overrides[].applyTo.environmentTypes` | `Array<string>` | No | One or more Forge environment types. Supported values are `DEVELOPMENT`, `STAGING`, and `PRODUCTION`. Values are case-sensitive. |
-| `overrides[].applyTo.placements` | `Array<string>` | No | One or more data residency realms or placement IDs. See [Supported placements](#supported-placements). |
+| `overrides[].applyTo.placements` | `Array<string>` | No | One or more Forge regions or placement IDs. See [Supported placements](#supported-placements). |
 | `overrides[].value` | `Object` | Yes | Contains the manifest properties to replace when the override is selected. |
 | `overrides[].value.services` | `Array` | Yes | The complete replacement for the base `services` array. It supports the same properties as the [base services configuration](/platform/forge/containers-reference/ref-manifest/). |
 
@@ -37,35 +36,26 @@ The `placements` filter supports the following values:
 
 | Placement type | Supported values |
 | --- | --- |
-| Data residency realm | `EU`, `US`, `AU`, `DE`, `SG`, `CA`, `IN`, `KR`, `JP`, `GB`, or `CH` |
+| Region | `ap-southeast-2`, `ap-southeast-1`, `us-west-2`, `us-east-1`, `eu-west-1`, or `eu-central-1` |
 | Isolated Cloud ID | An Isolated Cloud ID provided by Atlassian |
-
-### EU and specific realms
-
-`EU` is a broad realm that covers European placements. `DE`, `GB`, and `CH` are more specific realms
-within `EU`. For a deployment in one of these specific realms, an override filtered by `EU` and an
-override filtered by the specific realm can both match. The specific realm takes precedence.
-
-For override selection, any supported realm other than `EU` is considered a specific realm. For
-example, `US` and `AU` are specific realms even though they aren't sub-realms of `EU`.
 
 ## Override selection and precedence
 
 Forge Container services first finds the overrides whose filters match the deployment. It then
-selects the most specific match according to the following order:
+selects the most specific match according to the following order. A deployment's placement is
+always a region or an Isolated Cloud ID, never both, so the order doesn't rank those two placement
+values against each other.
 
 | Order | `environmentTypes` | `placements` |
 | --- | --- | --- |
-| 1 (most specific) | Specified | A specific realm or Isolated Cloud ID |
-| 2 | Not specified | A specific realm or Isolated Cloud ID |
-| Specified | `EU` |
+| 1 (most specific) | Specified | Specified |
+| 2 | Not specified | Specified |
 | 3 (least specific) | Specified | Not specified |
-| Not specified | `EU` |
 
 ## Example
 
 The following manifest uses a smaller container and fewer instances in development. For a production
-deployment in the `DE` realm, it uses a larger container and additional instances.
+deployment in the `eu-central-1` region, it uses a larger container and additional instances.
 
 ```
 ```
@@ -176,7 +166,7 @@ overrides:
       environmentTypes:
         - PRODUCTION
       placements:
-        - DE
+        - eu-central-1
     value:
       services:
         - key: java-service
@@ -210,7 +200,7 @@ manifest after Forge Container services applies an override:
 
 
 ```
-forge manifest render --environment production --placement DE
+forge manifest render --environment production --placement eu-central-1
 ```
 ```
 

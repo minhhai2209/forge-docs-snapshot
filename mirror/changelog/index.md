@@ -1,15 +1,20 @@
 # Forge changelog
 
-## Manage Preferences
+**What’s changing**  
+You can now build your [Rovo actions](https://developer.atlassian.com/platform/forge/manifest-reference/modules/rovo-action/ "https://developer.atlassian.com/platform/forge/manifest-reference/modules/rovo-action/") once and expose them as tools to both custom agents in Rovo Studio and third-party, MCP-enabled AI clients. This is made possible through the `rovo:mcp` module, which is now available in Preview.
 
-Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
-When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our [Privacy Policy](https://www.atlassian.com/legal/privacy-policy#how-we-disclose-information-we-collect).
-You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt-out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
+With this capability, your Forge tools can reach users in external clients such as Claude Desktop, Codex, and Cursor. This allows you to bring Forge functionality into more AI-powered workflows without building separate integrations for every client. For example, a Rovo action that retrieves and summarizes Jira issues can now be made available in both Rovo Agents and external AI environments.
 
-Allow all
+Admins remain in control of this connectivity:
 
-These cookies are necessary for the website to function and cannot be switched off in our systems. They are usually only set in response to actions made by you which amount to a request for services, such as setting your privacy preferences, logging in or filling in forms. You can set your browser to block or alert you about these cookies, but some parts of the site will not then work. These cookies do not store any personally identifiable information.
+* **Opt-in access**: External access is disabled by default and must be enabled separately for each app installation.
+* **Unified control**: During Preview, enabling external access exposes all tools declared in the app’s `rovo:mcp` module.
+* **Secure execution**: Users connect via OAuth, and every tool invocation respects their existing permissions on the Atlassian site.
 
-These cookies allow us to count visits and traffic sources so we can measure and improve the performance of our site. They help us to know which pages are the most and least popular and see how visitors move around the site. If you do not allow these cookies we will not know when you have visited our site, and will not be able to monitor its performance.
+**What you need to do**  
+To start connecting your tools to external AI clients:
 
-These cookies enable the website to provide enhanced functionality and personalisation. They may be set by us or by third party providers whose services we have added to our pages. If you do not allow these cookies then some or all of these services may not function properly.
+1. Define your tools in the `manifest.yml` file using the [rovo:mcp module](https://developer.atlassian.com/platform/forge/manifest-reference/modules/rovo-mcp/#connect-tools-to-third-party-ai-clients-eap "https://developer.atlassian.com/platform/forge/manifest-reference/modules/rovo-mcp/#connect-tools-to-third-party-ai-clients-eap").
+2. Update your app to use the latest version of the Forge CLI to support the new module definitions.
+3. Follow the [Build your first Rovo MCP tool](https://developer.atlassian.com/platform/forge/build-a-hello-world-rovo-mcp/#connect-to-a-third-party-ai-client-eap "https://developer.atlassian.com/platform/forge/build-a-hello-world-rovo-mcp/#connect-to-a-third-party-ai-client-eap") guide to set up the integration.
+4. If you are building tools that interact with Jira data, refer to the [tutorial for reading Jira issues with MCP](https://developer.atlassian.com/platform/forge/read-jira-issues-with-a-rovo-mcp-tool/#connect-to-a-third-party-ai-client-eap "https://developer.atlassian.com/platform/forge/read-jira-issues-with-a-rovo-mcp-tool/#connect-to-a-third-party-ai-client-eap").

@@ -21,6 +21,13 @@ Jira communicates with remote agents via the [JSON-RPC 2.0](https://www.jsonrpc.
 
 Note that in case of timeouts during the streaming requests, Jira will attempt to reconnect automatically to the remote agent.
 
+We also have different timeout behaviours depending on the trigger of the agent interaction:
+
+| Agent Trigger | Timeout |
+| --- | --- |
+| Chat interaction | 30 min |
+| Work item | 60 min |
+
 ## System User implications
 
 Adding a `rovo:agentConnector` to a Forge app leads to modifying the behavior of the system user associated with the Forge app:
