@@ -1,18 +1,14 @@
-# Rovo Skill (EAP)
+# Rovo Skill (Preview)
 
-Forge’s EAP offers experimental features to selected users for testing and feedback purposes.
-These features are unsupported and not recommended for use in production environments. They
-are also subject to change without notice.
+Rovo Skill is now in Preview, and therefore fully supported. However, it remains under active development and may be subject to shorter deprecation windows. Preview features are suitable for early adopters in production environments.
 
-To join the EAP for Forge Rovo Skills, [complete the sign up form](https://ecosystem.atlassian.net/servicedesk/customer/portal/1040/group/3496/create/18258).
-
-For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
+Atlassian releases preview features so partners and developers can study, test, and integrate them before General Availability (GA). For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#forge-preview).
 
 When you use Rovo APIs, you must comply with the [Atlassian Acceptable Use Policy](https://www.atlassian.com/legal/acceptable-use-policy#disruption), including the section titled “Artificial intelligence offerings and features.” For the protection of our customers, Atlassian performs safety screening on Agents at our sole discretion. If we identify any issues with your Agent, we may take protective actions, such as preventing the Agent from being deployed or suspending your use of Rovo APIs. Where possible we will notify you of the nature of the issue, and you must use reasonable commercial efforts to correct the issue before deploying your Agent again.
 
 The `rovo:skill` module packages reusable instructions that help Rovo Agents complete specialized tasks. A skill consists of a `SKILL.md` instruction file, optional supporting files, and optional [action](/platform/forge/manifest-reference/modules/rovo-action/) dependencies from the same Forge app.
 
-Forge validates and bundles each skill when you deploy the app. During the EAP, you can deploy apps that use `rovo:skill` only to development environments.
+Forge validates and bundles each skill when you deploy the app. During Preview, you can deploy apps that use `rovo:skill` to development, staging, and production environments.
 
 ## Manifest structure
 
@@ -63,7 +59,7 @@ skills/
 
 The directory can contain supporting reference documents. Refer to supporting files from `SKILL.md` using paths relative to the skill directory, for example `references/issue-fields.md`.
 
-Executable scripts in a skill directory aren't supported during the EAP.
+Executable scripts in a skill directory aren't supported during Preview.
 
 ### `SKILL.md` format
 
@@ -206,15 +202,14 @@ Declare the OAuth scopes required by the actions in the app's `permissions.scope
 
 To make a skill available to a [Forge Rovo Agent](/platform/forge/manifest-reference/modules/rovo-agent/), add the `rovo:skill` module key to the Agent's `skills` property. A Forge Rovo Agent can access only the skills declared in its `skills` property.
 
-At runtime, the Agent selects a skill based on its description and the user's request. Explicit invocation by name isn't supported during the EAP.
+At runtime, the Agent selects a skill based on its description and the user's request. Explicit invocation by name isn't supported during Preview.
 
 ## Limits and restrictions
 
 * A skill directory must not exceed 100 MB uncompressed.
 * Tool dependencies must be `action` modules declared by the same app.
 
-## EAP limitations
+## Preview limitations
 
-* Apps that declare `rovo:skill` can be deployed only to a development environment.
 * Skill-to-skill dependencies aren't supported.
 * Executable skill sources, including scripts, aren't supported.

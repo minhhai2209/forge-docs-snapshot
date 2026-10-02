@@ -51,7 +51,7 @@ In this structure:
 | `prompt` | `string` | Yes | This is the custom LLM prompt where you describe how your Agent will behave.  You can specify the `prompt` as a string or provide it as a relative path to a declared resource. See the [prompt as resource example](/platform/forge/manifest-reference/modules/rovo-agent/#prompt-as-a-resource). |
 | `conversationStarters` | `string[]` |  | Conversation starters that will be suggested to the user when they engage with your Agent. |
 | `actions` | `string[]` |  | A list of the actions that the Agent can invoke. |
-| `skills` | `string[]` |  | A list of [`rovo:skill`](/platform/forge/manifest-reference/modules/rovo-skill/) module keys that the Agent can use. Each key must be unique within the list. Use skills to provide task-specific playbooks or orchestrate actions without adding all of the workflow instructions to the Agent prompt. This property is available as part of the `rovo:skill` EAP. |
+| `skills` | `string[]` |  | A list of [`rovo:skill`](/platform/forge/manifest-reference/modules/rovo-skill/) module keys that the Agent can use. Each key must be unique within the list. Use skills to provide task-specific playbooks or orchestrate actions without adding all of the workflow instructions to the Agent prompt. This property is available as part of the `rovo:skill` Preview. |
 | `followUpPrompt` | `string` |  | A prompt that will be used to generate follow up suggestions once the user’s original query has been answered. |
 
 ## Manifest example
@@ -193,22 +193,22 @@ Using the [Forge bridge rovo API](/platform/forge/apis-reference/ui-api-bridge/r
 
 Accessed by clicking the **Chat** button in the top navigation bar
 
-![Example of a chat button](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-chat-side.png?_v=1.5800.2358)
+![Example of a chat button](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-chat-side.png?_v=1.5800.2361)
 
 Accessed using the /ai command in the editor
 
-![Example of a chat button](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-ai-toolbar.png?_v=1.5800.2358)
+![Example of a chat button](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-ai-toolbar.png?_v=1.5800.2361)
 
 Accessed using the /ai command in the Jira issues editor
 
-![Example of a chat button](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-ai-toolbar-jira.png?_v=1.5800.2358)
+![Example of a chat button](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-ai-toolbar-jira.png?_v=1.5800.2361)
 
 ### Automation (Confluence and Jira)
 
 You can add Agents to Automation rules. This will invoke the Agent to act asynchronously in response to Atlassian app events or schedules.
 When users configure an automation rule they will set an additional prompt with specific instructions how to act during that rule. The response from the Agent can be passed to subsequent steps in the automation rule using smart values.
 
-![Example of a chat button](https://dac-static.atlassian.com/platform/forge/images/rovo/automations.png?_v=1.5800.2358)
+![Example of a chat button](https://dac-static.atlassian.com/platform/forge/images/rovo/automations.png?_v=1.5800.2361)
 
 ## Choose between prompts, skills, and actions
 

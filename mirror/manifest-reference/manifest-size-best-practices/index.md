@@ -201,18 +201,14 @@ You can move detailed instructions into [`rovo:skill`](/platform/forge/manifest-
 modules, which store their instructions in a `SKILL.md` file rather than in the manifest. The Agent's
 prompt then only needs to describe when to use each capability.
 
-Forge’s EAP offers experimental features to selected users for testing and feedback purposes.
-These features are unsupported and not recommended for use in production environments. They
-are also subject to change without notice.
+Rovo Skill is now in Preview, and therefore fully supported. However, it remains under active development and may be subject to shorter deprecation windows. Preview features are suitable for early adopters in production environments.
 
-To join the EAP for Forge Rovo Skills, [complete the sign up form](https://ecosystem.atlassian.net/servicedesk/customer/portal/1040/group/3496/create/18258).
+Atlassian releases preview features so partners and developers can study, test, and integrate them before General Availability (GA). For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#forge-preview).
 
-For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
-
-Until [`rovo:skill`](/platform/forge/manifest-reference/modules/rovo-skill/) is generally available, you
-can still reduce prompt size by trimming repetition, removing examples that don't change Agent behavior,
-and moving reference data into a [Rovo action](/platform/forge/manifest-reference/modules/rovo-action/)
-that the Agent calls at runtime.
+If you aren't ready to adopt [`rovo:skill`](/platform/forge/manifest-reference/modules/rovo-skill/) during
+Preview, you can still reduce prompt size by trimming repetition, removing examples that don't change
+Agent behavior, and moving reference data into a
+[Rovo action](/platform/forge/manifest-reference/modules/rovo-action/) that the Agent calls at runtime.
 
 ### Design skills around capabilities, not topics
 

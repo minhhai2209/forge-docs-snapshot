@@ -312,7 +312,7 @@ Refer to the following sections for more detailed information about Forge module
 
 - [Rovo modules](https://developer.atlassian.com/platform/forge/manifest-reference/modules/rovo-index.md)
 - [Rovo Agent](https://developer.atlassian.com/platform/forge/manifest-reference/modules/rovo-agent.md)
-- [Rovo Skill (EAP)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/rovo-skill.md)
+- [Rovo Skill (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/rovo-skill.md)
 - [Rovo Agent Connector](https://developer.atlassian.com/platform/forge/manifest-reference/modules/rovo-agent-connector.md)
 - [Rovo MCP (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/rovo-mcp.md)
 - [Action](https://developer.atlassian.com/platform/forge/manifest-reference/modules/rovo-action.md)

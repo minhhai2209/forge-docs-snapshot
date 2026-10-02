@@ -26,7 +26,7 @@ This method is only enabled on [UI Kit](/platform/forge/ui-kit/) and [Custom UI]
 2  path: string;
 3  method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
 4  headers?: Record<string, string>;
-5  body?: unknown;
+5  body?: string;
 6}
 7
 8function invokeService(
@@ -40,7 +40,46 @@ This method is only enabled on [UI Kit](/platform/forge/ui-kit/) and [Custom UI]
 * **path**: The path that will be appended to the base URL of the service.
 * **method**: The HTTP method for the request.
 * **headers**: Optional custom [headers](/platform/forge/remote/essentials#request-headers) that you can add to your request.
-* **body**: The body of your request (must be in JSON format).
+* **body**: Optional JSON-encoded string containing the request body. Use `JSON.stringify` to serialize an object before passing it to `invokeService`.
+
+### Example
+
+Send a JSON request to a container service from the frontend:
+
+```
+```
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+```
+
+
+
+```
+import { invokeService } from '@forge/bridge';
+
+const response = await invokeService({
+  path: '/invoke-service',
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    message: 'Hello from forge app frontend',
+  }),
+});
+```
+```
 
 ### Returns
 
