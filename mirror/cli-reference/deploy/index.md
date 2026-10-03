@@ -32,16 +32,8 @@ deploy your app to an environment
 ## Commands
 
 ```
-```
-1
+1list [options]                   list app deployments
 2
-```
-
-
-
-```
-list [options]                   list app deployments
-```
 ```
 
 ## Example
