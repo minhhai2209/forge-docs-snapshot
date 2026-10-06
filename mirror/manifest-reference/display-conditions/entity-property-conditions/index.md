@@ -408,7 +408,38 @@ The matching property value is `["value1", "value2", "[\"subValue1\",\"subValue2
 You can use the [operators](/platform/forge/manifest-reference/display-conditions/#operators)
 `and`, `or`, and `not` to build complex rules that involve multiple different types of conditions.
 
-In Jira, this works the same as for all other conditions.
+In Jira and Jira Service Management, this works the same as for all other conditions. To use more
+than one property condition of the same type at the same level, pass an array to the operator. Array
+items can be any condition, including nested operators and common properties. See
+[Use the same condition more than once](/platform/forge/manifest-reference/display-conditions/#use-the-same-condition-more-than-once-jira-and-jira-service-management).
+
+```
+```
+1
+2
+3
+4
+5
+6
+7
+8
+9
+```
+
+
+
+```
+displayConditions:
+  or:
+    - entityPropertyExists:
+        entity: user
+        propertyKey: a
+    - entityPropertyExists:
+        entity: user
+        propertyKey: b
+```
+```
+
 In Confluence, the rules described below apply.
 
 #### One property condition per level (Confluence only)
@@ -464,7 +495,7 @@ displayConditions:
 ```
 ```
 
-Only property conditions are allowed as array elements. You cannot use operators and
+In Confluence, only property conditions are allowed as array elements. You cannot use operators and
 common properties in arrays.
 
 Alternatively, the same condition can be defined like this:

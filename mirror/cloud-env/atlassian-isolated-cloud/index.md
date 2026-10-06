@@ -31,7 +31,7 @@ You can build and test your Forge app on Atlassian Cloud as usual. Test on your 
 
 ### Step 1: Request an AIC test site
 
-Contact Atlassian through [ECOHELP](https://ecosystem.atlassian.net/servicedesk/customer/portal/14) to request an AIC pre-production test site. This process is similar to [getting access to an AGC environment](/platform/framework/agc/guides/get-access-to-agc/).
+[Submit a ticket](https://ecosystem.atlassian.net/servicedesk/customer/portal/34/group/110/create/5024) to Atlassian Support to request an AIC pre-production test site. This process is similar to [getting access to an AGC environment](/platform/framework/agc/guides/get-access-to-agc/).
 
 In your request, include the following:
 

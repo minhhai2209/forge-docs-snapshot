@@ -16,9 +16,13 @@ display conditions for any sensitive data you are going to operate with.
 
 ## Operators
 
-Display conditions supports the following logical operators:
+Display conditions support the following logical operators:
 
-By default, the `and` operator comes with multiple display conditions.
+* `and`: all child conditions must be true
+* `or`: at least one child condition must be true
+* `not`: none of the child conditions are true
+
+Conditions at the same level are combined with `and` by default.
 
 ### Example
 
@@ -77,7 +81,10 @@ In this example, the Jira issue panel module will only be rendered if the follow
 * the user can delete all the comments in the given issue `or`
 * the project key is TEST `and` the issue is `not` of the epic type
 
-If you add multiple similar display conditions at the same level as shown below, you will run into validation errors due to yaml validation constraints:
+### Use the same condition more than once (Jira and Jira Service Management)
+
+Each condition name is a key in the manifest, and keys must be unique at each level. If you
+repeat a condition at the same level, the manifest fails validation:
 
 ```
 ```
@@ -112,7 +119,9 @@ jira:issuePanel:
 ```
 ```
 
-Instead, you should add similar display conditions at the same level in the format shown below.
+In Jira and Jira Service Management modules, the `and`, `or`, and `not` operators accept either a
+single condition object or an array of condition objects. Each array item is a separate object,
+so you can repeat conditions and operators:
 
 ```
 ```
@@ -128,7 +137,6 @@ Instead, you should add similar display conditions at the same level in the form
 10
 11
 12
-13
 ```
 
 
@@ -141,17 +149,42 @@ jira:issuePanel:
   icon: https://developer.atlassian.com/platform/forge/images/issue-panel-icon.svg
   displayConditions:
     and:
-      isLoggedIn: true
-      or:
-        hasGlobalPermission: permission1
-        and: 
-          hasGlobalPermission: permission2
+      - isLoggedIn: true
+      - or:
+          - hasGlobalPermission: permission1
+          - hasGlobalPermission: permission2
 ```
 ```
 
-You should not rely on display conditions as a mechanism to protect sensitive data. Instead, you
-should perform a permission check in your code to confirm if the user does have the required permission
-to delete comments.
+Arrays also let you group conditions of the same type. The example below shows the module when
+the user has both properties `a` and `b`, or both properties `c` and `d`:
+
+```
+```
+1
+2
+3
+4
+5
+6
+7
+8
+9
+```
+
+
+
+```
+displayConditions:
+  or:
+    - and:
+        - entityPropertyExists: { entity: user, propertyKey: a }
+        - entityPropertyExists: { entity: user, propertyKey: b }
+    - and:
+        - entityPropertyExists: { entity: user, propertyKey: c }
+        - entityPropertyExists: { entity: user, propertyKey: d }
+```
+```
 
 ## Common properties
 
