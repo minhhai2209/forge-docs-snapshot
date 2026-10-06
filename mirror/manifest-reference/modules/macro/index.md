@@ -19,7 +19,7 @@ from the quick insert menu of the editor. The `macro` module is implemented by a
 
 On apps that use Custom UI, module content is displayed inside a [special Forge iframe](/platform/forge/custom-ui/iframe/) which has the [sandbox](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#sandbox) attribute configured. This means that HTML links (for example, `<a href="https://domain.tld/path">...</a>`) in this iframe won't be clickable. To make them clickable, use the [router.navigate](/platform/forge/custom-ui-bridge/router/#navigate) API from the `@forge/bridge` package.
 
-![Example of a macro](https://dac-static.atlassian.com/platform/forge/snippets/images/macro-example.png?_v=1.5800.2363)
+![Example of a macro](https://dac-static.atlassian.com/platform/forge/snippets/images/macro-example.png?_v=1.5800.2366)
 
 ## Manifest structure
 
@@ -145,18 +145,18 @@ resources []
 | `config.parameters.identifier` | `string` | Yes, if using `parameters` | A unique identifier for the parameter. Must start with a letter and contain only alphanumeric characters, dashes, and underscores. Between 1 and 255 characters. |
 | `config.parameters.type` | `'string'`, `'confluence-content'`, `'attachment'` or `'spacekey'` | Yes, if using `parameters` | The type of the parameter value. This determines how Confluence stores and returns the value. See [Config parameter types and value formats](#config-parameter-types-and-value-formats) for the meaning of each type and its value format. |
 | `config.parameters.indexing` | `{ enabled: boolean }` |  | Optional indexing configuration for the parameter. |
-| `config.parameters.indexing.enabled` | `boolean` |  | Defaults to `false`. When set to `true`, the macro parameter value is added to the Confluence search index. |
+| `config .parameters .indexing .enabled` | `boolean` |  | Defaults to `false`. When set to `true`, the macro parameter value is added to the Confluence search index. |
 | `adfExport` | `{ function: string }` |  | Defines how your macro appears when a Confluence page is exported.  Contains a `function` property which references a `function` module that returns the macro content in [Atlassian document format](/cloud/jira/platform/apis/document/structure/).  The specified function can consume the `exportType` directly from the function's payload in order to specify different views per export type. The `exportType` can be one of `pdf`, `word`, or `other`. See this [tutorial](/platform/forge/change-%0Athe-confluence-frontend-with-the-ui-kit/#specify-the-export-view) for more information.  The `adfExport` function is invoked once per macro instance during export operations. Pages with many macro instances can trigger a large number of invocations in a single export, potentially causing rate limiting and performance issues. Consider minimizing backend work within the function and informing customers about potential limitations when using many macros on pages that will be exported. |
 | `layout` | `'block'`, `'inline'` or `'bodied'` |  | `'block'` type is used by default.  `'inline'` shows the element inline with existing text.   * For UI Kit apps, inline macros dynamically resize to wrap the content. * Custom UI inline macros have a minimum rendered width of approximately 300px due to the browser's default iframe sizing. To allow your macro to render at a smaller width, set `width: fit-content` on the `body` element of your Custom UI app's HTML. See [Notes on layout and sizing](#notes-on-layout-and-sizing) for details.     `'bodied'` sets the macro to have a rich text body.   * This allows users to insert and edit rich content (such as images and tables) within the macro using the Confluence editor, and allows your app to insert a body using a custom editor. * Please see the link to the tutorial [here](/platform/forge/using-rich-text-bodied-macros). |
 | `autoConvert` | `autoConvert object` |  | Inserts a macro into the editor when a recognised URL is pasted in by the user. See [Macro autoconvert.](#macro-autoconvert) |
 | `autoConvert.matchers` | `[matcher, ...]` | Yes, if using `autoConvert` | The list of patterns that define what URLs should be matched. |
-| `autoConvert.matchers.pattern` | `string` | Yes, if using `autoConvert` | A string that defines a specific URL pattern to be matched, using wildcards for variable parts of the URL, such as unique IDs.  * Use multiple wildcards to match multiple sub-paths. Do not include all sub-paths with a single wildcard. * Ensure URLs do not contain whitespace unless it is URL encoded. * Wildcards cannot be used in place of a protocol. Custom URL Schemes are supported See [examples](#matching-custom-url-schemes) * Maximum length of the pattern is 1024 characters. |
+| `autoConvert .matchers .pattern` | `string` | Yes, if using `autoConvert` | A string that defines a specific URL pattern to be matched, using wildcards for variable parts of the URL, such as unique IDs.  * Use multiple wildcards to match multiple sub-paths. Do not include all sub-paths with a single wildcard. * Ensure URLs do not contain whitespace unless it is URL encoded. * Wildcards cannot be used in place of a protocol. Custom URL Schemes are supported See [examples](#matching-custom-url-schemes) * Maximum length of the pattern is 1024 characters. |
 | `emitsReadyEvent` | boolean | No | Defaults to `false`. An optional configuration to notify Confluence that the macro will send a `emitReadyEvent` when it has completed loading and is ready for export or further processing. This should be used with `view.emitReadyEvent()`. See the [view bridge function](/platform/forge/apis-reference/ui-api-bridge/view/#emitreadyevent) for more information. |
 | `unlicensedAccess` | `List<string>` |  | A list of unlicensed user types that can access this module. Valid values are: `unlicensed` (Guests Users), and `anonymous`. For more information, see [Access to Forge apps for unlicensed Confluence users](/platform/forge/access-to-forge-apps-for-unlicensed-users/#confluence-forge-modules). |
 | `static` | `{ function: string }` or `{ endpoint: string }` | No | Set the `function` property to specify the Forge function that handles static rendering.  Set the `endpoint` property if you are using [Forge Remote](/platform/forge/forge-remote-overview) to handle static rendering from a remote back end.  Can also include `cacheConfiguration` to specify the caching behavior. |
 | `static.concurrency` | `integer` | No | The maximum number of elements that can be sent to the static macro function or endpoint in one invocation. Must be at least `1`. Defaults to `10` when omitted. |
 | `static.cacheConfiguration` | `object` | No | Defines which runtime inputs are used to construct the cache key for the static macro's rendered output. This property is supported for both function-backed and endpoint-backed static macros.  If omitted, the cache key uses `macro.id`, `macro.body`, and `macro.params` by default. |
-| `static.cacheConfiguration.keyComposition` | `string[]` | Yes, if using `cacheConfiguration` | A non-empty list of unique runtime inputs used to construct the cache key. When the value of a selected input changes, the cached output is not reused.  Supported values are:   * `macro.id`: The macro instance identifier * `macro.body`: The complete macro body * `macro.params`: The parameters supplied to the macro * `content.id`: The Confluence content identifier * `content.type`: The Confluence content type * `content.version`: The Confluence content version * `space.id`: The Confluence space identifier |
+| `static .cacheConfiguration .keyComposition` | `string[]` | Yes, if using `cacheConfiguration` | A non-empty list of unique runtime inputs used to construct the cache key. When the value of a selected input changes, the cached output is not reused.  Supported values are:   * `macro.id`: The macro instance identifier * `macro.body`: The complete macro body * `macro.params`: The parameters supplied to the macro * `content.id`: The Confluence content identifier * `content.type`: The Confluence content type * `content.version`: The Confluence content version * `space.id`: The Confluence space identifier |
 
 ### i18n object
 
@@ -874,15 +874,19 @@ Using a `<style>` tag or external stylesheet does not require this permission.
 
 This limitation only applies to Custom UI apps. UI Kit inline macros automatically resize to wrap their content without any additional configuration.
 
-## Static macros (EAP)
+## Static macros (Preview)
 
-Static macros are currently available through Forge's Early Access Program (EAP). EAP capabilities are experimental, unsupported, and subject to change without notice, and are not recommended for production use.
+This section describes a Forge *preview* feature. Preview features are deemed stable;
+however, they remain under active development and may be subject to shorter deprecation
+windows. Preview features are suitable for early adopters in production environments.
 
-For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#eap).
+We release preview features so partners and developers can study, test, and integrate
+them prior to General Availability (GA). For more information,
+see [Forge release phases: EAP, Preview, and GA](/platform/forge/whats-coming/#preview).
 
-Static macros are a performance-focused approach to rendering a macro. Instead of rendering the macro in an iframe, your app returns a set of [Atlassian Document Format (ADF)](/cloud/jira/platform/apis/document/structure) or [Confluence Storage Format](https://confluence.atlassian.com/doc/confluence-storage-format-790796544.html) nodes that will be converted to HTML and rendered view-only in a Confluence page.
+Static macros are a performance-focused approach to rendering a macro. Instead of rendering the macro in an iframe, your app returns a set of [Atlassian Document Format (ADF)](/cloud/jira/platform/apis/document/structure) or [Confluence Storage Format](https://confluence.atlassian.com/doc/confluence-storage-format-790796544.html) nodes that will be converted to HTML and rendered view-only in a Confluence page. Additionally, you can reduce macro invocation costs by caching the result. As long as the cached result is valid, Confluence skips invoking your app on each render.
 
-The rendering flow for a static macro works differently from other macros. Normally, Confluence places an iframe on the page to invoke your Forge app. For static macros, your function or endpoint receives an array of macro arguments (called `macros`). This minimizes Forge app invocations, particularly for pages with a large number of static macros.
+The rendering flow for a static macro works differently from other macros. Normally, Confluence places an iframe on the page to invoke your Forge app. For static macros, your function or endpoint receives an array of macro arguments (called `macros`). This minimizes Forge app invocations, particularly for pages with a large number of static macros. If a static macro cannot be rendered, the macro falls back to the iframe render path.
 
 The optional `concurrency` property under `static` specifies the maximum number of elements that can be included in this array. A higher value can reduce the number of invocations required to render a page, improving page load performance. The minimum value is `1`, which means that the array contains only one set of macro arguments. If you omit `concurrency`, the default maximum array size is `10`. Your app might receive an array with fewer elements than the configured maximum, but never more.
 
@@ -911,9 +915,9 @@ The app must return a `{ renderedMacros }` object containing an array of objects
 | --- | --- | --- | --- |
 | `localId` | `string` | Yes | The ID of the Confluence page node. This must match what was sent in the request. If the `localId` returned is not recognized, the Confluence page will use the standard iframe render method. |
 | `contentType` | `string` | Yes | The content type being returned. This must be either `xhtml` or `adf`. |
-| `value` | `string` | Yes | The content that should be added to the page. It must match the specified `contentType`. |
+| `value` | `string` | Yes | The content that should be added to the page. It must match the specified `contentType`. Note that any URLs must match [Runtime egress permissions](/platform/forge/runtime-egress-permissions), or be defined via [Customer-managed egress](/platform/forge/customer-managed-egress-and-remotes). |
 | `cache` | `object` | No | The cache configuration for the rendered response. If omitted, Confluence caches the response for 600 seconds (10 minutes) by default. |
-| `cache.ttlSeconds` | `number` | Yes, if using `cache` | The number of seconds to cache the rendered response. Set this to `0` if you don't want the response to be cached. (Required when `cache` is specified; there is no per-field default.) |
+| `cache.ttlSeconds` | `number` | Yes, if using `cache` | The number of seconds to cache the rendered response. Set this to `0` if you don't want the response to be cached. (Required when `cache` is specified; there is no per-field default.) The maximum value for this is 604,800 seconds (7 days). App deployments do not invalidate the cache. Confluence may evict cached values before the TTL expires. |
 
 ### Example
 
@@ -1011,12 +1015,15 @@ modules:
 35
 36
 37
+38
+39
 ```
 
 
 
 ```
 // src/functions/macro.js
+import { token } from "@atlaskit/tokens";
 
 export const staticRender = async (payload) => {
   const renderedMacros = [];
@@ -1035,6 +1042,7 @@ export const staticRender = async (payload) => {
             {
               type: "text",
               text: `Hello to you, ${presetName}, which has been saved previously while editing the macro.`,
+              "marks": [{ "type": "backgroundColor", "attrs": { "color": token("color.background.success.subtler") }}]
             },
           ],
         },

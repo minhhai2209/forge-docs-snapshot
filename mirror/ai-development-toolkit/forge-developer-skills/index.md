@@ -6,6 +6,7 @@
 
 | Skill | What it does |
 | --- | --- |
+| `forge-onboarding` | Guides a first-time Forge builder end-to-end: deploy a stock Rovo Agent, then customize the same registered app into Forge Guru — a documentation companion that answers Forge questions by searching Atlassian's official developer docs live. |
 | `forge-app-builder` | Guides scaffolding through production: `forge create`, developer spaces and templates, deploy and install, module selection, cross-product scopes, and common CLI or permission issues. |
 | `forge-app-review` | Performs a lightweight release-readiness review across manifest and module wiring, architecture, runtime compatibility, dependency posture, tests, deploy readiness, and obvious security, cost, or reliability signals. |
 | `forge-cost-optimizer` | Helps reduce Forge platform consumption across invocations, storage, logs, memory, triggers, API calls, and frontend or backend boundaries. |
@@ -50,6 +51,34 @@ npx skills add atlassian/forge-skills --skill forge-app-builder
 ## Prompts to try
 
 Once your skills are installed, try prompts like these:
+
+**Forge Onboarding:**
+
+```
+```
+1
+2
+```
+
+
+
+```
+I'm brand new to Forge — walk me through building my first app.
+```
+```
+
+```
+```
+1
+2
+```
+
+
+
+```
+Start the Forge onboarding tutorial and help me deploy Forge Guru to my dev site.
+```
+```
 
 **Forge App Builder:**
 

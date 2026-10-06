@@ -61,6 +61,7 @@ Issue panel:
 11
 12
 13
+14
 ```
 
 
@@ -69,6 +70,7 @@ Issue panel:
 modules:
   jira:issueViewBackgroundScript:
     - key: background-t-issue-view-background-script
+      title: Issue Data Helper
       resource: issueBgScriptResource
       render: native
   jira:issuePanel:
@@ -86,6 +88,7 @@ modules:
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
 | `key` | `string` | Yes | A key for the module, which other modules can refer to. Must be unique within the manifest.   *Regex:* `^[a-zA-Z0-9_-]+$` |
+| `title` | `string` | No | The module title shown in the consent popup when user consent is required. Set a title that identifies your app so users know which app is requesting access. If omitted, the popup shows generic text without the app name. |
 | `resource` | `string` | Yes | A reference to the static `resources` entry that your context menu app wants to display. See [resources](/platform/forge/manifest-reference/resources) for more details. |
 | `render` | `'native'` | Yes for [UI Kit](/platform/forge/ui-kit/components/) | Indicates the module uses [UI Kit](/platform/forge/ui-kit/components/). |
 | `resolver` | `{ function: string }` or `{ endpoint: string }` | Yes | Set the `function` property if you are using a hosted `function` module for your resolver.  Set the `endpoint` property if you are using [Forge Remote](/platform/forge/forge-remote-overview) to integrate with a remote back end. |

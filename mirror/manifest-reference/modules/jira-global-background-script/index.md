@@ -59,6 +59,7 @@ Use Forge UI bridge [modal API](/platform/forge/apis-reference/ui-api-bridge/mod
 13
 14
 15
+16
 ```
 
 
@@ -66,6 +67,7 @@ Use Forge UI bridge [modal API](/platform/forge/apis-reference/ui-api-bridge/mod
 ```
 jira:globalBackgroundScript:
   - key: global-background-script-modal-ui-kit
+    title: Terms and Conditions
     resource: main-resource
     render: native
     target:
@@ -255,6 +257,7 @@ export default function CustomFieldEdit({ onSave }) {
 23
 24
 25
+26
 ```
 
 
@@ -263,6 +266,7 @@ export default function CustomFieldEdit({ onSave }) {
 modules:
   jira:globalBackgroundScript:
     - key: global-background-script-with-fcf-demo
+      title: Custom Field Events
       resource: main
       render: native
   jira:customField:
@@ -307,6 +311,7 @@ Restrict the global background script to specific Jira experiences or allow it f
 12
 13
 14
+15
 ```
 
 
@@ -314,6 +319,7 @@ Restrict the global background script to specific Jira experiences or allow it f
 ```
 jira:globalBackgroundScript:
   - key: global-background-script-modal-ui-kit
+    title: Terms and Conditions
     resource: main-resource
     render: native
     target:
@@ -335,6 +341,7 @@ If no experience is specified, the global background script will not run anywher
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
 | `key` | `string` | Yes | A key for the module, which other modules can refer to. Must be unique within the manifest.   *Regex:* `^[a-zA-Z0-9_-]+$` |
+| `title` | `string` | No | The module title shown in the consent popup when user consent is required. Set a title that identifies your app so users know which app is requesting access. If omitted, the popup shows generic text without the app name. |
 | `resource` | `string` | Yes | A reference to the static `resources` entry that your context menu app wants to display. See [resources](/platform/forge/manifest-reference/resources) for more details. |
 | `render` | `'native'` | Yes for [UI Kit](/platform/forge/ui-kit/components/) | Indicates the module uses [UI Kit](/platform/forge/ui-kit/components/). |
 | `resolver` | `{ function: string }` or `{ endpoint: string }` | Yes | Set the `function` property if you are using a hosted `function` module for your resolver.  Set the `endpoint` property if you are using [Forge Remote](/platform/forge/forge-remote-overview) to integrate with a remote back end. |

@@ -978,6 +978,10 @@ This section contains curated references that show how real Forge apps are struc
 - [Overview](https://developer.atlassian.com/platform/forge/getting-started.md)
 - [Provision a demo development site](https://developer.atlassian.com/platform/forge/provision-a-demo-development-site.md)
 
+#### Build and launch your Forge app
+
+- [Build and launch your Forge app](https://developer.atlassian.com/platform/forge/build-and-launch-your-forge-app.md)
+
 #### Introduction to Forge
 
 - [The Forge platform](https://developer.atlassian.com/platform/forge/introduction/the-forge-platform.md)

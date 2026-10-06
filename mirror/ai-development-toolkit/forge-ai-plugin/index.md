@@ -10,6 +10,7 @@ The plugin provides the following [skills](/platform/forge/ai-development-toolki
 
 | Skill | What it does | Sample capabilities |
 | --- | --- | --- |
+| `forge-onboarding` | Guides a first-time Forge builder end-to-end: deploys a stock Rovo Agent, then customizes the same registered app into Forge Guru — a documentation companion that answers Forge questions by searching Atlassian's official developer docs live. | First-app tutorial, Rovo Agent deploy, Forge Guru customization |
 | `forge-app-builder` | Guides scaffolding through production: `forge create`, developer spaces and templates, deploy and install, module selection, cross-product scopes, and common CLI or permission issues. | Forge CLI, environments, cross-product scopes |
 | `forge-app-review` | Performs a lightweight release-readiness review across manifest and module wiring, architecture, runtime compatibility, dependency posture, tests, deploy readiness, and obvious security, cost, or reliability signals. | Pre-deploy checks, release readiness, manifest and resolver wiring |
 | `forge-cost-optimizer` | Helps reduce Forge platform consumption across invocations, storage, logs, memory, triggers, API calls, and frontend or backend boundaries. | Invocations, storage writes, logs, memory, scheduled triggers |
