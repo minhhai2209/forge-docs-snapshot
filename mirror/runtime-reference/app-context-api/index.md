@@ -19,48 +19,49 @@ Use `getAppContext` to get a Forge function's context details, including the
 11    moduleKey: string;
 12    license?: License;
 13    installation?: Installation;
-14};
-15
-16export type AppAri = {
-17    appId: string;
-18    toString: () => string;
-19};
-20export type EnvironmentAri = {
-21    environmentId: string;
-22    toString: () => string;
-23};
-24export type InstallationAri = {
-25    installationId: string;
-26    toString: () => string;
-27};
-28
-29export type License = {
-30  active?: boolean;
-31  /** @deprecated Use `active` instead. */
-32  isActive?: boolean;
-33  billingPeriod?: string;
-34  capabilitySet?: CapabilitySet;
-35  ccpEntitlementId?: string;
-36  ccpEntitlementSlug?: string;
-37  isEvaluation?: boolean;
-38  subscriptionEndDate?: string;
-39  supportEntitlementNumber?: string;
-40  trialEndDate?: string;
-41  type?: string;
-42};
-43
-44export interface ContextAri {
-45  cloudId?: string;
-46  workspaceId?: string;
-47  resourceOwner?: string;
-48  toString: () => string;
-49}
-50
-51export interface Installation {
-52  ari: InstallationAri;
-53  contexts: ContextAri[];
-54}
-55
+14    remoteInstallationRegion?: string;
+15};
+16
+17export type AppAri = {
+18    appId: string;
+19    toString: () => string;
+20};
+21export type EnvironmentAri = {
+22    environmentId: string;
+23    toString: () => string;
+24};
+25export type InstallationAri = {
+26    installationId: string;
+27    toString: () => string;
+28};
+29
+30export type License = {
+31  active?: boolean;
+32  /** @deprecated Use `active` instead. */
+33  isActive?: boolean;
+34  billingPeriod?: string;
+35  capabilitySet?: CapabilitySet;
+36  ccpEntitlementId?: string;
+37  ccpEntitlementSlug?: string;
+38  isEvaluation?: boolean;
+39  subscriptionEndDate?: string;
+40  supportEntitlementNumber?: string;
+41  trialEndDate?: string;
+42  type?: string;
+43};
+44
+45export interface ContextAri {
+46  cloudId?: string;
+47  workspaceId?: string;
+48  resourceOwner?: string;
+49  toString: () => string;
+50}
+51
+52export interface Installation {
+53  ari: InstallationAri;
+54  contexts: ContextAri[];
+55}
+56
 ```
 
 ## Returns
@@ -87,6 +88,7 @@ This API returns an `AppContext` object with the following fields:
 | `license` |  | Contains information about the license of the app. This field is only present for paid apps in the production environment.  `license` is `undefined` for free apps, apps in `DEVELOPMENT` and `STAGING` environments, and apps that are not listed on the Atlassian Marketplace. See the `License` type in the `Method Signature` for what information is available. |
 | `installation` | `ari` | An object of type `InstallationAri`. Includes `toString` method to fetch full ARI and `installationId`, which is the UUID part of the full ARI. |
 | `contexts` | The list of contexts where the app is installed. Each item in the list is an object of type `ContextAri`. |
+| `remoteInstallationRegion` |  | A string identifying the remote installation region for this app, such as `us` or `eu`. If the app does not specify any `remotes`, then this will be `undefined`. |
 
 ## Example
 
@@ -129,6 +131,9 @@ This API returns an `AppContext` object with the following fields:
 35
 36
 37
+38
+39
+40
 ```
 
 
@@ -136,7 +141,7 @@ This API returns an `AppContext` object with the following fields:
 ```
 import { getAppContext } from "@forge/api";
 
-const { appAri, appVersion, environmentAri, environmentType, invocationId, installationAri, moduleKey, license } = getAppContext();
+const { appAri, appVersion, environmentAri, environmentType, invocationId, installationAri, moduleKey, license, remoteInstallationRegion } = getAppContext();
 
 console.log(appAri.toString());
 // 'ari:cloud:ecosystem::app/00000000-0000-0000-0000-000000000000'
@@ -170,5 +175,8 @@ console.log(moduleKey);
 
 console.log(JSON.stringify(license));
 //{"active":true,"billingPeriod":"MONTHLY","ccpEntitlementId":"NULL","ccpEntitlementSlug":"NULL","isEvaluation":"NULL","subscriptionEndDate":"NULL","supportEntitlementNumber":"NULL","trialEndDate":"NULL","type":"commercial"}
+
+console.log(remoteInstallationRegion);
+// 'us'
 ```
 ```

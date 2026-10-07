@@ -31,13 +31,13 @@ will initially have a version of `1.1` (major version `1`, minor version `1`).
 There are different ways to see what version of your app is installed on each site, in each environment:
 
 * The `forge install list` [command](/platform/forge/cli-reference/install-list/) will display the major version installed on each site:
-  ![forge install list](https://dac-static.atlassian.com/platform/forge/images/app-version/cli.png?_v=1.5800.2366)
+  ![forge install list](https://dac-static.atlassian.com/platform/forge/images/app-version/cli.png?_v=1.5800.2369)
 * In the [developer console](https://developer.atlassian.com/console/myapps/), your app's **Installations** page (under **MONITOR**) will display the major and minor version. The first segment of the version is the major version
   number. All sites on the same major version will also be on the same minor version:
-  ![Developer Console > MONITOR > Installations](https://dac-static.atlassian.com/platform/forge/images/app-version/dev-cons-install.png?_v=1.5800.2366)
+  ![Developer Console > MONITOR > Installations](https://dac-static.atlassian.com/platform/forge/images/app-version/dev-cons-install.png?_v=1.5800.2369)
 * In the [developer console](https://developer.atlassian.com/console/myapps/), your app's
   **Deployments** page (under **BUILD**) will show who performed each deployment (**Contributor**), and when. It’ll also show which major version each deployment targeted within an environment:
-  ![Developer Console > BUILD > Deployments](https://dac-static.atlassian.com/platform/forge/images/app-version/dev-cons-deploy.png?_v=1.5800.2366)
+  ![Developer Console > BUILD > Deployments](https://dac-static.atlassian.com/platform/forge/images/app-version/dev-cons-deploy.png?_v=1.5800.2369)
 
 Each site’s admin can also see and upgrade their installed app’s version. See
 [Manage app upgrades](https://support.atlassian.com/security-and-access-policies/docs/manage-your-users-third-party-apps/#Manage-app-upgrades) for more details.
@@ -413,16 +413,20 @@ such as OAuth scopes and Atlassian app permissions, result in a major version ch
 The following `manifest.yml` file changes are considered major version upgrades:
 
 * Modifying [scope permissions](/platform/forge/manifest-reference/permissions/#oauth-2-scopes). This includes:
+
   * Adding a scope.
   * Swapping a scope for one not already listed.
   * Removing a scope.
 * Modifying [content permissions](/platform/forge/manifest-reference/permissions/#content-permissions) CSP options. This includes:
+
   * Adding a CSP option.
   * Swapping a CSP option for one not already listed.
 * Modifying [external permissions](/platform/forge/manifest-reference/permissions/#external-permissions) CSP options and URLs. This includes:
+
   * Adding a CSP option or URL.
   * Swapping a CSP option or URL for one not already listed.
 * Adding or modifying [web trigger](/platform/forge/manifest-reference/modules/web-trigger) module functions. This includes:
+
   * Adding a new `dynamic` web trigger.
   * Modifying a `static` web trigger to `dynamic`.
 * Adding or modifying the category of an existing [egress permission](/platform/forge/manifest-reference/permissions#egress-permissions).
@@ -431,6 +435,7 @@ The following `manifest.yml` file changes are considered major version upgrades:
   the first time. See [In-scope End-User Data](/platform/forge/in-scope-end-user-data/#impact-on-app-versioning)
   for examples.
 * Enabling [licensing](/platform/marketplace/listing-forge-apps/#enabling-licensing-for-your-app):
+
   * Enabling licensing creates a new version that requires approval of the Marketplace listing, making it a major version upgrade.
 * Adding or removing [providers](/platform/forge/manifest-reference/providers/).
 * Changing a provider [client ID](/platform/forge/manifest-reference/providers/#authentication).

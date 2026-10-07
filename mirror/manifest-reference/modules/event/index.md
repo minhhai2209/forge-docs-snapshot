@@ -1,15 +1,59 @@
 # Event
 
-## Manage Preferences
+The `event` module defines a custom backend event type.
 
-Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
-When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our [Privacy Policy](https://www.atlassian.com/legal/privacy-policy#how-we-disclose-information-we-collect).
-You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt-out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
+To publish the event, call this in your [function](/platform/forge/function-reference/index/):
 
-Allow all
+```
+1import { appEvents } from '@forge/events';
+2const result = await appEvents.publish({'key': 'module-key'});
+3
+```
 
-These cookies are necessary for the website to function and cannot be switched off in our systems. They are usually only set in response to actions made by you which amount to a request for services, such as setting your privacy preferences, logging in or filling in forms. You can set your browser to block or alert you about these cookies, but some parts of the site will not then work. These cookies do not store any personally identifiable information.
+Apps can subscribe to the event with the [trigger](../trigger/) module,
+referring to it by the following AVI (Atlassian eVent Identifier):
 
-These cookies allow us to count visits and traffic sources so we can measure and improve the performance of our site. They help us to know which pages are the most and least popular and see how visitors move around the site. If you do not allow these cookies we will not know when you have visited our site, and will not be able to monitor its performance.
+```
+1avi:cloud:ecosystem::event/{app-id}/{module-key}
+2
+```
 
-These cookies enable the website to provide enhanced functionality and personalisation. They may be set by us or by third party providers whose services we have added to our pages. If you do not allow these cookies then some or all of these services may not function properly.
+where:
+
+* `app-id` is the UUID of your app
+* `module-key` is the key of the event module
+
+---
+
+For more details, see [App events](/platform/forge/events-reference/app-events/).
+
+## Properties
+
+| Property | Type | Required | Description |
+| --- | --- | --- | --- |
+| `key` | `string` | Yes | The key of the event. Part of the event AVI, and used in the publishing API to identify the event.  *Regex:* `^[a-zA-Z0-9_-]+$` |
+| `name` | `string` | Yes | A human-readable name of the event. |
+| `allowedRecipients` | `Array<string>` | Yes | A list of apps allowed to receive the event.     * The publishing app can always receive its own event * To allow \_anyone\_ to receive the event, add the special `\*` wildcard character to the list * Use full app ARIs to specify allowed receiving apps (`ari:cloud:ecosystem::app/[uuid]`) |
+
+#### Example
+
+```
+```
+1
+2
+3
+4
+5
+6
+```
+
+
+
+```
+modules:
+  event:
+    - key: event-key
+      name: Event name
+      allowedRecipients: ['*']
+```
+```

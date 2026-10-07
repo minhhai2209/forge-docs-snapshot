@@ -169,6 +169,63 @@ In this structure:
 | `endpoint` | `string` | Yes | The key of the endpoint that should be invoked for JSON-RPC communication with your remote agent. |
 | `streaming` | `boolean` |  | Whether responses from the remote agent are streamed back to Jira incrementally using [Server-Sent Events (SSE)](https://a2a-protocol.org/latest/topics/streaming-and-async/#streaming-with-server-sent-events-sse). Defaults to `false`. |
 
+## Collapsed sections in A2A streaming responses
+
+In cases where the A2A agent needs to send back a long response, we recommend utilizing a collapsed section to hide verbose details and streamline the content presented to the user.
+
+We support the Github markdown `<details>` block syntax as in [Organizing information with collapsed sections](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/organizing-information-with-collapsed-sections), with the exception that we do not support `<details open>`.
+
+Example:
+
+```
+```
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+```
+
+
+
+```
+<details>
+
+<summary>A summary that is immediately shown to the user</summary>
+
+Some detailed content that will appear collapsed and can be expanded, such as tool call payloads or agent thinking messages.
+
+You can use other markdown notations here too, such as code block.
+
+    ```json
+    {
+      "tool_name": "bash",
+      "input": "git pull origin main --no-rebase"
+    }
+    ```
+
+</details>
+```
+```
+
+### Demo
+
+An A2A agent streams a response with three collapsed sections (two tool calls and its thinking), followed by a normal answer. Each section expands when the user clicks the chevron.
+
+![Example - An A2A agent streams a response with three collapsed sections](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-agent-connector-markdown-support-example.gif?_v=1.5800.2369)
+
 The `rovo:agentConnector` module works together with other manifest configurations to enable remote agent integration:
 
 ## Manifest example

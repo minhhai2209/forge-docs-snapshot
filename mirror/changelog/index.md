@@ -1,15 +1,25 @@
 # Forge changelog
 
-## Manage Preferences
+**What's changing**
 
-Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
-When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our [Privacy Policy](https://www.atlassian.com/legal/privacy-policy#how-we-disclose-information-we-collect).
-You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt-out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
+The Forge `rovo:skill` module has progressed from the Early Access Program (EAP) to Preview. This module lets you package reusable instructions, supporting reference files, and optional Rovo action dependencies that Forge Rovo agents can load for specialized tasks.
 
-Allow all
+Rovo skills are now available to all Forge developers without an EAP sign-up and are suitable for early adopters in production environments. You can use skills to keep an agent’s main prompt focused while moving task-specific procedures, multi-step action orchestration, validation, and error-recovery guidance into reusable `SKILL.md` files.
 
-These cookies are necessary for the website to function and cannot be switched off in our systems. They are usually only set in response to actions made by you which amount to a request for services, such as setting your privacy preferences, logging in or filling in forms. You can set your browser to block or alert you about these cookies, but some parts of the site will not then work. These cookies do not store any personally identifiable information.
+During Preview:
 
-These cookies allow us to count visits and traffic sources so we can measure and improve the performance of our site. They help us to know which pages are the most and least popular and see how visitors move around the site. If you do not allow these cookies we will not know when you have visited our site, and will not be able to monitor its performance.
+* Apps that declare `rovo:skill` can be deployed to development, staging, and production environments.
+* Skill-to-skill dependencies aren't supported.
+* Executable skill sources, including scripts, aren't supported.
+* Agents select skills based on their descriptions and the user’s request; explicit invocation by skill name isn't supported.
 
-These cookies enable the website to provide enhanced functionality and personalisation. They may be set by us or by third party providers whose services we have added to our pages. If you do not allow these cookies then some or all of these services may not function properly.
+**What you need to do**
+
+If you already use Rovo skills through the EAP, no manifest changes are required. Redeploy your app to the environment where you want to use it.
+
+To add a skill to a Forge Rovo agent:
+
+1. Create a skill directory containing a `SKILL.md` file that follows the [Agent skills specification](https://developer.atlassian.com/platform/forge/manifest-reference/modules/rovo-skill/ "https://developer.atlassian.com/platform/forge/manifest-reference/modules/rovo-skill/").
+2. Declare the directory in a `rovo:skill` module and list any Forge actions it depends on.
+3. Add the skill module key to the `skills` property of your [rovo:agent module](https://developer.atlassian.com/platform/forge/manifest-reference/modules/rovo-agent/ "https://developer.atlassian.com/platform/forge/manifest-reference/modules/rovo-agent/").
+4. Deploy and test the app in your target environment.
