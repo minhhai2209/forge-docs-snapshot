@@ -32,16 +32,8 @@ log in to your Atlassian account
 Prompts you to enter a scoped API token then logs you in to Forge with the specified credentials.
 
 ```
-```
-1
+1forge login --email FORGE_EMAIL --token FORGE_API_TOKEN
 2
-```
-
-
-
-```
-forge login --email FORGE_EMAIL --token FORGE_API_TOKEN
-```
 ```
 
 Logs you in to Forge with the specified credentials.

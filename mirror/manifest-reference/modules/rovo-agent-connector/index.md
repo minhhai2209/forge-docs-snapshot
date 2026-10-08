@@ -159,7 +159,7 @@ In this structure:
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
 | `agent2Agent` | `object` | Yes | Configures communication using the Agent2Agent (A2A) protocol. Currently, only `jsonRpcTransport` is supported. |
-| `agent2Agent` `.version` | `string` | Yes | The version of the A2A protocol to use.  The only valid value is `1.0`. A2A 0.3 is no longer accepted.  See [A2A protocol versioning](https://a2a-protocol.org/latest/whats-new-v1/) for more details. |
+| `agent2Agent` `.version` | `string` | Yes | The version of the A2A protocol to use.  The only valid value is `1.0`.  See [A2A protocol versioning](https://a2a-protocol.org/latest/whats-new-v1/) for more details. |
 | `agent2Agent` `.jsonRpcTransport` | `object` | Yes | Enables Agent2Agent protocol over JSON-RPC 2.0 transport.  See [Transport properties](#transport-properties) for more configuration details |
 
 ### Transport properties
@@ -224,7 +224,7 @@ You can use other markdown notations here too, such as code block.
 
 An A2A agent streams a response with three collapsed sections (two tool calls and its thinking), followed by a normal answer. Each section expands when the user clicks the chevron.
 
-![Example - An A2A agent streams a response with three collapsed sections](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-agent-connector-markdown-support-example.gif?_v=1.5800.2369)
+![Example - An A2A agent streams a response with three collapsed sections](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-agent-connector-markdown-support-example.gif?_v=1.5800.2370)
 
 The `rovo:agentConnector` module works together with other manifest configurations to enable remote agent integration:
 
