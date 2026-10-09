@@ -1,6 +1,6 @@
 # Build a dashboard app with the Confluence full page module
 
-The [Confluence full page module](/platform/forge/manifest-reference/modules/confluence-full-page) allows you to create fully customized app experiences that occupy the entire web page, providing ample space to deliver UI for a broader range of use cases, such as specialized content views or internal tools that reflect your own branding.
+The [Confluence full page module](/platform/forge/manifest-reference/modules/global-full-page) allows you to create fully customized app experiences that occupy the entire web page, providing ample space to deliver UI for a broader range of use cases, such as specialized content views or internal tools that reflect your own branding.
 
 This tutorial will walk you through creating a Forge app for Confluence using the full page module that displays a dashboard with interactive charts and user information. You'll learn how to configure the manifest, build the frontend using either UI Kit or Custom UI, integrate with Confluence APIs, and deploy your app.
 
@@ -9,12 +9,6 @@ At the end of this tutorial, you'll have created an app using the full page modu
 * A monthly usage dashboard with an interactive bar chart
 * Period selection buttons to toggle between Q1 and Q2 data
 * Current user information fetched from the Confluence API
-
-[Example app
-
-Full source code for this tutorial, including UI Kit and Custom UI implementations.
-
-[View code](https://bitbucket.org/atlassian/global-and-full-page-apps/src/main/Confluence-full-page-module-examples/)](https://bitbucket.org/atlassian/global-and-full-page-apps/src/main/Confluence-full-page-module-examples/)
 
 ## Before you begin
 
@@ -521,5 +515,5 @@ https://example.atlassian.net/forge-apps/a/21e590df-79e6-40dd-9ee4-ba2c7b678f26/
 | The route is displaying a blank screen instead of my app | 1. Open your browser's developer console (F12 or right-click → Inspect → Console tab). 2. Look for JavaScript errors that may be preventing the app from rendering. 3. Check that your frontend code is correctly deployed by verifying the latest deployment timestamp. 4. Ensure your app code matches the example in Step 2 and that all imports are correct. |
 | The app is displaying the error: `You don't have sufficient permissions to load this app`. | 1. Ensure you are logged into an account that has access to the Confluence site. 2. Verify that the app is installed on your site by checking the site admin panel or running `forge install` again. 3. If you're not the site admin, ask your site administrator to grant you access to the app. 4. Check that you're accessing the correct site URL where the app is installed. |
 | The app is displaying the error: `An error has occurred in loading this app`. | 1. Verify your route URL format matches: `https://<your-site>.atlassian.net/forge-apps/a/<app-id>/e/<forge-environment-id>/r/<route-prefix>/<app-route>`    * Check that `<app-id>` matches the UUID from your `app.id` in `manifest.yml` (extract just the UUID if it's in ARI format).    * Verify `<route-prefix>` matches the value defined in your manifest under `confluence:fullPage` → `routePrefix`.    * Ensure `<forge-environment-id>` is correct. Run `forge environments list` to find the UUID for the desired environment. 2. Verify your app is deployed and installed:    * Check deployment status: `forge deploy --non-interactive -e development`    * Verify installation: `forge install --non-interactive --site <your-site> --product confluence --environment development` 3. Ensure your app manifest includes the `confluence:fullPage` module with all required properties. 4. Check that you're accessing the app from the site where it's installed. |
-| The command `forge deploy` is throwing an error for `confluence:fullPage`. | 1. Verify your manifest syntax is correct by running `forge lint`. 2. Ensure all mandatory properties are included for [confluence:fullPage](/platform/forge/manifest-reference/modules/confluence-full-page):    * `key`    * `resource`    * `routePrefix`    * `render` (for UI Kit) 3. Update your Forge CLI to the latest version: `npm install -g @forge/cli@latest` 4. Ensure you have at least Forge CLI version 12.7.1. Check your version with `forge version`. 5. Review the error message for specific details about missing or invalid properties. |
+| The command `forge deploy` is throwing an error for `confluence:fullPage`. | 1. Verify your manifest syntax is correct by running `forge lint`. 2. Ensure all mandatory properties are included for [full page modules](/platform/forge/manifest-reference/modules/global-full-page):    * `key`    * `resource`    * `routePrefix`    * `render` (for UI Kit) 3. Update your Forge CLI to the latest version: `npm install -g @forge/cli@latest` 4. Ensure you have at least Forge CLI version 12.7.1. Check your version with `forge version`. 5. Review the error message for specific details about missing or invalid properties. |
 | I can't find my app's route URL | 1. Locate your `app-id`: Open `manifest.yml` and find the UUID in `app.id`. If it's in ARI format (`ari:cloud:ecosystem::app/UUID`), extract just the UUID part. 2. Find your `route-prefix`: Check the value under `confluence:fullPage` → `routePrefix` in your manifest. 3. Get your environment ID: Run `forge environments list` to find the environment ID for your deployment. 4. Construct the URL: `https://<your-site>.atlassian.net/forge-apps/a/<app-id>/e/<forge-environment-id>/r/<route-prefix>/`. |

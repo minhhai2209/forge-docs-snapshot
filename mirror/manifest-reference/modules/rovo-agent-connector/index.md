@@ -224,7 +224,7 @@ You can use other markdown notations here too, such as code block.
 
 An A2A agent streams a response with three collapsed sections (two tool calls and its thinking), followed by a normal answer. Each section expands when the user clicks the chevron.
 
-![Example - An A2A agent streams a response with three collapsed sections](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-agent-connector-markdown-support-example.gif?_v=1.5800.2370)
+![Example - An A2A agent streams a response with three collapsed sections](https://dac-static.atlassian.com/platform/forge/images/rovo/rovo-agent-connector-markdown-support-example.gif?_v=1.5800.2371)
 
 The `rovo:agentConnector` module works together with other manifest configurations to enable remote agent integration:
 

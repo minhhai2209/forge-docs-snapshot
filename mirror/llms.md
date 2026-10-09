@@ -215,7 +215,6 @@ Refer to the following sections for more detailed information about Forge module
 - [Content property](https://developer.atlassian.com/platform/forge/manifest-reference/modules/confluence-content-property.md)
 - [Context menu](https://developer.atlassian.com/platform/forge/manifest-reference/modules/confluence-context-menu.md)
 - [Custom content](https://developer.atlassian.com/platform/forge/manifest-reference/modules/confluence-custom-content.md)
-- [Full page (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/confluence-full-page.md)
 - [Global page](https://developer.atlassian.com/platform/forge/manifest-reference/modules/confluence-global-page.md)
 - [Global settings](https://developer.atlassian.com/platform/forge/manifest-reference/modules/confluence-global-settings.md)
 - [Homepage feed](https://developer.atlassian.com/platform/forge/manifest-reference/modules/confluence-homepage-feed.md)

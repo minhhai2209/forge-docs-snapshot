@@ -107,7 +107,9 @@ Before building complex queries, verify your app can successfully connect to the
 
 ### Use the echo query
 
-The simplest way to test connectivity is with the built-in `echo` query:
+The simplest way to test connectivity is with the built-in `echo` query.
+
+In your Forge app, you can either use the backend SDK package @forge/api, or frontend SDK package [@forge/bridge](/platform/forge/apis-reference/ui-api-bridge/requestTeamworkGraph/).
 
 ```
 ```
@@ -124,11 +126,13 @@ The simplest way to test connectivity is with the built-in `echo` query:
 11
 12
 13
+14
 ```
 
 
 
 ```
+// Option 1) Forge app backend code
 import api from '@forge/api';
 
 async function testConnection() {
@@ -140,6 +144,43 @@ async function testConnection() {
   
   const data = await response.json();
   console.log(data); // Should log: { data: { echo: "Hello World!" } }
+}
+```
+```
+
+```
+```
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+```
+
+
+
+```
+// Option 2) Forge app frontend code
+import { requestTeamworkGraph } from '@forge/bridge';
+
+async function testConnection() {
+  // Frontend API calls will always run as the current user
+  const { data } = await requestTeamworkGraph(`
+    query {
+      echo(myString: "Hello World!")
+    }
+  `);
+
+  console.log(data); // Should log: { echo: "Hello World!" }
 }
 ```
 ```
@@ -388,11 +429,15 @@ Now let's implement this query in a Forge app.
 11
 12
 13
+14
+15
 ```
 
 
 
 ```
+// Option 1) Forge app backend code
+
 // Makes an API call to TWG
 export async function executeCypherGraphQL(graphqlQuery, variables, headers) {
     console.log('executing cypher graphql', graphqlQuery, variables, headers);
@@ -404,6 +449,41 @@ export async function executeCypherGraphQL(graphqlQuery, variables, headers) {
             console.log(`response json: ${JSON.stringify(json)}`);
             return json;
         });
+}
+```
+```
+
+```
+```
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+```
+
+
+
+```
+// Option 2) Forge app frontend code
+
+// Makes an API call to TWG
+export async function executeCypherGraphQL(graphqlQuery, variables) {
+    console.log('executing cypher graphql', graphqlQuery, variables);
+    const { data, errors } = await requestTeamworkGraph(graphqlQuery, variables);
+    console.log(`response data: ${JSON.stringify(data)}`);
+    if (errors?.length) {
+        console.error('teamwork graph errors', errors);
+    }
+    return { data, errors };
 }
 ```
 ```
