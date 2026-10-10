@@ -1,13 +1,24 @@
 {
   "root_url": "https://developer.atlassian.com/platform/forge",
-  "generated_at": "2026-10-09T22:40:56.837872+00:00",
-  "discovered_urls": 793,
-  "downloaded_pages": 792,
-  "skipped_pages": 1,
-  "duration_seconds": 2016.17,
+  "generated_at": "2026-10-10T21:58:36.218633+00:00",
+  "discovered_urls": 792,
+  "downloaded_pages": 780,
+  "skipped_pages": 12,
+  "duration_seconds": 3478.17,
   "user_agent": "ForgeDocsMirror/1.0 (+https://github.com/minhhai2209/forge-docs-snapshot)",
   "delay_seconds": 0.25,
   "failures": [
+    "timeout: https://developer.atlassian.com/platform/forge/ai-development-toolkit/forge-mcp",
+    "timeout: https://developer.atlassian.com/platform/forge/example-apps-rovo",
+    "timeout: https://developer.atlassian.com/platform/forge/profiling-node-js-app-code-tunnel",
+    "timeout: https://developer.atlassian.com/platform/forge/extend-atlassian-products-with-a-forge-rovo-agent",
+    "timeout: https://developer.atlassian.com/platform/forge/build-a-hello-world-rovo-agent",
+    "timeout: https://developer.atlassian.com/platform/forge/build-a-jira-issue-analyst-rovo-agent",
+    "timeout: https://developer.atlassian.com/platform/forge/manifest",
+    "timeout: https://developer.atlassian.com/platform/forge/enterprise/use-forge-cli-on-corporate-network",
+    "timeout: https://developer.atlassian.com/platform/forge/developer-space/create-developer-space",
+    "timeout: https://developer.atlassian.com/platform/forge/developer-space/developer-space-apps",
+    "timeout: https://developer.atlassian.com/platform/forge/installing-forge-on-macos",
     "playwright: https://developer.atlassian.com/platform/forge/resources/Forge-Data-Processing-Addendum.pdf"
   ]
 }
