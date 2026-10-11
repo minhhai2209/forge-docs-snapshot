@@ -20,58 +20,29 @@ We recommend using the default `publish()` and `subscribe()` methods if you don'
 **Frontend**
 
 ```
-```
-1
-2
+1import { useEffect } from 'react';
+2import { realtime } from '@forge/bridge';
 3
-4
-5
-6
-7
-8
+4const App = () => {
+5  useEffect(() => {
+6    const onEvent = (payload: string | Record<string, unknown>) => {
+7      console.log('Received event with payload: ', payload);
+8    };
 9
-10
+10    const subscription = realtime.subscribe('my-test-channel', onEvent);
 11
-12
-13
-14
-15
+12    return () => {
+13      subscription.then(s => s.unsubscribe());
+14    };
+15  }, []);
 16
-17
-18
-19
-20
-21
-22
+17  return (
+18    <Button onClick={() => realtime.publish('my-test-channel', 'Here is an event payload!')}>
+19      Publish event
+20    </Button>
+21  );
+22};
 23
-```
-
-
-
-```
-import { useEffect } from 'react';
-import { realtime } from '@forge/bridge';
-
-const App = () => {
-  useEffect(() => {
-    const onEvent = (payload: string | Record<string, unknown>) => {
-      console.log('Received event with payload: ', payload);
-    };
-
-    const subscription = realtime.subscribe('my-test-channel', onEvent);
-
-    return () => {
-      subscription.then(s => s.unsubscribe());
-    };
-  }, []);
-
-  return (
-    <Button onClick={() => realtime.publish('my-test-channel', 'Here is an event payload!')}>
-      Publish event
-    </Button>
-  );
-};
-```
 ```
 
 ### Using context overrides

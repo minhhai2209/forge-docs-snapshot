@@ -14,30 +14,15 @@ For more information, see the
 ## Manifest example
 
 ```
-```
-1
-2
-3
-4
-5
-6
-7
-8
+1modules:
+2  jira:issueActivity:
+3    - key: hello-world-issue-activity
+4      resource: main
+5      resolver:
+6        function: resolver
+7      render: native
+8      title: Hello World!
 9
-```
-
-
-
-```
-modules:
-  jira:issueActivity:
-    - key: hello-world-issue-activity
-      resource: main
-      resolver:
-        function: resolver
-      render: native
-      title: Hello World!
-```
 ```
 
 ## Properties
