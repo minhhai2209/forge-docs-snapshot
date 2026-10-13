@@ -1,10 +1,4 @@
-# Customer-managed egress and remotes API (Preview)
-
-[Customer-managed egress and remotes](/platform/forge/customer-managed-egress-and-remotes/) is now available as a Forge Preview feature.
-
-Preview features are deemed stable; however, they remain under active development and may be subject to shorter deprecation windows. Preview features are suitable for early adopters in production environments.
-
-We release preview features so partners and developers can study, test, and integrate them prior to General Availability (GA). For more information, see [Forge release phases: EAP, Preview, and GA](/platform/forge/whats-coming/#preview).
+# Customer-managed egress and remotes API
 
 Once the manifest of an app has been configured, the app can interact with customer‑managed egress and remotes using the async Forge functions in the `permissions` module in `@forge/bridge`.
 
@@ -12,9 +6,7 @@ Egress-related calls will fail if `permissions.external.configurable.enabled` is
 
 ## Set egress
 
-When `permissions.egress.set` is called, an admin will see a confirmation modal describing the egress that will be added. If they approve, the group is saved and the Promise resolves. If they reject, the Promise rejects. This requires the user to be an administrator. This promise can be caught in the Forge app code and relevant errors can be shown to the user and handled as appropriate.
-
-When this is called an admin will see a confirmation modal describing the egress that will be added. If they approve, the group is saved and the Promise resolves. If they reject, the Promise rejects. This requires the user to be an administrator otherwise the Promise will reject. This Promise can be caught in the Forge app code and relevant errors can be shown to the user and handled as appropriate.
+When `permissions.egress.set` is called, an admin will see a confirmation modal describing the egress that will be added. If they approve, the group is saved and the Promise resolves. If they reject, the Promise rejects. This requires the user to be an administrator, otherwise the Promise will reject. This Promise can be caught in the Forge app code and relevant errors can be shown to the user and handled as appropriate.
 
 ### Request
 

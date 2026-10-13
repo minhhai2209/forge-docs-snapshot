@@ -18,10 +18,9 @@ issue), this delivery delay is the most likely cause. Design your app to handle 
 gracefully — for example, by informing users that automated actions may take a few minutes to
 complete.
 
-## Dynamic module - Jira & Confluence (EAP)
+## Dynamic module - Jira & Confluence
 
-This module can also be declared as a dynamic module. However, this capability is currently
-available as a Forge *preview* feature.
+This module can also be declared as a dynamic module.
 
 For more details, see [Dynamic Modules](/platform/forge/apis-reference/dynamic-modules/).
 

@@ -8,24 +8,39 @@ It works in the
 [new issue view](https://support.atlassian.com/jira-core-cloud/docs/what-is-the-new-jira-issue-view/)
 but not the old issue view.
 
-![Example of an Issue action button](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-action-location.png?_v=1.5800.2371)
+![Example of an Issue action button](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-action-location.png?_v=1.5800.2378)
 
 This is an example of the triggered modal dialog:
 
-![Example of an Issue action with the above sample code](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-action-demo.png?_v=1.5800.2371)
+![Example of an Issue action with the above sample code](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-action-demo.png?_v=1.5800.2378)
 
 ## Manifest example
 
 ```
-1modules:
-2  jira:issueAction:
-3    - key: hello-world-issue-action
-4      resource: main
-5      resolver:
-6        function: resolver
-7      render: native
-8      title: Hello World
+```
+1
+2
+3
+4
+5
+6
+7
+8
 9
+```
+
+
+
+```
+modules:
+  jira:issueAction:
+    - key: hello-world-issue-action
+      resource: main
+      resolver:
+        function: resolver
+      render: native
+      title: Hello World
+```
 ```
 
 ## Properties
@@ -82,10 +97,9 @@ Use the [useProductContext](/platform/forge/ui-kit/hooks/use-product-context/) h
 | `projectKey` | `string` | The key of the project where the module is rendered. |
 | `projectType` | `string` | The type of the project where which the module is rendered. |
 
-## Dynamic module (Preview)
+## Dynamic module
 
-This module can also be declared as a dynamic module. However, this capability is currently
-available as a Forge *preview* feature.
+This module can also be declared as a dynamic module.
 
 For more details, see [Dynamic Modules](/platform/forge/apis-reference/dynamic-modules/).
 

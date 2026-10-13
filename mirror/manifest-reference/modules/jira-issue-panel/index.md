@@ -10,7 +10,7 @@ It works in the
 [new issue view](https://support.atlassian.com/jira-core-cloud/docs/what-is-the-new-jira-issue-view/)
 but not the old issue view.
 
-![Example of an Issue panel](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-panel-demo-with-show-hide-from-work-item.png?_v=1.5800.2371)
+![Example of an Issue panel](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-panel-demo-with-show-hide-from-work-item.png?_v=1.5800.2378)
 
 Only Jira administrators can see the **Show for all work items** and **Hide from all work items** options in the issue panel menu.
 
@@ -104,10 +104,9 @@ Use the [useProductContext](/platform/forge/ui-kit/hooks/use-product-context/) h
 | `projectType` | `string` | The type of the project where which the module is rendered. |
 | `isNewToIssue` | boolean | Defines if the panel was just added to the issue. |
 
-## Dynamic module (Preview)
+## Dynamic module
 
-This module can also be declared as a dynamic module. However, this capability is currently
-available as a Forge *preview* feature.
+This module can also be declared as a dynamic module.
 
 For more details, see [Dynamic Modules](/platform/forge/apis-reference/dynamic-modules/).
 

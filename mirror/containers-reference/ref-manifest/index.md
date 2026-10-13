@@ -123,7 +123,7 @@ services:
 ```
 ```
 
-With scale to zero enabled, a container service scales down to 0 running instances if it receives no traffic for 15 minutes.
+With scale to zero enabled, a container service scales down to 0 running instances if it receives no traffic for 1 hour.
 When the next request arrives, Forge returns a `503` response and starts scaling the service back up.
 
 The service typically becomes available within a few minutes. Once the container has scaled up, subsequent requests are processed normally.

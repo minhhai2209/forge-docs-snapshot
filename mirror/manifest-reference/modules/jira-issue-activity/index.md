@@ -9,7 +9,7 @@ but not the old issue view.
 For more information, see the
 [IssueActivity](/platform/forge/ui-kit-components/jira/issue-activity/) component documentation.
 
-![Example of an Issue activity](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-activity-module-demo.gif?_v=1.5800.2371)
+![Example of an Issue activity](https://dac-static.atlassian.com/platform/forge/snippets/images/issue-activity-module-demo.gif?_v=1.5800.2378)
 
 ## Manifest example
 
@@ -79,10 +79,9 @@ Use the [useProductContext](/platform/forge/ui-kit/hooks/use-product-context/) h
 | `projectKey` | `string` | The key of the project where the module is rendered. |
 | `projectType` | `string` | The type of the project where which the module is rendered. |
 
-## Dynamic module (Preview)
+## Dynamic module
 
-This module can also be declared as a dynamic module. However, this capability is currently
-available as a Forge *preview* feature.
+This module can also be declared as a dynamic module.
 
 For more details, see [Dynamic Modules](/platform/forge/apis-reference/dynamic-modules/).
 

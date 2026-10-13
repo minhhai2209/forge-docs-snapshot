@@ -44,6 +44,8 @@ Use `image` to define a pre-built image for the tunnel instead. For example:
 
 Running `forge tunnel` will then create a docker compose stack using the container’s `tunnel` configuration and the latest Forge Container services proxy sidecar. Terminating the tunnel will also clean up the compose stack.
 
+The CLI stores generated container-tunneling configuration and authentication material under your app's `.forge` directory. Keep it out of source control and do not share its contents. See [Local .forge directory](/platform/forge/cli-reference/#local-forge-directory) for `.gitignore` and cleanup guidance.
+
 You can add `tunnel` configurations for only a subset of containers. This lets you test and run some containers locally without the overhead of starting up all containers.
 If you do this, however, any invocations to containers that *don’t* have a `tunnel` configuration set up will fail. We’re working on addressing this in a future milestone: <https://ecosystem.atlassian.net/browse/OIC-192>
 

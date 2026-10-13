@@ -1,10 +1,4 @@
-# Customer-managed egress and remotes (Preview)
-
-[Customer-managed egress and remotes](/platform/forge/customer-managed-egress-and-remotes/) is now available as a Forge Preview feature.
-
-Preview features are deemed stable; however, they remain under active development and may be subject to shorter deprecation windows. Preview features are suitable for early adopters in production environments.
-
-We release preview features so partners and developers can study, test, and integrate them prior to General Availability (GA). For more information, see [Forge release phases: EAP, Preview, and GA](/platform/forge/whats-coming/#preview).
+# Customer-managed egress and remotes
 
 Customer-managed egress and remotes are a way of defining egress in your app. They let customers and admins control which external services your app can talk to, and when those connections are enabled.
 
@@ -163,6 +157,8 @@ The data model for a customer-managed remote looks like:
 | `key` | `string` | Must correlate to a remote key defined in the manifest. |
 | `endpoint` | `string (URL)` | The absolute URL for the remote as defined by the admin of your app (inside `configured`). |
 
+A URL configured by a customer for a remote is persistent for that remote key. If a remote reverts from configurable to static and is later made configurable again, any previously set URL for that remote key is retained.
+
 ## Set up customer‑managed egress and remotes
 
 ### 1. Update the manifest to enable customer‑managed egress or remotes
@@ -193,6 +189,8 @@ permissions:
 If this property is not `true`, any calls to the egress APIs will fail.
 This property is required for egress and remotes, but a customer-managed remote requires one additional
 property to be set.
+
+Once an app has enabled customer-managed egress (`permissions.external.configurable.enabled: true`) in its production environment, it cannot be disabled or removed in a later version. In the development and staging environments, the flag can still be changed.
 
 #### For customer-managed remotes
 
@@ -329,6 +327,9 @@ For detailed API behaviour and type definitions, see the [Forge bridge permissio
 
 ## Limitations and considerations
 
+* **Enabling customer-managed egress is irreversible in production**:
+
+  * Once an app has set `permissions.external.configurable.enabled: true` in its production environment, customer-managed egress cannot be disabled or removed in a later version. In the development and staging environments, the flag can still be changed.
 * **Runs on Atlassian eligibility**:
 
   * Any app that uses customer‑managed egress or customer‑managed remotes is not eligible for [Runs on Atlassian](/platform/forge/runs-on-atlassian/).

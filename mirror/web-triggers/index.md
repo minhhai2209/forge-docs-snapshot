@@ -66,6 +66,8 @@ Web trigger URLs are publicly available and are not authenticated by the Forge p
 
 Inside the `response` object, you can configure the response type and definitions for the webtrigger.
 
+This section describes the `response` configuration in the manifest only. For `type: dynamic` web triggers, the manifest does not define the response. Your function returns it at runtime as an object with `statusCode`, `headers`, and `body`. The `contentType` property applies only to static `outputs`. See [Web trigger runtime reference: Response](/platform/forge/runtime-reference/web-trigger/#response) for the full response format.
+
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
 | `type` | `static | dynamic[object Object]` | Yes | When set to `static`, the web trigger will only be able to egress data as configured in [Outputs](#outputs). Static web triggers are eligible for the Runs on Atlassian program. Dynamic web triggers allow developers to return any data from their function and are not eligible for the Runs on Atlassian program. |
@@ -187,7 +189,7 @@ modules:
 ```
 ```
 
-When using a dynamic web trigger, the function can return any data.
+When using a dynamic web trigger, the function can return any HTTP response. See [Web trigger runtime reference: Response](/platform/forge/runtime-reference/web-trigger/#response) for the schema.
 
 Despite being `type: dynamic`, the web trigger function response still requires a `statusCode` field.
 For information about web trigger request and response, see
@@ -206,18 +208,22 @@ For information about web trigger request and response, see
 9
 10
 11
+12
+13
 ```
 
 
 
 ```
-// egress-function.js
-export async function egressFunction() {
+// egress-function.ts
+import type { WebTriggerResponse } from "@forge/api";
+
+export async function egressFunction(): Promise<WebTriggerResponse> {
   const response = await fetch("https://api.example.com/data");
   const data = await response.json(); 
   return {
     statusCode: 200,
-    contentType: "application/json",
+    headers: { "Content-Type": ["application/json"] },
     body: JSON.stringify(data)
   };
 }

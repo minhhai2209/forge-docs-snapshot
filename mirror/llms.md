@@ -607,14 +607,14 @@ When helping readers, map their use case to the right invocation type: UI-driven
 - [Realtime events](https://developer.atlassian.com/platform/forge/runtime-reference/realtime-events-api.md)
 - [Error handling](https://developer.atlassian.com/platform/forge/realtime/error-handling-for-realtime-methods.md)
 
-### Dynamic Modules (Preview)
+### Dynamic Modules
 
-- [Dynamic Modules (Preview)](https://developer.atlassian.com/platform/forge/apis-reference/dynamic-modules.md)
+- [Dynamic Modules](https://developer.atlassian.com/platform/forge/apis-reference/dynamic-modules.md)
 - [API reference](https://developer.atlassian.com/platform/forge/apis-reference/dynamic-modules-api.md)
 
-### Customer-managed egress and remotes (Preview)
+### Customer-managed egress and remotes
 
-- [Customer-managed egress and remotes (Preview)](https://developer.atlassian.com/platform/forge/customer-managed-egress-and-remotes.md)
+- [Customer-managed egress and remotes](https://developer.atlassian.com/platform/forge/customer-managed-egress-and-remotes.md)
 - [API reference](https://developer.atlassian.com/platform/forge/apis-reference/customer-managed-egress-and-remotes-api.md)
 
 ### License API

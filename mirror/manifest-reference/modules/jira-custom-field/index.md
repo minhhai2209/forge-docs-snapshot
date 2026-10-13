@@ -550,7 +550,7 @@ const Edit = () => {
 ```
 
 Outcome:
-![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.2371)
+![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.2378)
 
 ##### Updated files
 
@@ -665,7 +665,7 @@ const Edit = () => {
 ```
 
 Outcome:
-![Updated experience to inline edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-inline.png?_v=1.5800.2371)
+![Updated experience to inline edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-inline.png?_v=1.5800.2378)
 
 
 How to edit custom fields in the modal (for more complex UI)
@@ -853,7 +853,7 @@ const Edit = () => {
 ```
 
 Outcome:
-![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.2371)
+![Original experience](https://dac-static.atlassian.com/platform/forge/images/migration-guide-old-modal.png?_v=1.5800.2378)
 
 ##### Updated files
 
@@ -1036,7 +1036,7 @@ ForgeReconciler.render(
 ```
 
 Outcome:
-![Updated experience to modal edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-new-modal.png?_v=1.5800.2371)
+![Updated experience to modal edit](https://dac-static.atlassian.com/platform/forge/images/migration-guide-new-modal.png?_v=1.5800.2378)
 
 ### Issue creation and issue transition dialog
 
@@ -1555,10 +1555,9 @@ ari:cloud:ecosystem::extension/<app-id>/<environment-id>/static/<invoked-module-
 You can use it to create the ID of your custom field type.
 There are two ways to get the Atlassian app context, depending on your app's rendering method:
 
-## Dynamic module (Preview)
+## Dynamic module
 
-This module can also be declared as a dynamic module. However, this capability is currently
-available as a Forge *preview* feature.
+This module can also be declared as a dynamic module.
 
 For more details, see [Dynamic Modules](/platform/forge/apis-reference/dynamic-modules/).
 

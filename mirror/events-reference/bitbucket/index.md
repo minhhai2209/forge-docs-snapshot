@@ -652,7 +652,7 @@ This is an example payload of an annotated tag being pushed.
 
 ### Repository deleted
 
-An event with the name `avi:bitbucket:deleted:repository` is sent when a repository is deleted.
+An event with the name `avi:bitbucket:deleted:repository` is sent when a repository is permanently cleaned up, which can be 30 days after its deletion.
 
 The required OAuth scope is `read:repository:bitbucket`.
 

@@ -47,10 +47,9 @@ If you are migrating from Connect to Forge, remove the old `confluenceContentPro
 | `values[].uiSupport.defaultOperator` | `string` |  | The CQL builder will use this operator when constructing the CQL string. A list of supported CQL operators can be found in the [CQL operators](https://developer.atlassian.com/cloud/confluence/cql-operators/) reference. |
 | `values[].uiSupport.tooltip` | `string` |  | The tooltip of this field as used by the [Page Properties Report macro](https://confluence.atlassian.com/doc/page-properties-report-macro-186089616.html) |
 
-## Dynamic module (Preview)
+## Dynamic module
 
-This module can also be declared as a dynamic module. However, this capability is currently
-available as a Forge *preview* feature.
+This module can also be declared as a dynamic module.
 
 For more details, see [Dynamic Modules](/platform/forge/apis-reference/dynamic-modules/).
 

@@ -23,10 +23,9 @@ See the [JQL functions](/cloud/jira/platform/jql-functions/) page for more infor
 | `name` | `string` | Yes | The name of the custom function argument. |
 | `required` | `boolean` | Yes | Whether the argument is required. |
 
-## Dynamic module (Preview)
+## Dynamic module
 
-This module can also be declared as a dynamic module. However, this capability is currently
-available as a Forge *preview* feature.
+This module can also be declared as a dynamic module.
 
 For more details, see [Dynamic Modules](/platform/forge/apis-reference/dynamic-modules/).
 

@@ -6,7 +6,7 @@ The `title`, `icon`, and `tooltip` of the module render together as a list item.
 
 On apps that use Custom UI, module content is displayed inside a [special Forge iframe](/platform/forge/custom-ui/iframe/) which has the [sandbox](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#sandbox) attribute configured. This means that HTML links (for example, `<a href="https://domain.tld/path">...</a>`) in this iframe won't be clickable. To make them clickable, use the [router.navigate](/platform/forge/custom-ui-bridge/router/#navigate) API from the `@forge/bridge` package.
 
-![Example of a Content byline item](https://dac-static.atlassian.com/platform/forge/images/content-byline-item-demo.gif?_v=1.5800.2371)
+![Example of a Content byline item](https://dac-static.atlassian.com/platform/forge/images/content-byline-item-demo.gif?_v=1.5800.2378)
 
 ## Properties
 
@@ -242,10 +242,9 @@ Check out the [Page approver app](/platform/forge/example-apps-confluence/#page-
 an app that updates the title and tooltip on change, and prepopulates a default icon that's missing
 from the `manifest.yml` file.
 
-## Dynamic module (Preview)
+## Dynamic module
 
-This module can also be declared as a dynamic module. However, this capability is currently
-available as a Forge *preview* feature.
+This module can also be declared as a dynamic module.
 
 For more details, see [Dynamic Modules](/platform/forge/apis-reference/dynamic-modules/).
 

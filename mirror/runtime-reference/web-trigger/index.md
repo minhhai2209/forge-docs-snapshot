@@ -20,14 +20,19 @@ Invocations from users, webtriggers, or scheduled triggers are subject to Forge'
 Your handler should be defined as a [function](/platform/forge/runtime-reference/).
 
 ```
-1export const trigger = (payload, context) => {
-2  return {
-3    statusCode: 200,
-4    headers: {},
-5    body: "Hello, world!",
-6  };
-7};
-8
+1import type { WebTriggerRequest, WebTriggerContext, WebTriggerResponse } from "@forge/api";
+2
+3export const trigger = (
+4  payload: WebTriggerRequest,
+5  context: WebTriggerContext
+6): WebTriggerResponse => {
+7  return {
+8    statusCode: 200,
+9    headers: { "Content-Type": ["text/plain"] },
+10    body: "Hello, world!",
+11  };
+12};
+13
 ```
 
 ### Manifest definition

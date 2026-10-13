@@ -15,6 +15,8 @@ can be found [here](https://developer.atlassian.com/platform/forge/changelog/#CH
 You can start a tunnel for any app that has been deployed and installed on to a site. To start
 a tunnel for your app, run the following command in your CLI:
 
+Tunneling can create a `.forge` directory in your app's root directory, even when debugging is not enabled. Keep it out of source control by adding `.forge/` to your `.gitignore` file. See [Local .forge directory](/platform/forge/cli-reference/#local-forge-directory) for its purpose and cleanup guidance.
+
 You'll see output similar to this:
 
 ```
