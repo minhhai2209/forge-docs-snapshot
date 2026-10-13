@@ -1101,6 +1101,10 @@ This section contains curated references that show how real Forge apps are struc
 
 - [Handling long-running LLM processes with Forge Realtime](https://developer.atlassian.com/platform/forge/llm-long-running-process-with-forge-realtime.md)
 
+###### Build a dashboard app with the Global full page module
+
+- [Build a dashboard app with the Global full page module](https://developer.atlassian.com/platform/forge/build-a-dashboard-app-with-the-global-full-page-module.md)
+
 ###### Bitbucket
 
 - [Extend Bitbucket Cloud](https://developer.atlassian.com/platform/forge/extend-bitbucket-cloud.md)
@@ -1119,7 +1123,6 @@ This section contains curated references that show how real Forge apps are struc
 - [Use space settings and content byline to implement space news](https://developer.atlassian.com/platform/forge/space-news.md)
 - [Use content actions to count page macros](https://developer.atlassian.com/platform/forge/macros-in-the-page.md)
 - [Build a Custom UI app](https://developer.atlassian.com/platform/forge/build-a-custom-ui-app-in-confluence.md)
-- [Build a dashboard app with the Confluence full page module](https://developer.atlassian.com/platform/forge/build-a-dashboard-app-with-the-confluence-full-page-module.md)
 - [Build a Confluence keyword extractor with OpenAI](https://developer.atlassian.com/platform/forge/build-confluence-keyword-extractor-with-openai.md)
 - [Use highlighted text in a Confluence app](https://developer.atlassian.com/platform/forge/create-confluence-contextmenu-module.md)
 - [Create a GIPHY app using UI kit on Confluence](https://developer.atlassian.com/platform/forge/create-a-giphy-app-using-the-ui-kit.md)

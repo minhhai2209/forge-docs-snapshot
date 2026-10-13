@@ -1,15 +1,31 @@
 # Atlassian Government Cloud for Forge developers
 
-## Manage Preferences
+The Atlassian Government Cloud (AGC) is a dedicated cloud environment designed to meet the security, compliance, and operational needs of United States government agencies and their contractors. AGC is FedRAMP Moderate authorized and operates with enhanced controls, continuous monitoring, and a completely separate perimeter from Atlassian's commercial cloud.
 
-Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
-When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our [Privacy Policy](https://www.atlassian.com/legal/privacy-policy#how-we-disclose-information-we-collect).
-You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt-out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
+Marketplace apps are a critical part of the AGC experience. To reach AGC customers, you must explicitly enable your app for AGC — it is not available there by default.
 
-Allow all
+## Who can access AGC
 
-These cookies are necessary for the website to function and cannot be switched off in our systems. They are usually only set in response to actions made by you which amount to a request for services, such as setting your privacy preferences, logging in or filling in forms. You can set your browser to block or alert you about these cookies, but some parts of the site will not then work. These cookies do not store any personally identifiable information.
+AGC is available only to US government agencies and contractors or vendors working with the US government. Each AGC product also has a minimum user count:
 
-These cookies allow us to count visits and traffic sources so we can measure and improve the performance of our site. They help us to know which pages are the most and least popular and see how visitors move around the site. If you do not allow these cookies we will not know when you have visited our site, and will not be able to monitor its performance.
+* Jira: 201 users
+* Confluence: 201 users
+* Jira Service Management: 26 users
 
-These cookies enable the website to provide enhanced functionality and personalisation. They may be set by us or by third party providers whose services we have added to our pages. If you do not allow these cookies then some or all of these services may not function properly.
+## AGC requirements
+
+* **Explicit opt-in required:** Your app is not automatically available to AGC customers. You must go through the AGC enablement process.
+* **App type requirements:** Apps must be registered as Forge or Connect-on-Forge apps. Connect apps that have not adopted Forge are not eligible.
+* **Developer license required:** You must receive a developer license from the AGC provisioning team before you can build and test against AGC.
+* **FedRAMP authorization not required:** Your app does not need to be FedRAMP Moderate authorized to operate in AGC. However, individual AGC customers may require you to authorize your app as an external service as part of their own risk management process.
+* **App installation in production:** At present, only Atlassian support teams can install apps for AGC customers in production. Apps are not self-installable by AGC customers. See [Manage Marketplace apps for Atlassian Government apps](https://support.atlassian.com/organization-administration/docs/manage-marketplace-apps-for-atlassian-government-apps/) for details.
+
+## AGC limitations for Forge features
+
+The following Forge features are not supported for AGC apps:
+
+Everything else in Forge is supported on AGC unless stated otherwise in the specific feature's documentation.
+
+## Full AGC developer documentation
+
+For complete guidance on building, testing, and publishing apps for AGC — including app compatibility requirements, OAuth 2.0 on AGC, and the publishing process — see the [Atlassian Government Cloud developer portal](/platform/framework/agc/).

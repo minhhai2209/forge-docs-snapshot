@@ -1,15 +1,49 @@
-# Handling errors in Custom Entity Store
+# Error handling for the Custom Entity Store
 
-## Manage Preferences
+In conjunction with proper HTTP status codes, non-2xx responses will have the following schema:
 
-Where applicable under local laws, you may have the right to opt out of certain disclosures of personal information to third parties for targeted advertising, which may be considered a “sale” or “share” of personal information, even if no money is exchanged for that information.
-When you visit our site, we place cookies on your browser that collect information. The information collected might relate to you, your preferences, browsing activity, and your device, and this information is used to make the site work as you expect it to and to provide a more personalized web experience. We may also disclose personal information (including through the use of third-party cookies) to third parties for targeting advertising purposes, including to measure, target, and serve advertisements, and for other purposes described in our [Privacy Policy](https://www.atlassian.com/legal/privacy-policy#how-we-disclose-information-we-collect).
-You can choose not to allow certain types of cookies, including opting out of “sales”, “sharing”, and “targeted advertising” by turning off the “Sales, Sharing and Targeted Advertising Cookies” button below. If you have enabled the Global Privacy Control (“GPC”) on your browser, we will treat that signal as a valid request to opt-out of “sales”, “sharing”, and “targeted advertising”. Please note that you cannot opt out of Strictly Necessary, Performance, or Functional cookies, as they are deployed to ensure the proper functioning of our website.
+```
+1{
+2  code: string; // "INVALID_KEY_FORMAT"
+3  message: string; // "Invalid key format"
+4}
+5
+```
 
-Allow all
+Each `400 Bad Request` response will be accompanied by an *error code* containing more information. The following tables lists all possible error codes, what they mean, and what you can do to address each one:
 
-These cookies are necessary for the website to function and cannot be switched off in our systems. They are usually only set in response to actions made by you which amount to a request for services, such as setting your privacy preferences, logging in or filling in forms. You can set your browser to block or alert you about these cookies, but some parts of the site will not then work. These cookies do not store any personally identifiable information.
+## Quota and limit handling
 
-These cookies allow us to count visits and traffic sources so we can measure and improve the performance of our site. They help us to know which pages are the most and least popular and see how visitors move around the site. If you do not allow these cookies we will not know when you have visited our site, and will not be able to monitor its performance.
+Forge hosted storage capabilities are subject to limits, usage, and syntax constraints. These include limits to the number of operations, key lengths, and object depth. Any request that exceeds a quota or limit will return a
+`429` status with an error code of `RATE_LIMIT_EXCEEDED`.
 
-These cookies enable the website to provide enhanced functionality and personalisation. They may be set by us or by third party providers whose services we have added to our pages. If you do not allow these cookies then some or all of these services may not function properly.
+See [Storage quotas](/platform/forge/platform-quotas-and-limits/#storage-quotas) and
+[Storage limits](/platform/forge/platform-quotas-and-limits/#storage-limits) for details about relevant constraints.
+
+| Error code | Description |
+| --- | --- |
+| EMPTY\_KEY | Key cannot be empty. |
+| INVALID\_KEY | The provided key does not match the regex: `/^(?!\s+$)[a-zA-Z0-9:._\s-#]+$/` |
+| KEY\_TOO\_LONG | The provided key has exceeded the maximum 500 characters. |
+| NOT\_FOUND | The specified key does not exist. |
+
+| Error code | Description |
+| --- | --- |
+| MAX\_SIZE | The provided value has exceeded the maximum size limit. |
+| MAX\_DEPTH | The provided value has exceeded the maximum object depth (32) limit. |
+
+| Error code | Description |
+| --- | --- |
+| ENTITY\_TYPE\_TOO\_SHORT | The provided key needs to be more than 3 characters. |
+| ENTITY\_TYPE\_TOO\_LARGE | The provided key has exceeded the maximum 60 characters. |
+| INVALID\_ENTITY\_TYPE | The provided key does not match the regex: `/^(?![\.\-])(?!.*\.{2})[a-z0-9:\-.]*(?<![.])$/`. |
+| INVALID\_ENTITY\_VALUE | Entity values must match one of the types defined in [Custom Entities](/platform/forge/storage-reference/entities-manifest/#values). |
+| INVALID\_ENTITY\_ATTRIBUTE | The specified attribute name is a reserved value and cannot be utilized. |
+| INVALID\_ENTITY\_INDEX | The custom entity index provided is invalid. The index name is a reserved value and cannot be utilized. |
+
+| Error code | Description |
+| --- | --- |
+| COMPLEX\_QUERY\_PAGE\_LIMIT\_NOT\_IN\_RANGE | The page limit must be set between 1 and 100. |
+| EMPTY\_FILTER\_OPERATOR | Filter operators "and" and "or" cannot be empty. |
+| INVALID\_FILTER\_OPERATORS\_COMBINATION | Filter operators "and" and "or" cannot be present at the same level. |
+| INSUFFICIENT\_FILTER\_VALUES | The specified condition needs at least two values. |

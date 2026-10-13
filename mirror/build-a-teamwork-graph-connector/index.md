@@ -198,8 +198,8 @@ The `datasource` property in this module also enables:
   such as API keys or folder IDs. Atlassian can also call this function after setup to evaluate the
   health of the connection, so keep it read-only, idempotent, and inexpensive.
 
-  The typed response and reason-code constants below require `@forge/teamwork-graph@5.3.0-next.1`
-  or later.
+  Use the stable `@forge/teamwork-graph@5.3.1` SDK or later for the typed response and reason-code
+  constants below.
 
   ```
   ```
