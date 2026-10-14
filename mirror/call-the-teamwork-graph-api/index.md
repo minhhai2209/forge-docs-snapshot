@@ -1,21 +1,18 @@
-# Call the Teamwork Graph API (EAP)
+# Call the Teamwork Graph API
 
-The Teamwork Graph API is available through Forge's Early Access Program (EAP).
+The Teamwork Graph API is available through Forge's
+[Preview](/platform/forge/whats-coming/#preview) release phase.
 
-EAPs are offered to selected users for testing and feedback purposes. These features are unsupported
-and are subject to change without notice.
+Preview features are available to all users and receive the same level of support as generally
+available features. Schemas, fields, and behavior may still change before general availability (GA),
+and breaking changes are subject to a minimum **1-month deprecation notice**, announced in the
+[Teamwork Graph changelog](/platform/teamwork-graph/changelog/).
 
-**You must only install apps that call the Teamwork Graph API in test organizations.** Apps calling
-the Teamwork Graph API require the `read:graph:jira`or `read:graph:confluence` scope, which provides access to Teamwork Graph
-data across your entire organization. While apps still respect end-user permissions, this scope may
-grant access to sensitive information. For safety, only install these apps in organizations with test
-data unless you have an [approved path to production](/platform/teamwork-graph/limitations-and-considerations/#path-to-production-for-teamwork-graph-api-apps).
+To review the current limitations, see
+[Limitations and considerations](/platform/teamwork-graph/limitations-and-considerations/).
 
-Additionally, this EAP has significant limitations. To review the full list of limitations, see
-[Limitations and considerations](/platform/teamwork-graph/limitations-and-considerations/#teamwork-graph-api--eap-).
-
-You must be part of this EAP in order to use the Teamwork Graph API. Express interest in joining
-through [this form](https://ecosystem.atlassian.net/servicedesk/customer/portal/1040/group/3496/create/18841).
+To share feedback or report an issue, visit the
+[Atlassian developer community](https://community.developer.atlassian.com/).
 
 This tutorial shows you how to query data from Teamwork Graph using the GraphQL API in a Forge app. You'll learn how to use Cypher queries to traverse the graph and retrieve connected data.
 
@@ -34,10 +31,8 @@ In this tutorial, you'll learn how to:
 To complete this tutorial, you'll need:
 
 * **A Forge app set up for development.** See [Getting started with Forge](https://developer.atlassian.com/platform/forge/getting-started/).
-* **Access to the Teamwork Graph API EAP and your app allowlisted for testing.** Express interest in joining through [this form](https://ecosystem.atlassian.net/servicedesk/customer/portal/1040/group/3496/create/18841).
-* **A test organization for development and testing.** Because apps using the Teamwork Graph API can't be installed in organizations with production data during EAP, you'll need a test organization. In your test org,
-  ensure you have the relevant Atlassian data available for querying. If you want to test with external
-  data sources, such as Google Drive or GitHub, configure [connectors](https://support.atlassian.com/organization-administration/docs/manage-rovo-connectors/) for your test organization.
+* \*\* ensure you have the relevant Atlassian data available for querying. If you want to test with external
+  data sources, such as Google Drive or GitHub, configure [connectors](https://support.atlassian.com/organization-administration/docs/manage-rovo-connectors/) for your organization.
 
 You should also be familiar with:
 
@@ -57,28 +52,9 @@ If you haven't already, create a new Forge app following the [Getting started wi
 ### Add required scope to your manifest
 
 To access the Teamwork Graph API, add the appropriate scope to your app's `manifest.yml` file based
-on which Atlassian app you are developing for:
+on which entities you'd like to request in your app:
 
-**For Jira apps:**
-
-```
-```
-1
-2
-3
-4
-```
-
-
-
-```
-permissions:
-  scopes:
-    - 'read:graph:jira'
-```
-```
-
-**For Confluence apps:**
+**For example:**
 
 ```
 ```
@@ -93,11 +69,9 @@ permissions:
 ```
 permissions:
   scopes:
-    - 'read:graph:confluence'
+    - 'read:graph:issue:jira'
 ```
 ```
-
-The `read:graph:jira` and `read:graph:confluence` scopes grant your app read access to Teamwork Graph data across the entire organization, including objects (work items, documents, projects, teams, users), relationships, and metadata. While apps respect end-user permissions, these scopes provide organization-wide access. This is why apps using these scopes should only be installed in test organizations during the EAP. See [limitations and considerations](/platform/teamwork-graph/limitations-and-considerations/) for more details.
 
 Without the appropriate scope for your app, your `forge deploy` command will fail when making Teamwork Graph API calls.
 
@@ -187,9 +161,9 @@ async function testConnection() {
 
 If this query succeeds, your app is properly configured and authenticated.
 
-### Use the GraphiQL Playground
+### Use the Query Builder
 
-You can also test queries interactively using the GraphiQL Playground. Access it at:
+You can also test queries interactively using the Atlassian Query Builder. Access it at:
 
 ```
 ```
@@ -200,11 +174,11 @@ You can also test queries interactively using the GraphiQL Playground. Access it
 
 
 ```
-https://<your-site>.atlassian.net/gateway/api/graphql/twg
+https://teamwork-graph.atlassian.com/query-builder
 ```
 ```
 
-For example, if your site is `abc.atlassian.net`, the playground URL would be:
+Make sure to select the correct site in the right navigation pannel.
 
 ```
 ```
@@ -245,7 +219,7 @@ belongs to with the relationship [User is in team](/platform/teamwork-graph/rela
 
 
 ```
-MATCH (user:IdentityUser {ari: $id})-[:user_is_in_team]->(team:IdentityTeam) 
+MATCH (user:AtlassianUser {ari: $id})-[:user_is_in_team]->(team:AtlassianTeam) 
 RETURN collect(distinct team) as teams
 ```
 ```
@@ -253,9 +227,9 @@ RETURN collect(distinct team) as teams
 Let's break this down:
 
 * `MATCH` - Finds patterns in the graph
-* `(user:IdentityUser {ari: $id})` - Finds a user object with a specific ARI (passed as a parameter)
+* `(user:AtlassianUser {ari: $id})` - Finds a user object with a specific ARI (passed as a parameter)
 * `-[:user_is_in_team]->` - Traverses the "user is in team" relationship
-* `(team:IdentityTeam)` - Finds connected team objects
+* `(team:AtlassianTeam)` - Finds connected team objects
 * `RETURN collect(distinct team) as teams` - Returns all unique teams as a list
 
 To learn more about the `user_is_in_team` relationship, see the relationship documentation for [User is in team](/platform/teamwork-graph/relationship-types/user-is-in-team/).
@@ -400,7 +374,7 @@ Pass the Cypher query and its parameters as GraphQL variables:
 
 ```
 {
-  "cypherQuery": "MATCH (user:IdentityUser {ari: $id})-[:user_is_in_team]->(team:IdentityTeam) RETURN collect(distinct team) as teams",
+  "cypherQuery": "MATCH (user:AtlassianUser {ari: $id})-[:user_is_in_team]->(team:AtlassianTeam) RETURN collect(distinct team) as teams",
   "params": {
     "id": "ari:cloud:identity::user/712020:5fb4febcfacfd60076a1c699"
   }
@@ -408,7 +382,11 @@ Pass the Cypher query and its parameters as GraphQL variables:
 ```
 ```
 
-## Step 5: Implement in your Forge app
+### Step 5: Save the query
+
+see [persisted-cypher-queries.md](/latform/teamwork-graph/persisted-cypher-queries.md)
+
+## Step 6: Implement in your Forge app
 
 Now let's implement this query in a Forge app.
 
@@ -534,6 +512,7 @@ export async function executeCypherGraphQL(graphqlQuery, variables) {
 40
 41
 42
+43
 ```
 
 
@@ -541,30 +520,31 @@ export async function executeCypherGraphQL(graphqlQuery, variables) {
 ```
 // The GraphQL Query
 export const USER_TEAMS_GRAPHQL = `
-query companyName_userTeams($cypherQuery: String!, $params: CypherRequestParams) {
-    cypherQuery(query: $cypherQuery, params: $params) {
-      edges {
-        node {
-          columns {
-            key
-            value {
-              __typename
-              ... on CypherQueryResultListNode {
+query companyName_assignedWork($queryKey: String!, $queryParams: CypherRequestParams) {
+  customQuery(queryKey: $queryKey, queryParams: $queryParams, first: 25) {
+    edges {
+      node {
+        columns {
+          key
+          value {
+            __typename
+            ... on CypherQueryResultNode {
+              id
+              data {
                 __typename
-                nodes {
-                	id
-                  data {
-                    __typename
-                    ... on Team {                    
-                      id
-                      displayName
-                    }
-                  }  
+                ... on AtlassianUser {
+                  id
+                  name
                 }
               }
+            }
           }
         }
       }
+    }
+    pageInfo {
+      hasNextPage
+      endCursor
     }
   }
 }
@@ -573,10 +553,10 @@ query companyName_userTeams($cypherQuery: String!, $params: CypherRequestParams)
 // Preparing the Variables
 export function getTeamsByUserRequestParams(userAri) {
     return {
-        cypherQuery: `
-        MATCH (user:IdentityUser {ari: $id})-[:user_is_in_team]->(team:IdentityTeam) 
-        RETURN  collect(distinct team) as teams`,
-        params: {id: userAri},
+        params: {
+            queryKey: yourSavedQueryKey
+            id: userAri
+        },
     };
 }
 ```

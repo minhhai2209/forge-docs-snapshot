@@ -263,6 +263,8 @@ in the manifest `handler` property:
 6
 7
 8
+9
+10
 ```
 
 
@@ -270,19 +272,30 @@ in the manifest `handler` property:
 ```
 import { AsyncEvent } from '@forge/events';
 
-export async function handler(event: AsyncEvent) {
+export async function handler(event: AsyncEvent, context: { installContext: string; workspaceId?: string }) {
     // Access the event body
     const data = event.body;
+    // Access the invocation context, for example the installation
+    const { installContext, workspaceId } = context;
     // Process the event
 }
 ```
 ```
 
-The consumer receives one argument, the `AsyncEvent`. The data you pushed with
-`queue.push({ body: ... })` is on its `body` property, alongside the `jobId`, `eventId`, `queueName`,
-and other fields listed in [AsyncEvent properties](/platform/forge/runtime-reference/async-events-api/#asyncevent-properties).
-There is no `payload` property; if you read `event.payload` you get `undefined`. The `payload`
-argument belonged to the 1.x resolver-based consumer, which 2.0.0 replaced.
+Like other [Forge functions](/platform/forge/function-reference/arguments/), the consumer receives
+two arguments:
+
+* **event:** The `AsyncEvent`. The data you pushed with `queue.push({ body: ... })` is on its `body`
+  property, alongside the `jobId`, `eventId`, `queueName`, and other fields listed in
+  [AsyncEvent properties](/platform/forge/runtime-reference/async-events-api/#asyncevent-properties).
+  There is no `payload` property; if you read `event.payload` you get `undefined`. The `payload`
+  argument belonged to the 1.x resolver-based consumer, which 2.0.0 replaced.
+* **context:** Information about the installation the consumer is running in, such as `principal`,
+  `installContext`, `installation` and `workspaceId`. This is the same `context` object that other
+  function modules, such as [`trigger`](/platform/forge/manifest-reference/modules/trigger/), receive.
+  See [Consumer context](/platform/forge/runtime-reference/async-events-api/#consumer-context).
+
+You only need to declare the `context` parameter if your consumer uses it.
 
 The `AsyncEvent` type from `@forge/events` provides type safety for the `event` parameter. By
 default, `event.body` is typed as `Record<string, unknown>`. `AsyncEvent` is generic and accepts
@@ -360,6 +373,72 @@ properties:
 | `delayInSeconds` | `number | undefined` | The delay applied when the event was pushed, if any. See [Push API](/platform/forge/runtime-reference/async-events-api/#push-api). |
 | `concurrency` | [Concurrency](/platform/forge/runtime-reference/async-events-api/#controlling-processing-concurrency) | undefined | The concurrency `key` and `limit` applied when the event was pushed, if any. |
 | `retryContext` | [RetryContext](/platform/forge/runtime-reference/async-events-api/#retry-context) | undefined | Contains retry metadata when the event is being retried. This property is only populated on retries, so check that it exists before accessing it. See [Retries](/platform/forge/runtime-reference/async-events-api/#retries). |
+
+The `event` object also includes `context` and `contextToken` properties that the platform
+populates for its own use. `event.context` is **not** the same object as the `context` argument
+described in [Consumer context](/platform/forge/runtime-reference/async-events-api/#consumer-context),
+and neither is a superset of the other. Read installation and principal information from the
+`context` argument, not from `event.context`.
+
+### Consumer context
+
+The second argument passed to the consumer function is the same `context` object that other Forge
+function modules receive. It contains information about the installation the consumer is running in:
+
+| Property | Type | Description |
+| --- | --- | --- |
+| `principal` | `Principal | undefined` | The principal containing the Atlassian ID of the user that interacted with the component. |
+| `installContext` | `string` | The ARI identifying the cloud or Atlassian app context of this component installation. |
+| `workspaceId` | `string | undefined` | The ID of the workspace on which the extension is working. |
+| `license` | `License | undefined` | Contains information about the license of the app. This field is only present for paid apps in the production environment.  `license` is `undefined` for free apps, apps in `DEVELOPMENT` and `STAGING` environments, and apps that are not listed on the Atlassian Marketplace. |
+| `installation` | `Installation | undefined` | A summary of the app installation, including the installation ARI and the contexts where the app is installed. |
+
+For the complete schema and TypeScript definitions, see
+[Function Arguments](/platform/forge/function-reference/arguments/#context-schema).
+
+```
+```
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+```
+
+
+
+```
+import { AsyncEvent } from '@forge/events';
+
+interface ConsumerContext {
+    installContext: string;
+    principal?: { accountId: string };
+    workspaceId?: string;
+}
+
+export async function handler(event: AsyncEvent, context: ConsumerContext) {
+    console.log('Installation:', context.installContext);
+    if (context.principal) {
+        console.log('Principal:', context.principal.accountId);
+    }
+    // Process the event
+}
+```
+```
+
+Use the `context` argument instead of looking up installation details that the platform already
+provides.
 
 ## Tracking progress of events
 
