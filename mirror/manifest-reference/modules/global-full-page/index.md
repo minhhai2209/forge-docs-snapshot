@@ -171,7 +171,7 @@ Use the [useProductContext](/platform/forge/ui-kit/hooks/use-product-context/) h
 
 ## Access your app
 
-Full page modules can be accessed using this URL format:
+Global full page modules can be accessed using this URL format:
 
 ```
 ```

@@ -1,16 +1,18 @@
 {
   "root_url": "https://developer.atlassian.com/platform/forge",
-  "generated_at": "2026-10-14T22:18:31.611702+00:00",
-  "discovered_urls": 791,
-  "downloaded_pages": 779,
-  "skipped_pages": 12,
-  "duration_seconds": 3988.8,
+  "generated_at": "2026-10-15T22:02:54.199795+00:00",
+  "discovered_urls": 790,
+  "downloaded_pages": 774,
+  "skipped_pages": 16,
+  "duration_seconds": 4383.38,
   "user_agent": "ForgeDocsMirror/1.0 (+https://github.com/minhhai2209/forge-docs-snapshot)",
   "delay_seconds": 0.25,
   "failures": [
     "timeout: https://developer.atlassian.com/platform/forge/getting-started",
+    "timeout: https://developer.atlassian.com/platform/forge/ai-development-toolkit/forge-mcp",
     "timeout: https://developer.atlassian.com/platform/forge/example-apps-rovo",
     "timeout: https://developer.atlassian.com/platform/forge/profiling-node-js-app-code-tunnel",
+    "timeout: https://developer.atlassian.com/platform/forge/extend-atlassian-products-with-a-forge-rovo-agent",
     "timeout: https://developer.atlassian.com/platform/forge/build-a-hello-world-rovo-agent",
     "timeout: https://developer.atlassian.com/platform/forge/manifest",
     "timeout: https://developer.atlassian.com/platform/forge/tunneling",
@@ -18,6 +20,8 @@
     "timeout: https://developer.atlassian.com/platform/forge/developer-space/create-developer-space",
     "timeout: https://developer.atlassian.com/platform/forge/developer-space/developer-space-apps",
     "timeout: https://developer.atlassian.com/platform/forge/developer-space/developer-space-roles",
+    "timeout: https://developer.atlassian.com/platform/forge/ui-kit/components/date-picker",
+    "timeout: https://developer.atlassian.com/platform/forge/ui-kit/components/textfield",
     "timeout: https://developer.atlassian.com/platform/forge/set-up-forge",
     "playwright: https://developer.atlassian.com/platform/forge/resources/Forge-Data-Processing-Addendum.pdf"
   ]

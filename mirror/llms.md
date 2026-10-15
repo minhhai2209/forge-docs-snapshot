@@ -250,7 +250,6 @@ Refer to the following sections for more detailed information about Forge module
 - [Dashboard gadget](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-dashboard-gadget.md)
 - [Entity property](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-entity-property.md)
 - [Entity property set](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-entity-property-set.md)
-- [Full page (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-full-page.md)
 - [Global background script (Preview)](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-global-background-script.md)
 - [Global page](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-global-page.md)
 - [Global permission](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-global-permission.md)
@@ -1103,7 +1102,8 @@ This section contains curated references that show how real Forge apps are struc
 
 ###### Build a dashboard app with the Global full page module
 
-- [Build a dashboard app with the Global full page module](https://developer.atlassian.com/platform/forge/build-a-dashboard-app-with-the-global-full-page-module.md)
+- [Build a dashboard app with the Global full page module connected to Confluence](https://developer.atlassian.com/platform/forge/build-a-dashboard-app-with-the-global-full-page-module-connected-to-confluence.md)
+- [Build a dashboard app with the Global full page module connected to Jira](https://developer.atlassian.com/platform/forge/build-a-dashboard-app-with-the-global-full-page-module-connected-to-jira.md)
 
 ###### Bitbucket
 
@@ -1138,7 +1138,6 @@ This section contains curated references that show how real Forge apps are struc
 - [Build a Jira comments summarizer app with OpenAI](https://developer.atlassian.com/platform/forge/build-jira-comments-summarizer-with-openai.md)
 - [Use a workflow validator to check issue assignments](https://developer.atlassian.com/platform/forge/check-jira-issues-assigned-using-workflow-validator.md)
 - [Build a Custom UI app](https://developer.atlassian.com/platform/forge/build-a-custom-ui-app-in-jira.md)
-- [Build a dashboard app with the Jira full page module](https://developer.atlassian.com/platform/forge/build-a-dashboard-app-with-the-jira-full-page-module.md)
 - [Build a Jira UI modifications app](https://developer.atlassian.com/platform/forge/build-a-jira-uim-app.md)
 - [Build a Jira app with the Forge module command](https://developer.atlassian.com/platform/forge/build-a-jira-app-with-the-module-command.md)
 - [How to use Custom UI with the Forge module command](https://developer.atlassian.com/platform/forge/how-to-use-custom-ui-with-the-forge-module-command.md)
