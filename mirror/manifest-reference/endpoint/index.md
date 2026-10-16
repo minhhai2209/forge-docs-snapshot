@@ -70,7 +70,7 @@ modules:
 
 Forge Container services is now in Preview, and therefore fully supported. However, it remains under active development and may be subject to shorter deprecation windows. Preview features are suitable for early adopters in production environments.
 
-We release preview features so partners and developers can study, test, and integrate them prior to General Availability (GA). For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#forge-preview).
+We release preview features so partners and developers can study, test, and integrate them prior to General Availability (GA). For more details, see [Forge Preview](/platform/forge/whats-coming/#forge-preview).
 
 The following snippet shows a service named `java-service`, which is backed by a container of the same name. The service is accessible via the `/webtrigger` route on the `webtrigger-ep` [endpoint module](/platform/forge/manifest-reference/endpoint/#endpoint).
 

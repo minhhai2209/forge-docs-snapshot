@@ -14,7 +14,7 @@ for all app users who use the instance.
 You can access the global pages created by the app via **Apps** in the header. If an app has multiple
 global pages, clicking the app in the **Apps** menu navigates to the path `/`.
 
-![Apps navigation](https://dac-static.atlassian.com/platform/forge/images/page-guidelines/global-pages-navigation.png?_v=1.5800.2384)
+![Apps navigation](https://dac-static.atlassian.com/platform/forge/images/page-guidelines/global-pages-navigation.png?_v=1.5800.2386)
 
 ### Apps with a single global page
 
@@ -22,15 +22,15 @@ From the header, select **Apps**, then select the app.
 
 Apps with a single global page don't display a sidebar.
 
-![Apps with a single global page](https://dac-static.atlassian.com/platform/forge/images/page-guidelines/global-single-page-app.png?_v=1.5800.2384)
+![Apps with a single global page](https://dac-static.atlassian.com/platform/forge/images/page-guidelines/global-single-page-app.png?_v=1.5800.2386)
 
 ### Apps with multiple global pages
 
 Clicking an app in the **Apps** menu navigates to the path `/`. The sidebar displays the name of the app, as well as the app's global pages.
 
-![Apps with multiple global pages - dividers](https://dac-static.atlassian.com/platform/forge/images/page-guidelines/global-multipage-app-dividers.png?_v=1.5800.2384)
+![Apps with multiple global pages - dividers](https://dac-static.atlassian.com/platform/forge/images/page-guidelines/global-multipage-app-dividers.png?_v=1.5800.2386)
 
-![Apps with multiple global pages - dividers](https://dac-static.atlassian.com/platform/forge/images/page-guidelines/global-multipage-app-sections.png?_v=1.5800.2384)
+![Apps with multiple global pages - dividers](https://dac-static.atlassian.com/platform/forge/images/page-guidelines/global-multipage-app-sections.png?_v=1.5800.2386)
 
 ## Global full page
 
@@ -71,19 +71,19 @@ Use the [Jira personal settings page module](/platform/forge/manifest-reference/
 
 You can access personal settings pages from the profile menu in the main navigation. Apps that create a personal settings page have a menu item in the personal settings menu, in the **Apps** section. The **Apps** section is displayed below the native sections of the personal settings.
 
-![Personal settings pages navigation](https://dac-static.atlassian.com/platform/forge/images/page-guidelines/personal-settings-nav.png?_v=1.5800.2384)
+![Personal settings pages navigation](https://dac-static.atlassian.com/platform/forge/images/page-guidelines/personal-settings-nav.png?_v=1.5800.2386)
 
 ### Apps with a single personal settings page
 
 Clicking the app in the profile menu opens up the personal settings page.
 
-![Single personal settings page](https://dac-static.atlassian.com/platform/forge/images/page-guidelines/personal-settings-single-page-app.png?_v=1.5800.2384)
+![Single personal settings page](https://dac-static.atlassian.com/platform/forge/images/page-guidelines/personal-settings-single-page-app.png?_v=1.5800.2386)
 
 ### Apps with multiple personal settings pages
 
 Clicking the app in the personal settings sidebar displays a contextual sidebar, which then displays the app name and its multiple personal settings pages below.
 
-![Multiple personal settings page](https://dac-static.atlassian.com/platform/forge/images/page-guidelines/personal-settings-multipage-app.png?_v=1.5800.2384)
+![Multiple personal settings page](https://dac-static.atlassian.com/platform/forge/images/page-guidelines/personal-settings-multipage-app.png?_v=1.5800.2386)
 
 ## Project pages
 
@@ -93,19 +93,19 @@ Project pages are most suitable for the full-page apps in a single project.
 ### Navigation
 
 Within Atlassian apps, project pages can be accessed via the project sidebar in the **Apps** section, which appears below the native sections of the project. In Jira Work Management, however, project pages are accessed from the project view's horizontal navigation, under the **Apps** dropdown.
-![Project pages navigation](https://dac-static.atlassian.com/platform/forge/images/page-guidelines/project-pages-navigation.png?_v=1.5800.2384)
+![Project pages navigation](https://dac-static.atlassian.com/platform/forge/images/page-guidelines/project-pages-navigation.png?_v=1.5800.2386)
 
 ### Apps with a single project page
 
 Clicking the app in the project sidebar opens up the project page.
 
-![Project pages navigation](https://dac-static.atlassian.com/platform/forge/images/page-guidelines/project-single-page-app.png?_v=1.5800.2384)
+![Project pages navigation](https://dac-static.atlassian.com/platform/forge/images/page-guidelines/project-single-page-app.png?_v=1.5800.2386)
 
 ### Apps with multiple project pages
 
 Clicking the app in the project sidebar displays a contextual sidebar, which then displays the app name and its multiple project pages below. App users can navigate to these project pages.
 
-![Project pages navigation](https://dac-static.atlassian.com/platform/forge/images/page-guidelines/project-multipage-app.png?_v=1.5800.2384)
+![Project pages navigation](https://dac-static.atlassian.com/platform/forge/images/page-guidelines/project-multipage-app.png?_v=1.5800.2386)
 
 ## Project settings pages
 
@@ -115,20 +115,20 @@ Use the [Jira project settings page module](/platform/forge/manifest-reference/m
 
 You can access project settings pages from the project settings sidebar. Apps that create a project settings page have a menu item in the project settings sidebar, in the **Apps** section. The **Apps** section is displayed below the native sections of the project settings.
 
-![Project pages navigation](https://dac-static.atlassian.com/platform/forge/images/page-guidelines/project-settings-nav.png?_v=1.5800.2384)
+![Project pages navigation](https://dac-static.atlassian.com/platform/forge/images/page-guidelines/project-settings-nav.png?_v=1.5800.2386)
 
 ### Apps with a single project settings page
 
 Clicking the app in the project settings sidebar opens up the project page.
 
-![Single project settings page](https://dac-static.atlassian.com/platform/forge/images/page-guidelines/project-settings-single-page-app.png?_v=1.5800.2384)
+![Single project settings page](https://dac-static.atlassian.com/platform/forge/images/page-guidelines/project-settings-single-page-app.png?_v=1.5800.2386)
 
 ### Apps with multiple project settings pages
 
 Clicking the app in the project sidebar displays a contextual sidebar, which then displays the app name and its multiple project pages below.
 Project admins can navigate to these project settings pages.
 
-![Multiple project settings page](https://dac-static.atlassian.com/platform/forge/images/page-guidelines/project-settings-multipage-app.png?_v=1.5800.2384)
+![Multiple project settings page](https://dac-static.atlassian.com/platform/forge/images/page-guidelines/project-settings-multipage-app.png?_v=1.5800.2386)
 
 ## Admin pages
 
@@ -141,21 +141,21 @@ The [Jira admin page module](/platform/forge/manifest-reference/modules/jira-adm
 
 You can access the admin page of an app from the **Apps** administration sidebar, below the native sections.
 
-![Apps with single admin page](https://dac-static.atlassian.com/platform/forge/images/page-guidelines/nav-admin-pages.png?_v=1.5800.2384)
+![Apps with single admin page](https://dac-static.atlassian.com/platform/forge/images/page-guidelines/nav-admin-pages.png?_v=1.5800.2386)
 
 ### Apps with a single admin page
 
 1. From the header, select **Apps**, and then select **Manage apps**.
 2. Select the app from the **Apps** section. The app's page is displayed.
 
-![Apps with single admin page](https://dac-static.atlassian.com/platform/forge/images/page-guidelines/admin-single-page.png?_v=1.5800.2384)
+![Apps with single admin page](https://dac-static.atlassian.com/platform/forge/images/page-guidelines/admin-single-page.png?_v=1.5800.2386)
 
 ### Apps with multiple admin pages
 
 1. From the header, select **Apps**, and then select **Manage apps**.
 2. Select the app from the **Apps** section. The app's pages are displayed.
 
-![Apps with multiple admin pages](https://dac-static.atlassian.com/platform/forge/images/page-guidelines/admin-multi-page.png?_v=1.5800.2384)
+![Apps with multiple admin pages](https://dac-static.atlassian.com/platform/forge/images/page-guidelines/admin-multi-page.png?_v=1.5800.2386)
 
 ## Building your page
 
@@ -201,17 +201,17 @@ From the contextual sidebar you can:
 
 You can use the name and icon of an app as branding for your app. We recommend using a colored icon for your app icon.
 
-![App icon](https://dac-static.atlassian.com/platform/forge/images/page-guidelines/app-icon.png?_v=1.5800.2384)
+![App icon](https://dac-static.atlassian.com/platform/forge/images/page-guidelines/app-icon.png?_v=1.5800.2386)
 
 #### Menu label and icon
 
 Menu labels and their corresponding icons are key for users to find their way when using an app. A menu label and its icon should clearly describe the functionality of a particular page, as well as reflect your branding.
 
-![Single menu item](https://dac-static.atlassian.com/platform/forge/images/page-guidelines/menu-single-item.png?_v=1.5800.2384)
+![Single menu item](https://dac-static.atlassian.com/platform/forge/images/page-guidelines/menu-single-item.png?_v=1.5800.2386)
 
 #### Sections
 
 Sections provide the ability to group two or more pages in the contextual sidebar. This helps users find relevant items when navigating the sidebar.
 We discourage using sections for a single page.
 
-![Multiple menu items](https://dac-static.atlassian.com/platform/forge/images/page-guidelines/menu-multiple-items.png?_v=1.5800.2384)
+![Multiple menu items](https://dac-static.atlassian.com/platform/forge/images/page-guidelines/menu-multiple-items.png?_v=1.5800.2386)

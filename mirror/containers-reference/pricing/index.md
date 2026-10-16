@@ -2,7 +2,7 @@
 
 Forge Container services is now in Preview, and therefore fully supported. However, it remains under active development and may be subject to shorter deprecation windows. Preview features are suitable for early adopters in production environments.
 
-We release preview features so partners and developers can study, test, and integrate them prior to General Availability (GA). For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#forge-preview).
+We release preview features so partners and developers can study, test, and integrate them prior to General Availability (GA). For more details, see [Forge Preview](/platform/forge/whats-coming/#forge-preview).
 
 Unlike other Forge capabilities that use a [consumption-based pricing model](/platform/forge/forge-platform-pricing/), Forge Container services use a **reservation-based pricing model**. You pay for the CPU and memory capacity reserved for each container instance, regardless of whether that instance is actively handling requests. This reflects the always-on nature of container services, which must remain running to serve traffic at any time.
 
@@ -25,7 +25,7 @@ Charges are calculated based on the CPU and memory values declared in your [serv
 
 Forge Container services are deployed across multiple Atlassian regions to deliver adequate performance for your app's users and to support [data residency](/platform/forge/data-residency/) requirements. Because each region runs its own container instances, **your costs scale with the number of regions your service is deployed in**.
 
-When Forge Container services enters Preview with billing enabled, your container services will be automatically deployed in the following 6 Atlassian regions:
+Regional deployments support the following six Atlassian regions:
 
 | Region | Location |
 | --- | --- |

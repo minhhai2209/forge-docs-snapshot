@@ -2,7 +2,7 @@
 
 Forge Container services is now in Preview, and therefore fully supported. However, it remains under active development and may be subject to shorter deprecation windows. Preview features are suitable for early adopters in production environments.
 
-We release preview features so partners and developers can study, test, and integrate them prior to General Availability (GA). For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#forge-preview).
+We release preview features so partners and developers can study, test, and integrate them prior to General Availability (GA). For more details, see [Forge Preview](/platform/forge/whats-coming/#forge-preview).
 
 Forge Container services let you package, deploy, and operate services as part of your app, leveraging container technology directly on Atlassian’s infrastructure. This unlocks a broader range of languages, frameworks, and architectures for parts of your app workflow.
 
@@ -13,7 +13,7 @@ The primary goal of Forge Container services is to provide capabilities for host
 Forge Container services is now in [Preview](/platform/forge/whats-coming/#forge-preview). We will continue updating Forge Container services to fix bugs, add functionality, and address developer feedback.
 At present, Forge Container services has the following limitations:
 
-* An app can only have one defined service, and this service can only have one defined container.
+* By default, an app can define up to three services, with one container per service.
 * Containerised services can't be de-provisioned through self-service. Once your app is deployed and installed, its service instance can't be deleted or renamed through the CLI or developer console. To delete or rename a service, [open a support ticket](https://support.atlassian.com/). The service will remain visible in the developer console and you will continue to incur charges until it is de-provisioned.
 
 For a complete list of Preview limitations (along with our plans to address and mitigate each one), refer to [this roadmap ticket](https://ecosystem.atlassian.net/browse/ROADMAP-228).
@@ -39,7 +39,7 @@ Your app’s containerised service lifecycle begins when you upload the service�
 
 The following diagram provides a high-level view of the container lifecycle:
 
-![Forge Container services lifecycle overview](https://dac-static.atlassian.com/platform/forge/images/containers-lifecycle-overview.png?_v=1.5800.2384)
+![Forge Container services lifecycle overview](https://dac-static.atlassian.com/platform/forge/images/containers-lifecycle-overview.png?_v=1.5800.2386)
 
 This lifecycle involves the following major phases:
 

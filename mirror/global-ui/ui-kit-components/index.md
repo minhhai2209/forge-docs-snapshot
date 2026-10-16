@@ -21,21 +21,22 @@ These UI Kit components are exported from the `@forge/react/global` entry point.
 1import {
 2  Global,
 3  Sidebar,
-4  LinkMenuItem,
-5  FlyOutMenuItem,
-6  SearchableFlyoutMenuItems,
-7  ExpandableMenuItem,
-8  MenuSection,
-9  MenuSpacer,
-10  ReorderableMenuItems,
-11  HelpLink,
-12  PersonalSettings,
-13  PersonalSettingsItem,
-14  CreateButton,
-15  CreateMenuItem,
-16  Main,
-17} from "@forge/react/global";
-18
+4  SidebarFooter,
+5  LinkMenuItem,
+6  FlyOutMenuItem,
+7  SearchableFlyoutMenuItems,
+8  ExpandableMenuItem,
+9  MenuSection,
+10  MenuSpacer,
+11  ReorderableMenuItems,
+12  HelpLink,
+13  PersonalSettings,
+14  PersonalSettingsItem,
+15  CreateButton,
+16  CreateMenuItem,
+17  Main,
+18} from "@forge/react/global";
+19
 ```
 
 ## Component hierarchy
@@ -77,6 +78,8 @@ The `Global` component is composed of sub-components that work together to creat
 31
 32
 33
+34
+35
 ```
 
 
@@ -109,8 +112,10 @@ The `Global` component is composed of sub-components that work together to creat
 │  │
 │  ├─ <SearchableFlyoutMenuItems />
 │  │
-│  └─ <ExpandableMenuItem />
-│     └─ <LinkMenuItem />
+│  ├─ <ExpandableMenuItem />
+│  │  └─ <LinkMenuItem />
+│  │
+│  └─ <SidebarFooter />
 │
 └─ <Main />
    └─ {Your app content}
@@ -149,7 +154,7 @@ Renders the left navigation panel.
 
 | Name | Type | Required | Description |
 | --- | --- | --- | --- |
-| `children` | `ForgeElement` | Yes | Accepts `LinkMenuItem`, `ExpandableMenuItem`, `FlyOutMenuItem`, `SearchableFlyoutMenuItems`, `MenuSection`, `MenuSpacer`, and `ReorderableMenuItems`. |
+| `children` | `ForgeElement` | Yes | Accepts `LinkMenuItem`, `ExpandableMenuItem`, `FlyOutMenuItem`, `SearchableFlyoutMenuItems`, `MenuSection`, `MenuSpacer`, `ReorderableMenuItems`, and `SidebarFooter`. |
 | `forYouMenuItem` | `boolean` | No | Whether to show the built-in **For you** menu item. Defaults to `true`. When `true`, displays the **For you** item and uses `/for-you` as the home page. When `false`, hides the item and uses the root route `/` as the home page. |
 
 A clickable navigation link in the sidebar.
@@ -320,6 +325,81 @@ Adds vertical spacing between groups of top-level sidebar items. It has no props
 
     <LinkMenuItem label="Settings" href="/settings" />
   </Sidebar>
+</Global>
+```
+```
+
+Adds content to the bottom of the sidebar. The footer stays at the bottom of the sidebar, below the menu items. Use it as a direct child of `Sidebar`.
+
+| Name | Type | Required | Description |
+| --- | --- | --- | --- |
+| `children` | `ForgeElement` | Yes | The content to display at the bottom of the sidebar. |
+
+#### Add content to the bottom of the sidebar
+
+The following example adds a feedback link to the bottom of the sidebar. Use the UI Kit `Link` component for links inside the footer.
+
+```
+```
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+```
+
+
+
+```
+import { Link, Text } from "@forge/react";
+import {
+  Global,
+  Sidebar,
+  SidebarFooter,
+  LinkMenuItem,
+  Main,
+} from "@forge/react/global";
+
+<Global>
+  <Sidebar>
+    <LinkMenuItem label="Overview" href="/overview" />
+    <LinkMenuItem label="Reports" href="/reports" />
+
+    <SidebarFooter>
+      <Text>
+        Have an idea?{" "}
+        <Link href="https://example.com/feedback" openNewTab>
+          Share feedback
+        </Link>
+      </Text>
+    </SidebarFooter>
+  </Sidebar>
+  <Main>
+    <Text>Select an item from the sidebar.</Text>
+  </Main>
 </Global>
 ```
 ```
@@ -691,13 +771,20 @@ and main content:
 111
 112
 113
+114
+115
+116
+117
+118
+119
+120
 ```
 
 
 
 ```
 import React, { useState } from "react";
-import ForgeReconciler, { Button, Text } from "@forge/react";
+import ForgeReconciler, { Button, Text, Link } from "@forge/react";
 import {
   Global,
   Sidebar,
@@ -709,6 +796,7 @@ import {
   PersonalSettings,
   PersonalSettingsItem,
   ReorderableMenuItems,
+  SidebarFooter,
   CreateButton,
   CreateMenuItem,
   FlyOutMenuItem,
@@ -791,6 +879,12 @@ const App = () => {
             console.error("Failed to persist sidebar order:", error);
           }}
         />
+
+        <SidebarFooter>
+          <Link href="https://support.atlassian.com/" openNewTab>
+            Get support
+          </Link>
+        </SidebarFooter>
       </Sidebar>
 
       <Main>

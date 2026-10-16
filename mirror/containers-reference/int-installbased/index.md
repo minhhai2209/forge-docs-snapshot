@@ -2,7 +2,7 @@
 
 Forge Container services is now in Preview, and therefore fully supported. However, it remains under active development and may be subject to shorter deprecation windows. Preview features are suitable for early adopters in production environments.
 
-We release preview features so partners and developers can study, test, and integrate them prior to General Availability (GA). For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#forge-preview).
+We release preview features so partners and developers can study, test, and integrate them prior to General Availability (GA). For more details, see [Forge Preview](/platform/forge/whats-coming/#forge-preview).
 
 You can make "offline" API calls at any time from your container on behalf of an **installation** within your app environment.
 This means that you no longer need to wait for an invocation to deliver you an `invocationId` to make API requests.

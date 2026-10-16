@@ -448,6 +448,7 @@ Use the linked pages in this navigation area for UI Kit components, hooks, bridg
 
 - [Forge bridge APIs](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/bridge.md)
 - [events](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/events.md)
+- [getCookieConsentPreferences](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/getCookieConsentPreferences.md)
 - [i18n](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/i18n.md)
 - [invoke](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/invoke.md)
 - [invokeRemote](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/invokeRemote.md)
@@ -737,9 +738,9 @@ This reference is centered on the **hosted storage REST API** for the **Key-Valu
 
 ### [Forge Containers REST API — intro (`/rest/v2/intro/`)](https://developer.atlassian.com/platform/forge/rest/v2/intro/#about)
 
-This reference describes the broader **REST APIs that Forge Containers** can call **outbound** from a **containerised** service: Atlassian product APIs, Forge platform APIs, and other documented resources. Calls go through the **egress sidecar** (for example using `FORGE_EGRESS_PROXY_URL` as documented there). This area is tied to **Forge Containers** and, as documented on that page, is **EAP**—not for production unless and until the docs say otherwise.
+This reference describes the broader **REST APIs that Forge Containers** can call **outbound** from a **containerised** service: Atlassian product APIs, Forge platform APIs, and other documented resources. Calls go through the **egress sidecar** (for example using `FORGE_EGRESS_PROXY_URL` as documented there). Forge Container services and these REST API endpoints are in **Preview**. Preview features are fully supported and suitable for production apps, but may have shorter deprecation windows.
 
-**How to choose:** If the user is building **normal Forge functions** with `@forge/kvs` or runtime storage APIs, they usually follow the **Storage** / **runtime** docs—not necessarily these REST pages. If they are integrating **hosted storage via REST**, start with **`/rest/v1/`**. If they are in **Forge Containers** and need **outbound REST** to Forge or Atlassian services, start with **`/rest/v2/intro/`** and follow the egress and EAP guidance there.
+**How to choose:** If the user is building **normal Forge functions** with `@forge/kvs` or runtime storage APIs, they usually follow the **Storage** / **runtime** docs—not necessarily these REST pages. If they are integrating **hosted storage via REST**, start with **`/rest/v1/`**. If they are in **Forge Containers** and need **outbound REST** to Forge or Atlassian services, start with **`/rest/v2/intro/`** and follow the egress and Preview guidance there.
 
 - [APIs for Forge Container services](https://developer.atlassian.com/platform/forge/rest/v2/index.md)
 - [KVS/Custom Entity Store API](https://developer.atlassian.com/platform/forge/rest/v1/index.md)

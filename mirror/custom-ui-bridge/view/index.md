@@ -593,6 +593,8 @@ await view.changeWindowTitle("New title");
 
 The `emitReadyEvent` function notifies Confluence that a Forge macro has completed loading and is ready for export or further processing. This enables Confluence or other consumers, such as our PDF export service, to reliably detect when macros are fully loaded, rather than relying on DOM scanning or timing heuristics.
 
+In a [`global:ui`](/platform/forge/global-ui/global-ui-module/) module that sets `emitsReadyEvent: true`, calling `emitReadyEvent` removes the initial loading screen and shows your app.
+
 This function is part of the `@forge/bridge` library and leverages the [Forge Events API](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/events/#events) to emit an `EXTENSION_READY` event, including contextual information about the macro or extension that triggered it.
 
 ### Function signature
@@ -741,7 +743,7 @@ Returns an object with the following properties:
 
 ### Example
 
-![Example rendered Custom UI bodied macro contents](https://dac-static.atlassian.com/platform/forge/apis-reference/ui-api-bridge/images/view/view-createAdfRendererIframeProps-custom-ui-bodied-macro.svg?_v=1.5800.2384)
+![Example rendered Custom UI bodied macro contents](https://dac-static.atlassian.com/platform/forge/apis-reference/ui-api-bridge/images/view/view-createAdfRendererIframeProps-custom-ui-bodied-macro.svg?_v=1.5800.2386)
 
 ```
 ```

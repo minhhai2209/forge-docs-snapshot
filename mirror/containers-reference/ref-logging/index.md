@@ -2,7 +2,7 @@
 
 Forge Container services is now in Preview, and therefore fully supported. However, it remains under active development and may be subject to shorter deprecation windows. Preview features are suitable for early adopters in production environments.
 
-We release preview features so partners and developers can study, test, and integrate them prior to General Availability (GA). For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#forge-preview).
+We release preview features so partners and developers can study, test, and integrate them prior to General Availability (GA). For more details, see [Forge Preview](/platform/forge/whats-coming/#forge-preview).
 
 For compatibility with Forge’s developer tools we apply default properties to log lines produced by your app. You can specify values by including the following properties in JSON-formatted log lines (written to standard output).
 
@@ -46,4 +46,4 @@ For example, consider the following log:
 
 This line would populate the Developer Console with the following entry:
 
-![Developer Consoler sample entry for log line](https://dac-static.atlassian.com/platform/forge/images/containers-logging-invocation.png?_v=1.5800.2384)
+![Developer Consoler sample entry for log line](https://dac-static.atlassian.com/platform/forge/images/containers-logging-invocation.png?_v=1.5800.2386)

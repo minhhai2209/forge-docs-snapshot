@@ -2,7 +2,7 @@
 
 Forge Container services is now in Preview, and therefore fully supported. However, it remains under active development and may be subject to shorter deprecation windows. Preview features are suitable for early adopters in production environments.
 
-We release preview features so partners and developers can study, test, and integrate them prior to General Availability (GA). For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#forge-preview).
+We release preview features so partners and developers can study, test, and integrate them prior to General Availability (GA). For more details, see [Forge Preview](/platform/forge/whats-coming/#forge-preview).
 
 This page sets out the mandatory security **requirements** and strongly recommended **recommendations** for building container images used by your app. Following these guidelines ensures your app is hardened against infrastructure attacks, maintains [strict tenant isolation](/platform/forge/tenant-data-isolation/), and meets the transparency standards required for Marketplace approval.
 

@@ -2,7 +2,7 @@
 
 Forge Container services is now in Preview, and therefore fully supported. However, it remains under active development and may be subject to shorter deprecation windows. Preview features are suitable for early adopters in production environments.
 
-We release preview features so partners and developers can study, test, and integrate them prior to General Availability (GA). For more details, see [Forge EAP, Preview, and GA](/platform/forge/whats-coming/#forge-preview).
+We release preview features so partners and developers can study, test, and integrate them prior to General Availability (GA). For more details, see [Forge Preview](/platform/forge/whats-coming/#forge-preview).
 
 The `endpoint` module described on this page is also documented in the [Endpoint manifest reference](/platform/forge/manifest-reference/endpoint/).
 
@@ -19,15 +19,13 @@ It supports the following properties:
 | `tunnel` | No | Defines the local port that invocations of the service should be made to whilst tunnelling. If undefined, requests will be made to port `7071`. See [Property: tunnel](/platform/forge/containers-reference/ref-manifest/#tunnel) for details. |
 | `scaling` | No | Horizontal scaling configuration defining the min & max number of container instances to run. See [Property: scaling](/platform/forge/containers-reference/ref-manifest/#scaling) for details. |
 
-The ability to configure multiple services and containers per app is available behind a feature flag. Contact us if your app requires multiple services. See [Roadmap](https://ecosystem.atlassian.net/browse/ROADMAP-228) for details on upcoming updates.
-
 ## Containers
 
 The `containers` property lets you configure a container’s resource, scaling, and health check settings:
 
 | **Property** | **Required?** | **Description** |
 | --- | --- | --- |
-| `key` | Yes | A unique key that maps to the container’s image repository URI. This key is created with the `forge containers create` [command](http://platform/forge/containers-reference/ref-cli/#create); to view all container keys and their corresponding repository URIs, use the `forge repositories list` [command](/platform/forge/containers-reference/ref-cli/#list). |
+| `key` | Yes | A unique key that maps to the container’s image repository URI. This key is created with the `forge containers create` [command](/platform/forge/cli-reference/containers-create/); to view all container keys and their corresponding repository URIs, use the `forge repositories list` [command](/platform/forge/cli-reference/repositories-list/). |
 | `tag` | Yes | The tag of the image that Forge should use to deploy the container. This image (and tag) must exist in the Forge Container Registry. |
 | `resources` | Yes | Vertical scaling configuration defining CPU and memory available to your container. See [Resources](/platform/forge/containers-reference/ref-manifest/#resources). |
 | `health` | Yes | Configuration for an HTTP Health check that the Forge Platform uses to determine container availability and health. See [Health](/platform/forge/containers-reference/ref-manifest/#health). |

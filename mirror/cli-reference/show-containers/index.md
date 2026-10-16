@@ -28,24 +28,65 @@ display information about deployed app containers for a given service
 
 ## Operation
 
-This command is used with Forge Container services, which is currently available under
-[Forge's Early Access Program (EAP)](/platform/forge/whats-coming/#eap).
-EAPs are offered to selected users for testing and feedback purposes.
+This command is used with Forge Container services, which is now in [Preview](/platform/forge/whats-coming/#forge-preview). Preview features are fully supported but remain under active development and may be subject to shorter deprecation windows.
 
-APIs and features under EAP are:
+Run `forge show containers` from your app's root directory to inspect the deployed containers for a service. Use `-e <environment>` to select an environment. If you omit it, the command uses your default environment, which you can check with `forge settings list`.
 
-* Unsupported and subject to change without notice
-* Not recommended for use in production environments
-
-Use the `forge show containers` command to display details about all containers of a specific service, or a specific container defined for that service. This command provides the following container details:
+The command shows the container name and image repository above a table with these columns:
 
 | **Column** | **Type** | **Purpose** |
 | --- | --- | --- |
-| **Container** | string | Container name as defined in manifest. |
-| **Health** | `Healthy` `Unhealthy` | The response from the configured `health` check for the container. |
-| **Status** | `Provisioning` `Running`  `Removing` | The state of a given container instance. |
-| **ImageURI** | string | ImageURI that that the container is running. |
-| **Created At** | timestamp | When the most recent instance of the container was created. |
+| **Image Tag** | string | Tag of the image running in the reported instance. |
+| **Health** | `Healthy` `Unhealthy` `Unknown` | The reported health of the container. |
+| **Status** | `Provisioning` `Running` `Removing` `Unknown` | The state of the reported container instance. |
+| **CPU** | string | Reported CPU value in millicores (`m`). |
+| **Memory** | string | Reported memory value in mebibytes (`MiB`). |
+| **Created at** | timestamp | Creation timestamp of the reported instance. |
+| **Instance** | string | Identifier of the reported instance. |
+
+CPU and memory show usage metrics when available. If usage metrics are unavailable, the command may show configured resource allocations instead. These fallback values do not represent current usage. A `Not Available` means a resource value is unavailable; it does not mean zero usage. To view configured resource limits, check the container's [`resources` definition](/platform/forge/containers-reference/ref-manifest/#resources) in the manifest.
+
+### Example
+
+```
+```
+1
+2
+```
+
+
+
+```
+forge show containers -e development -s java-service
+```
+```
+
+Example output may look like:
+
+```
+```
+1
+2
+3
+4
+5
+6
+7
+8
+```
+
+
+
+```
+Container: java-service
+Image repository: forge-registry.services.atlassian.com/forge/5175c066-7f18-474e-9137-19e6718a8c99/java-service
+┌───────────┬─────────┬─────────┬──────┬────────┬──────────────────────────┬───────────────────────────────┐
+│ Image Tag │ Health  │ Status  │ CPU  │ Memory │ Created at               │ Instance                      │
+├───────────┼─────────┼─────────┼──────┼────────┼──────────────────────────┼───────────────────────────────┤
+│ 1.0.0     │ Healthy │ Running │ 125m │ 256MiB │ 2026-10-15T01:00:00.000Z │ java-service-7d8f6c9b5f-abcde │
+└───────────┴─────────┴─────────┴──────┴────────┴──────────────────────────┴───────────────────────────────┘
+```
+```
 
 ### Specify a service
 

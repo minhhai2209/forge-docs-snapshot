@@ -35,7 +35,7 @@ Use the `forge show services` command to display details about all services, or 
 | **Column** | **Type** | **Purpose** |
 | --- | --- | --- |
 | **Service** | string | Name of the service, as defined in the manifest. This column only appears if the `-s` option is *not* used. |
-| **Service Status** | `Available` `Unavailable` | Whether the service is receiving production traffic. |
+| **Service Status** | `Available` `Unavailable` | Whether the deployed service is available to receive traffic. |
 | **Running Count** | integer | Number of available service instances. |
 | **Pending Count** | integer | Number of service instances being created but not yet `Healthy` (Status). |
 | **Min** | integer | Minimum number of service instances. |
@@ -45,7 +45,7 @@ Use the `forge show services` command to display details about all services, or 
 | **Version Status** | `Updating` `Up-to-date` | `Updating`: Indicated the service is in the process of being replaced with a new version. `Up-to-date`: Indicates the service is at the latest deployed version. |
 
 When you use the `-s <service-name>` option, you'll only see details for that service. The `<service-name>` must map to the
-same `service.key` value used in the [manifest](/platform/forge/containers-reference/ref-manifest/).
+same `services[].key` value used in the [manifest](/platform/forge/containers-reference/ref-manifest/).
 
 If you don't use this option, the command will display details about *all* services defined in the manifest.
 

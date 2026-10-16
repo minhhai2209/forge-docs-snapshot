@@ -40,6 +40,7 @@ To use `global:ui`, the manifest has two key parts:
 12
 13
 14
+15
 ```
 
 
@@ -52,7 +53,8 @@ modules []
    ├─ render (string) [Required - must be native]
    ├─ resolver {} [Optional]
    ├─ title (string | i18n object) [Required]
-   └─ icon (string) [Optional]
+   ├─ icon (string) [Optional]
+   └─ emitsReadyEvent (boolean) [Optional]
 
 app {}
 ├─ id (string) [Required]
@@ -148,6 +150,7 @@ app:
 | `resolver` | `object` | No | An optional object that specifies a resolver for back-end data access. Set the `function` property if you are using a hosted `function` module for your resolver. Set the `endpoint` property if you are using [Forge Remote](/platform/forge/remote/) to integrate with a remote back end. |
 | `title` | `string` or i18n object | Yes | The display name for your app. Shown in the Atlassian app switcher and in the top navigation bar. |
 | `icon` | `string` | No | A reference to a local SVG resource for your app icon, in the format `resource:<resource-key>;<filename>`. Displayed at 24×24px in the sidenav header and 32×32px in the app switcher. Requires a corresponding entry in the `resources` section. |
+| `emitsReadyEvent` | `boolean` | No | Defaults to `false`. When `true`, the platform continues to show the initial loading screen with your app logo until your app code calls [`view.emitReadyEvent()`](/platform/forge/apis-reference/ui-api-bridge/view/#emitreadyevent). Use this when your app needs to load data or finish rendering before users see it. If your app doesn't call `view.emitReadyEvent()`, the loading screen is removed after a default timeout of 10 seconds. |
 
 ### i18n object
 
@@ -169,6 +172,116 @@ title:
   i18n:
     default: My App
     es: Mi aplicación
+```
+```
+
+### Show the loading screen until your app is ready
+
+The following example keeps the loading screen visible until the app calls `view.emitReadyEvent()`:
+
+```
+```
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+```
+
+
+
+```
+modules:
+  global:ui:
+    - key: my-app
+      resource: main
+      render: native
+      resolver:
+        function: resolver
+      title: My App
+      emitsReadyEvent: true
+  function:
+    - key: resolver
+      handler: index.handler
+```
+```
+
+```
+```
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+```
+
+
+
+```
+import React, { useEffect, useState } from "react";
+import ForgeReconciler, { Text } from "@forge/react";
+import { invoke, view } from "@forge/bridge";
+
+const App = () => {
+  const [summary, setSummary] = useState();
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        setSummary(await invoke("getSummary"));
+      } catch (error) {
+        console.error("Failed to load summary:", error);
+      } finally {
+        // Notify the platform even if loading fails, so the loading screen is removed.
+        await view.emitReadyEvent();
+      }
+    };
+
+    loadData();
+  }, []);
+
+  return <Text>{summary ?? "No summary available."}</Text>;
+};
+
+ForgeReconciler.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+);
 ```
 ```
 
