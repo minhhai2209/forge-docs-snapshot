@@ -1,24 +1,25 @@
 {
   "root_url": "https://developer.atlassian.com/platform/forge",
-  "generated_at": "2026-10-16T21:35:43.570446+00:00",
-  "discovered_urls": 791,
-  "downloaded_pages": 779,
-  "skipped_pages": 12,
-  "duration_seconds": 4325.83,
+  "generated_at": "2026-10-17T21:07:23.921015+00:00",
+  "discovered_urls": 789,
+  "downloaded_pages": 776,
+  "skipped_pages": 13,
+  "duration_seconds": 4171.09,
   "user_agent": "ForgeDocsMirror/1.0 (+https://github.com/minhhai2209/forge-docs-snapshot)",
   "delay_seconds": 0.25,
   "failures": [
     "timeout: https://developer.atlassian.com/platform/forge/getting-started",
     "timeout: https://developer.atlassian.com/platform/forge/ai-development-toolkit/forge-mcp",
     "timeout: https://developer.atlassian.com/platform/forge/example-apps-rovo",
-    "timeout: https://developer.atlassian.com/platform/forge/profiling-node-js-app-code-tunnel",
+    "timeout: https://developer.atlassian.com/platform/forge/extend-atlassian-products-with-a-forge-rovo-agent",
     "timeout: https://developer.atlassian.com/platform/forge/build-a-hello-world-rovo-agent",
     "timeout: https://developer.atlassian.com/platform/forge/build-a-jira-issue-analyst-rovo-agent",
     "timeout: https://developer.atlassian.com/platform/forge/manifest",
     "timeout: https://developer.atlassian.com/platform/forge/tunneling",
+    "timeout: https://developer.atlassian.com/platform/forge/enterprise/use-forge-cli-on-corporate-network",
     "timeout: https://developer.atlassian.com/platform/forge/developer-space/create-developer-space",
-    "timeout: https://developer.atlassian.com/platform/forge/developer-space/developer-space-apps",
-    "playwright: https://developer.atlassian.com/platform/forge/resources/Forge-Data-Processing-Addendum.pdf",
-    "timeout: https://developer.atlassian.com/platform/forge/installing-forge-on-macos"
+    "timeout: https://developer.atlassian.com/platform/forge/developer-space/developer-space-roles",
+    "timeout: https://developer.atlassian.com/platform/forge/set-up-forge",
+    "playwright: https://developer.atlassian.com/platform/forge/resources/Forge-Data-Processing-Addendum.pdf"
   ]
 }
