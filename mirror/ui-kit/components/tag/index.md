@@ -18,8 +18,12 @@ A tag labels UI objects for quick recognition and navigation.
 | `text` | `string` | Yes | Text to be displayed in the tag. |
 | `href` | `string` | No | URI or path. If provided, the tag will be a link. |
 | `appearance` | `"default" | "rounded"` | No | Set whether tags should be rounded. |
-| `color` | `"standard" | "green" | "lime" | "blue" | "red" | "purple" | "magenta" | "grey" | "teal" |"orange" | "yellow" | "limeLight" | "orangeLight" | "magentaLight" | "greenLight" | "blueLight" | "redLight" | "purpleLight" | "greyLight" | "tealLight" | "yellowLight"` | No | The color theme to apply, setting both background and text color. Default is `standard`. |
+| `color` | `"standard"` | `"green"` | `"lime"` | `"blue"` | `"red"` | `"purple"` | `"magenta"` | `"grey"` | `"teal"` | `"orange"` | `"yellow"` | `"limeLight"` | `"orangeLight"` | `"magentaLight"` | `"greenLight"` | `"blueLight"` | `"redLight"` | `"purpleLight"` | `"greyLight"` | `"tealLight"` | `"yellowLight"` | No | The color theme to apply, setting both background and text color. Default is `standard`. |
 | `elemBefore` | `Component` | No | Component to be rendered before the tag. |
+| `isRemovable` | `boolean` | No | Flag to indicate if a tag is removable. |
+| `removeButtonLabel` | `string` | No | Text rendered as the aria-label for remove button. |
+| `onAfterRemoveAction` | `(text: string) => void` | No | Handler to be called after tag is removed. |
+| `onBeforeRemoveAction` | `() => boolean` | No | Handler to be called before the tag is removed. If it does not return a truthy value, the tag will not be removed. |
 
 ## Examples
 
@@ -27,7 +31,7 @@ A tag labels UI objects for quick recognition and navigation.
 
 The default form of a tag, where text is required. Tags with static text can be used as a flag or as a reference to an object or attribute.
 
-![Example image of a tag](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tag/tag-default.png?_v=1.5800.2386)
+![Example image of a tag](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tag/tag-default.png?_v=1.5800.2390)
 
 ```
 ```
@@ -54,7 +58,7 @@ const TagDefaultExample = () => {
 
 A tag with an `href` can link to more information on the tagged item.
 
-![Example image of a tag link](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tag/tag-link.png?_v=1.5800.2386)
+![Example image of a tag link](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tag/tag-link.png?_v=1.5800.2390)
 
 ```
 ```
@@ -87,40 +91,7 @@ const TagLinkExample = () => {
 
 Once a tag has been removed, it cannot be re-rendered. Removable tags are visible in "edit" mode or in multi-select controls.
 
-![Example image of a removable tag](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tag/removable-tag.png?_v=1.5800.2386)
-
-```
-```
-1
-2
-3
-4
-5
-6
-7
-8
-9
-```
-
-
-
-```
-const TagRemovableExample = () => {
-  return (
-    <Tag 
-      text="Removable tag" 
-      removeButtonLabel="Remove" 
-    />
-  );
-};
-```
-```
-
-### Removable link
-
-A removable tag with an `href` can link to more information.
-
-![Example image of a removable link tag](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tag/removable-link.png?_v=1.5800.2386)
+![Example image of a removable tag](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tag/removable-tag.png?_v=1.5800.2390)
 
 ```
 ```
@@ -139,12 +110,12 @@ A removable tag with an `href` can link to more information.
 
 
 ```
-const TagRemovableLinkExample = () => {
+const TagRemovableExample = () => {
   return (
     <Tag 
-      text="Removable tag link" 
+      text="Removable tag" 
+      isRemovable
       removeButtonLabel="Remove" 
-      href="/components/tag" 
     />
   );
 };
@@ -155,7 +126,7 @@ const TagRemovableLinkExample = () => {
 
 The color theme for background and text.
 
-![Example image of colored tags](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tag/tag-color.png?_v=1.5800.2386)
+![Example image of colored tags](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tag/tag-color.png?_v=1.5800.2390)
 
 ```
 ```
@@ -176,7 +147,6 @@ The color theme for background and text.
 15
 16
 17
-18
 ```
 
 
@@ -195,18 +165,17 @@ const TagColorExample = () => {
       <Tag text="orange Tag" color="orange" />
       <Tag text="magenta Tag" color="magenta" />
       <Tag text="lime Tag" color="lime" />
-      <Tag text="grey Tag" color="grey" />
     </TagGroup>
   );
 };
 ```
 ```
 
-### Text max length
+### Element before
 
-The maximum width for a tag is 200px. If the text within the tag exceeds this width, it will be truncated and an ellipsis (...) will be added to indicate there is more text.
+The component to be rendered before the tag.
 
-![Example image of a tag](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tag/tag-max-length.png?_v=1.5800.2386)
+![Example image of tag with element before](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tag/tag-elem-before.png?_v=1.5800.2390)
 
 ```
 ```
@@ -224,11 +193,42 @@ The maximum width for a tag is 200px. If the text within the tag exceeds this wi
 
 
 ```
+const TagTextElemBeforeExample = () => {
+  return (
+    <Tag
+      text="Element before tag"
+      elemBefore={<Icon glyph="hashtag">}
+    />
+  );
+};
+```
+```
+
+### Text max length
+
+The maximum width for a tag is 180px. If the text within the tag exceeds this width, it will be truncated and an ellipsis (...) will be added to indicate there is more text.
+
+![Example image of a tag](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tag/tag-max-length.png?_v=1.5800.2390)
+
+```
+```
+1
+2
+3
+4
+5
+6
+7
+8
+```
+
+
+
+```
 const TagTextMaxLengthExample = () => {
   return (
     <Tag
-      appearance="default"
-      text="Croissant tiramisu gummies"
+      text="Croissant tiramisu gummi bears"
     />
   );
 };

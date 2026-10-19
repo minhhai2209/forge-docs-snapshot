@@ -1,11 +1,11 @@
 # requestTeamworkGraph (EAP)
 
 The `requestTeamworkGraph` bridge method enables Forge apps to call the
-[Teamwork Graph GraphQL API](/platform/teamwork-graph/api-reference/overview/) **on behalf of the user who is currently interacting with the app** in the browser. Unlike back-end functions, front-end calls always run as the current user — there is no `asApp()` equivalent.
+[Teamwork Graph GraphQL API](/platform/teamwork-graph/api-reference/overview/) **on behalf of the user who is currently interacting with the app** in the browser. Calls always run as the current user - Forge apps can't call the Teamwork Graph API as the app.
 
 This means that, in addition to the app declaring the correct [scopes](/platform/forge/manifest-reference/permissions/) in its manifest, the current user must have the Teamwork Graph permissions required by the GraphQL operation being called.
 
-If you need to call the Teamwork Graph API as the app itself, use the [`requestTeamworkGraph`](/platform/forge/runtime-reference/product-fetch-api/#contextual-methods) method from the `@forge/api` package in a back-end function, and call it with `api.asApp()`. See [Contextual methods](/platform/forge/runtime-reference/product-fetch-api/#contextual-methods) for more information on the differences between `asUser()` and `asApp()`.
+If you need to call the Teamwork Graph API from a backend function, use the `requestTeamworkGraph()` method from the `@forge/api` package with `api.asUser()`.
 
 ## Function signature
 
