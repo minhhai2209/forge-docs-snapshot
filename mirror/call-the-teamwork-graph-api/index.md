@@ -384,7 +384,8 @@ Pass the Cypher query and its parameters as GraphQL variables:
 
 ### Step 5: Save the query
 
-see [persisted-cypher-queries.md](/latform/teamwork-graph/persisted-cypher-queries.md)
+To reuse your query, save it as a persisted Cypher query. For instructions on submitting and executing
+persisted queries, see [Persisted Cypher queries](/platform/teamwork-graph/persisted-cypher-queries/).
 
 ## Step 6: Implement in your Forge app
 
