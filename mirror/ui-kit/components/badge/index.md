@@ -31,7 +31,7 @@ Use `neutral` for general-purpose numeric information that doesn't require seman
 
 **New:** `appearance="neutral"` **Legacy:** `appearance="default"` (or omit the prop)
 
-![Example image of a rendered neutral badge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/badge/badge-neutral.png?_v=1.5800.2390)
+![Example image of a rendered neutral badge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/badge/badge-neutral.png?_v=1.5800.2392)
 
 ```
 ```
@@ -90,7 +90,7 @@ Use `information` to draw attention to new or updated information, or to highlig
 
 **New:** `appearance="information"` **Legacy:** `appearance="primary"`
 
-![Example image of a rendered information badge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/badge/badge-information.png?_v=1.5800.2390)
+![Example image of a rendered information badge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/badge/badge-information.png?_v=1.5800.2392)
 
 ```
 ```
@@ -149,7 +149,7 @@ Use `inverse` when high contrast against a darker background color is needed.
 
 **New:** `appearance="inverse"` **Legacy:** `appearance="primaryInverted"`
 
-![Example image of a rendered inverse badge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/badge/badge-inverse.png?_v=1.5800.2390)
+![Example image of a rendered inverse badge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/badge/badge-inverse.png?_v=1.5800.2392)
 
 ```
 ```
@@ -212,7 +212,7 @@ Use `success` to show positive values or additions. For example, when characters
 
 **New:** `appearance="success"` **Legacy:** `appearance="added"`
 
-![Example image of a rendered success badge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/badge/badge-success.png?_v=1.5800.2390)
+![Example image of a rendered success badge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/badge/badge-success.png?_v=1.5800.2392)
 
 ```
 ```
@@ -271,7 +271,7 @@ Use `danger` to show negative values, removals, or critical information. For exa
 
 **New:** `appearance="danger"` **Legacy:** `appearance="removed"`
 
-![Example image of a rendered danger badge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/badge/badge-danger.png?_v=1.5800.2390)
+![Example image of a rendered danger badge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/badge/badge-danger.png?_v=1.5800.2392)
 
 ```
 ```
@@ -330,7 +330,7 @@ Use `warning` to call attention to information that requires caution or awarenes
 
 **New:** `appearance="warning"` (no direct legacy equivalent)
 
-![Example image of a rendered warning badge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/badge/badge-warning.png?_v=1.5800.2390)
+![Example image of a rendered warning badge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/badge/badge-warning.png?_v=1.5800.2392)
 
 ```
 ```
@@ -373,7 +373,7 @@ Use `discovery` to highlight new features, discoveries, or exploratory informati
 
 **New:** `appearance="discovery"` (no direct legacy equivalent)
 
-![Example image of a rendered discovery badge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/badge/badge-discovery.png?_v=1.5800.2390)
+![Example image of a rendered discovery badge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/badge/badge-discovery.png?_v=1.5800.2392)
 
 ```
 ```
@@ -414,7 +414,7 @@ const BadgeDiscoveryExample = () => {
 
 Bold semantic appearances provide higher visual prominence and should be reserved for badges of high importance, such as notification counts. Five bold appearances are available: `informationBold`, `successBold`, `dangerBold`, `warningBold`, and `discoveryBold`.
 
-![Example image of a rendered bold badge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/badge/badge-bold.png?_v=1.5800.2390)
+![Example image of a rendered bold badge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/badge/badge-bold.png?_v=1.5800.2392)
 
 ```
 ```
@@ -509,7 +509,7 @@ const BadgeBoldExample = () => {
 
 Use the `max` prop to cap the value of a badge. When the value to display is greater than the `max` prop, a `+` will be appended. The default `max` value of a badge is `99`.
 
-![Example image of a rendered max value badge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/badge/badge-maxvalue.png?_v=1.5800.2390)
+![Example image of a rendered max value badge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/badge/badge-maxvalue.png?_v=1.5800.2392)
 
 ```
 ```
@@ -536,7 +536,7 @@ const BadgeMaxValue = () => {
 
 Set the `max` prop to false to display the value as provided, without a plus symbol (`+`) appended.
 
-![Example image of a rendered max value disabled badge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/badge/badge-maxvalue-disabled.png?_v=1.5800.2390)
+![Example image of a rendered max value disabled badge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/badge/badge-maxvalue-disabled.png?_v=1.5800.2392)
 
 ```
 ```

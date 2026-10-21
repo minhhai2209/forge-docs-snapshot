@@ -31,7 +31,7 @@ A tag labels UI objects for quick recognition and navigation.
 
 The default form of a tag, where text is required. Tags with static text can be used as a flag or as a reference to an object or attribute.
 
-![Example image of a tag](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tag/tag-default.png?_v=1.5800.2390)
+![Example image of a tag](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tag/tag-default.png?_v=1.5800.2392)
 
 ```
 ```
@@ -58,7 +58,7 @@ const TagDefaultExample = () => {
 
 A tag with an `href` can link to more information on the tagged item.
 
-![Example image of a tag link](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tag/tag-link.png?_v=1.5800.2390)
+![Example image of a tag link](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tag/tag-link.png?_v=1.5800.2392)
 
 ```
 ```
@@ -91,7 +91,7 @@ const TagLinkExample = () => {
 
 Once a tag has been removed, it cannot be re-rendered. Removable tags are visible in "edit" mode or in multi-select controls.
 
-![Example image of a removable tag](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tag/removable-tag.png?_v=1.5800.2390)
+![Example image of a removable tag](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tag/removable-tag.png?_v=1.5800.2392)
 
 ```
 ```
@@ -126,7 +126,7 @@ const TagRemovableExample = () => {
 
 The color theme for background and text.
 
-![Example image of colored tags](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tag/tag-color.png?_v=1.5800.2390)
+![Example image of colored tags](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tag/tag-color.png?_v=1.5800.2392)
 
 ```
 ```
@@ -175,7 +175,7 @@ const TagColorExample = () => {
 
 The component to be rendered before the tag.
 
-![Example image of tag with element before](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tag/tag-elem-before.png?_v=1.5800.2390)
+![Example image of tag with element before](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tag/tag-elem-before.png?_v=1.5800.2392)
 
 ```
 ```
@@ -208,7 +208,7 @@ const TagTextElemBeforeExample = () => {
 
 The maximum width for a tag is 180px. If the text within the tag exceeds this width, it will be truncated and an ellipsis (...) will be added to indicate there is more text.
 
-![Example image of a tag](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tag/tag-max-length.png?_v=1.5800.2390)
+![Example image of a tag](https://dac-static.atlassian.com/platform/forge/ui-kit/images/tag/tag-max-length.png?_v=1.5800.2392)
 
 ```
 ```

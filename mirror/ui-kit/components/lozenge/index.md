@@ -26,7 +26,7 @@ A lozenge is a visual indicator used to highlight an item's status for quick rec
 
 Use `neutral` lozenges for general status without specific semantic meaning. For example: "default", "standard", "inactive", or "draft".
 
-![Example image of a neutral lozenge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/lozenge/lozenge-neutral.png?_v=1.5800.2390)
+![Example image of a neutral lozenge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/lozenge/lozenge-neutral.png?_v=1.5800.2392)
 
 ```
 ```
@@ -59,7 +59,7 @@ const LozengeNeutralExample = () => (
 
 Use `success` lozenges to represent a constructive or positive status. For example: "available", "completed", "approved", "resolved", or "added".
 
-![Example image of a success lozenge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/lozenge/lozenge-success.png?_v=1.5800.2390)
+![Example image of a success lozenge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/lozenge/lozenge-success.png?_v=1.5800.2392)
 
 ```
 ```
@@ -94,7 +94,7 @@ const LozengeSuccessExample = () => (
 
 Use `warning` lozenges to represent a cautionary status that requires attention. For example: "pending", "needs review", "at risk", or "approaching deadline".
 
-![Example image of a warning lozenge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/lozenge/lozenge-warning.png?_v=1.5800.2390)
+![Example image of a warning lozenge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/lozenge/lozenge-warning.png?_v=1.5800.2392)
 
 ```
 ```
@@ -127,7 +127,7 @@ const LozengeWarningExample = () => (
 
 Use `danger` lozenges to represent a critical or problematic status. For example: "error", "declined", "failed", "blocked", or "urgent".
 
-![Example image of a danger lozenge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/lozenge/lozenge-danger.png?_v=1.5800.2390)
+![Example image of a danger lozenge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/lozenge/lozenge-danger.png?_v=1.5800.2392)
 
 ```
 ```
@@ -162,7 +162,7 @@ const LozengeDangerExample = () => (
 
 Use `information` lozenges to represent informational or in-progress status. For example: "in progress", "modified", "reviewing", or "open".
 
-![Example image of an information lozenge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/lozenge/lozenge-information.png?_v=1.5800.2390)
+![Example image of an information lozenge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/lozenge/lozenge-information.png?_v=1.5800.2392)
 
 ```
 ```
@@ -197,7 +197,7 @@ const LozengeInformationExample = () => (
 
 Use `discovery` lozenges to represent new features, updates, or promotional labels. For example: "new", "beta", "premium", or "preview".
 
-![Example image of a discovery lozenge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/lozenge/lozenge-discovery.png?_v=1.5800.2390)
+![Example image of a discovery lozenge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/lozenge/lozenge-discovery.png?_v=1.5800.2392)
 
 ```
 ```
@@ -232,7 +232,7 @@ const LozengeDiscoveryExample = () => (
 
 In addition to semantic colors, lozenges support accent colors. In most cases, accent colors are used for user-generated content, where customers can choose a color and the text label.
 
-![Example image of a accent color lozenges](https://dac-static.atlassian.com/platform/forge/ui-kit/images/lozenge/lozenge-accent-colors.png?_v=1.5800.2390)
+![Example image of a accent color lozenges](https://dac-static.atlassian.com/platform/forge/ui-kit/images/lozenge/lozenge-accent-colors.png?_v=1.5800.2392)
 
 ```
 ```
@@ -283,7 +283,7 @@ When the text in the lozenge exceeds the maximum width, it will be truncated wit
 
 Avoid truncation wherever possible by using shorter text in lozenges. The truncated text is not focusable or accessible.
 
-![Example image of a default lozenge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/lozenge/lozenge-max-width.png?_v=1.5800.2390)
+![Example image of a default lozenge](https://dac-static.atlassian.com/platform/forge/ui-kit/images/lozenge/lozenge-max-width.png?_v=1.5800.2392)
 
 ```
 ```

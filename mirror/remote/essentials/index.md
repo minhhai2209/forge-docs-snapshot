@@ -1,3 +1,7 @@
+---
+
+## title: "Forge Remote essentials" description: "The key considerations and responsibilities of using Forge Remote." platform: platform product: forge category: devguide subcategory: learning guides: tutorials date: "2026-09-25"
+
 # Forge Remote essentials
 
 There are some key considerations and responsibilities when using Forge Remote.
@@ -285,6 +289,7 @@ If you implement a remote backend, you take on additional responsibilities under
 You must ensure that you:
 
 * Validate all JWT Forge Invocation Tokens provided to your remote endpoint in an authorization header against the following JWKS to ensure that they originated from Atlassian Forge and were intended for an audience of your Application ID.
+* Validate that the `app.id` claim in the FIT matches an app ID from a trusted source, such as the Forge developer console, rather than relying on the value in the token itself.
 * Never share or log any OAuth access tokens provided.
 
 To help illustrate the requirements for the above, here is some sample code in both [Javascript](https://bitbucket.org/atlassian/forge-remote-nodejs/src/main/src/validateAuthHeader.js) and [Java](https://bitbucket.org/atlassian/forge-remote-spring-boot/src/main/src/main/java/com/atlassian/frc/FITValidator.java), which is available from the linked repos.
@@ -359,6 +364,7 @@ Example code in Javascript:
 9
 10
 11
+12
 ```
 
 
@@ -371,6 +377,7 @@ export const validateContextToken = async (invocationToken, appId) => {
 
   const payload = await jose.jwtVerify(invocationToken, JWKS, {
     audience: appId,
+    issuer: "forge/invocation-token",
   });
   return payload;
 };

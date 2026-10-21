@@ -11,56 +11,23 @@ The `global:ui` module gives your Forge app its own end-to-end experience within
 platform. It provides a side navigation bar and a main content area that users access directly from
 the Atlassian app switcher.
 
-To use the `global:ui` module:
-
-1. Your app must declare a required Atlassian app through the [`compatibility`](/platform/forge/app-compatibility/#multiple-app-compatibility)
-   section of the manifest.
-2. Your app must use the [`global:ui` UI Kit components](/platform/forge/global-ui/ui-kit-components/).
+To build this experience, you must use the [`global:ui` UI Kit components](/platform/forge/global-ui/ui-kit-components/).
 
 ## Manifest structure
 
-To use `global:ui`, the manifest has two key parts:
-
-1. A `compatibility` section in `app` with at least one Atlassian app set to `required: true`.
-2. A `global:ui` entry in the `modules` section that defines the module entry point.
+To use `global:ui`, add a `global:ui` entry to the `modules` section of your manifest.
 
 ```
-```
-1
-2
-3
-4
-5
-6
-7
-8
-9
+1modules []
+2└─ global:ui {}
+3   ├─ key (string) [Required]
+4   ├─ resource (string) [Required]
+5   ├─ render (string) [Required - must be native]
+6   ├─ resolver {} [Optional]
+7   ├─ title (string | i18n object) [Required]
+8   ├─ icon (string) [Optional]
+9   └─ emitsReadyEvent (boolean) [Optional]
 10
-11
-12
-13
-14
-15
-```
-
-
-
-```
-modules []
-└─ global:ui {}
-   ├─ key (string) [Required]
-   ├─ resource (string) [Required]
-   ├─ render (string) [Required - must be native]
-   ├─ resolver {} [Optional]
-   ├─ title (string | i18n object) [Required]
-   ├─ icon (string) [Optional]
-   └─ emitsReadyEvent (boolean) [Optional]
-
-app {}
-├─ id (string) [Required]
-├─ runtime {} [Required]
-└─ compatibility {} [Required]
-```
 ```
 
 ## Example manifest
@@ -95,11 +62,6 @@ app {}
 26
 27
 28
-29
-30
-31
-32
-33
 ```
 
 
@@ -131,11 +93,6 @@ app:
     name: nodejs22.x
     memoryMB: 256
     architecture: arm64
-  compatibility:
-    confluence:
-      required: true
-    jira:
-      required: false
   id: ari:cloud:ecosystem::app/your-app-id
 ```
 ```
@@ -313,44 +270,6 @@ resources:
     path: icons # directory containing icon.svg
 ```
 ```
-
-## Compatibility
-
-Your app must declare a required Atlassian app in the manifest:
-
-```
-```
-1
-2
-3
-4
-5
-6
-7
-```
-
-
-
-```
-app:
-  compatibility:
-    confluence:
-      required: true
-    jira:
-      required: false
-```
-```
-
-The required Atlassian app determines where your app is installed, how it is licensed, and who can access it.
-Optional Atlassian apps let your app connect to additional Atlassian apps after installation; users choose whether
-to enable these connections.
-
-| Property | Description |
-| --- | --- |
-| `required: true` | The Atlassian app must be present for the app to be installed. Licensing is inherited from this Atlassian app. |
-| `required: false` | The Atlassian app connection is optional. Users can link the app to this Atlassian app after installation. |
-
-For more details on declaring compatibility, see [App compatibility](/platform/forge/app-compatibility/).
 
 ## Access your app
 
